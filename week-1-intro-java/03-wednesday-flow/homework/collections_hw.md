@@ -8,7 +8,7 @@ Write and test your code in IntelliJ.
 
 2) Declare an array of numbers called _nums_ (type int) with 10 elements. Using a loop, populate this array with the first 10 multiples of 17. Print the result. Now initialze a new Object called _multsOfThree_, and populate it programmatically with only the multiples from _nums_ that are divisible by 3. Print the result. Finally, what if we happened to need very high precision for the _multsOfThree_ values? Convert each element in _multsOfThree_ from an int to a more appropriate data type given this scenario. You may use an Array or ArrayList for the last part.
 
-3) In Android and in Java, we often have Objects that are lists within lists, or arrays within arrays. For this last exercise, create an ArrayList of ArrayLists to represent 10 categories of groceries (for example, fruits or dairy) and a list of items for each category. Populate your ArrayList of ArrayLists with items, and print an 'inventory report' of each category and its items using print commands. 
+3) In Android and in Java, we often have Objects that are lists within lists, or arrays within arrays. For this last exercise, create an ArrayList of ArrayLists to represent 5 categories of groceries (for example, fruits or dairy) and a list of items for each category. Populate your ArrayList of ArrayLists with items, and print an 'inventory report' of each category and its items using print commands. 
 
 **Bonus** : Could this be implemented with a different Collection type? Can you think of which one might be useful here, and try it out?
 
