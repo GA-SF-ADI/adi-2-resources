@@ -10,8 +10,16 @@ Today we learned about data types in Java, and one thing important that was note
 
 Autoboxing in Java is what happens when the Java compiler converts a primitive to its wrapper class - for example, between an int and an Integer, a char and a Character, or a long and a Long. Converting the other way (from wrapper type to primitive) is called unboxing. 
 
-For this homework, please read through the following javadoc and brief tutorial and be prepared to answer questions on the fundamentals of when autoboxing and unboxing occur, and why this is important :)
+For this homework, please read through the following javadoc and brief tutorial.
 
 https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html
 
 http://beginnersbook.com/2014/09/java-autoboxing-and-unboxing-with-examples/
+
+After reading these, make note of the following:
+
+* 3 cases when autoboxing can occur, with examples
+
+* 3 cases when unboxing can occur, with examples
+
+* What do you think best practices are when it comes to data types and comparative operations, and why?
