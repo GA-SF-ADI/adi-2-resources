@@ -434,13 +434,6 @@ Please create a new Java project in IntelliJ and work through as many as these e
     transmogrifier(42, 13, 7);
 ```
 
-4. Write a method called 'reverseString'. This method should take one argument, a String. The method should return a string with the order of the words reversed. Don't worry about punctuation
-
-    ```java
-    reverseString("black cat"); => "tac kcalb"
-    reverseString("the cow jumped over the moon"); => "noom eht revo depmuj woc eht"
-    reverseString("I can ride my bike with no handlebars"); => "srabeldnah on htiw ekib ym edir nac I"
-    ```
 
 ## Conclusion (5 min)
 
