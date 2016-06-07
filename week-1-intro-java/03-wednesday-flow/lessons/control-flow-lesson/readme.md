@@ -60,6 +60,7 @@ We've seen that scope changes depending on whether a variable is defined in the 
 
 In Java, variables defined in **block statements** modify scope, meaning those variables are not available outside of the block.
 
+> Instructor Note: Show the scope error in the IDE, then correct it as shown in the second code block.
 
 For example:
 
@@ -74,6 +75,7 @@ System.out.println(name); // symbol 'name' cannot be resolved
 
 Variables defined in **block statements** are not available outside of the curly braces. How might we resolve this issue?
 
+> Instructor note: first try to print out name without an else statement, then add the else, when the program still won't compile.
 
 ```java
 boolean beautiful = true;
@@ -109,14 +111,14 @@ When you need to test more than one case, you may use `else if`:
 ```java
 String name = "kittens";
 if (name.equals("puppies")) {
-  name += "!";
+    name += "!!!";
 } else if (name.equals("kittens")) {
-  name += "!!";
+    name += "!!";
 } else {
-  name = "!" + name;
+    name = "!" + name;
 }
-System.out.println(name == "kittens!!");
-//=> true
+System.out.println(name);
+//=> "kittens!!"
 ```
 
 #### Ternary Operator
@@ -126,7 +128,7 @@ Java has a ternary operator for conditional expressions. You can think about the
 ```java
 int age = 12;
 
-int allowed = (age > 18) ? "yes" : "no";
+String allowed = (age > 18) ? "yes" : "no";
 
 System.out.println(allowed);
 //=> "no"
@@ -136,6 +138,7 @@ System.out.println(allowed);
 
 It's important to know that all of the following become `false` when converted to a Boolean:
 
+> Instructor Note: This snippet is optional.
 
 - `false`
 - `0`
@@ -180,7 +183,7 @@ The `&&` operator requires both values to the left and right of the operator to 
 boolean result = false;
 
 if(true && true) {
-  result = "true";
+  result = true;
 }
 System.out.println(result);
 //=> true
@@ -192,7 +195,7 @@ Any other combination using the `&&` operator is `false`.  What happens if I che
 boolean result = false;
 
 if(true && false) {
-  result = "true";
+  result = true;
 }
 System.out.println(result);
 //=> false
@@ -202,7 +205,7 @@ System.out.println(result);
 boolean result = false;
 
 if(false && false) {
-  result = "true";
+  result = true;
 }
 System.out.println(result);
 //=> false
@@ -231,6 +234,7 @@ if(false || false) {
 //=> ... silence ...
 ```
 
+>Check: What is the only combination that will return false?
 
 Only `false || false` will return `false`
 
@@ -243,6 +247,7 @@ The `!` takes a value and returns the opposite boolean value, i.e.
 
 The `&&` and `||` operators use short-circuit logic, which means whether they will execute their second operand is dependent on the first.
 
+> Check: Can you think of a time when this might be useful?
 
 This is useful for checking for null objects before accessing their attributes:
 
@@ -252,14 +257,15 @@ if(instructor != null && instructor.getName().equals("drew")) {
 }
 ```
 
-In this case, if the first operand `instructor` is false, then the second operand `instructor.getName()` will not be evaluated. The expression is basically saying "we already know the whole `&&` expression is false, because `instructor` is false. Why bother dealing with the second operand?"
+In this case, if the first operand `instructor != null` is false, then the second operand `instructor.getName().equals("drew")` will not be evaluated. The expression is basically saying "we already know the whole `&&` expression is false, because `instructor != null` is false. Why bother dealing with the second operand?"
 
-This is also important because an Exception will be thrown if we try to call a method using dot notation on a null Object reference.
+This is also important because a `Null Pointer Exception` will be thrown if we try to call a method using "dot notation" on a null Object reference.
 
 ## Demo: Comparison Operators (10 mins)
 
 [Comparisons](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op2.html) in Java can be made on primitives using `<`, `>`, `<=`, and `>=`.
 
+> Check: What is a primitive data type?
 
 ```java
 'A' > 'a'
@@ -285,6 +291,7 @@ Note that you _cannot_ do:
 
 #### Equality Operator `==`
 
+> Check: Can you remember from the pre-work how to compare variables?
 
 When verifying equality between primitives use double equal `==`:
 
@@ -332,6 +339,7 @@ What this means is that Java doesn't care if they look similar. It only compares
 
 The long and short of it, use `equals` when comparing strings.
 
+> Check: Why can we call methods on a variable with data type string but not on an int?
 
 #### !=
 
@@ -376,17 +384,28 @@ For example if you eliminate the break statements:
     default:
       System.out.println("No favourite");
   }
-//=> I like apples \n No favourite
 ```
+
+The result would be:
+```
+I like apples 
+No favourite
+```
+ 
 
 If `food = "pear"` then the output would be:
 
-`I like pears \n I like apples \n No favourite`.
+```
+I like pears  
+I like apples 
+No favourite
+```.
 
 ...not exactly what we had intended.
 
 ## Demo: Loops (15 mins)
 
+> Instructor Note: Students should follow along if they feel up to it.
 
 In just about all programming languages, loop-ing exist.  A loop is a statement or block of code that will continue to execute while or until a condition exists.
 
@@ -394,7 +413,9 @@ In just about all programming languages, loop-ing exist.  A loop is a statement 
 
 Java has `while` loops and `do-while` loops.
 
-The first is good for basic looping, but there's a possibility it will never get run. Using a `do-while` loop makes sure that the body of the loop is executed at least once, because `while()` isn't evaluated until after the block of code runs.
+The `while` loop is good for basic looping, but there's a possibility it will never get run.
+
+> Check: In what case will the while loop never run?
 
 ```java
 while (true) {
@@ -402,7 +423,7 @@ while (true) {
 }
 ```
 
-This should be enough to break a browser:
+Using a `do-while` loop makes sure that the body of the loop is executed at least once, because `while()` isn't evaluated until after the block of code runs.
 
 ```java
 int input = 0;
@@ -431,11 +452,11 @@ Notice the placement of the comma and semi-colons, and let's take a look at what
 2. `i < iterations;` is the **termination** phase.
   - Every time the loop evaluates, it checks this statement.
   - If this statement evaluates to `false`, the loop terminates.
-  - This is equivalent to the `while` section of the `while...do` loop.
+  - This is equivalent to the `while` section of the `do...while` loop.
 
 3. `i++` is the **increment** expression.
   - This happens every time the loop evaluates.
-  - This is equivalent to the `do` section of the `while...do` loop.
+  - This is equivalent to the `do` section of the `do...while` loop.
   - In this case, each loop, `i` is incremented by 1.
 
 In android studio, you can use `fori+TAB` to automatically create an empty `for loop`.

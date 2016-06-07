@@ -1,2 +1,4 @@
-# adi-2-resources
-student facing repo for ADI-2
+# Android Development Immersive
+
+## Course Syllabus
+![syllabus](syllabus.png)

@@ -12,6 +12,7 @@ competencies: Workflow
 
 ## Introduction
 
+> ***Note:*** _This can be a pair programming activity or done independently._
 
 Let's apply what we've learned from class to share and update each other's code.  With a partner, you're going going to alternate between who 'drives' and who 'navigates' while following the requirements under "Exercise" below. The goal will be to create a project, have a partner fork, clone, and edit the project, submit the changes as a pull request, and then have the changes merged.  
 
@@ -25,20 +26,26 @@ Partners will be referred to as partner1 and partner2.
 
 **With partner1 driving:**
 
-- create a folder called `git-and-github-practice`
-- within that folder create a new IntelliJ Project
-- in that project, add two classes named `Car.java` and `Main.java`
-- in the Main class, add the `public static void main` method
-- initiate a git repository, commit your changes, and push to GitHub
+- create a repo on github called `git-and-github-practice`
+- clone your `git-and-github-practice` repo to your desktop and `cd` into this new repo folder on your desktop
+- within that folder create a new IntelliJ Project, make sure to check-off `Create project from template` option on the second screen.
+- in the `Main.java` class, add `int` variables `one`, `two`, and `three`. Then assign some values to them.
+- stage and commit your changes
+- push to GitHub
 
 
 **With partner2 driving, from their computer:**
 
-- get your partners link to the GitHub repository and fork and clone it
-- import the project
-    - add three member variables in the Car class
-    - add a new class, `Garage.java`
-- commit your changes and submit a pull request back to partner1
+- get your partners link to the GitHub repository and fork it. Next, clone the repository to your desktop.
+- open the project inside IntelliJ by pressing the `open` button or `file -> open` if you have another project open.
+- open `Main.java` file 
+    - add three member variables of type `String` called `string1`, `string2`, and `string3`.
+    - Assign some values to each of the variables.
+- cd into your cloned repo folder on your desktop
+- stage your changes
+- commit your changes 
+- push your changes to your remote github fork
+- go to github.com and create a pull request from your fork back to partner1
 
 
 **With partner1 driving:**
@@ -51,17 +58,26 @@ Partners will be referred to as partner1 and partner2.
 
 **With partner2 driving**:
 
+- create a new repo called `git-and-github-practice-two`
+- clone your `git-and-github-practice-two` repo to your desktop and `cd` into this new repo folder on your desktop
+- within that folder create a new IntelliJ Project, make sure to check-off `Create project from template` option on the second screen. 
+- copy and paste the code from the pull request you sent your partner (of your partners `git-and-github-practice` project) from each of the appropriate files to your own
+- stage your changes
+- commit your changes
+- push your changes to your remote GitHub repo
 
-- create a folder called `git-and-github-practice-two`
-- within that folder create a new IntelliJ Project
-- copy and paste the code from the merged pull request files (of your partners `git-and-github-practice` project) from each of the appropriate files to your own
-- initiate a git repository, commit your changes, and push to GitHub
+> Note: Partner2 should now have the solution from Part 1 locally
 
 **With partner1 driving:**
 
-- get your partner's link to the new GitHub repository - fork and clone it
-- open the project and make the main method, in the Main class, print "Hello World".
-- commit your changes and submit a pull request back to partner2
+- get your partner's link to the new GitHub repository - fork it. 
+- clone your fork to your desktop.
+- `cd` into your cloned repo on your desktop.
+- open the project and make the main method, in the `Main.java` class, print "Hello World".
+- stage your changes
+- commit your changes 
+- push your changes to your remote fork on GitHub
+- go to github.com and create a pull request from your fork back to partner2
 
 
 **With partner2 driving:**
