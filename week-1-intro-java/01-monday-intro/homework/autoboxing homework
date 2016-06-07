@@ -1,0 +1,19 @@
+**3 cases when autoboxing can occur with examples:**
+
+Autoboxing is converting an a primitive value into an object of the corresponding wrapper class.  For example, int:Integer.
+
+1) when a method is expecting wrapper class object but the value being passed as the parameter is a primitive type.
+2)when at some point in time you are assigning a primitive type value to an object of its wrapper class
+3) When dealing with collection framework classes
+
+**3 cases when unboxing can occur with examples:
+Unboxing is converting a wrapper type (Integer) to its corresponding primitive (int) value.
+
+1) method is expecting Integer object(parameter) but we have supplied an int.
+2) assignments
+3) when dealing with collection classes
+
+**What is best practice when it comes to data types and comparative operations and why?**
+Be careful to keep primitives and objects totally separate when doing comparisons, otherwise you may not get correct results.
+To avoid confusion, when comparing objects with objects always use the equals() method.
+When comparing primitives you should always use logical operators.
