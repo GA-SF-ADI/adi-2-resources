@@ -39,6 +39,7 @@ out each of them following the new order. Choose the best collection that gives 
 
 
 *Bonus*
+
 9. Write in a function that takes in a positive integer, creates a linked list with integers in the range from 1 to the input number
 and returns a middle element of the linked list if the length of the linked list is an odd number, otherwise -1.
 
