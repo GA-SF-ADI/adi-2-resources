@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public class Main {
     public static void main (String [] args){
 
+        
+
+
     }
     public static double maxOfTwoNumbers(double firstNumber, double secondNumber){
         if (firstNumber>secondNumber){
@@ -37,8 +40,8 @@ public class Main {
     }
      public static String reverseString(String myString){
         String myReverseString = "";
-        for (int i = myString.length()-1; i>=0; i--){
-        myReverseString = myReverseString + myReverseString.charAt(i);
+        for (int i = (myString.length()-1); i>=0; i--){
+        myReverseString = myReverseString + myString.charAt(i);
 
         }
         return myReverseString;
