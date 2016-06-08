@@ -1,0 +1,7 @@
+Bread~Whole Wheat Bread~2.35~Food
+Milk~1 Gallon Skim Milk~3.50~Dairy
+Ice Cream~Mint Chocolate Chip~2.20~Dairy
+Paper Plates~White Paper Plates~7.50~Dishes
+Chicken Breasts~Boneless Skinless~2.30~Poultry
+Carrots~Baby Carrots~4.00~Produce
+Lettuce~Iceberg~3.14~Produce
