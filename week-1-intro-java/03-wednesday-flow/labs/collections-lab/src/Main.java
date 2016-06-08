@@ -7,6 +7,12 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[]args){
+       // System.out.println(everyOther());
+
+        /*int[] myArray = {1,15,8,9,3};
+        System.out.println(maxValue(myArray));*/
+
+
 
 
     }
@@ -28,9 +34,13 @@ public class Main {
     }
     public static String everyOther(){
         ArrayList<String> myArrayList = new ArrayList<String>();
+        myArrayList.add("a");
+        myArrayList.add("b");
+        myArrayList.add("c");
+        myArrayList.add("d");
         String everyOtherLetter = "";
         for (int i = 1; i < myArrayList.size() ; i+=2) {
-            everyOtherLetter += everyOtherLetter.charAt(i);
+            everyOtherLetter += myArrayList.get(i);
 
 
         }
