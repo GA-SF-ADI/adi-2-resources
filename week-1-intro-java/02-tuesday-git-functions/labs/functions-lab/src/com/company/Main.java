@@ -11,7 +11,7 @@ public class Main {
         ischaractervowel();
         reversestring();
 
-        
+
 
     }
 
