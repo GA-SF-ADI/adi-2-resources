@@ -57,6 +57,19 @@ public class Main {
 
         }
     }
+
+
+
+//    public static boolean isCharacterAVowel(char c){
+//        boolean test = (c=='a'|| c=='e' || c=='o' || c=='i' || c=='u');
+//        return test;
+//    }
+//
+
+   //  if("aeiou".indexof(c)!=-1);
+
+
+
     public static void reversestring() {
         String sourceString = "asdf";
         int i, len = sourceString.length();
@@ -67,6 +80,10 @@ public class Main {
         }
         System.out.println(dest.toString());
     }
+
+    int age =12;
+    String allowed = (age>18) ? "yes" : "no";
+
 }
 
 
