@@ -43,7 +43,13 @@ public class FunctionsLab {
     }
 
     //isCharacterAVowel method checking for vowels
+    /* method two, this statement returns a true or false w/o having to add if/ else statements
 
+    public static boolean isCharacterAVowel( char c){
+        return c =='a' || c == 'e' || c =='i' || c == 'o' || c == 'u';
+
+    }
+*/
     public static boolean isCharacterAVowel(char ch) {
 
 
@@ -61,9 +67,17 @@ public class FunctionsLab {
         } else {
             return false;
         }
+    }
 
+        // using [] or ... allows you to input unlimited amount of arguments, you can use a method length to get the amount of args
+
+        public static int argumentNumber(String[] args){
+        return args.length;
 
     }
+
+
+
 
     // reverse a string using StringBuffer
 
