@@ -1,0 +1,1 @@
+My name is Sterling and I am an aspiring android developer....  Currently we are learning how to "branch" and "fork" repositories.
