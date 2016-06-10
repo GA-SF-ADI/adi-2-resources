@@ -78,18 +78,18 @@ public class Main {
 
         {
             System.out.println("computer pick: rock");
-            gameHistory.add("comoputer pick: rock");
+            gameHistory.add("computer pick: rock");
         } else if (cpuChoice == 1)
 
         {
             System.out.println("computer picks: scissors");
-            gameHistory.add("comoputer pick: scissors");
+            gameHistory.add("computer pick: scissors");
 
         } else if (cpuChoice == 2)
 
         {
             System.out.println("computer picks: paper");
-            gameHistory.add("comoputer pick: paper");
+            gameHistory.add("computer pick: paper");
 
         }
 
@@ -132,7 +132,7 @@ public class Main {
 
         {
             System.out.println("You Lose");
-            gameHistory.add("comoputer pick: rock");
+            gameHistory.add("You Lose");
         } else if (userChoice.equals("scissors") && cpuChoice == 1)
 
         {
@@ -154,7 +154,9 @@ public class Main {
         for (int i = 0; i < result.size(); i++) {
 
             System.out.println(gameHistory.get(i));
+
         }
+        gameStart();
     }
 
 }
