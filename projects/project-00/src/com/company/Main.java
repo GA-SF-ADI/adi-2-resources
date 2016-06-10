@@ -44,14 +44,19 @@ public class Main {
         System.out.println(welcomeMessage);
 
         Scanner scanner = new Scanner(System.in);
-        String textInputtedToConsole = scanner.nextLine();
+        String playOrHistoryDecision = scanner.nextLine();
 
-        if (textInputtedToConsole.equalsIgnoreCase("play")) {
+        if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
             System.out.println("");
             System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                     " Type 'quit' to go back to the Main Menu\n");
         }
+
+        Scanner scanner = new Scanner(System.in);
+        String rockPaperScissorDecision = scanner.nextLine();
+
+        if (rockPaperScissorDecision.equalsIgnoreCase())
 
 //        else if (/*PUT IN HISTORY SELECTION CODE HERE !!!!*/){
 //
