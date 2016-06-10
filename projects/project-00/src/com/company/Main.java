@@ -42,8 +42,8 @@ public class Main {
 
         System.out.println(welcomeMessage);
 
-        Scanner scanner = new Scanner(System.in);
-        String playOrHistoryDecision = scanner.nextLine();
+        Scanner firstScan = new Scanner(System.in);
+        String playOrHistoryDecision = firstScan.nextLine();
 
         if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
@@ -51,9 +51,25 @@ public class Main {
             System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                     " Type 'quit' to go back to the Main Menu\n");
 
-            randInt(1, 3);
+            String rPS;
+            Scanner rPSDecision = new Scanner(System.in);
+            rPS = rPSDecision.nextLine();
+            System.out.println(rPS);
+
+// String listeningForRPSResponse = scanner.nextLine();
+
+//            if (listeningForRPSResponse.equalsIgnoreCase("rock")) {
+
+
+            }
+
+
+//            randInt(1, 3);
+
 
         }
+
+    }
 
 //        Array<Integer> playerGameRPSChoice = new Array<Integer>(){
 
@@ -62,12 +78,7 @@ public class Main {
 //
 //        decision[1] = Integer.toString("rock")
 
-
-    }
-
-
-//    Scanner scanner = new Scanner(System.in);
-//    String rockPaperScissorDecision = scanner.nextLine();
+//
 
 
 //        else if (/*PUT IN HISTORY SELECTION CODE HERE !!!!*/){
@@ -81,5 +92,3 @@ public class Main {
 //        }
 //
 
-
-}
