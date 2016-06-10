@@ -1,8 +1,7 @@
+package ly.generalassemb.alex;
+
 import java.util.Scanner;
 
-/**
- * Created by drewmahrt on 5/4/16.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -59,6 +58,4 @@ public class Main {
         float result = firstNum / secondNum;
         System.out.println("Result: "+result);
     }
-
-
 }
