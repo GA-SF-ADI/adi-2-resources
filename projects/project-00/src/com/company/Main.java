@@ -42,7 +42,7 @@ public class Main {
         String playOrHistoryDecision = firstScan.nextLine();
 
 //        Creating if loop for when player chooses play in main menu
-
+        
         if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
             System.out.println("");
@@ -83,25 +83,60 @@ public class Main {
 
             }
 
-            //            Computer's selection is printed
-
-
 //            Player's selection is printed
 
             System.out.println("User picks: " + rPSPlayerSelection);
+
 //            Setting logic (e.g. paper beats rock, rock beats scissors, etc.)
-//            boolean randomNum = 2 = true; &&rPS = ""){
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("It's a tie!");
+            }
+            if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("It's a tie!");
+            }
+            if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("It's a tie!");
+            }
+
+            System.out.println("");
 
 
-                System.out.println("");
 
         }
-
 
     }
 
 
 }
+
+
+
+
 
 
 
