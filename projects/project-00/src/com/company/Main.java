@@ -15,16 +15,19 @@ import static java.awt.SystemColor.text;
 
 public class Main {
 
-    //Method for random number generator
 
-    public static int randInt(int minRPSNum, int maxRPSNum) {
+//    Method for random number to be generated
 
-        Random rand = new Random();
+//    public static int randInt(int minRPSNum, int maxRPSNum,) {
 
-        int randomNum = rand.nextInt((maxRPSNum - minRPSNum) + 1) + minRPSNum;
+//    Random rand = new Random();
+//
+//    int randomNum = rand.nextInt((maxRPSNum - minRPSNum) + 1) + minRPSNum;
+//
+//    return randomNum;
 
-        return randomNum;
-    }
+
+//    method for assigning rock, paper, and scissor choices to 1, 2, 3 numbers
 
 
     public static void main(String[] args) {
@@ -45,31 +48,50 @@ public class Main {
         Scanner firstScan = new Scanner(System.in);
         String playOrHistoryDecision = firstScan.nextLine();
 
+//      if loop created for when player chooses play in main menu
+
         if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
             System.out.println("");
             System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                     " Type 'quit' to go back to the Main Menu\n");
 
+
+//            Reads/accepts player's rock, paper, scissors decision
+
             String rPS;
             Scanner rPSDecision = new Scanner(System.in);
             rPS = rPSDecision.nextLine();
-            System.out.println(rPS);
 
-// String listeningForRPSResponse = scanner.nextLine();
+//            System.out.println("Computer picks: " + ___________);
 
-//            if (listeningForRPSResponse.equalsIgnoreCase("rock")) {
+            Random rand = new Random();
+
+            int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+
+            if (randomNum == 1) {
+
+                System.out.println("Computer picks: rock");
+
+            } else if (randomNum == 2) {
+
+                System.out.println("Computer picks: paper");
+
+            } else {
+                System.out.println("Computer picks: scissors");
+
+            }
+
+            System.out.println("User picks: " + rPS);
 
 
             }
 
 
-//            randInt(1, 3);
-
-
         }
 
-    }
+
+//            randInt(1, 3);      CALLING RANDOM # GENERATOR METHOD!!!
 
 //        Array<Integer> playerGameRPSChoice = new Array<Integer>(){
 
@@ -83,12 +105,21 @@ public class Main {
 
 //        else if (/*PUT IN HISTORY SELECTION CODE HERE !!!!*/){
 //
-//        }
 //
-//        if (textInputtedToConsole.equalsIgnoreCase()){
-//
-//            System.out.println("Whoops! That's an invalid entry :(");
-//
-//        }
-//
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
