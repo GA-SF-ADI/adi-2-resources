@@ -1,13 +1,18 @@
 package com.company;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.FileWriter;
 
 public class Main {
 
     static ArrayList<String> history = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
 
         System.out.println("Welcome to Rock Paper Scissors!");
 
@@ -42,8 +47,26 @@ public class Main {
                 for (int i = 0; i < history.size(); i++) {
                     System.out.println(history.get(i));
                 }
+                System.out.println("enter 'all' to view history from prior sessions.");
+                Scanner allHistory = new Scanner(System.in);
+                String readAllHistory = allHistory.next().toLowerCase();
+                if(readAllHistory.equals("all")){
+                    BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+                    String line = reader.readLine();
+                    while (line != null){
+                        System.out.println(line);
+                        line = reader.readLine();
+                    }
+                reader.close();
+                }
             } else if(playOrNot(playOrHistory) == 3){ //user choose to quit
                 System.out.println("Goodbye!");
+                //Saving all results to text file.
+                FileWriter writer = new FileWriter("data.txt", true);
+                for(int i = 0; i<history.size(); i++){
+                    writer.append(history.get(i)+"\n");
+                }
+                writer.close();
                 stillPlaying = false;
             } else {
                 System.out.println("Huh?!\nWant to try again?");

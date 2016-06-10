@@ -1,0 +1,3 @@
+WIN: Player-paper computer-rock
+LOSS: Player-scissors computer-rock
+WIN: Player-scissors computer-paper
