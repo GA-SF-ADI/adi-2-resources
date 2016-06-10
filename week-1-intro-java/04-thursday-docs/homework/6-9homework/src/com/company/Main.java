@@ -1,15 +1,16 @@
 package com.company;
 
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        gameStart();// calling method to start game
+
+
+        gameStart(); // calling method to start game
+
 
     }
-
     public  static void gameStart(){ //this method prints out the main menu and takes user input for the menu, uses if else to check user input
         System.out.println("Welcome to Rock Paper Scissors!");
         System.out.println("MAIN MENU");
@@ -42,7 +43,7 @@ public class Main {
         }
     }
 
-        public static void whoWins(String userPick, String cpuPick){
+    public static void whoWins(String userPick, String cpuPick){
 
 
 
