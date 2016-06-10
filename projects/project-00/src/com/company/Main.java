@@ -7,14 +7,12 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.awt.SystemColor.text;
 
 public class Main {
-
-    String asksForChoice = "Type in 'rock' 'paper' or 'scissors' to play.\n" +
-            " Type 'quit' to go back to the Main Menu\n";
-
+    
 
 //    Type 'quit' to stop playing
 
