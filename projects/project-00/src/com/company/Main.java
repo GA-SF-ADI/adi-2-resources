@@ -16,21 +16,9 @@ import static java.awt.SystemColor.text;
 public class Main {
 
 
-//    Method for random number to be generated
-
-//    public static int randInt(int minRPSNum, int maxRPSNum,) {
-
-//    Random rand = new Random();
-//
-//    int randomNum = rand.nextInt((maxRPSNum - minRPSNum) + 1) + minRPSNum;
-//
-//    return randomNum;
-
-
-//    method for assigning rock, paper, and scissor choices to 1, 2, 3 numbers
-
-
     public static void main(String[] args) {
+
+//Declaring welcome message String
 
         String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
                 "\n" +
@@ -43,12 +31,17 @@ public class Main {
                 "\n" +
                 "• Please click below this line in the console, type your selection, and then press the return key\n";
 
+//        Printing welcome message
+
+
         System.out.println(welcomeMessage);
+
+//        Priming console to accept typing
 
         Scanner firstScan = new Scanner(System.in);
         String playOrHistoryDecision = firstScan.nextLine();
 
-//      if loop created for when player chooses play in main menu
+//        Creating if loop for when player chooses play in main menu
 
         if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
@@ -56,59 +49,59 @@ public class Main {
             System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                     " Type 'quit' to go back to the Main Menu\n");
 
+//            rPS = Player's rock, paper, scissors initial choice
 
-//            Reads/accepts player's rock, paper, scissors decision
+            String rPSPlayerSelection;
+            Scanner rPSscan = new Scanner(System.in);
+            rPSPlayerSelection = rPSscan.nextLine();
 
-            String rPS;
-            Scanner rPSDecision = new Scanner(System.in);
-            rPS = rPSDecision.nextLine();
-
-//            System.out.println("Computer picks: " + ___________);
+            System.out.println("");
+//            Random number is generated
 
             Random rand = new Random();
 
             int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
+            String rpsComputerSelectionPrintOut;
+
+//            Assigning random numbers to rock, paper, scissor print out
+
             if (randomNum == 1) {
 
+                rpsComputerSelectionPrintOut = "rock";
                 System.out.println("Computer picks: rock");
 
             } else if (randomNum == 2) {
 
+                rpsComputerSelectionPrintOut = "paper";
                 System.out.println("Computer picks: paper");
 
-            } else {
+            } else if (randomNum == 3) {
+
+                rpsComputerSelectionPrintOut = "scissors";
                 System.out.println("Computer picks: scissors");
 
             }
 
-            System.out.println("User picks: " + rPS);
+            //            Computer's selection is printed
 
 
-            }
+//            Player's selection is printed
 
+            System.out.println("User picks: " + rPSPlayerSelection);
+//            Setting logic (e.g. paper beats rock, rock beats scissors, etc.)
+//            boolean randomNum = 2 = true; &&rPS = ""){
+
+
+                System.out.println("");
 
         }
 
 
-//            randInt(1, 3);      CALLING RANDOM # GENERATOR METHOD!!!
-
-//        Array<Integer> playerGameRPSChoice = new Array<Integer>(){
-
-//        Integer[] decision;
-//        decision = new Integer[3];
-//
-//        decision[1] = Integer.toString("rock")
-
-//
-
-
-//        else if (/*PUT IN HISTORY SELECTION CODE HERE !!!!*/){
-//
-//
-
-
     }
+
+
+}
 
 
 
