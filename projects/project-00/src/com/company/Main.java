@@ -18,7 +18,7 @@ public class Main {
     static int randomNum;
     static String computerEntryToHistory = Integer.toString(randomNum);
     static String playerEntryToHistory = rPSPlayerSelection;
-    static
+    static String computerToHistory;
 
 
     //    Game method
@@ -75,41 +75,50 @@ public class Main {
 
         if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
             System.out.println("Yippee! You WIN!");
+            computerToHistory = "rock";
 
         }
 
         if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
             System.out.println("Yippee! You WIN!");
+            computerToHistory = "paper";
         }
 
         if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
             System.out.println("Yippee! You WIN!");
+            computerToHistory = "scissors";
         }
 
         if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
             System.out.println("Sorry! You LOSE! HAHA!");
+            computerToHistory = "rock";
         }
 
         if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
             System.out.println("Sorry! You LOSE! HAHA!");
+            computerToHistory = "paper";
         }
 
         if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
             System.out.println("Sorry! You LOSE! HAHA!");
+            computerToHistory = "scissors";
         }
 
         if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
             System.out.println("It's a tie!");
+            computerToHistory = "rock";
         }
         if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
             System.out.println("It's a tie!");
+            computerToHistory = "paper";
+
         }
         if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
             System.out.println("It's a tie!");
+            computerToHistory = "scissors";
 
         }
 
-        showHistory(randomNum, rPSPlayerSelection);
         System.out.println("");
         System.out.println("");
         System.out.println("Welcome to Rock Paper Scissors!\n" +
@@ -133,16 +142,32 @@ public class Main {
 
         if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
-            showHistory(randomNum, rPSPlayerSelection);
+            showHistory(computerToHistory, rPSPlayerSelection);
 
         }
 
 
     }
 
-    public static void showHistory(int randomNum, String rPSPlayerSelection) {
+    public static void showHistory(String computerToHistory, String rPSPlayerSelection) {
 
-        System.out.println("WIN: Player- " + rPSPlayerSelection + " " + "computer- " + randomNum);
+        System.out.println("WIN: Computer picked ->" + computerToHistory + " " + "and you picked ->" + rPSPlayerSelection);
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Welcome to Rock Paper Scissors!\n" +
+                "\n" +
+                "MAIN MENU\n" +
+                "=====\n" +
+                "\n" +
+                "1. Type 'play' to play\n" +
+                "2. Type 'history' to view your game history\n" +
+                "Type 'quit' to stop playing\n" +
+                "\n" +
+                "• Please click below this line in the console, type your " +
+                "selection, and then press the return key\n");
+        Scanner firstScan = new Scanner(System.in);
+        String playOrHistoryDecision = firstScan.nextLine();
+
     }
 
 
@@ -179,7 +204,7 @@ public class Main {
 
         if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
-            showHistory(randomNum, rPSPlayerSelection);
+            showHistory(computerToHistory, rPSPlayerSelection);
 
         }
 
