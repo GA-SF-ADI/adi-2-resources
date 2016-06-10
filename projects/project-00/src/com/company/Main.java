@@ -12,7 +12,7 @@ public class Main {
     private static ArrayList<String> gameResultList = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
-        readFile();
+        readFile(); //opens text file containing past session history (stored in gameResultList) prior to executing the game
         menu();
     }
 
@@ -26,9 +26,11 @@ public class Main {
         System.out.println("                     Type '1' to play");
         System.out.println("  Type '2' view your game history across sessions in a .txt file");
         System.out.println("                  Type 'quit' to stop playing");
+        System.out.println("");
+        System.out.println("");
 
         String menuChoice = menuScan.nextLine();
-        // menuChoice = menuChoice.toLowerCase();
+
 
         if (menuChoice.equals("1")) {
             game();
