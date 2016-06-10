@@ -170,6 +170,35 @@ public class Main {
 
     }
 
+    public static void reloadAfterInvalidEntry(){
+
+        System.out.println("Welcome to Rock Paper Scissors!\n" +
+                "\n" +
+                "MAIN MENU\n" +
+                "=====\n" +
+                "\n" +
+                "1. Type 'play' to play\n" +
+                "2. Type 'history' to view your game history\n" +
+                "Type 'quit' to stop playing\n" +
+                "\n" +
+                "• Please click below this line in the console, type your " +
+                "selection, and then press the return key\n");
+        Scanner firstScan = new Scanner(System.in);
+        String playOrHistoryDecision = firstScan.nextLine();
+
+        if (playOrHistoryDecision.equalsIgnoreCase("play")) {
+
+            playingGame();
+        }
+
+        if (playOrHistoryDecision.equalsIgnoreCase("history")) {
+
+            showHistory(computerToHistory, rPSPlayerSelection);
+
+        }
+
+
+    }
 
     public static void main(String[] args) throws IOException {
 
@@ -205,6 +234,15 @@ public class Main {
         if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
             showHistory(computerToHistory, rPSPlayerSelection);
+
+        }
+
+        if (!playOrHistoryDecision.equalsIgnoreCase("history") || playOrHistoryDecision.equalsIgnoreCase("play")){
+
+            System.out.println("That's not cool. That's not a valid entry. Please try again");
+            System.out.println("");
+            System.out.println("");
+            reloadAfterInvalidEntry();
 
         }
 
