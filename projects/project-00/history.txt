@@ -17,3 +17,5 @@ Win
 Loss
 Win
 Loss
+Win
+Tie

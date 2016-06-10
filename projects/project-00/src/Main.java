@@ -108,7 +108,8 @@ public class    Main {
                 System.out.println("Computer chooses scissors, you Win!");
                 historyHash.put(hashMapCurrentKey, "Win");
             }
-
+            hashMapCurrentKey++;
+            playAgain();
         }else if(choice.equals("paper") || choice.equals("2")){
             if (computerChoice ==1){
                 System.out.println("Computer chooses rock, you Win!");
@@ -120,6 +121,8 @@ public class    Main {
                 System.out.println("Computer chooses scissors, you lose :(");
                 historyHash.put(hashMapCurrentKey, "Loss");
             }
+            hashMapCurrentKey++;
+            playAgain();
         }else if (choice.equals("scissors") || choice.equals("3")){
             if (computerChoice ==1){
                 System.out.println("Computer chooses rock, you lose :(");
@@ -131,12 +134,13 @@ public class    Main {
                 System.out.println("Computer chooses scissors, you tie");
                 historyHash.put(hashMapCurrentKey, "Tie");
             }
+            hashMapCurrentKey++;
+            playAgain();
         }else{
             System.out.println("Sorry that input isn't accepted");
             playGame();
         }
-        hashMapCurrentKey++;
-        playAgain();
+
 
     }
 
