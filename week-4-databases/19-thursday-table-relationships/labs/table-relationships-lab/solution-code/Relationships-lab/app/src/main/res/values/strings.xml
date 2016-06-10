@@ -1,0 +1,16 @@
+<resources>
+  <string name="app_name">Tables-lab</string>
+  <string name="action_settings">Settings</string>
+  <string name="same_workplace">Employees working at the same company</string>
+  <string name="boston_location">Companies in Boston</string>
+  <string name="best_paid_company">Company with the highest salary</string>
+  <string name="single_names">Single names will appear here</string>
+  <string name="data_added_to_db">The row has been added to the database</string>
+  <string name="ssn">type in your ssn</string>
+  <string name="first_name">type in your first name</string>
+  <string name="last_name_input">type in your last name</string>
+  <string name="year_input">type in your year of birth</string>
+  <string name="city_input">type in your city</string>
+  <string name="add_data">Add data</string>
+  <string name="cancel">Cancel</string>
+</resources>
