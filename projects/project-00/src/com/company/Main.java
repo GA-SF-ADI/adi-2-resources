@@ -14,34 +14,34 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+//        Declaring welcome message String
+
+        String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
+                "\n" +
+                "MAIN MENU\n" +
+                "=====\n" +
+                "\n" +
+                "1. Type 'play' to play\n" +
+                "2. Type 'history' to view your game history\n" +
+                "Type 'quit' to stop playing\n" +
+                "\n" +
+                "• Please click below this line in the console, type your " +
+                "selection, and then press the return key\n";
+
+//        Printing welcome message
+
+        System.out.println(welcomeMessage);
 
 //        Defining boolean variable so that game loops
 
-            boolean pOrH = true;
+//            boolean pOrH = true;
 
 //        Creating while loop so that game loops
 
 
-            while (pOrH = true) {
+//            while (pOrH = true) {
 
-//            Declaring welcome message String
-
-                String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
-                        "\n" +
-                        "MAIN MENU\n" +
-                        "=====\n" +
-                        "\n" +
-                        "1. Type 'play' to play\n" +
-                        "2. Type 'history' to view your game history\n" +
-                        "Type 'quit' to stop playing\n" +
-                        "\n" +
-                        "• Please click below this line in the console, type your " +
-                        "selection, and then press the return key\n";
-
-//        Printing welcome message
-
-                System.out.println(welcomeMessage);
-
+//
 //        Priming console to accept typing
 
                 Scanner firstScan = new Scanner(System.in);
@@ -52,51 +52,9 @@ public class Main {
 
 //        Creating if loop for when player chooses play in main menu
 
-                if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
-//        OPENING AND PRINTING GAME HISTORY!
-
-                    // The name of the file to open.
-                    String fileName = "/Users/LangstonSmith/Desktop/adi-2/adi-" +
-                            "2-resources/projects/project-00/src/com/company/Gamehistory.txt";
-
-                    // This will reference one line at a time
-                    String gameHistoryLine = null;
-
-                    try {
-
-                        FileReader fileReader =
-                                new FileReader(fileName);
-
-                        BufferedReader bufferedReader =
-                                new BufferedReader(fileReader);
-
-                        while ((gameHistoryLine = bufferedReader.readLine()) != null) {
-                            System.out.println("");
-                            System.out.println("");
-                            System.out.println(gameHistoryLine);
-                            System.out.println("");
-                            System.out.println("");
-                            System.out.println("");
-
-                        }
-
-                        bufferedReader.close();
-
-                    } catch (FileNotFoundException ex) {
-                        System.out.println(
-                                "Unable to open file '" +
-                                        fileName + "'");
-                    } catch (IOException ex) {
-                        System.out.println(
-                                "Error reading file '"
-                                        + fileName + "'");
-
-                        System.out.println(gameHistoryLine);
-
-                }
-
-                if (playOrHistoryDecision.equalsIgnoreCase("play")) {
+//
+                while (playOrHistoryDecision.equalsIgnoreCase("play")) {
                     System.out.println("");
                     System.out.println("");
                     System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
@@ -190,12 +148,6 @@ public class Main {
 
 
         }
-
-
-    }
-
-}
-
 
 
 
