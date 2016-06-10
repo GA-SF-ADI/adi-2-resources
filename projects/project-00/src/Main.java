@@ -9,6 +9,7 @@ public class    Main {
     public static HashMap<Integer, String> historyHash = new HashMap<>();
     public static int hashMapCurrentKey = 0;
     public static int textFileCurrent=0;
+    public static Scanner myScanner = new Scanner(System.in);
 
     static public void main (String [] args) throws IOException {
 
@@ -19,17 +20,18 @@ public class    Main {
     }
 
     public static void populateHash() throws IOException {
-        Scanner myScanner = new Scanner(new File("history.txt"));
-        while(myScanner.hasNextLine()) {
-            historyHash.put(hashMapCurrentKey, myScanner.nextLine());
+        Scanner populateScanner = new Scanner(new File("history.txt"));
+        while(populateScanner.hasNextLine()) {
+            historyHash.put(hashMapCurrentKey, populateScanner.nextLine());
             hashMapCurrentKey++;
             textFileCurrent++;
         }
+        populateScanner.close();
 
     }
 
     public static void menu() throws IOException {
-        Scanner myScanner = new Scanner(System.in);
+
         String playOrHistory;
         FileReader myFileReader = new FileReader("history.txt");
 
@@ -57,10 +59,11 @@ public class    Main {
     public static void writeHashToText() throws IOException {
         FileWriter myWriter = new FileWriter("history.txt", true);
         for (int i = textFileCurrent + 1; i < historyHash.size(); i++) {
-            myWriter.append(historyHash.get(i));
+            myWriter.append(historyHash.get(i) +"\n");
 
         }
         myWriter.close();
+        myScanner.close();
     }
 
     private static void printHistory() throws FileNotFoundException {
@@ -75,7 +78,7 @@ public class    Main {
                 current = historyHash.get(currentHashKey);
                 System.out.println(current);
                 if (current.equals("Tie")) {
-                    ties += 1;
+                    ties ++;
 
                 } else if (current.equals("Win")) {
                     wins++;
@@ -90,7 +93,6 @@ public class    Main {
 
     public static void playGame() throws IOException {
         String choice;
-        Scanner myScanner = new Scanner(System.in);
         System.out.println("Choose: \n1(Rock) \n2(Paper) \n3(Scissors)");
         choice = myScanner.nextLine().toLowerCase();
         int computerChoice = (int) Math.floor(Math.random() * 3) + 1;
@@ -139,7 +141,6 @@ public class    Main {
     }
 
     public static void playAgain() throws IOException {
-        Scanner myScanner = new Scanner(System.in);
         String playAgain;
         System.out.println("Play again?(Y/N)");
         playAgain = myScanner.nextLine().toLowerCase();
