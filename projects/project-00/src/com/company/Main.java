@@ -14,47 +14,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-//        OPENING AND PRINTING GAME HISTORY!
-
-        // The name of the file to open.
-        String fileName = "/Users/LangstonSmith/Desktop/adi-2/adi-" +
-        "2-resources/projects/project-00/src/com/company/Gamehistory.txt";
-
-        // This will reference one line at a time
-        String gameHistoryLine = null;
-
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader =
-                    new FileReader(fileName);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader =
-                    new BufferedReader(fileReader);
-
-            while ((gameHistoryLine = bufferedReader.readLine()) != null) {
-                System.out.println(gameHistoryLine);
-            }
-
-            // Always close files.
-            bufferedReader.close();
-
-        } catch (FileNotFoundException ex) {
-            System.out.println(
-                    "Unable to open file '" +
-                            fileName + "'");
-        } catch (IOException ex) {
-            System.out.println(
-                    "Error reading file '"
-                            + fileName + "'");
-            // Or we could just do this:
-            // ex.printStackTrace();
-
-            System.out.println(gameHistoryLine);
 
 //        Defining boolean variable so that game loops
 
             boolean pOrH = true;
+
 //        Creating while loop so that game loops
 
 
@@ -71,7 +35,8 @@ public class Main {
                         "2. Type 'history' to view your game history\n" +
                         "Type 'quit' to stop playing\n" +
                         "\n" +
-                        "• Please click below this line in the console, type your selection, and then press the return key\n";
+                        "• Please click below this line in the console, type your " +
+                        "selection, and then press the return key\n";
 
 //        Printing welcome message
 
@@ -86,6 +51,50 @@ public class Main {
 
 
 //        Creating if loop for when player chooses play in main menu
+
+                if (playOrHistoryDecision.equalsIgnoreCase("history")) {
+
+//        OPENING AND PRINTING GAME HISTORY!
+
+                    // The name of the file to open.
+                    String fileName = "/Users/LangstonSmith/Desktop/adi-2/adi-" +
+                            "2-resources/projects/project-00/src/com/company/Gamehistory.txt";
+
+                    // This will reference one line at a time
+                    String gameHistoryLine = null;
+
+                    try {
+
+                        FileReader fileReader =
+                                new FileReader(fileName);
+
+                        BufferedReader bufferedReader =
+                                new BufferedReader(fileReader);
+
+                        while ((gameHistoryLine = bufferedReader.readLine()) != null) {
+                            System.out.println("");
+                            System.out.println("");
+                            System.out.println(gameHistoryLine);
+                            System.out.println("");
+                            System.out.println("");
+                            System.out.println("");
+
+                        }
+
+                        bufferedReader.close();
+
+                    } catch (FileNotFoundException ex) {
+                        System.out.println(
+                                "Unable to open file '" +
+                                        fileName + "'");
+                    } catch (IOException ex) {
+                        System.out.println(
+                                "Error reading file '"
+                                        + fileName + "'");
+
+                        System.out.println(gameHistoryLine);
+
+                }
 
                 if (playOrHistoryDecision.equalsIgnoreCase("play")) {
                     System.out.println("");
