@@ -27,15 +27,14 @@ public class Main {
                         "4. Type 'quit' or '4' to go back to the Main Menu");
                 Scanner choice = new Scanner(System.in);
                 String rockPaperOrScissors = choice.next();
-                System.out.println(userChoice(rockPaperOrScissors));
+
                 //user enter choice: rock, paper, scissors
                 if(userChoice(rockPaperOrScissors).equals("1") || userChoice(rockPaperOrScissors).equals("2") || userChoice(rockPaperOrScissors).equals("3")){
-                    outcome(rockPaperOrScissors);
+                    outcome(userChoice(rockPaperOrScissors));
                 } else if(userChoice(rockPaperOrScissors).equals("4")){ //go back to main menu
 
                 } else {
-                    System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
-                    " Type 'quit' to go back to the Main Menu");
+                    System.out.println("Huh?!\nWant to try again?");
                 }
 
             } else if(playOrNot(playOrHistory) == 2){ //user choose to view history
@@ -47,7 +46,7 @@ public class Main {
                 System.out.println("Goodbye!");
                 stillPlaying = false;
             } else {
-                System.out.println("Input invalid!\n");
+                System.out.println("Huh?!\nWant to try again?");
             }
 
         }
@@ -83,15 +82,16 @@ public class Main {
             return "2";
         } else if (input.equals("scissors") || input.equals("3")){
             return "3";
-        } else return "4";
-
+        } else if (input.equals("quit") || input.equals("4")) {
+            return "4";
+        } else return "5";
     }
 
     public static String computerChoice(){
-        double choice = Math.random() * 100;
-        if(0 >= choice && choice < 1/3){
+        double choice = Math.random()*3;
+        if(choice <= 1){
             return "1"; //rock
-        } else if(1/3 >= choice && choice < 2/3){
+        } else if(choice <= 2){
             return "2"; //paper
         } else {
             return "3"; //scissors
@@ -129,7 +129,7 @@ public class Main {
             System.out.println("Computer picks: scissors\n" + "User picks: scissors\n" + "It's a tie!");
             history.add("TIE: Player-scissors computer-scissors");
         } else{
-            System.out.println("Something went wrong!");
+            System.out.println("Ooops~~what happened?!");
         }
 
     }
