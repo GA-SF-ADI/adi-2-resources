@@ -18,7 +18,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        Creating boolean so that game loops
+//        Defining boolean variable so that game loops
 
         boolean pOrH = true;
 
