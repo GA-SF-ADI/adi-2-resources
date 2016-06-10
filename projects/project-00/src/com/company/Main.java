@@ -42,7 +42,7 @@ public class Main {
         String playOrHistoryDecision = firstScan.nextLine();
 
 //        Creating if loop for when player chooses play in main menu
-        
+
         if (playOrHistoryDecision.equalsIgnoreCase("play")) {
             System.out.println("");
             System.out.println("");
@@ -53,9 +53,11 @@ public class Main {
 
             String rPSPlayerSelection;
             Scanner rPSscan = new Scanner(System.in);
-            rPSPlayerSelection = rPSscan.nextLine();
+
+            rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
 
             System.out.println("");
+
 //            Random number is generated
 
             Random rand = new Random();
