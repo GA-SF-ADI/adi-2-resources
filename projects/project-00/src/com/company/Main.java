@@ -16,12 +16,11 @@ import static java.awt.SystemColor.text;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
 //        Defining boolean variable so that game loops
 
         boolean pOrH = true;
-
 //        Creating while loop so that game loops
 
         while (pOrH = true) {
@@ -48,6 +47,18 @@ public class Main {
 
             Scanner firstScan = new Scanner(System.in);
             String playOrHistoryDecision = firstScan.nextLine();
+
+//            If history is selected in main menu
+
+            if(playOrHistoryDecision.equalsIgnoreCase("history")){
+
+                System.out.println("Ok, you've successfully selected history");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+
+            }
 
 //        Creating if loop for when player chooses play in main menu
 
@@ -139,10 +150,10 @@ public class Main {
                 System.out.println("");
 
 
-
             }
 
         }
+
 
     }
 
