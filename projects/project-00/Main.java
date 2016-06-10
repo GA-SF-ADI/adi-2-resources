@@ -28,9 +28,6 @@ public class Main {
         String userInput = scan.nextLine();
 
         int computerInt = (int)(Math.random()*3);
-        int rock = 0;
-        int paper = 1;
-        int scissors = 2;
 
         if(computerInt==0){
             System.out.println("Computer picks: rock");
@@ -61,6 +58,9 @@ public class Main {
         }else if(userInput.equals("scissors") && computerInt==2){
             System.out.println("tie");
         }
+
+
+
 
     }
 
