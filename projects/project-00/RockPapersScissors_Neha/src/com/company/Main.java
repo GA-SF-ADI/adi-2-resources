@@ -10,10 +10,8 @@ public class Main {
     public static String winner="";
     public static ArrayList<String> historyList=new ArrayList<>();
 
-
     public static void main(String[] args) {
         mainMenu();
-
     }
 
     public static void mainMenu() {
@@ -22,8 +20,8 @@ public class Main {
 
         System.out.println("");
         System.out.println("Welcome to Rock Paper Scissors!");
-        System.out.println("MAIN MENU");
-        System.out.println("========================================================");
+        System.out.println("======================MAIN MENU=========================");
+//        System.out.println("========================================================");
         System.out.println("1. Type 'play' to play");
         System.out.println("2. Type 'history' to view your game history");
         System.out.println("Type 'quit' to stop playing");
@@ -31,7 +29,11 @@ public class Main {
         String optionSelected = reader.nextLine().toLowerCase();
 
         switch (optionSelected) {
+            case "1": playOptionSelected();
+                break;
             case "play": playOptionSelected();
+                break;
+            case "2": printHistory(historyList);
                 break;
             case "history": printHistory(historyList);
                 break;
@@ -56,9 +58,15 @@ public class Main {
             switch (optionSelected) {
                 case "rock": playGame("rock");
                     break;
+                case "rocks": playGame("rocks");
+                    break;
                 case "paper": playGame("paper");
                     break;
-                case "scissors": playGame("scissor");
+                case "papers": playGame("papers");
+                    break;
+                case "scissor": playGame("scissor");
+                    break;
+                case "scissors": playGame("scissors");
                     break;
                 case "quit": mainMenu();
                     break;
@@ -71,7 +79,6 @@ public class Main {
 
     public static void playGame(String userSelected){
 
-        Scanner reader = new Scanner(System.in);
         String computerSelected="";
 
         Random rand = new Random();
@@ -92,8 +99,6 @@ public class Main {
         System.out.println("Computer picks: "+computerSelected);
         System.out.println("User picks: "+userSelected);
 
-
-//        ArrayList<String> listHistory= new ArrayList<>();
         winner=whoWon(computerSelected,userSelected);
         System.out.println(winner);
 
@@ -102,56 +107,56 @@ public class Main {
     }
 
     public static String whoWon(String compInput, String userInput){
-        if(compInput.equals("rock") && userInput.equals("rock")){
+        if(compInput.equals("rock") && (userInput.equals("rock") || userInput.equals("rocks"))){
 //            System.out.println("It's a tie !");
             history("TIE: Player-rock Computer-rock");
             return "It's a tie !";
         }
 
-        else if(compInput.equals("paper") && userInput.equals("paper")){
+        else if(compInput.equals("paper") && (userInput.equals("paper") || userInput.equals("papers"))){
 //            System.out.println("It's a tie !");
             history("TIE: Player-paper Computer-paper");
             return "It's a tie !";
         }
 
-        else if(compInput.equals("scissors") && userInput.equals("scissors")){
+        else if(compInput.equals("scissors") && (userInput.equals("scissor") || userInput.equals("scissors"))){
 //            System.out.println("It's a tie !");
             history("TIE: Player-scissors Computer-scissors");
             return "It's a tie !";
         }
 
-        else if(compInput.equals("rock") && userInput.equals("scissor")){
+        else if(compInput.equals("rock") && (userInput.equals("scissor") || userInput.equals("scissors"))){
 //            System.out.println("Computer wins !");
             history("LOSS: Player-scissor Computer-rock");
             return "You lose !";
         }
 
-        else if(userInput.equals("rock") && compInput.equals("scissor")){
+        else if((userInput.equals("rock") || userInput.equals("rock")) && compInput.equals("scissor")){
 //            System.out.println("User wins !");
             history("WIN: Player-rock Computer-scissor");
 
             return "You win !";
         }
 
-        else if(compInput.equals("paper") && userInput.equals("rock")){
+        else if(compInput.equals("paper") && (userInput.equals("rock") || userInput.equals("rocks"))){
 //            System.out.println("Computer wins !");
             history("LOSS: Player-rock Computer-paper");
             return "You lose !";
         }
 
-        else if(compInput.equals("rock") && userInput.equals("paper")){
+        else if(compInput.equals("rock") && (userInput.equals("paper") || userInput.equals("papers"))){
 //            System.out.println("User wins !");
             history("WIN: Player-paper Computer-rock");
             return "You win !";
         }
 
-        else if(compInput.equals("paper") && userInput.equals("scissor")){
+        else if(compInput.equals("paper") && (userInput.equals("scissor") || userInput.equals("scissors"))){
 //            System.out.println("User wins !");
             history("WIN: Player-scissors Computer-paper");
             return "You win !";
         }
 
-        else if(compInput.equals("scissor") && userInput.equals("paper")){
+        else if(compInput.equals("scissor") && (userInput.equals("paper") || userInput.equals("papers"))){
 //            System.out.println("Computer wins !");
             history("LOSS: Player-paper Computer-scissors");
             return "You lose !";
@@ -172,7 +177,5 @@ public class Main {
             System.out.println(historyList.get(i));
         }
         mainMenu();
-
-
     }
 }
