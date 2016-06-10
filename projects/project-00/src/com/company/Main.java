@@ -1,5 +1,7 @@
 package com.company;
 
+import java.sql.Array;
+import java.util.IntSummaryStatistics;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,20 +14,19 @@ import java.util.Random;
 import static java.awt.SystemColor.text;
 
 public class Main {
-    
 
-//    Type 'quit' to stop playing
+    //Method for random number generator
 
-//    Type 'quit' to go back to the Main Menu
+    public static int randInt(int minRPSNum, int maxRPSNum) {
 
-//    class which .lowercases' all scanner entries
+        Random rand = new Random();
 
-//
-//    ==========================
+        int randomNum = rand.nextInt((maxRPSNum - minRPSNum) + 1) + minRPSNum;
 
-    /*
+        return randomNum;
+    }
 
-         */
+
     public static void main(String[] args) {
 
         String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
@@ -49,12 +50,25 @@ public class Main {
             System.out.println("");
             System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                     " Type 'quit' to go back to the Main Menu\n");
+
+            randInt(1, 3);
+
         }
 
-        Scanner scanner = new Scanner(System.in);
-        String rockPaperScissorDecision = scanner.nextLine();
+//        Array<Integer> playerGameRPSChoice = new Array<Integer>(){
 
-        if (rockPaperScissorDecision.equalsIgnoreCase())
+//        Integer[] decision;
+//        decision = new Integer[3];
+//
+//        decision[1] = Integer.toString("rock")
+
+
+    }
+
+
+//    Scanner scanner = new Scanner(System.in);
+//    String rockPaperScissorDecision = scanner.nextLine();
+
 
 //        else if (/*PUT IN HISTORY SELECTION CODE HERE !!!!*/){
 //
@@ -68,5 +82,4 @@ public class Main {
 //
 
 
-    }
 }
