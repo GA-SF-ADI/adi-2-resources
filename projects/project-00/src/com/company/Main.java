@@ -44,110 +44,131 @@ public class Main {
 //
 //        Priming console to accept typing
 
-                Scanner firstScan = new Scanner(System.in);
-                String playOrHistoryDecision = firstScan.nextLine();
+        Scanner firstScan = new Scanner(System.in);
+        String playOrHistoryDecision = firstScan.nextLine();
 
-//            If history is selected in main menu
+        if (playOrHistoryDecision.equalsIgnoreCase("play")){
 
-
-//        Creating if loop for when player chooses play in main menu
-
-
-//
-                while (playOrHistoryDecision.equalsIgnoreCase("play")) {
-                    System.out.println("");
-                    System.out.println("");
-                    System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
-                            " Type 'quit' to go back to the Main Menu\n");
-
-//            rPS = Player's rock, paper, scissors initial choice
-
-                    String rPSPlayerSelection;
-                    Scanner rPSscan = new Scanner(System.in);
-
-                    rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
-
-                    System.out.println("");
-
-//            Random number is generated
-
-                    Random rand = new Random();
-
-                    int randomNum = rand.nextInt((3 - 1) + 1) + 1;
-
-                    String rpsComputerSelectionPrintOut;
-
-//            Assigning random numbers to rock, paper, scissor print out
-
-                    if (randomNum == 1) {
-
-                        rpsComputerSelectionPrintOut = "rock";
-                        System.out.println("Computer picks: rock");
-
-                    } else if (randomNum == 2) {
-
-                        rpsComputerSelectionPrintOut = "paper";
-                        System.out.println("Computer picks: paper");
-
-                    } else if (randomNum == 3) {
-
-                        rpsComputerSelectionPrintOut = "scissors";
-                        System.out.println("Computer picks: scissors");
-
-                    }
-
-//            Player's selection is printed
-
-                    System.out.println("User picks: " + rPSPlayerSelection);
-
-//            Setting logic (e.g. paper beats rock, rock beats scissors, etc.)
-
-                    if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
-                        System.out.println("Yippee! You WIN!");
-                    }
-
-                    if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
-                        System.out.println("Yippee! You WIN!");
-                    }
-
-                    if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
-                        System.out.println("Yippee! You WIN!");
-                    }
-
-                    if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
-                        System.out.println("Sorry! You LOSE! HAHA!");
-                    }
-
-                    if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
-                        System.out.println("Sorry! You LOSE! HAHA!");
-                    }
-
-                    if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
-                        System.out.println("Sorry! You LOSE! HAHA!");
-                    }
-
-                    if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
-                        System.out.println("It's a tie!");
-                    }
-                    if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
-                        System.out.println("It's a tie!");
-                    }
-                    if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
-                        System.out.println("It's a tie!");
-                    }
-
-                    System.out.println("");
-                    System.out.println("");
-                    System.out.println("");
-                    System.out.println("");
-
-
-                }
-
-            }
+            System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
+                    " Type 'quit' to go back to the Main Menu\n");
+            System.out.println("");
+            System.out.println("");
 
 
         }
+
+        while (playOrHistoryDecision.equalsIgnoreCase("history")) {
+
+
+        }
+//        Creating if loop for when player chooses play in main menu
+
+        do {
+
+            System.out.println("");
+            System.out.println("");
+
+//            rPS = Player's rock, paper, scissors initial choice
+
+            String rPSPlayerSelection;
+            Scanner rPSscan = new Scanner(System.in);
+
+            rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
+
+            System.out.println("");
+
+//            Random number is generated
+
+            Random rand = new Random();
+
+            int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+
+            String rpsComputerSelectionPrintOut;
+
+//            Assigning random numbers to rock, paper, scissor print out
+
+            if (randomNum == 1) {
+
+                rpsComputerSelectionPrintOut = "rock";
+                System.out.println("Computer picks: rock");
+
+            } else if (randomNum == 2) {
+
+                rpsComputerSelectionPrintOut = "paper";
+                System.out.println("Computer picks: paper");
+
+            } else if (randomNum == 3) {
+
+                rpsComputerSelectionPrintOut = "scissors";
+                System.out.println("Computer picks: scissors");
+
+            }
+
+//            Player's selection is printed
+
+            System.out.println("User picks: " + rPSPlayerSelection);
+
+//            Setting logic (e.g. paper beats rock, rock beats scissors, etc.)
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("Yippee! You WIN!");
+            }
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("Sorry! You LOSE! HAHA!");
+            }
+
+            if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
+                System.out.println("It's a tie!");
+            }
+            if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
+                System.out.println("It's a tie!");
+            }
+            if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
+                System.out.println("It's a tie!");
+
+            }
+
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            System.out.println(welcomeMessage);
+
+
+        }while((playOrHistoryDecision.equalsIgnoreCase("play")));
+
+
+
+
+
+//        while
+//                (!playOrHistoryDecision.equalsIgnoreCase("history") || playOrHistoryDecision.equalsIgnoreCase("play")) {return;
+//
+//            System.out.println("test bad invalid");
+//            return;
+//        }
+
+
+    }
+
+}
 
 
 
