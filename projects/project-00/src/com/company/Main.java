@@ -24,8 +24,7 @@ public class Main {
         System.out.println("                          MAIN MENU");
         System.out.println("=================================================================");
         System.out.println("                     Type '1' to play");
-        System.out.println("  Type '2' view your current game history in the console");
-        System.out.println("Type '3' to view your game history across sessions in a text file");
+        System.out.println("  Type '2' view your game history across sessions in a .txt file");
         System.out.println("                  Type 'quit' to stop playing");
 
         String menuChoice = menuScan.nextLine();
@@ -35,10 +34,8 @@ public class Main {
             game();
         } else if (menuChoice.equals("2")) {
             history();
-        } else if (menuChoice.equals("3")){
-                history();
 
-        } else if (!menuChoice.equals("1") && !menuChoice.equals("2") && !menuChoice.equals("3") && !menuChoice.equals("quit")){
+        } else if (!menuChoice.equals("1") && !menuChoice.equals("2") && !menuChoice.equals("quit")){
             System.out.println("invalid character, try again");
             menu();
         }
@@ -133,15 +130,15 @@ public class Main {
 
         }
 
-        for (String x:gameResultList){
-             System.out.println(x);
-            if (x.equals("tie")) {
+        for (String gameOutcome:gameResultList){
+             System.out.println(gameOutcome);
+            if (gameOutcome.equals("tie")) {
                 tiecount++;
             }
-            if (x.equals("win")) {
+            if (gameOutcome.equals("win")) {
                 wincount++;
             }
-            if (x.equals("loss")) {
+            if (gameOutcome.equals("loss")) {
                 losscount++;
             }
 
@@ -186,8 +183,6 @@ public class Main {
                     "Error reading file '"
                             + "history.txt" + "'");
 
-            // Or we could just do this:
-            // ex.printStackTrace();
         }
     }
 
@@ -197,11 +192,12 @@ public class Main {
         int size = gameResultList.size();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
-        writer.write(dateFormat.format(date));
-        writer.write("\n");
-        writer.write("***");
+
 
         for (int i=0;i<size;i++) {
+            writer.write(String.valueOf(date));
+            writer.write("\n");
+            writer.write("***");
             String str = gameResultList.get(i).toString();
             writer.write(str);
             if(i < size-1) //**//This prevent creating a blank like at the end of the file**
