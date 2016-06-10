@@ -1,24 +1,21 @@
 package com.company;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    static String winOrLose;
-    static String mUser;
-    static String mcpu;
-    static String mResult;
+    static String result1;
+    static String result2;
+    static String result3;
+
+    static ArrayList<String> gameHistory = new ArrayList<>();
 
     public static void main(String[] args) {
 
 
         gameStart(); // calling method to start game
-        ArrayList gameHistory = new ArrayList();
-        gameHistory.add(mResult);
-        comPick();
-        whoWins(mUser,);
-
 
 
     }
@@ -34,10 +31,12 @@ public class Main {
         if (input.equals("play")) {
             play();
         } else if (input.equals("history")) {
+            history(gameHistory);
 
         } else if (input.equals("quit")) {
             gameStart();
-        } else {
+        } else if (!input.equals("play") || (!input.equals("play") || (!input.equals("play")))) {
+            System.out.println("wrong input, try again");
             gameStart();
 
         }
@@ -49,113 +48,115 @@ public class Main {
 
         System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" + " Type 'quit' to go back to the Main Menu");
         Scanner userInput = new Scanner(System.in);
-        String input = userInput.nextLine();
+        String userChoice = userInput.nextLine();
         ;
-        if (input.equals("quit")) {
+        if (userChoice.equals("quit")) {
+            gameStart();
 
-        } else if (input.equals("scissors")) {
+        } else if (userChoice.equals("scissors")) {
             System.out.println("user picks: scissors");
+            gameHistory.add("user picks:scissors");
 
-        } else if (input.equals("rock")) {
+        } else if (userChoice.equals("rock")) {
             System.out.println("user picks: rock");
+            gameHistory.add("user picks: rock");
 
-        } else if (input.equals("paper")) {
-            mUser = "user picks: paper";
+        } else if (userChoice.equals("paper")) {
+            System.out.println("user picks: paper");
+            gameHistory.add("user picks:paper");
+
+        } else if (!userChoice.equals("scissors") || (!userChoice.equals("rock") || (!userChoice.equals("paper")))) {
+            System.out.println("not an option, try again");
+            play();
 
 
         }
-        //rand();
-
-    }
-
-   /* public static void rand() {
-        int r = (int) (Math.random() * 3);
 
 
-        if (r == 0) {
-            mcpu = "computer picks rock";
-        } else if (r == 1) {
-            System.out.println("computer picks: scissors");
+        int cpuChoice = (int) (Math.random() * 3);
+        if (cpuChoice == 0)
 
-            if (r == 2) {
-                System.out.println("computer picks: paper");
-
-
-            }
-        }
-    }
-*/
-
-    public static void comPick() { // created a random object ot get a random number for computer choice
-        int mcpu;
-        Random cpu = new Random();
-        mcpu = cpu.nextInt(3);
-        if (mcpu == 0) {
+        {
             System.out.println("computer pick: rock");
-        } else if (mcpu == 1) {
+            gameHistory.add("comoputer pick: rock");
+        } else if (cpuChoice == 1)
+
+        {
             System.out.println("computer picks: scissors");
+            gameHistory.add("comoputer pick: scissors");
 
-        } else if (mcpu == 2) {
+        } else if (cpuChoice == 2)
+
+        {
             System.out.println("computer picks: paper");
-
+            gameHistory.add("comoputer pick: paper");
 
         }
+
+
+        if (userChoice.equals("rock") && cpuChoice == 0)
+
+        {
+            System.out.println("it is a tie");
+            gameHistory.add(" it is a tie");
+
+
+        } else if (userChoice.equals("rock") && cpuChoice == 1)
+
+        {
+            System.out.println("You Win");
+            gameHistory.add("You Win");
+
+        } else if (userChoice.equals("rock") && cpuChoice == 2)
+
+        {
+            System.out.println("You Lose");
+            gameHistory.add("You Lose");
+        } else if (userChoice.equals("paper") && cpuChoice == 2)
+
+        {
+            System.out.println("it is a tie");
+            gameHistory.add("it is a tie");
+        } else if (userChoice.equals("paper") && cpuChoice == 1)
+
+        {
+            System.out.println("You Lose");
+            gameHistory.add("You Lose");
+        } else if (userChoice.equals("paper") && cpuChoice == 0)
+
+        {
+            System.out.println("You Won");
+            gameHistory.add("You Won");
+
+        } else if (userChoice.equals("scissors") && cpuChoice == 0)
+
+        {
+            System.out.println("You Lose");
+            gameHistory.add("comoputer pick: rock");
+        } else if (userChoice.equals("scissors") && cpuChoice == 1)
+
+        {
+            System.out.println("it is a tie");
+            gameHistory.add("it is a tie");
+        } else if (userChoice.equals("scissors") && cpuChoice == 2)
+
+        {
+            System.out.println("You Won");
+            gameHistory.add("You Won");
+        }
+
+
+        gameStart();
     }
 
 
-    public static void whoWins(String userChoice, int cpuChoice) {
-        if (userChoice.equals("rock") && (cpuChoice == 0)) {
-            winOrLose = ("it is a tie");
-        } else if (userChoice.equals("rock") && (cpuChoice == 1));
-        {
-            winOrLose = ("You Win");
-        }else if (userChoice.equals("rock") && (cpuChoice == 2));
-        {
-            winOrLose = ("You Lose");
+    public static void history(ArrayList<String> result) {
+        for (int i = 0; i < result.size(); i++) {
+
+            System.out.println(gameHistory.get(i));
         }
-        else if (userChoice.equals("paper") && (cpuChoice == 2));
-        {
-
-            winOrLose = ("it is a tie");
-        }
-        else if (userChoice.equals("paper") && (cpuChoice == 1));
-        {
-            winOrLose = "you lose";
-        }
-
-        else if (userChoice.equals("paper") && (cpuChoice == 0));
-        {
-            winOrLose = "you won";
-
-        }else if (userChoice.equals("scissors") && (cpuChoice == 0));
-        {
-            winOrLose = "you lose";
-        }else if (userChoice.equals("scissors") && (cpuChoice == 1));
-        {
-            winOrLose = "it is a tie";
-        }else if (userChoice.equals("scissors") && (cpuChoice == 2));
-        {
-            winOrLose = "you won";
-        }
-
-
-
-        mResult = mcpu + mUser.toString() + winOrLose;
-        System.out.println(mResult);
-
-
     }
 
-
-    public static void history(ArrayList<String> outcomes) {
-        for (int i = 0; i < outcomes.size(); i++) {
-
-
-            System.out.println(i);
-
-
-        }
-
-    }
 }
+
 
