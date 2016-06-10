@@ -11,28 +11,9 @@ import java.util.Random;
 public class Main {
 
 
-
-
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) {
 
 //        Reads Gamehistory.txt file
-
-        private List<String> readFile(String ) {
-                List<String> records = new ArrayList<String>();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(Gamehistory.txt));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                records.add(line);
-            }
-            reader.close();
-            return records;
-        } catch (Exception e) {
-            System.err.format("Exception occurred trying to read '%s'.", g);
-            e.printStackTrace();
-            return null;
-        }
-        }
 
 
 //        Defining boolean variable so that game loops
@@ -65,18 +46,6 @@ public class Main {
             String playOrHistoryDecision = firstScan.nextLine();
 
 //            If history is selected in main menu
-
-            if (playOrHistoryDecision.equalsIgnoreCase("history")) {
-
-                System.out.println("Ok, you've successfully selected history");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-
-                System.out.println("gameHistoryText");
-
-
 
 
 //        Creating if loop for when player chooses play in main menu
@@ -179,7 +148,6 @@ public class Main {
 
     }
 
-}
 
 
 
