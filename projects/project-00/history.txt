@@ -1,0 +1,9 @@
+Win 
+Tie 
+Loss 
+Tie 
+Tie 
+Loss 
+Win 
+Win 
+Loss 
