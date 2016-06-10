@@ -1,22 +1,39 @@
 package com.company;
 
-import java.sql.Array;
-import java.util.IntSummaryStatistics;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Random;
-
-import static java.awt.SystemColor.text;
 
 public class Main {
 
 
-    public static void main(String[] args) throws IOException {
+
+
+    public static void main(String[] args) throws IOException{
+
+//        Reads Gamehistory.txt file
+
+        private List<String> readFile(String ) {
+                List<String> records = new ArrayList<String>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(Gamehistory.txt));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                records.add(line);
+            }
+            reader.close();
+            return records;
+        } catch (Exception e) {
+            System.err.format("Exception occurred trying to read '%s'.", g);
+            e.printStackTrace();
+            return null;
+        }
+        }
+
 
 //        Defining boolean variable so that game loops
 
@@ -40,7 +57,6 @@ public class Main {
 
 //        Printing welcome message
 
-
             System.out.println(welcomeMessage);
 
 //        Priming console to accept typing
@@ -50,7 +66,7 @@ public class Main {
 
 //            If history is selected in main menu
 
-            if(playOrHistoryDecision.equalsIgnoreCase("history")){
+            if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
                 System.out.println("Ok, you've successfully selected history");
                 System.out.println("");
@@ -58,99 +74,105 @@ public class Main {
                 System.out.println("");
                 System.out.println("");
 
-            }
+                System.out.println("gameHistoryText");
+
+
+
 
 //        Creating if loop for when player chooses play in main menu
 
-            if (playOrHistoryDecision.equalsIgnoreCase("play")) {
-                System.out.println("");
-                System.out.println("");
-                System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
-                        " Type 'quit' to go back to the Main Menu\n");
+                if (playOrHistoryDecision.equalsIgnoreCase("play")) {
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
+                            " Type 'quit' to go back to the Main Menu\n");
 
 //            rPS = Player's rock, paper, scissors initial choice
 
-                String rPSPlayerSelection;
-                Scanner rPSscan = new Scanner(System.in);
+                    String rPSPlayerSelection;
+                    Scanner rPSscan = new Scanner(System.in);
 
-                rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
+                    rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
 
-                System.out.println("");
+                    System.out.println("");
 
 //            Random number is generated
 
-                Random rand = new Random();
+                    Random rand = new Random();
 
-                int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+                    int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
-                String rpsComputerSelectionPrintOut;
+                    String rpsComputerSelectionPrintOut;
 
 //            Assigning random numbers to rock, paper, scissor print out
 
-                if (randomNum == 1) {
+                    if (randomNum == 1) {
 
-                    rpsComputerSelectionPrintOut = "rock";
-                    System.out.println("Computer picks: rock");
+                        rpsComputerSelectionPrintOut = "rock";
+                        System.out.println("Computer picks: rock");
 
-                } else if (randomNum == 2) {
+                    } else if (randomNum == 2) {
 
-                    rpsComputerSelectionPrintOut = "paper";
-                    System.out.println("Computer picks: paper");
+                        rpsComputerSelectionPrintOut = "paper";
+                        System.out.println("Computer picks: paper");
 
-                } else if (randomNum == 3) {
+                    } else if (randomNum == 3) {
 
-                    rpsComputerSelectionPrintOut = "scissors";
-                    System.out.println("Computer picks: scissors");
+                        rpsComputerSelectionPrintOut = "scissors";
+                        System.out.println("Computer picks: scissors");
 
-                }
+                    }
 
 //            Player's selection is printed
 
-                System.out.println("User picks: " + rPSPlayerSelection);
+                    System.out.println("User picks: " + rPSPlayerSelection);
 
 //            Setting logic (e.g. paper beats rock, rock beats scissors, etc.)
 
-                if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
-                    System.out.println("Yippee! You WIN!");
-                }
+                    if (randomNum == 1 && rPSPlayerSelection.equals("paper")) {
+                        System.out.println("Yippee! You WIN!");
+                    }
 
-                if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
-                    System.out.println("Yippee! You WIN!");
-                }
+                    if (randomNum == 2 && rPSPlayerSelection.equals("scissors")) {
+                        System.out.println("Yippee! You WIN!");
+                    }
 
-                if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
-                    System.out.println("Yippee! You WIN!");
-                }
+                    if (randomNum == 3 && rPSPlayerSelection.equals("rock")) {
+                        System.out.println("Yippee! You WIN!");
+                    }
 
-                if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
-                    System.out.println("Sorry! You LOSE! HAHA!");
-                }
+                    if (randomNum == 1 && rPSPlayerSelection.equals("scissors")) {
+                        System.out.println("Sorry! You LOSE! HAHA!");
+                    }
 
-                if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
-                    System.out.println("Sorry! You LOSE! HAHA!");
-                }
+                    if (randomNum == 2 && rPSPlayerSelection.equals("rock")) {
+                        System.out.println("Sorry! You LOSE! HAHA!");
+                    }
 
-                if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
-                    System.out.println("Sorry! You LOSE! HAHA!");
-                }
+                    if (randomNum == 3 && rPSPlayerSelection.equals("paper")) {
+                        System.out.println("Sorry! You LOSE! HAHA!");
+                    }
 
-                if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
-                    System.out.println("It's a tie!");
-                }
-                if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
-                    System.out.println("It's a tie!");
-                }
-                if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
-                    System.out.println("It's a tie!");
-                }
+                    if (randomNum == 1 && rPSPlayerSelection.equals("rock")) {
+                        System.out.println("It's a tie!");
+                    }
+                    if (randomNum == 2 && rPSPlayerSelection.equals("paper")) {
+                        System.out.println("It's a tie!");
+                    }
+                    if (randomNum == 3 && rPSPlayerSelection.equals("scissors")) {
+                        System.out.println("It's a tie!");
+                    }
 
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println("");
 
+
+                }
 
             }
+
 
         }
 
