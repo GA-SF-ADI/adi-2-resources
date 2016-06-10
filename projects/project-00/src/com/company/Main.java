@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,39 +12,75 @@ import java.util.Random;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-//        Reads Gamehistory.txt file
+//        OPENING AND PRINTING GAME HISTORY!
 
+        // The name of the file to open.
+        String fileName = "/Users/LangstonSmith/Desktop/adi-2/adi-" +
+        "2-resources/projects/project-00/src/com/company/Gamehistory.txt";
+
+        // This will reference one line at a time
+        String gameHistoryLine = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader =
+                    new FileReader(fileName);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader =
+                    new BufferedReader(fileReader);
+
+            while ((gameHistoryLine = bufferedReader.readLine()) != null) {
+                System.out.println(gameHistoryLine);
+            }
+
+            // Always close files.
+            bufferedReader.close();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(
+                    "Unable to open file '" +
+                            fileName + "'");
+        } catch (IOException ex) {
+            System.out.println(
+                    "Error reading file '"
+                            + fileName + "'");
+            // Or we could just do this:
+            // ex.printStackTrace();
+
+            System.out.println(gameHistoryLine);
 
 //        Defining boolean variable so that game loops
 
-        boolean pOrH = true;
+            boolean pOrH = true;
 //        Creating while loop so that game loops
 
-        while (pOrH = true) {
+
+            while (pOrH = true) {
 
 //            Declaring welcome message String
 
-            String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
-                    "\n" +
-                    "MAIN MENU\n" +
-                    "=====\n" +
-                    "\n" +
-                    "1. Type 'play' to play\n" +
-                    "2. Type 'history' to view your game history\n" +
-                    "Type 'quit' to stop playing\n" +
-                    "\n" +
-                    "• Please click below this line in the console, type your selection, and then press the return key\n";
+                String welcomeMessage = "Welcome to Rock Paper Scissors!\n" +
+                        "\n" +
+                        "MAIN MENU\n" +
+                        "=====\n" +
+                        "\n" +
+                        "1. Type 'play' to play\n" +
+                        "2. Type 'history' to view your game history\n" +
+                        "Type 'quit' to stop playing\n" +
+                        "\n" +
+                        "• Please click below this line in the console, type your selection, and then press the return key\n";
 
 //        Printing welcome message
 
-            System.out.println(welcomeMessage);
+                System.out.println(welcomeMessage);
 
 //        Priming console to accept typing
 
-            Scanner firstScan = new Scanner(System.in);
-            String playOrHistoryDecision = firstScan.nextLine();
+                Scanner firstScan = new Scanner(System.in);
+                String playOrHistoryDecision = firstScan.nextLine();
 
 //            If history is selected in main menu
 
@@ -148,11 +185,7 @@ public class Main {
 
     }
 
-
-
-
-
-
+}
 
 
 
