@@ -46,7 +46,7 @@ public class Main {
                 case 0:
                     int number_Random1 = 1;
                     System.out.println("Computer as Rock");
-                    bw.write("Computer as Rock");
+                    bw.write("Computer as Rock.......");
 
                     if (playgame == (number_Random1)) {
                         System.out.println("same !!!");
@@ -66,7 +66,7 @@ public class Main {
                 case 1:
                     int number_Random2 = 2;
                     System.out.println("Computer as Paper");
-                    bw.write("Computer as Paper");
+                    bw.write("Computer as Paper.......");
 
                     if (playgame == (number_Random2)) {
                         System.out.println("same !!!");
@@ -85,7 +85,7 @@ public class Main {
                 case 2:
                     int number_Random3 = 3;
                     System.out.println("Computer as Scissors");
-                    bw.write("Computer as Scissors");
+                    bw.write("Computer as Scissors.......");
 
                     if (playgame == (number_Random3)) {
                         System.out.println("same !!!");
