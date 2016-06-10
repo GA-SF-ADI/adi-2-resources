@@ -19,11 +19,32 @@ public class Main {
     static String computerEntryToHistory = Integer.toString(randomNum);
     static String playerEntryToHistory = rPSPlayerSelection;
     static String computerToHistory;
+    static ArrayList<String> arrayForHistory = new ArrayList<String>();
 
+
+    public static void welcomeMessage(){
+
+        System.out.println("");
+
+        System.out.println("Welcome to Rock Paper Scissors!\n" +
+                "\n" +
+                "MAIN MENU\n" +
+                "=====\n" +
+                "\n" +
+                "1. Type 'play' to play\n" +
+                "2. Type 'history' to view your game history\n" +
+                "Type 'quit' to stop playing\n" +
+                "\n" +
+                "• Please click below this line in the console, type your " +
+                "selection, and then press the return key\n");
+    }
+
+    public static void close() {
+        scanner.close();
+    }
 
     //    Game method
     public static void playingGame() {
-
 
         System.out.println("Type in 'rock' 'paper' or 'scissors' to play.\n" +
                 " Type 'quit' to go back to the Main Menu\n");
@@ -38,6 +59,7 @@ public class Main {
         rPSPlayerSelection = rPSscan.nextLine().toLowerCase(); //<–– Lower-casing method called on player entry
 
         System.out.println("");
+
 
 //            Random number is generated
 
@@ -119,6 +141,7 @@ public class Main {
 
         }
 
+        arrayForHistory.add("Computer played –>" + computerToHistory + " You played –>" + rPSPlayerSelection);
         System.out.println("");
         System.out.println("");
         System.out.println("Welcome to Rock Paper Scissors!\n" +
@@ -140,9 +163,24 @@ public class Main {
             playingGame();
         }
 
+        if (!playOrHistoryDecision.equalsIgnoreCase("history") || playOrHistoryDecision.equalsIgnoreCase("play")) {
+
+            System.out.println("Hey, cut it out! That's not cool. That's not a valid entry. Please try again.");
+            System.out.println("");
+            playingGame();
+        }
+
         if (playOrHistoryDecision.equalsIgnoreCase("history")) {
 
-            showHistory(computerToHistory, rPSPlayerSelection);
+            System.out.println(arrayForHistory);
+            System.out.println("");
+            welcomeMessage();
+
+        }
+
+        if (playOrHistoryDecision.equalsIgnoreCase("quit")) {
+
+            scanner.close();
 
         }
 
@@ -170,7 +208,7 @@ public class Main {
 
     }
 
-    public static void reloadAfterInvalidEntry(){
+    public static void reloadAfterInvalidEntry() {
 
         System.out.println("Welcome to Rock Paper Scissors!\n" +
                 "\n" +
@@ -223,6 +261,7 @@ public class Main {
 //        Priming console to accept typing
 
         Scanner firstScan = new Scanner(System.in);
+
         String playOrHistoryDecision = firstScan.nextLine();
 
         if ((playOrHistoryDecision.equalsIgnoreCase("play"))) {
@@ -231,25 +270,18 @@ public class Main {
 
         }
 
-        if (playOrHistoryDecision.equalsIgnoreCase("history")) {
+        if (!playOrHistoryDecision.equalsIgnoreCase("history") || playOrHistoryDecision.equalsIgnoreCase("play")) {
 
-            showHistory(computerToHistory, rPSPlayerSelection);
-
-        }
-
-        if (!playOrHistoryDecision.equalsIgnoreCase("history") || playOrHistoryDecision.equalsIgnoreCase("play")){
-
-            System.out.println("That's not cool. That's not a valid entry. Please try again");
+            System.out.println("Hey, cut it out! That's not cool. That's not a valid entry. Please try again.");
             System.out.println("");
-            System.out.println("");
-            reloadAfterInvalidEntry();
-
+            playingGame();
         }
 
 
     }
 
 }
+
 
 
 
