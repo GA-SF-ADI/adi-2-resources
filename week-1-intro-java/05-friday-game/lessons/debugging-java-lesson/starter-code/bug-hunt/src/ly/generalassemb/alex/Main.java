@@ -1,8 +1,7 @@
+package ly.generalassemb.alex;
+
 import java.util.Scanner;
 
-/**
- * Created by drewmahrt on 5/4/16.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -15,7 +14,7 @@ public class Main {
 
         if(answer.equals("1") || answer.equals("add")){
             add();
-        } else if(answer.equals("2") || answer.equals("subtract")){
+        } else if(answer.equals("1") || answer.equals("subtract")){
             subtract();
         } else if(answer.equals("3") || answer.equals("multiply")){
             multiply();
@@ -59,6 +58,4 @@ public class Main {
         float result = firstNum / secondNum;
         System.out.println("Result: "+result);
     }
-
-
 }
