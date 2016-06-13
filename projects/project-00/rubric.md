@@ -3,7 +3,6 @@
 
 
 #### Performance Evaluation
-> Mark boxes with an 'X'; if did not achieve bonus, mark with a '-'
 
 | Requirements | Incomplete (0) | Does Not Meet Expectations (1) | Meets Expectations (2) | Exceeds Expectations (3) |
 |---|---|---|---|---|
@@ -16,9 +15,6 @@
 
 
 
-Notes:
-
-> Example: Your getting the hang of this!  Be sure to practice proper indentation and spacing.  Nice work! On line (INSERT SPECIFIC LINE NUMBER) in the (INSERT SPECIFIC FILE NAME) you (INSERT SPECIFIC CRITIQUE). Also, on line (INSERT SPECIFIC LINE NUMBER) in the (INSERT SPECIFIC FILE NAME) you (INSERT SPECIFIC CRITIQUE
 
 ---
 
@@ -29,10 +25,3 @@ Based on the requirements, you can earn a maximum of  **8**  points on this proj
 
 
 ---
-
-## PROGRESS REPORT
-**Student Check-in:**
-
-|WHAT’S GOING WELL?|STRUGGLES|DEVELOPMENT PLAN|
-|---|---|---|
-| | | |
