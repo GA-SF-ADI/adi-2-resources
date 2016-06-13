@@ -165,7 +165,7 @@ Look at the following code/file and answer the questions below:
  - a movie should have 2 empty elements.  
 
 Use these resources:
- - [XML intro lesson](https://github.com/generalassembly-studio/ADI-curriculum/edit/intro-to-xml-lesson/resources/01-user-interface/intro-to-xml-lesson/readme.md)
+
  - [Sitepoint XML introduction](http://www.sitepoint.com/really-good-introduction-xml/)
 
  Check out the [solution](solution-code).
