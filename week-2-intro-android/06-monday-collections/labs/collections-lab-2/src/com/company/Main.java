@@ -21,13 +21,15 @@ public class Main {
      */
     public static int[] findLargestAndSmallest(int array[]){
 
-        int smallestNum = Integer.min
+        int largestNum = Integer.MAX_VALUE;
 
-        int largestNum;
+        int smallestNum = Integer.MIN_VALUE;
 
         int i = 0;
 
         for(i = 0; i = findLargestAndSmallest().length; i++) {
+
+
 
         }
 
