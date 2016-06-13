@@ -29,23 +29,33 @@ public class Main {
 
         int i = 0;
 
+        int[] finalArray = new int[2];
+
         for (i = 0; i < array.length; i++) {
 
             if (i < i + 1) {
                 smallestNum = i;
                 largestNum = i + 1;
 
-            } else {
-                smallestNum = i+1;
-                largestNum = i;
-            }
+                smallestNum = finalArray[0];
+                largestNum = finalArray[1];
 
+            } else {
+                smallestNum = i + 1;
+                largestNum = i;
+
+                smallestNum = finalArray[0];
+                largestNum = finalArray[1];
+            }
 
         }
 
-        
+        return
+
+        System.out.println("The smallest number is " + finalArray[0] + " and the largest number is " + largestNum);
 
     }
+
 
 
     /**
@@ -63,6 +73,19 @@ public class Main {
      * @return An array of ints that doesn't contain duplicates.
      */
     public static Object[] removeDuplicatesFromArray(int[] array) {
+
+        int i = 0;
+
+        int[] finalNonDuplicate;
+
+        for(i = 0; i < array.length; i++) {
+
+            if (i != i + 1) {
+
+            }
+
+        }
+
 
     }
 
