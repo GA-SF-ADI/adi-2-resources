@@ -3,7 +3,6 @@
 
 
 #### Performance Evaluation
-> Mark boxes with an 'X'; if did not achieve bonus, mark with a '-'
 
 | Requirements | Incomplete (0) | Does Not Meet Expectations (1) | Meets Expectations (2) | Exceeds Expectations (3) |
 |---|---|---|---|---|
@@ -21,10 +20,6 @@
 | **Bonus**: Add an item detail screen that allows the user to give an optional description for each item | n/a | n/a | n/a |   |
 
 
-Notes:
-
-> Example: Your getting the hang of this!  Be sure to practice proper indentation and spacing.  Nice work! On line (INSERT SPECIFIC LINE NUMBER) in the (INSERT SPECIFIC FILE NAME) you (INSERT SPECIFIC CRITIQUE). Also, on line (INSERT SPECIFIC LINE NUMBER) in the (INSERT SPECIFIC FILE NAME) you (INSERT SPECIFIC CRITIQUE
-
 ---
 
 ## Score:
@@ -35,9 +30,4 @@ Based on the requirements, you can earn a maximum of  **18**  points on this pro
 
 ---
 
-## PROGRESS REPORT
-**Student Check-in:**
 
-|WHAT’S GOING WELL?|STRUGGLES|DEVELOPMENT PLAN|
-|---|---|---|
-| | | |
