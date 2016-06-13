@@ -29,20 +29,21 @@ public class Main {
 
         int i = 0;
 
-        int[] firstArray;
+        for (i = 0; i < array.length; i++) {
 
-        for (i = 0; i < firstArray.length; i++) {
+            if (i < i + 1) {
+                smallestNum = i;
+                largestNum = i + 1;
 
-            if(i < i+1){
-
-                i = smallestNum;
-                i+1 = largestNum;
-
-            }else{}
+            } else {
+                smallestNum = i+1;
+                largestNum = i;
+            }
 
 
         }
 
+        
 
     }
 
