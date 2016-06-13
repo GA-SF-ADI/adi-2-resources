@@ -50,10 +50,8 @@ public class Main {
 
         }
 
-        return
-
-        System.out.println("The smallest number is " + finalArray[0] + " and the largest number is " + largestNum);
-
+        return finalArray;
+        
     }
 
 
@@ -81,6 +79,8 @@ public class Main {
         for(i = 0; i < array.length; i++) {
 
             if (i != i + 1) {
+
+                finalNonDuplicate.
 
             }
 
