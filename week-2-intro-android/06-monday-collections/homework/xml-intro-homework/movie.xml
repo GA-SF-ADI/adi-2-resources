@@ -10,9 +10,9 @@
 <movie_collection xmlns:collection="http://movies.com">
 
 	<movie
-		movieinfo:id="1"
-		movieinfo:title="zoolander"
-		movieinfo:description="classic comedy movie"
+		collection:id="1"
+		collection:title="zoolander"
+		collection:description="classic comedy movie"
 
 		<morning_showtime>10:45am</morning_showtime>
     	<afternoon_showtime>12:30pm</afternoon_showtime>
@@ -24,9 +24,9 @@
 	</movie>
 
 	<movie
-		movieinfo:id="2"
-		movieinfo:title="inglorious basterds"
-		movieinfo:description="dark comedy, revenge"
+		collection:id="2"
+		collection:title="inglorious basterds"
+		collection:description="dark comedy, revenge"
 
 		<morning_showtime>10:35am</morning_showtime>
     	<afternoon_showtime>12:40pm</afternoon_showtime>
@@ -38,9 +38,9 @@
 	</movie>
 
 	<movie
-		movieinfo:id="3"
-		movieinfo:title="lion king"
-		movieinfo:description="classic disney"
+		collection:id="3"
+		collection:title="lion king"
+		collection:description="classic disney"
 
 		<morning_showtime>10:45am</morning_showtime>
     	<afternoon_showtime>12:30pm</afternoon_showtime>
@@ -52,9 +52,9 @@
 	</movie>
 
 	<movie
-		movieinfo:id="4"
-		movieinfo:title="mad max"
-		movieinfo:description="action"
+		collection:id="4"
+		collection:title="mad max"
+		collection:description="action"
 	
 		<morning_showtime>10:45am</morning_showtime>
     	<afternoon_showtime>12:30pm</afternoon_showtime>
