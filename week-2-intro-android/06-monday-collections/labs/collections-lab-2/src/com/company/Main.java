@@ -1,6 +1,8 @@
 package com.company;
 
 import java.sql.Array;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -72,21 +74,13 @@ public class Main {
      */
     public static Object[] removeDuplicatesFromArray(int[] array) {
 
-        int i = 0;
 
-        String[] finalNonDuplicate = new String[5];
-
-        for(i = 0; i < array.length; i++) {
-
-            if (i != i + 1) {
-
-                finalNonDuplicate.
-
-            }
-
+        Set<Integer> finalSet = new LinkedHashSet<Integer>();
+        for(int i = 0;i <array.length; i++){
+            finalSet.add(array[i]);
         }
 
-        return finalNonDuplicate;
+        return finalSet.toArray();
     }
 
     /**
