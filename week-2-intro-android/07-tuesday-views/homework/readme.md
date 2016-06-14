@@ -20,3 +20,6 @@ https://developer.android.com/guide/components/intents-filters.html
 
 for intents. Don't worry too much about intent filters! 
 
+##Garnet
+
+Also, make sure to put a picture up on Garnet and make your name your real name!
