@@ -1,0 +1,60 @@
+<movie_collection> collection="http://movies.com">
+
+<movie
+
+	collection:id"first"
+	collection:title="Up"
+	collection:moviedescription="family">
+
+	<morning_showtime>11:00AM</morning_showtime>
+	<afternoon_showtime>3:00PM</afternoon_showtime>
+	<evening_showtime>7:00PM</evening_showtime>
+	<actors></actors>
+	<actresses></actresses>
+</movie>
+
+<movie
+	collection:id"second"
+	collection:title="21 Jump Street"
+	collection:moviedescription="comedy">
+
+	<morning_showtime>10:00AM</morning_showtime>
+	<afternoon_showtime>4:00PM</afternoon_showtime>
+	<evening_showtime>8:00PM</evening_showtime>
+	<actors></actors>
+	<actresses></actresses>
+
+</movie>
+
+<movie
+	collection:id"third"
+	collection:title="The Intern"
+	collection:moviedescription="romantic comedy">
+
+	<morning_showtime>11:30AM</morning_showtime>
+	<afternoon_showtime>3:30PM</afternoon_showtime>
+	<evening_showtime>10:00PM</evening_showtime>
+	<actors></actors>
+	<actresses></actresses>
+
+</movie>
+
+
+<movie
+	collection:id"fourth"
+	collection:title="The Revenant"
+	collection:moviedescription="action">
+
+	<morning_showtime>10:00AM</morning_showtime>
+	<afternoon_showtime>2:00PM</afternoon_showtime>
+	<evening_showtime>9:00PM</evening_showtime>
+	<actors></actors>
+	<actresses></actresses>
+
+</movie>
+
+
+
+
+
+</movie_collection>
