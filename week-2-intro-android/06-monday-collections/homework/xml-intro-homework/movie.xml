@@ -1,0 +1,90 @@
+1.  8
+2.  xmlns:android="http://schemas.android.com/apk/res/android"
+3.  parent elements: manifest, application, service, activity, and intent-filter.
+4.  <action android:name="android.intent.action.MAIN" />
+	<category android:name="android.intent.category.LAUNCHER" />
+	<activity android:name=".InformationActivity" />
+
+
+
+<movie_collection xmlns:collection="http://movies.com">
+
+	<movie
+		movieinfo:id="1"
+		movieinfo:title="zoolander"
+		movieinfo:description="classic comedy movie"
+
+		<morning_showtime>10:45am</morning_showtime>
+    	<afternoon_showtime>12:30pm</afternoon_showtime>
+    	<evening_showtime>7:00pm</evening_showtime>
+
+    	<seating availbity/>
+    	<theater size/>
+
+	</movie>
+
+	<movie
+		movieinfo:id="2"
+		movieinfo:title="inglorious basterds"
+		movieinfo:description="dark comedy, revenge"
+
+		<morning_showtime>10:35am</morning_showtime>
+    	<afternoon_showtime>12:40pm</afternoon_showtime>
+    	<evening_showtime>8:00pm</evening_showtime>
+
+    	<seating availbity/>
+    	<theater size/>
+
+	</movie>
+
+	<movie
+		movieinfo:id="3"
+		movieinfo:title="lion king"
+		movieinfo:description="classic disney"
+
+		<morning_showtime>10:45am</morning_showtime>
+    	<afternoon_showtime>12:30pm</afternoon_showtime>
+    	<evening_showtime>7:00pm</evening_showtime>
+
+    	<seating availbity/>
+    	<theater size/>
+
+	</movie>
+
+	<movie
+		movieinfo:id="4"
+		movieinfo:title="mad max"
+		movieinfo:description="action"
+	
+		<morning_showtime>10:45am</morning_showtime>
+    	<afternoon_showtime>12:30pm</afternoon_showtime>
+    	<evening_showtime>7:00pm</evening_showtime>
+
+    	<seating availbity/>
+    	<theater size/>
+
+	</movie>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</movie_collection>
