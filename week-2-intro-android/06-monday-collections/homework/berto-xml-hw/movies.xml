@@ -1,0 +1,43 @@
+<movie_collection xmlns:collection="http://movies.com">
+	<movie
+		collection:id="1"
+		collection:title="Now you see me"
+		collection:description="suspense">
+		morning_showtimes<8am></morning_showtimes>
+		mid_showtimes<12pm></mid_showtimes>
+		late_showtimes<7pm></late_showtimes>
+		duration<></duration>
+		rating<></rating>
+	</movie>
+	<movie
+		collection:id="2"
+		collection:title="Barber Shop"
+		collection:description="Comedy">
+		morning_showtimes<8am></morning_showtimes>
+		mid_showtimes<12pm></mid_showtimes>
+		late_showtimes<7pm></late_showtimes>
+		duration<></duration>
+		rating<></rating>
+	</movie>
+	<movie
+		collection:id="3"
+		collection:title="The Hulk"
+		collection:description="Action">
+		morning_showtimes<8am></morning_showtimes>
+		mid_showtimes<12pm></mid_showtimes>
+		late_showtimes<7pm></late_showtimes>
+		duration<></duration>
+		rating<></rating>
+	</movie>
+	<movie
+		collection:id="4"
+		collection:title="Rambo"
+		collection:description="Action">
+		morning_showtimes<8am></morning_showtimes>
+		mid_showtimes<12pm></mid_showtimes>
+		late_showtimes<7pm></late_showtimes>
+		duration<></duration>
+		rating<></rating>
+	</movie>
+
+</movie_collection>
