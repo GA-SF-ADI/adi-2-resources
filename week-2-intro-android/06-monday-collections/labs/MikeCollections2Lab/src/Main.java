@@ -84,7 +84,7 @@ public class Main {
         int j;
         for (int i = 0; i < arrayList.size(); i++) {
             j = i + 1;
-            if(j < 8) {
+            if(j < arrayList.size()) {
                 if (arrayList.get(i) == arrayList.get(j)) {
                     arrayList.remove(j);
                 }
