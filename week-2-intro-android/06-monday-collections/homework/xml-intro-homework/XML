@@ -1,0 +1,19 @@
+How many elements does this xml file have?
+Ans: 8 elements
+
+
+What is a namespace in this example?
+Ans: "http://schemas.android.com/apk/res/android"
+
+Name parent and children elements.
+Ans: 
+Parent elements -
+<application>
+Child element-
+<activity>
+<service>
+
+
+Find and name empty elements (the ones that do not have content).
+Ans:
+
