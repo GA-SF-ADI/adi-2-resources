@@ -51,7 +51,7 @@ public class Main {
         }
 
         return finalArray;
-        
+
     }
 
 
@@ -74,7 +74,7 @@ public class Main {
 
         int i = 0;
 
-        int[] finalNonDuplicate;
+        String[] finalNonDuplicate = new String[5];
 
         for(i = 0; i < array.length; i++) {
 
@@ -86,7 +86,7 @@ public class Main {
 
         }
 
-
+        return finalNonDuplicate;
     }
 
     /**
