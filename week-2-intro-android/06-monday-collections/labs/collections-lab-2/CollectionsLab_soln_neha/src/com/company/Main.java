@@ -1,6 +1,7 @@
 package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -58,19 +59,33 @@ public class Main {
             intList.add(array[i]);
         }
 
+        Collections.sort(intList);
+
         int first;
         int second;
 //        int[] withDuplicates={10,20,10,20,50,30};
-        for(int j=0;j<intList.size();j++) {
 
-            for (int i = 1; i < intList.size(); i++) {
-//                first = intList.get(j);
-//                second = intList.get(i);
-                if (intList.get(j) == intList.get(i)) {
-                    intList.remove(i);
+        int j;
+        for(int i=0;i<intList.size();i++){
+            j=i+1;
+            if(j<intList.size()){
+                if(intList.get(i)==intList.get(j)){
+                    intList.remove(j);
                 }
             }
         }
+
+
+//        for(int j=0;j<intList.size();j++) {
+//
+//            for (int i = 1; i < intList.size(); i++) {
+////                first = intList.get(j);
+////                second = intList.get(i);
+//                if (intList.get(j) == intList.get(i)) {
+//                    intList.remove(i);
+//                }
+//            }
+//        }
 
 
 //        for(int j=0;j<intList.size();j++) {
