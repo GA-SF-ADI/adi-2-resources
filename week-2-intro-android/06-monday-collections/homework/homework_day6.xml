@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<movie_collection xmlns:collection="http://movies.com">
+    <movie
+        collection:id="1"
+        collection:title="Gone With the Wind"
+        collection:description="classics">
+
+        <morning_showtime>10am</morning_showtime>
+        <afternoon_showtime>1pm</afternoon_showtime>
+        <evening_showtime>7pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="2"
+        collection:title="The Theory of Everything"
+        collection:description="drama">
+
+        <morning_showtime>11am</morning_showtime>
+        <afternoon_showtime>2pm</afternoon_showtime>
+        <evening_showtime>8pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="3"
+        collection:title="7 pounds"
+        collection:description="drama">
+
+        <morning_showtime>9am</morning_showtime>
+        <afternoon_showtime>3pm</afternoon_showtime>
+        <evening_showtime>8pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="4"
+        collection:title="Fountain"
+        collection:description="philosophic">
+
+        <morning_showtime>10am</morning_showtime>
+        <afternoon_showtime>1pm</afternoon_showtime>
+        <evening_showtime>8pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+</movie_collection>
