@@ -4,7 +4,7 @@ There are two main parts to tonights homework, some prototyping and some reading
 
 ##Prototyping
 
-Start thinking about your project 1! Remember that you can read the specifications [here](https://github.com/GA-SF-ADI/adi-2-resources/tree/master/projects). You don't need to finish this, just start thinking about it.
+Start thinking about your project 1! Remember that you can read the specifications [here](https://github.com/GA-SF-ADI/adi-2-resources/tree/master/projects/project-01). You don't need to finish this, just start thinking about it.
 
 We will have time tomorrow to work on this more/collaborate on these! 
 
