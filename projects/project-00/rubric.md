@@ -19,7 +19,7 @@
 ---
 
 ## Score:
-Based on the requirements, you can earn a maximum of  **8**  points on this project.
+Based on the requirements, you can earn a maximum of  **3**  points on this project.
 
 #### Your total score is: **#**
 
