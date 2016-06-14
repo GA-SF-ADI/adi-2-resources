@@ -1,0 +1,51 @@
+
+<movie_collection xmlns:collection="http://movies.com">
+    <movie
+        collection:id="1"
+        collection:title="Star Wars"
+        collection:description="sci-fi">
+
+        <morning_showtime>11am</morning_showtime>
+        <afternoon_showtime>2pm</afternoon_showtime>
+        <evening_showtime>7pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="2"
+        collection:title="Space Balls"
+        collection:description="comedy">
+
+<morning_showtime>11:30am</morning_showtime>
+        <afternoon_showtime>2pm</afternoon_showtime>
+        <evening_showtime>8pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="3"
+        collection:title="Six Sense"
+        collection:description="drama">
+
+        <morning_showtime>12pm</morning_showtime>
+        <afternoon_showtime>3pm</afternoon_showtime>
+        <evening_showtime>7:30pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+    <movie
+        collection:id="4"
+        collection:title="Cars"
+        collection:description="kids">
+
+        <morning_showtime>11am</morning_showtime>
+        <afternoon_showtime>1pm</afternoon_showtime>
+        <evening_showtime>6pm</evening_showtime>
+        <available></available>
+        <rspv></rspv>
+    </movie>
+
+</movie_collection>
