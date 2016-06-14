@@ -1,6 +1,8 @@
 package com.company;
 
 import java.sql.Array;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -57,7 +59,6 @@ public class Main {
     }
 
 
-
     /**
      * Question 2: Remove duplicates from an array
      * <p>
@@ -75,8 +76,8 @@ public class Main {
     public static Object[] removeDuplicatesFromArray(int[] array) {
 
 
-        Set<Integer> finalSet = new LinkedHashSet<Integer>();
-        for(int i = 0;i <array.length; i++){
+        Set<Integer> finalSet = new HashSet<>();
+        for (int i = 0; i < array.length; i++) {
             finalSet.add(array[i]);
         }
 
@@ -89,10 +90,25 @@ public class Main {
      * If the array is empty, return 0.
      * If the array has one value, return that value.
      *
-     * @param array An array of integers of any size.
-     * @return Sum of the two largest values
      */
-    public static int sumOfTwoLargest(int[] array) {
+    public static int sumOfTwoLargest(int[] finalarray) {
+
+
+        Arrays.sort(finalarray);
+
+        if (finalarray.length == 0) {
+
+            return 0;
+
+        } else if (finalarray.length == 1) {
+
+            return finalarray[0];
+
+        } else {
+
+            return finalarray[finalarray.length - 1] + finalarray[finalarray.length - 2];
+
+        }
 
     }
 
