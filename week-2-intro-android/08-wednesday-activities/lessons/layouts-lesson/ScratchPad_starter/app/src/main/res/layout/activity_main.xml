@@ -1,31 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="200dp">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/background_image"
-        android:scaleType="centerCrop" />
+        android:layout_height="200dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/background_image"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="General Assembly"
+            android:layout_gravity="left|bottom"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_margin="12dp" />
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/logo"
+            android:layout_margin="12dp" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="General Assembly"
-        android:layout_gravity="left|bottom"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:layout_margin="12dp" />
+        android:orientation="horizontal"
+        >
 
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_gravity="bottom|right"
-        android:src="@drawable/logo"
-        android:layout_margin="12dp" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:layout_gravity="center_horizontal" />
 
-</FrameLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:layout_gravity="right"
+            />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/puppy"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Some cool article title"
+            android:id="@+id/textView"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Some subtile, which is not as cool"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="January 15, 2015"
+            android:id="@+id/textView5"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada nunc at turpis maximus porttitor. Morbi suscipit bibendum varius. Quisque eget tellus quam. Suspendisse vel bibendum mi, nec semper sem. Nunc tincidunt purus urna, at lobortis nunc tristique at. Nullam in ultrices lacus, id aliquam tortor. Vestibulum eu pulvinar velit. Aenean dui est, pretium quis commodo sed, venenatis in turpis. Suspendisse sed ante nec nisi luctus consectetur quis sed erat. Aliquam sit amet gravida lacus, in rhoncus ex. In dolor quam, sagittis in euismod non, lacinia vitae arcu."
+            android:id="@+id/textView4"
+            android:layout_alignParentBottom="true" />
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
+
