@@ -2,12 +2,14 @@ package co.ga.brokenapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     // Declaring all of the member variables that we expect to reference in this activity. They are
     // initialized in the onCreate() method.
@@ -74,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         int number2 = Integer.parseInt(mAnswerTextView.getText().toString());
 
         int answer = number1 + number2;
+
+        // logging output with debug level. Making sure inputs match what we expect.
+        Log.d(TAG, "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer);
 
         mAnswerTextView.setText("Answer: " + answer);
     }
