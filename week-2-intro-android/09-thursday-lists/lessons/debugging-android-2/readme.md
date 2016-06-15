@@ -16,6 +16,8 @@ creator:
 * Given sample code, set a breakpoint and look at the current state
 * Given a stack trace, identify which lines are within your application
 * Describe what a stack trace is saying
+* Understand different types of log message
+* Use toasts to provide message to the user
 
 ### Preparation
 *Before this lesson, students should read over the following lessons:*
@@ -135,6 +137,8 @@ As usual, let's break this up:
 ## Guided Practice: Adding toasts (10 minutes)
 
 Using the [provided sample code](starter-code), which is a screen with four buttons, lets add a few toasts!
+
+Check your work with the [provided solution code](solution-code).
 
 
 ## Conclusion (5 mins)
