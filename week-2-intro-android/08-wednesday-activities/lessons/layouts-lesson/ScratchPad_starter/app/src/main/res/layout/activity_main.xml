@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="200dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
-
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:src="@drawable/background_image"
         android:scaleType="centerCrop" />
@@ -28,4 +30,107 @@
         android:src="@drawable/logo"
         android:layout_margin="12dp" />
 
-</FrameLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/follow"
+            android:text="FOLLOW"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send"
+            android:text="SEND MESSAGE"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/close"
+            android:text="CLOSE"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/dog"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/puppy">
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt1"
+            android:layout_toRightOf="@+id/dog"
+            android:text="The Golden Retriever"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt2"
+            android:layout_below="@+id/txt1"
+            android:layout_toRightOf="@+id/dog"
+            android:text="A dog with beauty and brains"
+            android:textSize="15dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt3"
+            android:layout_below="@+id/txt2"
+            android:layout_toRightOf="@+id/dog"
+            android:text="June 15,2016"
+            android:textSize="15dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sweet, docile and affectionate, it's little wonder that when it comes to puppies, Golden Retrievers invariably leap to mind"
+        android:textSize="15dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
