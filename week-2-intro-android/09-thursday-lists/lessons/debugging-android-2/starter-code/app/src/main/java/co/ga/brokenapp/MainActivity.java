@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -79,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
         // logging output with debug level. Making sure inputs match what we expect.
         Log.d(TAG, "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer);
+
+        // Example toast
+        Toast.makeText(MainActivity.this,
+                "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer,
+                Toast.LENGTH_SHORT).show();
 
         mAnswerTextView.setText("Answer: " + answer);
     }
