@@ -11,6 +11,63 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/adjective1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adjective #1"
+                android:textColorHint="#fc42dd"
+                />
+
+            <EditText
+                android:id="@+id/adjective2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adjective #2"
+                android:textColorHint="#fc42dd"
+                />
+
+            <EditText
+                android:id="@+id/noun1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noun #1"
+                android:textColorHint="#fc42dd"
+                />
+
+            <EditText
+                android:id="@+id/noun2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noun #1"
+                android:textColorHint="#fc42dd"
+                />
+
+            <EditText
+                android:id="@+id/animals_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Animal (plural please!)"
+                android:textColorHint="#fc42dd"
+                />
+
+            <EditText
+                android:id="@+id/game_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Game name"
+                android:textColorHint="#fc42dd"
+                />
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_gravity="center"/>
+
+
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
