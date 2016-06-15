@@ -26,7 +26,7 @@ creator:
 
 ## Introduction: Logs and LogCat (5 minutes)
 
-<a href="screenshots/logcat.png"><img src="screenshots/logcat.png" height="300"></a>
+![](logcat.png)
 
 Android provided a way to view messages sent from a device. This is called [logcat](http://developer.android.com/tools/help/logcat.html).
 
