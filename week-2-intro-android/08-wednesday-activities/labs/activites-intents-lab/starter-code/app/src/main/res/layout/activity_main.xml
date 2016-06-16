@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Adjective #1"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <EditText
@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Adjective #2"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <EditText
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Noun #1"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <EditText
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Noun #1"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <EditText
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Animal (plural please!)"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <EditText
@@ -56,12 +56,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Game name"
-                android:textColorHint="#fc42dd"
+                android:textColorHint="#d465c1"
                 />
 
             <Button
                 android:id="@+id/submit_button"
-                android:layout_width="wrap_content"
+                android:layout_width="173dp"
                 android:layout_height="wrap_content"
                 android:text="Submit"
                 android:layout_gravity="center"/>
