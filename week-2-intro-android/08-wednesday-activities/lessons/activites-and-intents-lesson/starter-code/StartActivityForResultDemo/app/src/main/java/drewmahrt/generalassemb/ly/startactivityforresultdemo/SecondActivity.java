@@ -23,6 +23,14 @@ public class SecondActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String firstName = mFirstNameText.getText().toString();
+                String lastName = mLastNameText.getText().toString();
+                Intent results = new Intent();
+
+                results.putExtra("firstName",firstName);
+                results.putExtra("lastName",lastName);
+                setResult(RESULT_OK,results);
+                finish();
 
             }
         });

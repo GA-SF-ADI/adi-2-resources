@@ -9,17 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.echoactivity.MainActivity">
 
-    <EditText
-        android:id="@+id/editText"
+
+    <Button
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cool"
-        />
+        android:text="add"/>
 
-    <EditText
-        android:id="@+id/button"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="anything"
+        android:id="@+id/text3"/>
+
+
 
 
 </RelativeLayout>
