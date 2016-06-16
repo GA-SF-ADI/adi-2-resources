@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class ComparatorAuthor implements Comparator<Book> {
 
     @Override
-    public int compare(Book lhs, Book rhs) {
+    public int compare(Book lhs, Book rhs) { return lhs.getAuthor().compareTo(rhs.getTitle());
         //TODO: Write the comparison for the authors
     }
 }

@@ -9,7 +9,8 @@ public class ComparatorTitle implements Comparator<Book> {
 
 
     @Override
-    public int compare(Book lhs, Book rhs) {
+    public int compare(Book lhs, Book rhs) { return lhs.getTitle().compareTo(rhs.getTitle());
         //TODO: Write the comparison for the titles
     }
 }
+

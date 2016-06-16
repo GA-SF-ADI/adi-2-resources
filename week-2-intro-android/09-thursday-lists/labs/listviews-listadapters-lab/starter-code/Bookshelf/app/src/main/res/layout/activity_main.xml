@@ -11,5 +11,26 @@
     tools:context="ly.generalassemb.drewmahrt.bookshelf.MainActivity">
 
     <!-- Create your buttons and ListView here -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/button_title"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/button_year"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/button_author"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view">
+
+    </ListView>
 
 </LinearLayout>
