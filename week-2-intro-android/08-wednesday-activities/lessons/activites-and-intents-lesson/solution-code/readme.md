@@ -10,7 +10,9 @@ One Last Walkthrough on how to use intents to start an activity for result
 	You can make the request code be whatever you want.
 4. Start your activitiy for result using the startActivityForResult method. It will look like this
 ```startActivityForResult(REQUEST_CODE, intent)```
+
 ## In the Second Activity
+
 5. Now, we can grab any data from the intent that we want. The first thing to do is get intent. This follows the pattern
 ```Intent recievedIntent = getIntent();```
 6. Now, grab your data from the intent. This is similar to a HashMap, and follows the pattern
@@ -24,12 +26,16 @@ Where DataType would be your variable type, so String, or int, or boolean, or wh
 ```setResult(RESULT_OK, resultIntent);```
 You don't need to worry about defining the result code, RESULT_OK is a variable that Android defined for you and that you should use in this case.
 11. Now we're done with this activity! The last thing you need to do is call the finish() function to end the activity and go back
+
 ##First Activity Again
+
 12. Now we're back in the starting activity! The first thing we need to do is Override the onActivityResult method, as that is the method Android gives activities to handle having started an activity for result. To do this, click outside of the onCreate method but inside of your activity class and hit command N. Then, select OverRide methods, and choose onActivityResult. It should autopopulate something that looks like
-```    @Override
+```  
+@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-}```
+} 
+```
 Here is where we want to check the result of our activity. 
 13. First, we want to check that we are handling the correct request code. This is a simple if statement
 ```if(requestCode == REQUEST_CODE)```
