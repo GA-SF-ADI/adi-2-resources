@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<elements="movies_collection" xmlns:collection="http://www.movies.com">
+<element
+	id="Goodfellas"
+	title="Goodfellas"
+	description="Starring Ray Liotta">
+	
+	<element="showtimes">
+		<element = "10:00">
+	</element>
+	<element="2:00">
+	</element>
+	<element="3:30">
+	</element>
+	</element>
+	<element>
+	</element>
+	<element>
+	</element>
+	</element>
+<element
+	id="The Godfather"
+	title="The Godfather"
+	description="Starring Al Pacino">
+	<element="showtimes">
+		<element = "10:00">
+	</element>
+	<element="2:00">
+	</element>
+	<element="3:30">
+	</element>
+	</element>
+	<element>
+	</element>
+	<element>
+	</element>
+	</element>
+<element
+	id="Taxi Driver"
+	title="Taxi Driver"
+	description="Starring Rober De Niro">
+	
+	<element="showtimes">
+		<element = "10:00">
+	</element>
+	<element="2:00">
+	</element>
+	<element="3:30">
+	</element>
+	</element>
+	<element>
+	</element>
+	<element>
+	</element>
+	</element>
+<element
+	id="Gladiator"
+	tite="Gladiator"
+	description="Starring Gerard Butler">
+
+	<element="showtimes">
+		<element = "10:00">
+	</element>
+	<element="2:00">
+	</element>
+	<element="3:30">
+	</element>
+	</element>
+	<element>
+	</element>
+	<element>
+	</element>
+	</element>
+	</elements>
