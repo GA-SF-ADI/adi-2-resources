@@ -23,7 +23,17 @@ public class SecondActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            String firstName = mFirstNameText.getText().toString();
+                String lastName = mLastNameText.getText().toString();
+                Intent results = new Intent();
+                // We need this intent to pass data between 2 activities
+                results.putExtra("firstName", firstName);
+                //these are key value pairs
+                results.putExtra("lastName", lastName);
+                setResult(RESULT_OK, results);
+                //gets us ready to go back to the acitvity
+                finish();
+                //that means it goes back to the activity that you just came from
             }
         });
     }

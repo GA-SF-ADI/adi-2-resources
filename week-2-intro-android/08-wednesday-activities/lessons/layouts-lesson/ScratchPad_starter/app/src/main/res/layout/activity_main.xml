@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="200dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/relativeLayout">
 
 
+
+   <FrameLayout
+       android:layout_width="400dp"
+       android:layout_height="200dp"
+       android:id="@+id/frameLayout">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:src="@drawable/background_image"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:id="@+id/image1"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,4 +34,82 @@
         android:src="@drawable/logo"
         android:layout_margin="12dp" />
 
-</FrameLayout>
+   </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/frameLayout">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonOne"
+        android:text="button 1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_vertical"
+        />
+
+    <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/buttonTwo"
+    android:text="button 2"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/buttonOne"
+        android:layout_toEndOf="@+id/buttonOne"
+        android:layout_gravity="center_vertical"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonThree"
+        android:text="button 3"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/buttonTwo"
+        android:layout_toEndOf="@+id/buttonTwo"
+        android:layout_gravity="center_vertical"
+        />
+
+    </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="20pt"
+            android:textColor= "#000000"
+            android:id="@+id/heading"
+            android:layout_below="@+id/linearLayout"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/heading"
+            android:text="subtitle"
+            android:textSize="15pt"
+            android:textColor= "#000000"
+            android:id="@+id/subTitle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subTitle"
+            android:text="
+ Hello. Good morning! Here is a bunch of text for you to read.
+ Hello. Good morning! Here is a bunch of text for you to read.
+ Hello. Good morning! Here is a bunch of text for you to read."
+            android:textSize="10pt"
+            android:textColor= "#000000"
+            android:id="@+id/body"/>
+
+
+</RelativeLayout>
