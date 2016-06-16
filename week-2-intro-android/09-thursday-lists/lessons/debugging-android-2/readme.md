@@ -16,6 +16,8 @@ creator:
 * Given sample code, set a breakpoint and look at the current state
 * Given a stack trace, identify which lines are within your application
 * Describe what a stack trace is saying
+* Understand different types of log message
+* Use toasts to provide message to the user
 
 ### Preparation
 *Before this lesson, students should read over the following lessons:*
@@ -24,7 +26,7 @@ creator:
 
 ## Introduction: Logs and LogCat (5 minutes)
 
-<a href="screenshots/logcat.png"><img src="screenshots/logcat.png" height="300"></a>
+![](logcat.png)
 
 Android provided a way to view messages sent from a device. This is called [logcat](http://developer.android.com/tools/help/logcat.html).
 
@@ -99,7 +101,9 @@ Let's break this up:
 
 ## Guided Practice: Adding log statements (10 minutes)
 
-Using the [provided sample code](starter-code), which is filled with functions calling each other, let's add log statements to the code.
+Using the [provided starter code](starter-code), add log statements to the subtract, multiply and divide methods in order to debug the values. 
+
+If you find a problem with the code, please fix it and make it work correctly!
 
 
 ## Introduction: Displaying messages to the User (10 minutes)
@@ -108,9 +112,7 @@ Using the [provided sample code](starter-code), which is filled with functions c
 
 Toasts are messages that pop up to the user, showing the user information that is important to them.
 
-<p align="center">
-  <a href="screenshots/toast.png"><img src="screenshots/toast.png" /></a>
-</p>
+![](toast.png)
 
 For an email client, for example, the toast "Email sent" would be shown after the email is sent successfully. A lot of times, you would see a toast pop up, saying "No Network Connection" if you try to do something that requires internet.
 
@@ -134,7 +136,9 @@ As usual, let's break this up:
 
 ## Guided Practice: Adding toasts (10 minutes)
 
-Using the [provided sample code](starter-code), which is a screen with four buttons, lets add a few toasts!
+Using the [provided sample code](starter-code), which is a screen with four buttons, lets add a few toasts just like we did in the add method!
+
+Check your work with the [provided solution code](solution-code). Note solution code does not have the log/toast lines. The solution code just has the working application and fixed all the bugs.
 
 
 ## Conclusion (5 mins)
