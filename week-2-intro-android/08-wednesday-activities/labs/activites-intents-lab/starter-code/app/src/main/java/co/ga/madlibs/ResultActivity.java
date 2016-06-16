@@ -22,6 +22,7 @@ public class ResultActivity extends AppCompatActivity {
 
     TextView resultTextView;
     Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class ResultActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            words[0] = extras.getString(ADJECTIVE1, "Adjec");
+            words[0] = extras.getString(ADJECTIVE1, "?");
             words[1] = extras.getString(ADJECTIVE2, "Adjec 2");
             words[2] = extras.getString(NOUN1, "Noun 1");
             words[3] = extras.getString(NOUN2, "Noun 2");
@@ -56,17 +57,17 @@ public class ResultActivity extends AppCompatActivity {
 
             resultString = addIndefiniteArticles(resultString, words[2], words[3]);
 
-            resultTextView.setText( Html.fromHtml(resultString) );
+            resultTextView.setText(Html.fromHtml(resultString));
         } else {
             Toast.makeText(ResultActivity.this, "Did you set the words as extra data in the Intent?", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private String addIndefiniteArticles(String sentence, String... nouns){
+    private String addIndefiniteArticles(String sentence, String... nouns) {
         String result = sentence;
-        for (String noun : nouns){
-            if (!TextUtils.isEmpty(noun)){
-                String article = isVowel(noun.charAt(0))? "an" : "a";
+        for (String noun : nouns) {
+            if (!TextUtils.isEmpty(noun)) {
+                String article = isVowel(noun.charAt(0)) ? "an" : "a";
                 result = result.replaceFirst("a/an <b>" + noun + "</b>", article + " <b>" + noun + "</b>");
             }
         }

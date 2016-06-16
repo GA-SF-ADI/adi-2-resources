@@ -19,14 +19,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                words[0] = extras.getString(ADJECTIVE1, "???");
-//                words[1] = extras.getString(ADJECTIVE2, "???");
-//                words[2] = extras.getString(NOUN1, "???");
-//                words[3] = extras.getString(NOUN2, "???");
-//                words[4] = extras.getString(ANIMALS, "???");
-//                words[5] = extras.getString(GAME, "???");
-
-
 //                Intent intent = new Intent(this, DisplayMessageActivity.class);
 //                EditText editText = (EditText) findViewById(R.id.edit_message);
 //                String message = editText.getText().toString();
@@ -48,12 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intenttoResult = new Intent(MainActivity.this, ResultActivity.class);
 
-                intenttoResult.putExtra(adj1, -1);
-                intenttoResult.putExtra(adj2, -1);
-                intenttoResult.putExtra(noun1, -1);
-                intenttoResult.putExtra(noun, -1);
-                intenttoResult.putExtra(animals, -1);
-                intenttoResult.putExtra(game, -1);
+                Bundle bundle = new Bundle();
+                bundle.putString(ResultActivity.ADJECTIVE1, adjectiveone.getText().toString());
+                bundle.putString(ResultActivity.ADJECTIVE2, adjectivetwo.getText().toString());
+                bundle.putString(ResultActivity.NOUN1, nounone.getText().toString());
+                bundle.putString(ResultActivity.NOUN2, nountwo.getText().toString());
+                bundle.putString(ResultActivity.ANIMALS, animal.getText().toString());
+                bundle.putString(ResultActivity.GAME, choosegame.getText().toString());
+
 
                 startActivity(intenttoResult);
             }
