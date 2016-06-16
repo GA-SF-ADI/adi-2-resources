@@ -27,6 +27,7 @@
                 android:text="Go Back"
                 android:id="@+id/back_button"
                 android:layout_gravity="right" />
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -11,6 +11,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/adjective1"
+                android:hint="adjective1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/adjective2"
+                android:hint="adjective2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/noun1"
+                android:hint="noun1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/noun2"
+                android:hint="noun2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/animals"
+                android:hint="animals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <EditText
+                android:id="@+id/game"
+                android:hint="game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"/>
+
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">send_receive</string>
+    <string name="title_activity_receive">ReceiveActivity</string>
+</resources>
