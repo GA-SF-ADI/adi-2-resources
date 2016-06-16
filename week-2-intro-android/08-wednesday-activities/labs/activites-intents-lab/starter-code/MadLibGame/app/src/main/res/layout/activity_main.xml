@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter some words!"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <EditText
+                android:id="@+id/adjective1_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="1st adjective"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/adjective2_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="2nd adjective"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/noun1_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="1st noun"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/noun2_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="2nd noun"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/animals_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="an animal"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/game_xml"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="a game"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/finished_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Finished" />
+</FrameLayout>
