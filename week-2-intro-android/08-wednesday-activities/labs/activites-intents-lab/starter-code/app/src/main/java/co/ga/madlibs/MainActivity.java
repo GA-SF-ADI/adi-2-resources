@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intenttoResult = new Intent(MainActivity.this, ResultActivity.class);
 
-                intenttoResult.putExtra("Adjec", adj1);
-                intenttoResult.putExtra("Adjec2", adj2);
-                intenttoResult.putExtra("Noun 1", noun1);
-                intenttoResult.putExtra("Noun 2", noun);
-                intenttoResult.putExtra("Animal", animals);
-                intenttoResult.putExtra("Game", game);
+                intenttoResult.putExtra(adj1, -1);
+                intenttoResult.putExtra(adj2, -1);
+                intenttoResult.putExtra(noun1, -1);
+                intenttoResult.putExtra(noun, -1);
+                intenttoResult.putExtra(animals, -1);
+                intenttoResult.putExtra(game, -1);
 
                 startActivity(intenttoResult);
             }
