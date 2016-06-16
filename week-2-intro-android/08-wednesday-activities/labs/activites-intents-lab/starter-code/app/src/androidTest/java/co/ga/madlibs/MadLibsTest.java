@@ -37,7 +37,7 @@ public class MadLibsTest extends ActivityInstrumentationTestCase2<MainActivity> 
     }
 
     public void test00_IfHasAllRequiredViews() throws Exception {
-        onView(withId(R.id.adjective1_edittext)).check(matches(isDisplayed()))
+        onView(withId(R.id.adjective1_edittext)).check(matches(isDisplayed()));
         onView(withId(R.id.adjective2_edittext)).check(matches(isDisplayed()));
         onView(withId(R.id.noun1_edittext)).check(matches(isDisplayed()));
         onView(withId(R.id.noun2_edittext)).check(matches(isDisplayed()));
