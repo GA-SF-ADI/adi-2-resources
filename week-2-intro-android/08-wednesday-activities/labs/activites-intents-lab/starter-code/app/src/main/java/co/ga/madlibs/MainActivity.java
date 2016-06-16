@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         game = (EditText)findViewById(R.id.game);
         button1 = (Button)findViewById(R.id.button1);
 
+
         button1.setOnClickListener(new View.OnClickListener() { //type new V in () - for listener
             @Override
             public void onClick(View v) {
                 Log.d("Main", "onClick: clicked");
+                
                 Intent intentSend = new Intent(MainActivity.this, ResultActivity.class);
 
                 Bundle bundle = new Bundle(); //Bundle up strings
