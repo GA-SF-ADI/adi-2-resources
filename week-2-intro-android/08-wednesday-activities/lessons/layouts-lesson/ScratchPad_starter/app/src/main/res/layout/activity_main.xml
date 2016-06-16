@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="200dp">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+>>>>>>> 676c9ddb834da935df9386b9ef176e0d931ef58f
 
     <ImageView
         android:layout_width="match_parent"
@@ -30,6 +39,7 @@
         android:src="@drawable/logo"
         android:layout_margin="12dp" />
 
+<<<<<<< HEAD
     </FrameLayout>
 
     <LinearLayout
@@ -134,3 +144,11 @@
 
 
 
+=======
+
+</FrameLayout>
+
+
+
+</RelativeLayout>
+>>>>>>> 676c9ddb834da935df9386b9ef176e0d931ef58f
