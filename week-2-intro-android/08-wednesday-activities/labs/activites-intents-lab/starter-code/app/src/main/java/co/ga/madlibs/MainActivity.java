@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button submit;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(ResultActivity.ANIMALS, animals_edittext.getText().toString());
                 bundle.putString(ResultActivity.GAME, game_edittext.getText().toString());
                 intent.putExtras(bundle);
+                if(adjective1_edittext.getText().toString().trim().length() == 0 || adjective2_edittext.getText().toString().trim().length() == 0 || noun1_edittext.getText().toString().trim().length() == 0 || noun2_edittext.getText().toString().trim().length() == 0 || animals_edittext.getText().toString().trim().length() == 0 || game_edittext.getText().toString().trim().length() == 0){
+                    Toast toast =Toast.makeText(MainActivity.this,"please enter valid information", Toast.LENGTH_SHORT); toast.show();
+                }
                 startActivity(intent);
             }
         });
