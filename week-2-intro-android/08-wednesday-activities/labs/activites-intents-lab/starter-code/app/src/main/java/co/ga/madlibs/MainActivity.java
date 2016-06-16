@@ -41,17 +41,19 @@ public class MainActivity extends AppCompatActivity {
 //                String message = editText.getText().toString();
 //                intent.putExtra("String message", actual data);
 
+                //Need to use showError method here
+
                 sendIntentAndData();
 
             }
             private void showError() {
-                adjectiveone.setError("Password and username didn't match");
-                adjectivetwo.setError("Password and username didn't match");
-                nounone.setError("Password and username didn't match");
-                nountwo.setError("Password and username didn't match");
-                animal.setError("Password and username didn't match");
-                choosegame.setError("Password and username didn't match");
 
+                adjectiveone.setError("Please fill this out");
+                adjectivetwo.setError("Please fill this out");
+                nounone.setError("Please fill this out");
+                nountwo.setError("Please fill this out");
+                animal.setError("Please fill this out");
+                choosegame.setError("Please fill this out");
             }
 
 
