@@ -67,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
         mAddButton.setOnClickListener(addButtonListener);
         mSubtractButton.setOnClickListener(subtractButtonListener);
-        mMultiplicationButton.setOnClickListener(divideButtonListener);
+        mMultiplicationButton.setOnClickListener(multiplyButtonListener);
         mDivisionButton.setOnClickListener(divideButtonListener);
 
     }
 
     public void addTwoNumbers(){
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
-        int number2 = Integer.parseInt(mAnswerTextView.getText().toString());
+        int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
         int answer = number1 + number2;
 
@@ -91,9 +91,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void subtractTwoNumbers(){
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
-        int number2 = Integer.parseInt(mNumberOneEditText.getText().toString());
+        int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
         int answer = number1 - number2;
+
+
+        Log.d(TAG, "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer);
+
+        Toast.makeText(MainActivity.this,
+                "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer,
+                Toast.LENGTH_SHORT).show();
 
         mAnswerTextView.setText("Answer: " + answer);
     }
@@ -104,6 +111,18 @@ public class MainActivity extends AppCompatActivity {
 
         int answer = number1 * number2;
 
+        Log.d(TAG, "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer);
+
+        Toast.makeText(MainActivity.this,
+                "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer,
+                Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(MainActivity.this,
+                "hello",
+                Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(MainActivity.this,"hi",Toast.LENGTH_SHORT).show();
+
         mAnswerTextView.setText("Answer: " + answer);
     }
 
@@ -111,7 +130,13 @@ public class MainActivity extends AppCompatActivity {
         int number1 = Integer.parseInt(mNumberOneEditText.getText().toString());
         int number2 = Integer.parseInt(mNumberTwoEditText.getText().toString());
 
-        float answer = ((float) number1) + number2;
+        float answer = ((float) number1) / number2;
+
+        Log.d(TAG, "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer);
+
+        Toast.makeText(MainActivity.this,
+                "Number 1: " + number1 + " Number 2: " + number2 + " Answer: " + answer,
+                Toast.LENGTH_SHORT).show();
 
         mAnswerTextView.setText("Answer: " + answer);
     }
