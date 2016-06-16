@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 if(adjective1_edittext.getText().toString().trim().length() == 0 || adjective2_edittext.getText().toString().trim().length() == 0 || noun1_edittext.getText().toString().trim().length() == 0 || noun2_edittext.getText().toString().trim().length() == 0 || animals_edittext.getText().toString().trim().length() == 0 || game_edittext.getText().toString().trim().length() == 0){
                     Toast toast =Toast.makeText(MainActivity.this,"please enter valid information", Toast.LENGTH_SHORT); toast.show();
                 }
-                startActivity(intent);
+                startActivity(intent);// need to fix if statement to not run startActivity() if editText are empty
             }
         });
     }
