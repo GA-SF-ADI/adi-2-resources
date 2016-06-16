@@ -39,18 +39,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Bundle bundle = new Bundle();
-                bundle.putString(ResultActivity.ADJECTIVE1, adjective1MainEditText.getText().toString());
-                bundle.putString(ResultActivity.ADJECTIVE2, adjective2MainEditText.getText().toString());
-                bundle.putString(ResultActivity.NOUN1, noun1MainEditText.getText().toString());
-                bundle.putString(ResultActivity.NOUN2, noun2MainEditText.getText().toString());
-                bundle.putString(ResultActivity.ANIMALS, animalsMainEditText.getText().toString());
-                bundle.putString(ResultActivity.GAME, gameMainEditText.getText().toString());
+                if (adjective1MainEditText.getText().toString().equals("") ||
+                        adjective2MainEditText.getText().toString().equals("") ||
+                        noun1MainEditText.getText().toString().equals("") ||
+                        noun2MainEditText.getText().toString().equals("") ||
+                        animalsMainEditText.getText().toString().equals("") ||
+                        gameMainEditText.getText().toString().equals("")) {
+                    adjective1MainEditText.setError("Please enter an adj");
+                    adjective2MainEditText.setError("Please enter an adj");
+                    noun1MainEditText.setError("Please enter a noun");
+                    noun2MainEditText.setError("Please enter a noun");
+                    animalsMainEditText.setError("Please enter an animal");
+                    gameMainEditText.setError("Please enter a game");
+
+                } else {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(ResultActivity.ADJECTIVE1, adjective1MainEditText.getText().toString());
+                    bundle.putString(ResultActivity.ADJECTIVE2, adjective2MainEditText.getText().toString());
+                    bundle.putString(ResultActivity.NOUN1, noun1MainEditText.getText().toString());
+                    bundle.putString(ResultActivity.NOUN2, noun2MainEditText.getText().toString());
+                    bundle.putString(ResultActivity.ANIMALS, animalsMainEditText.getText().toString());
+                    bundle.putString(ResultActivity.GAME, gameMainEditText.getText().toString());
 
 
-                sendToResultActivity.putExtras(bundle);
+                    sendToResultActivity.putExtras(bundle);
 
-                startActivity(sendToResultActivity);
+                    startActivity(sendToResultActivity);
+                }
             }
         });
 
