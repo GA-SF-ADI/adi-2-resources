@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText adjectiveone = (EditText) findViewById(R.id.adjective1_edittext);
-        EditText adjectivetwo = (EditText) findViewById(R.id.adjective2_edittext);
-        EditText nounone = (EditText) findViewById(R.id.noun1_edittext);
-        EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
-        EditText animal = (EditText) findViewById(R.id.animals_edittext);
-        EditText choosegame = (EditText) findViewById(R.id.game_edittext);
+        final EditText adjectiveone = (EditText) findViewById(R.id.adjective1_edittext);
+        final EditText adjectivetwo = (EditText) findViewById(R.id.adjective2_edittext);
+        final EditText nounone = (EditText) findViewById(R.id.noun1_edittext);
+        final EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
+        final EditText animal = (EditText) findViewById(R.id.animals_edittext);
+        final EditText choosegame = (EditText) findViewById(R.id.game_edittext);
         Button submitButton = (Button) findViewById(R.id.submit_button);
 
 
@@ -41,21 +41,18 @@ public class MainActivity extends AppCompatActivity {
 //                String message = editText.getText().toString();
 //                intent.putExtra("String message", actual data);
 
-            }
-
-
-//                public void btnClick(View v)
-//                {
-//                    if(editText.getText().length()==0)
-//                    {
-//                        editText.setError("Field cannot be left blank.");
-//                    }
-//                }
-
-
+                sendIntentAndData();
 
             }
+            private void showError() {
+                adjectiveone.setError("Password and username didn't match");
+                adjectivetwo.setError("Password and username didn't match");
+                nounone.setError("Password and username didn't match");
+                nountwo.setError("Password and username didn't match");
+                animal.setError("Password and username didn't match");
+                choosegame.setError("Password and username didn't match");
 
+            }
 
 
             private void sendIntentAndData() {
@@ -80,4 +77,3 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-}
