@@ -1,0 +1,72 @@
+Intro to .xml Homework
+1.) There are seven elements
+a) manifest
+b)application
+c)activity
+d)intent-filter
+e)action
+f) category
+g) service
+
+2.) The namespace is : xmlns:android="http://schemas.android.com/apk/res/androidpackage="generalassembly.yuliyakaleda.supportdifferentdevices"
+
+3.) parent element manifest<child elements: application activity, intent-filter, activity service >
+
+parent element: application <child elements: activity, intent-filter, service>
+
+parent element: itent-filter<child elements: action, category>
+
+4) empty element is intent filter
+
+5) to 11.) create .xml file:
+
+<movie_collection xmlns:collection="http://movies.com">
+  <movie
+    collection:id="1"
+    collection:title="The Matrix"
+    collection:description="a future dystopia">
+
+    <AM>7</A<>
+    <Noon>12</Noon>
+    <PM>10</PM>
+    <soldout></soldout>
+    <rating></rating>
+  </movie>
+
+  <movie
+      collection:id="2"
+      collection:title="Bridget Jones Diary"
+      collection:description="funny english movie">
+
+    <AM>7</AM>
+    <Noon>12</Noon>
+    <PM>10</PM>
+    <soldout></soldout>
+    <rating></rating>
+  </movie>
+
+  <movie
+      collection:id="3"
+      collection:title="True Grit"
+      collection:description="movie about the old west">
+
+    <AM>7</AM>
+    <Noon>12</Noon>
+    <PM>10</PMe>
+    <soldout></soldout>
+    <rating></rating>
+  </movie>
+
+  <movie
+      collection:id="4"
+      collection:title="Hustle and Flow"
+      collection:description="movie about drugs">
+
+    <AM>7</AM>
+    <Noon>12</Noon>
+    <PM>10</PM>
+    <soldout></soldout>
+    <rating></rating>
+  </movie>
+
+</movie_collection>
