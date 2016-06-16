@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.ga.madlibs.MainActivity" >
+    tools:context="co.ga.madlibs.MainActivity"
+    android:background="#FFFF9F9F">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Adjective #1"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <EditText
@@ -24,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Adjective #2"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <EditText
@@ -32,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Noun #1"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <EditText
@@ -40,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Noun #1"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <EditText
@@ -48,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Animal (plural please!)"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <EditText
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Game name"
-                android:textColorHint="#d465c1"
+                android:textColorHint="#003513"
                 />
 
             <Button
