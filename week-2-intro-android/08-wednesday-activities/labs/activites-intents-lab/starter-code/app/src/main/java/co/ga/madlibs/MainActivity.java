@@ -15,6 +15,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText adjectiveone = (EditText) findViewById(R.id.adjective1_edittext);
+        EditText adjectivetwo = (EditText) findViewById(R.id.adjective2_edittext);
+        EditText nounone = (EditText) findViewById(R.id.noun1_edittext);
+        EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
+        EditText animal = (EditText) findViewById(R.id.animals_edittext);
+        EditText choosegame = (EditText) findViewById(R.id.game_edittext);
+        Button submitButton = (Button) findViewById(R.id.submit_button);
+
+
+        String adj1 = adjectiveone.getText().toString();
+        String adj2 = adjectivetwo.getText().toString();
+        String noun1 = nounone.getText().toString();
+        String noun = nountwo.getText().toString();
+        String animals = animal.getText().toString();
+        String game = choosegame.getText().toString();
+
 
         findViewById(R.id.submit_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,21 +41,24 @@ public class MainActivity extends AppCompatActivity {
 //                String message = editText.getText().toString();
 //                intent.putExtra("String message", actual data);
 
-                EditText adjectiveone = (EditText) findViewById(R.id.adjective1_edittext);
-                EditText adjectivetwo = (EditText) findViewById(R.id.adjective2_edittext);
-                EditText nounone = (EditText) findViewById(R.id.noun1_edittext);
-                EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
-                EditText animal = (EditText) findViewById(R.id.animals_edittext);
-                EditText choosegame = (EditText) findViewById(R.id.game_edittext);
-                Button submitButton = (Button) findViewById(R.id.submit_button);
+            }
 
 
-                String adj1 = adjectiveone.getText().toString();
-                String adj2 = adjectivetwo.getText().toString();
-                String noun1 = nounone.getText().toString();
-                String noun = nountwo.getText().toString();
-                String animals = animal.getText().toString();
-                String game = choosegame.getText().toString();
+//                public void btnClick(View v)
+//                {
+//                    if(editText.getText().length()==0)
+//                    {
+//                        editText.setError("Field cannot be left blank.");
+//                    }
+//                }
+
+
+
+            }
+
+
+
+            private void sendIntentAndData() {
 
                 Intent intenttoResult = new Intent(MainActivity.this, ResultActivity.class);
 
@@ -53,10 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
                 intenttoResult.putExtras(bundle);
                 startActivity(intenttoResult);
+
             }
         });
 
-
     }
+
+}
 
 }
