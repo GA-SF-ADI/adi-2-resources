@@ -45,12 +45,12 @@ public class ResultActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            words[0] = extras.getString(ADJECTIVE1, "???");
-            words[1] = extras.getString(ADJECTIVE2, "???");
-            words[2] = extras.getString(NOUN1, "???");
-            words[3] = extras.getString(NOUN2, "???");
-            words[4] = extras.getString(ANIMALS, "???");
-            words[5] = extras.getString(GAME, "???");
+            words[0] = extras.getString(ADJECTIVE1, "Adjec");
+            words[1] = extras.getString(ADJECTIVE2, "Adjec 2");
+            words[2] = extras.getString(NOUN1, "Noun 1");
+            words[3] = extras.getString(NOUN2, "Noun 2");
+            words[4] = extras.getString(ANIMALS, "Animal");
+            words[5] = extras.getString(GAME, "Game");
 
             String resultString = getString(R.string.madlib_result, words);
 

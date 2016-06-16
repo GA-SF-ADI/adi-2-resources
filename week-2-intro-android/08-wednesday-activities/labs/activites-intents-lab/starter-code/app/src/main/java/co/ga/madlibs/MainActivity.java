@@ -37,31 +37,25 @@ public class MainActivity extends AppCompatActivity {
                 EditText nounone = (EditText) findViewById(R.id.noun1_edittext);
                 EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
                 EditText animal = (EditText) findViewById(R.id.animals_edittext);
-                EditText game = (EditText) findViewById(R.id.game_edittext);
+                EditText choosegame = (EditText) findViewById(R.id.game_edittext);
 
-                String ad1 = adjectiveone.getText().toString();
-                String ad2 = adjectivetwo.getText().toString();
+                String adj1 = adjectiveone.getText().toString();
+                String adj2 = adjectivetwo.getText().toString();
                 String noun1 = nounone.getText().toString();
-                String noun2 = nountwo.getText().toString();
-                String anim = animal.getText().toString();
-                String games = adjectiveone.getText().toString();
+                String noun = nountwo.getText().toString();
+                String animals = animal.getText().toString();
+                String game = choosegame.getText().toString();
 
                 Intent intenttoResult = new Intent(MainActivity.this, ResultActivity.class);
 
-                intenttoResult.putExtra("Animal", ad1);
-                intenttoResult.putExtra("Animal", ad1);
-                intenttoResult.putExtra("Animal", ad1);
-                intenttoResult.putExtra("Animal", ad1);
-                intenttoResult.putExtra("Animal", ad1);
-                intenttoResult.putExtra("Animal", ad1);
-
-
+                intenttoResult.putExtra("Adjec", adj1);
+                intenttoResult.putExtra("Adjec2", adj2);
+                intenttoResult.putExtra("Noun 1", noun1);
+                intenttoResult.putExtra("Noun 2", noun);
+                intenttoResult.putExtra("Animal", animals);
+                intenttoResult.putExtra("Game", game);
 
                 startActivity(intenttoResult);
-
-
-
-
             }
         });
 
