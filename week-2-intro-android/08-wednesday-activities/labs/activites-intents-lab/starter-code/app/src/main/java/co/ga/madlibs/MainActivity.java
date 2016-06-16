@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent(this, DisplayMessageActivity.class);
 //                EditText editText = (EditText) findViewById(R.id.edit_message);
 //                String message = editText.getText().toString();
-//                intent.putExtra(EXTRA_MESSAGE, message);
+//                intent.putExtra("String message", actual data);
 
                 EditText adjectiveone = (EditText) findViewById(R.id.adjective1_edittext);
                 EditText adjectivetwo = (EditText) findViewById(R.id.adjective2_edittext);
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
                 EditText nountwo = (EditText) findViewById(R.id.noun2_edittext);
                 EditText animal = (EditText) findViewById(R.id.animals_edittext);
                 EditText choosegame = (EditText) findViewById(R.id.game_edittext);
+                Button submitButton = (Button) findViewById(R.id.submit_button);
+
 
                 String adj1 = adjectiveone.getText().toString();
                 String adj2 = adjectivetwo.getText().toString();
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(ResultActivity.ANIMALS, animal.getText().toString());
                 bundle.putString(ResultActivity.GAME, choosegame.getText().toString());
 
-
+                intenttoResult.putExtras(bundle);
                 startActivity(intenttoResult);
             }
         });

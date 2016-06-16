@@ -46,12 +46,23 @@ public class ResultActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            words[0] = extras.getString(ADJECTIVE1, "?");
+            words[0] = extras.getString(ADJECTIVE1, "adjectiveone.getText().toString())");
             words[1] = extras.getString(ADJECTIVE2, "Adjec 2");
             words[2] = extras.getString(NOUN1, "Noun 1");
             words[3] = extras.getString(NOUN2, "Noun 2");
             words[4] = extras.getString(ANIMALS, "Animal");
             words[5] = extras.getString(GAME, "Game");
+
+            /*
+            bundle.putString(ResultActivity.ADJECTIVE1, adjectiveone.getText().toString());
+            bundle.putString(ResultActivity.ADJECTIVE2, adjectivetwo.getText().toString());
+            bundle.putString(ResultActivity.NOUN1, nounone.getText().toString());
+            bundle.putString(ResultActivity.NOUN2, nountwo.getText().toString());
+            bundle.putString(ResultActivity.ANIMALS, animal.getText().toString());
+            bundle.putString(ResultActivity.GAME, choosegame.getText().toString());
+            */
+
+
 
             String resultString = getString(R.string.madlib_result, words);
 
