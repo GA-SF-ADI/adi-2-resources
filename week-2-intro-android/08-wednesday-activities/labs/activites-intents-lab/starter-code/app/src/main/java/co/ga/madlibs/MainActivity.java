@@ -34,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
                 String animalInput = animal.getText().toString();
                 String gameInput = game.getText().toString();
 
+                String errorMessage = getString(R.string.error_message);
+
+                EditText[] etList = new EditText[] {
+                        adj1, adj2, noun1, noun2, animal, game
+                };
+
+                for (EditText et : etList) {
+                    boolean shouldShowErrorMsg = et.getText().toString().isEmpty();
+                    if (shouldShowErrorMsg) {
+                        et.setError(errorMessage);
+                    }
+                }
+
                 Intent intent = new Intent(MainActivity.this, ResultActivity.class);
 
                 intent.putExtra(ResultActivity.ADJECTIVE1, adj1Input);
