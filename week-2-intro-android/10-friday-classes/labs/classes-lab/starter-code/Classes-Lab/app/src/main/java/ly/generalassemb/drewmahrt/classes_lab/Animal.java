@@ -5,14 +5,17 @@ public class Animal {
     int topSpeed;
     boolean isEndangered;
     String name;
+    String habitat;
 
-    public Animal(int numLegs, int topSpeed, boolean isEndangered, String name){
+    public Animal(int numLegs, int topSpeed, boolean isEndangered, String name, String habitat){
         //Set properties here
 
         this.numLegs = numLegs;
         this.topSpeed = topSpeed;
         this.isEndangered = isEndangered;
         this.name = name;
+        this.habitat = habitat;
+
 
     }
 
@@ -51,6 +54,14 @@ public class Animal {
 
     public void setName (String name) {
         this.name = name;
+    }
+
+    public String getHabitat () {
+        return habitat;
+    }
+
+    public void setHabitat () {
+        this.habitat = habitat;
     }
 }
 

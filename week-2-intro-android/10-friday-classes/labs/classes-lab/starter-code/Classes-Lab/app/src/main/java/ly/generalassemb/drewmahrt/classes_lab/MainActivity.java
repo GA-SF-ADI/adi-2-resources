@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
 
         //Instantiate new Animal
-       Animal kangaroo = new Animal (4 ,20, false, "Kangaroo");
-        Animal bear = new Animal (4 ,50, true, "Bear");
+       Animal kangaroo = new Animal (4 ,20, false, "Kangaroo", "Australia");
+        Animal bear = new Animal (4 ,50, true, "Bear", "the woods");
 
 
         //get name and speed values using getters
 
         //Set text of first TextView
-        output.setText("Your animal is " + kangaroo.getName() + " " + "and its mph is" + " " +kangaroo.getTopSpeed() + ".");
+        output.setText("Your animal is " + kangaroo.getName() + " " + "and its mph is" + " " +kangaroo.getTopSpeed() + ". It lives in " + kangaroo.getHabitat() + ".");
 
         //Set new name, speed, and endangered properties values using setters
 
@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
         //topSpeed = 50;
 
         //Set text of second TextView
-        changedOutput.setText("Your animal is " + bear.getName() + " " + "and its mph is" + " " +bear.getTopSpeed() + ".");
+        changedOutput.setText("Your animal is " + bear.getName() + " " + "and its mph is" + " " +bear.getTopSpeed() + ". It lives in " + bear.getHabitat() + ".");
     }
 }
