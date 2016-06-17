@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import java.util.LinkedList;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //Instantiate your LinkedList
         mStringList = new LinkedList<String>();
@@ -54,7 +58,15 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return true;
+
+                String str = myEditText.getText().toString();
+                ArrayList<String> myArray = new ArrayList<String>(Arrays.asList(str));
+                myArray.remove(position);
+
+                //mAdapter.remove(myArray[position]);
+                mAdapter.notifyDataSetChanged();
+                return false;
+                //mStringList.remove(myEditText);
             }
         });
 
