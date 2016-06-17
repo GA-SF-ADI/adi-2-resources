@@ -37,30 +37,37 @@ public class MainActivity extends AppCompatActivity {
         Button addReptileButton = (Button) findViewById(R.id.reptile_button);
 
 
-        EditText mammalName = (EditText) findViewById(R.id.mammal_name);
-        EditText numOfMammalOffSpring = (EditText) findViewById(R.id.number_of_offspring);
-        EditText reptileName = (EditText) findViewById(R.id.reptile_name);
-        EditText numOfReptileScales = (EditText) findViewById(R.id.number_of_scales);
+        final EditText mammalName = (EditText) findViewById(R.id.mammal_name);
+        final EditText numOfMammalOffSpring = (EditText) findViewById(R.id.number_of_offspring);
+        final EditText reptileName = (EditText) findViewById(R.id.reptile_name);
+        final EditText numOfReptileScales = (EditText) findViewById(R.id.number_of_scales);
 
 
-        Integer reptileScaleNum = Integer.parseInt(numOfReptileScales.getText().toString());
-        Integer mammalBirthNum = Integer.parseInt(numOfMammalOffSpring.getText().toString());
+
 
 
         final String enteredMammalType = mammalName.getText().toString();
-        String enteredReptileType = reptileName.getText().toString();
+        final String enteredReptileType = reptileName.getText().toString();
 
 
-        ArrayList<String> listOfAnimals = new ArrayList<>();
+        final ArrayList<String> listOfAnimals = new ArrayList<>();
 
         ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
-        ArrayAdapter adapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, listOfAnimals);
+        final ArrayAdapter mAdapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, listOfAnimals);
+
+        animalListView.setAdapter(mAdapterForAnimalDataToListView);
 
 
                 addMammalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Integer mammalBirthNum = Integer.parseInt(numOfMammalOffSpring.getText().toString());
+
+                listOfAnimals.add(enteredMammalType);
+                listOfAnimals.add(mammalBirthNum.toString());
+
+                mAdapterForAnimalDataToListView.notifyDataSetChanged();
 
 
             }
@@ -70,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
         addReptileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Integer reptileScaleNum = Integer.parseInt(numOfReptileScales.getText().toString());
+
+                listOfAnimals.add(enteredReptileType);
+
+                mAdapterForAnimalDataToListView.notifyDataSetChanged();
+
 
 
 
