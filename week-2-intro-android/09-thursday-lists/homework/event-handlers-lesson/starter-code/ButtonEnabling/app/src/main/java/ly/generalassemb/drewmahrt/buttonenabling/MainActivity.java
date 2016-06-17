@@ -27,20 +27,6 @@ public class MainActivity extends AppCompatActivity {
          * In the handler, disable the button using setEnabled(false). Pass in true to re-enable.
          */
 
-//        mAgreeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//
-//            // we handle when we detect a change in checked state. Boolean isChecked tells us whether checkbox is checked or not.
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                // based on whether checkbox is checked or not, we enable/disable the button
-//                if(isChecked) {
-//                    mAgreeButton.setEnabled(true);
-//                } else {
-//                    mAgreeButton.setEnabled(false);
-//                }
-//            }
-//        });
-
         CompoundButton.OnCheckedChangeListener buttonOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,17 +38,5 @@ public class MainActivity extends AppCompatActivity {
 
         mAgreeCheckBox.setOnCheckedChangeListener(buttonOnCheckedChangeListener);
 
-
-
-
-//        mAgreeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener){
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-//                if(isChecked){
-//                    mAgreeButton.setEnabled(true);
-//                }
-//                else mAgreeButton.setEnabled(false);
-//            }
-//        });
     }
 }
