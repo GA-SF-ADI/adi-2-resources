@@ -55,6 +55,7 @@ public class Main {
 
     }
 
+
     //BONUS QUESTION IS BELOW
 
     /**
@@ -77,6 +78,7 @@ public class Main {
      * @param array2 Array of sorted integers
      * @return Array of sorted integers, merged from array1 and array2
      */
+
     public static int[] mergeSortedArrays(int[] array1, int[] array2){
         return null;
     }
