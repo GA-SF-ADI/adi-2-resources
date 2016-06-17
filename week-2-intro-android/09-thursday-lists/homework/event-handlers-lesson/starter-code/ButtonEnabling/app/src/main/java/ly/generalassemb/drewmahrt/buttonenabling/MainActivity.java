@@ -17,15 +17,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAgreeCheckBox = (CheckBox)findViewById(R.id.agree_check_box);
-        mAgreeButton = (Button)findViewById(R.id.agree_button);
-
         //Call setOnCheckedChangeListener on the mAgreeCheckBox, and complete the listener
         /**
          * Call setOnCheckedChangeListener on the mAgreeCheckBox, and complete the listener
          *
          * In the handler, disable the button using setEnabled(false). Pass in true to re-enable.
          */
+
+        mAgreeCheckBox = (CheckBox)findViewById(R.id.agree_check_box);
+        mAgreeButton = (Button)findViewById(R.id.agree_button);
 
         CompoundButton.OnCheckedChangeListener buttonOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
