@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -49,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
         String enteredReptileType = reptileName.getText().toString();
 
 
-        ArrayList<String> listOfAnimals = new ArrayList<String>();
+        ArrayList<String> listOfAnimals = new ArrayList<>();
 
         ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
+        ArrayAdapter adapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, listOfAnimals);
 
-        addMammalButton.setOnClickListener(new View.OnClickListener() {
+
+                addMammalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "Reptile button clicked", Toast.LENGTH_SHORT).show();
 
 
             }
