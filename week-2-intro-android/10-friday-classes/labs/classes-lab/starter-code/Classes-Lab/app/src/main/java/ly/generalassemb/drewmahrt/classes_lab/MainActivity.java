@@ -18,26 +18,40 @@ public class MainActivity extends AppCompatActivity {
         TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
 
         //Instantiate new Animal
-        Animal animal = ;
+        Animal animal = new Animal(2, 20, true, "Mike");
 
         String name;
         int topSpeed;
+        int numlegs;
+        boolean isEndangered;
 
         //get name and speed values using getters
-        name = ;
-        topSpeed = ;
+        name = animal.getName();
+        topSpeed = animal.topSpeed;
+        numlegs = animal.getNumLegs();
+        isEndangered = animal.getisEndangered();
 
         //Set text of first TextView
-        output.setText();
+        output.setText("The " + name + " has a top speed of " + topSpeed + " mph with " + numlegs + " legs!");
 
         //Set new name, speed, and endangered properties values using setters
-        
+        animal.setName("Jamey");
+        animal.setTopSpeed(30);
+        animal.setNumLegs(2);
+        animal.setisEndangered(true);
 
         //get new values using getters
-        name = ;
-        topSpeed = ;
+        name = animal.getName();
+        topSpeed = animal.getTopSpeed();
+        numlegs = animal.getNumLegs();
+        animal.getisEndangered();
 
         //Set text of second TextView
-        changedOutput.setText();
+        if (animal.isEndangered == true){
+            changedOutput.setText("The " + name + " has a top speed of " + topSpeed + " mph with " + numlegs + " legs and is endangered!");
+        }
+        else {
+            changedOutput.setText("The " + name + " has a top speed of " + topSpeed + " mph with " + numlegs + " legs! and is not endangered!");
+        }
     }
 }
