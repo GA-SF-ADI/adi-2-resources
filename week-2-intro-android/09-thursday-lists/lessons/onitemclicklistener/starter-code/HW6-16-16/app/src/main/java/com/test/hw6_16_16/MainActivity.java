@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+//I was experimenting with the checkbox and toggle buttons... it looks like they do similar things?
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +24,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //ToggleButton toggleButton;
-        final CheckBox checkBox;
-        //final ToggleButton toggleButtonn = (ToggleButton) findViewById(R.id.toggle_button);
-        final CheckBox checkBoxButton = (CheckBox) findViewById(R.id.checkbox);
+        final ToggleButton toggleButton;
+        //final CheckBox checkBox;
+        final ToggleButton toggleButtonn = (ToggleButton) findViewById(R.id.toggle_button);
+        //final CheckBox checkBoxButton = (CheckBox) findViewById(R.id.checkbox);
 
 
 
-       checkBoxButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       toggleButtonn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (checkBoxButton.isChecked()) {
+                if (toggleButtonn.isChecked()) {
                     Toast.makeText(MainActivity.this, "ENABLED", Toast.LENGTH_SHORT).show();
                 } else  {
                     Toast.makeText(MainActivity.this, "DISABLED", Toast.LENGTH_SHORT).show();
