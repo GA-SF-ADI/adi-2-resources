@@ -192,7 +192,7 @@ System.out.println("Side Length: "+((Car)myCar2).getNumWheels());
 
 ```
 
-We can't define a Car as a Shape.
+We can't define a Car as a Vehicle.
 
 ```java
 //ERROR
