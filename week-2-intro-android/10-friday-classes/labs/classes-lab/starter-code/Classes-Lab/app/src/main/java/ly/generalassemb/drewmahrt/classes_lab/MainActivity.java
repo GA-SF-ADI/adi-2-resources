@@ -18,26 +18,27 @@ public class MainActivity extends AppCompatActivity {
         TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
 
         //Instantiate new Animal
-        Animal animal = ;
+        Animal cheetah = new Animal(4, 40, true, "cheetah");
 
         String name;
         int topSpeed;
 
         //get name and speed values using getters
-        name = ;
-        topSpeed = ;
+        name = cheetah.getName();
+        topSpeed = cheetah.getTopSpeed();
 
         //Set text of first TextView
-        output.setText();
+        output.setText("The " + name + " has a top speed of " + topSpeed);
 
         //Set new name, speed, and endangered properties values using setters
-        
+        cheetah.setName("Sloth");
+        cheetah.setTopSpeed(1);
 
         //get new values using getters
-        name = ;
-        topSpeed = ;
+        name = cheetah.getName();
+        topSpeed = cheetah.getTopSpeed();
 
         //Set text of second TextView
-        changedOutput.setText();
+        changedOutput.setText("The " + name + " has a top speed of " + topSpeed);
     }
 }
