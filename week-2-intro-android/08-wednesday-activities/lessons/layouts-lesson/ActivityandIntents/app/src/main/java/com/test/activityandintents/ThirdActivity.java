@@ -31,8 +31,8 @@ public class ThirdActivity extends AppCompatActivity {
 
         Intent thirdIntent = new Intent(ActivityAndIntents.this,ThirdActivity.class);
         startActivity(thirdIntent);
-        thirdIntent.putExtra("birthday", birthday);
-        startActivity(thirdIntent);
+        thirdIntent.getStringExtra("birthday");
+
 
 
 
