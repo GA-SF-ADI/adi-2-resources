@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 return v;
             }
         };
-        listView.setAdapter(mTitleAdapter);
 
 
         mAuthorAdapter = new BaseAdapter() {
@@ -121,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 return v;
             }
         };
-        listView.setAdapter(mAuthorAdapter);
 
         mYearAdapter = new BaseAdapter() {
             @Override
@@ -133,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public long getItemId(int position) { return position; }
-
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
@@ -158,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        listView.setAdapter(mYearAdapter);
+
 
         //TODO: Set listeners for buttons
 
@@ -171,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 Collections.sort(mBookList,new ComparatorTitle());
                 mTitleAdapter.notifyDataSetChanged();
+                listView.setAdapter(mTitleAdapter);
+
             }
         };
         titleButton.setOnClickListener(titleButtonOnClickListener);
@@ -180,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 Collections.sort(mBookList, new ComparatorAuthor());
                 mAuthorAdapter.notifyDataSetChanged();
+                listView.setAdapter(mAuthorAdapter);
             }
         };
         authorButton.setOnClickListener(authorButtonOnClickListener);
@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 Collections.sort(mBookList, new ComparatorYear());
                 mYearAdapter.notifyDataSetChanged();
+                listView.setAdapter(mYearAdapter);
             }
         };
         yearButton.setOnClickListener(yearButtonOnClickListener);
