@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
+=======
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="200dp">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+>>>>>>> 87b38752f10b92978e040521d2bd8ed976664e50
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,6 +48,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:orientation="horizontal"
         >
 
@@ -118,3 +128,25 @@
 </LinearLayout>
 
 
+=======
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="General Assembly"
+        android:layout_gravity="left|bottom"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_margin="12dp" />
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/logo"
+        android:layout_margin="12dp" />
+
+
+</FrameLayout>
+
+
+
+</RelativeLayout>
+>>>>>>> 87b38752f10b92978e040521d2bd8ed976664e50
