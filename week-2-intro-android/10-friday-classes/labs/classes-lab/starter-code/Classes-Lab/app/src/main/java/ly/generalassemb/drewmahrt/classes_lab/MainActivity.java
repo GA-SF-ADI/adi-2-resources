@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+
         //Get output TextViews
         TextView output = (TextView) findViewById(R.id.output_text);
         TextView changedOutput = (TextView) findViewById(R.id.changed_output_text);
@@ -39,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
         EditText reptileName = (EditText) findViewById(R.id.reptile_name);
         EditText numOfReptileScales = (EditText) findViewById(R.id.number_of_scales);
 
+
         Integer reptileScaleNum = Integer.parseInt(numOfReptileScales.getText().toString());
         Integer mammalBirthNum = Integer.parseInt(numOfMammalOffSpring.getText().toString());
+
 
         final String enteredMammalType = mammalName.getText().toString();
         String enteredReptileType = reptileName.getText().toString();
 
+
+        ArrayList<String> listOfAnimals = new ArrayList<String>();
 
         ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
@@ -53,11 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(enteredMammalType == "lion"){
 
-                    Toast.makeText(MainActivity.this, "This is 'lion'! ", Toast.LENGTH_SHORT).show();
-
-                }
             }
         });
 
