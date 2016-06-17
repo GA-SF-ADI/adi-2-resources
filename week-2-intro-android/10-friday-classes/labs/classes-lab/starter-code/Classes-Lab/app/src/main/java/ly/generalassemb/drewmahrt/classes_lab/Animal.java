@@ -42,7 +42,14 @@ public class Animal {
         return name;
     }
     public String getAnimalNameandSpeedPrint(){
-        return "The " + name + " has a top speed of " + topSpeed + " mph!";
+        String thisAnimalEndangered;
+        if (isEndangered){
+            thisAnimalEndangered = "is";
+
+        }else {
+            thisAnimalEndangered = "is not";
+        }
+        return "The " + name + " has a top speed of " + topSpeed + " mph! It " + thisAnimalEndangered + " endangered and it has " + numLegs + " legs!";
     }
 
     //Put getters and setters here

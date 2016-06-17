@@ -2,9 +2,14 @@ package ly.generalassemb.drewmahrt.classes_lab;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,34 +17,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ArrayList<Animal> animalList = new ArrayList<>();
+        animalList.add(new Animal(4,20, false, "Dog"));
+        animalList.add(new Animal(4, 5, false, "Cat"));
+        animalList.add(new Animal(2, 6, false, "Penguin"));
+        ArrayList<String> animalString = new ArrayList<>();
+        for (int i = 0; i < animalList.size(); i++) {
+            animalString.add(animalList.get(i).getAnimalNameandSpeedPrint());
 
-        //Get output TextViews
-        TextView output = (TextView)findViewById(R.id.output_text);
-        TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
+        }
 
-        //Instantiate new Animal
-        Animal animal = new Animal(4,20, false, "Dog");
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, animalString);
 
-        String name;
-        int topSpeed;
+        ListView mListView = (ListView) findViewById(R.id.myListView);
 
-        //get name and speed values using getters
-        name = animal.getName();
-        topSpeed = animal.getTopSpeed();
+        mListView.setAdapter(mAdapter);
 
-        //Set text of first TextView
-        output.setText(animal.getAnimalNameandSpeedPrint());
 
-        //Set new name, speed, and endangered properties values using setters
-        animal.setName("Cheetah");
-        animal.setEndangered(false);
-        animal.setTopSpeed(75);
-
-        //get new values using getters
-        name = animal.getName();
-        topSpeed = animal.getTopSpeed();
-
-        //Set text of second TextView
-        changedOutput.setText(animal.getAnimalNameandSpeedPrint());
     }
 }
