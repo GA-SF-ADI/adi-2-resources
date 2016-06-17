@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,53 +29,35 @@ public class MainActivity extends AppCompatActivity {
         TextView output = (TextView) findViewById(R.id.output_text);
         TextView changedOutput = (TextView) findViewById(R.id.changed_output_text);
 
-        //Instantiate new Animal
-        Animal animal = new Animal(4, 25, true, "Elephant");
-
-
-        String name;
-        int topSpeed;
-
-        //get name and speed values using getters
-        name = animal.getName();
-
-        topSpeed = animal.getTopSpeed();
-
-        //Set text of first TextView
-        output.setText("The " + name + " has a top speed of " + topSpeed + " mph");
-
-        //Set new name, speed, and endangered properties values using setters
-        animal.setName("Lion");
-        animal.setTopSpeed(50);
-        animal.setIsEndangered(false);
-
-        //get new values using getters
-        name = animal.getName();
-        topSpeed = animal.getTopSpeed();
-
-        //Set text of second TextView
-        changedOutput.setText("The " + name + " has a top speed of " + topSpeed + " mph");
 
         Button addMammalButton = (Button) findViewById(R.id.mammal_button);
         Button addReptileButton = (Button) findViewById(R.id.reptile_button);
 
 
-//        mammal, offspring, reptile name, scales
-
-
         EditText mammalName = (EditText) findViewById(R.id.mammal_name);
-        Integer numOfMammalOffSpring = (Integer) findViewById(R.id.number_of_offspring);
+        EditText numOfMammalOffSpring = (EditText) findViewById(R.id.number_of_offspring);
         EditText reptileName = (EditText) findViewById(R.id.reptile_name);
-        Integer numOfReptileScales = (Integer) findViewById(R.id.number_of_scales);
+        EditText numOfReptileScales = (EditText) findViewById(R.id.number_of_scales);
 
-        Integer reptileScaleNum = parseInt(numOfReptileScales)
+        Integer reptileScaleNum = Integer.parseInt(numOfReptileScales.getText().toString());
+        Integer mammalBirthNum = Integer.parseInt(numOfMammalOffSpring.getText().toString());
+
+        final String enteredMammalType = mammalName.getText().toString();
+        String enteredReptileType = reptileName.getText().toString();
+
+
+        ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
+
 
         addMammalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "Mammal button clicked", Toast.LENGTH_SHORT).show();
+                if(enteredMammalType == "lion"){
 
+                    Toast.makeText(MainActivity.this, "This is 'lion'! ", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
