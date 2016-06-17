@@ -33,19 +33,21 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if (isChecked) {
-
                     mAgreeButton.setEnabled(true);
-                }else {
+                    Toast.makeText(MainActivity.this, "Registration now available!", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(MainActivity.this, "test message", Toast.LENGTH_SHORT).show();
+                } else {
+                    mAgreeButton.setEnabled(false);
+                    Toast.makeText(MainActivity.this, "We're sorry, but registration is no longer available :(", Toast.LENGTH_SHORT).show();
+
+
+                }
+
 
             }
 
 
-        }
-
-
-    });
+        });
 
     }
 
