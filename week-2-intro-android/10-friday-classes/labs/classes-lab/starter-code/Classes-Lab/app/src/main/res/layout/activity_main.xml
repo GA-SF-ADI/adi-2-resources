@@ -10,15 +10,24 @@
     android:orientation="vertical"
     tools:context="ly.generalassemb.drewmahrt.classes_lab.MainActivity">
 
-    <TextView
-        android:id="@+id/output_text"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:orientation="vertical"
+        >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="MAMMAL"
+        android:id="@+id/mammal_button"/>
 
-    <TextView
-        android:id="@+id/changed_output_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text= "REPTILE"
+        android:id="@+id/reptile_button"/>
+
+    </LinearLayout>
+
+
 </LinearLayout>

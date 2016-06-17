@@ -1,4 +1,4 @@
-package ly.generalassemb.drewmahrt.listviewsindependent;
+package ly.generalassemb.drewmahrt.classes_lab;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -6,40 +6,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
+import java.lang.Object;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-
 import java.util.LinkedList;
 
-public class MainActivity extends AppCompatActivity {
+public class Mammalactivity extends AppCompatActivity {
     LinkedList<String> mStringList;
     ArrayAdapter<String> mAdapter;
     EditText myEditText;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mammalactivity);
 
-
-        //Instantiate your LinkedList
         mStringList = new LinkedList<String>();
-        //mStringList.add("Audrey");
-        //mStringList.add("David");
 
-        //Instantiate your adapter
-        mAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, mStringList);
+        mAdapter = new ArrayAdapter<String>(Mammalactivity.this, android.R.layout.simple_list_item_1, mStringList);
 
-
-        //Get your ListView and set the adapter
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(mAdapter);
         myEditText = (EditText) findViewById(R.id.edit_text);
-
 
         //Complete the FloatingActionButton onClick method to add a list item
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -51,24 +45,19 @@ public class MainActivity extends AppCompatActivity {
 
                 mAdapter.notifyDataSetChanged();
 
+
             }
         });
 
-        //Complete the ListView onItemLongClick code to remove list items
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        Button goBackButton = (Button) findViewById(R.id.go_back);
+        goBackButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View v) {
 
-                String str = myEditText.getText().toString();
-                ArrayList<String> myArray = new ArrayList<String>(Arrays.asList(str));
-                myArray.remove(position);
+                finish();
+        }
 
-                //mAdapter.remove(myArray[position]);
-                mAdapter.notifyDataSetChanged();
-                return false;
-                //mStringList.remove(myEditText);
-            }
-        });
-
+    });
     }
 }

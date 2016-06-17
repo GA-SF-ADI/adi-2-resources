@@ -1,11 +1,11 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
 public class Animal {
-    int numLegs;
-    int topSpeed;
-    boolean isEndangered;
-    String name;
-    String habitat;
+    protected int numLegs;
+    protected int topSpeed;
+    protected boolean isEndangered;
+    protected String name;
+    protected String habitat;
 
     public Animal(int numLegs, int topSpeed, boolean isEndangered, String name, String habitat){
         //Set properties here

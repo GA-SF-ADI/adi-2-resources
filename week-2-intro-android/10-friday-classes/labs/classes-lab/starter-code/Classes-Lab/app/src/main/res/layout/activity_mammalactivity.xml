@@ -7,9 +7,29 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ly.generalassemb.drewmahrt.listviewsindependent.MainActivity">
+    tools:context="ly.generalassemb.drewmahrt.classes_lab.Mammalactivity">
 
-    <!-- Add your ListView below this comment -->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view"/>
+
+
+
+        <EditText
+            android:layout_alignBottom="@id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id= "@+id/edit_text"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/go_back"
+            android:layout_alignRight="@id/list_view"
+            android:text="GO BACK"/>
+
+
 
 
     <android.support.design.widget.FloatingActionButton
@@ -23,15 +43,6 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/list_view">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id= "@+id/edit_text"/>
 
-    </ListView>
 </RelativeLayout>
