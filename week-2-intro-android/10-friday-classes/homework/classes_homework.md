@@ -16,6 +16,16 @@ Now, inside your Main.java, create 2 PhoneBook instances: One for iPhone that ha
 * copy the iPhone contacts to the Android contacts. 
 * Remove all iPhone contacts using the Android contact list.
 
+ # Some additional practice:
+
+[Soda Machines and Buses] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework6.html) with [solution] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework6soln.txt)
+
+[More practice] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework7.html) do part two, with [solution] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework7soln.txt)
+
+[More practice] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework8.html) do part two, with [solution] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework8soln.txt) and [useful diagrams] (http://www.cs.cmu.edu/~mrmiller/15-110/Homework/homework8diagrams.pdf)
+
+[Light switch problem] (http://www.cs.cmu.edu/~mrmiller/15-110/Labs/lab5.html) with [solution] (http://www.cs.cmu.edu/~mrmiller/15-110/Labs/lab5soln.txt)
+
 
 
 
