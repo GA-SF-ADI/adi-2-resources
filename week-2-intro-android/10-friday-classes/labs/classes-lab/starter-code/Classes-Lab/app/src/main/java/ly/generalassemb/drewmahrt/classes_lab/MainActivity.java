@@ -2,6 +2,7 @@ package ly.generalassemb.drewmahrt.classes_lab;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -18,26 +19,28 @@ public class MainActivity extends AppCompatActivity {
         TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
 
         //Instantiate new Animal
-        Animal animal = ;
+        Animal animal =  new Animal(4,60,false,"Tiger");
 
         String name;
         int topSpeed;
 
         //get name and speed values using getters
-        name = ;
-        topSpeed = ;
+        topSpeed=animal.getTopSpeed();
+        name =animal.getName();
 
         //Set text of first TextView
-        output.setText();
+        output.setText("The "+name+" has a top speed of "+ topSpeed);
 
         //Set new name, speed, and endangered properties values using setters
-        
+        animal.setName("dog");
+        animal.setTopSpeed(33);
+        animal.setisEndangered(true);
 
         //get new values using getters
-        name = ;
-        topSpeed = ;
+        name =animal.getName();
+        topSpeed=animal.getTopSpeed();
 
         //Set text of second TextView
-        changedOutput.setText();
+        changedOutput.setText("The "+name+" has a top speed of "+ topSpeed);
     }
 }

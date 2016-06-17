@@ -108,7 +108,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         animal.setTopSpeed(10);
         assertEquals(10, animal.getTopSpeed());
 
-        animal.setIsEndangered(false);
+        animal.setisEndangered(false);
         assertEquals(false, animal.isEndangered());
 
         animal.setName("Changed");
