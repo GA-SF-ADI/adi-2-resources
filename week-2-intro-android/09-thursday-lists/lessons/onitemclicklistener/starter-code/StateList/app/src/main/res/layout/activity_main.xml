@@ -10,21 +10,7 @@
     android:orientation="vertical"
     tools:context="ly.generalassemb.drewmahrt.morningexercisesolution.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/abbreviation_button"
-            android:text="Abbreviation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/fullname_button"
-            android:text="Full Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+
 
     <ListView
         android:id="@+id/list"
