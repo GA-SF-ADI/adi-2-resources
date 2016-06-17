@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="15dp"
+        android:paddingBottom="5dp"
         >
 
         <EditText
@@ -26,28 +26,45 @@
             android:layout_width="1px"
             android:layout_height="1px" />
         <EditText
+            android:id="@+id/mammal_name"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:textColorHint="#9c9c9c"
+            android:hint="    Enter mammal" />
+
+        <EditText
             android:id="@+id/number_of_offspring"
             android:layout_width="175dp"
             android:layout_height="50dp"
             android:textColorHint="#9c9c9c"
             android:hint=" Enter # of offspring" />
 
-        <Button
-            android:id="@+id/mammal_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ff3765"
-            android:text="Add Mammal"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/mammal_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff3765"
+        android:text="Add Mammal"
+        android:textColor="#ffffff"
+        android:textSize="12dp"
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="15dp">
+        android:paddingBottom="15dp"
+        android:paddingTop="10dp">
+
+        <EditText
+            android:id="@+id/reptile_name"
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:textColorHint="#9c9c9c"
+            android:hint="   Enter reptile name"
+            />
 
         <EditText
             android:id="@+id/number_of_scales"
@@ -57,16 +74,18 @@
             android:hint="   Enter # of scales"
             />
 
-        <Button
-            android:id="@+id/reptile_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#4fbd5c"
-            android:text="Add Reptile"
-            android:textColor="#ffffff"
-            android:textSize="12dp" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/reptile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#4fbd5c"
+        android:text="Add Reptile"
+        android:textColor="#ffffff"
+        android:textSize="12dp"
+        android:layout_gravity="center"/>
+
 
     <ListView
         android:id="@+id/listView_of_animals"
