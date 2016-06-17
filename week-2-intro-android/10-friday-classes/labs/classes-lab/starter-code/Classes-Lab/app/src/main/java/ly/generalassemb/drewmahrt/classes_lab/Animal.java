@@ -1,6 +1,9 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
-public class Animal {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Animal{
     int numLegs;
     int topSpeed;
     boolean isEndangered;
@@ -41,7 +44,10 @@ public class Animal {
     public String getName(){
         return name;
     }
-    public String getAnimalNameandSpeedPrint(){
+    @Override
+    public String toString() {
+
+
         String thisAnimalEndangered;
         if (isEndangered){
             thisAnimalEndangered = "is";

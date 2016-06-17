@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_animal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ly.generalassemb.drewmahrt.classes_lab.AddAnimal">
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Name"/>
+    <EditText
+        android:id="@+id/numberOfLegs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Number of Legs"/>
+    <EditText
+        android:id="@+id/topSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Top Speed"/>
+    <EditText
+        android:id="@+id/doggo"
+        android:hint="Is it a Doggo, a Pupper, or a Woofer?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <EditText
+        android:id="@+id/turtle"
+        android:hint="Is it a Turtle, Hatchling, or Tortoise?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/isEndangered"
+        android:text="Is This Animal Endangered?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"/>
+
+
+</LinearLayout>

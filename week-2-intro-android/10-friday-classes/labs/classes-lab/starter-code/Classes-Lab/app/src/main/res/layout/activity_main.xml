@@ -9,6 +9,27 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="ly.generalassemb.drewmahrt.classes_lab.MainActivity">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add animal"/>
+        <Button
+            android:id="@+id/addTurtle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Turtle"/>
+        <Button
+            android:id="@+id/addDoggo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Doggo"/>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/myListView"
