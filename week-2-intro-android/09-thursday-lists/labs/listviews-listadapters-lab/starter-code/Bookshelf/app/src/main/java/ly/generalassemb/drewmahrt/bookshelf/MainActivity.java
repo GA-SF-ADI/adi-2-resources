@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         mBookList = generateBooks();
         //TODO: Instantiate List
 
-
+        Collections.sort(mBookList, new ComparatorTitle());
+        Collections.sort(mBookList, new ComparatorAuthor());
+        Collections.sort(mBookList, new ComparatorYear());
 
         //TODO: Instantiate BaseAdapters for year, author, title
 
@@ -132,8 +134,41 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        mBookListView = (ListView)findViewById(R.id.list_view);
+        mBookListView.setAdapter(mTitleAdapter);
 
-        
+
+        Button titleButton = (Button)findViewById(R.id.titleButton);
+        Button authorButton = (Button)findViewById(R.id.authorButton);
+        Button yearButton = (Button)findViewById(R.id.yearButton);
+
+        titleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorTitle());
+                mBookListView.setAdapter(mTitleAdapter);
+                mTitleAdapter.notifyDataSetChanged();
+            }
+        });
+
+        authorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorAuthor());
+                mBookListView.setAdapter(mAuthorAdapter);
+                mAuthorAdapter.notifyDataSetChanged();
+            }
+        });
+
+        yearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorYear());
+                mBookListView.setAdapter(mYearAdapter);
+                mYearAdapter.notifyDataSetChanged();
+            }
+        });
+
         //TODO: Set listeners for buttons
 
     }

@@ -17,19 +17,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/title"
+            android:id="@+id/titleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sort By Title"/>
 
         <Button
-            android:id="@+id/author"
+            android:id="@+id/authorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sort By Author"/>
 
         <Button
-            android:id="@+id/year"
+            android:id="@+id/yearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sort By Year"/>
