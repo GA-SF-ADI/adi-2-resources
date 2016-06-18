@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.io.Serializable;
+
 
 import org.w3c.dom.Text;
 
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 //        Link EdiText views
 
 
-        final EditText mammalName = (EditText) findViewById(R.id.bear_name);
+        final EditText bearName = (EditText) findViewById(R.id.bear_name);
         final EditText numOfCubs = (EditText) findViewById(R.id.number_of_cubs);
         final EditText snakeName = (EditText) findViewById(R.id.snake_name);
         final EditText numOfSnakeScales = (EditText) findViewById(R.id.number_of_scales);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //        Convert entered mammal and reptile names to Strings
 
 
-        final String enteredMammalType = mammalName.getText().toString();
+        final String enteredBearType = bearName.getText().toString();
         final String enteredSnakeType = snakeName.getText().toString();
 
 //        Create ArrayList
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        Create ListView
 
-        ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
+        final ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
 //        Create adapter
 
@@ -69,10 +71,14 @@ public class MainActivity extends AppCompatActivity {
         addMammalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+                listOfAnimals.add(enteredBearType);
+                listOfAnimals.add(numOfCubs.toString());
+
                 Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
 
-                listOfAnimals.add(enteredMammalType);
-                listOfAnimals.add(bearCubNum.toString());
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 
@@ -86,10 +92,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
                 Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
 
                 listOfAnimals.add(enteredSnakeType);
                 listOfAnimals.add(numOfSnakeScales.toString());
+
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 
