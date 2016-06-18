@@ -1,6 +1,8 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
     int numLegs;
     int topSpeed;
     boolean isEndangered;
@@ -19,6 +21,11 @@ public class Animal {
 
 
     }
+
+
+    // Serialization
+    private static final long serialVersionUID = 7526472295622776147L;
+
 
     //Put getters and setters here
 

@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.io.Serializable;
 
 
 import org.w3c.dom.Text;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
 
 //        Hide keyboard upon onCreate
 
@@ -33,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        Link mammal and reptile button views
 
-        Button addMammalButton = (Button) findViewById(R.id.bear_button);
-        Button addReptileButton = (Button) findViewById(R.id.snake_button);
+        Button addBearButton = (Button) findViewById(R.id.bear_button);
+        Button addSnakeButton = (Button) findViewById(R.id.snake_button);
 
 //        Link EdiText views
 
@@ -47,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
 //        Convert entered mammal and reptile names to Strings
 
 
-        final String enteredBearType = bearName.getText().toString();
-        final String enteredSnakeType = snakeName.getText().toString();
-
 //        Create ArrayList
 
         final ArrayList<String> listOfAnimals = new ArrayList<>();
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
-//        Create adapter
+// Create adapter
 
         final ArrayAdapter mAdapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, listOfAnimals);
 
@@ -66,13 +62,17 @@ public class MainActivity extends AppCompatActivity {
 
         animalListView.setAdapter(mAdapterForAnimalDataToListView);
 
+
 //        Mammal button's onClickListener
 
-        addMammalButton.setOnClickListener(new View.OnClickListener() {
+        addBearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+                final String enteredBearType = bearName.getText().toString();
 
                 listOfAnimals.add(enteredBearType);
                 listOfAnimals.add(numOfCubs.toString());
@@ -88,11 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
 //      Reptile button's onClickListener
 
-        addReptileButton.setOnClickListener(new View.OnClickListener() {
+        addSnakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+                final String enteredSnakeType = snakeName.getText().toString();
 
                 Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
 
