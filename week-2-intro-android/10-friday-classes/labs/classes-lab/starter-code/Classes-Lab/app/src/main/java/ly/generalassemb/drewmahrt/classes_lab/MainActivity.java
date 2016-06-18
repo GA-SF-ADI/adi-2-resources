@@ -68,15 +68,18 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         final ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
-//        Making new snake object and its methods to just practice. Not really sure how to make it a part of my app...
 
-        Snake myRattlerSnake = new Snake(0, 12, true, "Rattlesnake", true, 500, true, true);
+//        Creating bear object
 
-//        Making new bear object and its methods to just practice. Not really sure how to make it a part of my app...
+        final Bear bear = new Bear(0, 20, false, "Black Bear", 4, "sweet", "course", "ferocious");
 
-        final Bear blackBear = new Bear(0, 20, false, "Black Bear", 4, "sweet", "course", "tenacious");
+//        Making new snake object and its methods to just practice. Not really sure how to make it
+//        a part of my app...
 
-        blackBear.setClaws("hazardly");
+        final Snake snake = new Snake(0, 12, true, "Rattlesnake", true, 500, true, true);
+
+        snake.setTongueFlick(false);
+
 
 //        Set adapter
 
@@ -93,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
                 Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
-
-
                 final String enteredBearType = bearName.getText().toString();
 
-                listOfAnimals.add("The " + enteredBearType + " bear has " + numOfCubs + "cubs!");
+                listOfAnimals.add("The " + enteredBearType + " bear has " + numOfCubs + "cubs and "
+                        + "has " + bear.getClaws() + " claws. It also has " + bear.getMilk() +
+                        " milk" + " and " + bear.getFur() + " fur");
 
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
@@ -116,10 +119,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
                 Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
 
-
                 final String enteredSnakeType = snakeName.getText().toString();
 
-                listOfAnimals.add("There're " + numOfSnakeScales.toString() + " on a " + enteredSnakeType + " snake");
+                listOfAnimals.add("The " + enteredSnakeType + " snake is lined with " +
+                        numOfSnakeScales + " all over its body. Did you know that the "
+                        + enteredSnakeType + " usually pops out in an average year?");
+
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 
