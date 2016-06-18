@@ -10,6 +10,7 @@ import android.content.Intent;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
+    //int REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,18 @@ public class MainActivity extends AppCompatActivity {
         reptileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent reptileIntent = new Intent (MainActivity.this, Mammalactivity.class);
+                Intent reptileIntent = new Intent (MainActivity.this, Reptileactivity.class);
                 startActivity(reptileIntent);
+                //startActivityForResult(reptileIntent, REQUEST_CODE);
+            }
+        });
+
+        final Button animalButton = (Button) findViewById(R.id.animal_button);
+        animalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent animalIntent = new Intent (MainActivity.this, animalactivity.class);
+                startActivity(animalIntent);
             }
         });
     }

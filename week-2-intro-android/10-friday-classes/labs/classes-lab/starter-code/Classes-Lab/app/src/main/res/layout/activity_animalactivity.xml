@@ -7,14 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ly.generalassemb.drewmahrt.classes_lab.Reptileactivity">
+    tools:context="ly.generalassemb.drewmahrt.classes_lab.animalactivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/list_view"/>
-
-
 
     <EditText
         android:layout_alignBottom="@id/list_view"
@@ -42,5 +40,6 @@
         android:tint="@android:color/white"
         android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add" />
+
 
 </RelativeLayout>

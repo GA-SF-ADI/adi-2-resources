@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ly.generalassemb.drewmahrt.classes_lab.Reptileactivity">
+    tools:context="com.test.animallabsecondtry.AnimalActivity">
 
     <ListView
         android:layout_width="match_parent"
@@ -30,17 +30,15 @@
         android:text="GO BACK"/>
 
 
-
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:tint="@android:color/white"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@android:drawable/ic_dialog_email"
+        android:layout_below="@+id/go_back"
+        android:layout_alignParentRight="true"
+
+        />
 
 </RelativeLayout>

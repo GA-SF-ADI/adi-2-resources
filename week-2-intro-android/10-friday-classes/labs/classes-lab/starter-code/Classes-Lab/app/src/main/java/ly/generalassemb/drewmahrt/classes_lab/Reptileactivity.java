@@ -14,18 +14,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
+import android.content.Intent;
+import android.widget.Toast;
 
 public class Reptileactivity extends AppCompatActivity {
-    LinkedList<String> mStringList;
+    ArrayList<String> mStringList;
     ArrayAdapter<String> mAdapter;
     EditText myEditText;
+    //String myKey = "myKey";
+
+    String animalName;
+    ArrayList<String> myArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reptileactivity);
 
-        mStringList = new LinkedList<String>();
+        final ArrayList<String> myArray = new ArrayList<String>();
+        myArray.add("turtle");
+        myArray.add("chameleon");
+        myArray.add("crocodile");
+        myArray.add("gecko");
+        myArray.add("lizard");
+
+        mStringList = new ArrayList<String>();
 
         mAdapter = new ArrayAdapter<String>(Reptileactivity.this, android.R.layout.simple_list_item_1, mStringList);
 
@@ -39,9 +52,17 @@ public class Reptileactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String myInputString = myEditText.getText().toString();
-                mStringList.add(myInputString);
 
-                mAdapter.notifyDataSetChanged();
+
+                if(myArray.contains(myInputString)) {
+
+                    mStringList.add(myInputString);
+
+                    mAdapter.notifyDataSetChanged();
+
+                } else {
+                    Toast.makeText(Reptileactivity.this, "That's not an reptile!", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
@@ -52,6 +73,11 @@ public class Reptileactivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
+                Intent reptileIntent = new Intent (Reptileactivity.this, MainActivity.class);
+                // put extra
+                //pass back the names of the things to display and display a list
+                setResult(0, reptileIntent);
 
                 finish();
             }
