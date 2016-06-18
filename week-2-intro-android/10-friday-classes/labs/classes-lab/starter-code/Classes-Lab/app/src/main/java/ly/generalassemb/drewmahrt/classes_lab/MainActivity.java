@@ -20,20 +20,39 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public ArrayList<String> listOfAnimals;
+    public ArrayAdapter<String> mAdapterForAnimalDataToListView;
+    public Button addBearButton, addSnakeButton;
+    public ListView animalListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
 //        Hide keyboard upon onCreate
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+
+//        handling null
+
+        if (listOfAnimals == null) {
+            listOfAnimals = new ArrayList<>();
+        }
 
 //        Link mammal and reptile button views
 
         Button addBearButton = (Button) findViewById(R.id.bear_button);
         Button addSnakeButton = (Button) findViewById(R.id.snake_button);
+
+//        Create adapter
+
+        final ArrayAdapter<String> mAdapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this,
+                android.R.layout.simple_list_item_1, listOfAnimals);
+
+        Log.e("Tag", "Adapter created");
+
 
 //        Link EdiText views
 
@@ -43,20 +62,12 @@ public class MainActivity extends AppCompatActivity {
         final EditText snakeName = (EditText) findViewById(R.id.snake_name);
         final EditText numOfSnakeScales = (EditText) findViewById(R.id.number_of_scales);
 
-//        Convert entered mammal and reptile names to Strings
-
-
-//        Create ArrayList
-
-        final ArrayList<String> listOfAnimals = new ArrayList<>();
-
-//        Create ListView
+//        Linking ListView view
 
         final ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
-// Create adapter
+        Log.e("Tag", "ListView created");
 
-        final ArrayAdapter mAdapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, listOfAnimals);
 
 //        Set adapter
 
@@ -71,13 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+                Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
+
 
                 final String enteredBearType = bearName.getText().toString();
 
                 listOfAnimals.add(enteredBearType);
                 listOfAnimals.add(numOfCubs.toString());
-
-                Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
 
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
@@ -94,9 +105,11 @@ public class MainActivity extends AppCompatActivity {
 
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+                Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
+
+
                 final String enteredSnakeType = snakeName.getText().toString();
 
-                Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
 
                 listOfAnimals.add(enteredSnakeType);
                 listOfAnimals.add(numOfSnakeScales.toString());

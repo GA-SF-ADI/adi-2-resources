@@ -32,3 +32,4 @@ public class Mammal extends Animal {
         this.milk = milk;
     }
 }
+

@@ -32,3 +32,4 @@ public class Dolphin extends Mammal {
         this.dorsalFin = dorsalFin;
     }
 }
+
