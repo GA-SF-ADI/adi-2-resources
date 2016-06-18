@@ -31,22 +31,22 @@ public class MainActivity extends AppCompatActivity {
 
 //        Link mammal and reptile button views
 
-        Button addMammalButton = (Button) findViewById(R.id.mammal_button);
-        Button addReptileButton = (Button) findViewById(R.id.reptile_button);
+        Button addMammalButton = (Button) findViewById(R.id.bear_button);
+        Button addReptileButton = (Button) findViewById(R.id.snake_button);
 
 //        Link EdiText views
 
 
-        final EditText mammalName = (EditText) findViewById(R.id.mammal_name);
-        final EditText numOfMammalOffSpring = (EditText) findViewById(R.id.number_of_offspring);
-        final EditText reptileName = (EditText) findViewById(R.id.reptile_name);
-        final EditText numOfReptileScales = (EditText) findViewById(R.id.number_of_scales);
+        final EditText mammalName = (EditText) findViewById(R.id.bear_name);
+        final EditText numOfCubs = (EditText) findViewById(R.id.number_of_cubs);
+        final EditText snakeName = (EditText) findViewById(R.id.snake_name);
+        final EditText numOfSnakeScales = (EditText) findViewById(R.id.number_of_scales);
 
 //        Convert entered mammal and reptile names to Strings
 
 
         final String enteredMammalType = mammalName.getText().toString();
-        final String enteredReptileType = reptileName.getText().toString();
+        final String enteredSnakeType = snakeName.getText().toString();
 
 //        Create ArrayList
 
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         addMammalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Integer mammalBirthNum = Integer.parseInt(numOfMammalOffSpring.getText().toString());
+                Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
 
                 listOfAnimals.add(enteredMammalType);
-                listOfAnimals.add(mammalBirthNum.toString());
+                listOfAnimals.add(bearCubNum.toString());
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 
@@ -86,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Integer reptileScaleNum = Integer.parseInt(numOfReptileScales.getText().toString());
+                Integer reptileScaleNum = Integer.parseInt(numOfSnakeScales.getText().toString());
 
-                listOfAnimals.add(enteredReptileType);
+                listOfAnimals.add(enteredSnakeType);
+                listOfAnimals.add(numOfSnakeScales.toString());
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 

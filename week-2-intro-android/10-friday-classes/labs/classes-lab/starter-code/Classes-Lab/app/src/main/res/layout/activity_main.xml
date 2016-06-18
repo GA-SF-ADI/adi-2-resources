@@ -14,42 +14,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        >
+        android:paddingBottom="5dp">
+
 
         <EditText
-            android:id="@+id/changed_output_text"
-            android:layout_width="1px"
-            android:layout_height="1px" />
-        <EditText
-            android:id="@+id/output_text"
-            android:layout_width="1px"
-            android:layout_height="1px" />
-        <EditText
-            android:id="@+id/mammal_name"
+            android:id="@+id/bear_name"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:textColorHint="#9c9c9c"
-            android:hint="    Enter mammal" />
+            android:hint="    Enter bear type"
+            android:textColorHint="#9c9c9c" />
 
         <EditText
-            android:id="@+id/number_of_offspring"
+            android:id="@+id/number_of_cubs"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:textColorHint="#9c9c9c"
-            android:hint="   Enter offspring #" />
+            android:hint="     Enter # of cubs"
+            android:textColorHint="#9c9c9c" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/mammal_button"
+        android:id="@+id/bear_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#ff3765"
-        android:text="Add Mammal"
+        android:text="Add bear"
         android:textColor="#ffffff"
-        android:textSize="12dp"
-        android:layout_gravity="center"/>
+        android:textSize="12dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -59,32 +51,30 @@
         android:paddingTop="10dp">
 
         <EditText
-            android:id="@+id/reptile_name"
+            android:id="@+id/snake_name"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:textColorHint="#9c9c9c"
-            android:hint="   Enter reptile name"
-            />
+            android:hint="   Enter snake name"
+            android:textColorHint="#9c9c9c" />
 
         <EditText
             android:id="@+id/number_of_scales"
             android:layout_width="175dp"
             android:layout_height="50dp"
-            android:textColorHint="#9c9c9c"
             android:hint="   Enter # of scales"
-            />
+            android:textColorHint="#9c9c9c" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/reptile_button"
+        android:id="@+id/snake_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#4fbd5c"
-        android:text="Add Reptile"
+        android:text="Add snake"
         android:textColor="#ffffff"
-        android:textSize="12dp"
-        android:layout_gravity="center"/>
+        android:textSize="12dp" />
 
 
     <ListView
