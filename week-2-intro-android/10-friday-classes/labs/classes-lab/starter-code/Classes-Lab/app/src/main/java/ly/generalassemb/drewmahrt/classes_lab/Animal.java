@@ -3,10 +3,10 @@ package ly.generalassemb.drewmahrt.classes_lab;
 import java.io.Serializable;
 
 public class Animal implements Serializable {
-    int numLegs;
-    int topSpeed;
-    boolean isEndangered;
-    String name;
+    private int numLegs;
+    private int topSpeed;
+    private boolean isEndangered;
+    private String name;
 
     public Animal(int numLegs, int topSpeed, boolean isEndangered, String name){
         //Set properties here

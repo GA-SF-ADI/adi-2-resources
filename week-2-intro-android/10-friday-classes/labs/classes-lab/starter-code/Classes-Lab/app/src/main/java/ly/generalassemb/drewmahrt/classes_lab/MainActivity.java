@@ -16,19 +16,23 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
 
     public ArrayList<String> listOfAnimals;
     public ArrayAdapter<String> mAdapterForAnimalDataToListView;
     public Button addBearButton, addSnakeButton;
     public ListView animalListView;
+    private static final long serialVersionUID = 7526472295622776147L;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 
 //        Hide keyboard upon onCreate
 
@@ -51,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter<String> mAdapterForAnimalDataToListView = new ArrayAdapter<>(MainActivity.this,
                 android.R.layout.simple_list_item_1, listOfAnimals);
 
-        Log.e("Tag", "Adapter created");
-
 
 //        Link EdiText views
 
@@ -66,8 +68,15 @@ public class MainActivity extends AppCompatActivity {
 
         final ListView animalListView = (ListView) findViewById(R.id.listView_of_animals);
 
-        Log.e("Tag", "ListView created");
+//        Making new snake object and its methods to just practice. Not really sure how to make it a part of my app...
 
+        Snake myRattlerSnake = new Snake(0, 12, true, "Rattlesnake", true, 500, true, true);
+
+//        Making new bear object and its methods to just practice. Not really sure how to make it a part of my app...
+
+        final Bear blackBear = new Bear(0, 20, false, "Black Bear", 4, "sweet", "course", "tenacious");
+
+        blackBear.setClaws("hazardly");
 
 //        Set adapter
 
@@ -75,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //        Mammal button's onClickListener
+
 
         addBearButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final String enteredBearType = bearName.getText().toString();
 
-                listOfAnimals.add(enteredBearType);
-                listOfAnimals.add(numOfCubs.toString());
+                listOfAnimals.add("The " + enteredBearType + " bear has " + numOfCubs + "cubs!");
 
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
@@ -110,10 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final String enteredSnakeType = snakeName.getText().toString();
 
-
-                listOfAnimals.add(enteredSnakeType);
-                listOfAnimals.add(numOfSnakeScales.toString());
-
+                listOfAnimals.add("There're " + numOfSnakeScales.toString() + " on a " + enteredSnakeType + " snake");
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
 

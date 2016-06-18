@@ -1,27 +1,28 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
 
+import java.io.Serializable;
 
 /**
  * Created by LangstonSmith on 6/17/16.
  */
-public class Reptile extends Animal {
+public class Reptile extends Animal{
 
-    String scales;
-    int eggs;
+    private Boolean scales;
+    private int eggs;
 
-    public Reptile(int numLegs, int topSpeed, boolean isEndangered, String name, int eggs, String scales) {
-        super(numLegs, topSpeed, true, name);
-        this.eggs = eggs;
+
+    public Reptile(int numLegs, int topSpeed, boolean isEndangered, String name, Boolean scales, int eggs) {
+        super(numLegs, topSpeed, isEndangered, name);
         this.scales = scales;
-
+        this.eggs = eggs;
     }
 
-    public String getScales() {
+    public Boolean getScales() {
         return scales;
     }
 
-    public void setScales(String scales) {
+    public void setScales(Boolean scales) {
         this.scales = scales;
     }
 
@@ -33,3 +34,6 @@ public class Reptile extends Animal {
         this.eggs = eggs;
     }
 }
+
+
+

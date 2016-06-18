@@ -6,9 +6,9 @@ package ly.generalassemb.drewmahrt.classes_lab;
  * Created by LangstonSmith on 6/17/16.
  */
 public class Mammal extends Animal {
-    int numberOfOffSpring;
+    private int numberOfOffSpring;
 
-    String milk;
+    private String milk;
 
     public Mammal(int numLegs, int topSpeed, boolean isEndangered, String name, int numberOfOffSpring, String milk) {
         super(4, 25, isEndangered, name);
