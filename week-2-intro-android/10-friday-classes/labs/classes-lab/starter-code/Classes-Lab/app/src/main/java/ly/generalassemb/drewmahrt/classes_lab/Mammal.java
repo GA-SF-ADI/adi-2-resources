@@ -10,7 +10,7 @@ public class Mammal extends Animal {
     String milk;
 
     public Mammal(int numLegs, int topSpeed, boolean isEndangered, String name, int numberOfOffSpring, String milk) {
-        super(numLegs, topSpeed, isEndangered, name);
+        super(4, 25, isEndangered, name);
         this.numberOfOffSpring = numberOfOffSpring;
         this.milk = milk;
     }

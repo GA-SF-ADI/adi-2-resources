@@ -9,7 +9,7 @@ public class Reptile extends Animal {
     int eggs;
 
     public Reptile(int numLegs, int topSpeed, boolean isEndangered, String name, int eggs, String scales) {
-        super(numLegs, topSpeed, isEndangered, name);
+        super(numLegs, topSpeed, true, name);
         this.eggs = eggs;
         this.scales = scales;
 
