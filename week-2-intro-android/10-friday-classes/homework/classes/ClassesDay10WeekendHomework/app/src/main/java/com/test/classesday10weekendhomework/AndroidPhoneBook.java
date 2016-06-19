@@ -30,12 +30,11 @@ public class AndroidPhoneBook extends PhoneBook {
 
             return true;
 
+        } else {
+            return false;
         }
 
 
-
-        
     }
-
 
 }
