@@ -1,7 +1,8 @@
 package com.company;
 
 public class Main {
-    private PhoneBook iPhone, android;
+    private PhoneBook iPhone;
+    static AndroidPhoneBook android = new AndroidPhoneBook(4.0f);
 
     static Contacts currentContact = new Contacts("Sterling", 1234);
 
@@ -9,10 +10,20 @@ public class Main {
         PhoneBook iPhoneList = new PhoneBook(currentContact);
         PhoneBook androidList = new PhoneBook();
 
-        iPhoneList = androidList;
+
 
 
         androidList.removeContact(currentContact);
+
+        if(android.checkVersion(android.getVersion())){
+        //Version is not supported, alert user
+            System.out.println("version is not supported, sorry");
+        }
+        else{
+            System.out.println("the iPhone list of contacts has been copied!");
+            iPhoneList=androidList;
+        }
+
 
     }
 }

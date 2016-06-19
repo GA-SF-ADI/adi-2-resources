@@ -5,10 +5,21 @@ import java.util.ArrayList;
 /**
  * Created by sterlinggerritz on 6/19/16.
  */
+
 public class PhoneBook {
 
     ArrayList contacts = new ArrayList();
     private ArrayList<Contacts> listOfContacts = new ArrayList<Contacts>();
+
+    public String getPhoneBookType() {
+        return phoneBookType;
+    }
+
+    public void setPhoneBookType(String phoneBookType) {
+        this.phoneBookType = phoneBookType;
+    }
+
+    private String phoneBookType = "phonebook";
 
     public PhoneBook() {
     }
