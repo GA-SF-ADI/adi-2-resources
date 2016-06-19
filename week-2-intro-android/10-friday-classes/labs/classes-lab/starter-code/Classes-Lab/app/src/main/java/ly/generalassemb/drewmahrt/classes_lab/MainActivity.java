@@ -71,15 +71,20 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
 //        Creating bear object
 
-        final Bear bear = new Bear(0, 20, false, "Black Bear", 4, "sweet", "course", "ferocious");
+        final Bear bear = new Bear(0, 20, false, "Black Bear", 4, "sweet", "coarse", "ferocious");
 
 //        Making new snake object and its methods to just practice. Not really sure how to make it
 //        a part of my app...
 
-        final Snake snake = new Snake(0, 12, true, "Rattlesnake", true, 500, true, true);
+        final Snake snake = new Snake(0, 12, true, "Rattlesnake", true, 50, true, true);
 
-        snake.setTongueFlick(false);
+//        Creating Mammal object
 
+        final Mammal mammal = new Mammal(4, 43, true, "mammal", 5, "sour");
+
+//        Creating Reptile object
+
+        final Reptile reptile = new Reptile(4, 5, false, "reptile", true, 10);
 
 //        Set adapter
 
@@ -98,9 +103,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 Integer bearCubNum = Integer.parseInt(numOfCubs.getText().toString());
                 final String enteredBearType = bearName.getText().toString();
 
-                listOfAnimals.add("The " + enteredBearType + " bear has " + numOfCubs + "cubs and "
+                listOfAnimals.add("The " + enteredBearType + "bear has " + bearCubNum + " cubs and "
                         + "has " + bear.getClaws() + " claws. It also has " + bear.getMilk() +
-                        " milk" + " and " + bear.getFur() + " fur");
+                        " milk" + " and " + bear.getFur() + " fur! Many mammals produce " + mammal.getMilk()
+                        + " milk. When done lactating, they reach a top speed of " + mammal.getTopSpeed() + " mph.");
 
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
@@ -121,9 +127,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
                 final String enteredSnakeType = snakeName.getText().toString();
 
-                listOfAnimals.add("The " + enteredSnakeType + " snake is lined with " +
-                        numOfSnakeScales + " all over its body. Did you know that the "
-                        + enteredSnakeType + " usually pops out in an average year?");
+                listOfAnimals.add("The " + enteredSnakeType + "snake is lined with " +
+                        reptileScaleNum + " scales all over its body. Did you know that the "
+                        + enteredSnakeType + "snake usually pops out " + snake.getEggs() + " eggs " +
+                        "each year?; most reptiles lay " + reptile.getEggs() + " eggs annually." +
+                        " Unlike most reptiles which have " + reptile.getNumLegs() + " legs, snakes have none...which I " +
+                        "hope you already knew.");
 
 
                 mAdapterForAnimalDataToListView.notifyDataSetChanged();
