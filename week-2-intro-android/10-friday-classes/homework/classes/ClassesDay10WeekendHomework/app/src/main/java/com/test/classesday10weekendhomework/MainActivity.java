@@ -14,11 +14,12 @@ public class MainActivity extends AppCompatActivity {
         PhoneBook iPhonePhoneBook = new PhoneBook();
 
         PhoneBook androidPhoneBook = new PhoneBook();
-        
 
-        /*From here, wasn't really sure how to copy the iPhone contacts
-        to the Android contacts, nor how to remove all iPhone contacts
-        using the Android contact list.
+
+        /*Was able to do all instructions on my own until now. Not really sure how
+        to copy the iPhone contacts to the Android contacts, nor how to remove all iPhone contacts
+        using the Android contact list. Need to get better at running these complex methods. No
+        real point in me just copying/pasting the solution code into here :/ .....
 
 */
 
