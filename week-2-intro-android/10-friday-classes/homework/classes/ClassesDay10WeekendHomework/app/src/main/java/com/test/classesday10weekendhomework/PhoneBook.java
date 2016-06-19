@@ -8,6 +8,9 @@ import java.util.List;
  */
 public class PhoneBook {
 
+    private String phoneBookType = "phoneBook";
+
+
 
     private List<Contact> listOfContacts = new ArrayList<Contact>();
 
@@ -42,4 +45,11 @@ public class PhoneBook {
         return listOfContacts;
     }
 
+    public String getPhoneBookType() {
+        return phoneBookType;
+    }
+
+    public void setPhoneBookType(String phoneBookType) {
+        this.phoneBookType = phoneBookType;
+    }
 }
