@@ -16,7 +16,8 @@ public class PhoneBook {
 
 //    constructor that takes a contact list
 
-    public PhoneBook(List<Contact> listOfContacts) {
+    public PhoneBook(String phoneBookType, List<Contact> listOfContacts) {
+        this.phoneBookType = phoneBookType;
         this.listOfContacts = listOfContacts;
     }
 

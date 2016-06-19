@@ -10,11 +10,10 @@ public class AndroidPhoneBook extends PhoneBook {
 
     private float androidVersion;
 
-    public AndroidPhoneBook(List<Contact> listOfContacts, float androidVersion) {
-        super(listOfContacts);
+    public AndroidPhoneBook(String phoneBookType, List<Contact> listOfContacts, float androidVersion) {
+        super("Android", listOfContacts);
         this.androidVersion = androidVersion;
     }
-
 
     public float getAndroidVersion() {
         return androidVersion;
