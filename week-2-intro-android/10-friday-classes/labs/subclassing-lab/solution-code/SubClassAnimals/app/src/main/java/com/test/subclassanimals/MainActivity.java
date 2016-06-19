@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements Serializable{
     private static final long serialVersionUID = 7526472295622776147L;
@@ -23,9 +24,13 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         ListView lv= (ListView) findViewById(R.id.listView);
         //instantiate array adapter object
 
-        SubAnimals tapir= new SubAnimals(SubAnimals.animals);
+        ArrayList species = new ArrayList();
+        species.add(new Animals("Mammals", R.drawable.mammals));
+        species.add(new Animals("Reptiles", R.drawable.reptiles));
+        species.add(new SubAnimals("tapir", R.drawable.tapir));
+        species.add(new SubAnimals("lizard", R.drawable.lizard));
 
-        ArrayAdapter<Animals> animalsArrayAdapter= new ArrayAdapter<Animals>(this, android.R.layout.simple_list_item_1,Animals.animals);
+        ArrayAdapter<Animals> animalsArrayAdapter= new ArrayAdapter<Animals>(this, android.R.layout.simple_list_item_1,species);
         //connect listview to Adapter
         lv.setAdapter(animalsArrayAdapter);
 

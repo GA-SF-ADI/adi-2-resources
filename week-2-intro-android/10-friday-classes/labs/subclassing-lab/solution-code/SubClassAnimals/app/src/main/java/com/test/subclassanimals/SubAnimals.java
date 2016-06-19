@@ -31,7 +31,7 @@ public class SubAnimals extends Animals {
     }
 
 
-    //creating objects of subClass subAnimal
+
 
 
 }
