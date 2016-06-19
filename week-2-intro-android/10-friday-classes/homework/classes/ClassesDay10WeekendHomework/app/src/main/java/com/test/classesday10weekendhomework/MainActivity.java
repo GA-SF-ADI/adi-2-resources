@@ -11,7 +11,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-    PhoneBook iPhone = new PhoneBook()
+        PhoneBook iPhonePhoneBook = new PhoneBook(currentContacts);
+
+        PhoneBook androidPhoneBook = new PhoneBook();
+
+
+        androidPhoneBook.removeContact();
 
 
 

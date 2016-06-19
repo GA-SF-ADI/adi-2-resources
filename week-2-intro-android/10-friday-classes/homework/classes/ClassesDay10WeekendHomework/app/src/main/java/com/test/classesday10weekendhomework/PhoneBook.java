@@ -1,6 +1,7 @@
 package com.test.classesday10weekendhomework;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by LangstonSmith on 6/18/16.
@@ -8,18 +9,37 @@ import java.util.ArrayList;
 public class PhoneBook {
 
 
-    private ArrayList contacts;
+    private List<Contact> listOfContacts = new ArrayList<Contact>();
 
-    public PhoneBook(ArrayList contacts) {
-        this.contacts = contacts;
+//    constructor that takes a contact list
 
+    public PhoneBook(List<Contact> listOfContacts) {
+        this.listOfContacts = listOfContacts;
     }
+
+
+//    constructor that takes no contact list
 
     public PhoneBook() {
 
     }
 
-    
+//    3 required methods
 
+    public void removeContact(Contact currentContact) {
+
+        listOfContacts.remove(currentContact);
+    }
+
+
+    public void addContact(Contact newContact) {
+
+        listOfContacts.add(newContact);
+
+    }
+
+    public List<Contact> getContactsList() {
+        return listOfContacts;
+    }
 
 }
