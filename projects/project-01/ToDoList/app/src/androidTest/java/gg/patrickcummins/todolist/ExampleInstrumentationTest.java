@@ -1,4 +1,4 @@
-package gg.patrickcummins.todolistapp;
+package gg.patrickcummins.todolist;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -24,6 +24,6 @@ public class ExampleInstrumentationTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("gg.patrickcummins.todolistapp", appContext.getPackageName());
+        assertEquals("gg.patrickcummins.todolist", appContext.getPackageName());
     }
 }

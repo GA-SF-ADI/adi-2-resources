@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_create_new_list"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gg.patrickcummins.todolist.CreateNewListActivity">
+
+    <EditText
+        android:id="@+id/listNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="List Name"/>
+    <Button
+        android:id="@+id/createListButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create List"/>
+
+</LinearLayout>

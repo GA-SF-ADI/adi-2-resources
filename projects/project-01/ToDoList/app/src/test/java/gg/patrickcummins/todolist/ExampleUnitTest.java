@@ -1,4 +1,4 @@
-package gg.patrickcummins.todolistapp;
+package gg.patrickcummins.todolist;
 
 import org.junit.Test;
 
