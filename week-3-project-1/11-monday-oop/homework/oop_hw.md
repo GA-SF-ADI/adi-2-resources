@@ -18,7 +18,7 @@ In your own words, come up with answers to the following, using diagrams or pict
 
 3. We often use private member variables when creating classes. Why is it good to have private member variables instead of public? How do we grant access to such variables usually?
 
-
+4. For further reading, we'd like you to check out Java 8 Pocket Guide Chapter 5: Classes and Objects, all the way up through the Interfaces section.
 
 
 
