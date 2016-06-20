@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         ListView lv= (ListView) findViewById(R.id.listView);
         //instantiate array adapter object
 
-        ArrayList species = new ArrayList();
+        final ArrayList<Animals> species = new ArrayList();
         species.add(new Animals("Mammals", R.drawable.mammals));
         species.add(new Animals("Reptiles", R.drawable.reptiles));
         species.add(new SubAnimals("tapir", R.drawable.tapir));
@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity implements Serializable{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i= new Intent(MainActivity.this,Animals.class);
-                i.putExtra("ImageId",id);
+                Animals currentAnimal = species.get(position);
+                i.putExtra("ImageId",currentAnimal.getImgID());
                 startActivity(i);
             }
         });
