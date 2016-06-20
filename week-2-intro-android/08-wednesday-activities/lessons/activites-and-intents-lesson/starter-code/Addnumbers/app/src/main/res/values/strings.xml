@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Addnumbers</string>
+    <string name="title_activity_echo">EchoActivity</string>
+</resources>

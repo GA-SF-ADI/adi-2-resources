@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:src="@drawable/background_image"
-        android:scaleType="centerCrop" />
+         />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,10 +29,21 @@
         android:layout_gravity="bottom|right"
         android:src="@drawable/logo"
         android:layout_margin="12dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+<<<<<<< HEAD
+    <Button
+     
+
+</LinearLayout>
+</FrameLayout>
+=======
 
 </FrameLayout>
 
 
 
 </RelativeLayout>
+>>>>>>> 0b49ae268230f9b4c6c5f7b78c078eee7128d12d
