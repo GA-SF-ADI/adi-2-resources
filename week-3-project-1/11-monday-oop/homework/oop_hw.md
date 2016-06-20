@@ -14,9 +14,10 @@ In your own words, come up with answers to the following, using diagrams or pict
 
 	i. What is the difference between an Abstract Class and an Interface? If you don't know, that's alright - look it up and rephrase in your own words.
 
-	ii. How do Interfaces and Abstract Classes relate to polymorphism? Can you give an example of this from class that we've talked about?
+	ii. How do Interfaces and Abstract Classes relate to polymorphism? Can you give an example of this from lessons or labs that we've talked about?
 
-3. We often use private member variables when creating new classes. Why is it good to have private member variables instead of public? How do we grant access to such variables usually?
+3. We often use private member variables when creating classes. Why is it good to have private member variables instead of public? How do we grant access to such variables usually?
+
 
 
 
