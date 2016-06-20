@@ -28,7 +28,13 @@ public class MainActivity extends AppCompatActivity {
         Button whiteBackButton = (Button)findViewById(R.id.white_back);
 
         //TODO: Implement the listener for the TextView to reset all to black text and white background
-
+        sampleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.BLACK);
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        });
 
 
         //Implement all of the button listeners
@@ -47,6 +53,49 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // TODO handle the rest of the colors
+        greenTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.GREEN);
+            }
+        });
+
+        greenBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.GREEN);
+            }
+        });
+
+        redTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.RED);
+            }
+        });
+
+        redBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.RED);
+            }
+        });
+
+        whiteTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.WHITE);
+            }
+        });
+
+        whiteBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        });
+
+
 
 
     }

@@ -2,10 +2,12 @@ package ly.generalassemb.drewmahrt.buttonenabling;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     CheckBox mAgreeCheckBox;
@@ -25,6 +27,22 @@ public class MainActivity extends AppCompatActivity {
          *
          * In the handler, disable the button using setEnabled(false). Pass in true to re-enable.
          */
+
+        mAgreeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Button Enabled.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mAgreeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(buttonView.isChecked()){
+                    mAgreeButton.setEnabled(true);
+                } else mAgreeButton.setEnabled(false);
+            }
+        });
 
     }
 }
