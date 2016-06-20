@@ -29,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: Implement the listener for the TextView to reset all to black text and white background
 
+        View.OnClickListener sampleTextOnClickListener = new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                sampleText.setTextColor(Color.BLACK);
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        };
 
+        sampleText.setOnClickListener(sampleTextOnClickListener);
 
         //Implement all of the button listeners
         blackTextButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +53,49 @@ public class MainActivity extends AppCompatActivity {
                 sampleText.setBackgroundColor(Color.BLACK);
             }
         });
+
+        greenTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.GREEN);
+            }
+        });
+
+        greenBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.GREEN);
+            }
+        });
+
+        redTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.RED);
+            }
+        });
+
+        redBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.RED);
+            }
+        });
+
+        whiteTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.WHITE);
+            }
+        });
+
+        whiteBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        });
+
 
         // TODO handle the rest of the colors
 
