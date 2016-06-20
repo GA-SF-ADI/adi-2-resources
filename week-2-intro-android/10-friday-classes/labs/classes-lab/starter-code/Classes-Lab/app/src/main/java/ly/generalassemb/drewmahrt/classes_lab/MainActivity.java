@@ -2,43 +2,47 @@ package ly.generalassemb.drewmahrt.classes_lab;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    ArrayList<Animal> mList;
+    ArrayAdapter<Animal> mAdapter;
+    ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this,android.R.layout.simple_list_item_1, mList);
+        mListView = (ListView)findViewById(R.id.list_view);
 
-        //Get output TextViews
-        TextView output = (TextView)findViewById(R.id.output_text);
-        TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
 
         //Instantiate new Animal
         Animal cheetah = new Animal(4, 40, true, "cheetah");
+        Mammal myMammal = new Mammal(4, 50, true, "lion", 500);
+        Dog myDOg = new Dog(4, 20, false, "dog", 25, "boston terrier");
+        Reptile myReptile = new Reptile(4, 20, false, "crocodile", false);
+        Turtle myTurtle = new Turtle(4, 5, false, "sea turtle", true, 100);
 
-        String name;
-        int topSpeed;
+        //mList.add(myDOg);
+        //mList.add(myTurtle);
+        ArrayList mList = new ArrayList<Animal>();
 
-        //get name and speed values using getters
-        name = cheetah.getName();
-        topSpeed = cheetah.getTopSpeed();
+        mList.add(cheetah);
+        mList.add(myMammal);
+        mList.add(myReptile);
 
-        //Set text of first TextView
-        output.setText("The " + name + " has a top speed of " + topSpeed);
+        mListView.setAdapter(mAdapter);
 
-        //Set new name, speed, and endangered properties values using setters
-        cheetah.setName("Sloth");
-        cheetah.setTopSpeed(1);
 
-        //get new values using getters
-        name = cheetah.getName();
-        topSpeed = cheetah.getTopSpeed();
 
-        //Set text of second TextView
-        changedOutput.setText("The " + name + " has a top speed of " + topSpeed);
     }
 }
