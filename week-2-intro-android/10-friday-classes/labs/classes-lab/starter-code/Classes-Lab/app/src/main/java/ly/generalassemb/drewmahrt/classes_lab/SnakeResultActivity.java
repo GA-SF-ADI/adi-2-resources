@@ -4,31 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 /**
  * Created by kitty on 6/17/16.
  */
-public class BearResultActivity extends AppCompatActivity {
+public class SnakeResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_bear);
+        setContentView(R.layout.activity_add_snake);
 
         //link XML to JAVA
         final EditText nameEdit = (EditText) findViewById(R.id.input_name);
         final EditText speedEdit = (EditText) findViewById(R.id.input_speed);
         final EditText endangeredEdit = (EditText) findViewById(R.id.input_is_endangered);
-        final EditText colorEdit = (EditText) findViewById(R.id.input_color);
-        final EditText carnivorousEdit = (EditText) findViewById(R.id.input_is_carnivorous);
-        final EditText biteEdit = (EditText) findViewById(R.id.input_bite_force);
+        final EditText uglyEdit = (EditText) findViewById(R.id.input_ugly);
+        final EditText venomEdit = (EditText) findViewById(R.id.input_venom);
+        final EditText killEdit = (EditText) findViewById(R.id.input_kill);
 
         Button submitButton = (Button) findViewById(R.id.submit);
 
@@ -39,9 +34,9 @@ public class BearResultActivity extends AppCompatActivity {
                 resultIntent.putExtra("name", nameEdit.getText().toString());
                 resultIntent.putExtra("top speed", Integer.parseInt(speedEdit.getText().toString()));
                 resultIntent.putExtra("is endangered", endangeredEdit.getText().toString());
-                resultIntent.putExtra("color", colorEdit.getText().toString());
-                resultIntent.putExtra("carnivorous", carnivorousEdit.getText().toString());
-                resultIntent.putExtra("bite force", Integer.parseInt(biteEdit.getText().toString()));
+                resultIntent.putExtra("ugly", uglyEdit.getText().toString());
+                resultIntent.putExtra("venom", venomEdit.getText().toString());
+                resultIntent.putExtra("kill", killEdit.getText().toString());
                 setResult(RESULT_OK, resultIntent);
                 finish();
             }

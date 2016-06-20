@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/is_endnagered"
-        android:text="Is endangered?"
+        android:text="Is endangered? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -53,7 +53,7 @@
 
     <TextView
         android:id="@+id/is_carnivorous"
-        android:text="Is Carnivorous"
+        android:text="Is Carnivorous? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

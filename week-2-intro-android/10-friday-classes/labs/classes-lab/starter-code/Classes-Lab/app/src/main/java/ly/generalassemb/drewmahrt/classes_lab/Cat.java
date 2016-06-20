@@ -18,4 +18,9 @@ public class Cat extends Mammal {
     public void setNumOfLives(int numOfLives) {
         this.numOfLives = numOfLives;
     }
+
+    @Override
+    public String toString() {
+        return "Cat: " + this.getName();
+    }
 }

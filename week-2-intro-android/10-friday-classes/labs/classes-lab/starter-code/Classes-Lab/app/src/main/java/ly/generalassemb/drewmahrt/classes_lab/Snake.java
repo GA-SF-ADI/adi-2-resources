@@ -18,4 +18,9 @@ public class Snake extends Reptile {
     public void setKillWithVenom(Boolean killWithVenom) {
         this.killWithVenom = killWithVenom;
     }
+
+    @Override
+    public String toString() {
+        return "Snake: " + this.getName();
+    }
 }

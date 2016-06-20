@@ -38,4 +38,9 @@ public class Dog extends Mammal {
     public void setLovesFetch(Boolean lovesFetch) {
         this.lovesFetch = lovesFetch;
     }
+
+    @Override
+    public String toString() {
+        return "Dog: " + this.getName();
+    }
 }

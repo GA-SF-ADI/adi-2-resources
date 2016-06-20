@@ -28,4 +28,9 @@ public class Bear extends Mammal {
     public void setBiteForce(int biteForce) {
         this.biteForce = biteForce;
     }
+
+    @Override
+    public String toString() {
+        return "Bear: "+this.getName();
+    }
 }

@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/is_endnagered"
-        android:text="Is endangered?"
+        android:text="Is endangered? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -40,7 +40,7 @@
 
     <TextView
         android:id="@+id/ugle"
-        android:text="Is ugle?"
+        android:text="Is ugly? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -51,7 +51,7 @@
 
     <TextView
         android:id="@+id/venom"
-        android:text="Is venomous"
+        android:text="Is venomous? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -62,12 +62,18 @@
 
     <TextView
         android:id="@+id/kill"
-        android:text="Kill with venom (or squeeze)"
+        android:text="Kill with venom (or squeeze)? (Y/N)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/input_kill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/submit"
+        android:text="SUBMIT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
