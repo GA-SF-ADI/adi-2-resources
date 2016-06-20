@@ -15,34 +15,42 @@ public class Animal {
     }
 
     public int getNumLegs() {
+
         return numLegs;
     }
 
     public void setNumLegs(int numLegs) {
+
         this.numLegs = numLegs;
     }
 
     public int getTopSpeed() {
+
         return topSpeed;
     }
 
     public void setTopSpeed(int topSpeed) {
+
         this.topSpeed = topSpeed;
     }
 
     public boolean getisEndangered () {
+
         return isEndangered;
     }
 
     public void setisEndangered (boolean isEndangered) {
+
         this.isEndangered = isEndangered;
     }
 
     public String getName () {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 }
