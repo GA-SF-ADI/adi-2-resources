@@ -25,4 +25,9 @@ public class Lion extends Mammal {
     public String toString() {
         return "Lion" + (mIsAlpha? " (Alpha)" : "");
     }
+    @Override
+    public String makeNoise(){
+        return "Roar";
+
+    }
 }

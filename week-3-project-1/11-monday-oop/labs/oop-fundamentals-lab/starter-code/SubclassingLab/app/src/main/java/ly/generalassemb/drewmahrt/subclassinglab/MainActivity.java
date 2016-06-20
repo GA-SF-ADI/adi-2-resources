@@ -9,8 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static ly.generalassemb.drewmahrt.subclassinglab.Zoo.getmAllAnimalsList;
 
 public class MainActivity extends AppCompatActivity {
     public static final int ADD_LION = 100;
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String REQUEST_CODE = "requestCode";
 
-    ArrayList<Animal> mAnimalArrayList;
+    Zoo mZoo;
     ArrayAdapter<Animal> mAdapter;
     Button mAddLionButton, mAddSnakeButton;
     ListView mAnimalListView;
@@ -28,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(mAnimalArrayList == null){
-            mAnimalArrayList = new ArrayList<>();
+        if(mZoo == null){
+            mZoo = new Zoo();
         }
 
         mAddLionButton = (Button)findViewById(R.id.add_lion_button);
         mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
 
-        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, getmAllAnimalsList());
 
         mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
         mAnimalListView.setAdapter(mAdapter);
@@ -57,13 +60,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, ADD_SNAKE);
             }
         });
+        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Toast.makeText(MainActivity.this, mZoo.getmAllAnimalsList().get(position).makeNoise(), Toast.LENGTH_LONG).show();
+            }
+        });
+        mAnimalListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                mZoo.getmAllAnimalsList().remove(position);
+                mAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
             Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
-            mAnimalArrayList.add(createdAnimal);
+            getmAllAnimalsList().add(createdAnimal);
             mAdapter.notifyDataSetChanged();
         }
     }
