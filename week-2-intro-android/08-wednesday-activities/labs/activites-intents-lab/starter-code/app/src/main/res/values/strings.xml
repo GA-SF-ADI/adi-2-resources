@@ -6,4 +6,5 @@
         vacation place is one where you can ride <b>%5$s</b> or play <b>%6$s</b>.
     ]]>
     </string>
+    <string name="error_message">Please fill out!</string>
 </resources>
