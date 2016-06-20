@@ -19,6 +19,19 @@ public class MainActivity extends AppCompatActivity {
         mAgreeCheckBox = (CheckBox)findViewById(R.id.agree_check_box);
         mAgreeButton = (Button)findViewById(R.id.agree_button);
 
+        mAgreeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    mAgreeButton.setEnabled(true);
+                }
+                else {
+                    mAgreeButton.setEnabled(false);
+                }
+            }
+        });
+
+
         //Call setOnCheckedChangeListener on the mAgreeCheckBox, and complete the listener
         /**
          * Call setOnCheckedChangeListener on the mAgreeCheckBox, and complete the listener
