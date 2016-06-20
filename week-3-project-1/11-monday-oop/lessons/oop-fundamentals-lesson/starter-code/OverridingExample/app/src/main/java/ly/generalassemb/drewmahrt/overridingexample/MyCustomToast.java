@@ -9,13 +9,13 @@ import android.widget.Toast;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/**
+/*
  * Created by drewmahrt on 1/27/16.
  */
 public class MyCustomToast extends Toast {
     public @interface Duration {}
 
-    /**
+    /*
      * Construct an empty Toast object.  You must call {@link #setView} before you
      * can call {@link #show}.
      *
@@ -27,7 +27,7 @@ public class MyCustomToast extends Toast {
     }
 
     public static Toast makeText(Context context, CharSequence text, @Duration int duration) {
-
+        return Toast.makeText(context,"My custom toast: "+ text,duration);
 
     }
 }
