@@ -15,7 +15,6 @@ public class Animal implements Serializable {
     String mName;
 
     public Animal(int topSpeed, boolean isEndangered, String name){
-        super();
         this.mTopSpeed = topSpeed;
         this.mIsEndangered = isEndangered;
         this.mName = name;
