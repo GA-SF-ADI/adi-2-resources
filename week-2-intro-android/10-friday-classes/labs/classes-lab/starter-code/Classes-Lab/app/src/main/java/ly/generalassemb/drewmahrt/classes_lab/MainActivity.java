@@ -55,3 +55,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+
+//three buttons
