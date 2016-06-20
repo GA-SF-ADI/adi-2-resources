@@ -1,5 +1,8 @@
 package ly.generalassemb.drewmahrt.subclassinglab;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.io.Serializable;
 
 public class Animal implements Serializable {
@@ -12,6 +15,7 @@ public class Animal implements Serializable {
     String mName;
 
     public Animal(int topSpeed, boolean isEndangered, String name){
+        super();
         this.mTopSpeed = topSpeed;
         this.mIsEndangered = isEndangered;
         this.mName = name;
@@ -39,5 +43,9 @@ public class Animal implements Serializable {
 
     public void setName(String name) {
         this.mName = name;
+    }
+
+    public void makeNoise(Context context) {
+        Toast.makeText(context, "Hello!", Toast.LENGTH_SHORT).show();
     }
 }
