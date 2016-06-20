@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Animal> mAdapter;
     Button mAddLionButton, mAddSnakeButton;
     ListView mAnimalListView;
+    Zoo zoo = new Zoo(new ArrayList());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
             Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
-            mAnimalArrayList.add(createdAnimal);
+            Zoo.add(createdAnimal);
             mAdapter.notifyDataSetChanged();
         }
     }
