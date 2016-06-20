@@ -1,6 +1,6 @@
 # OOP fundamentals Homework
 
-This homework is intented to be a review to solidify your understanding of Object Oriented Programming and what it means. Although some of these concepts are high-level, they are important to the language (Java) that we work in as Android developers, and understanding these concepts will help you with interview question preparation.
+This homework is intented to be a review to solidify your understanding of some Object Oriented Programming concepts. Although some of these concepts are high-level, they are important to the language (Java) that we work in as Android developers, and understanding these concepts will help you with interview question preparation.
 
 In your own words, come up with answers to the following, using diagrams or pictures also if it helps you to describe the concept. 
 
