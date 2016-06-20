@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList <Animal>animals;
-    ArrayAdapter mAdapter;
+    ArrayAdapter<Animal>mAdapter;
     Button mammalsBttn;
     Button reptileBttn;
 
@@ -25,11 +25,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(animals == null){
+            animals = new ArrayList<Animal>();
+        }
+
         mammalsBttn = (Button) findViewById(R.id.mammalBtton);
         reptileBttn = (Button) findViewById(R.id.reptileBtton);
         mAdapter= new ArrayAdapter<Animal>(MainActivity.this,android.R.layout.simple_list_item_1, animals);
 
-        ListView animalListView= (ListView)findViewById(R.id.animalListView);
+        ListView animalListView = (ListView)findViewById(R.id.animalListView);
         animalListView.setAdapter(mAdapter);
 
         //Get output TextViews
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         animals.add(bear1);
         String name;
         int topSpeed;
+
+
 
         //get name and speed values using getters
         topSpeed=animal.getTopSpeed();
