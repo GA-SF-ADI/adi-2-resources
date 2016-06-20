@@ -3,13 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="co.ga.madlibs.MainActivity" >
+    tools:context="co.ga.madlibs.MainActivity"
+    android:background="#ffc3c3">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/adjective1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adjective #1"
+                android:textColorHint="#003513"
+                />
+
+            <EditText
+                android:id="@+id/adjective2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adjective #2"
+                android:textColorHint="#003513"
+                />
+
+            <EditText
+                android:id="@+id/noun1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noun #1"
+                android:textColorHint="#003513"
+                />
+
+            <EditText
+                android:id="@+id/noun2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Noun #1"
+                android:textColorHint="#003513"
+                />
+
+            <EditText
+                android:id="@+id/animals_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Animal (plural please!)"
+                android:textColorHint="#003513"
+                />
+
+            <EditText
+                android:id="@+id/game_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Game name (e.g. chess)"
+                android:textColorHint="#003513"
+                />
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:textSize="25dp"
+                android:textColor="#ffffff"
+                android:background="#1a8e0d"
+                android:layout_gravity="center"/>
+
+
 
         </LinearLayout>
     </ScrollView>
