@@ -13,7 +13,8 @@ import java.lang.annotation.RetentionPolicy;
  * Created by drewmahrt on 1/27/16.
  */
 public class MyCustomToast extends Toast {
-    public @interface Duration {}
+    public @interface Duration {
+    }
 
     /**
      * Construct an empty Toast object.  You must call {@link #setView} before you
@@ -22,12 +23,19 @@ public class MyCustomToast extends Toast {
      * @param context The context to use.  Usually your {@link Application}
      *                or {@link Activity} object.
      */
-    public MyCustomToast(Context context) {
+    public MyCustomToast(Context context)
+    {
         super(context);
     }
 
+    //Java built in Override for you... in this case it doesn't have an error
+    //otherwise normally you would
     public static Toast makeText(Context context, CharSequence text, @Duration int duration) {
+        return Toast.makeText(context, "My CUSTOM TOAST " + text, duration);
 
+        //text is appended
 
     }
+
+
 }

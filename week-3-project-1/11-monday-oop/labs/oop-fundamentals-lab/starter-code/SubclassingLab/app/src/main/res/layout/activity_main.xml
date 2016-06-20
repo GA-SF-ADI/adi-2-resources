@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <Button
             android:id="@+id/add_lion_button"
             android:layout_width="match_parent"
@@ -26,6 +26,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Add Snake"/>
+
+        <Button
+            android:id="@+id/add_mammal_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Mammal"/>
+        <Button
+            android:id="@+id/add_reptile_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Reptile"/>
+
+        <Button
+            android:id="@+id/add_animal_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="List of Animals"/>
+
     </LinearLayout>
 
     <ListView

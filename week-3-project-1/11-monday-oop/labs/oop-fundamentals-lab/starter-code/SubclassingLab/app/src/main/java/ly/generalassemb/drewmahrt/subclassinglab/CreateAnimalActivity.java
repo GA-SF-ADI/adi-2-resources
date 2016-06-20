@@ -33,7 +33,17 @@ public class CreateAnimalActivity extends AppCompatActivity {
                     //create new Lion object to pass back
                     Lion lion = new Lion(mCheckBox.isChecked());
                     intent.putExtra(ANIMAL_SERIALIZABLE_KEY, lion);
-                }else{
+
+                }else if (mRequestCode == MainActivity.ADD_MAMMAL) {
+                    Mammal mammal = new Mammal(4, 20,mCheckBox.isChecked(), "mammal");
+                    intent.putExtra(ANIMAL_SERIALIZABLE_KEY, mammal);
+
+                }else if (mRequestCode == MainActivity.ADD_REPTILE) {
+                    Reptile reptile = new Reptile(false, 30, mCheckBox.isChecked(), "reptile");
+                    intent.putExtra(ANIMAL_SERIALIZABLE_KEY, reptile);
+                }
+
+                else{
                     //create new Snake object to pass back
                     Snake snake = new Snake(mCheckBox.isChecked());
                     intent.putExtra(ANIMAL_SERIALIZABLE_KEY, snake);
@@ -49,6 +59,10 @@ public class CreateAnimalActivity extends AppCompatActivity {
             mCheckBox.setText("is Alpha");
         } else if (mRequestCode == MainActivity.ADD_SNAKE){
             mCheckBox.setText("is Poisonous");
+        } else if (mRequestCode == MainActivity.ADD_REPTILE){
+            mCheckBox.setText("is a reptile");
+        } else if (mRequestCode == MainActivity.ADD_MAMMAL){
+            mCheckBox.setText("is a mammal");
         } else {
             mCheckBox.setVisibility(View.INVISIBLE);
         }

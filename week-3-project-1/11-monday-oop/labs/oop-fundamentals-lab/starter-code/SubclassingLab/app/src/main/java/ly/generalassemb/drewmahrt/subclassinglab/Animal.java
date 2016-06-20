@@ -2,6 +2,12 @@ package ly.generalassemb.drewmahrt.subclassinglab;
 
 import java.io.Serializable;
 
+import android.content.Context;
+import android.widget.Toast;
+import java.util.*;
+import java.lang.String;
+
+
 public class Animal implements Serializable {
 
     // This static variable is required for Serializable to work. Don't worry about it for now.
@@ -39,5 +45,10 @@ public class Animal implements Serializable {
 
     public void setName(String name) {
         this.mName = name;
+    }
+
+    public void makeNoise(Context context) {
+
+         Toast.makeText(context,"animal noise", Toast.LENGTH_SHORT).show();
     }
 }
