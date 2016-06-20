@@ -12,7 +12,7 @@ creator:
 
 -->
 
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Lesson Title
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Subclassing
 
 
 ### LEARNING OBJECTIVES
@@ -192,7 +192,7 @@ System.out.println("Side Length: "+((Car)myCar2).getNumWheels());
 
 ```
 
-We can't define a Car as a Shape.
+We can't define a Car as a Vehicle.
 
 ```java
 //ERROR
