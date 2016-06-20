@@ -1,9 +1,8 @@
 package ly.generalassemb.drewmahrt.colorchooser;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,7 +46,44 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // TODO handle the rest of the colors
+greenTextButton.setOnClickListener(new View.OnClickListener() {
+@Override
+    public void onClick(View v) {
+sampleText.setTextColor(Color.GREEN);
+}
+                                   });
+     greenBackButton.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v){
+             sampleText.setBackgroundColor(Color.GREEN);
+         }
 
+     });
+        redTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.RED);
+            }
+        });
+        redBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                sampleText.setBackgroundColor(Color.RED);
+            }
 
+        });
+        whiteTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.WHITE);
+            }
+        });
+        whiteBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+
+        });
     }
 }
