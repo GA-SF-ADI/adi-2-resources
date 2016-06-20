@@ -11,5 +11,30 @@
     tools:context="ly.generalassemb.drewmahrt.bookshelf.MainActivity">
 
     <!-- Create your buttons and ListView here -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/titleSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort By Title"/>
+        <Button
+            android:id="@+id/authorSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort By Author"/>
+        <Button
+            android:id="@+id/yearSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort By Year"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/myListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>
