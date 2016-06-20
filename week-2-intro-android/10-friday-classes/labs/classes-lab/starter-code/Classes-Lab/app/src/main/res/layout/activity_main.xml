@@ -13,17 +13,19 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="wrap_content"></ListView>
 
-    <TextView
-        android:id="@+id/output_text"
+    <Button
+        android:id="@+id/add_dog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="Add Dog"/>
 
-    <TextView
-        android:id="@+id/changed_output_text"
+    <Button
+        android:id="@+id/add_turtle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="Add Turtle"/>
+
+
 </LinearLayout>
