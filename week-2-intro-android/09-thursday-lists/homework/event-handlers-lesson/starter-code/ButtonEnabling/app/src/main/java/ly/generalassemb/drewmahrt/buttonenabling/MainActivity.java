@@ -25,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
          *
          * In the handler, disable the button using setEnabled(false). Pass in true to re-enable.
          */
+        mAgreeCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mAgreeCheckBox.isChecked()){
+                    mAgreeButton.setEnabled(true);
+                }else {
+                    mAgreeButton.setEnabled(false);
+                }
+            }
+        });
 
     }
 }

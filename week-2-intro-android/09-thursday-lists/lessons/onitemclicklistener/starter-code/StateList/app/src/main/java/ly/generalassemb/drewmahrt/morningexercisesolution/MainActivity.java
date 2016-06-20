@@ -3,9 +3,11 @@ package ly.generalassemb.drewmahrt.morningexercisesolution;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
          *
          * Hint: How can you make sure your values are changing without modifying the original two lists?
          */
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView currentTextView = (TextView) view;
+                if(((TextView) view).getText().toString().length()>2){
+                    ((TextView) view).setText(abbreviationsList.get(position));
+                }else{
+                    ((TextView) view).setText(fullNamesList.get(position));
+                }
+
+            }
+        });
         abbrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

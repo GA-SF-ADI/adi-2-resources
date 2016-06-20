@@ -38,11 +38,56 @@ public class MainActivity extends AppCompatActivity {
                 sampleText.setTextColor(Color.BLACK);
             }
         });
+        greenTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.GREEN);
+            }
+        });
+        redTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.RED);
+            }
+        });
+        whiteTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.WHITE);
+            }
+        });
 
         blackBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sampleText.setBackgroundColor(Color.BLACK);
+            }
+        });
+        greenBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.GREEN);
+            }
+        });
+        redBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.RED);
+            }
+        });
+        whiteBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        });
+
+        sampleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.BLACK);
+                sampleText.setBackgroundColor(Color.WHITE);
+
             }
         });
 
