@@ -15,20 +15,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView sampleText = (TextView)findViewById(R.id.sample_text);
+        final TextView sampleText = (TextView) findViewById(R.id.sample_text);
 
-        Button blackTextButton = (Button)findViewById(R.id.black_text);
-        Button greenTextButton = (Button)findViewById(R.id.green_text);
-        Button redTextButton = (Button)findViewById(R.id.red_text);
-        Button whiteTextButton = (Button)findViewById(R.id.white_text);
+        Button blackTextButton = (Button) findViewById(R.id.black_text);
+        Button greenTextButton = (Button) findViewById(R.id.green_text);
+        Button redTextButton = (Button) findViewById(R.id.red_text);
+        Button whiteTextButton = (Button) findViewById(R.id.white_text);
 
-        Button blackBackButton = (Button)findViewById(R.id.black_back);
-        Button greenBackButton = (Button)findViewById(R.id.green_back);
-        Button redBackButton = (Button)findViewById(R.id.red_back);
-        Button whiteBackButton = (Button)findViewById(R.id.white_back);
+        Button blackBackButton = (Button) findViewById(R.id.black_back);
+        Button greenBackButton = (Button) findViewById(R.id.green_back);
+        Button redBackButton = (Button) findViewById(R.id.red_back);
+        Button whiteBackButton = (Button) findViewById(R.id.white_back);
 
-        //TODO: Implement the listener for the TextView to reset all to black text and white background
+        sampleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.BLACK);
+                sampleText.setBackgroundColor(Color.WHITE);
 
+            }
+            });
 
 
         //Implement all of the button listeners
@@ -39,6 +45,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        greenTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.GREEN);
+            }
+        });
+
+        redTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.RED);
+            }
+        });
+
+        whiteTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setTextColor(Color.WHITE);
+            }
+        });
+
         blackBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +73,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO handle the rest of the colors
+        greenBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.GREEN);
+            }
+        });
 
+        redBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.RED);
+            }
+        });
 
+        whiteBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sampleText.setBackgroundColor(Color.WHITE);
+            }
+        });
     }
 }
