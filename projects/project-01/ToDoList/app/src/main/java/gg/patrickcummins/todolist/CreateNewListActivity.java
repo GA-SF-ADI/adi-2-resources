@@ -23,13 +23,14 @@ public class CreateNewListActivity extends AppCompatActivity {
         createListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (listNameEditText.getText().toString() != "") {
+                if (listNameEditText.getText().toString().equals("")) {
+                    listNameEditText.setError("!");
+                }else{
                     Intent intent = new Intent();
                     intent.putExtra("newList", listNameEditText.getText().toString());
                     setResult(RESULT_OK, intent);
                     finish();
-                }else{
-                    listNameEditText.setError("!");
+
                 }
             }
         });

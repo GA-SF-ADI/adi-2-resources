@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateNewListActivity" />
-        <activity android:name=".ViewStringListActivity"></activity>
+        <activity android:name=".ViewStringListActivity" />
+        <activity android:name=".ViewListOfItemsActivity" />
+        <activity android:name=".AddItemActivity"></activity>
     </application>
 
 </manifest>
