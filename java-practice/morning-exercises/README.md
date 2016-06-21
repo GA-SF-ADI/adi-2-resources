@@ -86,16 +86,16 @@ Go through your CustomLinkedList and check if there is a loop inside of it. Make
 
 ### 17 Implement a Queue using only 2 stacks 
 	
+### 18. Check Parenthesis. 
+
+You are going to be given a string of parenthesis type characters (i.e., {{(([{}]))}}({)}))) and your job is to check whether or not it is properly formated. Meaning () would be true, (]) would be false, ([)] would be false, and ( would be false. 
 
 ## Recursion: 
 
-### 18. Recursively multiply two numbers
+### 19. Recursively multiply two numbers
 
-### 19. Reverse a string using recursion
+### 20. Reverse a string using recursion
 
-### 20. Check Parenthesis. 
-
-You are going to be given a string of parenthesis type characters (i.e., {{(([{}]))}}({)}))) and your job is to check whether or not it is properly formated. Meaning () would be true, (]) would be false, ([)] would be false, and ( would be false. 
 
 		
 
