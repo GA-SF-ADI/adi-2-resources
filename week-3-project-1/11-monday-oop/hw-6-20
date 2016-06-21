@@ -1,0 +1,34 @@
+
+1.What are the 4 main characteristics of OOP, and what do they mean?
+
+	Abstraction, Polymorphism, Inheritance, Encapsulation
+
+i. For each of the 4 OOP concepts, explain an example where the concept could apply practically to Android development.
+	
+	Abstraction-Allows you to create classes that give you a blueprint that you can use across other classes.  It gives you the option to customize the methods to fit the class that extends the abstract class.
+
+	Polymorphism- You can use when you want to use classes interchangably where it is allowed.  It allows you to call on methods from parent classes from a child class.
+	
+	Inheritance- Allows you to limit the amount of code that you right by creating objects and passing down similar state and behaviors when the objects have a relationship.
+
+	Encapsulation-helps keep your data private by limiting access to variables that you may not want changed. 	
+
+ii. Are there any tradeoffs between these concepts in your opinion? If so, what are they?
+	In encapsulation you are limiting access to your data across classes, but with inheritance you are allowing classes to share methods and variables.
+
+2.Abstract classes and Interfaces are useful in Java and in Android development. Explain an example of an Interface we use often in Android.
+
+	In android we regularly use onClickListeners. It gives us the option to fill the body of the interface, and pass it customized fuctionality.
+
+i. What is the difference between an Abstract Class and an Interface? If you don't know, that's alright - look it up and rephrase in your own words.	
+	An abstract class can have rigular methods and class variables and interfaces can't.  All functionality in interfaces is abstract.  
+
+ii. How do Interfaces and Abstract Classes relate to polymorphism? Can you give an example of this from lessons or labs that we've talked about?
+	Polymorphism allows you to use classes interchangably.  Interfaces and abstract classes are used by many different classes with gives you flexibility. an example of interfaces and polymorphism is when we use lists and arraylist. ex: List<String> strList = new ArrayList<String>(); 
+
+
+
+3.We often use private member variables when creating classes. Why is it good to have private member variables instead of public? How do we grant access to such variables usually?
+	it is good to have private variable becasue it limits access so that people cannot change your code.  To make a variable private you have to declare it as private. Ex: private int age;
+
+For further reading, we'd like you to check out Java 8 Pocket Guide Chapter 5: Classes and Objects, all the way up through the Interfaces section.
