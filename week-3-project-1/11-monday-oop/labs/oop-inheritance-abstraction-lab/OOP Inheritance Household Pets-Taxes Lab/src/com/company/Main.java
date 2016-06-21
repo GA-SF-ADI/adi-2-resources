@@ -8,8 +8,6 @@ import java.util.List;
 public class Main {
 
 
-
-
     public static void main(String[] args) {
 
 
@@ -19,19 +17,31 @@ public class Main {
 
         PayingTax taxPayment = new PayingTax(.8, 3832);
 
-//        ArrayList<String> household1 =
+//        Creating households
+
         String[] houseHold = new String[2];
         houseHold[0] = "McRoberts";
         houseHold[1] = "Kayahara";
+
+//        Creating pets
+
+        String[] petType = new String[2];
+
+        petType[0] = "fox";
+        petType[1] = "hamster";
+
+        for (int i = 0; i < petType.length; i++) {
+
+            petType[i] = petType[i].toString();
+        }
 
 
 //        Printing out lines
 
         for (int i = 0; i < houseHold.length; i++) {
 
-            System.out.println(caringForPet.totalPetCareTrifecta()
-                    + " have all been done in the " + houseHold[i] + " household!"
-                    + " " + taxPayment.payTax());
+            System.out.println(caringForPet.feedPet() + petType[i] + ", " +caringForPet.playWithPet() + petType[i] + ", and " + caringForPet.groomPet() + petType[i] + " have all been done in the " + houseHold[i] + " household!"
+                    + " " + taxPayment.payTax()); //<-- Had issues with figuring out how to cast the taxPayment.payTax() double figure to a float...
 
             System.out.println("");
             System.out.println("");

@@ -6,6 +6,7 @@ package com.company;
 public abstract class AbstractPetTreatment{
 
 
+
     public abstract String feedPet();
 
     public abstract String playWithPet();

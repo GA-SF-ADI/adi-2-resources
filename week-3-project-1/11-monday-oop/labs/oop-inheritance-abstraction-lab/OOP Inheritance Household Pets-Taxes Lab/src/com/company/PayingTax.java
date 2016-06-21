@@ -17,8 +17,7 @@ public class PayingTax extends RegularTax {
         int random;
         random = (int) (Math.random() * 2000 + 1);
         setGrossReceivedMonthlyIncome(random);
-        return "After paying a 20% tax, " + super.payTax() + " dollars was their net monthly income.";
-
+        return "After paying a 20% tax, " + super.payTax() + " dollars is their net monthly income.";
 
 
     }
