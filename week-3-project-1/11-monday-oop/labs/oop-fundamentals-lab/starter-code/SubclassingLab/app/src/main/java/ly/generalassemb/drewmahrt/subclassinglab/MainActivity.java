@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Zoo zoo = Zoo.getInstance();
+
+
 
         if(mAnimalArrayList == null){
             mAnimalArrayList = new ArrayList<>();
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mAddLionButton = (Button)findViewById(R.id.add_lion_button);
         mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
 
-        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, Zoo.animals);
 
         mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
         mAnimalListView.setAdapter(mAdapter);
@@ -57,13 +61,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, ADD_SNAKE);
             }
         });
+        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
             Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
-            mAnimalArrayList.add(createdAnimal);
+            Zoo.animals.add(createdAnimal);
             mAdapter.notifyDataSetChanged();
         }
     }
