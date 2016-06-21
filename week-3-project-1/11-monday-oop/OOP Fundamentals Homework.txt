@@ -1,0 +1,42 @@
+OOP Fundamentals Homework
+
+1.) Characteristic #1, Encapsulation:
+
+Encapsulation shilds how your inner code works by preventing problems from the code that uses it.  You do this by controlling the variables and methods that you want to be acessed.  I can make something private and then use getters and setters so that its not exposed and its always acessed in the same manner.  So I can make updates etc to my app without affecting the programs that use it.  We use APIs in android all the time but we have no idea how they actually work becuase they are encapsulated.
+
+Characteristic #2, Inheritance:
+
+I can make child classes that inherit the properties and benefits of other another parent class yet tailor the code to my specific situation, like giving it more detail and functionality.  So lets say I encapsulate a function inside the parent class, I save myself lots of typing by not repeating all of the code  and steps in each subclass.  This is good because if my subclass breaks, it does not necessarilly change the behavior of the parent class or how the program works.
+
+Characteristic #3, Polymorphism: 
+
+Means different types of forms.  Makes stuff less dependant on data types and easier to code.  So any subclass can be used as part of the code that utilizes the "super"/parent class.  I can pass objects, not just primitives,  around between classes and methods and the objects may take many forms.  When you are casting you are doing polymorphism.
+
+Characteristic #4, its "object oriented":
+
+We break our program into distinct peices which are called objects.  Each object is distinct and worked on separately, which is easier to manage than programming languages where you code the program as a whole.  We use classes which are like the blueprint of an oject.
+
+i) Example of inheritance: Class of Animals which describes general animal attributes.  Sub class mammels which extends Animals, it automatically includes the traits of animals but is refined to add more functionality , behaviors and traits that are specific to mammals.
+
+Example of incapsulation: I make a method private so that its not directly accessible by my other classes and methods.  I use getters and setters which allow me to have the functionality of the method without giving me the access to redefine the encapsulated variables and functions within the method itself.  
+
+Example of polymorphism: We do this when we use the "extends" keyword.
+
+Example of "object oriented programming": I can call a method on different types of objects which are distinct from one another, this streamlines my code and makes it easier to get stuff done.
+
+ii) Tradeoffs are that by encapsulating something I can potentially make it less acessible which would affect inheritance.  
+
+2.) An example of an interface that we often use in andoird is "on click listener".  We can know when all so difrts of objects are clicked and we dont have to write a different method for every single element that is clicked on.
+
+i) difference between abstract class and interface: An interface has body, but a abstract class does not.   A class implements an interface. Variables declared by interfaces are constants, you cant change them.  Whereas you can change variables that are declared within a abstract class.  Unlike an anonymous class, you cant define a behavior within an interface, its just an automatic pattern that happens.  
+
+ii) The interface uses lots of different objects that are totally unrelated via inheritance, which means that an interface is more polymorphic than a class because the interface potentially has many forms and is independent of any sort of hierarchy.  An abstract class lets us still benefit from polymorphism that a normal class has, but it cant be used on an object.  For example, we dont really told about "vehicles" because thats too ***abstract***, we talk about cars!  You dont say "my vehicle is red and it goes fast!"... that would be weird.  You would say "my car (type of vehicle) is red and goes fast!"  Like in the lesson.  You can have an object of the type car, but you would not have a "vehicle object" because its too broad of a definition.  
+
+3) You would use a private variable within a class when you are using it for something specific to only that class and you dont want it to be directly accessed by other classes.  Like you want the subclass to inherit a behavior in a method but not the innerworkings of the method itself.  You can grant access to a private variable via "getters" and "setters".
+
+4) I just downloaded java pocket guide off Amazon.  At first glance it seems like a useful resource because the important things I need to know are easy to find and it saves me the inconvenience of wading through lots of cryptic oracle documentation.  It kind of seems like "cliff notes", but for java! :)
+
+
+
+
+
