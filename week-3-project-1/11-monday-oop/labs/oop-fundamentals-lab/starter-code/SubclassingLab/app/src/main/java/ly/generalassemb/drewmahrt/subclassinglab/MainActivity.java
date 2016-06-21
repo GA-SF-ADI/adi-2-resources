@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
         if(mAnimalArrayList == null){
             mAnimalArrayList = new ArrayList<>();
         }
@@ -35,17 +39,42 @@ public class MainActivity extends AppCompatActivity {
         mAddLionButton = (Button)findViewById(R.id.add_lion_button);
         mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
 
-        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
+//        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
+//             ^
+//             |  Replaced
+//             |
+
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, Zoo.getInstance().getZooAnimalList());
 
         mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
         mAnimalListView.setAdapter(mAdapter);
 
+        // Set the OnItemClickListener
+
+        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, Zoo.getInstance().getZooAnimalList().get(position).makeNoise(), Toast.LENGTH_LONG).show();
+            }
+        });
+//        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+//                Toast.makeText(MainActivity.this, Zoo.getInstance().getZooAnimalList().get(position). )
+//                //Zoo.getInstance().getZooAnimalList().get(position).
+//            }
+//
+//
+//        });
+
         mAddLionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this,CreateAnimalActivity.class);
                 intent.putExtra(REQUEST_CODE, ADD_LION);
                 startActivityForResult(intent, ADD_LION);
+
             }
         });
 

@@ -2,7 +2,7 @@ package ly.generalassemb.drewmahrt.subclassinglab;
 
 import java.io.Serializable;
 
-public class Animal implements Serializable {
+public abstract class Animal implements Serializable {
 
     // This static variable is required for Serializable to work. Don't worry about it for now.
     private static final long serialVersionUID = 7526472295622776147L;
@@ -40,4 +40,6 @@ public class Animal implements Serializable {
     public void setName(String name) {
         this.mName = name;
     }
+
+    public abstract String makeNoise();
 }

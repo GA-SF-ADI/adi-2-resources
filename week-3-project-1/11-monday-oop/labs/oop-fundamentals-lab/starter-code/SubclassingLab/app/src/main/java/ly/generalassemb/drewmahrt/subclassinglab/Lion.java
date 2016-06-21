@@ -1,5 +1,8 @@
 package ly.generalassemb.drewmahrt.subclassinglab;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.io.Serializable;
 
 /**
@@ -24,5 +27,10 @@ public class Lion extends Mammal {
     @Override
     public String toString() {
         return "Lion" + (mIsAlpha? " (Alpha)" : "");
+    }
+
+    @Override
+    public String makeNoise() {
+        return "Roar";
     }
 }

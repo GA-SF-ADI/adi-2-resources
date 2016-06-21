@@ -1,9 +1,12 @@
 package ly.generalassemb.drewmahrt.subclassinglab;
 
+import android.content.Context;
+import android.widget.Toast;
+
 /**
  * Created by drewmahrt on 12/7/15.
  */
-public class Mammal extends Animal {
+public abstract class Mammal extends Animal {
     int mNumLegs;
 
     public Mammal(int numLegs, int topSpeed, boolean isEndangered, String name){
@@ -18,4 +21,5 @@ public class Mammal extends Animal {
     public void setNumLegs(int numLegs) {
         this.mNumLegs = numLegs;
     }
+
 }
