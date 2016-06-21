@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Subclassing Lab</string>
+    <string name="title_activity_see_my_list">SeeMyList</string>
 </resources>

@@ -15,7 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateAnimalActivity"></activity>
+        <activity android:name=".CreateAnimalActivity" />
+        <activity
+            android:name=".SeeMyList"
+            android:label="@string/title_activity_see_my_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

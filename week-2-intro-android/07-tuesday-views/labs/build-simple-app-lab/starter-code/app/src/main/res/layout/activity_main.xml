@@ -7,17 +7,46 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/relativeView"
     tools:context="co.ga.helloworld.MainActivity">
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:text="Hello!"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:text="Hello! Choose a color."
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonYellow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20pt"
+        android:layout_below="@id/textView"
+        android:background="#ffff99"
+        android:text="Yellow"
+        />
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20pt"
+        android:layout_below="@id/buttonYellow"
+        android:background="#0099ff"
+        android:text="Blue"
+        />
+    <Button
+        android:id="@+id/buttonTurquoise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20pt"
+        android:layout_below="@id/buttonBlue"
+        android:background="#ccffff"
+        android:text="Turquoise"/>
 
 </RelativeLayout>
