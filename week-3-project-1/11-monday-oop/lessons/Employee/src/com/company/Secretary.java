@@ -5,11 +5,43 @@ import java.text.NumberFormat;
 /**
  * Created by audreyeso on 6/20/16.
  */
-public class Secretary extends Employee {
+public class Secretary extends Employee implements iOperateTV{
+    boolean power;
+    int volume;
+    int channel;
 
     public Secretary() {
 
     }
+
+    @Override
+    public void togglePower(boolean toggle) {
+        power = !toggle;
+
+    }
+
+    @Override
+    public void changeVolume(boolean increase) {
+
+        if (increase) {
+            volume++;
+        }else {
+            volume--;
+        }
+    }
+
+
+
+    @Override
+    public void changeChange1(boolean increase) {
+
+        if (increase) {
+            channel++;
+        }else {
+            channel--;
+        }
+    }
+
 
     public void filePapers () {
         System.out.println("File papers");

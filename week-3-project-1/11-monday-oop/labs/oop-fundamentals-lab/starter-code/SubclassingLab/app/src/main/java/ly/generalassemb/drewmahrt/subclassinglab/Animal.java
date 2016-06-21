@@ -49,6 +49,6 @@ public class Animal implements Serializable {
 
     public void makeNoise(Context context) {
 
-         Toast.makeText(context,"animal noise", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "animal noise", Toast.LENGTH_SHORT).show();
     }
 }

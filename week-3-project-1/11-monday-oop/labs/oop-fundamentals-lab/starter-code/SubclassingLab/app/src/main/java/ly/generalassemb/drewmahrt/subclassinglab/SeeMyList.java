@@ -32,16 +32,18 @@ public class SeeMyList extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
-        Zoo.getInstance().getAnimals();
-
+        mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
+        mAnimalListView.setAdapter(mAdapter);
+        mAdapter = new ArrayAdapter<Animal>(SeeMyList.this, android.R.layout.simple_list_item_1, Zoo.getInstance().getAnimals());
+        //Zoo.getInstance().getAnimals();
+        /*
         mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(SeeMyList.this, Zoo.getInstance().getAnimals().get(position).makeNoise(), Toast.LENGTH_SHORT).show;
             }
         });
+*/
     }
 
 }

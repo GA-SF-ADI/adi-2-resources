@@ -13,6 +13,7 @@ public abstract class Employee {
 
     public Employee() {
 
+
     }
 
     public void getPaid(int daysWorked) {
@@ -29,10 +30,6 @@ public abstract class Employee {
 
     public void whatIsYourJob (){
         System.out.println("Job");
-    }
-
-    public Employee(double hourlyWage) {
-        this.hourlyWage = hourlyWage;
     }
 
     public abstract void primaryResponsibility();

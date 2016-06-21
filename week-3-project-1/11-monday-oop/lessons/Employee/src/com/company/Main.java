@@ -24,5 +24,13 @@ public class Main {
 
         }
 
+        iOperateTV [] tvs = new iOperateTV[2];
+        tvs[0] = new SuperOld();
+        tvs[1] = new Secretary();
+        tvs[0].togglePower(true);
+        tvs[1].changeChange1(true);
+        // WILL NOT WORK BECAUSE THE INTERFACE DOES NOT WORK WITH : tvs[1]= new Teacher();
+        //these only work with SuperOld and Secretary
+
     }
 }
