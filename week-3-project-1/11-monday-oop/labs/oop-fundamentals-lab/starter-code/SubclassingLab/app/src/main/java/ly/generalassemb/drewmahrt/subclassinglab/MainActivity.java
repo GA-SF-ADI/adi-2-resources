@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Animal> mAdapter;
     Button mAddLionButton, mAddSnakeButton;
     ListView mAnimalListView;
+    Zoo zoo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,39 +34,52 @@ public class MainActivity extends AppCompatActivity {
             mAnimalArrayList = new ArrayList<>();
         }
 
-        mAddLionButton = (Button)findViewById(R.id.add_lion_button);
-        mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
+        //mAddLionButton = (Button)findViewById(R.id.add_lion_button);
+        //mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
+
+        zoo = Zoo.getInstance();
+
+        Lion simba = new Lion(true);
+        Snake rattleSnake = new Snake(true);
+        Mammal dog = new Mammal(4, 30, false, "Dog");
+
+        zoo.addAnimal(simba);
+        zoo.addAnimal(rattleSnake);
+        zoo.addAnimal(dog);
+
+        mAnimalArrayList=zoo.getAnimals();
 
         mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
 
         mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
         mAnimalListView.setAdapter(mAdapter);
 
-        mAddLionButton.setOnClickListener(new View.OnClickListener() {
+        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,CreateAnimalActivity.class);
-                intent.putExtra(REQUEST_CODE, ADD_LION);
-                startActivityForResult(intent, ADD_LION);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int myPosition = position;
+                makeNoise(myPosition);
+
             }
         });
 
-        mAddSnakeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,CreateAnimalActivity.class);
-                intent.putExtra(REQUEST_CODE, ADD_SNAKE);
-                startActivityForResult(intent, ADD_SNAKE);
-            }
-        });
+
+
+
+
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode == RESULT_OK){
-            Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
-            mAnimalArrayList.add(createdAnimal);
-            mAdapter.notifyDataSetChanged();
+    protected void makeNoise(int position){
+        if(position==0){
+            Toast.makeText(MainActivity.this,"Lion goes ROAR",Toast.LENGTH_SHORT).show();
+        }else if(position==1){
+            Toast.makeText(MainActivity.this,"Snake goes HISS",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity.this,"Dog goes WOOF",Toast.LENGTH_SHORT).show();
         }
+
     }
+
+
 }
