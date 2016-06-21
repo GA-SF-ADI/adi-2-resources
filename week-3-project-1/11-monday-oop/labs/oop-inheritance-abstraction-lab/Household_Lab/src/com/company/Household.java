@@ -29,12 +29,15 @@ public class Household implements Comparable<Household> {
         return pet;
     }
 
-    public int getIncome() {
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
+    public int outputIncome() {
         return income;
     }
 
-    public void getIncome(int income) {
-        this.income = income;
+    public void getIncome() {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String moneyString = formatter.format(this.income);
         System.out.println(String.format("Made %s", moneyString, " in income"));
@@ -50,9 +53,9 @@ public class Household implements Comparable<Household> {
 
     public int compareTo(Household other) {
         int result = 0;
-        if(this.income < other.getIncome()) {
+        if(this.income < other.outputIncome()) {
             result = -1;
-        } else if(this.income > other.getIncome()) {
+        } else if(this.income > other.outputIncome()) {
             result = 1;
         }
         return result;

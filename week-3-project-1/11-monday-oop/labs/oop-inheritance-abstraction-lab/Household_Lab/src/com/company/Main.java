@@ -1,6 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
 
@@ -14,21 +14,33 @@ public class Main {
         Household hh2 = new Household(3, cat, 0);
         Household hh3 = new Household(5, dog, 0);
 
-        Community mCommunity = new Community(new ArrayList<>());
+        Household[] mCommunity = new Household[3];
 
-        mCommunity.addHousehold(hh1);
-        mCommunity.addHousehold(hh2);
-        mCommunity.addHousehold(hh3);
+        mCommunity[0] = hh1;
+        mCommunity[1] = hh2;
+        mCommunity[2] = hh3;
 
-        for (int i = 0; i < mCommunity.getSize(); i++) {
-            int tempIncome = (int) Math.random()*100000;
-            mCommunity.getHousehold(i).getIncome(tempIncome);
-            mCommunity.getHousehold(i).payTax();
-            mCommunity.getHousehold(i).getPet().feeding();
-            mCommunity.getHousehold(i).getPet().grooming();
-            mCommunity.getHousehold(i).getPet().playing();
+        for (int i = 0; i < mCommunity.length; i++) {
+            int tempIncome = (int) (Math.random()*100000);
+            mCommunity[i].setIncome(tempIncome);
+            mCommunity[i].getIncome();
+            mCommunity[i].payTax();
+            mCommunity[i].getPet().feeding();
+            mCommunity[i].getPet().grooming();
+            mCommunity[i].getPet().playing();
         }
 
+        Arrays.sort(mCommunity);
+
+        System.out.println("after sorting:");
+
+        for (int i = 0; i < mCommunity.length; i++) {
+            mCommunity[i].getIncome();
+            mCommunity[i].payTax();
+            mCommunity[i].getPet().feeding();
+            mCommunity[i].getPet().grooming();
+            mCommunity[i].getPet().playing();
+        }
 
     }
 }
