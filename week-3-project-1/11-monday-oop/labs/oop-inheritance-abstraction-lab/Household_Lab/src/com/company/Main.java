@@ -28,6 +28,8 @@ public class Main {
             mCommunity[i].getPet().feeding();
             mCommunity[i].getPet().grooming();
             mCommunity[i].getPet().playing();
+            //to bring the income back to original pretax amount for next for loop of sorted
+            mCommunity[i].setIncome(tempIncome);
         }
 
         Arrays.sort(mCommunity);
