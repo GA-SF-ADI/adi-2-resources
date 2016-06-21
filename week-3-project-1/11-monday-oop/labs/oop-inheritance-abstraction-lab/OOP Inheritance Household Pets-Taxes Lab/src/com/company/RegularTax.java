@@ -9,6 +9,7 @@ public class RegularTax {
     protected double postTaxIncome;
     protected double grossReceivedMonthlyIncome;
 
+
     public RegularTax(double taxPercentage, double grossReceivedMonthlyIncome) {
         this.taxPercentage = taxPercentage;
         this.grossReceivedMonthlyIncome = grossReceivedMonthlyIncome;

@@ -35,15 +35,17 @@ public class Main {
             petType[i] = petType[i].toString();
         }
 
-
 //        Printing out lines
 
         for (int i = 0; i < houseHold.length; i++) {
 
             System.out.println(caringForPet.feedPet() + petType[i] + ", " + caringForPet.playWithPet() + petType[i] +
                     ", and " + caringForPet.groomPet() + petType[i] + " have all been done in the " + houseHold[i] + " household!"
-                    + " " + taxPayment.payTax() + " They love their " + petType[i] + " so much, that they often spend " +
-                    "an extra couple of hours " + caringForPet.playWithPet() + petType[i] + " on Sundays.") ;//<-- Had issues with figuring out how to cast the taxPayment.payTax() double figure to a float...
+                    + " " + taxPayment.payTax() + ". " + taxPayment.inTwentyPercentTaxBracket() + " They love their " + petType[i] + " so much, that they often spend " +
+                    "an extra couple of hours " + caringForPet.playWithPet() + petType[i] + " on Sundays.") ;/* <-- Had issues with figuring out how to cast the
+                     taxPayment.payTax() double figure to a float...*/
+
+            ;
 
             System.out.println("");
             System.out.println("");
