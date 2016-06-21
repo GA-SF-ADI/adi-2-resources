@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Zoo zoo = Zoo.getInstance();
+        final Zoo zoo = Zoo.getInstance();
 
 
 
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Toast.makeText(MainActivity.this,Zoo.getInstance().getAnimals().get(position).makeNoise(),Toast.LENGTH_SHORT).show();
             }
         });
     }
