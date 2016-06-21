@@ -27,19 +27,19 @@ public class CreateAnimalActivity extends AppCompatActivity {
         mCreateAnimalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
+                Intent data = new Intent();
 
                 if(mRequestCode == MainActivity.ADD_LION){
                     //create new Lion object to pass back
                     Lion lion = new Lion(mCheckBox.isChecked());
-                    intent.putExtra(ANIMAL_SERIALIZABLE_KEY, lion);
+                    data.putExtra(ANIMAL_SERIALIZABLE_KEY, lion);
                 }else{
                     //create new Snake object to pass back
                     Snake snake = new Snake(mCheckBox.isChecked());
-                    intent.putExtra(ANIMAL_SERIALIZABLE_KEY, snake);
+                    data.putExtra(ANIMAL_SERIALIZABLE_KEY, snake);
                 }
 
-                setResult(RESULT_OK, intent);
+                setResult(RESULT_OK, data);
                 finish();
 
             }
@@ -52,5 +52,6 @@ public class CreateAnimalActivity extends AppCompatActivity {
         } else {
             mCheckBox.setVisibility(View.INVISIBLE);
         }
+
     }
 }
