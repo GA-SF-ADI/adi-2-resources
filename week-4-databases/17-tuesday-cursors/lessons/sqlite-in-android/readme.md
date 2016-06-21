@@ -34,7 +34,9 @@ Now that we've gotten the basics of SQL down, let's explore the __easy__ Android
 
 ## Introduction: SQL vs. SQLite vs. PostgreSQL (5 mins)
 
+> Instructor Note: Briefly describe the difference between SQL, SQLite, and PostgreSQL.
 
+> Check: Describe what a database engine is.
 
 ## Demo: SQLiteOpenHelper (15 minutes)
 
@@ -44,6 +46,7 @@ To use, you have to create your own subclass of `SQLiteOpenHelper`. This class s
 
 In it, we define two static member variables - the database's name and version. It's good to have the database's name in one place, at the top of the class, and the constructor is calling the superclass's constructor, using the database name and version we just defined:
 
+> Instructor Note: Students be given the option to follow along and do this on their machine as they will use this code in the final activity.
 
 ```java
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -103,13 +106,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		// Create the games table when the database is created
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_GAME_TABLE);
     }
 
 		// When the database is upgraded, the old data isn't needed. Delete the games
 		// table and recreate the table
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL(SQL_DROP_GAME_TABLE);
         onCreate(db);
     }
 }
@@ -117,9 +120,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 At this point, we have a class that helps us create and update the games table in the Favorites database. Let's use the helper to help us do CRUD operations: insert, read, update, and delete values.
 
+> Check: Talk with the person next to you and discuss: why is it important to define the database name and version atop your class as two static member variables?
 
 ## Demo: Inserting, reading, and deleting values (25 mins)
 
+> Check: Talk with the people at your table and try to identify actions you would want to do to data in a database. Take one minute and be ready to share!
 
 You can: Create, Read, Update, and Destroy data (or CRUD, for short!)  We won't go over update here, but let's take take a look at the others.
 
@@ -243,7 +248,7 @@ DELETE FROM games WHERE id = 10;
 Use this class from anywhere with access to a Context (i.e., an Activity):
 
 ```java
-public class GameActivity extends Activity {
+public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -254,7 +259,7 @@ public class GameActivity extends Activity {
 				db.insert(1, "Super Mario", "1985");
 				db.insert(2, "Legend of Zelda", "1986");
 
-				Game retrievedGame = db.query(2);
+				Game retrievedGame = getGame.query(2);
     }
 }
 ```
@@ -276,6 +281,7 @@ In a commented line above each CRUD method of the SQLiteOpenHelper, write the eq
 
 Be sure to leverage documentation!
 
+> Check: Take 3 minutes to review the solution with students.
 
 ## Conclusion (5 mins)
 
