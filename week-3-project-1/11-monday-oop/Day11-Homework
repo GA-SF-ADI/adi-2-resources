@@ -1,0 +1,42 @@
+1. What are the 4 main characteristics of OOP, and what do they mean?
+ - Abstraction
+Abstract classes are meant to create subclasses that share some sort of behavior but may need to execute certain points differently.
+ - Polymorphism
+Different classes that might define the same method.
+ - Inheritance
+A class that can inherit from another class.
+ - Encapsulation
+Bundling methods that use the data together.
+
+i. For each of the 4 OOP concepts, explain an example where the concept could apply practically to Android development.
+ - Abstraction - an example could be a driver of a car, where the driver just needs to know how to drive and doesn't need to all of the parts of the car and they work. Android classes could be broken up the same way.
+
+ - Polymorphism - for an example, it could be compared to an airplane where all of passengers just need to use the plane but don't need to how to fly it or how it works. 
+
+ - Inheritance - an example of it could be the idea of genes, where a child would inherit his traits from the parent. The same would go for classes inheriting functionality from other classes.
+
+
+ - Encapsulation - an example would be packing up cargo on a container ship and sending it off. This type of use could make the app more effiecent.
+
+
+ii. Are there any tradeoffs between these concepts in your opinion? If so, what are they?
+
+
+
+2. Abstract classes and Interfaces are useful in Java and in Android development. Explain an example of an Interface we use often in Android.
+ - I would assume they could use it for gender sorting/comparison.
+
+
+i. What is the difference between an Abstract Class and an Interface? If you don't know, that's alright - look it up and rephrase in your own words.
+ - Interface are shells of methods with no inheristance while Abstract classes are extended into other classes as an outline of a sort.
+
+ii. How do Interfaces and Abstract Classes relate to polymorphism? Can you give an example of this from lessons or labs that we've talked about? An example would be when several classes extend a class like Reptile/Mammal from Animal.
+
+
+
+3. We often use private member variables when creating classes. Why is it good to have private member variables instead of public? How do we grant access to such variables usually? 
+ - It is good for keeping the code secure. You can use protected or public in other cases.
+
+
+
+4. For further reading, we'd like you to check out Java 8 Pocket Guide Chapter 5: Classes and Objects, all the way up through the Interfaces section.
