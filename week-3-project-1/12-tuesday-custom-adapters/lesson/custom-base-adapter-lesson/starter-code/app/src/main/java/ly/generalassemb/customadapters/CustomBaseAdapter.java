@@ -28,6 +28,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     private ArrayList<Animal> data;
     private Context context;
+    private ViewHolder viewHolder;
 
     public CustomBaseAdapter(Context context, ArrayList<Animal> animalList) {
         this.data = animalList;
@@ -53,20 +54,28 @@ public class CustomBaseAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+
+            // create new ViewHolder and set it as the tag for convertView
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            // convertView exists, so we can grab our viewHolder from its tag
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        TextView firstTV = (TextView) convertView.findViewById(R.id.list_item_tv_first);
-        TextView secondTV = (TextView) convertView.findViewById(R.id.list_item_tv_second);
-        Button button = (Button) convertView.findViewById(R.id.list_item_button);
+        //no need to the following code when using ViewHolder
+//        TextView firstTV = (TextView) convertView.findViewById(R.id.list_item_tv_first);
+//        TextView secondTV = (TextView) convertView.findViewById(R.id.list_item_tv_second);
+//        Button button = (Button) convertView.findViewById(R.id.list_item_button);
 
         final Animal currentAnimal = data.get(position);
 
-        firstTV.setText(currentAnimal.getName());
-        secondTV.setText(currentAnimal.getSound());
+        viewHolder.firstTV.setText(currentAnimal.getName());
+        viewHolder.secondTV.setText(currentAnimal.getSound());
 
         final String toastText = currentAnimal.getName() + " says: " + currentAnimal.getSound();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
