@@ -21,12 +21,75 @@ import java.util.ArrayList;
  * animal sound ( i.e. cow says moo ).
  */
 public class CustomBaseAdapter extends BaseAdapter {
+    private ArrayList<Animal> data;
+    private Context context;
+    private ViewHolder viewHolder;
 
-    // TODO: implement the rest of the CustomBaseAdapter class
+    public CustomBaseAdapter(Context context, ArrayList<Animal> animalList) {
+        this.context = context;
+        this.data = animalList;
+    }
 
-    // hint: Create constructor first. Implement 4 methods next.
+    @Override
+    public int getCount() {
+        return data.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return data.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if(convertView==null){
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+
+        }else{
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
 
+        final Animal currentAnimal = data.get(position);
 
-    // TODO: Bonus - use a ViewHolder!
+
+        viewHolder.firstTextView.setText(currentAnimal.getName());
+        viewHolder.secondTextView.setText(currentAnimal.getSound());
+
+        final String toastText = currentAnimal.getName() + " says: "+ currentAnimal.getSound();
+
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        return convertView;
+
+    }
+    private class ViewHolder {
+        TextView firstTextView;
+        TextView secondTextView;
+        Button button;
+
+        public ViewHolder(View itemLayout){
+            this.firstTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_first);
+            this.secondTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_second);
+            this.button = (Button) itemLayout.findViewById(R.id.list_item_button);
+
+        }
+
+    }
+
+
 }
