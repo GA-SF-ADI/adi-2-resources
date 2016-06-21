@@ -7,16 +7,25 @@ public class DailyPetCare extends AbstractPetTreatment {
 
     @Override
     public String feedPet() {
-        return "Feeding pet";
+        return "feeding the pet";
     }
 
     @Override
     public String playWithPet() {
-        return "Playing with pet";
+        return "playing with the pet";
     }
 
     @Override
     public String groomPet() {
-        return "Grooming the pet";
+        return "grooming the pet";
     }
+
+    protected String totalPetCareTrifecta(){
+
+        return feedPet() + ", " + playWithPet() + ", and " + groomPet() + " have all been done!";
+
+
+    }
+
+
 }

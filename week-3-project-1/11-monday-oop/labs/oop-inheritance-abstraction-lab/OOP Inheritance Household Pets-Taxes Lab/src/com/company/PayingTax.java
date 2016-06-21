@@ -14,7 +14,8 @@ public class PayingTax extends RegularTax {
     @Override
     public String payTax() {
         setTaxPercentage(.2);
-        return super.payTax();
+        return "After paying a 20% tax, " + super.payTax() + " dollars was their net monthly income.";
+
 
 
     }
