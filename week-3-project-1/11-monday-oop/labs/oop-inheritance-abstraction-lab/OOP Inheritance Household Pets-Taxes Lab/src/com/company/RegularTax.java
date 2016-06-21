@@ -30,12 +30,15 @@ public class RegularTax {
         this.taxPercentage = taxPercentage;
     }
 
-    protected String payTax() {
+    public void setPostTaxIncome(double postTaxIncome) {
+        this.postTaxIncome = postTaxIncome;
+    }
+
+    public String payTax() {
 
         postTaxIncome = (grossReceivedMonthlyIncome * (1 - taxPercentage));
 
-        return String.valueOf(postTaxIncome);
-
+    return String.valueOf(postTaxIncome);
 
     }
 
