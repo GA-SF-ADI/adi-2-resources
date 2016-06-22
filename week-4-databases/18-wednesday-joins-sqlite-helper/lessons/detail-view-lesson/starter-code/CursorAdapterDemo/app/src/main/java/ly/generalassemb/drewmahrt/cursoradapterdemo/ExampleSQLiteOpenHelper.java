@@ -37,6 +37,7 @@ public class ExampleSQLiteOpenHelper extends SQLiteOpenHelper {
                     COL_ITEM_NAME + " TEXT, " +
                     COL_ITEM_DESCRIPTION + " TEXT )";
 
+    //make a private static instance to use for Singleton
 
     public ExampleSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
