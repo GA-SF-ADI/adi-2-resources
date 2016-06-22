@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
     private ArrayList<Day> data;
     private Context context;
-    private ViewHolder viewHolder;
+     private ViewHolder viewHolder;
 
 
     public CustomAdapter(Context context, ArrayList<Day> daysList) {
