@@ -1,5 +1,8 @@
 package gg.patrickcummins.todolist;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -44,4 +47,6 @@ public class NamedList implements Serializable{
     public void setmArrayList(ArrayList<ListItem> mArrayList) {
         this.mArrayList = mArrayList;
     }
+
+
 }
