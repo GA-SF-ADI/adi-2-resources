@@ -44,6 +44,8 @@ public class AddItemActivity extends AppCompatActivity {
                         result.putExtra("color", "green");
                     }else if (orange.isChecked()){
                         result.putExtra("color", "orange");
+                    } else {
+                        result.putExtra("color", "white");
                     }
                     setResult(RESULT_OK, result);
                     finish();

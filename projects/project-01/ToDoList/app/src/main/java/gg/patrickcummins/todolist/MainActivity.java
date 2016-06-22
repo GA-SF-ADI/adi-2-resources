@@ -1,6 +1,7 @@
 package gg.patrickcummins.todolist;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<NamedList> listsArrayList;
 
-    ArrayAdapter<NamedList> mAdapter;
+    CustomListAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         listsFab = (FloatingActionButton) findViewById(R.id.newListFab);
         listsListView = (ListView) findViewById(R.id.listListView);
         listsArrayList = new ArrayList<NamedList>();
-        mAdapter = new ArrayAdapter<NamedList>(MainActivity.this, android.R.layout.simple_list_item_1, listsArrayList);
+        mAdapter = new CustomListAdapter(MainActivity.this, listsArrayList);
     }
     private void setAllOnClickListeners(){
         listsFab.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == NEW_LIST_REQUEST_CODE) {
                 String newListNameString = data.getStringExtra("newList");
-                listsArrayList.add(new NamedList(newListNameString));
+                String color = data.getStringExtra("color");
+                listsArrayList.add(new NamedList(newListNameString, color));
                 mAdapter.notifyDataSetChanged();
             }else if (requestCode == OPEN_LIST_REQUEST_CODE){
                 int position = data.getIntExtra("listPosition", -1);
@@ -77,5 +79,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+
     }
 }

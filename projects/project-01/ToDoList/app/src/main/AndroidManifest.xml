@@ -7,8 +7,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        >
+
+        <activity android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,7 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateNewListActivity" />
-        <activity android:name=".ViewStringListActivity" />
         <activity android:name=".ViewListOfItemsActivity" />
         <activity android:name=".AddItemActivity"></activity>
     </application>

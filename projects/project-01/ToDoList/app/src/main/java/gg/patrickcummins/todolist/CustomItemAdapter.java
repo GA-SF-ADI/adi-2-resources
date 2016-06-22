@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static gg.patrickcummins.todolist.R.id.mainList;
 
 /**
  * Created by patrickcummins on 6/22/16.
@@ -18,7 +21,6 @@ import java.util.ArrayList;
 public class CustomItemAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<ListItem> currentList;
-    private ViewHolder viewHolder;
 
 
     public CustomItemAdapter(Context context, ArrayList<ListItem> currentList) {
@@ -42,7 +44,8 @@ public class CustomItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
             viewHolder = new ViewHolder(convertView);
@@ -56,27 +59,43 @@ public class CustomItemAdapter extends BaseAdapter {
 
         viewHolder.nameTextView.setText(currentItem.getmName());
         viewHolder.descriptionTextView.setText(currentItem.getDescription());
+        if (currentItem.getColor() != null){
 
-        if (currentItem.getColor().equals("blue")){
-            viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_light));
-        }else if (currentItem.getColor().equals("red")){
-            viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_light));
-        }else if (currentItem.getColor().equals("green")){
-            viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_light));
-        }else if (currentItem.getColor().equals("orange")){
-            viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
+            if (currentItem.getColor().equals("blue")){
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_light));
+            }else if (currentItem.getColor().equals("red")){
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_light));
+            }else if (currentItem.getColor().equals("green")){
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_light));
+            }else if (currentItem.getColor().equals("orange")){
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
+            }else if (currentItem.getColor().equals("white")){
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
+            }
         }
+        viewHolder.deleteImageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                currentList.remove(position);
+                notifyDataSetChanged();
+                return false;
+            }
+        });
 
         return convertView;
     }
+
+
     private class ViewHolder{
         TextView nameTextView;
         TextView descriptionTextView;
         LinearLayout mLinearLayout;
+        ImageView deleteImageView;
         public ViewHolder(View itemLayout){
             this.nameTextView = (TextView) itemLayout.findViewById(R.id.itemNameTextView);
             this.descriptionTextView = (TextView) itemLayout.findViewById(R.id.itemDescriptionTextView);
             this.mLinearLayout = (LinearLayout) itemLayout.findViewById(R.id.itemLayout);
+            this.deleteImageView = (ImageView) itemLayout.findViewById(R.id.deleteImageView);
         }
     }
 }

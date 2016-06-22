@@ -10,12 +10,9 @@ public class ListItem implements Serializable {
     private static final long serialVersionUID = 7526472295622776147L;
     private String mName;
     private String description;
-    private String color;
+    private String color = null;
 
-    public ListItem(String mName, String description) {
-        this.mName = mName;
-        this.description = description;
-    }
+
     public ListItem(String mName, String description, String color) {
         this.mName = mName;
         this.description = description;
