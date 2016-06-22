@@ -5,35 +5,28 @@ package com.test.weatherapp;
  */
 public class Day {
     private String day;
-    private int temperatureHigh;
-    private int temperatureLow;
+    private String temperatureHigh;
+    private String temperatureLow;
 
-    public Day(String day, int temperatureHigh, int temperatureLow) {
+    public Day(String day, String temperatureHigh, String temperatureLow) {
         this.day = day;
+        this.temperatureHigh=temperatureHigh;
+        this.temperatureLow=temperatureLow;
     }
 
     public String getDay() {
         return day;
     }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public int getTemperatureHigh() {
+    public String getTemperatureHigh() {
         return temperatureHigh;
     }
 
-    public void setTemperatureHigh(int temperatureHigh) {
-        this.temperatureHigh = temperatureHigh;
-    }
 
-    public int getTemperatureLow() {
+    public String getTemperatureLow() {
+
         return temperatureLow;
     }
 
-    public void setTemperatureLow(int temperatureLow) {
-        this.temperatureLow = temperatureLow;
-    }
 }
 
