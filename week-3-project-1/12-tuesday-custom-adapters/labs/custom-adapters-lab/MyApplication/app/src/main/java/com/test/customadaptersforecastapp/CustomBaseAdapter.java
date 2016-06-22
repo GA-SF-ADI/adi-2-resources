@@ -57,10 +57,10 @@ public class CustomBaseAdapter extends BaseAdapter {
         final Forecast currentForecast = dataForecast.get(position);
 
         viewHolder.temperature.setText(currentForecast.getTemperature());
-        viewHolder.weather.setText(currentForecast.getDayOfWeek());
+        viewHolder.day.setText(currentForecast.getDayOfWeek());
         viewHolder.location.setText(currentForecast.getLocation());
 
-
+/*
         final String toastText = currentForecast.getDayOfWeek();
         viewHolder.forecast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +68,8 @@ public class CustomBaseAdapter extends BaseAdapter {
                 Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
             }
         });
+
+        */
         return convertView;
     }
 
@@ -75,12 +77,12 @@ public class CustomBaseAdapter extends BaseAdapter {
         Button forecast;
         TextView temperature;
         TextView location;
-        TextView weather;
+        TextView day;
 
 
         public ViewHolder(View itemLayout) {
-            this.forecast = (Button) itemLayout.findViewById(R.id.list_item_forecast);
-            this.weather = (TextView)itemLayout.findViewById(R.id.list_item_weather);
+            //this.forecast = (Button) itemLayout.findViewById(R.id.list_item_forecast);
+            this.day = (TextView)itemLayout.findViewById(R.id.list_item_weather);
             this.location = (TextView) itemLayout.findViewById(R.id.list_item_location);
             this.temperature = (TextView)itemLayout.findViewById(R.id.list_item_temperature);
         }
