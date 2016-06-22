@@ -49,8 +49,7 @@ public class CustomBaseAdaper extends BaseAdapter {
         }
 
         final Weather currentWeather = data.get(position);
-
-        viewHolder.day.setText(currentWeather.getDay()+"");
+        viewHolder.day.setText("Day " + currentWeather.getDay());
 
         if(currentWeather.getWeather().equals("Sunny")) {
             viewHolder.image.setImageResource(R.drawable.sunny);

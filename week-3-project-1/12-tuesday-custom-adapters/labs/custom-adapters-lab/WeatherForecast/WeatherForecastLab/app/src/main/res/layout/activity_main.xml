@@ -23,7 +23,8 @@
             android:layout_width="24dp"
             android:layout_height="wrap_content"
             android:id="@+id/day"
-            android:text="Today"/>
+            android:text="Today"
+            android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/today_image"
