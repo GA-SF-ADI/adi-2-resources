@@ -4,12 +4,14 @@ package com.test.customadaptersforecastapp;
  * Created by audreyeso on 6/21/16.
  */
 public class Forecast {
-    String location;
-    String temperature;
+    private String location;
+    private String temperature;
+    private String dayOfWeek;
 
-    public Forecast(String location, String temperature) {
+    public Forecast(String location, String temperature, String dayOfWeek) {
         this.location = location;
         this.temperature = temperature;
+        this.dayOfWeek = dayOfWeek;
 
     }
 
@@ -17,7 +19,8 @@ public class Forecast {
         return temperature;
     }
 
-    public void setTemperature (int temperature) {
+    public void setTemperature (String temperature) {
+        this.temperature=temperature;
     }
 
     public String getLocation () {
@@ -25,6 +28,15 @@ public class Forecast {
     }
 
     public void setLocation (String location) {
-
+            this.location=location;
     }
+
+    public String getDayOfWeek () {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek (String dayOfWeek) {
+        this.dayOfWeek=dayOfWeek;
+    }
+
 }

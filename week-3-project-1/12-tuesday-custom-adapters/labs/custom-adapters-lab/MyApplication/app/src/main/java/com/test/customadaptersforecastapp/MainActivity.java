@@ -23,25 +23,14 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view);
 
         forecastList= new ArrayList<>();
-        forecastList.add(new Forecast("San Francisco", "77 degrees"));
-        forecastList.add(new Forecast("San Francisco", "72 degrees"));
-        forecastList.add(new Forecast("San Francisco", "67 degrees"));
-        forecastList.add(new Forecast("San Francisco", "70 degrees"));
-        forecastList.add(new Forecast("San Francisco", "64 degrees"));
-        forecastList.add(new Forecast("San Francisco", "60 degrees"));
-        forecastList.add(new Forecast("San Francisco", "62 degrees"));
+        forecastList.add(new Forecast("San Francisco", "77 degrees", "Sunday"));
+        forecastList.add(new Forecast("San Francisco", "72 degrees","Monday"));
+        forecastList.add(new Forecast("San Francisco", "67 degrees", "Tuesday"));
+        forecastList.add(new Forecast("San Francisco", "70 degrees", "Wednesday"));
+        forecastList.add(new Forecast("San Francisco", "64 degrees", "Thursday"));
+        forecastList.add(new Forecast("San Francisco", "60 degrees", "Friday"));
+        forecastList.add(new Forecast("San Francisco", "62 degrees", "Saturday"));
 
-        /*
-        daysOfTheWeekList = new ArrayList<>();
-        daysOfTheWeekList.add(new DaysOfTheWeek("Sunday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Monday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Tuesday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Wednesday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Thursday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Friday"));
-        daysOfTheWeekList.add(new DaysOfTheWeek("Saturday"));
-
-        */
 
 
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(MainActivity.this, forecastList);
