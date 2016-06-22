@@ -1,10 +1,13 @@
 package gg.patrickcummins.todolist;
 
+import java.io.Serializable;
+
 /**
  * Created by patrickcummins on 6/21/16.
  */
 
-public class ListItem {
+public class ListItem implements Serializable {
+    private static final long serialVersionUID = 7526472295622776147L;
     private String mName;
     private String description;
 

@@ -10,23 +10,24 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static android.R.attr.data;
+
 public class ViewListOfItemsActivity extends AppCompatActivity {
     private ArrayList<ListItem> currentList;
     private ListView currentListListView;
-    private ArrayAdapter<ListItem> mItemAdapter;
+    private CustomItemAdapter mItemAdapter;
     private FloatingActionButton addItemFab;
     private int NEW_ITEM_REQUEST_CODE=1;
+    private int currentListPosition;
+    public static final String REPLACE_LIST_SERIALIZABLE_KEY = "replacelistSerializableKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list_of_items);
-        Intent data = getIntent();
-        currentList = (ArrayList) data.getSerializableExtra(MainActivity.LIST_OF_LISTS_SERIALIZABLE_KEY);
-        currentListListView = (ListView) findViewById(R.id.listViewOfItems);
-        mItemAdapter = new ArrayAdapter<ListItem>(ViewListOfItemsActivity.this, android.R.layout.simple_list_item_1, currentList);
-        currentListListView.setAdapter(mItemAdapter);
-        addItemFab = (FloatingActionButton) findViewById(R.id.newItemFab);
+
+        setVariables();
+
         addItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +37,15 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
         });
 
 
+    }
+    private void setVariables(){
+        Intent data = getIntent();
+        currentListPosition = data.getIntExtra("listPosition", -1);
+        currentList = (ArrayList) data.getSerializableExtra(MainActivity.LIST_OF_LISTS_SERIALIZABLE_KEY);
+        currentListListView = (ListView) findViewById(R.id.listViewOfItems);
+        mItemAdapter = new CustomItemAdapter(ViewListOfItemsActivity.this, currentList);
+        currentListListView.setAdapter(mItemAdapter);
+        addItemFab = (FloatingActionButton) findViewById(R.id.newItemFab);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -47,5 +57,14 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
                 mItemAdapter.notifyDataSetChanged();
 
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent backPressedIntent = new Intent();
+        backPressedIntent.putExtra("listPosition", currentListPosition);
+        backPressedIntent.putExtra(REPLACE_LIST_SERIALIZABLE_KEY, currentList);
+        setResult(RESULT_OK, backPressedIntent);
+        finish();
+
     }
 }

@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setVariables(){
+    private void setVariables(){
         listsFab = (FloatingActionButton) findViewById(R.id.newListFab);
         listsListView = (ListView) findViewById(R.id.listListView);
         listsArrayList = new ArrayList<NamedList>();
         mAdapter = new ArrayAdapter<NamedList>(MainActivity.this, android.R.layout.simple_list_item_1, listsArrayList);
     }
-    public void setAllOnClickListeners(){
+    private void setAllOnClickListeners(){
         listsFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent openListIntent = new Intent(MainActivity.this, ViewListOfItemsActivity.class);
                 openListIntent.putExtra(LIST_OF_LISTS_SERIALIZABLE_KEY, listsArrayList.get(position).getmArrayList());
+                openListIntent.putExtra("listPosition", position);
                 startActivityForResult(openListIntent, OPEN_LIST_REQUEST_CODE );
 
             }
@@ -70,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 String newListNameString = data.getStringExtra("newList");
                 listsArrayList.add(new NamedList(newListNameString));
                 mAdapter.notifyDataSetChanged();
+            }else if (requestCode == OPEN_LIST_REQUEST_CODE){
+                int position = data.getIntExtra("listPosition", -1);
+                listsArrayList.get(position).setmArrayList((ArrayList)data.getSerializableExtra(ViewListOfItemsActivity.REPLACE_LIST_SERIALIZABLE_KEY));
+
             }
         }
     }
