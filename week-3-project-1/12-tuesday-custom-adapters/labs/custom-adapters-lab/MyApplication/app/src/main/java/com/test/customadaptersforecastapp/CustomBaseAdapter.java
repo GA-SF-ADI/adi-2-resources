@@ -56,7 +56,9 @@ public class CustomBaseAdapter extends BaseAdapter {
 
         final Forecast currentForecast = dataForecast.get(position);
 
-        viewHolder.locationAndTemp.setText(currentForecast.getTemperature());
+        viewHolder.temperature.setText(currentForecast.getTemperature());
+        viewHolder.weather.setText(currentForecast.getDayOfWeek());
+        viewHolder.location.setText(currentForecast.getLocation());
 
 
         final String toastText = currentForecast.getDayOfWeek();
@@ -71,12 +73,16 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     private class ViewHolder {
         Button forecast;
-        TextView locationAndTemp;
+        TextView temperature;
+        TextView location;
+        TextView weather;
 
 
         public ViewHolder(View itemLayout) {
             this.forecast = (Button) itemLayout.findViewById(R.id.list_item_forecast);
-            this.locationAndTemp = (TextView)itemLayout.findViewById(R.id.list_item_weather);
+            this.weather = (TextView)itemLayout.findViewById(R.id.list_item_weather);
+            this.location = (TextView) itemLayout.findViewById(R.id.list_item_location);
+            this.temperature = (TextView)itemLayout.findViewById(R.id.list_item_temperature);
         }
     }
 }
