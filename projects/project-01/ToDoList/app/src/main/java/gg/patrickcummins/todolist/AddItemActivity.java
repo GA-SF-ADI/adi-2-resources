@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class AddItemActivity extends AppCompatActivity {
     private EditText itemNameEditText;
     private EditText itemDescriptionEditText;
     private Button createItemButton;
+    private RadioButton blue, red, green, orange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,27 @@ public class AddItemActivity extends AppCompatActivity {
                     Intent result = new Intent();
                     result.putExtra("NameString", itemNameEditText.getText().toString());
                     result.putExtra("DescriptionString", itemDescriptionEditText.getText().toString());
+                    setUpRadioButtons();
+                    if (blue.isChecked()){
+                        result.putExtra("color", "blue");
+                    }else if (red.isChecked()){
+                        result.putExtra("color", "red");
+                    }else if (green.isChecked()){
+                        result.putExtra("color", "green");
+                    }else if (orange.isChecked()){
+                        result.putExtra("color", "orange");
+                    }
                     setResult(RESULT_OK, result);
                     finish();
                 }
             }
         });
 
+    }
+    private void setUpRadioButtons(){
+        blue = (RadioButton) findViewById(R.id.blueRadio);
+        red = (RadioButton) findViewById(R.id.redRadio);
+        green = (RadioButton) findViewById(R.id.greenRadio);
+        orange = (RadioButton) findViewById(R.id.orangeRadio);
     }
 }

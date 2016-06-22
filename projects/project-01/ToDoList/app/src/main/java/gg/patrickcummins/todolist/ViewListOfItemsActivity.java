@@ -52,8 +52,12 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
                 String name = data.getStringExtra("NameString");
                 String description = data.getStringExtra("DescriptionString");
-
-                currentList.add(new ListItem(name,description));
+                String color = data.getStringExtra("color");
+                if (color == null){
+                currentList.add(new ListItem(name,description));}
+                else{
+                    currentList.add(new ListItem(name, description, color));
+                }
                 mItemAdapter.notifyDataSetChanged();
 
         }
