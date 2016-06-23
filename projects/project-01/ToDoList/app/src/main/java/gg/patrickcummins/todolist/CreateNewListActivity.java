@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 public class CreateNewListActivity extends AppCompatActivity {
-    private  EditText listNameEditText;
-    private  Button createListButton;
+    private EditText listNameEditText;
+    private Button createListButton;
     private int mRequestCode;
     private RadioButton blue, red, green, orange;
 
@@ -19,26 +19,27 @@ public class CreateNewListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_list);
         getSupportActionBar().setTitle("New List");
-
-        listNameEditText = (EditText) findViewById(R.id.listNameEditText);
-        createListButton = (Button) findViewById(R.id.createListButton);
+        setUpVariables();
         setUpRadioButtons();
+        setOnClickListeners();
+    }
 
+    private void setOnClickListeners() {
         createListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listNameEditText.getText().toString().equals("")) {
                     listNameEditText.setError("!");
-                }else{
+                } else {
                     Intent result = new Intent();
                     result.putExtra("newList", listNameEditText.getText().toString());
-                    if (blue.isChecked()){
+                    if (blue.isChecked()) {
                         result.putExtra("color", "blue");
-                    }else if (red.isChecked()){
+                    } else if (red.isChecked()) {
                         result.putExtra("color", "red");
-                    }else if (green.isChecked()){
+                    } else if (green.isChecked()) {
                         result.putExtra("color", "green");
-                    }else if (orange.isChecked()){
+                    } else if (orange.isChecked()) {
                         result.putExtra("color", "orange");
                     } else {
                         result.putExtra("color", "white");
@@ -49,12 +50,14 @@ public class CreateNewListActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
-    private void setUpRadioButtons(){
+
+    private void setUpVariables() {
+        listNameEditText = (EditText) findViewById(R.id.listNameEditText);
+        createListButton = (Button) findViewById(R.id.createListButton);
+    }
+
+    private void setUpRadioButtons() {
         blue = (RadioButton) findViewById(R.id.blueRadio);
         red = (RadioButton) findViewById(R.id.redRadio);
         green = (RadioButton) findViewById(R.id.greenRadio);

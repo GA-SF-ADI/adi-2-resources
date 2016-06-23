@@ -33,9 +33,15 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list_of_items);
+        getSupportActionBar().setTitle(name + " List");
 
         setVariables();
-        getSupportActionBar().setTitle(name + " List");
+        setOnClickListeners();
+
+
+    }
+
+    private void setOnClickListeners() {
 
         addItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +60,6 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
                 startActivityForResult(editItemIntent, EDIT_ITEM_REQUEST_CODE);
             }
         });
-
 
     }
 

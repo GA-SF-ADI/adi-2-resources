@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("To Do List");
 
         setVariables();
-        listsListView.setAdapter(mAdapter);
         setAllOnClickListeners();
 
 
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         listsListView = (ListView) findViewById(R.id.listListView);
         listsArrayList = new ArrayList<NamedList>();
         mAdapter = new CustomListAdapter(MainActivity.this, listsArrayList);
+        listsListView.setAdapter(mAdapter);
     }
 
     private void setAllOnClickListeners() {

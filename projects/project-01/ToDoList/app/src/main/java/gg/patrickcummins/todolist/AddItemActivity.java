@@ -19,11 +19,11 @@ public class AddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
         getSupportActionBar().setTitle("Add Item");
+        setUpVariables();
+        setOnClickListeners();
+    }
 
-        itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
-        itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
-        createItemButton = (Button) findViewById(R.id.createItemButton);
-
+    private void setOnClickListeners() {
         createItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +54,12 @@ public class AddItemActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void setUpVariables() {
+        itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
+        itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
+        createItemButton = (Button) findViewById(R.id.createItemButton);
     }
 
     private void setUpRadioButtons() {

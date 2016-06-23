@@ -23,15 +23,9 @@ public class EditItemActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Edit Item");
 
 
-        itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
-        itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
-        createItemButton = (Button) findViewById(R.id.createItemButton);
         final Intent mIntent = getIntent();
         final ListItem currentItem = (ListItem) mIntent.getSerializableExtra(ViewListOfItemsActivity.EDIT_ITEM_SERIALIZABLE_KEY);
-
-        itemNameEditText.setText(currentItem.getmName());
-        itemDescriptionEditText.setText(currentItem.getDescription());
-        currentposition = mIntent.getIntExtra("position", -1);
+        setUpVariables(currentItem, mIntent);
         createItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,11 +59,17 @@ public class EditItemActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
+
+    private void setUpVariables(ListItem currentItem, Intent mIntent) {
+        itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
+        itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
+        createItemButton = (Button) findViewById(R.id.createItemButton);
+        itemNameEditText.setText(currentItem.getmName());
+        itemDescriptionEditText.setText(currentItem.getDescription());
+        currentposition = mIntent.getIntExtra("position", -1);
+    }
+
     private void setUpRadioButtons() {
         blue = (RadioButton) findViewById(R.id.blueRadio);
         red = (RadioButton) findViewById(R.id.redRadio);

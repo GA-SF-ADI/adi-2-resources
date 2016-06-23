@@ -62,8 +62,6 @@ public class CustomItemAdapter extends BaseAdapter {
         viewHolder.nameTextView.setText(currentItem.getmName());
         viewHolder.descriptionTextView.setText(currentItem.getDescription());
         setColor(viewHolder, currentItem);
-
-
         viewHolder.deleteImageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -73,11 +71,8 @@ public class CustomItemAdapter extends BaseAdapter {
             }
         });
 
-
-
         viewHolder.itemCheckBox.setTag(position);
         viewHolder.itemCheckBox.setChecked(currentItem.isItemChecked());
-
         viewHolder.itemCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
