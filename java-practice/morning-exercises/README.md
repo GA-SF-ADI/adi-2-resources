@@ -8,6 +8,8 @@ You are going to be given an integer amount in cents (So if I give you a dollar 
 	
 BONUS: You are also going to be given an array that contains the coin values. So if I just wanted the coins to be the standard US coins, I would pass in [25,10,5,1].  
 
+[Solution](/solutions/ints-doubles-floats/Change.java)
+
 ### 2. Check if an integer is binary (with or without converting it into a string)
 
 A binary number is a number just made up of 1s and 0s. So something like 10101110101 is binary while something like 11101021012 is not. Given an integer input, return whether or not that integer is in binary or not. 
