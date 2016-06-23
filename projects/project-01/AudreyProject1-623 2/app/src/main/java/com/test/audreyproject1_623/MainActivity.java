@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 int pos = data.getIntExtra("position", 0);
                 //int position = ; (int position = onItemClickListener of mCategoryList)..
                 //Intent intent
-                Toast.makeText(MainActivity.this,"position: " + pos, Toast.LENGTH_SHORT ).show();
+                Toast.makeText(MainActivity.this,"Welcome Back :) ", Toast.LENGTH_SHORT ).show();
 
                 //mCategoryList.get(position);
                 mCategoryList.set(pos, createList);
