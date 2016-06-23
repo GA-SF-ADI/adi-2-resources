@@ -8,5 +8,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/second_custom_adapter_text_view"/>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:id="@+id/on_check_box" />
+
 
 </LinearLayout>

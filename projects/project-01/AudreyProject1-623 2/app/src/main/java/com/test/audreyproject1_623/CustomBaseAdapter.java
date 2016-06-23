@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +58,17 @@ public class CustomBaseAdapter extends BaseAdapter {
         final Category currentCategory = data.get(position);
 
         viewHolder.firstTextView.setText(currentCategory.getName());
-        //getName or get Items
+
+
+       viewHolder.myCheckboxCategories.isChecked();
+
+        viewHolder.myCheckboxCategories.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(viewHolder.myCheckboxCategories.isChecked()) {
+                }
+            }
+        });
 
 
         return convertView;
@@ -66,9 +78,13 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     private class ViewHolder {
         TextView firstTextView;
+        CheckBox myCheckboxCategories;
 
         public ViewHolder(View itemLayout) {
             this.firstTextView = (TextView) itemLayout.findViewById(R.id.custom_adapter_text_view);
+            this.myCheckboxCategories = (CheckBox) itemLayout.findViewById(R.id.on_check_box_categories);
+
+
 
         }
     }

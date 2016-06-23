@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import android.widget.CheckBox;
 
 
 public class SecondCustomBaseAdapter extends BaseAdapter {
@@ -46,7 +48,7 @@ public class SecondCustomBaseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.secondcustombaseadapter, parent, false);
             viewHolder = new ViewHolder(convertView);
@@ -55,24 +57,38 @@ public class SecondCustomBaseAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        final String string  = data.get(position);
+        final String string = data.get(position);
 
         viewHolder.firstTextViewItems.setText(string);
+        viewHolder.myCheckbox.isChecked();
 
+        viewHolder.myCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(viewHolder.myCheckbox.isChecked()) {
+            }
+            }
+        });
 
         return convertView;
 
     }
 
 
+
     private class ViewHolder {
         TextView firstTextViewItems;
+        CheckBox myCheckbox;
 
         public ViewHolder(View itemLayout) {
             this.firstTextViewItems = (TextView) itemLayout.findViewById(R.id.second_custom_adapter_text_view);
             // look inside the view you defined for this adapter
+            this.myCheckbox = (CheckBox) itemLayout.findViewById(R.id.on_check_box);
+
+        }
+
 
         }
     }
 
-}
+
