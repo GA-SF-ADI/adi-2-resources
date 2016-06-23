@@ -24,7 +24,7 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
     private FloatingActionButton addItemFab;
     private String name;
     private int NEW_ITEM_REQUEST_CODE = 1;
-    private int EDIT_ITEM_REQUEST_CODE =2;
+    private int EDIT_ITEM_REQUEST_CODE = 2;
     private int currentListPosition;
     public static final String REPLACE_LIST_SERIALIZABLE_KEY = "replacelistSerializableKey";
     public static final String EDIT_ITEM_SERIALIZABLE_KEY = "editItemKey";
@@ -72,13 +72,13 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            if (requestCode == NEW_ITEM_REQUEST_CODE ) {
+            if (requestCode == NEW_ITEM_REQUEST_CODE) {
                 String name = data.getStringExtra("NameString");
                 String description = data.getStringExtra("DescriptionString");
                 String color = data.getStringExtra("color");
                 currentList.add(new ListItem(name, description, color));
                 mItemAdapter.notifyDataSetChanged();
-            }else if (requestCode == EDIT_ITEM_REQUEST_CODE){
+            } else if (requestCode == EDIT_ITEM_REQUEST_CODE) {
                 ListItem currentEditedListItem = (ListItem) data.getSerializableExtra(EditItemActivity.ITEM_EDITED_SERIALIZABLE_KEY);
                 int currentListItemEditedPosition = data.getIntExtra("position", -1);
                 currentList.set(currentListItemEditedPosition, currentEditedListItem);

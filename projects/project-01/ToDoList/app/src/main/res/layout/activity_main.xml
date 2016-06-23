@@ -8,17 +8,18 @@
     android:orientation="vertical"
     tools:context="gg.patrickcummins.todolist.MainActivity">
 
-    <ListView android:id="@+id/listListView"
+    <ListView
+        android:id="@+id/listListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newListFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/activity_vertical_margin"
-        />
+        android:src="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

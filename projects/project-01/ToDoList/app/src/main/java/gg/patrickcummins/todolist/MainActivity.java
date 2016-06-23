@@ -1,21 +1,16 @@
 package gg.patrickcummins.todolist;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity {
     public static final String LIST_OF_LISTS_SERIALIZABLE_KEY = "listsSerializableKey";
@@ -23,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     private ListView listsListView;
     private int NEW_LIST_REQUEST_CODE = 2;
     private int OPEN_LIST_REQUEST_CODE = 4;
+    public static final String PREFS_NAME = "MyPrefsFile";
 
     private ArrayList<NamedList> listsArrayList;
 
-    CustomListAdapter mAdapter;
+    private CustomListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
