@@ -18,6 +18,7 @@ public class CreateNewListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_list);
+        getSupportActionBar().setTitle("New List");
 
         listNameEditText = (EditText) findViewById(R.id.listNameEditText);
         createListButton = (Button) findViewById(R.id.createListButton);

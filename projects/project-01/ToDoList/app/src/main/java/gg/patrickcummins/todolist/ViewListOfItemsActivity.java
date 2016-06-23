@@ -22,6 +22,7 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
     private ListView currentListListView;
     private CustomItemAdapter mItemAdapter;
     private FloatingActionButton addItemFab;
+    private String name;
     private int NEW_ITEM_REQUEST_CODE = 1;
     private int EDIT_ITEM_REQUEST_CODE =2;
     private int currentListPosition;
@@ -34,6 +35,7 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_list_of_items);
 
         setVariables();
+        getSupportActionBar().setTitle(name + " List");
 
         addItemFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +66,7 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
         mItemAdapter = new CustomItemAdapter(ViewListOfItemsActivity.this, currentList);
         currentListListView.setAdapter(mItemAdapter);
         addItemFab = (FloatingActionButton) findViewById(R.id.newItemFab);
+        name = data.getStringExtra("name");
     }
 
     @Override
@@ -74,7 +77,6 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
                 String description = data.getStringExtra("DescriptionString");
                 String color = data.getStringExtra("color");
                 currentList.add(new ListItem(name, description, color));
-
                 mItemAdapter.notifyDataSetChanged();
             }else if (requestCode == EDIT_ITEM_REQUEST_CODE){
                 ListItem currentEditedListItem = (ListItem) data.getSerializableExtra(EditItemActivity.ITEM_EDITED_SERIALIZABLE_KEY);

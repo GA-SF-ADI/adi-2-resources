@@ -18,6 +18,8 @@ public class AddItemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
+        getSupportActionBar().setTitle("Add Item");
+
         itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
         itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
         createItemButton = (Button) findViewById(R.id.createItemButton);
