@@ -33,9 +33,10 @@ public class ViewListOfItemsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_list_of_items);
-        getSupportActionBar().setTitle(name + " List");
+
 
         setVariables();
+        getSupportActionBar().setTitle(name + " List");
         setOnClickListeners();
 
 
