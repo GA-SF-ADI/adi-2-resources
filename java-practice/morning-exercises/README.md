@@ -94,7 +94,7 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 ### 19. Recursively multiply two numbers
 
-### 20. Reverse a string using recursion
+### 20. Recursively print out the Fibonacci series. 
 
 
 		
