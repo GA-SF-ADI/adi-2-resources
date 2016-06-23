@@ -20,28 +20,32 @@ public class ListItem implements Serializable {
         this.color = color;
     }
 
-    public void setItemChecked(boolean checked) {
-        this.isItemChecked = checked;
-    }
-
     public boolean isItemChecked() {
         return this.isItemChecked;
+    }
+
+    public void setItemChecked(boolean checked) {
+        this.isItemChecked = checked;
     }
 
     public String getColor() {
         return this.color;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public String getmName() {
         return mName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public void setmName(String mName) {
         this.mName = mName;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {

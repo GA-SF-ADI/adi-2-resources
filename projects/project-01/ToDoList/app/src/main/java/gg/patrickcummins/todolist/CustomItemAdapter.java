@@ -49,7 +49,7 @@ public class CustomItemAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
@@ -57,26 +57,11 @@ public class CustomItemAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-
         final ListItem currentItem = currentList.get(position);
 
         viewHolder.nameTextView.setText(currentItem.getmName());
         viewHolder.descriptionTextView.setText(currentItem.getDescription());
-        if (currentItem.getColor() != null){
-
-            if (currentItem.getColor().equals("blue")){
-                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_light));
-            }else if (currentItem.getColor().equals("red")){
-                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_light));
-            }else if (currentItem.getColor().equals("green")){
-                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_light));
-            }else if (currentItem.getColor().equals("orange")){
-                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
-            }else if (currentItem.getColor().equals("white")){
-                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
-            }
-        }
-
+        setColor(viewHolder, currentItem);
 
 
         viewHolder.deleteImageView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -87,15 +72,9 @@ public class CustomItemAdapter extends BaseAdapter {
                 return false;
             }
         });
-        viewHolder.editImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
-        Log.d("current item checked", String.valueOf(currentItem.isItemChecked()) + " " + currentItem.getmName());
+
         viewHolder.itemCheckBox.setTag(position);
         viewHolder.itemCheckBox.setChecked(currentItem.isItemChecked());
 
@@ -106,26 +85,41 @@ public class CustomItemAdapter extends BaseAdapter {
                 int positionCheck = (int) buttonView.getTag();
                 ListItem checkItem = currentList.get(positionCheck);
                 checkItem.setItemChecked(isChecked);
-                Log.d("item checked debug", String.valueOf(checkItem.isItemChecked()) + " " + checkItem.getmName());
             }
         });
         return convertView;
     }
 
+    private void setColor(ViewHolder viewHolder, ListItem currentItem) {
+        if (currentItem.getColor() != null) {
 
-    private class ViewHolder{
+            if (currentItem.getColor().equals("blue")) {
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_blue_light));
+            } else if (currentItem.getColor().equals("red")) {
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_red_light));
+            } else if (currentItem.getColor().equals("green")) {
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_green_light));
+            } else if (currentItem.getColor().equals("orange")) {
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.holo_orange_light));
+            } else if (currentItem.getColor().equals("white")) {
+                viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
+            }
+        }
+    }
+
+
+    private class ViewHolder {
         TextView nameTextView;
         TextView descriptionTextView;
         LinearLayout mLinearLayout;
         ImageView deleteImageView;
-        ImageView editImageView;
         CheckBox itemCheckBox;
-        public ViewHolder(View itemLayout){
+
+        public ViewHolder(View itemLayout) {
             this.nameTextView = (TextView) itemLayout.findViewById(R.id.itemNameTextView);
             this.descriptionTextView = (TextView) itemLayout.findViewById(R.id.itemDescriptionTextView);
             this.mLinearLayout = (LinearLayout) itemLayout.findViewById(R.id.itemLayout);
             this.deleteImageView = (ImageView) itemLayout.findViewById(R.id.deleteImageView);
-            this.editImageView = (ImageView) itemLayout.findViewById(R.id.editImageView);
             this.itemCheckBox = (CheckBox) itemLayout.findViewById(R.id.itemCheckBox);
         }
     }

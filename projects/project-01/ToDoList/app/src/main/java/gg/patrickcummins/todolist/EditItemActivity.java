@@ -8,20 +8,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
-public class AddItemActivity extends AppCompatActivity {
+public class EditItemActivity extends AppCompatActivity {
     private EditText itemNameEditText;
     private EditText itemDescriptionEditText;
     private Button createItemButton;
     private RadioButton blue, red, green, orange;
+    private int currentposition;
+    public static final String ITEM_EDITED_SERIALIZABLE_KEY = "itemEditedKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_item);
+        setContentView(R.layout.activity_edit_item);
         itemNameEditText = (EditText) findViewById(R.id.itemNameEditText);
         itemDescriptionEditText = (EditText) findViewById(R.id.itemDescriptionEditText);
         createItemButton = (Button) findViewById(R.id.createItemButton);
+        final Intent mIntent = getIntent();
+        final ListItem currentItem = (ListItem) mIntent.getSerializableExtra(ViewListOfItemsActivity.EDIT_ITEM_SERIALIZABLE_KEY);
 
+        itemNameEditText.setText(currentItem.getmName());
+        itemDescriptionEditText.setText(currentItem.getDescription());
+        currentposition = mIntent.getIntExtra("position", -1);
         createItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,28 +40,33 @@ public class AddItemActivity extends AppCompatActivity {
                     }
                 } else {
                     Intent result = new Intent();
-                    result.putExtra("NameString", itemNameEditText.getText().toString());
-                    result.putExtra("DescriptionString", itemDescriptionEditText.getText().toString());
+
+                    currentItem.setmName(itemNameEditText.getText().toString());
+                    currentItem.setDescription(itemDescriptionEditText.getText().toString());
                     setUpRadioButtons();
                     if (blue.isChecked()) {
-                        result.putExtra("color", "blue");
+                        currentItem.setColor("blue");
                     } else if (red.isChecked()) {
-                        result.putExtra("color", "red");
+                        currentItem.setColor("red");
                     } else if (green.isChecked()) {
-                        result.putExtra("color", "green");
+                        currentItem.setColor("green");
                     } else if (orange.isChecked()) {
-                        result.putExtra("color", "orange");
+                        currentItem.setColor("orange");
                     } else {
-                        result.putExtra("color", "white");
+                        currentItem.setColor("white");
                     }
+                    result.putExtra(ITEM_EDITED_SERIALIZABLE_KEY, currentItem);
+                    result.putExtra("position", currentposition);
                     setResult(RESULT_OK, result);
                     finish();
                 }
             }
         });
 
-    }
 
+
+
+    }
     private void setUpRadioButtons() {
         blue = (RadioButton) findViewById(R.id.blueRadio);
         red = (RadioButton) findViewById(R.id.redRadio);

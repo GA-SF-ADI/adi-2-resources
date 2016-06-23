@@ -20,6 +20,7 @@
         <activity android:name=".CreateNewListActivity" />
         <activity android:name=".ViewListOfItemsActivity" />
         <activity android:name=".AddItemActivity" />
+        <activity android:name=".EditItemActivity"></activity>
     </application>
 
 </manifest>
