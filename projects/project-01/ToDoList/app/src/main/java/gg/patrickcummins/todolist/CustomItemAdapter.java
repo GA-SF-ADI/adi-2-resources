@@ -2,10 +2,13 @@ package gg.patrickcummins.todolist;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,7 +48,7 @@ public class CustomItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false);
             viewHolder = new ViewHolder(convertView);
@@ -73,6 +76,9 @@ public class CustomItemAdapter extends BaseAdapter {
                 viewHolder.mLinearLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white));
             }
         }
+
+
+
         viewHolder.deleteImageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -81,7 +87,28 @@ public class CustomItemAdapter extends BaseAdapter {
                 return false;
             }
         });
+        viewHolder.editImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
+
+
+        Log.d("current item checked", String.valueOf(currentItem.isItemChecked()) + " " + currentItem.getmName());
+        viewHolder.itemCheckBox.setTag(position);
+        viewHolder.itemCheckBox.setChecked(currentItem.isItemChecked());
+
+        viewHolder.itemCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (buttonView.getTag() == null) return;
+                int positionCheck = (int) buttonView.getTag();
+                ListItem checkItem = currentList.get(positionCheck);
+                checkItem.setItemChecked(isChecked);
+                Log.d("item checked debug", String.valueOf(checkItem.isItemChecked()) + " " + checkItem.getmName());
+            }
+        });
         return convertView;
     }
 
@@ -91,11 +118,15 @@ public class CustomItemAdapter extends BaseAdapter {
         TextView descriptionTextView;
         LinearLayout mLinearLayout;
         ImageView deleteImageView;
+        ImageView editImageView;
+        CheckBox itemCheckBox;
         public ViewHolder(View itemLayout){
             this.nameTextView = (TextView) itemLayout.findViewById(R.id.itemNameTextView);
             this.descriptionTextView = (TextView) itemLayout.findViewById(R.id.itemDescriptionTextView);
             this.mLinearLayout = (LinearLayout) itemLayout.findViewById(R.id.itemLayout);
             this.deleteImageView = (ImageView) itemLayout.findViewById(R.id.deleteImageView);
+            this.editImageView = (ImageView) itemLayout.findViewById(R.id.editImageView);
+            this.itemCheckBox = (CheckBox) itemLayout.findViewById(R.id.itemCheckBox);
         }
     }
 }

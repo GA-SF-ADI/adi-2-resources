@@ -11,6 +11,7 @@ public class ListItem implements Serializable {
     private String mName;
     private String description;
     private String color = null;
+    private boolean isItemChecked;
 
 
     public ListItem(String mName, String description, String color) {
@@ -19,8 +20,16 @@ public class ListItem implements Serializable {
         this.color = color;
     }
 
+    public void setItemChecked(boolean checked) {
+        this.isItemChecked = checked;
+    }
+
+    public boolean isItemChecked() {
+        return this.isItemChecked;
+    }
+
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     public String getmName() {

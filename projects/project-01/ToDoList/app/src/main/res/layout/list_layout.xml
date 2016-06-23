@@ -12,13 +12,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"/>
-    
+    <ImageView
+        android:src="@drawable/ic_edit_black_24dp"
+        android:id="@+id/editImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"/>
     <ImageView
         android:layout_gravity="right"
         android:id="@+id/deleteImageView"
         android:src="@drawable/delete"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_weight="1"
 
         />
 </LinearLayout>

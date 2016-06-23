@@ -1,6 +1,7 @@
 package gg.patrickcummins.todolist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,16 +83,19 @@ public class CustomListAdapter extends BaseAdapter {
                 }
             });
 
+
             return convertView;
         }
         private class ViewHolder{
             TextView nameTextView;
             LinearLayout mLinearLayout;
             ImageView deleteImageView;
+            ImageView editImageView;
             public ViewHolder(View itemLayout){
                 this.nameTextView = (TextView) itemLayout.findViewById(R.id.listTitle);
                 this.mLinearLayout = (LinearLayout) itemLayout.findViewById(R.id.mainList);
                 this.deleteImageView = (ImageView) itemLayout.findViewById(R.id.deleteImageView);
+                this.editImageView = (ImageView) itemLayout.findViewById(R.id.editImageView);
             }
         }
     }
