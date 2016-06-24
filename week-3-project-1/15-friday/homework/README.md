@@ -4,7 +4,7 @@ First of all, congradulations on finishing project 1! The concepts we have learn
 
 ##Install Sqlite
 
-Follow the instructions[here](install_sqlite.md). 
+Follow the instructions [here](install_sqlite.md). 
 
 ## Basic Java
 
