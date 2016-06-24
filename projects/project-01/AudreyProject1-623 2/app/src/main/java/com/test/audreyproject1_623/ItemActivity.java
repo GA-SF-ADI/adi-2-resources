@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class ItemActivity extends AppCompatActivity {
@@ -51,7 +53,11 @@ public class ItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String myInputString = myEditText.getText().toString();
-                myList.add(myInputString);
+                if (myInputString.isEmpty()) {
+                    Toast.makeText(ItemActivity.this,"Type in something to do! :) ", Toast.LENGTH_SHORT ).show();
+                } else {
+                    myList.add(myInputString);
+                }
                 Log.d("MainActivity", myList.toString());
                 secondCustomBaseAdapter.notifyDataSetChanged();
             }
