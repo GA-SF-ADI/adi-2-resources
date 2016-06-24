@@ -63,22 +63,6 @@ public class CustomLinkedList<T> {
         return main.getValue();
     }
 
-    public boolean isLoop(){
-        Node fastNode = head;
-        Node slowNode = head;
-
-        int counter = 1;
-        while(fastNode.hasNext()){
-            fastNode = fastNode.next;
-            if(fastNode==slowNode){
-                return false;
-            }
-            if(counter%2==0){
-                slowNode= slowNode.next;
-            }
-        }
-        return true;
-    }
 
 
 
@@ -100,8 +84,4 @@ public class CustomLinkedList<T> {
             return next != null;
         }
     }
-
-
-
-
 }
