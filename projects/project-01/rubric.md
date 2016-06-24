@@ -6,24 +6,25 @@
 
 | Requirements | Incomplete (0) | Does Not Meet Expectations (1) | Meets Expectations (2) | Exceeds Expectations (3) |
 |---|---|---|---|---|
-| Implement the prototype you created | | | | n/a |
-| View a collection of to-do lists | | | | n/a |
-| View items on a to-do list | | | | n/a |
-| Allow the user to create a new to-do list | | |  | n/a |
-| Add items to each to-do list | | |  | n/a |
-| Remove items from a to-do list | | | | n/a |
-| Remove an entire to-do list | | | | n/a |
-| Use custom Java objects to contain your data | | | | n/a |
-| Display correctly in both landscape and portrait orientations  | | |  | n/a |
-| **Bonus**: Show an error message if invalid input is given | n/a | n/a | n/a |   |
-| **Bonus**: Allow the user to check off and remove completed items | n/a | n/a | n/a |   |
-| **Bonus**: Add an item detail screen that allows the user to give an optional description for each item | n/a | n/a | n/a |   |
+| Implement the prototype you created | | |  x| n/a |
+| View a collection of to-do lists | | | | x |
+| View items on a to-do list | | | | x |
+| Allow the user to create a new to-do list | | |  | x |
+| Add items to each to-do list | | | x | n/a |
+| Remove items from a to-do list | | | x | n/a |
+| Remove an entire to-do list | | | x | n/a |
+| Use custom Java objects to contain your data | | | | x |
+| **Bonus**: Display correctly in both landscape and portrait orientations  | | | x | n/a |
+| **Bonus**: Add description to each list or list item | | | x | n/a |
+| **Bonus**: Show an error message if invalid input is given | n/a | n/a | x |   |
+| **Bonus**: Allow the user to check off and remove completed items | n/a | n/a | x |   |
+| **Bonus**: Add an item detail screen that allows the user to give an optional description for each item | n/a | n/a | x |   |
 
 
 ---
 
-## Score:
-Based on the requirements, you can earn a maximum of  **18**  points on this project.
+30 Score:
+Based on the requirements, you can earn a maximum of  **16**  points on this project.
 
 #### Your total score is: **#**
 
