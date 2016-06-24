@@ -1,6 +1,6 @@
 ---
 title: Custom Adapters
-duration: "1:30"
+duration: "2:15"
 creator:
     name: Aleksandr Tomak
     city: SF
@@ -45,25 +45,35 @@ As you can see, this layout is fairly complex. It contains an
 ***
 
 <a name="introduction"></a>
-## Introduction: Topic (10 mins)
+## Introduction: View Recycling (10 mins)
 
-We've seen how to use [ArrayAdapters](https://developer.android.com/reference/android/widget/ArrayAdapter.html) with lists of data. Now lets learn how to draw a more complicated layout based on more complex data by **extending BaseAdapter** class.
+ListView does something called view recycling.
 
-ListView does something called view recycling, where even for a list of 1000 items, a list view will inflate as many list item layouts as there are visible elements. So if your screen can only fit 7 elements on screen, then 7 layouts are inflated. These 7 layouts are then **re-used** between all 1000 items you have in your data list for your list view.
+Assume that we have a `ListView` that is holding 1,000 items. You might think that `ListView` will inflate 1,000 item layouts for each list item. That is not the case! List view will inflate **as many list item layouts as will fit on screen**. Meaning, if you can only see 7 elements at a time, then only 7 layouts are inflated.
+
+These 7 layouts are then **re-used** between all 1000 items you have in your data list for your list view.
 
 ![](https://camo.githubusercontent.com/9ec060191347dd366729c095b529ed21e763a075/68747470733a2f2f692e696d6775722e636f6d2f535a38694b75752e6a7067)
 Image taken from this [guide](https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView).
 
 Notice how when we scroll the screen and element **1** moves offscreen while element **8** moves onto the screen. 
 - Element 1 is moved offscreen, its `convertView` layout is then recycled and stored in memory
-- getView() is called, and **re-use** the already created `convertView` but make modifications to it. If element 1 had a `TextView` that had text `"Position 1"`, we will now update the text to say `"Position 8"`. 
+- `getView()` is called, and **re-uses** the already created `convertView`. But first, we need to make modifications to the `convertView` child elementss. If item layout at position 1 had a `TextView` with the text `"Position 1"`, now it will update the text to say `"Position 8"`. 
 - The updated `convertView` layout is returned from the `Adapter` to the `ListView` and is drawn on screen.
 
-## Extending BaseAdapter ( 40 mins )
+## Steps to create Custom Adapter ( 5 min )
 
-#### Step 1) ( 1 min )
+There are three parts to making a custom adapter. 
+- 1. Layouts: Don't forget to include `ListView` inside your Activity xml layout. Next, we need to create a custom layout for the list item, lets call it `list_item.xml`.
+- 2. Extend `BaseAdaper`.
+- 3. Improve Performance with `ViewHolder Pattern` 
 
-Add `ListView` item to your xml with an id. Our view id here is `list_view`.
+## 1. Layouts
+
+#### Step 1) 
+
+Add `ListView` item to your Activity layout xml with an id. Our view id here is `list_view`.
+
 ```xml
 <ListView
     android:id="@+id/list_view"
@@ -72,7 +82,7 @@ Add `ListView` item to your xml with an id. Our view id here is `list_view`.
 </ListView>	
 ```
 
-#### Step 2) ( 3 min )
+#### Step 2) 
 
 Create your own custom item layout. It models what each item in the row looks like.
 
@@ -82,6 +92,8 @@ TextViews each have their own id, starting with layout name, view type, and orde
 So `list_item_tv_first` for the first text view inside `list_item.xml` layout. 
 
 It is good practice to start getting organized with your id names.
+
+> Check: Take a minute to pair up and discuss why we want to organize our xml id names.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -120,38 +132,32 @@ It is good practice to start getting organized with your id names.
 
 ```
 
-#### Step 3) ( 1 min )
+## 2. Extend BaseAdapter ( 40 mins )
+
+#### Step 1) ( 2 min )
 
 Lets create our Custom Base Adapter by creating a new file called `CustomBaseAdapter.java`. 
 
-Inside `CustomBaseAdapter.java` you will declare the `CustomBaseAdapter` class like so:
-```java
-public class CustomBaseAdapter {
+Next, extend the `BaseAdapter` class inside of `CustomBaseAdapter` class.
 
-} 
-```
-
-#### Step 4) (  min )
-
-Lets extend the `BaseAdapter` class inside our `CustomBaseAdapter` class.
-
-Notice that there **will be red warnings** from Android Studio. Its ok, don't panic.
+Notice that there **will be red warnings** from Android Studio. Its ok, don't panic, we will fix them.
 ```java
 public class CustomBaseAdapter extends BaseAdapter {
 
 }
 ```
 
-###### Step 4a) ( 5 min )
+#### Step 2) ( 5 min )
 
 Next, let's make a constructor for our adapter that takes some data.
 
-For this exercise, we will take a `Context` object and an `ArrayList` of Animal Objects as our arguments to the constructor. 
+For this example, we need a `Context` object and an `ArrayList` of Animal Objects as our arguments to the constructor. 
+
 Save a reference to both of these variables inside `CustomBaseAdapter` by declaring and assigning member variables `data` and `context`.
 
 ```java
-public class CustomBaseAdapter {
-	private ArrayList<Animal> data;
+public class CustomBaseAdapter extends BaseAdapter {
+    private ArrayList<Animal> data;
     private Context context;
 
     public CustomBaseAdapter(Context context, ArrayList<Animal> animalList){
@@ -167,15 +173,13 @@ Now the custom adapter has access to a context and some data!
 
 > Solution: The adapter binds the data to the views. Without the data there is nothing for the adapter to bind to the views.
 
-#### Step 5) ( 5 min )
+#### Step 3) ( 5 min )
 
-Time to fix all the red warnings, we will do this in steps a and b. We must `implement` the methods declared inside the **abstract** `BaseAdapter` class. 
+It's time to fix all the red warnings! Follow steps `a` and `b`. We must `implement` the methods declared inside the **abstract** `BaseAdapter` class. 
 
-###### Step a)
+Inside CustomAdapter class, right click and select `Generate` or on mac press `command + n`. 
 
-Inside CustomAdapter class, right click ( mac press command + n ) and select `Generate`. Next, select the `Implement Methods` option and press enter.
-
-###### Step b)
+Next, select the `Implement Methods` option and press enter.
 
 There will be another popup highlighting **4** methods. Make sure **all 4 are selected** and press enter again. Android Studio will add them into your `CustomBaseAdapter` class.
 
@@ -213,15 +217,15 @@ public class CustomBaseAdapter extends BaseAdapter {
 
 > Check: Why is it about the BaseAdapter that makes us implement the four methods?
 
-> Solution: Base Adapter is an abstract class, and those four methods are abstract. They need to be implemented or our CustomBaseAdaper class becomes abstract if we don't.
+> Solution: Base Adapter is an abstract class, and those four methods are abstract. They need to either be implemented or our CustomBaseAdaper class needs to become abstract.
 
-#### Step 6) ( 25 min )
+#### Step 4) ( 20 min )
 
-Lets add code to the 4 methods in steps a, b, c, and d.
+Lets add code to the **4** methods in steps in the following 4 steps.
 
-###### Step a)
+###### Step a) ( 1 min )
 
-`getCount()`: This method returns the number of data items available. This is just the size of our `data` ArrayList
+`getCount()`: Returns the number of data items available. This is just the size of our `data` ArrayList
 ```java
 @Override
 public int getCount() {
@@ -229,9 +233,9 @@ public int getCount() {
 }
 ```
 
-###### Step b)
+###### Step b) ( 2 min )
 
-`getItem()`: This method returns the data item at the specific position from our `data` ArrayList!
+`getItem()`: Returns the data item at the specific position from our `data` ArrayList!
 ```java
 @Override
 public Object getItem(int position) {
@@ -239,9 +243,9 @@ public Object getItem(int position) {
 }
 ```
 
-###### Step c)
+###### Step c) ( 2 min )
 
-`getItemId()`: This method returns the unique id identifying the item at this position. We don't necessarily have one for this example so we just return the position since each item has their own unique position.
+`getItemId()`: Returns the `unique id` identifying the item at this position. Such an id usually comes from a database. This example does not use a database. Therefore, we return the position since it is unique to each item in the list.
 ```java
 @Override
 public long getItemId(int position) {
@@ -249,12 +253,10 @@ public long getItemId(int position) {
 }
 ```
 
-###### Step d)
+###### Step d) ( 15 min )
 
-`getView()`: Meat of the class. This method will return the actual list item view that will be drawn inside the `ListView`. This method also binds the `data` List to the views associated with it. ( i.e. Setting text on `TextViews`, images on `ImageViews`, etc ).
+`getView()`: **Meat of the class**. Returns the actual list item view to be drawn inside the `ListView`. This method also binds the `data` list to the views associated with it. ( i.e. Setting data specific text on `TextViews`, images on `ImageViews`, etc ).
 
-<details>
-  <summary>Click here to see what getView() should look like</summary>
 ```java
 @Override
 public View getView(final int position, View convertView, ViewGroup parent) {
@@ -320,16 +322,14 @@ public View getView(final int position, View convertView, ViewGroup parent) {
     return convertView;
 }
 ```
-</details>
 
 > Check: What does the getView() method do?
 
+> Solution: It binds the data of each row element in the ListView to its respective view(s).
 
-> Solution: It binds the data to the views of each row element in the ListView.
+#### Step 5) ( 10 min )
 
-#### Step 7) ( 10 min )
-
-Set the custom adapter on our ListView inside our Activity!
+Set the custom adapter on ListView `listView` variable inside Activity!
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -391,41 +391,63 @@ public class Animal {
 ```
 </details>
 
-#### Completion ( almost )
 
-That's it, you created an adapter that takes a custom layout and allows for all sorts of fancy things with lists! 
+<a name="ind-practice"></a>
+### Independent Practice: Create a CustomAdapter (30 minutes)
 
-## Improve ListView Performance with View Holder Pattern ( 20 min )
+Open up the [starter-code](starter-code/) inside Android Studio.
 
-Say say we have a really long list of data through which we scrolled often. Our list items might get jarbled up and not be ordered properly.
+You will find 3 classes
+- Animal.java
+- MainActivity.java
+- **CustomBaseAdapter.java**
 
-The way to fix this is to use something called a `View Holder Pattern`.
+Your task is to fill in the `CustomBaseAdapter` class and get the application working.
+- **Follow the steps from above**.
+- Note that everything is created for you, including custom layouts, main_acitivy.xml, MainActivity class, and Animal class.
+- **Only CustomBaseAdaper.java needs to be filled in**.
 
-`ViewHolder Pattern` is basically a way to recycle views. Instead of inflating many multiple LinearLayouts with two `TextViews` and one `Button` ( our custom item layout ), we can just inflate it once and hold a reference to these views.
+Once finsihed, you will have created an adapter that takes a list of custom data ( i.e. `ArrayList<Animal>` ) and draws this custom data information on the `ListView` using a `custom layout` ( see above: Layouts -> Step 2 ).
 
-When we need to update what the contents of each view are, based on the position of the item in the list, we simply pull them out of our `ViewHolder` object.
 
-#### Step 1) ( 5 min )
+## 3. Improve Performance with View Holder Pattern ( 25 min )
+
+Suppose we have a really long list of data ( 1,000 items ). Also, suppose this list of data is represented in a `ListView`, through which we scrolled often. 
+
+You might notice that during scrolling, the `ListView` performance is not great, and that it stutters.
+
+Your code might call `findViewById()` frequently during the scrolling of `ListView`, which can slow down performance. Even when the Adapter returns an inflated view for recycling, you still need to look up the elements and update them. A way around repeated use of `findViewById()` is to use the [View Holder Design Pattern](https://developer.android.com/training/improving-layouts/smooth-scrolling.html#ViewHolder).
+
+Currently, everytime `getView()` method is called we have to find two `TextViews` and one `Button` from our custom item layout ( see above: Layouts -> Step 2 ).
+
+`View Holder Pattern` is a way to prevent multiple calls to `findViewById()`. `ViewHolder` will make the `findViewById()` once for each view and store them in a local variable. After that, every time `getView()` is called, we re-use these local variable references for the views instead of calling `findViewById()`
+
+#### Step 1) ( 3 min )
 
 Create a ViewHolder inside of our `CustomBaseAdapter.java` class.
 
-At the bottom of the class, create an inner class ( a class that is defined inside of another class ) called `ViewHolder`
+At the bottom of the `CustomBaseAdapter.java` class, create an inner class ( a class that is defined inside of another class ) called `ViewHolder`
 ```java
-private class ViewHolder {
-    TextView firstTextView;
-    TextView secondTextView;
-    Button button;
-    
-    public ViewHolder(View itemLayout){
-        this.firstTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_first);
-        this.secondTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_second);
-        this.button = (Button) itemLayout.findViewById(R.id.list_item_button);
-    }
+public class CustomBaseAdapter extends BaseAdapter { 
+	
+	... // code from CustomBaseAdapter
+	
+	private class ViewHolder {
+	    TextView firstTextView;
+	    TextView secondTextView;
+	    Button button;
+	    
+	    public ViewHolder(View itemLayout){
+	        this.firstTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_first);
+	        this.secondTextView = (TextView) itemLayout.findViewById(R.id.list_item_tv_second);
+	        this.button = (Button) itemLayout.findViewById(R.id.list_item_button);
+	    }
+	}
 }
 ```
 
 <details>
-  <summary>Click here to see what CustomAdapter.java looks like </summary>
+  <summary>Click here to see what CustomAdapter.java should look like</summary>
 ```java
 public class CustomBaseAdapter extends BaseAdapter {
     private ArrayList<Animal> data;
@@ -536,27 +558,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
 #### Step 2) ( 2 min )
 
-Lets make use of this `ViewHolder` class by creating an object.
-
-Add a global `ViewHolder viewHolder` variable at the top of `CustomBaseAdapter` class.
-
-```java
-public class CustomBaseAdapter extends BaseAdapter {
-    private ArrayList<Animal> data;
-    private Context context;
-    private ViewHolder viewHolder;
-
-    ... // rest of the code would be here
-}
-```
-
-> Check: Where do you think we'll use this ViewHolder?
-
-ViewHolder will be used inside the getView() method. Specifally, it is tied to our convertView.
-
-#### Step 3) ( 3 min )
-
-Lets use this new `viewHolder` variable.
+Lets make use of this `ViewHolder` class by declaring a `ViewHolder` object inside the `getView()` method. It will tied to our `convertView`.
 
 Remember that orignally, `getView()` had an if-statement that looked like 
 ```java
@@ -571,6 +573,23 @@ public View getView(final int position, View convertView, ViewGroup parent) {
 }
 ```
 
+Now it should look like this
+```java
+@Override
+public View getView(final int position, View convertView, ViewGroup parent) {
+	// declare a ViewHolder variable
+	ViewHolder viewHolder;
+	
+	if (convertView == null) {
+        	convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+	}
+
+	... // rest of code in method
+}
+```
+
+#### Step 3) ( 5 min )
+
 Now, we will create an instance of the `ViewHolder` the first time `convertView == null`. Then we set the `viewHolder` as a tag on the `convertView` so that we can reference it later! 
 
 Lastly, add an else clause to reference the `viewHolder` when `convertView` is not null!
@@ -578,43 +597,55 @@ Lastly, add an else clause to reference the `viewHolder` when `convertView` is n
 ```java
 @Override
 public View getView(final int position, View convertView, ViewGroup parent) {
-
+	// declare a ViewHolder variable
+	ViewHolder viewHolder;
+	
 	if (convertView == null) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        	convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
 
-        // create new ViewHolder and set it as the tag for convertView
+	        // create new ViewHolder and set it as the tag for convertView
 		viewHolder = new ViewHolder(convertView);
-        convertView.setTag(viewHolder);
-    } else {
-        // convertView exists, so we can grab our viewHolder from its tag
-        viewHolder = (ViewHolder) convertView.getTag();
-    }
+	        convertView.setTag(viewHolder);
+	} else {
+		// convertView exists, so we can grab our viewHolder from its tag
+		viewHolder = (ViewHolder) convertView.getTag();
+	}
 
     ... // rest of code in method
 }
 ```
 
 
-#### Step 4) ( 5 min )
+#### Step 4) ( 10 min )
 
-The final step is to make use of this viewHolder instance and its references to our `firstTextView`, `secondTextView`, and `button`. We no longer need to use the `convertView.findViewById(R.id.view_id)` method since that is done for us inside the ViewHolder! **Remove all the findViewById() methods**. 
+The final step is to make use of this `viewHolder` instance and its references to our `TextViews` and `Button` variables: `firstTextView`, `secondTextView`, and `button`. 
+
+We will no longer need to use the `convertView.findViewById(R.id.view_id)` method since that is done for us inside the ViewHolder! **Remove all the convertView.findViewById() methods**. 
 
 > Check: Pair up and predict how might we access our views from the ViewHolder
 
-We can simply reference the view we want from `ViewHolder` and do what we want with that view.
+After removing all the `convertView.findViewById()` methods, we need to gain access to our views. These views are stored inside the `ViewHolder viewHolder` object.
+
+Lets say we wanted to access the `TextView firstTextView` object, we can do it like so:
 ```java
-viewHolder.firstTextView.setText("Example of setting text on first text view from view holder!");
+viewHolder.firstTextView
 ```
 
-Now you have an efficient way of re-using inflated views for every list item! 
+Next, say we wanted to set some text on this `TextView` object, we can do that like so:
+```java
+viewHolder.firstTextView.setText("Example Text!");
+```
+
+Now you have an efficient way of re-using found views for every list item! 
 
 The completed getView() looks like this
 
-<details>
-  <summary>Click here to see what CustomAdapter.java should look like</summary>
 ```java
 @Override
 public View getView(final int position, View convertView, ViewGroup parent) {
+    // declare a ViewHolder variable
+    ViewHolder viewHolder;
+    
     /**
      * Convert view will be the top level view of our list item layout.
      *
@@ -667,27 +698,17 @@ public View getView(final int position, View convertView, ViewGroup parent) {
     return convertView;
 }
 ```
-</details>
-
 
 <a name="ind-practice"></a>
-## Independent Practice: Topic (20 minutes)
+### Independent Practice: Using View Holder Pattern (15 minutes)
 
-Open up the [starter-code](starter-code/) inside Android Studio.
+Continue working from your previous project that you started from [starter-code](starter-code/) inside Android Studio.
 
-You will find 3 classes
-- Animal.java
-- MainActivity.java
-- **CustomBaseAdapter.java**
+Your task is now to update the `getView()` to:
+- Use the `ViewHolder Pattern` applying the techniques you learned above.
 
-Your task is to fill in the `CustomBaseAdapter` class and get the application working.
-- Follow the steps from above.
-- Note that everything is created for you, from custom layouts, to main_acitivy.xml and MainActivity class itself.
-- Only CustomBaseAdaper needs to be filled in.
 
 [Solution code](solution-code/) is available.
-
-**Bonus:** Use the ViewHolder pattern!
 
 **Bonus:** Use your own custom layout with `different` view elements!
 
