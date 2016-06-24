@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:textColor="#ff6699"
+        android:textColor="#ff1007"
         android:textAllCaps="true"
         android:fontFamily="casual"
         android:id="@+id/to_do_list_text_view"
@@ -34,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:hint="New Category"
         android:layout_alignParentBottom="true" />
 
     <ListView

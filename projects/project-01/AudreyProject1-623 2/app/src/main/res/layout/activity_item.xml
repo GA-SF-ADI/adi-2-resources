@@ -39,6 +39,7 @@
         android:fontFamily="casual"
         android:textSize="20dp"
         android:textColor="#cc0000"
+        android:hint="New Item"
         android:layout_alignParentTop="true" />
 
     <ListView

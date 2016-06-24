@@ -44,7 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
                 final String myInputString = myEditText.getText().toString();
                 Category myCategory = new Category(myInputString);
-                mCategoryList.add(myCategory);
+                if (myInputString.isEmpty()) {
+                    Toast.makeText(MainActivity.this,"Type in something to do! :) ", Toast.LENGTH_SHORT ).show();
+                } else {
+                    mCategoryList.add(myCategory);
+                }
                 Log.d("MainActivity", mCategoryList.toString());
                 customBaseAdapter.notifyDataSetChanged();
 
