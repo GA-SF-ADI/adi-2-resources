@@ -4,7 +4,7 @@ First of all, congradulations on finishing project 1! The concepts we have learn
 
 ## Classes
 
-We have compiled a list of helpful resources and readings on Classes, Subclasses, and Interfaces. It is a lot, but we want you to look through those readings. You can find those readings [here](java-practice/classes-practice). The material should mostly be review. 
+We have compiled a list of helpful resources and readings on Classes, Subclasses, and Interfaces. It is a lot, but we want you to look through those readings. You can find those readings [here](/java-practice/classes-practice). The material should mostly be review. 
 
 If you want additional practice, Udemy has a nice, free basic java online class full of videos and other resources located [here](https://www.udemy.com/java-tutorial/). 
 
