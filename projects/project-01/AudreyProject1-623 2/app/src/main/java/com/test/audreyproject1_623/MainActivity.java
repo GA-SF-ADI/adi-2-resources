@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 final String myInputString = myEditText.getText().toString();
                 Category myCategory = new Category(myInputString);
                 if (myInputString.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Type in something to do! :) ", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(MainActivity.this, "Type in something to do! :) ", Toast.LENGTH_SHORT).show();
                 } else {
                     mCategoryList.add(myCategory);
                 }
@@ -80,19 +80,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
 
 
                 Category createList = (Category) data.getSerializableExtra("category");
-                // pull out position
+
 
                 int pos = data.getIntExtra("position", 0);
-                //int position = ; (int position = onItemClickListener of mCategoryList)..
-                //Intent intent
-                Toast.makeText(MainActivity.this,"Welcome Back :) ", Toast.LENGTH_SHORT ).show();
 
-                //mCategoryList.get(position);
+                Toast.makeText(MainActivity.this, "Welcome Back :) ", Toast.LENGTH_SHORT).show();
+
+
                 mCategoryList.set(pos, createList);
                 customBaseAdapter.notifyDataSetChanged();
             }

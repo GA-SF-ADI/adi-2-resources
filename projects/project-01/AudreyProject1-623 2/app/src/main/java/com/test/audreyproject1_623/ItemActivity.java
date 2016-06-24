@@ -1,16 +1,11 @@
 package com.test.audreyproject1_623;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -39,13 +34,11 @@ public class ItemActivity extends AppCompatActivity {
             myList = new ArrayList<>();
         }
 
-        final ListView listView =(ListView) findViewById(R.id.list_view_for_items);
+        final ListView listView = (ListView) findViewById(R.id.list_view_for_items);
 
         secondCustomBaseAdapter = new SecondCustomBaseAdapter(myList, this);
         listView.setAdapter(secondCustomBaseAdapter);
         myEditText = (EditText) findViewById(R.id.edit_text);
-
-
 
 
         Button newList = (Button) findViewById(R.id.new_list_button);
@@ -54,7 +47,7 @@ public class ItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String myInputString = myEditText.getText().toString();
                 if (myInputString.isEmpty()) {
-                    Toast.makeText(ItemActivity.this,"Type in something to do! :) ", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText(ItemActivity.this, "Type in something to do! :) ", Toast.LENGTH_SHORT).show();
                 } else {
                     myList.add(myInputString);
                 }
@@ -72,7 +65,7 @@ public class ItemActivity extends AppCompatActivity {
             }
         });
 
-        Button goBack =(Button) findViewById(R.id.go_back);
+        Button goBack = (Button) findViewById(R.id.go_back);
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

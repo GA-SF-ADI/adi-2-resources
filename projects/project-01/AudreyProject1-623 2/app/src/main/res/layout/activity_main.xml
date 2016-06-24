@@ -3,47 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/notebookpaper"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/notebookpaper"
     tools:context="com.test.audreyproject1_623.MainActivity">
 
     <TextView
+        android:id="@+id/to_do_list_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="#ff1007"
-        android:textAllCaps="true"
-        android:fontFamily="casual"
         android:background="#3333ff"
-        android:id="@+id/to_do_list_text_view"
-        android:text="To Do List!" />
+        android:fontFamily="casual"
+        android:text="To Do List!"
+        android:textAllCaps="true"
+        android:textColor="#ff1007"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/new_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="casual"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:fontFamily="casual"
         android:text="ADD LIST" />
 
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:fontFamily="casual"
-        android:hint="New Category"
-        android:layout_alignParentBottom="true" />
+        android:hint="New Category" />
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_below="@id/to_do_list_text_view"
         android:layout_width="wrap_content"
-        android:fontFamily="casual"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_text"/>
+        android:layout_above="@+id/edit_text"
+        android:layout_below="@id/to_do_list_text_view"
+        android:fontFamily="casual" />
 
 </RelativeLayout>

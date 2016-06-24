@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -60,12 +58,12 @@ public class CustomBaseAdapter extends BaseAdapter {
         viewHolder.firstTextView.setText(currentCategory.getName());
 
 
-       viewHolder.myCheckboxCategories.isChecked();
+        viewHolder.myCheckboxCategories.isChecked();
 
         viewHolder.myCheckboxCategories.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(viewHolder.myCheckboxCategories.isChecked()) {
+                if (viewHolder.myCheckboxCategories.isChecked()) {
                 }
             }
         });
@@ -83,7 +81,6 @@ public class CustomBaseAdapter extends BaseAdapter {
         public ViewHolder(View itemLayout) {
             this.firstTextView = (TextView) itemLayout.findViewById(R.id.custom_adapter_text_view);
             this.myCheckboxCategories = (CheckBox) itemLayout.findViewById(R.id.on_check_box_categories);
-
 
 
         }

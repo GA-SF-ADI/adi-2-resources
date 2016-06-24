@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/notebookpaper"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/notebookpaper"
-    >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <Button
         android:id="@+id/new_list_button"
@@ -16,10 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="@+id/go_back"
-        android:fontFamily="casual"
         android:backgroundTint="#3366ff"
-        android:textColor="#ffffcc"
-        android:text="ADD LIST" />
+        android:fontFamily="casual"
+        android:text="ADD LIST"
+        android:textColor="#ffffcc" />
 
     <Button
         android:id="@+id/go_back"
@@ -29,18 +28,18 @@
         android:layout_alignParentRight="true"
         android:backgroundTint="#ffcc99"
         android:fontFamily="casual"
-        android:textColor="#0000ff"
-        android:text="GO BACK" />
+        android:text="GO BACK"
+        android:textColor="#0000ff" />
 
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:fontFamily="casual"
-        android:textSize="20dp"
-        android:textColor="#cc0000"
         android:hint="New Item"
-        android:layout_alignParentTop="true" />
+        android:textColor="#cc0000"
+        android:textSize="20dp" />
 
     <ListView
         android:id="@+id/list_view_for_items"

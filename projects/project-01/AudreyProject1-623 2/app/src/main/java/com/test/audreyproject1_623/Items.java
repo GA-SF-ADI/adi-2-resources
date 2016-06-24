@@ -14,12 +14,11 @@ public class Items implements Serializable {
 
     private String name;
     private ArrayList<String> items;
-    //arraylist (private)
+
 
     public Items(String name) {
-        this.name= name;
+        this.name = name;
         this.items = new ArrayList<String>();
-
 
     }
 
@@ -28,7 +27,7 @@ public class Items implements Serializable {
     }
 
     public void setItemsName(String name) {
-        this.name=name;
+        this.name = name;
 
     }
 
@@ -37,7 +36,7 @@ public class Items implements Serializable {
     }
 
     public void setListOfItems(ArrayList<String> items) {
-        this.items= items;
+        this.items = items;
     }
 }
 
