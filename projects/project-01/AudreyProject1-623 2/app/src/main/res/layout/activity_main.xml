@@ -17,6 +17,7 @@
         android:textColor="#ff1007"
         android:textAllCaps="true"
         android:fontFamily="casual"
+        android:background="#3333ff"
         android:id="@+id/to_do_list_text_view"
         android:text="To Do List!" />
 
