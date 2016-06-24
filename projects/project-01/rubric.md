@@ -23,10 +23,10 @@
 
 ---
 
-30 Score:
+## Score:
 Based on the requirements, you can earn a maximum of  **16**  points on this project.
 
-#### Your total score is: **#**
+#### Your total score is: **30**
 
 
 ---
