@@ -1,6 +1,7 @@
 package com.test.a2ndpandoraattempt;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,29 @@ public class CustomStationAdapter extends BaseAdapter {
 
     private String stationName;
     private Context context;
-    private Image albumCoverImage;
+    private Bitmap albumCoverImage;
     private ArrayList<Station> listOfStations;
     private ViewHolder viewHolder;
 
+    public CustomStationAdapter(Context context, ArrayList<Station> listOfStations) {
+        this.context = context;
+        this.listOfStations = listOfStations;
+    }
+
+    @Override
+    public int getCount() {
+        return listOfStations.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return listOfStations.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
@@ -36,7 +56,7 @@ public class CustomStationAdapter extends BaseAdapter {
 
         final Station currentName = listOfStations.get(i);
 
-        viewHolder.las
+        viewHolder.stationnam
 
 
         return convertView;
