@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,31 +12,45 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal">
 
-                <ImageView
+            <ImageView
+                android:id="@+id/album_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/album_cover" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView_radio_station_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView"
-                    android:src="@mipmap/albumCover"
-                    android:adjustViewBounds="true"
-                    android:maxHeight="50dp"
-                    android:maxWidth="50dp"
-                    android:layout_marginLeft="17dp"
-                    android:layout_marginTop="17dp"/>
+                    android:text="Radio station name"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Listened in Month Year"
+                    android:textSize="15sp"
+                    android:textColor="#999999"
+                    />
 
 
-    <TextView
-        android:id="@+id/textView_radio_station_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Radio station name"/>
+            </LinearLayout>
 
-
-</LinearLayout>
-
-
-
+        </LinearLayout>
 
 
     </LinearLayout>
+
+
+</LinearLayout>
