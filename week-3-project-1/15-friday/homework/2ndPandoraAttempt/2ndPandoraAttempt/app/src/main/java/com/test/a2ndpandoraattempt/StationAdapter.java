@@ -20,7 +20,7 @@ public class CustomStationAdapter extends BaseAdapter {
     private Context context;
     private Bitmap albumCoverImage;
     private ArrayList<Station> listOfStations;
-    private ViewHolder viewHolder;
+    ViewHolder viewHolder;
 
     public CustomStationAdapter(Context context, ArrayList<Station> listOfStations) {
         this.context = context;
@@ -43,7 +43,8 @@ public class CustomStationAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup parent) {
+    public View getView(int i, View convertView, ViewGroup viewGroup, ViewGroup parent) {
+
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.single_station_layout, parent, false);
             viewHolder = new ViewHolder(convertView);
@@ -56,28 +57,31 @@ public class CustomStationAdapter extends BaseAdapter {
 
         final Station currentName = listOfStations.get(i);
 
-        viewHolder.stationnam
+        viewHolder.stationName.setText(currentName.getStationName());
+        viewHolder.lastListenedTo.setText(currentName.getStationName());
 
 
         return convertView;
 
 
-        private class ViewHolder {
-
-            TextView stationName;
-            TextView lastListenedTo;
+    }
 
 
-            public ViewHolder(View itemLayout) {
-                this.stationName = (TextView) itemLayout.findViewById(R.id.textView_radio_station_name);
-                this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_last_listened_to);
+    private class ViewHolder {
 
-            }
+        TextView stationName;
+        TextView lastListenedTo;
 
+        public ViewHolder(View itemLayout) {
+            this.stationName = (TextView) itemLayout.findViewById(R.id.textView_radio_station_name);
+            this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_last_listened_to);
 
         }
 
+
     }
+
+}
 
 
 }
