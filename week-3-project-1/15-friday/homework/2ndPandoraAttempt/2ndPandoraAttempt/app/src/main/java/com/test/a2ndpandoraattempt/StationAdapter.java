@@ -43,7 +43,7 @@ public class CustomStationAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup, ViewGroup parent) {
+    public View getView(int i, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.single_station_layout, parent, false);
@@ -55,14 +55,14 @@ public class CustomStationAdapter extends BaseAdapter {
 
         }
 
+
         final Station currentName = listOfStations.get(i);
 
         viewHolder.stationName.setText(currentName.getStationName());
-        viewHolder.lastListenedTo.setText(currentName.getStationName());
+        viewHolder.lastListenedTo.setText(currentName.getYearWhenListenedTo());
 
 
         return convertView;
-
 
     }
 
@@ -83,5 +83,3 @@ public class CustomStationAdapter extends BaseAdapter {
 
 }
 
-
-}

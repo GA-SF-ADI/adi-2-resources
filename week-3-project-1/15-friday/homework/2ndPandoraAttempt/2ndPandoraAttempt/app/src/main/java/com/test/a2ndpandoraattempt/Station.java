@@ -12,13 +12,11 @@ public class Station {
 
     Integer yearWhenListenedTo;
 
-    Bitmap albumCover;
 
 
-    public Station(String stationName, Integer yearWhenListenedTo, Bitmap albumCover) {
+    public Station(String stationName, Integer yearWhenListenedTo) {
         this.stationName = stationName;
         this.yearWhenListenedTo = yearWhenListenedTo;
-        this.albumCover = albumCover;
     }
 
     public String getStationName() {
@@ -37,11 +35,5 @@ public class Station {
         this.yearWhenListenedTo = yearWhenListenedTo;
     }
 
-    public Bitmap getAlbumCover() {
-        return albumCover;
-    }
 
-    public void setAlbumCover(Bitmap albumCover) {
-        this.albumCover = albumCover;
-    }
 }
