@@ -1,16 +1,20 @@
 package com.test.a2ndpandoraattempt;
 
+import android.media.Image;
+
 /**
  * Created by LangstonSmith on 6/25/16.
  */
-public class StationObject {
+public class Station {
 
     String stationName;
 
     Integer yearWhenListenedTo;
 
+    Image albumCover;
 
-    public StationObject(String stationName, Integer yearWhenListenedTo) {
+
+    public Station(String stationName, Integer yearWhenListenedTo) {
         this.stationName = stationName;
         this.yearWhenListenedTo = yearWhenListenedTo;
     }
