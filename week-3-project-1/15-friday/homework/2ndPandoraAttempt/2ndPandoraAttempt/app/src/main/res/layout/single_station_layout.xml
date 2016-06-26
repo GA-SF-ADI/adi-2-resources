@@ -7,18 +7,19 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="18dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/album_cover"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="19dp"
             android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/album_cover"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/album_cover" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -31,18 +32,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Radio station name"
-                    android:textSize="18sp"
+                    android:paddingTop="5dp"
                     android:textColor="#333333"
-
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Listened in Month Year"
-                    android:textSize="15sp"
+                    android:paddingTop="5dp"
                     android:textColor="#999999"
-                    />
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
