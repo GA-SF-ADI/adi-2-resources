@@ -9,8 +9,11 @@ We have supplied you with some simple starter code using an ArrayAdapter to hold
 This means, we want you to 
 
 -implement your own SqliteOpenHelper
+
 -turn the array adapter into a cursor adapter
+
 -change the add button functionality to add the new animal to the database
+
 -change the onItemClickListener to remove the item from your database
 
 You can use a SimpleCursorAdapter for now, but feel free to go the extra mile and create your own CustomCursorAdapter! 
