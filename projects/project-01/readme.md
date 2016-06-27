@@ -16,19 +16,21 @@ Your app must:
 
 - **Implement the prototype** you created
 - **View a collection of to-do lists**
-- **View items on a to-do list, including descriptions**
+- **View items on a to-do list**
 - Allow the user to **create a new to-do list**
 - **Add items** to each to-do list
 - Allow the user to **remove items from a to-do list**
 - Allow the user to **remove an entire to-do list**
 - Use custom Java objects to contain your data
-- **Display correctly in both landscape and portrait orientations**
+
 
 **Bonus:**
 
+- Include descriptions for one or both lists
 - Show an error message if invalid input is given
 - Allow the user to check off completed items
 - Allow the user to edit previously added items
+- **Display correctly in both landscape and portrait orientations** ( hint: Look up `onSaveInstanceState()`, look at [this guide](http://code.hootsuite.com/orientation-changes-on-android/))
 
 ---
 
@@ -44,8 +46,8 @@ If you have questions about whether or not your work adheres to these guidelines
 
 - A **git repository hosted on GitHub**, with frequent commits dating back to the **very beginning** of the project. Commit early, commit often.
 - **A ``readme.md`` file** describing what the app does, and any bugs that may exist.
-- Copies of your prototypes in the git repository
-- At least one screenshot of your home screen in the `readme.md`
+- Copies of your prototypes in the git repository ( can be photos of your drawings )
+- At least one screenshot of your app home screen in the `readme.md`
 
 ---
 
