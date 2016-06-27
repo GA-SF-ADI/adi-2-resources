@@ -3,6 +3,7 @@ package com.test.a2ndpandoraattempt;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -10,6 +11,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static int generateNum() {
+
+
+        Random ran = new Random();
+        int randomNum = ran.nextInt(2016 - 2010) + 2010;
+        return randomNum;
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +31,27 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listOfStations = (ListView) findViewById(R.id.listView_list_of_stations);
 
-        ArrayList<Station> arrayOfStations = new ArrayList<>();
+        final ArrayList<Station> arrayOfStations = new ArrayList<>();
 
-        Random ran = new Random();
-        int randomNum = ran.nextInt(2016 - 2010) + 2010;
+        final CustomStationAdapter stationAdapter = new CustomStationAdapter(MainActivity.this, arrayOfStations);
 
-        Station stationObject = new Station("Prince", 2015);
+        listOfStations.setAdapter(stationAdapter);
 
-        stationObject.setYearWhenListenedTo(randomNum);
 
-        CustomStationAdapter stationAdapter = new CustomStationAdapter(MainActivity.this, )
+        addStationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                arrayOfStations.add(new Station("Prince", generateNum()));
+
+//              Notifying the custom adapter that the data set has changed
+
+                stationAdapter.notifyDataSetChanged();
+
+
+            }
+        });
+
 
     }
 }
