@@ -145,4 +145,4 @@ sqlite> SELECT * FROM city where id LIKE '211';
 SELECT * FROM city where population = 91084;
 4060|Santa Monica|USA|California|91084
 
--- She's in ________Santa Monica, CA____________________!
+-- She's in ________Santa Monica, CA____________________! ()
