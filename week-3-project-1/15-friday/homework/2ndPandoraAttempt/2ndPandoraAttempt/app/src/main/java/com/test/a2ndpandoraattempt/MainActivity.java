@@ -37,17 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
         listOfStations.setAdapter(stationAdapter);
 
+//              Notifying the custom adapter that the data set has changed
 
         addStationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                arrayOfStations.add(new Station("Prince", generateNum()));
 
-//              Notifying the custom adapter that the data set has changed
+                arrayOfStations.add(new Station("Prince", generateNum()));
+                arrayOfStations.add(new Station("Sting", generateNum()));
 
                 stationAdapter.notifyDataSetChanged();
-
 
             }
         });

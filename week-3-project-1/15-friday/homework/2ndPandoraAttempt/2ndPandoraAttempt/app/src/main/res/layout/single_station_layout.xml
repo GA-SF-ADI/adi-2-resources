@@ -7,21 +7,21 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="18dp"
+        android:orientation="horizontal"
         android:paddingLeft="20dp"
-        android:orientation="horizontal">
+        android:paddingTop="18dp">
 
         <ImageView
             android:id="@+id/image_album_cover"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/album_cover"/>
+            android:src="@drawable/album_cover" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="19dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingLeft="19dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -33,27 +33,40 @@
                     android:id="@+id/textView_radio_station_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingTop="1dp"
                     android:text="Radio station name"
-                    android:paddingTop="5dp"
                     android:textColor="#333333"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/textView_last_listened_to"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Listened in Month Year"
-                    android:paddingTop="7dp"
-                    android:textColor="#999999"
-                    android:textSize="15sp" />
+                    android:orientation="horizontal">
 
+
+                    <TextView
+                        android:id="@+id/textView_last_listened_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="7dp"
+                        android:text="Listened in "
+                        android:textColor="#999999"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/textView_year_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="year" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
+
 
         </LinearLayout>
 
 
     </LinearLayout>
-
-
 </LinearLayout>

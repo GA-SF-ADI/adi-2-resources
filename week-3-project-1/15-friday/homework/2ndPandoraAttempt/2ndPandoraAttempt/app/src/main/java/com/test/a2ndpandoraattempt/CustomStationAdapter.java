@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -20,10 +22,12 @@ public class CustomStationAdapter extends BaseAdapter {
     private Context context;
     private Bitmap albumCoverImage;
     private ArrayList<Station> listOfStations;
+    private ArrayList<Integer> listOfYears;
     ViewHolder viewHolder;
 
     public CustomStationAdapter(Context context, ArrayList<Station> listOfStations) {
         this.context = context;
+        this.listOfStations = listOfStations;
         this.listOfStations = listOfStations;
     }
 
@@ -59,7 +63,6 @@ public class CustomStationAdapter extends BaseAdapter {
         final Station currentName = listOfStations.get(i);
 
         viewHolder.stationName.setText(currentName.getStationName());
-        viewHolder.lastListenedTo.setText(currentName.getYearWhenListenedTo());
 
 
         return convertView;
@@ -71,10 +74,12 @@ public class CustomStationAdapter extends BaseAdapter {
 
         TextView stationName;
         TextView lastListenedTo;
+        TextView yearLastListened;
 
         public ViewHolder(View itemLayout) {
             this.stationName = (TextView) itemLayout.findViewById(R.id.textView_radio_station_name);
             this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_last_listened_to);
+            this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_year_number);
 
         }
 

@@ -13,7 +13,6 @@ public class Station {
     Integer yearWhenListenedTo;
 
 
-
     public Station(String stationName, Integer yearWhenListenedTo) {
         this.stationName = stationName;
         this.yearWhenListenedTo = yearWhenListenedTo;
