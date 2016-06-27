@@ -22,13 +22,12 @@ public class CustomStationAdapter extends BaseAdapter {
     private Context context;
     private Bitmap albumCoverImage;
     private ArrayList<Station> listOfStations;
-    private ArrayList<Integer> listOfYears;
     ViewHolder viewHolder;
 
     public CustomStationAdapter(Context context, ArrayList<Station> listOfStations) {
         this.context = context;
         this.listOfStations = listOfStations;
-        this.listOfStations = listOfStations;
+
     }
 
     @Override
@@ -45,6 +44,7 @@ public class CustomStationAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return i;
     }
+
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
@@ -74,11 +74,9 @@ public class CustomStationAdapter extends BaseAdapter {
 
         TextView stationName;
         TextView lastListenedTo;
-        TextView yearLastListened;
 
         public ViewHolder(View itemLayout) {
             this.stationName = (TextView) itemLayout.findViewById(R.id.textView_radio_station_name);
-            this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_last_listened_to);
             this.lastListenedTo = (TextView) itemLayout.findViewById(R.id.textView_year_number);
 
         }

@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         Random ran = new Random();
         int randomNum = ran.nextInt(2016 - 2010) + 2010;
-        return randomNum;
 
+        return randomNum;
     }
 
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ArrayList<Station> arrayOfStations = new ArrayList<>();
 
+
         final CustomStationAdapter stationAdapter = new CustomStationAdapter(MainActivity.this, arrayOfStations);
 
         listOfStations.setAdapter(stationAdapter);
@@ -44,14 +48,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                arrayOfStations.add(new Station("Prince", generateNum()));
-                arrayOfStations.add(new Station("Sting", generateNum()));
+                List<String> artists = new ArrayList<>(Arrays.asList("Prince", "Sting", "AC/DC", "Rolling Stones", "KISS", "Sadé", "Adele", "Beyonce", "Bruce Springsteen"));
 
-                stationAdapter.notifyDataSetChanged();
+                for (int i = 0; i < artists.size(); i++) {
+
+                    arrayOfStations.add(new Station(artists.get(i), 2015));
+
+                    stationAdapter.notifyDataSetChanged();
+                }
 
             }
+
+
         });
-
-
     }
+
+
 }

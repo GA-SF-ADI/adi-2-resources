@@ -8,9 +8,9 @@ import android.media.Image;
  */
 public class Station {
 
-    String stationName;
+    private String stationName;
 
-    Integer yearWhenListenedTo;
+    private Integer yearWhenListenedTo;
 
 
     public Station(String stationName, Integer yearWhenListenedTo) {
