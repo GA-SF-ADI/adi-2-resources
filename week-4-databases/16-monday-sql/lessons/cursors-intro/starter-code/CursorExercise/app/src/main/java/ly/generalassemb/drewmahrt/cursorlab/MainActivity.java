@@ -1,14 +1,9 @@
 package ly.generalassemb.drewmahrt.cursorlab;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +31,31 @@ public class MainActivity extends AppCompatActivity {
             db.execSQL("INSERT INTO tbl_books Values ('" + titles[i] + "', '"+ authors[i] + "', '" + years[i] +"');");
         }
 
-        //Start your code here
+        /**
+         * Start your code here
+         */
+        // 1. Get your cursor
+
+
+
+        // 2. Iterate on the cursor and create a string for each row that looks like "Title - author - year"
+
+
+
+        // 3. Insert each of the strings from step 2 into an ArrayList<String>
+
+
+
+        // 4. Create ListView
+
+
+
+        // 5. Create adapter for listview ( ArrayAdapter or CustomAdapter )
+
+
+        
+        // 6. Link your ListView and Adapter
+
 
     }
 }
