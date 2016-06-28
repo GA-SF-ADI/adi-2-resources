@@ -20,6 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String SQL_CREATE_GAME_TABLE =
             "CREATE TABLE games ( id INTEGER PRIMARY KEY, name TEXT, year TEXT )";
 
+//    public static final String
+
     public static final String SQL_DROP_GAME_TABLE =
             "DROP TABLE IF EXISTS";
 

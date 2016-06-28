@@ -13,12 +13,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Favorites.db";
+    public static final String COL_GAME_NAME = "name";
+    public static final String TABLE_NAME = "games";
+    public static final String COL_GAME_YEAR = "year";
+    public static final String COL_ID = "_id";
 
     // Define SQL statements to create and delete games table
     public static final String SQL_CREATE_GAME_TABLE =
-            "CREATE TABLE games ( id INTEGER PRIMARY KEY, name TEXT, year TEXT )";
+            "CREATE TABLE "+ TABLE_NAME + " (" + COL_ID + " INTEGER PRIMARY KEY, "
+                    + COL_GAME_NAME + " TEXT, "
+                    + COL_GAME_YEAR + " TEXT)";
 
     public static final String SQL_DROP_GAME_TABLE = "DROP TABLE IF EXISTS games";
+
+
 
 
     public DatabaseHelper(Context context) {
@@ -43,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // create a new content value to store values
         ContentValues values = new ContentValues();
-        values.put("id", id);
+        values.put("_id", id);
         values.put("name", name);
         values.put("year", year);
 
@@ -57,11 +65,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Define a projection, which tells the query to return only the columns mentioned
         // similar to "SELECT column1, column2, column3"
-        String[] projection = new String[]{ "id", "name", "year" };
+        String[] projection = new String[]{ "_id", "name", "year" };
 
         // Define a selection, which defines the WHERE clause of the query (but not the values for it)
         // similar to "WHERE x < 23", only without the value; "WHERE x < ?"
-        String selection = "id = ?";
+        String selection = "_id = ?";
 
         // Define the selection values. The ?'s in the selection
         // The number of values in the following array should equal the number of ? in the where clause
@@ -77,5 +85,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String year = cursor.getString( cursor.getColumnIndex("year") );
 
         return new Game(id, name, year);
+    }
+
+    public Cursor getAllGames(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME,null,null,null,null,null,null);
+
+        return cursor;
+
     }
 }
