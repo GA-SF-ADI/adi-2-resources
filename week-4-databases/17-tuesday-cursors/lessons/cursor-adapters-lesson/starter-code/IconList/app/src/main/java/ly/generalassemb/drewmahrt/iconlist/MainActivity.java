@@ -2,6 +2,7 @@ package ly.generalassemb.drewmahrt.iconlist;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,7 +30,29 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
 
+        IconSQLiteOpenHelper db = IconSQLiteOpenHelper.getInstance(MainActivity.this);
 
+        Cursor cursor = db.getIconList();
+        ListView myListView = (ListView) findViewById(R.id.icon_list_view);
+
+        CursorAdapter myCursorAdapter = new CursorAdapter(MainActivity.this, cursor, 0) {
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(R.layout.icon_list_item, parent, false);
+            }
+
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+                ImageView myImageView = (ImageView) view.findViewById(R.id.icon_image_view);
+                TextView myTextView = (TextView) view.findViewById(R.id.icon_name_text_view);
+
+                myTextView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
+                myImageView.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
+
+            }
+        };
+
+    myListView.setAdapter(myCursorAdapter);
     }
 
     private int getDrawableValue(String icon){
