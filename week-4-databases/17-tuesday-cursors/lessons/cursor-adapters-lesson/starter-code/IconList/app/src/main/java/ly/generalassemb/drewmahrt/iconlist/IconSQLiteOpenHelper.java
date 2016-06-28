@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by drewmahrt on 12/29/15.
  */
+
 public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = IconSQLiteOpenHelper.class.getCanonicalName();
 
@@ -65,4 +66,5 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
+
 }
