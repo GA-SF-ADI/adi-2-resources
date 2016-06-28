@@ -84,10 +84,7 @@ public class MainActivity extends AppCompatActivity {
         ListView finalList = (ListView) findViewById(R.id.listView_book_list);
         Log.e(TAG, "listview linked to XML listview");
 
-        TextView finalBook= (TextView)findViewById(R.id.textView_single_book);
-        String finalBookString = finalBook.getText().toString();
-
-        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.activity_list_item, R.id.textView_single_book, stringOfEachBookInfo);
+        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, stringOfEachBookInfo);
 
         Log.e(TAG, "adapter made");
 
