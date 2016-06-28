@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.test.suitebuilder.TestMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,34 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
 
+        //get instance of database helper
+        IconSQLiteOpenHelper db = IconSQLiteOpenHelper.getInstance(this);
+
+        //get cursor from the helper
+        Cursor cursor = db.getIconList();
+
+        ListView iconListView = (ListView) findViewById(R.id.icon_list_view);
+
+        CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,cursor,0) {
+
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(R.layout.icon_list_item, parent, false);
+            }
+
+            //SETS THE VIEWS
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+
+                TextView textView = (TextView) view.findViewById(R.id.icon_name_text_view);
+                ImageView imageView = (ImageView) view.findViewById(R.id.icon_image_view);
+
+                textView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
+                imageView.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
+            }
+        };
+
+        iconListView.setAdapter(cursorAdapter);
 
     }
 
@@ -45,5 +74,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return 0;
         }
+
     }
 }
