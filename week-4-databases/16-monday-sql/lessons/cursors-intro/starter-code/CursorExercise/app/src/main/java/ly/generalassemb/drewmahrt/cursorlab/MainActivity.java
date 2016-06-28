@@ -55,29 +55,26 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor myCursor = db.query("tbl_books", null, null, null, null, null, null);
 
+        Log.e(TAG, "myCusor query made");
 
         // 2. Iterate on the cursor and create a string for each row that looks like "Title - author - year"
 
         ArrayList<String> stringOfEachBookInfo = new ArrayList<>();
-
+        Log.e(TAG, "stringOfEachBookInfo arrayList made");
 
         myCursor.moveToFirst();
         while (myCursor.isAfterLast() == false) {
 
 //            "Title - Author - Year"
 
-            stringOfEachBookInfo.add("eklajda");
-            stringOfEachBookInfo.add("dkafda");
-            stringOfEachBookInfo.add("dkajf;das");
 
-
-//            stringOfEachBookInfo.add(getString(0) + " - " + myCursor.getString(1) + " - " + myCursor.getString(2));
+            stringOfEachBookInfo.add(myCursor.getString(0) + " - " + myCursor.getString(1) + " - " + myCursor.getString(2));
             myCursor.moveToNext();
         }
 
 
         myCursor.close();
-
+        Log.e(TAG, "myCursor closed");
 
         // 3. Insert each of the strings from step 2 into an ArrayList<String>
 
@@ -85,18 +82,23 @@ public class MainActivity extends AppCompatActivity {
         // 4. Create ListView
 
         ListView finalList = (ListView) findViewById(R.id.listView_book_list);
+        Log.e(TAG, "listview linked to XML listview");
 
+        TextView finalBook= (TextView)findViewById(R.id.textView_single_book);
+        String finalBookString = finalBook.getText().toString();
 
-//        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter(this, android.R.layout.activity_list_item, R.id.textView_single_book, stringOfEachBookInfo);
+        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.activity_list_item, R.id.textView_single_book, stringOfEachBookInfo);
 
-        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.activity_list_item, R.id.listView_book_list, stringOfEachBookInfo);
+        Log.e(TAG, "adapter made");
 
         // 6. Link your ListView and Adapter
 
         finalList.setAdapter(mArrayAdapter);
 
-        mArrayAdapter.notifyDataSetChanged();
+        Log.e(TAG, "adapter set");
 
+        mArrayAdapter.notifyDataSetChanged();
+        Log.e(TAG, "data changed set notified");
 
     }
 }
