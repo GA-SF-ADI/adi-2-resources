@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
 //            "Title - Author - Year"
 
-            stringOfEachBookInfo.add(getString(0) + " - " + myCursor.getString(1) + " - " + myCursor.getString(2));
+            stringOfEachBookInfo.add("eklajda");
+            stringOfEachBookInfo.add("dkafda");
+            stringOfEachBookInfo.add("dkajf;das");
+
+
+//            stringOfEachBookInfo.add(getString(0) + " - " + myCursor.getString(1) + " - " + myCursor.getString(2));
             myCursor.moveToNext();
         }
 
@@ -73,16 +82,14 @@ public class MainActivity extends AppCompatActivity {
         // 3. Insert each of the strings from step 2 into an ArrayList<String>
 
 
-
-
         // 4. Create ListView
 
-        ListView finalList = (ListView) findViewById(R.id.listView_list_of_books);
+        ListView finalList = (ListView) findViewById(R.id.listView_book_list);
 
-        // 5. Create adapter for ListView ( ArrayAdapter or CustomAdapter )
 
-        ArrayAdapter<String> mArrayAdapter = ArrayAdapter(this, android.R.layout.activity_list_item, );
+//        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter(this, android.R.layout.activity_list_item, R.id.textView_single_book, stringOfEachBookInfo);
 
+        ArrayAdapter<String> mArrayAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.activity_list_item, R.id.listView_book_list, stringOfEachBookInfo);
 
         // 6. Link your ListView and Adapter
 

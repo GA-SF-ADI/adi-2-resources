@@ -9,9 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ly.generalassemb.drewmahrt.cursorlab.MainActivity">
 
-
+`
     <ListView
-        android:id="@+id/listView_list_of_books"
+        android:id="@+id/listView_book_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ListView>
 
