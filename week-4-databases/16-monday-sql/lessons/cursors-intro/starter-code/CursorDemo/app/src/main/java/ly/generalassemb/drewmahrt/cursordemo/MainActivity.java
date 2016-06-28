@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             db.execSQL("INSERT INTO tbl_countries Values ('" + countryNames[i] + "', '"+ populations[i] + "');");
         }
 
-
+`
         cursor.moveToFirst();
         while (cursor.isAfterLast() == false) {
             Log.d(TAG, "In " + cursor.getString(0) + ", there are " + cursor.getString(1) + " people");
