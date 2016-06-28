@@ -1,5 +1,6 @@
 package com.example.jeanweatherwax.sqliteandroidindpractice;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,9 +16,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Store.db";
 
+    // Define Table name for better practice
+    public static final String TABLE_NAME = "televisions";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_BRAND = "brand";
+    public static final String COLUMN_SIZE = "size";
+    public static final String COLUMN_PRICE = "price";
+
     // Define SQL statements to create and delete television table
     public static final String SQL_CREATE_TV_TABLE =
-            "CREATE TABLE televisions ( id INTEGER PRIMARY KEY, brand TEXT, size TEXT, price INTEGER )";
+            "CREATE TABLE " + TABLE_NAME + " ( " + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_BRAND + " TEXT, " + COLUMN_SIZE + " TEXT, " + COLUMN_PRICE + " INTEGER )";
 
     public static final String SQL_DROP_TV_TABLE = "DROP TABLE IF EXISTS televisions";
 
@@ -41,13 +49,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Create new content value to store the values
         ContentValues values = new ContentValues();
-        values.put("id", id);
-        values.put("brand", brand);
-        values.put("size", size);
-        values.put("price", price);
+        values.put(COLUMN_ID, id);
+        values.put(COLUMN_BRAND, brand);
+        values.put(COLUMN_SIZE, size);
+        values.put(COLUMN_PRICE, price);
 
         // Insert the row into the games table
-        db.insert("games", null, values);
+        db.insert(TABLE_NAME, null, values);
     }
 
     public Television getTV(int id) {
@@ -56,25 +64,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Define a projection. This will tell the query to return ony the columns mentioned.
         // Similar to "SELECT column1, column2, column3"
-        String[] projection = new String[]{"id", "brand", "size", "price"};
+        // Should actually put these column names as variables instead of hardcoding
+        String[] projection = new String[]{COLUMN_ID, COLUMN_BRAND, COLUMN_SIZE, COLUMN_PRICE};
 
         // Define a selection. This defines the WHERE clause.
-        String selection = "id = ?";
+        String selection = "_id = ?";
 
         // Define selection values. These are the values for the WHERE.
         // The number of values here should equal the number of ? in the WHERE clause.
         String[] selectionArgs = new String[] { String.valueOf(id) };
 
         // Make the query with a cursor object
-        Cursor cursor = db.query("televisions", projection, selection, selectionArgs, null, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null, null);
 
         // Create a new Game object with your cursor
         cursor.moveToFirst();
 
         // Return it
-        String brand = cursor.getString(cursor.getColumnIndex("brand"));
-        String size = cursor.getString(cursor.getColumnIndex("size"));
-        Integer price = cursor.getInt(cursor.getColumnIndex("price"));
+        String brand = cursor.getString(cursor.getColumnIndex(COLUMN_BRAND));
+        String size = cursor.getString(cursor.getColumnIndex(COLUMN_SIZE));
+        Integer price = cursor.getInt(cursor.getColumnIndex(COLUMN_PRICE));
 
         return new Television(id, brand, size, price);
     }
@@ -84,13 +93,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
 
         // Define the selection values (WHERE)
-        String selection = "id = ?";
+        String selection = "_id = ?";
 
         // define selection values (the ? in the selection)
-        String[] selectionArgs = new String[] { String.valueOf(id) };
+        String[] selectionArgs = new String[] { String.valueOf(COLUMN_ID) };
 
         // Destroy everything that satisfies our query.
         // DELETE FROM games WHERE (condition)
-        db.delete("televisions", selection, selectionArgs);
+        db.delete(TABLE_NAME, selection, selectionArgs);
+    }
+
+    public Cursor getAllTVs() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null);
+        return cursor;
     }
 }
