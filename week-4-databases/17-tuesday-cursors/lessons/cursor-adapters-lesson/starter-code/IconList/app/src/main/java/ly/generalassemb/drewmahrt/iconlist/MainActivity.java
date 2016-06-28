@@ -2,6 +2,7 @@ package ly.generalassemb.drewmahrt.iconlist;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.media.Image;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -29,11 +32,45 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
 
+        IconSQLiteOpenHelper adapter = IconSQLiteOpenHelper.getInstance(this);
+
+        Cursor cursor = adapter.getIconList();
+
+        ListView listView = (ListView) findViewById(R.id.icon_list_view);
+
+
+        CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this, cursor, 0) {
+
+
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(R.layout.icon_list_item, parent, false);
+            }
+
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+
+                TextView textView = (TextView) view.findViewById(R.id.icon_name_text_view);
+                textView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
+
+
+                ImageView image = (ImageView) view.findViewById(R.id.icon_image_view);
+                image.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
+
+
+
+            }
+
+
+        };
+
+        listView.setAdapter(cursorAdapter);
+
 
     }
 
-    private int getDrawableValue(String icon){
-        switch(icon){
+    private int getDrawableValue(String icon) {
+        switch (icon) {
             case "search":
                 return android.R.drawable.ic_menu_search;
             case "add":
@@ -46,4 +83,9 @@ public class MainActivity extends AppCompatActivity {
                 return 0;
         }
     }
+
+
+
+
+
 }
