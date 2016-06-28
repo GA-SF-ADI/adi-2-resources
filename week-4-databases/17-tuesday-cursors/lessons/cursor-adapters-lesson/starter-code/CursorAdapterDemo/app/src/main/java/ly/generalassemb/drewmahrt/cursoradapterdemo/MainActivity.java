@@ -27,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
         dbSetup.getReadableDatabase();
 
+
+
     }
+
 }

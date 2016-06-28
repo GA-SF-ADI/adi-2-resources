@@ -47,14 +47,81 @@ One important item to note is that your table in the database **must** have a co
 
 ***
 
+<a name="introduction"></a>
+## Introduction: Simple Cursor Adapters (10 mins)
+
+Just as the ArrayAdapter allows us to create a quick adapter for a simple collection (instead of using a more complicated ListAdapter), the SimpleCursorAdapter allows us to create a CursorAdapter with a single line of code. While this may not work for every situation, it is very useful for layouts that don't require too much customization. It is fun to realize that SimpleCursorAdapters allow for much more customization than just ArrayAdapters. 
+
+
+The constructor takes 6 parameters:
+1) The current context (this)
+2) The layout to use
+3) The cursor that contains the data
+4) An array of strings that contains the column titles to take from the cursor 
+5) An array of ints that contains the id of the view item in the layout to assign to the corresponding cursor data value
+6) An integer for flags (most often will just be 0 for now)
+
+
+***
+
+<a name="demo"></a>
+## Demo: SimpleCursorAdapter (10 mins)
+
+I am going to be building off of some starter code GameStarterCode that provides its own SQliteOpenHelper and looks like the solution to your in class work from this morning. Feel free to follow along using either that code or your mornings code. The first thing to do is create our SimpleCursorAdapter
+
+```java
+//Create SimpleCursorAdapter
+String[] columns = new String[]{DatabaseHelper.COL_GAME_NAME}; //this code might look different from your mornings
+int[] viewNames = new int[]{android.R.id.text1};
+CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this,android.R.layout.simple_list_item_1,cursor,columns,viewNames,0);
+
+//Set adapter
+listView.setAdapter(simpleCursorAdapter);
+```
+
+
+***
+
+<a name="guided-practice"></a>
+## Guided Practice: SimpleCursorAdapter (10 mins)
+
+Let's change the SimpleCursorAdapter to use a custom layout. The first step is actually creating our custom layout. Then, We need to change the layout name, the columns we are retrieving the data from, and the view names where we are assigning data.
+
+Notice that it is a lot easier to fill in multiple views using our SimpleCursorAdapter than our ArrayAdapter! 
+
+```java
+
+//XML Layout
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/year_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+
+//Create SimpleCursorAdapter
+String[] columns = new String[]{DatabaseHelper.COL_GAME_NAME,DatabaseHelper.COL_GAME_YEAR};
+int[] viewNames = new int[]{R.id.name_text_view,R.id.description_text_view};
+CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this,R.layout.list_item_layout,cursor,columns,viewNames,0);
+```
+
+***
+
 <a name="demo"></a>
 ## Demo: Cursor Adapters (10 mins)
 
-Now that we know what a cursor adapter does, let's create and implement a very basic one. We can start with the CursorAdapterDemo project, and make our adapter there.
+Now that we know how to create a SimpleCursorAdapter, let's create our own. Lets work on creating our own anonymous CursorAdapter. 
 
 ```java
   //Get cursor
-  Cursor cursor = ExampleSQLiteOpenHelper.getInstance(MainActivity.this).getExampleList();
 
   //Define CursorAdapter
   CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,cursor,0) {
@@ -79,6 +146,8 @@ When creating the CursorAdapter, the constructor takes three parameters. The fir
 
 As you can see, there are two methods we are required to override. newView is simply responsible for inflating the list item layout. bindView is responsible for setting up all of the views in the layout, such as text and images.
 
+Its also important to note that this is being created anonymously. You could have created this in its own seperate file as a new type of Object that extends from CursorAdapter. 
+
 
 ***
 
@@ -87,23 +156,10 @@ As you can see, there are two methods we are required to override. newView is si
 
 Now that we've created a basic Cursor Adapter, let's try changing it to use a custom layout for the ListView item.
 
-First, we need to create our new layout, then we can change our CursorAdapter.
+Lets just use the same custom layout we made for the SimpleCursorAdapter. Take some time and try to do that! 
 
 ```java
-//XML Layout
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/description_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+
 
 //Changed CursorAdapter
 CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,cursor,0) {
@@ -128,57 +184,6 @@ There were only three changes we needed to make in order to use our custom layou
 1) Inflate the new layout
 2) Get the new TextView
 3) Set the new TextView to the description value
-
-
-***
-
-<a name="introduction"></a>
-## Introduction: Simple Cursor Adapters (10 mins)
-
-Just as the ArrayAdapter allows us to create a quick adapter for a simple collection (instead of using a more complicated ListAdapter), the SimpleCursorAdapter allows us to create a CursorAdapter with a single line of code. While this may not work for every situation, it is very useful for layouts that don't require too much customization.
-
-
-The constructor takes 6 parameters:
-1) The current context
-2) The layout to use
-3) The cursor that contains the data
-4) An array of strings that contains the column titles to take from the cursor
-5) An array of ints that contains the id of the view item in the layout to assign to the corresponding cursor data value
-6) An integer for flags
-
-
-***
-
-<a name="demo"></a>
-## Demo: SimpleCursorAdapter (5 mins)
-
-Now we're going to try to display the name column in the listView using a SimpleCursorAdapter. Let's comment out the CursorAdapter we defined before, and start writing a SimpleCursorAdapter.
-
-
-```java
-//Create SimpleCursorAdapter
-String[] columns = new String[]{ExampleSQLiteOpenHelper.COL_ITEM_NAME};
-int[] viewNames = new int[]{android.R.id.text1};
-CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this,android.R.layout.simple_list_item_1,cursor,columns,viewNames,0);
-
-//Set adapter
-listView.setAdapter(simpleCursorAdapter);
-```
-
-
-***
-
-<a name="guided-practice"></a>
-## Guided Practice: SimpleCursorAdapter (10 mins)
-
-Let's change the SimpleCursorAdapter to use the custom layout we created earlier. Once again, we need to change the layout name, the columns we are retrieving the data from, and the view names where we are assigning data.
-
-```java
-//Create SimpleCursorAdapter
-String[] columns = new String[]{ExampleSQLiteOpenHelper.COL_ITEM_NAME,ExampleSQLiteOpenHelper.COL_ITEM_DESCRIPTION};
-int[] viewNames = new int[]{R.id.name_text_view,R.id.description_text_view};
-CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this,R.layout.list_item_layout,cursor,columns,viewNames,0);
-```
 
 
 ***
