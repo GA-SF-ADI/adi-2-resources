@@ -1,5 +1,6 @@
 package ly.generalassemb.drewmahrt.cursordemo;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<countryNames.length;i++) {
             db.execSQL("INSERT INTO tbl_countries Values ('" + countryNames[i] + "', '"+ populations[i] + "');");
         }
+        Cursor cursor = db.query("tbl_countries",null, null, null, null, null, null);
 
     }
 }
