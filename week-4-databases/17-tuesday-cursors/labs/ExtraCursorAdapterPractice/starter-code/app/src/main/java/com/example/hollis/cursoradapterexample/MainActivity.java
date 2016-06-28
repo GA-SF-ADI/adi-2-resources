@@ -20,13 +20,18 @@ public class MainActivity extends AppCompatActivity {
     EditText descriptionEditText;
     EditText soundEditText;
     ArrayList<Animal> animalList;
-     ArrayAdapter animalAdapter;
+    ArrayAdapter animalAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setViews();
+
+        AnimalSQLiteOpenHelper db = AnimalSQLiteOpenHelper.getInstance(this);
+
         animalList = new ArrayList<>();
+
         animalAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,animalList);
         listView.setAdapter(animalAdapter);
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                animalList.remove(position);
-                animalAdapter.notifyDataSetChanged();
+                db.removeAnimal(position);
+                //animalAdapter.changeCursor
             }
         });
     }
 
     private void setViews(){
-        listView = (ListView) findViewById(R.id.list_view);
+         listView = (ListView) findViewById(R.id.list_view);
          button = (Button) findViewById(R.id.animal_button);
          nameEditText = (EditText) findViewById(R.id.animal_name);
          descriptionEditText = (EditText) findViewById(R.id.animal_description);
