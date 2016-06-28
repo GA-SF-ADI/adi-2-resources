@@ -4322,7 +4322,7 @@ INSERT INTO country VALUES ('DNK', 'Denmark', 'Europe', 'Nordic Countries', 4309
 INSERT INTO country VALUES ('THA', 'Thailand', 'Asia', 'Southeast Asia', 513115, 1350, 61399000, 68.599998, 116416.00, '153907.00', 'Prathet Thai', 'Constitutional Monarchy', 'Bhumibol Adulyadej', 3320, 'TH');
 INSERT INTO country VALUES ('TGO', 'Togo', 'Africa', 'Western Africa', 56785, 1960, 4629000, 54.700001, 1449.00, '1400.00', 'Togo', 'Republic', 'Gnassingb� Eyad�ma', 3332, 'TG');
 INSERT INTO country VALUES ('TKL', 'Tokelau', 'Oceania', 'Polynesia', 12, null, 2000, null, 0.00, '\N', 'Tokelau', 'Nonmetropolitan Territory of New Zealand', 'Elisabeth II', 3333, 'TK');
-INSERT INTO country VALUES ('TON', 'Tonga', 'Oceania', 'Polynesia', 650, 1970, 99000, 67.900002, 146.00, '170.00', 'Tonga', 'Monarchy', 'Taufa'ahau Tupou IV', 3334, 'TO');
+INSERT INTO country VALUES ('TON', 'Tonga', 'Oceania', 'Polynesia', 650, 1970, 99000, 67.900002, 146.00, '170.00', 'Tonga', 'Monarchy', 'Taufaahau Tupou IV', 3334, 'TO');
 INSERT INTO country VALUES ('TTO', 'Trinidad and Tobago', 'North America', 'Caribbean', 5130, 1962, 1295000, 68, 6232.00, '5867.00', 'Trinidad and Tobago', 'Republic', 'Arthur N. R. Robinson', 3336, 'TT');
 INSERT INTO country VALUES ('TCD', 'Chad', 'Africa', 'Central Africa', 1284000, 1960, 7651000, 50.5, 1208.00, '1102.00', 'Tchad/Tshad', 'Republic', 'Idriss D�by', 3337, 'TD');
 INSERT INTO country VALUES ('CZE', 'Czech Republic', 'Europe', 'Eastern Europe', 78866, 1993, 10278100, 74.5, 55017.00, '52037.00', '�esko', 'Republic', 'V�clav Havel', 3339, 'CZ');
@@ -5347,5 +5347,3 @@ COMMIT;
 ANALYZE city;
 ANALYZE country;
 ANALYZE countrylanguage;
-
-END;

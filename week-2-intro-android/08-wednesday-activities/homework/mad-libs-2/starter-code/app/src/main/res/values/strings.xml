@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mad Libs</string>
+    <string name="madlib_result"><![CDATA[
+        A vacation is when you take a trip to some <b>%1$s</b> place with your
+        <b>%2$s</b> family. Usually, you go to some place that is near a/an <b>%3$s</b> or up on a/an <b>%4$s</b>. A good
+        vacation place is one where you can ride <b>%5$s</b> or play <b>%6$s</b>.
+    ]]>
+    </string>
+</resources>
