@@ -20,10 +20,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Define SQL statements to create and delete games table
     public static final String SQL_CREATE_GAME_TABLE =
+<<<<<<< HEAD
             "CREATE TABLE "+ TABLE_NAME + " (" + COL_ID + " INTEGER PRIMARY KEY, "
                     + COL_GAME_NAME + " TEXT, "
                     + COL_GAME_YEAR + " TEXT)";
 
+=======
+            "CREATE TABLE games ( id INTEGER PRIMARY KEY, name TEXT, year TEXT )";
+    public static final String COL_GAME_NAME = "name";
+    public static final String COL_GAME_YEAR = "year";
+>>>>>>> 83f29bbc80ed9478d101d1ae42a6c4052bffb3c9
     public static final String SQL_DROP_GAME_TABLE = "DROP TABLE IF EXISTS games";
 
 

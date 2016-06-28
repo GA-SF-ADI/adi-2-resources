@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    
+
 //IGNORE THIS CODE SHH
     public void setUpDB(){
         db = new DatabaseHelper(this);
