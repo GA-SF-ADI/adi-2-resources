@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         SQLiteDatabase db;
 
@@ -35,8 +37,22 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<titles.length;i++) {
             db.execSQL("INSERT INTO tbl_books Values ('" + titles[i] + "', '"+ authors[i] + "', '" + years[i] +"');");
         }
+        Cursor cursor = db.query("tbl_books",null, null, null, null, null, null);
+        ArrayList<String>books = new ArrayList<>();
+        /*int bookTitle = cursor.getColumnIndex("book_title");
+        int bookAuthor = cursor.getColumnIndex("book_author");
+        int bookYear= cursor.getColumnIndex("book_year");
+        */
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+            books.add(cursor.getString(0)+" - "+ cursor.getString(1)+" - "+ cursor.getString(2));
+            cursor.moveToNext();
 
-        //Start your code here
+        }
+        cursor.close();
+        ListView myListView = (ListView)findViewById(R.id.my_lv);
+        ArrayAdapter<String> myAdapter = new ArrayAdapter(MainActivity.this,android.R.layout.simple_list_item_1,books);
+        myListView.setAdapter(myAdapter);
 
     }
 }

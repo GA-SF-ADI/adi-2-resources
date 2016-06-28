@@ -34,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<countryNames.length;i++) {
             db.execSQL("INSERT INTO tbl_countries Values ('" + countryNames[i] + "', '"+ populations[i] + "');");
         }
+        Cursor cursor = db.query("tbl_countries",null, null, null, null, null, null);
+        int columnIndex = cursor.getColumnIndex("country_name");
+        int populationColumnIndex = cursor.getColumnIndex("population");
+
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false){
+            Log.d(TAG,"DB result "+cursor.getString(columnIndex)+ cursor.getString(populationColumnIndex));
+            cursor.moveToNext();
+
+        }
+        cursor.close();
+
 
     }
 }
