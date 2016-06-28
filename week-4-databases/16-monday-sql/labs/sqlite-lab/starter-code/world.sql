@@ -5347,5 +5347,3 @@ COMMIT;
 ANALYZE city;
 ANALYZE country;
 ANALYZE countrylanguage;
-
-END;
