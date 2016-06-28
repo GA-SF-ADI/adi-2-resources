@@ -1,14 +1,17 @@
 package ly.generalassemb.drewmahrt.cursordemo;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getCanonicalName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,32 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<countryNames.length;i++) {
             db.execSQL("INSERT INTO tbl_countries Values ('" + countryNames[i] + "', '"+ populations[i] + "');");
         }
+        Cursor cursor = db.query("tbl_countries",null, null, null, null, null, null);
 
+        int nameColIndex = cursor.getColumnIndex("country_name");
+        int populationColIndex = cursor.getColumnIndex("population");
+
+
+        while(cursor.moveToNext()){
+            Log.d(TAG,"result = "+cursor.getString(nameColIndex)+" "+cursor.getString(populationColIndex));
+        }
+
+
+
+
+        /**
+         *
+         */
+
+//        while(cursor.moveToNext()){
+//            Log.d(TAG,"DB result ="+cursor.getString(nameColIndex));
+//        }
+
+
+//        cursor.moveToFirst();
+//        while(cursor.isAfterLast() == false){
+//            Log.d((TAG,"DB result ="+cursor.getString(nameColIndex)));
+//            cursor.moveToNext();
+//        }
     }
 }
