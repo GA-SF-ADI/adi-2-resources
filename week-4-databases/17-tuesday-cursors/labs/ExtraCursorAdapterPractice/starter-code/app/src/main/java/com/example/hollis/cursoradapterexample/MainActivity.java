@@ -25,13 +25,10 @@ public class MainActivity extends AppCompatActivity {
     EditText nameEditText;
     EditText descriptionEditText;
     EditText soundEditText;
-//    ArrayList<Animal> animalList;
 
     CursorAdapter cursorAdapter;
 
     DataBaseHelper db;
-
-//    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +60,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(cursorAdapter);
 
 
-
-
-
-
-//
-//        animalList = new ArrayList<>();
-//        animalAdapter = new CursorAdapter(this, android.R.layout.simple_list_item_1,animalList);
-
-
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,11 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 db.addAnimal(currentAnimal);
                 cursorAdapter.changeCursor(db.getAllAnimals());
 
-
-//                animalList.add(newAnimal);
-
-//                animalAdapter.notifyDataSetChanged();
-
             }
         });
 
@@ -101,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
                 db.removeAnimal(id);
                 cursorAdapter.changeCursor(db.getAllAnimals());
 
-//                animalList.remove(position);
-//                animalAdapter.notifyDataSetChanged();
             }
         });
     }

@@ -23,8 +23,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String[] PROJECTION = new String[] {COL_ID,COL_NAME,COL_SOUND,COL_DESCRIPTION};
 
-    Animal animal;
-
     public static DataBaseHelper getInstance(Context context) {
         if(db == null) {
             db = new DataBaseHelper(context.getApplicationContext());
