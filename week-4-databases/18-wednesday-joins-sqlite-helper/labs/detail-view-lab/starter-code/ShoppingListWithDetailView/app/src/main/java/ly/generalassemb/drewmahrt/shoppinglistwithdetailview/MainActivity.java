@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mCursorAdapter.changeCursor(mHelper.getShoppingList());
+        cursor = mHelper.getShoppingList();
+        mCursorAdapter.changeCursor(cursor);
     }
 }
