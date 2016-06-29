@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 String description = descriptionEditText.getText().toString();
                 Animal newAnimal = new Animal(name, sound, description);
                 db.addAnimal(newAnimal);
-                cursorAdapter.swapCursor(db.getAnimalList());
+                cursorAdapter.changeCursor(db.getAnimalList());
 
             }
         });
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 db.removeAnimal((int)id);
-                cursorAdapter.swapCursor(db.getAnimalList());
+                cursorAdapter.changeCursor(db.getAnimalList());
             }
         });
     }
