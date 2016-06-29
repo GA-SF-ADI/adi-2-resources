@@ -64,5 +64,27 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
                 null, // g. order by
                 null); // h. limit
         return cursor;
+
+
+    }
+
+    public String getDescriptionById(int id){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(ICON_LIST_TABLE_NAME,
+                new String[]{COL_ICON_NAME},
+                COL_ID+" = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
+        if(cursor.moveToFirst()){
+            return cursor.getString(cursor.getColumnIndex(COL_ICON_NAME));
+        } else {
+            return "No Description Found";
+        }
     }
 }
