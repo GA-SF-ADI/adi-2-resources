@@ -1,5 +1,6 @@
 package com.example.hollis.cursoradapterexample;
 
+import android.database.Cursor;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -20,15 +22,16 @@ public class MainActivity extends AppCompatActivity {
     EditText descriptionEditText;
     EditText soundEditText;
     ArrayList<Animal> animalList;
-     ArrayAdapter animalAdapter;
+    CursorAdapter cursorAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setViews();
         animalList = new ArrayList<>();
-        animalAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,animalList);
-        listView.setAdapter(animalAdapter);
+        Cursor cursor = db.query(ANIMAL_TABLE_NAME, ANIMAL_COLUMNS, null, null, null, null, null);
+        final CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,cursor,0));
+        listView.setAdapter(cursorAdapter);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 String description = descriptionEditText.getText().toString();
                 Animal newAnimal = new Animal(name, sound, description);
                 animalList.add(newAnimal);
-                animalAdapter.notifyDataSetChanged();
+                cursorAdapter.notifyDataSetChanged();
 
             }
         });
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 animalList.remove(position);
-                animalAdapter.notifyDataSetChanged();
+                cursorAdapter.notifyDataSetChanged();
             }
         });
     }
