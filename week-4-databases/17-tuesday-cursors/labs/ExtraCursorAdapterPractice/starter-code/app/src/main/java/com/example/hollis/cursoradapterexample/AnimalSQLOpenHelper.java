@@ -1,14 +1,20 @@
 package com.example.hollis.cursoradapterexample;
 
+import android.database.sqlite.SQLiteOpenHelper;
+
 /**
  * Created by hollis on 6/27/16.
  */
-public class Animal {
-    private String name;
-    private String sound;
-    private String description;
+public class AnimalSQLOpenHelper extends SQLiteOpenHelper {
 
-    public Animal(String name, String sound, String description) {
+    private static String DATABASE_NAME = "animal_db";
+    private static final int DATABASE_VERSION = 7;
+    private static String COL_NAME = "name";
+    private static String COL_SOUND = "sound";
+    private static String COL_DESCRIPTION = "description";
+
+
+    public AnimalSQLOpenHelper(String name, String sound, String description) {
         this.name = name;
         this.sound = sound;
         this.description = description;
@@ -39,7 +45,7 @@ public class Animal {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 }
