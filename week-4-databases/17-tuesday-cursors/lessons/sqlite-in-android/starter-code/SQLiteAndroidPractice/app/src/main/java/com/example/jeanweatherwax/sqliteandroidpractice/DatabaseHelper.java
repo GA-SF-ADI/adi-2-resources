@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Define the database name and version
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Favorites.db";
+
     public static final String COL_ID = "_id";
     public static final String COL_GAME_NAME = "name";
     public static final String COL_GAME_YEAR = "year";
