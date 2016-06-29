@@ -1,21 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_image" />
+=======
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="200dp">
 
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="200dp">
+>>>>>>> 0b49ae268230f9b4c6c5f7b78c078eee7128d12d
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/background_image"
-        android:scaleType="centerCrop" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_margin="12dp"
+            android:text="General Assembly"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
-    <TextView
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="12dp"
+            android:src="@drawable/logo" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Follow" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Message" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/puppy" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android: />
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+=======
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="General Assembly"
         android:layout_gravity="left|bottom"
@@ -36,3 +108,4 @@
 
 
 </RelativeLayout>
+>>>>>>> 0b49ae268230f9b4c6c5f7b78c078eee7128d12d
