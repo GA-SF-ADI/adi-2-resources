@@ -57,9 +57,38 @@
         android:layout_gravity="bottom"
         android:background="#8e8e8e">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="I am a toolbar!"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/song_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/sym_def_app_icon"/>
+
+            <TextView
+                android:id="@+id/textview1"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Song Name"
+                android:layout_toRightOf="@+id/song_image"
+                android:layout_centerVertical="true"/>
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/pause_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@android:drawable/ic_media_pause"/>
+
+        </RelativeLayout>
+
+
+
     </android.support.v7.widget.Toolbar>
 </FrameLayout>

@@ -265,7 +265,7 @@ public class MainActivity extends Activity {
 				db.insert(1, "Super Mario", "1985");
 				db.insert(2, "Legend of Zelda", "1986");
 
-				Game retrievedGame = getGame.query(2);
+				Game retrievedGame = db.getGame(2);
     }
 }
 ```
