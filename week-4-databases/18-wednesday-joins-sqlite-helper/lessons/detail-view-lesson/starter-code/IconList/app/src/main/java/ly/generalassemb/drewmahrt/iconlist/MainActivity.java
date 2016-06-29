@@ -1,6 +1,7 @@
 package ly.generalassemb.drewmahrt.iconlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         ListView iconListView = (ListView)findViewById(R.id.icon_list_view);
 
-        Cursor iconCursor = IconSQLiteOpenHelper.getInstance(MainActivity.this).getIconList();
+        final Cursor iconCursor = IconSQLiteOpenHelper.getInstance(MainActivity.this).getIconList();
+
+        TextView textView = (TextView)findViewById(R.id.icon_description);
 
         CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,iconCursor,0) {
             @Override
@@ -49,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
         };
 
         iconListView.setAdapter(cursorAdapter);
+
+        iconListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent =  new Intent(MainActivity.this,DetailActivity.class);
+                iconCursor.moveToPosition(position);
+                intent.putExtra("id",iconCursor.getInt(iconCursor.getColumnIndex(IconSQLiteOpenHelper.COL_ID)));
+                startActivity(intent);
+            }
+
+        });
+
     }
 
     private int getDrawableValue(String icon){

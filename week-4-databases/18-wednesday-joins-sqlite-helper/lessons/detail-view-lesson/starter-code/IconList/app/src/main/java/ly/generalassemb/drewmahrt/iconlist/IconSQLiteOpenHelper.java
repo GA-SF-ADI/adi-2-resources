@@ -29,6 +29,7 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
 
     private static IconSQLiteOpenHelper instance;
 
+
     public static IconSQLiteOpenHelper getInstance(Context context){
         if(instance == null){
             instance = new IconSQLiteOpenHelper(context);
@@ -65,4 +66,25 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
+
+    public String getDescriptionById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(ICON_LIST_TABLE_NAME,
+                new String[]{COL_ICON_NAME},
+                COL_ID+" = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
+        if(cursor.moveToFirst()){
+            return cursor.getString(cursor.getColumnIndex(COL_ICON_NAME));
+        } else {
+            return "No Description Found";
+        }
+    }
+
+
 }
