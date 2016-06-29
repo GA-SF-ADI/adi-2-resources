@@ -20,13 +20,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public static final String COL_TYPE = "TYPE";
     public static final String SQL_DROP_GROCERY_TABLE = "DROP TABLE IF EXISTS grocery";
     public static final String SQL_CREATE_GROCERY_TABLE = "CREATE TABLE " + TABLE_NAME + "("+COL_ID+
-            " INTEGER PRIMARY KEY "
+            " INTEGER PRIMARY KEY, "
             +COL_NAME+
-            " TEXT "
+            " TEXT, "
             +COL_DESCRIPTION+
-            " TEXT "
+            " TEXT, "
             +COL_PRICE+
-            " INTEGER "
+            " INTEGER, "
             +COL_TYPE+
             " TEXT)";
 
