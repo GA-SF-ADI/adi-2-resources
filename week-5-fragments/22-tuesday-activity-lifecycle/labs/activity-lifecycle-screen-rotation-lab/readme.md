@@ -26,3 +26,16 @@ Following [this guide](https://guides.codepath.com/android/Handling-Configuratio
 * Display EditText inputs of name and address in the two TextViews with the Save button. 
 * Use onSaveInstanceState() and onRestoreInstanceState() to put and get these values, and correctly retrieve them when the Activity is recreated.
 * Display Toasts for onSaveInstanceState() and onRestoreInstanceState()
+
+#### Example Screenshots after user input:
+
+(the Toast messages may succeed each other for each screen rotation)
+
+<p align="center">
+  <img src="screenshots/screenshot1.png" width="250">
+</p>
+
+<p align="center">
+  <img src="screenshots/screenshot2.png" width="500">
+</p>
+
