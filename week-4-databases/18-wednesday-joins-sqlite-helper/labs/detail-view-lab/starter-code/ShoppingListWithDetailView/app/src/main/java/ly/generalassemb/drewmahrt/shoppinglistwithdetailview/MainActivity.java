@@ -21,6 +21,7 @@ import ly.generalassemb.drewmahrt.shoppinglistwithdetailview.setup.DBAssetHelper
 public class MainActivity extends AppCompatActivity {
     private ListView mShoppingListView;
     private CursorAdapter mCursorAdapter;
+    private Cursor cursor;
     private ShoppingSQLiteOpenHelper mHelper;
 
     @Override
@@ -28,19 +29,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ShoppingSQLiteOpenHelper helper = ShoppingSQLiteOpenHelper.getInstance(MainActivity.this);
+
         //Ignore the two lines below, they are for setup
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
         dbSetup.getReadableDatabase();
 
-        mShoppingListView = (ListView)findViewById(R.id.shopping_list_view);
+        mShoppingListView = (ListView) findViewById(R.id.shopping_list_view);
         mHelper = new ShoppingSQLiteOpenHelper(MainActivity.this);
 
-        Cursor cursor = mHelper.getShoppingList();
+        cursor = mHelper.getShoppingList();
 
-        mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,new String[]{ShoppingSQLiteOpenHelper.COL_ITEM_NAME},new int[]{android.R.id.text1},0);
+        mCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{ShoppingSQLiteOpenHelper.COL_ITEM_NAME}, new int[]{android.R.id.text1}, 0);
         mShoppingListView.setAdapter(mCursorAdapter);
 
         handleIntent(getIntent());
+
+        mShoppingListView.setAdapter(mCursorAdapter);
+
+        mShoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, SecondActivty.class);
+                cursor.moveToPosition(position);
+                intent.putExtra("id", cursor.getInt(cursor.getColumnIndex(ShoppingSQLiteOpenHelper.COL_ID)));
+                startActivity(intent);
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,10 +74,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     protected void onNewIntent(Intent intent) {
         handleIntent(intent);
     }
+
+
+
+
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -71,4 +92,5 @@ public class MainActivity extends AppCompatActivity {
             mCursorAdapter.notifyDataSetChanged();
         }
     }
+
 }
