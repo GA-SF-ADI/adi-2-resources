@@ -50,25 +50,25 @@ public class Helper extends SQLiteOpenHelper {
   }
 
   private static final String SQL_CREATE_ENTRIES_COMPANY = "CREATE TABLE " +
-      DataEntryCompany.TABLE_NAME + " (" +
-      DataEntryCompany._ID + " INTEGER PRIMARY KEY," +
-      DataEntryCompany.COLUMN_NAME + " TEXT," +
-      DataEntryCompany.COLUMN_AGE + " INTEGER," +
-      DataEntryCompany.COLUMN_ADDRESS + " TEXT," +
-      DataEntryCompany.COLUMN_SALARY + " INTEGER" + ")";
+          DataEntryCompany.TABLE_NAME + " (" +
+          DataEntryCompany._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+          DataEntryCompany.COLUMN_NAME + " TEXT," +
+          DataEntryCompany.COLUMN_AGE + " INTEGER," +
+          DataEntryCompany.COLUMN_ADDRESS + " TEXT," +
+          DataEntryCompany.COLUMN_SALARY + " INTEGER" + ")";
 
   private static final String SQL_CREATE_ENTRIES_DEPARTMENT = "CREATE TABLE " +
-      DataEntryDepartment.TABLE_NAME + " (" +
-      DataEntryDepartment._ID + " INTEGER PRIMARY KEY," +
-      DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," +
-      DataEntryDepartment.COLUMN_EMP_ID + " INTEGER" + ")";
+          DataEntryDepartment.TABLE_NAME + " (" +
+          DataEntryDepartment._ID + " INTEGER PRIMARY KEY," +
+          DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," +
+          DataEntryDepartment.COLUMN_EMP_ID + " INTEGER" + ")";
 
   private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
-      DataEntryCompany.TABLE_NAME;
+          DataEntryCompany.TABLE_NAME;
   private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
-      DataEntryDepartment.TABLE_NAME;
+          DataEntryDepartment.TABLE_NAME;
 
-  public void insertRow(Employee employee) {
+  public void insertRowEmployee(Employee employee) {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues values = new ContentValues();
     values.put(DataEntryCompany.COLUMN_NAME, employee.getName());
@@ -88,11 +88,42 @@ public class Helper extends SQLiteOpenHelper {
 
   public String getNameJoins() {
     //TODO: add the code from the lesson.
+
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+// Building query using INNER JOIN keyword.
+    String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+    }
+    cursor.close();
+
+    //we are returning the person that matches the criteria... their company id has to match employee id
+    return result;
   }
+
 
   //The method is the solution for the independent part of the lesson
   public String getFullInformation() {
     //TODO: add the code from the lesson.
+    String myResult ="default info";
+    SQLiteDatabase db = getWritableDatabase();
+
+    //Building query using INNER JOIN keyword.
+    String query = "SELECT NAME, AGE, SALARY, DEPARTMENT FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT._ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      String name = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+      String age = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_AGE));
+      String salary = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_SALARY));
+      String dept = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_ADDRESS));
+
+      myResult = (name + "is " + age + " years old and has a salary of: " + salary + "." + name + "works in"  + dept + ".");
+    }
+    cursor.close();
+
+    return myResult;
   }
 }
 

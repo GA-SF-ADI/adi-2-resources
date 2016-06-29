@@ -133,6 +133,7 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper {
                 null);
 
         if (cursor.moveToFirst()) {
+            //cursor.close();
 
             return cursor.getString(cursor.getColumnIndex(COL_ITEM_NAME));
         } else {
@@ -154,6 +155,7 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper {
                 null);
 
         if (cursor.moveToFirst()) {
+            //cursor.close();
 
             return cursor.getString(cursor.getColumnIndex(COL_ITEM_DESCRIPTION));
         } else {
