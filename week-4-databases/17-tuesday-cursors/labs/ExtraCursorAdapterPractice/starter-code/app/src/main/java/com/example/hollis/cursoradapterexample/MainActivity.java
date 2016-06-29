@@ -25,12 +25,9 @@ public class MainActivity extends AppCompatActivity {
     EditText nameEditText;
     EditText descriptionEditText;
     EditText soundEditText;
-    ArrayList<Animal> animalList;
-     ArrayAdapter animalAdapter;
     TextView textView1, textView2, textView3;
     DatabaseHelper db;
     CursorAdapter cursorAdapter;
-    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         final Cursor cursor = db.getAnimalList();
 
 
-        //onclick you get the values from edit texts and id from int id that ++ everyclick.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
                 db.insert(animal);
 
-                //cursorAdapter.changeCursor(db.getAnimalList());<----- doesnt update the listview.
+                Cursor cursor1 = db.getAnimalList();
+                // crashes when line below runs.
+                cursorAdapter.changeCursor(cursor1);
+
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //db.delete(position+1);<--- will this work?
                 db.delete((int)id);
+                Cursor cursor1 = db.getAnimalList();
+                cursorAdapter.changeCursor(cursor1);
 
             }
         });
