@@ -1,18 +1,20 @@
 package ly.generalassemb.drewmahrt.shoppinglistver2;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CursorAdapter;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 
 import ly.generalassemb.drewmahrt.shoppinglistver2.setup.DBAssetHelper;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String DATABASE_NAME = "SHOPPING_DB";
+    private static final int DATABASE_VERSION = 7;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,4 +25,7 @@ public class MainActivity extends AppCompatActivity {
         dbSetup.getReadableDatabase();
 
     }
+
+    public DBAssetHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 }
