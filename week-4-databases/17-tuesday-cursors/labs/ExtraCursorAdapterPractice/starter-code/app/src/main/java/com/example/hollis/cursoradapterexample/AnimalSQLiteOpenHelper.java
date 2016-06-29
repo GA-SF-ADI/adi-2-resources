@@ -62,19 +62,19 @@ public class AnimalSQLiteOpenHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public void addAnimal(int id, Animal animal) {
+    public void addAnimal(Animal animal) {
         // Get a reference to the db
         SQLiteDatabase db = getWritableDatabase();
 
         // Create new content value to store the values
         ContentValues values = new ContentValues();
-        values.put(COL_ID, id);
         values.put(COL_NAME, animal.getName());
         values.put(COL_SOUND, animal.getSound());
         values.put(COL_DESCRIPTION, animal.getDescription());
 
         // Insert the row into the games table
         db.insert(ANIMAL_LIST_TABLE_NAME, null, values);
+        db.close();
     }
 
     public void removeAnimal(int id) {
@@ -85,10 +85,12 @@ public class AnimalSQLiteOpenHelper extends SQLiteOpenHelper {
         String selection = COL_ID + " = ?";
 
         // define selection values (the ? in the selection)
-        String[] selectionArgs = new String[] { String.valueOf(COL_ID) };
+        String[] selectionArgs = new String[] { String.valueOf(id) };
 
         // Destroy everything that satisfies our query.
         // DELETE FROM games WHERE (condition)
         db.delete(ANIMAL_LIST_TABLE_NAME, selection, selectionArgs);
+
+        db.close();
     }
 }
