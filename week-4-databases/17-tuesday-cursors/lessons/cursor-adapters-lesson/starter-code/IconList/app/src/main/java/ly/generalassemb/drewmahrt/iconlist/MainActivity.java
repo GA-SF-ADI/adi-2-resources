@@ -24,10 +24,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //Ignore the two lines below
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
+        IconSQLiteOpenHelper db =IconSQLiteOpenHelper.getInstance(this);
+        Cursor cursor = db.getIconList();
+        final ListView listView = (ListView)findViewById(R.id.icon_list_view);
+        CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,cursor,0 ) {
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(R.layout.icon_list_item,parent,false);
+            }
+
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+                TextView name = (TextView)view.findViewById(R.id.icon_name_text_view);
+                ImageView icon = (ImageView)view.findViewById(R.id.icon_image_view);
+
+
+                name.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
+                icon.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
+
+
+            }
+        };
+        listView.setAdapter(cursorAdapter);
+        //Ignore the two lines below
 
 
     }

@@ -14,6 +14,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Define the database name and version
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Favorites.db";
+    public static final String NAME="name";
+    public static final String YEAR= "year";
+    public static final String COL_ID ="_id";
+    public static final String TABLE_NAME="games";
 
     public static final String SQL_CREATE_GAME_TABLE=
     "CREATE TABLE games (id INTEGER PRIMARY KEY, name TEXT, year TEXT)";
@@ -91,4 +95,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //delete FROM games WHERE (condition)
         db.delete("games",selection, selectionArgs);
     }
-}
+
+    public void getAllGames(){
+        SQLiteDatabase db = getReadableDatabase();
+        return db.query(TABLE_NAME,null,null,null,null,null,null);
+        }
+    }
+
+
+
