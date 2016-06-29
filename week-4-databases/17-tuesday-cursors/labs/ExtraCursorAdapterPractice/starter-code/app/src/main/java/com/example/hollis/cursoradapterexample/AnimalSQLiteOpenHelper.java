@@ -11,8 +11,8 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class AnimalSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String TAG = AnimalSQLiteOpenHelper.class.getCanonicalName();
-
-    private static final int DATABASE_VERSION = 1;
+    public static AnimalSQLiteOpenHelper instanceOfDB;
+    private static final int DATABASE_VERSION = 7;
     public static final String DATABASE_NAME = "ANIMAL_DB";
     public static final String ANIMAL_LIST_TABLE_NAME = "ANIMAL_LIST";
 
@@ -21,14 +21,15 @@ public class AnimalSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String COL_SOUND = "SOUND";
     public static final String COL_DESCRIPTION = "DESCRIPTION";
 
-    public static final String[] ANIMAL_COLUMNS = {COL_ID,COL_NAME, COL_SOUND, COL_DESCRIPTION};
+    public static final String[] ANIMAL_COLUMNS = {COL_ID,COL_NAME,COL_SOUND,COL_DESCRIPTION};
 
     private static final String CREATE_ANIMAL_LIST_TABLE =
             "CREATE TABLE " + ANIMAL_LIST_TABLE_NAME +
                     "(" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_NAME + " TEXT, " +
-                    COL_DESCRIPTION + " TEXT, ";
+                    COL_SOUND + " TEXT, " +
+                    COL_DESCRIPTION + " TEXT)";
 
 
     public AnimalSQLiteOpenHelper(Context context) {
@@ -46,45 +47,37 @@ public class AnimalSQLiteOpenHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public long addItem(String name, String sound, String description){
+    public void addItem(Animal animal){
         ContentValues values = new ContentValues();
-        values.put(COL_NAME, name);
-        values.put(COL_SOUND, sound);
-        values.put(COL_DESCRIPTION, description);
+        values.put(COL_NAME, animal.getName());
+        values.put(COL_SOUND, animal.getSound());
+        values.put(COL_DESCRIPTION, animal.getDescription());
 
         SQLiteDatabase db = this.getWritableDatabase();
-        long returnId = db.insert(ANIMAL_LIST_TABLE_NAME, null, values);
+        db.insert(ANIMAL_LIST_TABLE_NAME, null, values);
         db.close();
-        return returnId;
     }
 
-    public Cursor getAnimalList(){
+    public static AnimalSQLiteOpenHelper getInstance(Context context){
+        if(instanceOfDB == null) {
+            instanceOfDB = new AnimalSQLiteOpenHelper(context.getApplicationContext());
+        }
 
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(ANIMAL_LIST_TABLE_NAME, // a. table
-                ANIMAL_COLUMNS, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-        return cursor;
+        return instanceOfDB;
     }
 
-    public int deleteItem(int id){
+    public void deleteItem(int id){
         SQLiteDatabase db = getWritableDatabase();
-        int deleteNum = db.delete(ANIMAL_LIST_TABLE_NAME,
-                COL_ID + " = ?",
+        db.delete(ANIMAL_LIST_TABLE_NAME, COL_ID + " = ?",
                 new String[]{String.valueOf(id)});
         db.close();
-        return deleteNum;
     }
 
 
-
-
-
+    public Cursor getAnimals(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(ANIMAL_LIST_TABLE_NAME, ANIMAL_COLUMNS, null, null, null, null, null);
+        return cursor;
+    }
 
 }
