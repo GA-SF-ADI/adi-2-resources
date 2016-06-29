@@ -7,11 +7,20 @@ public class Animal {
     private String name;
     private String sound;
     private String description;
+//    int id;
+
+//    public Animal(String name, String sound, String description) {
+//        this.name = name;
+//        this.sound = sound;
+//        this.description = description;
+//    }
+
 
     public Animal(String name, String sound, String description) {
         this.name = name;
         this.sound = sound;
         this.description = description;
+//        this.id = id;
     }
 
     public String getName() {

@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(R.layout.grocery_list_view_layout,parent,false);
-
             }
 
             @Override
