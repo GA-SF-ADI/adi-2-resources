@@ -73,14 +73,12 @@ Get in there, Ineeda!
 | 4          | You know what I meant, Ineeda, you big stupid face.                      | Tommy           | Hopscotch      | hopinmyscotch@gmail.com | 10/10/87      |
 | 5          | YOU'RE A DOODIE HEAD!!                                                   | Ineeda          | Life           | getsome@gmail.com       | 5/5/88        |
 
+> Check: With the person next to you, take 30 seconds to describe some issues you see with storing data like this? Predict a solution!
 
 Instead of having the same information added to this table, over and over, we could set up a table for users...
 
 | user_id | user_first_name | user_last_name | user_email              | user_birthday |
 |---------|-----------------|----------------|-------------------------|---------------|
-| 1       | Tommy           | Hopscotch      | hopinmyscotch@gmail.com | 10/10/87      |
-| 1       | Tommy           | Hopscotch      | hopinmyscotch@gmail.com | 10/10/87      |
-| 2       | Ineeda          | Life           | getsome@gmail.com       | 5/5/88        |
 | 1       | Tommy           | Hopscotch      | hopinmyscotch@gmail.com | 10/10/87      |
 | 2       | Ineeda          | Life           | getsome@gmail.com       | 5/5/88        |
 
@@ -97,6 +95,7 @@ Instead of having the same information added to this table, over and over, we co
 
 This way we don't repeat!  Now you can see the glory of creating and using table relationships!
 
+> Check: Ask the students what advantages we get from separating our data into multiple tables?
 
 ## Guided Practice:  Primary vs. Foreign Key (10 mins)
 
@@ -104,10 +103,13 @@ In the previous example, to make those table relationships work, we used a combi
 
 Take 6 minutes to research the difference between primary and foreign keys, and point out examples of each in the previous users/comments database scenario. Be ready to share your explanation with the rest of the class.
 
+> Check: Allow 3 minutes for 2-3 student groups to present.
 
 ## Demo: Relationships on a whiteboard (20 mins)
 
+> Note: Use the author/book/category example from earlier in the week to demonstrate creating relationships by making an ERD on the white board; you should use crow's foot notation, making a point to demonstrate it on the board with our existing table drawings
 
+> ![crows foot notation cheat sheet](http://www.vivekmchawla.com/content/images/2013/Dec/ERD_Relationship_Symbols_Quick_Reference-1.png)
 
 Relationships happen when we start seeing multiple duplicative information or when one object needs to "connect" to another object.
 
@@ -131,6 +133,7 @@ There are 3 different kinds:
 
 Keep in mind, the ```belongs_to``` part always goes on the opposite side of the ```has_many``` or ```has_one```. And the way it's stored is that the ID of the model that "has" something is stored in a field on the child, like "customer_id" or "author_id".  In our example with authors and books, the Book model ```belongs_to``` the Author model, while the Author, as mentioned, ```has_many``` books.
 
+> Check: One of the simplest ways to picture these relationships are by putting them in context of a family with multiple children. Take 3 minutes and find a way to describe each relationship in terms of the connections between family members.
 
 ## Independent Practice (20 minutes)
 

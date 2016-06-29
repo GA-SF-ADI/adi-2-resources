@@ -34,9 +34,15 @@ Now that we've gotten the basics of SQL down, let's explore the __easy__ Android
 
 ## Introduction: SQL vs. SQLite vs. PostgreSQL (5 mins)
 
-> Instructor Note: Briefly describe the difference between SQL, SQLite, and PostgreSQL.
+*SQLite* is a library that gets embedded inside the application that makes use of. As a self-contained, file-based database, SQLite offers a set of tools to handle all sorts of data with much less constraint and ease compared to hosted, process based (server) relational databases.
 
-> Check: Describe what a database engine is.
+When an application uses SQLite, the integration works with functional and direct calls made to a file holding the data (i.e. SQLite database) instead of communicating through an interface of sorts (i.e. ports, sockets). This makes SQLite extremely fast and efficient, and also powerful thanks to the library's underlying technology.
+
+*PostgreSQL* is the advanced, open-source [object]-relational database management system which has the main goal of being standards-compliant and extensible. PostgreSQL, or Postgres, tries to adopt the ANSI/ISO SQL standards together with the revisions.
+
+Compared to other RDBMSs, PostgreSQL differs itself with its support for highly required and integral object-oriented and/or relational database functionality, such as the complete support for reliable transactions.
+
+[Reference] (https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
 
 ## Demo: SQLiteOpenHelper (15 minutes)
 
@@ -259,7 +265,7 @@ public class MainActivity extends Activity {
 				db.insert(1, "Super Mario", "1985");
 				db.insert(2, "Legend of Zelda", "1986");
 
-				Game retrievedGame = getGame.query(2);
+				Game retrievedGame = db.getGame(2);
     }
 }
 ```

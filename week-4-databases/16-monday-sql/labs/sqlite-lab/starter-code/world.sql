@@ -5346,5 +5346,9 @@ COMMIT;
 
 ANALYZE city;
 ANALYZE country;
+<<<<<<< HEAD
 ANALYZE countrylanguage;
 
+=======
+ANALYZE countrylanguage;
+>>>>>>> master
