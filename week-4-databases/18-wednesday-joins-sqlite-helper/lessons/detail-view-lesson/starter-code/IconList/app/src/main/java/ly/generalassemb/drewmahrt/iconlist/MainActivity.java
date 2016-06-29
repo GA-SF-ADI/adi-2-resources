@@ -1,6 +1,7 @@
 package ly.generalassemb.drewmahrt.iconlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +10,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
         dbAssetHelper.getReadableDatabase();
 
         ListView iconListView = (ListView)findViewById(R.id.icon_list_view);
+        final IconSQLiteOpenHelper helper = IconSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Cursor iconCursor = IconSQLiteOpenHelper.getInstance(MainActivity.this).getIconList();
+        final Cursor iconCursor = IconSQLiteOpenHelper.getInstance(MainActivity.this).getIconList();
 
         CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,iconCursor,0) {
             @Override
@@ -41,15 +45,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
                 ImageView iconImageView = (ImageView)view.findViewById(R.id.icon_image_view);
-                TextView iconTextView = (TextView)view.findViewById(R.id.icon_name_text_view);
 
                 iconImageView.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
-                iconTextView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
             }
-        };
+        };{
+
+        iconListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                iconCursor.moveToPosition(position);
+                intent.putExtra("id",iconCursor.getInt(iconCursor.getColumnIndex(helper.COL_ID)));
+                startActivity(intent);
+
+            }
+        });
 
         iconListView.setAdapter(cursorAdapter);
-    }
+    }}
 
     private int getDrawableValue(String icon){
         switch(icon){
