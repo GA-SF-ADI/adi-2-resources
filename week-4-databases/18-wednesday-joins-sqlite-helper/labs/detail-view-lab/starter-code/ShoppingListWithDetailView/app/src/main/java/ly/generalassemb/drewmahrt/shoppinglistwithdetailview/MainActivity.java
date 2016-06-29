@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import ly.generalassemb.drewmahrt.shoppinglistwithdetailview.setup.DBAssetHelper;
+import ly.generalassemb.drewmahrt.shoppinglistwithdetailview.setup.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mShoppingListView;
@@ -35,12 +36,24 @@ public class MainActivity extends AppCompatActivity {
         mShoppingListView = (ListView)findViewById(R.id.shopping_list_view);
         mHelper = new ShoppingSQLiteOpenHelper(MainActivity.this);
 
-        Cursor cursor = mHelper.getShoppingList();
+        final Cursor cursor = mHelper.getShoppingList();
 
         mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,new String[]{ShoppingSQLiteOpenHelper.COL_ITEM_NAME},new int[]{android.R.id.text1},0);
         mShoppingListView.setAdapter(mCursorAdapter);
 
         handleIntent(getIntent());
+
+        mShoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                cursor.moveToPosition(position);
+                intent.putExtra("id", cursor.getInt(cursor.getColumnIndex(ShoppingSQLiteOpenHelper.COL_ID)));
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
