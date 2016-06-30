@@ -63,10 +63,10 @@ public class Helper extends SQLiteOpenHelper {
       DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," +
       DataEntryDepartment.COLUMN_EMP_ID + " INTEGER" + ")";
 
-  private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
-      DataEntryCompany.TABLE_NAME;
-  private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
-      DataEntryDepartment.TABLE_NAME;
+      private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
+          DataEntryCompany.TABLE_NAME;
+      private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
+          DataEntryDepartment.TABLE_NAME;
 
   public void insertRow(Employee employee) {
     SQLiteDatabase db = getWritableDatabase();
