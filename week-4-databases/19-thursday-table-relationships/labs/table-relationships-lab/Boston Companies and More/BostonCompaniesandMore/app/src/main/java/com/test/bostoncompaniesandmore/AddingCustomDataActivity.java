@@ -35,6 +35,11 @@ public class AddingCustomDataActivity extends AppCompatActivity {
                 String newCity = cityText.getText().toString();
 
 
+
+
+                finish();
+
+
             }
         });
 

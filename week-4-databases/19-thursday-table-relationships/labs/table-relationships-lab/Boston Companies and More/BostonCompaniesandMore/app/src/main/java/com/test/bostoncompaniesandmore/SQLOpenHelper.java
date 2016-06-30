@@ -126,7 +126,7 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
 
         Cursor highestSalaryCursor = db.rawQuery(query, null);
         while (highestSalaryCursor.moveToNext()) {
-            query = highestSalaryCursor.getString(highestSalaryCursor.getColumnIndex(SQLOpenHelper.______));
+//            query = highestSalaryCursor.getString(highestSalaryCursor.getColumnIndex(SQLOpenHelper.______));
         }
 
         highestSalaryCursor.close();

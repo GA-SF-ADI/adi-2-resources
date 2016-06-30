@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,8 +95,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String[] me = new String[1];
+
+
                 TextView text = (TextView) findViewById(R.id.textView_company_with_highest_salary);
                 text.setText("test");
+
+
 
             }
         });
