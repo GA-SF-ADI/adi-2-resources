@@ -18,6 +18,8 @@ In this lab, you will be designing an app that creates and maintains Households.
 
 You can express the state or action of something by printing messages to the command line, such as "Household sells X to gain income" or "Play fetch".
 
+The first thing we recommend you doing is taking some time and whiteboard out how you want your classes to relate to each other!  
+
 ## Exercise
 
 #### Requirements
@@ -33,7 +35,7 @@ Bonus:
 
 #### Starter code
 
-In the [starter code](starter-code) folder, you will find a Driver class with the main method. This class will be where you implement all of your households.
+There is no starter code, create a new project in this folder and work from there! 
 
 #### Deliverable
 

@@ -14,7 +14,8 @@
 | Remove items from a to-do list | | | | n/a |
 | Remove an entire to-do list | | | | n/a |
 | Use custom Java objects to contain your data | | | | n/a |
-| Display correctly in both landscape and portrait orientations  | | |  | n/a |
+| **Bonus**: Display correctly in both landscape and portrait orientations  | | |  | n/a |
+| **Bonus**: Add description to each list or list item | | | | n/a |
 | **Bonus**: Show an error message if invalid input is given | n/a | n/a | n/a |   |
 | **Bonus**: Allow the user to check off and remove completed items | n/a | n/a | n/a |   |
 | **Bonus**: Add an item detail screen that allows the user to give an optional description for each item | n/a | n/a | n/a |   |
