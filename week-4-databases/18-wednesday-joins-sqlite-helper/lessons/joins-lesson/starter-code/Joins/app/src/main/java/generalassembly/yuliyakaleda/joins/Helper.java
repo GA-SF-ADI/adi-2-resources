@@ -88,11 +88,34 @@ public class Helper extends SQLiteOpenHelper {
 
   public String getNameJoins() {
     //TODO: add the code from the lesson.
+
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+// Building query using INNER JOIN keyword.
+    String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+    }
+    cursor.close();
+    return result;
   }
 
   //The method is the solution for the independent part of the lesson
   public String getFullInformation() {
     //TODO: add the code from the lesson.
+    String result = "full info";
+    SQLiteDatabase db = getWritableDatabase();
+    String query = "SELECT NAME, AGE, SALARY, ADDRESS FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()){
+      String name = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+      String age = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_AGE));
+      String salary = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_SALARY));
+      String address = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_ADDRESS));
+      result = " name: " + name + " age: " + age + " salary: " + salary + " address: " + address;
+    }
+    return result;
   }
 }
 

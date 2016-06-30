@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"
-        //String fullInfo = helper.getFullInformation();
-        return name;
+        String fullInfo = helper.getFullInformation();
+        return fullInfo;
       }
 
       @Override
