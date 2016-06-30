@@ -29,8 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         setUpViews();
         setOnClickListeners();
+        setListDefault();
 
 
+    }
+
+    private void setListDefault() {
+        ArrayAdapter allEmployeesAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, helper.getAllEmployees());
+        mListView.setAdapter(allEmployeesAdapter);
     }
 
     private void setOnClickListeners() {
@@ -45,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 insertRows();
+                setListDefault();
             }
         });
         highestSalaryButton.setOnClickListener(new View.OnClickListener() {
@@ -100,5 +107,11 @@ public class MainActivity extends AppCompatActivity {
         helper.insertJobRow(new Job("123-04-5683", "Believe", 158, 6));
         helper.insertJobRow(new Job("123-04-5684", "Macys", 200, 8));
         helper.insertJobRow(new Job("123-04-5685", "Stop", 299, 12));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setListDefault();
     }
 }

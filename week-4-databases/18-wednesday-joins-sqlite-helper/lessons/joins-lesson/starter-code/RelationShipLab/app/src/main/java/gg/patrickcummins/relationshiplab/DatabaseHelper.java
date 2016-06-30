@@ -141,5 +141,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<String> getAllEmployees(){
+        ArrayList<String> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + DataEntryEmployee.FIRST_NAME + ", " + DataEntryEmployee.LAST_NAME + " FROM " + DataEntryEmployee.TABLE_NAME, null);
+        while (cursor.moveToNext()) {
+            list.add(cursor.getString(cursor.getColumnIndex(DataEntryEmployee.FIRST_NAME)) + " " + cursor.getString(cursor.getColumnIndex(DataEntryEmployee.LAST_NAME)));
+
+        }
+        cursor.close();
+        return  list;
+    }
 
 }
