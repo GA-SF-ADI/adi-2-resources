@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         highestSalaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                highestSalaryText.setText(helper.getHighestSalary());
+                highestSalaryText.setText(helper.getHighestSalary() + " has the employee with the highest salary.");
 
             }
         });

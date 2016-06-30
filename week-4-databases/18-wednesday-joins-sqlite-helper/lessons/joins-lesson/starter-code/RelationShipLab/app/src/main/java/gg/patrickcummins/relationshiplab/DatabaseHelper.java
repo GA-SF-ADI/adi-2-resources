@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //CREATE TABLE STRINGS
     private static final String CREATE_EMPLOYEE_TABLE = "CREATE TABLE " + DataEntryEmployee.TABLE_NAME + " (" + DataEntryEmployee._ID + " INTEGER PRIMARY KEY, " + DataEntryEmployee.SSN + " TEXT, " + DataEntryEmployee.FIRST_NAME + " TEXT, " + DataEntryEmployee.LAST_NAME + " TEXT, " + DataEntryEmployee.BIRTH_YEAR + " TEXT, " + DataEntryEmployee.CITY + " TEXT);";
-    private static final String CREATE_JOB_TABLE = "CREATE TABLE " + DataEntryJob.TABLE_NAME + " (" + DataEntryJob._ID + " INTEGER PRIMARY KEY, " + DataEntryJob.SSN + " TEXT, " + DataEntryJob.COMPANY + " TEXT," + DataEntryJob.SALARY + " TEXT," + DataEntryJob.EXPERIENCE + " TEXT);";
+    private static final String CREATE_JOB_TABLE = "CREATE TABLE " + DataEntryJob.TABLE_NAME + " (" + DataEntryJob._ID + " INTEGER PRIMARY KEY, " + DataEntryJob.SSN + " TEXT, " + DataEntryJob.COMPANY + " TEXT," + DataEntryJob.SALARY + " INT," + DataEntryJob.EXPERIENCE + " INT);";
 
     //DROP TABLE STRINGS
     private static final String DROP_EMPLOYEE_TABLE = "DROP TABLE IF EXISTS " + DataEntryEmployee.TABLE_NAME;
