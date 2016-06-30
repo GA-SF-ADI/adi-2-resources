@@ -12,34 +12,42 @@
     tools:context="com.test.relationshipsbtwtables.MainActivity"
     tools:showIn="@layout/activity_main">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="ADD DATA"
-    android:id="@+id/add_data_button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD DATA"
+            android:id="@+id/add_data_button"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EMPLOYEES"
-        android:id="@+id/employees_button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EMPLOYEES"
+            android:id="@+id/employees_button"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="COMPANIES IN BOSTON"
-        android:id="@+id/companies_boston_button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COMPANIES IN BOSTON"
+            android:id="@+id/companies_boston_button"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HIGHEST SALARY"
-        android:id="@+id/salary_button"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HIGHEST SALARY"
+            android:id="@+id/salary_button"/>
+
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edit_text"/>
 
     </LinearLayout>
 
