@@ -14,11 +14,11 @@ public class AddingCustomDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_custom_data);
 
-        EditText ssnText = (EditText) findViewById(R.id.editText_ssn);
-        EditText firstNameText = (EditText) findViewById(R.id.editText_first_name);
-        EditText lastNameText = (EditText) findViewById(R.id.editText_last_name);
-        EditText yearOfBirthText = (EditText) findViewById(R.id.editText_year_of_birth);
-        EditText cityText = (EditText) findViewById(R.id.editText_city);
+        final EditText ssnText = (EditText) findViewById(R.id.editText_ssn);
+        final EditText firstNameText = (EditText) findViewById(R.id.editText_first_name);
+        final EditText lastNameText = (EditText) findViewById(R.id.editText_last_name);
+        final EditText yearOfBirthText = (EditText) findViewById(R.id.editText_year_of_birth);
+        final EditText cityText = (EditText) findViewById(R.id.editText_city);
         Button addCustomData = (Button) findViewById(R.id.button_add_custom_data_button);
         Button cancelAndReturnToMainActivity = (Button) findViewById(R.id.button_cancel_and_return_to_main_activity);
 
@@ -28,15 +28,11 @@ public class AddingCustomDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-
-
-
-
-
-
-
+                String newSSN = ssnText.getText().toString();
+                String newFirst = firstNameText.getText().toString();
+                String newLast = lastNameText.getText().toString();
+                String newYear = yearOfBirthText.getText().toString();
+                String newCity = cityText.getText().toString();
 
 
             }

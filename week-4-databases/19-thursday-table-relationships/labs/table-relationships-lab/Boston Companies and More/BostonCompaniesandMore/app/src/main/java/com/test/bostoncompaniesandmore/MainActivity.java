@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button addDataButton = (Button) findViewById(R.id.button_add_company_and_employee_info);
-        Button sameCompanyEmployeesButton = (Button) findViewById(R.id.button_employees_working_at_the_same_company);
+        final Button sameCompanyEmployeesButton = (Button) findViewById(R.id.button_employees_working_at_the_same_company);
         Button bostonCompaniesButton = (Button) findViewById(R.id.button_companies_in_Boston);
         Button highestSalaryButton = (Button) findViewById(R.id.button_companies_with_the_highest_salary);
         ListView listViewOfButtonResults = (ListView) findViewById(R.id.listView_results_of_button_click_on_main_activity);
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myList);
 
         listViewOfButtonResults.setAdapter(adapter);
+
+        final NewEmployee newEmployee = new NewEmployee();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
             }
         });
 
@@ -87,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         highestSalaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                TextView text = (TextView) findViewById(R.id.textView_company_with_highest_salary);
+                text.setText("test");
 
             }
         });
