@@ -68,7 +68,7 @@ public class Helper extends SQLiteOpenHelper {
   private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
       DataEntryDepartment.TABLE_NAME;
 
-  public void insertRow(Employee employee) {
+  public void insertRowEmployee(Employee employee) {
     SQLiteDatabase db = getWritableDatabase();
     ContentValues values = new ContentValues();
     values.put(DataEntryCompany.COLUMN_NAME, employee.getName());
@@ -88,11 +88,52 @@ public class Helper extends SQLiteOpenHelper {
 
   public String getNameJoins() {
     //TODO: add the code from the lesson.
+
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+// Building query using INNER JOIN keyword.
+    String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+    }
+    cursor.close();
+    return result;
+
   }
 
   //The method is the solution for the independent part of the lesson
   public String getFullInformation() {
     //TODO: add the code from the lesson.
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+
+    String query = "SELECT "
+            +DataEntryCompany.COLUMN_NAME+", "
+            +DataEntryCompany.COLUMN_AGE+", "
+            +DataEntryCompany.COLUMN_ADDRESS+", "
+            +DataEntryCompany.COLUMN_SALARY+", "
+            +DataEntryDepartment.COLUMN_DEPARTMENT+", "
+            +DataEntryDepartment.COLUMN_EMP_ID
+            +" FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+
+    Cursor cursor = db.rawQuery(query, null);
+
+    while (cursor.moveToNext()){
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME))
+              +"'s age is "
+              +cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_AGE))+".\n"
+              +"Address: "
+              +cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_ADDRESS))+".\n"
+              +"Salary: "
+              +cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_SALARY))+".\n"
+              +"Department: "
+              +cursor.getString(cursor.getColumnIndex(DataEntryDepartment.COLUMN_DEPARTMENT))+".\n"
+              +"Employee ID: "
+              +cursor.getString(cursor.getColumnIndex(DataEntryDepartment.COLUMN_EMP_ID));
+    }
+    cursor.close();
+    return result;
   }
 }
 
