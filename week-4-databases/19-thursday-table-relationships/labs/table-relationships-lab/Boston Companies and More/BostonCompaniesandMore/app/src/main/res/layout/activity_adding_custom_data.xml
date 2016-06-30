@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingBottom="40dp"
+        android:paddingBottom="10dp"
         android:orientation="vertical">
 
         <EditText
@@ -76,6 +76,23 @@
             android:background="#47b429"
             android:textSize="20dp"
             android:text="Add my data" />
+
+    
+    <Button
+        android:id="@+id/button_cancel_and_return_to_main_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="20dp"
+        android:textColor="#ffffff"
+        android:layout_margin="13dp"
+        android:textAllCaps="false"
+        android:paddingBottom="20dp"
+        android:background="#ec282b"
+        android:textSize="20dp"
+        android:text="Cancel" />
 
 
 
