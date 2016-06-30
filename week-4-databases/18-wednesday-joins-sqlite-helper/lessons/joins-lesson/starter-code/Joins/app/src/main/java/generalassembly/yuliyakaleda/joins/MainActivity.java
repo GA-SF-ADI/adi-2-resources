@@ -10,6 +10,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
   private TextView text;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -37,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
         helper.insertRowDepartment(department1);
         helper.insertRowDepartment(department2);
 
-        //Joins table employees and table dept.
-        //String name = helper.getFullInformation();
-
 
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"
@@ -48,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
       }
 
       @Override
-      protected void onPostExecute(String name) {
-        super.onPostExecute(name);
-        text.setText(name);
+      protected void onPostExecute(String fullInfo) {
+        super.onPostExecute(fullInfo);
+        text.setText(fullInfo);
       }
     }.execute();
   }
