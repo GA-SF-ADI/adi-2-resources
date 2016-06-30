@@ -11,50 +11,56 @@
 
     <Button
         android:id="@+id/addDataButton"
-        android:text="Add Data"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Add Data" />
+
     <Button
         android:id="@+id/sameCompanyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/addDataButton"
         android:layout_centerHorizontal="true"
-        android:text="Employees Working At The Same Company"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="Employees Working At The Same Company" />
+
     <Button
 
+        android:id="@+id/bostonCompaniesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/sameCompanyButton"
         android:layout_centerHorizontal="true"
-        android:id="@+id/bostonCompaniesButton"
-        android:text="Companies In Boston"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="Companies In Boston" />
+
     <Button
         android:id="@+id/highestSalary"
-        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/bostonCompaniesButton"
-        android:text="Company With the Highest Salary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_centerHorizontal="true"
+        android:text="Company With the Highest Salary" />
+
     <TextView
-        android:layout_below="@+id/highestSalary"
         android:id="@+id/highestSalaryTextView"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/highestSalary"
+        android:layout_gravity="center" />
+
     <ListView
-        android:layout_below="@+id/highestSalaryTextView"
         android:id="@+id/myListView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/highestSalaryTextView"></ListView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@android:drawable/ic_input_add"
-
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

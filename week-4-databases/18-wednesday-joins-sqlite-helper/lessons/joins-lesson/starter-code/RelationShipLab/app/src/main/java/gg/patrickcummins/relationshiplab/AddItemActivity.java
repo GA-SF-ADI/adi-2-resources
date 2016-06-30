@@ -20,27 +20,28 @@ public class AddItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHelper helper = DatabaseHelper.getInstance(AddItemActivity.this);
-                if (ssn.getText().toString().equals("") || firstName.getText().toString().equals("") || lastName.getText().toString().equals("") || yearOfBirth.getText().toString().equals("") || city.getText().toString().equals("")){
-                   if (ssn.getText().toString().equals("")){
-                       ssn.setError("Please Enter");
-                   }
-                    if (firstName.getText().toString().equals("")){
+                if (ssn.getText().toString().equals("") || firstName.getText().toString().equals("") || lastName.getText().toString().equals("") || yearOfBirth.getText().toString().equals("") || city.getText().toString().equals("")) {
+                    if (ssn.getText().toString().equals("")) {
+                        ssn.setError("Please Enter");
+                    }
+                    if (firstName.getText().toString().equals("")) {
                         firstName.setError("Please Enter");
                     }
-                    if (lastName.getText().toString().equals("")){
+                    if (lastName.getText().toString().equals("")) {
                         lastName.setError("Please Enter");
                     }
-                    if (yearOfBirth.getText().toString().equals("")){
+                    if (yearOfBirth.getText().toString().equals("")) {
                         yearOfBirth.setError("Please Enter");
                     }
-                    if (city.getText().toString().equals("")){
+                    if (city.getText().toString().equals("")) {
                         city.setError("Please Enter");
                     }
-                }else{
+                } else {
 
 
-                helper.insertEmployeeRow(new Employee(ssn.getText().toString(), firstName.getText().toString(), lastName.getText().toString(), yearOfBirth.getText().toString(), city.getText().toString()));
-                finish();}
+                    helper.insertEmployeeRow(new Employee(ssn.getText().toString(), firstName.getText().toString(), lastName.getText().toString(), yearOfBirth.getText().toString(), city.getText().toString()));
+                    finish();
+                }
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

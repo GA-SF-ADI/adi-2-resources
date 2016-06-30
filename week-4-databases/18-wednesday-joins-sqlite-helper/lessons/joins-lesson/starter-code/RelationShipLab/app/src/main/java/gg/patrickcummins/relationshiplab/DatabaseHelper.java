@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public  static synchronized DatabaseHelper getInstance(Context context) {
+    public static synchronized DatabaseHelper getInstance(Context context) {
         if (DATABASE_INSTANCE == null) {
             return new DatabaseHelper(context);
         } else {
@@ -76,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         public static final String EXPERIENCE = "exp";
     }
 
-    public void insertEmployeeRow(Employee employee){
+    public void insertEmployeeRow(Employee employee) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DataEntryEmployee.SSN, employee.getSsn());
@@ -87,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insertOrThrow(DataEntryEmployee.TABLE_NAME, null, values);
     }
 
-    public void insertJobRow(Job job){
+    public void insertJobRow(Job job) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DataEntryJob.SSN, job.getSsn());
@@ -99,26 +99,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<String> getCompaniesInBoston(){
-        ArrayList<String> list =  new ArrayList<>();
+    public ArrayList<String> getCompaniesInBoston() {
+        ArrayList<String> list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT " + DataEntryJob.COMPANY + " FROM " + DataEntryJob.TABLE_NAME  + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "." +DataEntryEmployee.SSN + " = " +DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN + " WHERE " + DataEntryEmployee.CITY + " = 'Boston'", null );
-        while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery("SELECT " + DataEntryJob.COMPANY + " FROM " + DataEntryJob.TABLE_NAME + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "." + DataEntryEmployee.SSN + " = " + DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN + " WHERE " + DataEntryEmployee.CITY + " = 'Boston'", null);
+        while (cursor.moveToNext()) {
             list.add(cursor.getString(cursor.getColumnIndex(DataEntryJob.COMPANY)));
 
         }
         cursor.close();
         return list;
     }
-    public String getHighestSalary(){
+
+    public String getHighestSalary() {
         String myString = "default string";
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + DataEntryJob.SALARY + ", " + DataEntryJob.COMPANY + " FROM " + DataEntryJob.TABLE_NAME + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "."  +DataEntryEmployee.SSN + " = " +DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN, null);
+        Cursor cursor = db.rawQuery("SELECT " + DataEntryJob.SALARY + ", " + DataEntryJob.COMPANY + " FROM " + DataEntryJob.TABLE_NAME + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "." + DataEntryEmployee.SSN + " = " + DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN, null);
 
-        int currentHighest =0;
-        while (cursor.moveToNext()){
-            if (cursor.getInt(cursor.getColumnIndex(DataEntryJob.SALARY))> currentHighest){
+        int currentHighest = 0;
+        while (cursor.moveToNext()) {
+            if (cursor.getInt(cursor.getColumnIndex(DataEntryJob.SALARY)) > currentHighest) {
                 myString = cursor.getString(cursor.getColumnIndex(DataEntryJob.COMPANY));
                 currentHighest = cursor.getInt(cursor.getColumnIndex(DataEntryJob.SALARY));
             }
@@ -127,21 +128,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return myString;
     }
-    public ArrayList<String> getEmployeesAtSameCompany(){
+
+    public ArrayList<String> getEmployeesAtSameCompany() {
         ArrayList<String> list = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT " + DataEntryEmployee.FIRST_NAME + ", " + DataEntryEmployee.LAST_NAME  + " FROM " + DataEntryJob.TABLE_NAME + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "."  +DataEntryEmployee.SSN + " = " +DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN + " WHERE " + DataEntryJob.COMPANY + " = 'Macys'", null);
-        while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery("SELECT " + DataEntryEmployee.FIRST_NAME + ", " + DataEntryEmployee.LAST_NAME + " FROM " + DataEntryJob.TABLE_NAME + " INNER JOIN " + DataEntryEmployee.TABLE_NAME + " ON " + DataEntryEmployee.TABLE_NAME + "." + DataEntryEmployee.SSN + " = " + DataEntryJob.TABLE_NAME + "." + DataEntryJob.SSN + " WHERE " + DataEntryJob.COMPANY + " = 'Macys'", null);
+        while (cursor.moveToNext()) {
             list.add(cursor.getString(cursor.getColumnIndex(DataEntryEmployee.FIRST_NAME)) + " " + cursor.getString(cursor.getColumnIndex(DataEntryEmployee.LAST_NAME)));
 
         }
         cursor.close();
         return list;
     }
-
-
-
-
 
 
 }

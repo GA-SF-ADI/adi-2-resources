@@ -27,10 +27,8 @@ public class MainActivity extends AppCompatActivity {
         helper = DatabaseHelper.getInstance(MainActivity.this);
 
 
-
         setUpViews();
         setOnClickListeners();
-
 
 
     }

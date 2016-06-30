@@ -9,49 +9,54 @@
     tools:context="gg.patrickcummins.relationshiplab.AddItemActivity">
 
     <EditText
-        android:hint="ssn"
         android:id="@+id/ssnEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="ssn" />
+
     <EditText
-        android:hint="First Name"
         android:id="@+id/firstNameEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="First Name" />
+
     <EditText
-        android:hint="Last Name"
         android:id="@+id/lastNameEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Last Name" />
+
     <EditText
         android:id="@+id/birthYearEditText"
-        android:hint="Year of Birth"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Year of Birth" />
+
     <EditText
-        android:hint="City of Residence"
         android:id="@+id/cityEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="City of Residence" />
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/addButton"
-            android:text="Add"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add" />
+
         <Button
             android:id="@+id/cancelButton"
-            android:text="Cancel"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
     </LinearLayout>
-
-
 
 
 </LinearLayout>
