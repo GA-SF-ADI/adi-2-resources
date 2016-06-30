@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:text="Add Data" />
 
     <Button
@@ -22,15 +23,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/addDataButton"
         android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:text="Employees Working At The Same Company" />
 
     <Button
-
         android:id="@+id/bostonCompaniesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sameCompanyButton"
         android:layout_centerHorizontal="true"
+        android:padding="@dimen/activity_vertical_margin"
         android:text="Companies In Boston" />
 
     <Button
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bostonCompaniesButton"
         android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:text="Company With the Highest Salary" />
 
     <TextView
@@ -47,7 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/highestSalary"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:layout_margin="@dimen/activity_vertical_margin"/>
 
     <ListView
         android:id="@+id/myListView"
@@ -60,8 +65,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-
         android:layout_alignParentRight="true"
+
+        android:layout_margin="@dimen/activity_vertical_margin"
         android:src="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
