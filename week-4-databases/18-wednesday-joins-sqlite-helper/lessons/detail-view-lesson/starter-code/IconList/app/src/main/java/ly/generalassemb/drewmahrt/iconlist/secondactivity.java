@@ -23,7 +23,7 @@ public class secondactivity extends AppCompatActivity {
         int id = getIntent().getIntExtra("id",-1);
 
         if(id >= 0){
-            String name = helper.getDescriptionById(id);
+            String name = IconSQLiteOpenHelper.getInstance(secondactivity.this).getDescriptionById(id);
             TextView textView = (TextView)findViewById(R.id.second_icon_name_text_view);
             textView.setText(name);
         }
