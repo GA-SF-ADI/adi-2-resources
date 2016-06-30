@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
                 ImageView iconImageView = (ImageView)view.findViewById(R.id.icon_image_view);
-                //TextView iconTextView = (TextView)view.findViewById(R.id.icon_name_text_view);
+                TextView iconTextView = (TextView)view.findViewById(R.id.icon_name_text_view);
 
                 iconImageView.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
-                //iconTextView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
+                iconTextView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
             }
         };
 
