@@ -1,7 +1,6 @@
 package ly.generalassemb.drewmahrt.searchviewdemo;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class NumbersSQLiteHelper extends SQLiteOpenHelper {
     private static final String TAG = NumbersSQLiteHelper.class.getCanonicalName();
 
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
     public static final String DATABASE_NAME = "TEST_DB";
     public static final String NUMBERS_TABLE_NAME = "NUMBERS";
 
