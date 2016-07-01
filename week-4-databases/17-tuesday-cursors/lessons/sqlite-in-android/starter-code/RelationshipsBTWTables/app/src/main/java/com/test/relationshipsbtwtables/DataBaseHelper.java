@@ -1,25 +1,18 @@
 package com.test.relationshipsbtwtables;
 
 import android.content.ContentValues;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.Cursor;
-import android.provider.BaseColumns;
 
 /**
  * Created by audreyeso on 6/30/16.
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-
     Cursor cursor;
-
-
     private static DataBaseHelper INSTANCE;
-
-
 
     public static synchronized DataBaseHelper getInstance(Context context) {
         if (INSTANCE == null)
@@ -31,13 +24,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATA_BASE_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(CREATE_EMPLOYEE_LIST_TABLE);
         db.execSQL(CREATE_JOB_LIST_TABLE);
-
     }
 
     @Override
@@ -45,7 +36,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTRIES_COMPANY);
         db.execSQL(SQL_DELETE_ENTRIES_JOB);
         onCreate(db);
-
     }
 
     private static final String TAG = DataBaseHelper.class.getCanonicalName();
@@ -55,7 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String COL_ID = "_id";
     public static final String COL_SSN = "SSN";
-    public static final String COL_FIRST_NAME = "First_Name";
+    public static final String COL_FIRST_NAME = "FIRST_NAME";
     public static final String COL_LAST_NAME = "Last_Name";
     public static final String COL_YEAR = "Birthday_Year";
     public static final String COL_CITY = "City";
@@ -104,6 +94,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COL_YEAR, employee.getBirth_Year());
         values.put(COL_CITY, employee.getCity());
         db.insert(EMPLOYEE_TABLE_NAME, null, values);
+        db.close();
     }
 
     public Cursor getEmployee() {
@@ -121,6 +112,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COL_SALARY, job.getCompanyName());
         values.put(COL_EXPERIENCE_YEARS, job.getExperience());
         db.insert(JOB_TABLE_NAME,null,values);
+        db.close();
     }
 
     public Cursor getJob() {

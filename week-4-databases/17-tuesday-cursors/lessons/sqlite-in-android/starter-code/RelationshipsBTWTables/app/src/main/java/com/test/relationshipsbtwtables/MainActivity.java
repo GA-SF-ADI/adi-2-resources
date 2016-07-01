@@ -15,17 +15,14 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
-import android.widget.EditText;
-import android.os.AsyncTask;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    Button addDataButton;
     Button displayEmployeesButton;
     Button displayBostonOnlyButton;
     Button displaySalary;
@@ -43,18 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        addDataButton = (Button) findViewById(R.id.add_data_button);
         displaySalary = (Button) findViewById(R.id.salary_button);
         displayBostonOnlyButton = (Button) findViewById(R.id.companies_boston_button);
         displayEmployeesButton = (Button) findViewById(R.id.employees_button);
         listView = (ListView) findViewById(R.id.list_view);
-        setAdapter();
-        //call add Employee here
-        //call addJob here
-
-
-        //Make 3 adapters (one for each button)
-        //Set each adapter to the listview when the button is clicked
+        setAdapterJob(cursorAdapterJob);
+        setAdapterEmployee(cursorAdapterEmployee);
+        addEmployee();
+        addJob();
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -69,43 +62,35 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+       displayEmployeesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor cursor = db.getEmployee();
+                cursorAdapterEmployee = new SimpleCursorAdapter(MainActivity.this,android.R.layout.simple_list_item_1,cursor,new String[]{DataBaseHelper.COL_FIRST_NAME},new int[]{android.R.id.text1},0);
+                listView.setAdapter(cursorAdapterEmployee);
+            }
+        });
+
+        displayBostonOnlyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor cursor = db.getJob();
+                cursorAdapterJob = new SimpleCursorAdapter(MainActivity.this,android.R.layout.simple_list_item_1,cursor,new String[]{DataBaseHelper.COL_COMPANY_NAME},new int[]{android.R.id.text1},0);
+                listView.setAdapter(cursorAdapterJob);
+            }
+        });
+
         displaySalary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-
-
-        displayBostonOnlyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-        displayEmployeesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        addDataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addDataIntent = new Intent(MainActivity.this, AddDataActivity.class);
-                startActivity(addDataIntent);
-
-            }
-        });
     }
 
-
-    private void setAdapter() {
+    private void setAdapterEmployee(CursorAdapter cursorAdapterEmployee) {
         db = DataBaseHelper.getInstance(MainActivity.this);
-        cursorAdapterEmployee = new CursorAdapter(MainActivity.this, db.getEmployee(), 0) {
+        this.cursorAdapterEmployee = new CursorAdapter(MainActivity.this, db.getEmployee(), 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -119,13 +104,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         listView.setAdapter(cursorAdapterEmployee);
-
-
     }
 
-    private void setAdapterJob() {
+    private void setAdapterJob(CursorAdapter cursorAdapterJob) {
         db = DataBaseHelper.getInstance(MainActivity.this);
-        cursorAdapterJob = new CursorAdapter(MainActivity.this, db.getJob(), 0) {
+        this.cursorAdapterJob = new CursorAdapter(MainActivity.this, db.getJob(), 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -135,11 +118,10 @@ public class MainActivity extends AppCompatActivity {
             public void bindView(View view, Context context, Cursor cursor) {
                 TextView textView = (TextView) view.findViewById(android.R.id.text1);
                 textView.setText(cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_COMPANY_NAME)));
-                //may have to change names
             }
+
         };
         listView.setAdapter(cursorAdapterJob);
-
     }
 
     @Override
@@ -151,12 +133,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -165,9 +144,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void addEmployee() {
-
-        //call in on create, no arguments
-        //can do an arraylist and pass it through or like this
 
         Employee employee1 = new Employee("123-04-5678", "John", "Smith", "1973", "NY");
         Employee employee2 = new Employee("123-04-5679", "David", "McWill", "1982", "Seattle");
@@ -212,6 +188,27 @@ public class MainActivity extends AppCompatActivity {
         helper.insertJob(job8);
 
     }
+
+    /*
+    public String getNameJoins() {
+
+        String result = "default name";
+        SQLiteDatabase db = getWritableDatabase();
+        // Building query using INNER JOIN keyword.
+        String query = "SELECT FIRST_NAME FROM EMPLOYEE INNER JOIN JOB ON EMPLOYEE._ID = JOB._ID";
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            result = cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_COMPANY_NAME));
+        }
+        cursor.close();
+
+        //we are returning the person that matches the criteria... their company id has to match employee id
+        return result;
+    }
+
+    */
+
 }
+
 
 
