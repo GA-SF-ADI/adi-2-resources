@@ -28,4 +28,12 @@ public class MainActivity extends AppCompatActivity {
         dbAssetHelper.getReadableDatabase();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.custom_menu, menu);
+
+        return true;
+    }
 }

@@ -1,6 +1,7 @@
 package ly.generalassemb.drewmahrt.searchviewdemo;
 
 import android.app.SearchManager;
+import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,6 +19,7 @@ import ly.generalassemb.drewmahrt.searchviewdemo.setup.DBAssetHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         //Ignore the two lines below
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
-
+        textView=(TextView)findViewById(R.id.count_text_view);
         handleIntent(getIntent());
     }
 
@@ -42,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setSearchableInfo(searchableInfo);
 
         return true;
     }
@@ -51,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(MainActivity.this,"Searching for: " + query, Toast.LENGTH_LONG).show();
+
+            Cursor cursor = NumbersSQLiteHelper.getInstance(this).searchNumbers(query);
+
+            textView.setText("we saw "+query+ ", "+ cursor.getCount()+"amount of times." );
+
         }
     }
 }
