@@ -9,7 +9,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
  */
 public class DBAssetHelper extends SQLiteAssetHelper{
     private static final String DATABASE_NAME = "TEST_DB";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
 
     public DBAssetHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
