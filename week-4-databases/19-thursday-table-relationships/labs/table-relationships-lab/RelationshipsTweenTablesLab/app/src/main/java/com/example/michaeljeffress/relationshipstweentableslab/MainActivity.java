@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 helper.addJobInfo(job8);
 
     }
+    
 
     private class SameWorkPlace  {
 
