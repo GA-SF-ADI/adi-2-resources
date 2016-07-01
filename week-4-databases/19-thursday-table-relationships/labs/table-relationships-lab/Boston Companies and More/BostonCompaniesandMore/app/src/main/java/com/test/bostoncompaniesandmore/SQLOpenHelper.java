@@ -100,8 +100,16 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
     }
 
 
-    public void insertRowIntoJobTable(NewEmployee employee) {
+    public void insertRowIntoEmployeeTable(NewEmployee employee) {
         SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+
+    }
+
+    public void insertRowIntoJobTable(Job job) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
 
 
     }
@@ -145,6 +153,7 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
     }
 
     public String companyWithHighestSalary() {
+
         SQLiteDatabase db = getWritableDatabase();
 
         String result = "";

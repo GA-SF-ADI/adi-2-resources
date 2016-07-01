@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Button highestSalaryButton = (Button) findViewById(R.id.button_companies_with_the_highest_salary);
 
         ListView listViewOfButtonResults = (ListView) findViewById(R.id.listView_results_of_button_click_on_main_activity);
-        listViewOfButtonResults.setAdapter(cursorAdapter);
 
 
         ArrayList<String> myList = new ArrayList<String>();
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{android.R.id.text1}, 0);
         ;
 
+        listViewOfButtonResults.setAdapter(cursorAdapter);
 
         final NewEmployee newEmployee = new NewEmployee();
 
@@ -85,6 +85,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                SQLOpenHelper helper = new SQLOpenHelper(MainActivity.this);
+
+                NewEmployee employee1 = new NewEmployee("123-04-5678", "John", "Smith", 1973, "NY");
+                NewEmployee employee2 = new NewEmployee("123-04-5679", "David", "McWill", 1982, "Seattle");
+                NewEmployee employee3 = new NewEmployee("123-04-5680", "Katerina", "Wise", 1973, "Boston");
+                NewEmployee employee4 = new NewEmployee("123-04-5681", "Donald", "Lee", 1992, "London");
+                NewEmployee employee5 = new NewEmployee("123-04-5682", "Gary", "Henwood", 1987, "Las Vegas");
+                NewEmployee employee6 = new NewEmployee("123-04-5683", "Anthony", "Bright", 1963, "Seattle");
+                NewEmployee employee7 = new NewEmployee("123-04-5684", "William", "Newey", 1995, "Boston");
+                NewEmployee employee8 = new NewEmployee("123-04-5685", "Melony", "Smith", 1970, "Chicago");
+
+                helper.insertRowIntoEmployeeTable(employee1);
+                helper.insertRowIntoJobTable(employee2);
+                helper.insertRowIntoJobTable(employee3);
+                helper.insertRowIntoJobTable(employee4);
+                helper.insertRowIntoJobTable(employee5);
+                helper.insertRowIntoJobTable(employee6);
+                helper.insertRowIntoJobTable(employee7);
+                helper.insertRowIntoJobTable(employee8);
+
+                Job job1 = new Job("123-04-5678", "Fuzz",60, 1);
+                Job job2 = new Job("123-04-5679", "GA", 70, 2);
+                Job job3 = new Job("123-04-5680", "Little Place", 120, 5);
+                Job job4 = new Job("123-04-5681", "Macys", 78, 3);
+                Job job5 = new Job("123-04-5682", "New Life", 65, 1);
+                Job job6 = new Job("123-04-5683", "Believe", 158, 6);
+                Job job7 = new Job("123-04-5684", "Macys", 200, 8);
+                Job job8 = new Job("123-04-5685", "Stop", 299, 12);
+
+                SQLOpenHelper.in
+                SQLOpenHelper.insertRowJob(job2);
+                SQLOpenHelper.insertRowJob(job3);
+                SQLOpenHelper.insertRowJob(job4);
+                SQLOpenHelper.insertRowJob(job5);
+                SQLOpenHelper.insertRowJob(job6);
+                SQLOpenHelper.insertRowJob(job7);
+                SQLOpenHelper.insertRowJob(job8);
+                return null;
+
+
             }
         });
 
@@ -114,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int[] viewNames = new int[]{android.R.id.text1};
 
-                Cursor companyCursor = db.query(,null, null, null, null, null, null);
+                Cursor companyCursor = db.query("",null, null, null, null, null, null);
 
                 CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, Cursor c, columns, viewNames, 0);
 

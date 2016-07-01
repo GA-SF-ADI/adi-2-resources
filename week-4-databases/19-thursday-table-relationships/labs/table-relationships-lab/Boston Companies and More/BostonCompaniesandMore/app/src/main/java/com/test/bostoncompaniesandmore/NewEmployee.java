@@ -85,4 +85,10 @@ public class NewEmployee {
     public void setExperience(int experience) {
         this.experience = experience;
     }
+
+
+
+
+
+
 }
