@@ -4,11 +4,14 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import ly.generalassemb.drewmahrt.searchviewdemo.setup.DBAssetHelper;
 
@@ -49,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+            Cursor cursor = NumbersSQLiteHelper.getInstance(MainActivity.this).searchNumbers(query);
+
+            cursor.moveToFirst();
+            TextView textView = (TextView) findViewById(R.id.count_text_view);
+            textView.setText(cursor.getCount() + "  " + query + "'s found in database");
         }
     }
 }

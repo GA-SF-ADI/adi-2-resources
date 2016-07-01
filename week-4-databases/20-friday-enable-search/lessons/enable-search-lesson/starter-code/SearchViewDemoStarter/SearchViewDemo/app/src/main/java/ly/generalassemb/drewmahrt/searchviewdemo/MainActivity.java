@@ -27,5 +27,13 @@ public class MainActivity extends AppCompatActivity {
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
         dbAssetHelper.getReadableDatabase();
 
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.custom_menu, menu);
+        return true;
     }
 }
