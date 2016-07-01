@@ -60,8 +60,8 @@ public class Helper extends SQLiteOpenHelper {
   private static final String SQL_CREATE_ENTRIES_DEPARTMENT = "CREATE TABLE " +
       DataEntryDepartment.TABLE_NAME + " (" +
       DataEntryDepartment._ID + " INTEGER PRIMARY KEY," +
-      DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," +
-      DataEntryDepartment.COLUMN_EMP_ID + " INTEGER" + ")";
+      DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," + ")";
+
 
   private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
       DataEntryCompany.TABLE_NAME;
@@ -87,12 +87,41 @@ public class Helper extends SQLiteOpenHelper {
   }
 
   public String getNameJoins() {
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+// Building query using INNER JOIN keyword.
+    String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+    }
+      cursor.close();
+      return result;
     //TODO: add the code from the lesson.
   }
 
   //The method is the solution for the independent part of the lesson
   public String getFullInformation() {
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+
+// Building query using INNER JOIN keyword.
+    String query = "SELECT * FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME)) +
+              ", who is " + cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_AGE)) +
+              " years old, lives in " + cursor.getString(cursor.getColumnIndex(DataEntryCompany
+              .COLUMN_ADDRESS)) + ", earns "+ cursor.getString(cursor.getColumnIndex(DataEntryCompany
+              .COLUMN_SALARY)) + " working in the " + cursor.getString(cursor.getColumnIndex
+              (DataEntryDepartment.COLUMN_DEPARTMENT)) + " department.";{
+    }
+    cursor.close();
+
+
+
     //TODO: add the code from the lesson.
   }
-}
+      return result;
+  }}
 
