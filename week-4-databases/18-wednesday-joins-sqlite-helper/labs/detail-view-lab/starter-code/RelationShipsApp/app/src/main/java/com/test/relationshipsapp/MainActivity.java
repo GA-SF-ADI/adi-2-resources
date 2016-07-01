@@ -38,14 +38,6 @@ public class MainActivity extends AppCompatActivity {
        mHelper = DatabaseHelper.getInstance(MainActivity.this);
 
 
-
-
-
-        //madapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{DatabaseHelper.COL_ITEM_FIRST_NAME,DatabaseHelper.COL_ITEM_LAST_NAME}, new int[]{android.R.id.text1}, 0);
-        //displayListView.setAdapter(madapter);
-
-
-
         macys = (TextView)findViewById(R.id.result_tv);
         Button sameCompany = (Button)findViewById(R.id.emp_same_co_button);
         Button companyInBoston = (Button)findViewById(R.id.co_in_boston_button);
