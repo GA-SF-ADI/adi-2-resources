@@ -21,12 +21,6 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD DATA"
-            android:id="@+id/add_data_button"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="EMPLOYEES"
             android:id="@+id/employees_button"/>
 
