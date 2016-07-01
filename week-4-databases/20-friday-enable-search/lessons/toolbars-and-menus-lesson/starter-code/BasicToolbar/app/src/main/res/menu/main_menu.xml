@@ -7,6 +7,18 @@
         android:title="@string/action_share"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_report_image"
+        android:icon="@android:drawable/ic_menu_report_image"
+        android:title="Report Image"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Save"
+        app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         app:showAsAction="never"/>

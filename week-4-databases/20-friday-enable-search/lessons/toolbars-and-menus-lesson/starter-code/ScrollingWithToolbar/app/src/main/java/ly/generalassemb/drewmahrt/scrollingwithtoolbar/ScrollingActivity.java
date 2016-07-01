@@ -18,6 +18,9 @@ public class ScrollingActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Toolbar bottomToolbar = (Toolbar) findViewById(R.id.toolbar_bottom);
+        setSupportActionBar(bottomToolbar);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
