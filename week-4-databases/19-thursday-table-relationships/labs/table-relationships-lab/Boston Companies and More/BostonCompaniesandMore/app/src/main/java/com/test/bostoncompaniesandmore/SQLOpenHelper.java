@@ -126,12 +126,11 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
             String firstName = cursor.getString(cursor.getColumnIndex(COL_FIRST_NAME));
             String lastName = cursor.getString(cursor.getColumnIndex(COL_LAST_NAME));
             String name = firstName + " " + lastName;
-            employees.add(name);
 
             cursor.close();
 
         }
-        return employees;
+        return ;
     }
 
     public String companiesInBoston() {
@@ -145,7 +144,7 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
 
         Cursor bostonCompanyCursor = db.rawQuery(query, null);
         while (bostonCompanyCursor.moveToNext()) {
-            result = bostonCompanyCursor.getString(bostonCompanyCursor.getColumnIndex(COL_SALARY));
+            result = bostonCompanyCursor.getString(bostonCompanyCursor.getColumnIndex(COL_COMPANY_NAME));
         }
         bostonCompanyCursor.close();
 
@@ -162,7 +161,7 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
 
         Cursor companyHighestSalaryCursor = db.rawQuery(query, null);
         while (companyHighestSalaryCursor.moveToNext()) {
-            result = companyHighestSalaryCursor.getString(companyHighestSalaryCursor.getColumnIndex(COL_SALARY));
+            result = companyHighestSalaryCursor.getString(companyHighestSalaryCursor.getColumnIndex(COL_COMPANY_NAME));
         }
         companyHighestSalaryCursor.close();
 

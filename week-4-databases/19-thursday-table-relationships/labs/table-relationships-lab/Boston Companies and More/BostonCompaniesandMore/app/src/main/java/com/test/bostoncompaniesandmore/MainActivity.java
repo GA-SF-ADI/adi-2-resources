@@ -97,25 +97,25 @@ public class MainActivity extends AppCompatActivity {
                 NewEmployee employee8 = new NewEmployee("123-04-5685", "Melony", "Smith", 1970, "Chicago");
 
                 helper.insertRowIntoEmployeeTable(employee1);
-                helper.insertRowIntoJobTable(employee2);
-                helper.insertRowIntoJobTable(employee3);
-                helper.insertRowIntoJobTable(employee4);
-                helper.insertRowIntoJobTable(employee5);
-                helper.insertRowIntoJobTable(employee6);
-                helper.insertRowIntoJobTable(employee7);
-                helper.insertRowIntoJobTable(employee8);
+                helper.insertRowIntoEmployeeTable(employee2);
+                helper.insertRowIntoEmployeeTable(employee3);
+                helper.insertRowIntoEmployeeTable(employee4);
+                helper.insertRowIntoEmployeeTable(employee5);
+                helper.insertRowIntoEmployeeTable(employee6);
+                helper.insertRowIntoEmployeeTable(employee7);
+                helper.insertRowIntoEmployeeTable(employee8);
 
                 Job job1 = new Job("123-04-5678", "Fuzz",60, 1);
                 Job job2 = new Job("123-04-5679", "GA", 70, 2);
                 Job job3 = new Job("123-04-5680", "Little Place", 120, 5);
-                Job job4 = new Job("123-04-5681", "Macys", 78, 3);
+                Job job4 = new Job("123-04-5681", "Macy's", 78, 3);
                 Job job5 = new Job("123-04-5682", "New Life", 65, 1);
                 Job job6 = new Job("123-04-5683", "Believe", 158, 6);
-                Job job7 = new Job("123-04-5684", "Macys", 200, 8);
+                Job job7 = new Job("123-04-5684", "Macy's", 200, 8);
                 Job job8 = new Job("123-04-5685", "Stop", 299, 12);
 
-                SQLOpenHelper.in
-                SQLOpenHelper.insertRowJob(job2);
+                SQLOpenHelper.insertRowIntoJobTable(job1);
+                SQLOpenHelper.(job2);
                 SQLOpenHelper.insertRowJob(job3);
                 SQLOpenHelper.insertRowJob(job4);
                 SQLOpenHelper.insertRowJob(job5);
