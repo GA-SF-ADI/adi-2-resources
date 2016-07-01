@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,18 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_share:
+
+                return true;
+
+            case R.id.action_press:
+
+                Toast.makeText(MainActivity.this, "Play", Toast.LENGTH_LONG).show();
+
+                return true;
+
+            case R.id.action_fast:
+
+                Toast.makeText(MainActivity.this, "Say Cheese", Toast.LENGTH_LONG).show();
 
                 return true;
 

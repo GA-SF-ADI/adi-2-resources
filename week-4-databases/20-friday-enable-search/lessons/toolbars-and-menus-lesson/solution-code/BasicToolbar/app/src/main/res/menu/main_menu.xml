@@ -5,7 +5,19 @@
         android:id="@+id/action_share"
         android:icon="@android:drawable/ic_menu_share"
         android:title="@string/action_share"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_press"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="Play"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_fast"
+        android:icon="@android:drawable/ic_menu_camera"
+        android:title="Camera"
+        app:showAsAction="always"/>
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
