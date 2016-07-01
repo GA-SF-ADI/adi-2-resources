@@ -8,11 +8,11 @@ public class Employee {
     private String SSN;
     private String first_name;
     private String last_name;
-    private int birth_Year;
+    private String birth_Year;
     private String city;
 
 
-    public Employee (String SSN, String first_name, String last_name, int birth_Year,String city){
+    public Employee (String SSN, String first_name, String last_name, String birth_Year,String city){
         this.SSN = SSN;
         this.first_name= first_name;
         this.last_name=last_name;
@@ -45,11 +45,11 @@ public class Employee {
         this.last_name = last_name;
     }
 
-    public int getBirth_Year() {
+    public String getBirth_Year() {
         return birth_Year;
     }
 
-    public void setBirth_Year(int birth_Year) {
+    public void setBirth_Year(String birth_Year) {
         this.birth_Year = birth_Year;
     }
 

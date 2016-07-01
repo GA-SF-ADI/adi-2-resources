@@ -13,25 +13,24 @@ import android.provider.BaseColumns;
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
 
-    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
 
-    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-    }
+    Cursor cursor;
+
+
     private static DataBaseHelper INSTANCE;
 
-    //uncomment
-    /*
+
 
     public static synchronized DataBaseHelper getInstance(Context context) {
         if (INSTANCE == null)
-            INSTANCE = new DataBaseHelper(context.getApplicationContext());
+            INSTANCE = new DataBaseHelper(context);
         return INSTANCE;
     }
 
-    */
+    public DataBaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATA_BASE_VERSION);
+    }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -56,37 +55,37 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public static final String COL_ID = "_id";
     public static final String COL_SSN = "SSN";
-    public static final String COL_FIRST_NAME = "First Name";
-    public static final String COL_LAST_NAME = "Last Name";
-    public static final String COL_YEAR= "Birthday Year";
-    public static final String COL_CITY= "City";
+    public static final String COL_FIRST_NAME = "First_Name";
+    public static final String COL_LAST_NAME = "Last_Name";
+    public static final String COL_YEAR = "Birthday_Year";
+    public static final String COL_CITY = "City";
 
-    public static final String [] COL_EMPLOYEE_COLUMNS = {COL_ID, COL_SSN, COL_FIRST_NAME, COL_LAST_NAME, COL_YEAR, COL_CITY};
+    public static final String[] COL_EMPLOYEE_COLUMNS = {COL_ID, COL_SSN, COL_FIRST_NAME, COL_LAST_NAME, COL_YEAR, COL_CITY};
 
     private static final String CREATE_EMPLOYEE_LIST_TABLE =
             "CREATE TABLE " + EMPLOYEE_TABLE_NAME +
                     "(" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_SSN + " TEXT " +
-                    COL_FIRST_NAME + " TEXT " +
-                    COL_LAST_NAME + " TEXT " +
-                    COL_YEAR + " TEXT " +
+                    COL_SSN + " TEXT, " +
+                    COL_FIRST_NAME + " TEXT, " +
+                    COL_LAST_NAME + " TEXT, " +
+                    COL_YEAR + " TEXT, " +
                     COL_CITY + " TEXT ) ";
 
     public static final String JOB_TABLE_NAME = "JOB_TABLE";
-    public static final String COL_COMPANY_NAME = "Company Name";
-    public static final String COL_SALARY= "Salary";
-    public static final String COL_EXPERIENCE_YEARS= "Experience";
+    public static final String COL_COMPANY_NAME = "Company_Name";
+    public static final String COL_SALARY = "Salary";
+    public static final String COL_EXPERIENCE_YEARS = "Experience";
 
-    public static final String[] COL_JOB_COLUMNS ={COL_ID,COL_SSN, COL_COMPANY_NAME, COL_SALARY, COL_EXPERIENCE_YEARS};
+    public static final String[] COL_JOB_COLUMNS = {COL_ID, COL_SSN, COL_COMPANY_NAME, COL_SALARY, COL_EXPERIENCE_YEARS};
 
     private static final String CREATE_JOB_LIST_TABLE =
             "CREATE TABLE " + JOB_TABLE_NAME +
                     "(" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_SSN + " TEXT " +
-                    COL_COMPANY_NAME + " TEXT " +
-                    COL_SALARY + " TEXT " +
+                    COL_SSN + " TEXT, " +
+                    COL_COMPANY_NAME + " TEXT, " +
+                    COL_SALARY + " TEXT, " +
                     COL_EXPERIENCE_YEARS + " TEXT ) ";
 
 
@@ -101,11 +100,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COL_SSN, employee.getSSN());
         values.put(COL_FIRST_NAME, employee.getFirst_name());
-        values.put(COL_LAST_NAME,employee.getLast_name());
-        values.put(COL_YEAR,employee.getBirth_Year());
-        values.put(COL_CITY,employee.getCity());
-        db.insertOrThrow(EMPLOYEE_TABLE_NAME,null, values);
+        values.put(COL_LAST_NAME, employee.getLast_name());
+        values.put(COL_YEAR, employee.getBirth_Year());
+        values.put(COL_CITY, employee.getCity());
+        db.insert(EMPLOYEE_TABLE_NAME, null, values);
     }
+
+    public Cursor getEmployee() {
+        SQLiteDatabase db = getReadableDatabase();
+        cursor = db.query(EMPLOYEE_TABLE_NAME,COL_EMPLOYEE_COLUMNS, null, null, null, null, null);
+        return cursor;
+    }
+
 
     public void insertJob(Job job) {
         SQLiteDatabase db = getWritableDatabase();
@@ -114,7 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COL_COMPANY_NAME, job.getCompanyName());
         values.put(COL_SALARY, job.getCompanyName());
         values.put(COL_EXPERIENCE_YEARS, job.getExperience());
-        db.insertOrThrow(JOB_TABLE_NAME,null,values);
+        //db.insertOrThrow(JOB_TABLE_NAME,null,values);
 
     }
 }
