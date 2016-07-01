@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         SQLOpenHelper.JOB_TABLE_COLUMNS.getClass();
 
+//        TODO: Finish SimpleCustomAdapter below
+
         SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1,
                 db.getAllTitles(),
