@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     Button displayBostonOnlyButton;
     Button displaySalary;
     DataBaseHelper db;
-    CursorAdapter cursorAdapter;
+    CursorAdapter cursorAdapterEmployee;
+    CursorAdapter cursorAdapterJob;
     ListView listView;
 
     @Override
@@ -40,14 +41,17 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         addDataButton = (Button) findViewById(R.id.add_data_button);
         displaySalary = (Button) findViewById(R.id.salary_button);
         displayBostonOnlyButton = (Button) findViewById(R.id.companies_boston_button);
         displayEmployeesButton = (Button) findViewById(R.id.employees_button);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
         listView = (ListView) findViewById(R.id.list_view);
         setAdapter();
+        //call add Employee here
+        //call addJob here
+
 
         //Make 3 adapters (one for each button)
         //Set each adapter to the listview when the button is clicked
@@ -61,10 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddDataActivity.class);
                 startActivity(intent);
                 //is the start activity for result?
-
             }
-        });
 
+        });
 
         displaySalary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         addDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,9 +102,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void setAdapter() {
         db = DataBaseHelper.getInstance(MainActivity.this);
-        cursorAdapter = new CursorAdapter(MainActivity.this, db.getEmployee(), 0) {
+        cursorAdapterEmployee = new CursorAdapter(MainActivity.this, db.getEmployee(), 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -115,10 +118,29 @@ public class MainActivity extends AppCompatActivity {
                 //may have to change names
             }
         };
-        listView.setAdapter(cursorAdapter);
+        listView.setAdapter(cursorAdapterEmployee);
+
 
     }
 
+    private void setAdapterJob() {
+        db = DataBaseHelper.getInstance(MainActivity.this);
+        cursorAdapterJob = new CursorAdapter(MainActivity.this, db.getJob(), 0) {
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
+            }
+
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+                TextView textView = (TextView) view.findViewById(android.R.id.text1);
+                textView.setText(cursor.getString(cursor.getColumnIndex(DataBaseHelper.COL_COMPANY_NAME)));
+                //may have to change names
+            }
+        };
+        listView.setAdapter(cursorAdapterJob);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void addEmployee(Employee employee) {
+    protected void addEmployee() {
 
         //call in on create, no arguments
         //can do an arraylist and pass it through or like this
@@ -150,29 +172,46 @@ public class MainActivity extends AppCompatActivity {
         Employee employee1 = new Employee("123-04-5678", "John", "Smith", "1973", "NY");
         Employee employee2 = new Employee("123-04-5679", "David", "McWill", "1982", "Seattle");
         Employee employee3 = new Employee("123-04-5680", "Katrina", "Wise", "1973", "Boston");
+        Employee employee4 = new Employee("123-04-5681", "Donald", "Lee", "1992", "London");
+        Employee employee5 = new Employee("123-04-5682", "Gary", "Henwood", "1987", "Las Vegas");
+        Employee employee6 = new Employee("123-04-5683", "Anthony", "Bright", "1963", "Seattle");
+        Employee employee7 = new Employee("123-04-5684", "William", "Newey", "1995", "Boston");
+        Employee employee8 = new Employee("123-04-5685", "Melony", "Smith", "1970", "Chicago");
 
         DataBaseHelper helper = DataBaseHelper.getInstance(MainActivity.this);
 
         helper.insertEmployee(employee1);
         helper.insertEmployee(employee2);
         helper.insertEmployee(employee3);
+        helper.insertEmployee(employee4);
+        helper.insertEmployee(employee5);
+        helper.insertEmployee(employee6);
+        helper.insertEmployee(employee7);
+        helper.insertEmployee(employee8);
     }
 
-
-    protected void addJob(Job job) {
+    protected void addJob() {
         Job job1 = new Job("123-04-5678", "Fuzz", 60, 1);
         Job job2 = new Job("123-04-5679", "GA", 70, 2);
         Job job3 = new Job("123-04-5680", "Little Place", 120, 5);
+        Job job4 = new Job("123-04-5681", "Macy's", 78, 3);
+        Job job5 = new Job("123-04-5682", "New Life", 65, 1);
+        Job job6 = new Job("123-04-5683", "Believe", 158, 6);
+        Job job7 = new Job("123-04-5684", "Macy's", 200, 8);
+        Job job8 = new Job("123-04-5685", "Stop", 299, 12);
 
         DataBaseHelper helper = DataBaseHelper.getInstance(MainActivity.this);
 
         helper.insertJob(job1);
         helper.insertJob(job2);
         helper.insertJob(job3);
+        helper.insertJob(job4);
+        helper.insertJob(job5);
+        helper.insertJob(job6);
+        helper.insertJob(job7);
+        helper.insertJob(job8);
 
     }
-
-
 }
 
 

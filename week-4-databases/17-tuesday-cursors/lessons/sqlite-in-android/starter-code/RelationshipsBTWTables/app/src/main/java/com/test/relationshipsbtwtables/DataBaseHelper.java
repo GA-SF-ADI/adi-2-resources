@@ -120,7 +120,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         values.put(COL_COMPANY_NAME, job.getCompanyName());
         values.put(COL_SALARY, job.getCompanyName());
         values.put(COL_EXPERIENCE_YEARS, job.getExperience());
-        //db.insertOrThrow(JOB_TABLE_NAME,null,values);
+        db.insert(JOB_TABLE_NAME,null,values);
+    }
 
+    public Cursor getJob() {
+        SQLiteDatabase db = getReadableDatabase();
+        cursor = db.query(JOB_TABLE_NAME,COL_JOB_COLUMNS, null, null, null, null, null);
+        return cursor;
     }
 }
