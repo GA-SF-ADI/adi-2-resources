@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Cursor cursor = db.getEmployee();
-                cursorAdapterEmployee = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, cursor, new String[]{DataBaseHelper.COL_FIRST_NAME}, new int[]{android.R.id.text1}, 0);
+                cursorAdapterEmployee = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, cursor, new String[]{DataBaseHelper.COL_EXPERIENCE_YEARS}, new int[]{android.R.id.text1}, 0);
                 listView.setAdapter(cursorAdapterEmployee);
             }
         });
