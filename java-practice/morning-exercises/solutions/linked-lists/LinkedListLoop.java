@@ -47,20 +47,29 @@ public class CustomLinkedList<T> {
     }
 
     public boolean isLoop(){
-        Node fastNode = head;
-        Node slowNode = head;
+        if(first == null) // list does not exist..so no loop either.
+        return false;
 
-        int counter = 1;
-        while(fastNode.hasNext()){
-            fastNode = fastNode.next;
-            if(fastNode==slowNode){
+        Node slow, fast; // create two references.
+
+        slow = fast = first; // make both refer to the start of the list.
+
+        while(true) {
+
+            slow = slow.next;          // 1 hop.
+
+            if(fast.next != null)
+                fast = fast.next.next; // 2 hops.
+            else
+                return false;          // next node null => no loop.
+
+            if(slow == null || fast == null) // if either hits null..no loop.
                 return false;
-            }
-            if(counter%2==0){
-                slowNode= slowNode.next;
-            }
+
+            if(slow == fast) // if the two ever meet...we must have a loop.
+                return true;
+                
         }
-        return true;
     }
 
 
