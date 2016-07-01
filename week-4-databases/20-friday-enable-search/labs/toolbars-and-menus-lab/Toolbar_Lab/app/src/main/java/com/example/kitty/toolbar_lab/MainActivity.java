@@ -1,32 +1,41 @@
-package ly.generalassemb.drewmahrt.basictoolbar;
+package com.example.kitty.toolbar_lab;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id._toolbar);
         setSupportActionBar(toolbar);
+
+        ImageButton imageButton = (ImageButton) findViewById(R.id.image_button);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "some list activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
+        inflater.inflate(R.menu.menu, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -34,21 +43,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.item_cast:
 
-                return true;
+                Toast.makeText(this, "Casting", Toast.LENGTH_SHORT).show();
 
-            case R.id.action_share:
+            case R.id._item_add:
 
-                return true;
+                Toast.makeText(this, "Added new item", Toast.LENGTH_SHORT).show();
 
-            case R.id.action_save:
+            case R.id.item_setting:
 
-                Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
 
-            case R.id.action_report_image:
-
-                toolbar.setTitleTextColor(Color.WHITE);
 
             default:
                 // If we got here, the user's action was not recognized.

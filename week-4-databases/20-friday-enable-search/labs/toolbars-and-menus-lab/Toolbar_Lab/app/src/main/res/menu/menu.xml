@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.kitty.toolbar_lab.MainActivity">
+
+    <item
+        android:id="@+id/item_cast"
+        android:icon="@drawable/ic_airplay_black_24dp"
+        android:title="Cast"
+        android:i
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/:item_add"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Add"
+        android:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/item_setting"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:title="Setting"
+        android:showAsAction="never"/>
+
+
+</menu>

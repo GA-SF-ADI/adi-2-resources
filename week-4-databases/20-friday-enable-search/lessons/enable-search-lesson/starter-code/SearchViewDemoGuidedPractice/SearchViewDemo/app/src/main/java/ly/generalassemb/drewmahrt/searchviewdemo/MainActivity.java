@@ -9,15 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import ly.generalassemb.drewmahrt.searchviewdemo.setup.DBAssetHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+    NumbersSQLiteHelper helper;
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        helper = NumbersSQLiteHelper.getInstance(MainActivity.this);
 
         //Ignore the two lines below
         DBAssetHelper dbAssetHelper = new DBAssetHelper(MainActivity.this);
@@ -49,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+            //Toast.makeText(this, "searching for " + query, Toast.LENGTH_SHORT).show();
+
+            helper = NumbersSQLiteHelper.getInstance(MainActivity.this);
+
+            textView = (TextView) findViewById(R.id.count_text_view);
+            textView.setText(query + " appeared " + helper.searchDuplicates(query).getCount() + " times");
         }
     }
 }

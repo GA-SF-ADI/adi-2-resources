@@ -57,9 +57,40 @@
         android:layout_gravity="bottom"
         android:background="#8e8e8e">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="I am a toolbar!"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/lion_king"
+                android:paddingTop="12dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Circle of life"
+                    android:textSize="24dp"
+                    android:paddingTop="6dp"
+                    android:paddingLeft="12dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Lion King OST"
+                    android:paddingTop="6dp"
+                    android:paddingLeft="12dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 </FrameLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.kitty.toolbar_lab.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/:toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:background="@color/orange"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:clickable="true"
+                android:src="@drawable/ic_view_headline_black_24dp"
+                android:tint="@color/white"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Podcasts"
+                android:layout_gravity="left"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:paddingLeft="10dp"
+                android:textSize="24dp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+</RelativeLayout>
