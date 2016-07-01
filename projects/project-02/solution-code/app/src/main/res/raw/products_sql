@@ -1,0 +1,16 @@
+INSERT INTO "products" VALUES(1,'Lord Bean','A true piece of art.',1599.95,'http://sp.cm/rodneypikecom/files/2014/11/1415314923Bean1000.jpg');
+INSERT INTO "products" VALUES(2,'Rembrandt''s Self Portrait','A self portrait of the ages.',2502.99,'http://sp.cm/rodneypikecom/files/2014/11/1415318966Rembrandts_Bean.jpg');
+INSERT INTO "products" VALUES(3,'Lonely Bride','Sometimes, loneliness happens.',2100.99,'http://sp.cm/rodneypikecom/files/2014/11/1415317897Bouguereaus_Lady_Bean.jpg');
+INSERT INTO "products" VALUES(4,'Portrait of a Bean','Bean there, done that.',695.02,'http://sp.cm/rodneypikecom/files/2014/11/1415319076Rembrandts_Portrait_of_a_Bean.jpg');
+INSERT INTO "products" VALUES(5,'Mona Lisa Bean','There really are no words for such a masterpiece.',99999.99,'http://sp.cm/rodneypikecom/files/2014/11/1415318676Mona_Lisa_Bean.jpg');
+INSERT INTO "products" VALUES(6,'Soldier Bean II','Ships in a prettier frame.',395.99,'http://sp.cm/rodneypikecom/files/2014/11/1415319171Rembrandts_Soldier_Bean-II.jpg');
+INSERT INTO "products" VALUES(7,'George Washington Bean','Really, what do you want me to say about this?',1.0,'http://sp.cm/rodneypikecom/files/2014/11/1415318169George_Washington-Bean.jpg');
+INSERT INTO "products" VALUES(8,'Professor Bean Portrait','Class is in session.',1059.88,'http://sp.cm/rodneypikecom/files/2014/11/1415314829Bean-painting.jpg');
+INSERT INTO "products" VALUES(9,'Hans Holbein','Is this the real life? Is this fantasy?',756.89,'http://sp.cm/rodneypikecom/files/2014/11/1415318260Hans_Holbein-Holbean.jpg');
+INSERT INTO "products" VALUES(10,'Lord Bean II','Another true piece of art.',1599.95,'http://sp.cm/rodneypikecom/files/2014/11/1415660611Lord_Bean.jpg');
+INSERT INTO "products" VALUES(11,'Bouguereau''s Meditation','What''s happening?',645.45,'http://sp.cm/rodneypikecom/files/2014/11/1415315268bouguereau_meditation.jpg');
+INSERT INTO "products" VALUES(12,'Next','Are you not entertained?',59000.99,'http://sp.cm/rodneypikecom/files/2014/11/1415314526A-Revelation-Bean.jpg');
+INSERT INTO "products" VALUES(13,'Gilbert Stuart Bean','Some things cannot be unseen.',777.99,'http://sp.cm/rodneypikecom/files/2014/11/1415314299A-Gilbert_Stuart_Bean.jpg');
+INSERT INTO "products" VALUES(14,'Princess Bean','Sometimes you wish a princess was in another castle.',837.98,'http://sp.cm/rodneypikecom/files/2014/11/1415314172A-F_C_Cowper-Bean.jpg');
+INSERT INTO "products" VALUES(15,'Breton Brother And Sister','There goes the neighborhood.',1967.67,'http://sp.cm/rodneypikecom/files/2014/11/1415315123Bouguereau_Breton_Brother_an_Sister.jpg');
+INSERT INTO "products" VALUES(16,'Lollipop Bean','wat?',934.42,'http://sp.cm/rodneypikecom/files/2014/11/1415318022Fat_Bean.jpg');

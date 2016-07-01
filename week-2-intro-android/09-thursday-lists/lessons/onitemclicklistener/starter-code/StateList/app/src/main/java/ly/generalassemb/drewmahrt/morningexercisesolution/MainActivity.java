@@ -31,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
         mArrayAdapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,new ArrayList<String>(abbreviationsList));
         mListView.setAdapter(mArrayAdapter);
 
+        /**
+         * Given the button click listeners below, you want to use an OnItemClickListener on your listview
+         * INSTEAD of these two button click listeners.
+         *
+         * Each item I click in the list should toggle between abbreviation and full name
+         *
+         * Hint: How can you make sure your values are changing without modifying the original two lists?
+         */
         abbrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
