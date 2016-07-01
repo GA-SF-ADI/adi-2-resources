@@ -119,16 +119,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-
-
-
-
-
-//    public Cursor getEmployee(){
-//        SQLiteDatabase db = getReadableDatabase();
-//        Cursor cursor = db.query(EMPLOYEE_TABLE, null, null, null, null, null, null);
-//        return cursor;
-//    }
-
-
 }
