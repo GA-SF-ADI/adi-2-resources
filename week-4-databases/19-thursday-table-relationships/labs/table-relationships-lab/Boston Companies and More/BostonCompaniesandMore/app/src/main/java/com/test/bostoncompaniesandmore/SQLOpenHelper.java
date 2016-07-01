@@ -11,42 +11,45 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class SQLOpenHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
-    private static String EMPLOYEE_TABLE_NAME = "employee";
-    private static String COL_SSN = "SSN";
-    private static String COL_FIRST_NAME = "First Name";
-    private static String COL_LAST_NAME = "Last Name";
-    private static String COL_YEAR_OF_BIRTH = "Year of Birth";
-    private static String COL_CITY = "City";
+    public static final int DATABASE_VERSION = 1;
+    public static String EMPLOYEE_TABLE_NAME = "employee";
+    public static String COL_EMPLOYEE_SSN = "SSN";
+    public static String COL_FIRST_NAME = "First Name";
+    public static String COL_LAST_NAME = "Last Name";
+    public static String COL_YEAR_OF_BIRTH = "Year of Birth";
+    public static String COL_CITY = "City";
 
     private static final String SQL_CREATE_EMPLOYEE_TABLE = "CREATE TABLE " +
             EMPLOYEE_TABLE_NAME + " (" +
-            COL_SSN + " INTEGER PRIMARY KEY," +
+            COL_EMPLOYEE_SSN + " INTEGER PRIMARY KEY," +
             COL_FIRST_NAME + " TEXT," +
             COL_LAST_NAME + " TEXT," +
             COL_YEAR_OF_BIRTH + " INTEGER," +
             COL_CITY + " TEXT);";
 
 
-    private static String JOB_TABLE_NAME = "job";
+    public static String JOB_TABLE_NAME = "job";
 
-    private static String COL_COMPANY_NAME = "company";
-    private static String COL_SALARY = "salary";
-    private static String COL_EXPERIENCE = "experience";
+    public static String COL_JOB_SSN = "SSN";
+    public static String COL_COMPANY_NAME = "company";
+    public static String COL_SALARY = "salary";
+    public static String COL_EXPERIENCE = "experience";
+
 
     private static final String SQL_CREATE_JOB_TABLE = "CREATE TABLE " +
             JOB_TABLE_NAME + " (" +
-            COL_SSN + " INTEGER PRIMARY KEY," +
+            COL_JOB_SSN + " INTEGER PRIMARY KEY," +
             COL_COMPANY_NAME + " TEXT," +
             COL_SALARY + " INTEGER," +
             COL_EXPERIENCE + " INTEGER " + ");";
 
-    public static final String[] EMPLOYEE_TABLE_COLUMNS = {COL_SSN, COL_FIRST_NAME,
+    public static final String[] EMPLOYEE_TABLE_COLUMNS = {COL_EMPLOYEE_SSN, COL_FIRST_NAME,
             COL_LAST_NAME, COL_YEAR_OF_BIRTH, COL_CITY};
 
 
-    public static final String[] JOB_TABLE_COLUMNS = {COL_COMPANY_NAME, COL_SALARY,
+    public static final String[] JOB_TABLE_COLUMNS = {COL_JOB_SSN, COL_COMPANY_NAME, COL_SALARY,
             COL_EXPERIENCE};
+
 
     public SQLOpenHelper(Context context) {
         super(context, EMPLOYEE_TABLE_NAME, null, DATABASE_VERSION);
@@ -100,21 +103,43 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
     public void insertRowIntoJobTable(NewEmployee employee) {
         SQLiteDatabase db = getWritableDatabase();
 
+
     }
 
 
     public String employeesWorkingAtSameCompany() {
-        SQLiteDatabase db = getWritableDatabase();
 
-        return null;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT " + COL_FIRST_NAME + COL_LAST_NAME + COL_COMPANY_NAME + " FROM " + EMPLOYEE_TABLE_NAME +
+                " INNER JOIN " + JOB_TABLE_NAME + " ON COL_EMPLOYEE_SSN = COL_JOB_SSN WHERE COL_COMPANY_NAME = 'Macy's'";
+
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            String firstName = cursor.getString(cursor.getColumnIndex(COL_FIRST_NAME));
+            String lastName = cursor.getString(cursor.getColumnIndex(COL_LAST_NAME));
+            String name = firstName + " " + lastName;
+            employees.add(name);
+
+            cursor.close();
+
+        }
+        return employees;
     }
 
     public String companiesInBoston() {
         SQLiteDatabase db = getWritableDatabase();
 
+        String result = "";
 
+        String query = "SELECT " + COL_COMPANY_NAME + " FROM " + JOB_TABLE_NAME +
+                " INNER JOIN " + EMPLOYEE_TABLE_NAME + " ON COL_EMPLOYEE_SSN = COL_JOB_SSN WHERE "
+                + COL_CITY + " = 'BOSTON'";
 
-
+        Cursor bostonCompanyCursor = db.rawQuery(query, null);
+        while (bostonCompanyCursor.moveToNext()) {
+            result = bostonCompanyCursor.getString(bostonCompanyCursor.getColumnIndex(COL_SALARY));
+        }
+        bostonCompanyCursor.close();
 
         return null;
     }
@@ -122,15 +147,17 @@ public class SQLOpenHelper extends SQLiteOpenHelper {
     public String companyWithHighestSalary() {
         SQLiteDatabase db = getWritableDatabase();
 
-        String query = "SELECT MAX " + COL_SALARY + " FROM " + JOB_TABLE_NAME + ";";
+        String result = "";
 
-        Cursor highestSalaryCursor = db.rawQuery(query, null);
-        while (highestSalaryCursor.moveToNext()) {
-//            query = highestSalaryCursor.getString(highestSalaryCursor.getColumnIndex(SQLOpenHelper.______));
+        String query = "SELECT MAX " + COL_COMPANY_NAME + COL_SALARY + " FROM " + JOB_TABLE_NAME + ";";
+
+        Cursor companyHighestSalaryCursor = db.rawQuery(query, null);
+        while (companyHighestSalaryCursor.moveToNext()) {
+            result = companyHighestSalaryCursor.getString(companyHighestSalaryCursor.getColumnIndex(COL_SALARY));
         }
+        companyHighestSalaryCursor.close();
 
-        highestSalaryCursor.close();
-        return query;
+        return;
 
     }
 

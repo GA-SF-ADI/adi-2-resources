@@ -1,6 +1,8 @@
 package com.test.bostoncompaniesandmore;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CursorAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,14 +37,22 @@ public class MainActivity extends AppCompatActivity {
         final Button sameCompanyEmployeesButton = (Button) findViewById(R.id.button_employees_working_at_the_same_company);
         Button bostonCompaniesButton = (Button) findViewById(R.id.button_companies_in_Boston);
         Button highestSalaryButton = (Button) findViewById(R.id.button_companies_with_the_highest_salary);
+
         ListView listViewOfButtonResults = (ListView) findViewById(R.id.listView_results_of_button_click_on_main_activity);
+        listViewOfButtonResults.setAdapter(cursorAdapter);
 
 
         ArrayList<String> myList = new ArrayList<String>();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myList);
+        SQLOpenHelper.JOB_TABLE_COLUMNS.getClass();
 
-        listViewOfButtonResults.setAdapter(adapter);
+        SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(this,
+                android.R.layout.simple_list_item_1,
+                db.getAllTitles(),
+                new String[]{},
+                new int[]{android.R.id.text1}, 0);
+        ;
+
 
         final NewEmployee newEmployee = new NewEmployee();
 
@@ -95,12 +107,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String[] me = new String[1];
+                SQLiteDatabase db;
 
+
+                String[] columns = new String[]{SQLOpenHelper.COL_COMPANY_NAME};
+
+                int[] viewNames = new int[]{android.R.id.text1};
+
+                Cursor companyCursor = db.query(,null, null, null, null, null, null);
+
+                CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, Cursor c, columns, viewNames, 0);
 
                 TextView text = (TextView) findViewById(R.id.textView_company_with_highest_salary);
                 text.setText("test");
-
 
 
             }
@@ -108,25 +127,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
