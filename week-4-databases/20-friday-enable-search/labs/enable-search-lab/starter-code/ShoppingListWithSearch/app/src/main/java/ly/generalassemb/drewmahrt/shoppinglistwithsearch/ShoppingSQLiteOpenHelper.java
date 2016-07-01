@@ -42,6 +42,15 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
                     COL_ITEM_PRICE + " TEXT, " +
                     COL_ITEM_TYPE + " TEXT )";
 
+    private static ShoppingSQLiteOpenHelper instance;
+
+    public static ShoppingSQLiteOpenHelper getInstance(Context context){
+        if(instance == null){
+            instance = new ShoppingSQLiteOpenHelper(context);
+        }
+        return instance;
+    }
+
 
     public ShoppingSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -96,4 +105,21 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
         db.close();
         return deleteNum;
     }
+
+    public Cursor searchShoppingList(String query){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(SHOPPING_LIST_TABLE_NAME, // a. table
+                SHOPPING_COLUMNS, // b. column names
+                COL_ITEM_NAME+" = ?", // c. selections
+                new String[]{query}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
+
 }
