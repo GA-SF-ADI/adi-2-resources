@@ -6,6 +6,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import javax.xml.datatype.Duration;
+
+import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_share:
-
+                Toast.makeText(MainActivity.this, "Clicked Share", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:

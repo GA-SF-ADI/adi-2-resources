@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -24,6 +26,20 @@ public class ScrollingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+        final ImageView pauseButton = (ImageView) findViewById(R.id.pausePlayButton);
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            boolean pauseclicked = false;
+            @Override
+            public void onClick(View v) {
+                if (pauseclicked){
+                    pauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                    pauseclicked = false;
+                }else {
+                    pauseButton.setImageResource(android.R.drawable.ic_media_play);
+                    pauseclicked = true;
+                }
             }
         });
     }

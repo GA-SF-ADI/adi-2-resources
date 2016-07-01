@@ -56,10 +56,29 @@
         android:layout_height="70dp"
         android:layout_gravity="bottom"
         android:background="#8e8e8e">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="I am a toolbar!"/>
+       <ImageView
+           android:src="@drawable/wildflower"
+            android:layout_alignParentLeft="true"
+           android:layout_width="40dp"
+           android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:text="Wildflower - The Avalanches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/pausePlayButton"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@android:drawable/ic_media_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 </FrameLayout>
