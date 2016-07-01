@@ -149,13 +149,22 @@ We are telling the activity we want it to be searchable, and to use the searchab
 Next, we need to add some code to tie our SearchView to use the behavior defined in searchable.xml.
 
 ```java
-// Associate searchable configuration with the SearchView
-SearchManager searchManager =
-       (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-SearchView searchView =
-        (SearchView) menu.findItem(R.id.search).getActionView();
-searchView.setSearchableInfo(
-          searchManager.getSearchableInfo(getComponentName()));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+
+        // Find searchManager and searchableInfo
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+
+        // Associate searchable info with the SearchView
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchableInfo);
+
+        // Return true to show menu, returning false will not show it. 
+        return true;
+    }
 ```
 
 
