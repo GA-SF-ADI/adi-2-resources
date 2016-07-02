@@ -29,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textView = (TextView) findViewById(R.id.text_view);
+
         handleIntent(getIntent());
+
 
         //Ignore the two lines below, they are for setup
         DBAssetHelper dbSetup = new DBAssetHelper(MainActivity.this);
@@ -62,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -71,5 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
             textView.setText("Number of " + query + " in the database: " + cursor.getCount());
         }
+
     }
 }
