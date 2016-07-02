@@ -52,16 +52,8 @@ The Main Activity should:
     * **companies in Boston** - the button that will return companies located in Boston and will display them in a List View
     * **company with the highest salary** - the button that will return the company where the salary is the highest and will display its name in the Text View
 
-The Dialog Activity should:  
 
-- Look like a dialog (use the theme "Theme.AppCompat.Light.Dialog.Alert")  
-
-<p align="center">
-  <img src="./screenshots/dialog.png">
-</p>
-
-- Contain 5 Edit Texts:
-
+- Contain 5 Edit Texts to enter these fields:
     * ssn
     * first name
     * last name
@@ -72,6 +64,12 @@ The Dialog Activity should:
 
     * add data - the button will save the information to the table Employee, will show a toast to the user confirming that the data has been added and will bring the user back to the Main Activity
     * cancel button - the button that will return the user to the Main Activity
+
+**Bonus**: The Dialog Activity should:  
+- Look like a dialog (use the theme "Theme.AppCompat.Light.Dialog.Alert")  
+<p align="center">
+  <img src="./screenshots/dialog.png">
+</p>
 
 <!-- The app should be thread safe. To make app more responsive make sure to execute just one AsyncTask at a time. Thus, any async task that might be running, should be cancelled/stopped when another async task has just been started. -->
 
