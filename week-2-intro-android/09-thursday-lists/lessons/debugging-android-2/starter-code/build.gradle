@@ -9,7 +9,11 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.1.2'
 =======
         classpath 'com.android.tools.build:gradle:2.1.0'
+<<<<<<< HEAD
 >>>>>>> 68df93f41b838421024363ac76afa43cd19ee8d9
+=======
+>>>>>>> 1bb4537657763d9e93158283f8dd7140bac4d1c5
+>>>>>>> 81a4b9b100d7672da58b16a19cce149974ed1a9a
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
