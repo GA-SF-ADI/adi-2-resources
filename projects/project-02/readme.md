@@ -38,7 +38,7 @@ Your work must:
 - Include **at least 4** user stories
 - Include espresso tests for your app
  - Ensure that you add a sufficient number of tests for the features of each screen of your app
-
+- Use custom adapters for ListView and or cursors
 
 **Bonus:**
 
@@ -47,6 +47,7 @@ Your work must:
 - Add more complexity to the user's searches (possibly allowing more than one search criteria at a time)
 - Add JUnit tests for your non-Android classes (i.e. not Activity or Fragment)
 - Incorporate Square's [Picasso photo library](http://square.github.io/picasso/)
+- Use RecyclerView instead of ListView
 
 ---
 
@@ -65,13 +66,13 @@ If you have questions about whether or not your work adheres to these guidelines
 *Place non-code requirements in their own markdown files.*
 
 - An **entity relationship diagram** that defines how your app's data is modeled.
-- **User stories** that define the features of your app
 - Using your ERD as a guideline, **implement the classes required for the app**.
   - They don't have to be perfect and do everything you want, but they should still provide a basis of your class structure. They must at least have member variables and method stubs.
 
 **Week 5:**
 
 - A **completed, basic version of the user interface for your app**, with placeholder data and resources to fill out your screens.
+- **User stories** that define the features of your app
 
 **Week 6:**
 
