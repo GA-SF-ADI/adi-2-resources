@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mName = savedInstanceState.getString("myName");
-            mHelloTextView.setText("Hello " + mName + "! You will be saved into the bundle! " + mTimesSaved + " names have been saved.");
+            mHelloTextView.setText("Hello " + mName + "! You will be saved into the bundle! " + mTimesSaved + " names have been saved so far.");
         }
         if (savedInstanceState != null) {
             if (savedInstanceState.getInt("timesSaved") >= 0) {
@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //TODO: Save the state here
+        //the key is first and the value is second
         outState.putString("myName", mName);
         outState.putInt("timesSaved", mTimesSaved);
-
         super.onSaveInstanceState(outState);
     }
 }
