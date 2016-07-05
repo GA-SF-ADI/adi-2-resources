@@ -3,6 +3,7 @@ package ly.generalassemb.drewmahrt.scrollingwithtoolbar;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,10 +30,11 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton pauseButton = (FloatingActionButton) findViewById(R.id.pause_button);
+        final FloatingActionButton pauseButton = (FloatingActionButton) findViewById(R.id.pause_button);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pauseButton.setImageDrawable(ContextCompat.getDrawable(ScrollingActivity.this, android.R.drawable.ic_media_play));
                 Toast.makeText(ScrollingActivity.this, "Pause Pressed!",Toast.LENGTH_LONG).show();
             }
         });
