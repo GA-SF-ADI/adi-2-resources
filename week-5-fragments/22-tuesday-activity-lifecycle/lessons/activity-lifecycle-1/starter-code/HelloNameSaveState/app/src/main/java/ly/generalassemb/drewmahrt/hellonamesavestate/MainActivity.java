@@ -22,7 +22,19 @@ public class MainActivity extends AppCompatActivity {
         mHelloTextView = (TextView)findViewById(R.id.hello_message_text);
 
         //TODO: Restore the state here
+        if(savedInstanceState != null) {
+            if (savedInstanceState.getInt("timesSaved") >= 0) {
+                mTimesSaved = savedInstanceState.getInt("timessaved");
+            }
 
+            if (savedInstanceState.getString("name") != null) {
+                mName = savedInstanceState.getString("name");
+                mHelloTextView.setText("Hello " + mName + "! You will be saved into the bundle! " + mTimesSaved + " names have been saved.");
+
+            }else{
+                mTimesSaved=0;
+            }
+        }
 
         Button nameSubmitButton = (Button) findViewById(R.id.name_submit_button);
         nameSubmitButton.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         //TODO: Save the state here
+        outState.putString("name",mName);
+        outState.putInt("timessaved",mTimesSaved);
 
         super.onSaveInstanceState(outState);
     }
