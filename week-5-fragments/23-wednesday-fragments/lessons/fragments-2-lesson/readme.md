@@ -11,7 +11,6 @@ creator:
 *After this lesson, you will be able to:*
 - Communicate between a fragment and its parent activity
 - Communicate between fragments
-- Describe and implement Master-Detail flow
 
 ### STUDENT PRE-WORK
 *Before this lesson, you should already be able to:*
@@ -25,37 +24,38 @@ creator:
 <a name="opening"></a>
 ## Opening (5 mins)
 
-We've covered the very basics of fragments so far, but there are many other things you can do with them. Until this point, our fragments have been isolated, performing work in their own section of the activity. Today we will talk about fragments communicating with other parts of the app, as well as a common fragment design called the Master-Detail View.
+We've covered the very basics of fragments so far, but there are many other things you can do with them. Until this point, our fragments have been isolated, performing work in their own section of the activity. 
+
+Today we will talk about fragments communicating with other parts of the app like the Activity or other fragments.
 
 
 ***
 
 <a name="introduction"></a>
-## Introduction: Communicating with an activity (5 mins)
+## Introduction: Communicating with an activity (10 mins)
 
-Previously, we have viewed fragments as independent modules that are part of an Activity. While this is still true, Android provides the ability for a fragment to communicate back to its parent activity, and therefore to another fragment as well.
+Remember that an Activity can access any fragment using the `FragmentManager`.
+Even though fragments are independent modules, the activity can pass information to 
+them via a method that the fragment owns. This is exactly the same way you had passed 
+information to classes you created, using setter methods.
 
-Since fragments are directly tied to a specific activity, they can easily access the activity to make method calls by using `getActivity()`. Likewise, an Activity can get a reference to a specific fragment using the `FragmentManager`, and call methods within it using an interface.
+A fragment call also pass information to an Activity because fragment has access to its
+parent activity via the `getActivity()` method. Using an interface, the fragment can pass information back to its parent activity.
 
+Now, combine the above to methods of passing information from `Activity -> Fragment` and `Fragment -> Activity`.
+
+> Check: Try to predict how we will use the above mentioned flow to connect data between two fragments.
+
+You get: `FragmentA -> Activity -> FragmentB`. Where fragment A passes data to its parent activity. The parent activity now finds fragment B using `FragmentManager` and passes the data ( can be same or different, its up to you ) to fragment B using the setter method defined in fragment B.
 
 ***
 
 <a name="demo"></a>
-## Demo: Sharing Events with an Activity (30 mins)
+## Demo: Creating List Fragment and Regular Fragment (15 mins)
 
+We need to create a new project where we will have two Fragments: A `ListFragment` and a normal Fragment. When we click on an item in the `ListFragment`, it will change text in the other Fragment.
 
-
-When a fragment needs to talk back to its hosting Activity, you must perform the following steps:
-
-1. Define an interface in the Fragment
-2. Implement the interface in the parent Activity
-3. Call the implemented method using a reference to the parent Activity
-
-From that callback, you can perform some action in the Activity, or pass on information to a different Fragment.
-
-We need to create a new project where we will have two Fragments: A ListFragment and a normal Fragment. When we click on an item in the ListFragment, it will change text in the other Fragment.
-
-Let's start by adding some data to show in the List. In your strings.xml, add the following
+Let's start by adding some data to show in the List. In your `strings.xml`, add the following ( its simply an array of strings called "Planets").
 
 ```xml
 <string-array name="Planets">
@@ -70,7 +70,19 @@ Let's start by adding some data to show in the List. In your strings.xml, add th
     </string-array>
 ```
 
-Now we can create the Java file for the Fragment.
+Now we can create the Java file for the List Fragment, lets call it MyListFragment.java.
+
+It will extend `ListFragment`, this is a special type of fragment that subclasses `Fragment`. ListFragment is specialized to show lists. 
+
+Note below that there is a `setListAdapter()` method, this given to you for free by the `ListFragment` class.
+
+Also note that you can override `onListItemClick()` method to get the 
+- ListView l
+- View v
+- int position
+- long id
+
+values for free as well. This means that `ListFragment` implements `OnListItemClickListener`. In this method we can decide what happens when a list item is clicked. For now, we just make a toast with the item position.
 
 MyListFragment.java
 ```java
@@ -92,7 +104,7 @@ public class MyListFragment extends ListFragment {
 }
 ```
 
-Finally, let's add the fragment to our activity and test it out.
+Finally, let's add the fragment to our activity xml layout and test it out.
 
 activity_main.xml
 ```xml
@@ -116,11 +128,12 @@ activity_main.xml
         android:layout_weight="0.5"/>
 </LinearLayout>
 ```
+
+> Check: Is this a dynamic or static fragment?
+
 It works so far!
 
-Now it's time to add our second fragment, and try communicating with it.
-
-The layout for this fragment will be simple, it will just have a TextView we can set.
+Now it's time to add our second fragment, called DetailFragment. The layout for this fragment will be simple, it will just have a `LinearLayout` holding a `TextView` we can set. The fragment layout will be called `fragment_detail.xml`.
 
 fragment_detail.xml
 ```xml
@@ -143,24 +156,85 @@ public class DetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // note here we are returning the layout xml we just defined above
         return inflater.inflate(R.layout.fragment_detail,container,false);
     }
 }
 ```
 
+Finally, lets add the detail fragment to our `activity_main.xml` and put it inside the linear layout ( which is horizontal ).
 
-Now comes our final two steps. We need to set up the communication from the list fragment back to the activity, and from the activity to the detail fragment.
 
-Remember, we need to set up an interface in the ListFragment since that is where the Activity will be listening for the action. Then we need to allow the fragment to call on the activity.
+activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    tools:context="ly.generalassemb.drewmahrt.morefragments.MainActivity">
 
-In MyListFragment.java
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="ly.generalassemb.drewmahrt.morefragments.MyListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"/>
+
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="ly.generalassemb.drewmahrt.morefragments.DetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"/>
+</LinearLayout>
+```
+
+## Demo: Communication between two fragments
+
+We will learn to communicate in two parts.
+- **Part 1)** We need to set up the communication from the list fragment back to the activity. `FragmentA -> Activity`.
+- **Part 2)** We need to set up the cummunication from the activity to the detail fragment. `Activity -> FragmentB`.
+
+#### Part 1) FragmentA -> Activity communication
+
+When a fragment needs to talk back to its hosting Activity, you must perform the following steps:
+
+1. Define an interface. Interface needs a method that takes some data as an agrument.
+2. Override `onAttach()` method in your fragment. Get a reference to the interface by calling `getActivity()` and cast it to be the type of your interface.
+3. Using the interface reference, you can pass the data to the activity at any time. Once you've passed data using the interface, the activity's implemented interface method ( called a callback ) will receive the data.
+4. Implement the interface in the parent Activity.
+
+In the callback method, you can perform some action in the Activity, or pass on information to a different Fragment.
+
+
+###### Step 1
+
+Define an interface in a separate file called `OnPlanetSelectedListener.java`. It will listen to which planet list item is selected and pass its name along to whoever implements the method ( in this case, its our activity ).
+
+OnPlanetSelectedListener.java
 ```java
-OnPlanetSelectedListener mListener;
-...
-
 public interface OnPlanetSelectedListener {
   public void onPlanetSelected(String selectedPlanet);
 }
+```
+
+###### Step 2
+
+Overriding `onAttach` lets us check to make sure the parent activity implemented the callback needed for the interaction to be successful. That is why you see a try/catch block, which essentially checks if `getActivity()` implemented OnPlanetSelectedListener. If it didn't implement the interface, then a class cast exception will be thrown, because we try to cast our parent activity to something it is not!
+
+In MyListFragment.java
+```java
+
+// declare a variable to store our instance of OnPlanetSelectedListener
+OnPlanetSelectedListener mListener;
+...
+
 
 @Override
     public void onAttach(Context context) {
@@ -171,63 +245,117 @@ public interface OnPlanetSelectedListener {
             throw new ClassCastException(getActivity().toString() + " must implement OnPlanetSelectedListener");
         }
     }
+```
+
+
+
+###### Step 3
+
+Pass some information from the fragment to the activity using our interface.
+
+```java
+
+    ... // code in MyListFragment
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        mListener.onPlanetSelected(l.getAdapter().getItem(position).toString());
+        /**
+         * When a list item is clicked, we can grab our adapter from listView `l`.
+         * - l.getAdapter()
+         *
+         * From the adapter, we can grab our planet item by its position
+         * - l.getAdapter().getItem(position)
+         *
+         * Lastly, we just toString() the item at the position to make sure its a 
+         * String and store it inside selectedPlanetString variable. 
+
+         * This planet is now passed to the interface and will be visible to
+         * our parent activity's implemented method ( this will happen in step 4 ).
+         */
+        String selectedPlanetString = l.getAdapter().getItem(position).toString();
+        mListener.onPlanetSelected(selectedPlanetString);
     }
 ```
 
-Overriding `onAttach` lets us check to make sure the parent activity implemented the callback needed for the interaction to be successful.
 
-Now let's add a method in the detail fragment to accept the String we are going to put in the TextView.
+###### Step 4.
 
+Implement interface inside MainActivity, now we'll have our data from our fragment!
+
+MainActivity.java
 ```java
-public void setPlanetText(String planet){
-        TextView text = (TextView)getView().findViewById(R.id.text);
-        text.setText("Planet selected: "+planet);
+public class MainActivity extends Activity implements OnPlanetSelectedListener {
+
+    ...// MainActivity code
+    
+    @Override
+    public void onPlanetSelected(String selectedPlanet) {
+        // Our selected planet name is now inside our activity!
+
+        // we can do whatever we want with it now! 
+    }
+
 }
 ```
 
-Finally, we need to add the detail fragment, and make the connection by implementing our callback interface in the MainActivity.
 
-```xml
-<fragment
-        android:id="@+id/detail_fragment"
-        android:name="ly.generalassemb.drewmahrt.morefragments.DetailFragment"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/list_fragment"
-        android:layout_weight="0.5"
-        />
-```
+#### Part 2) Activity -> FragmentB communication
+
+To get communication between our activity and fragment working we have to follow these steps:
+
+1. Add a helper method inside fragment B to take some data from the activity
+2. Find fragment B inside parent activity using `FragmentManager` and pass data to it using the helper method we just created
+
+
+###### Step 1.
+
+Add a helper method in the detail fragment to accept the String from parent activity. Wwe are going to put the string inside the TextView.
 
 ```java
-@Override
+public class DetailFragment extends Fragment {
+
+    ...// code from DetailFragment
+
+    // Helper method to take selected planet string from activity
+    public void setPlanetText(String planet){
+            TextView text = (TextView)getView().findViewById(R.id.text);
+
+            // set the selected planet name passed to us on our text view
+            text.setText("Planet selected: "+planet);
+    }
+}
+```
+
+###### Step 2.
+
+Lets find DetailFragment inside MainActivity's implemented method of OnPlanetSelectedListner.
+
+MainActivity.java
+```java
+public class MainActivity extends Activity implements OnPlanetSelectedListener {
+    
+    ...// Rest of the code in MainActivity
+
+    @Override
     public void onPlanetSelected(String selectedPlanet) {
+        // Find DetailFragment by its fragment id!
         DetailFragment detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detail_fragment);
         detailFragment.setPlanetText(selectedPlanet);
     }
 ```
 
 
-***
+#### Completion!
 
-<a name="demo"></a>
-## Guided Practice: Master-Detail Flow (15 mins)
+Now you should have working communication between `FragmentA -> Activity -> FragmentB`.
 
-The master/detail flow can accomplish a similar two-pane layout, but only uses one fragment.
 
-Start a new project, and choose the Master/Detail Flow from the templates. The Master/Detail flow sets up a two-pane layout for us to use that automatically adapts to fit phones or tablets. On tablets, it displays the two panes side by side. On a phone, it makes each a separate screen.
-
-Let's walk through all of the parts of the master detail flow to understand how it works.
 
 ***
 
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (20 mins)
 
-Take our demo from earlier in the lesson, and adapt it to act more like the Master-Detail flow. Instead of using one fragment like the template, ours will use two fragments. On a phone, have it display the detail text in a separate activity (but still in a fragment), and on a tablet have it display in a second pane next to the list.
 
 
 ***
