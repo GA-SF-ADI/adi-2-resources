@@ -11,6 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mMediaPlayer;
+    //boolean play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mMediaPlayer.start();
+                //play = true;
             }
         });
 
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mMediaPlayer.pause();
-                
+                //play = false;
+
             }
         });
     }
@@ -52,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mMediaPlayer.start();
+
+//        if(play) {
+//            mMediaPlayer.start();
+//        }
     }
 
     @Override
