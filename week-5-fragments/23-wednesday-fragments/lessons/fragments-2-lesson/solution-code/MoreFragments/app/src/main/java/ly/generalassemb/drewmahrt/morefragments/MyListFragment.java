@@ -1,16 +1,13 @@
 package ly.generalassemb.drewmahrt.morefragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * Created by drewmahrt on 2/25/16.
@@ -19,7 +16,7 @@ public class MyListFragment extends ListFragment {
     OnPlanetSelectedListener mListener;
 
     public interface OnPlanetSelectedListener {
-        public void onPlanetSelected(String selectedPlanet);
+        void onPlanetSelected(String selectedPlanet);
     }
 
     @Override

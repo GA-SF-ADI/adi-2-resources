@@ -68,19 +68,8 @@ public class WeatherSQliteOpenHelper extends SQLiteOpenHelper {
 
     //This takes in a column name and gets
     public Cursor getTemp(String wantedTemp){
-        String column;
-        switch(wantedTemp){
-            case "celsius":
-                column = COL_TEMP_CEL;
-                break;
-            case "kelvin":
-                column = COL_TEMP_KELVIN;
-                break;
-            default:
-                column = COL_TEMP_FAHR;
-        }
         SQLiteDatabase db = getReadableDatabase();
-        String[] projection = {COL_ID, COL_DAY, column};
+        String[] projection = {COL_ID, COL_DAY, wantedTemp};
         Cursor cursor = db.query(TABLE_NAME,projection, null, null, null, null, null);
         return cursor;
     }
