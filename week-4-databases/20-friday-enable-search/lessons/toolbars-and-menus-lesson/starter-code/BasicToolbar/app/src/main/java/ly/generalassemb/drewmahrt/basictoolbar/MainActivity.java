@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_share:
 
                 return true;
+            case R.id.newItem:
+                return true;
 
             default:
                 // If we got here, the user's action was not recognized.

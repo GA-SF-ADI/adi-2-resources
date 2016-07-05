@@ -4,11 +4,13 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.Toast;
 
 import ly.generalassemb.drewmahrt.searchviewdemo.setup.DBAssetHelper;
 
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+
+
+            Toast.makeText(MainActivity.this, query,Toast.LENGTH_SHORT).show();
         }
     }
 }

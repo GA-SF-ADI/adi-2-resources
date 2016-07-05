@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.toolbasandmenulab.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:gravity="top"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/like_view"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/my_toolbar"
+            android:layout_alignEnd="@+id/my_toolbar"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:text="Whiten"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left" />
+
+        <ImageButton
+            android:id="@+id/check_image"
+            android:src="@android:drawable/checkbox_on_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/my_toolbar"
+            android:layout_alignEnd="@+id/my_toolbar"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:gravity="top"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/like"
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/my_toolbar"
+            android:layout_alignEnd="@+id/my_toolbar"/>
+
+
+        <ImageButton
+            android:id="@+id/check"
+            android:src="@android:drawable/checkbox_on_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/my_toolbar"
+            android:layout_alignEnd="@+id/my_toolbar"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+</RelativeLayout>

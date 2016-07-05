@@ -57,9 +57,22 @@
         android:layout_gravity="bottom"
         android:background="#8e8e8e">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="I am a toolbar!"/>
+        <ImageView
+            android:id="@+id/music_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_play"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLaying song"/>
+
+        <Button
+            android:id="@+id/toast_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"/>
+
+
     </android.support.v7.widget.Toolbar>
 </FrameLayout>
