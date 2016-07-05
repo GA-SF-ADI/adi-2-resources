@@ -16,7 +16,7 @@ public class SecondActivity extends AppCompatActivity {
         TextView textView = (TextView)findViewById(R.id.message_text_view);
 
         //TODO: Retrieve the text from SharedPreferences and set it to the String variable "message"
-
+private
         textView.setText("Message from MainActivity: "+message);
     }
 }
