@@ -19,35 +19,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
-        setSupportActionBar(toolbar);
+
+        //set up Toolbar and link with Resource
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-
-                return true;
 
             case R.id.action_share:
                 Toast.makeText(MainActivity.this, "Clicked Share", Toast.LENGTH_SHORT).show();
                 return true;
+                //Override method to inflate the Menu
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
 
-        }
-    }
+
+    //Override method onOptionsItemSelected to respond to actions
 }
