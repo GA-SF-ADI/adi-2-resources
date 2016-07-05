@@ -12,6 +12,7 @@ import android.content.SharedPreferences.Editor;
 
 public class MainActivity extends AppCompatActivity {
     private EditText editText;
+    public static String MY_KEY = "activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +21,17 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText)findViewById(R.id.message_edit_text);
         Button submitButton = (Button)findViewById(R.id.submit_button);
 
+        final SharedPreferences sharedPreferences = getSharedPreferences("coolkey",Context.MODE_PRIVATE);
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: Save the text from the EditText to the SharedPreferences
+                String txt = editText.getText().toString();
+
+                Editor editor = sharedPreferences.edit();
+                editor.putString(MY_KEY,txt);
+                editor.commit();
 
                 Intent i = new Intent(MainActivity.this,SecondActivity.class);
                 startActivity(i);

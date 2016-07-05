@@ -15,6 +15,9 @@ public class SecondActivity extends AppCompatActivity {
 
         TextView textView = (TextView)findViewById(R.id.message_text_view);
 
+        final SharedPreferences sharedPreferences = getSharedPreferences("coolkey",Context.MODE_PRIVATE);
+
+        String message = sharedPreferences.getString(MainActivity.MY_KEY,"default");
         //TODO: Retrieve the text from SharedPreferences and set it to the String variable "message"
 
         textView.setText("Message from MainActivity: "+message);
