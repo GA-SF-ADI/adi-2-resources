@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/share"
+        android:title="share"
+        android:icon="@android:drawable/ic_menu_share"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/bookmark"
+        android:title="bookmark"
+        android:icon="@android:drawable/ic_menu_save"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/download"
+        android:title="download"
+        android:icon="@android:drawable/ic_menu_upload"
+        app:showAsAction="always"
+        />
+
+</menu>
