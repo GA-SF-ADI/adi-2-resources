@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ly.generalassemb.drewmahrt.shoppinglistwithsearch">
+    package="com.example.michaeljeffress.toolbar_lab">
 
     <application
         android:allowBackup="true"
@@ -14,11 +14,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
         </activity>
     </application>
 
