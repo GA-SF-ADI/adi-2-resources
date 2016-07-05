@@ -17,5 +17,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
+<<<<<<< HEAD
 
+=======
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+>>>>>>> 493b89fa84d39378eb6aebc400813a7ba7569e51
 </RelativeLayout>

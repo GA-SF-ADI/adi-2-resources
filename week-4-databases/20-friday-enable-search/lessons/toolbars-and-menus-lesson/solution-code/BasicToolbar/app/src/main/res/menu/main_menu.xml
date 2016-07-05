@@ -5,11 +5,19 @@
         android:id="@+id/action_share"
         android:icon="@android:drawable/ic_menu_share"
         android:title="@string/action_share"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/action_settings"
+    <item
+        android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_security"
+        android:icon="@android:drawable/ic_secure"
+        android:title="@string/action_security"
+        app:showAsAction="ifRoom" />
+
 
     <item android:id="@+id/my_items"
         app:showAsAction="ifRoom"
