@@ -40,19 +40,34 @@ public class MainActivity extends AppCompatActivity {
 
         //Retrieve name and address from savedInstanceState with getString() method.
 
-
         if (address != null && name != null) {
             addressView.setText("Your Address: " + address);
             nameView.setText("Your Name: " + name);
         }
 
+        if(savedInstanceState!=null) {
+            if (savedInstanceState.getString("address") != null) {
+                address = savedInstanceState.getString("address");
+                addressView.setText("Your Address: " + address);
+            }
+            if (savedInstanceState.getString("name") != null) {
+                name = savedInstanceState.getString("name");
+                nameView.setText("Your Name: " + name);
+            }
+        }
+
+
+
         //Set the two TextViews with EditText inputs on button click.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name = nameEdit.getText().toString();
+                address = addressEdit.getText().toString();
 
                 //set TextViews with EditText inputs here.
-
+                addressView.setText("Your Address: " + address);
+                nameView.setText("Your Name: " + name);
 
                 //Clear the EditTexts for new inputs.
                 addressEdit.getText().clear();
@@ -66,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         // Save custom values into the bundle
+        savedInstanceState.putString(MY_ADDRESS, address);
+        savedInstanceState.putString(MY_NAME, name);
+
+        Toast.makeText(MainActivity.this,"Saved instances",Toast.LENGTH_LONG).show();
+
+        super.onSaveInstanceState(savedInstanceState);
 
         // Always call the superclass so it can save the view hierarchy state
 
@@ -76,9 +97,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view hierarchy
-
+        super.onRestoreInstanceState(savedInstanceState);
         // Restore state members from saved instance
+        name=savedInstanceState.getString(MY_NAME);
+        address=savedInstanceState.getString(MY_ADDRESS);
 
+        Toast.makeText(MainActivity.this,"Restored instances",Toast.LENGTH_LONG).show();
 
     }
 
