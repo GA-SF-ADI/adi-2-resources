@@ -1,10 +1,11 @@
 ---
-title: Fragments (part 2)
-duration: "1:25"
+title: Fragments part 2
+duration: "1:30"
 creator:
     name: Drew Mahrt
     city: NYC
 ---
+
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Fragments (part 2)
 
 ### LEARNING OBJECTIVES
@@ -195,7 +196,7 @@ activity_main.xml
 </LinearLayout>
 ```
 
-## Demo: Communication between two fragments
+## Demo: Communication between two fragments ( 30 mins )
 
 We will learn to communicate in two parts.
 - **Part 1)** We need to set up the communication from the list fragment back to the activity. `FragmentA -> Activity`.
@@ -354,10 +355,20 @@ Now you should have working communication between `FragmentA -> Activity -> Frag
 ***
 
 <a name="ind-practice"></a>
-## Independent Practice: Topic (20 mins)
+## Independent Practice: Topic (25 mins)
 
+Open the [starter-code](starter-code/MoreFragments).
 
+You need to add fill in the TODO's inside these files in the order below:
+- 1. MyListFragment
+- 2. DetailFragment
+- 3. MainActivity
 
+The TODO's guide you in sending information from `MyListFragment -> MainActivity -> DetailFragment`.
+
+All of the xml layouts and list adapters are premade for you! Simply practice getting information from one fragment, to the activity, and then to the next fragment.
+
+There is [solution code](solution-code/MoreFragments) available for your reference.
 ***
 
 <a name="conclusion"></a>
@@ -365,11 +376,11 @@ Now you should have working communication between `FragmentA -> Activity -> Frag
 
 Now that we have a more complete understanding of how fragments work, and how they interact with the activity as well as each other, we get a better idea of when they are appropriate to use. Setting up the interaction between a fragment and an activity might seem like a lot of work at first, but with practice it becomes easier.
 
-- Describe the steps needed to make the two fragments interact with each other.
-
+> Check: Describe the steps needed to make the two fragments interact with each other.
 
 ***
 
 ### ADDITIONAL RESOURCES
 - [Fragments Developers Guide](http://developer.android.com/guide/components/fragments.html)
+- [Communicating in Fragments](https://developer.android.com/training/basics/fragments/communicating.html)
 - [Adaptive UI Guide](http://developer.android.com/training/multiscreen/adaptui.html)
