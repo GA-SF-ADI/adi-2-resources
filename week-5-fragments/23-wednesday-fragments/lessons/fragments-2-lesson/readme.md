@@ -1,5 +1,5 @@
 ---
-title: Fragments (part 2: Communication)
+title: Fragments part 2
 duration: "1:30"
 creator:
     name: Drew Mahrt
