@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //if there is a saved instance state "timeStarted"
+        // will create a saved instance state
         if(savedInstanceState != null) {
             mTimeStarted = savedInstanceState.getString("timeStarted");
             TextView textView = (TextView)findViewById(R.id.text);
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(mTimeStarted);
 
     }
+
+    // we saved an instance state
+    //"timeStarted" is the key
+    //mTimeStarted is the value
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
