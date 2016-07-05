@@ -1,6 +1,8 @@
 package ly.generalassemb.drewmahrt.musicplayer;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,18 +18,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //The music used in this app is provided by www.bensound.com under the creative commons license
-        int resID=getResources().getIdentifier("bensound_funnysong", "raw", getPackageName());
-        mMediaPlayer = MediaPlayer.create(this,resID);
+        int resID = getResources().getIdentifier("bensound_funnysong", "raw", getPackageName());
+        mMediaPlayer = MediaPlayer.create(this, resID);
 
-        Button launchButton = (Button)findViewById(R.id.new_activity_button);
+        Button launchButton = (Button) findViewById(R.id.new_activity_button);
         launchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+
             }
         });
 
-        Button startMusicButton = (Button)findViewById(R.id.play_button);
+        Button startMusicButton = (Button) findViewById(R.id.play_button);
         startMusicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,12 +38,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button pauseMusicButton = (Button)findViewById(R.id.pause_button);
+        Button pauseMusicButton = (Button) findViewById(R.id.pause_button);
         pauseMusicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMediaPlayer.pause();
+                
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMediaPlayer.pause();
+    }
 }
+
