@@ -1,6 +1,5 @@
 package ly.generalassemb.drewmahrt.morefragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;

@@ -16,5 +16,5 @@ public class MainActivity extends AppCompatActivity { // TODO: 1. implement your
     // TODO: 2b. Use your DetailFragment's instance and pass selectedPlanet to the helper method
 
 
-    
+
 }
