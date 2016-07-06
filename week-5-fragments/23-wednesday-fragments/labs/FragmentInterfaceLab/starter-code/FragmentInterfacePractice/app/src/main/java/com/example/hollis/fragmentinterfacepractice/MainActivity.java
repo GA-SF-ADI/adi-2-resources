@@ -8,13 +8,15 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AnimalSelectedInterface{
     List<Animal> animalList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setAnimalList();
+        AnimalListFragment animalListFragment = (AnimalListFragment) getSupportFragmentManager().findFragmentById(R.id.animalList);
+        animalListFragment.setList(animalList);
 
     }
 
@@ -28,4 +30,9 @@ public class MainActivity extends AppCompatActivity {
         animalList.add(animal2);
     }
 
+    @Override
+    public void animalSelected(Animal animalSelected) {
+        DetailFragment detailFragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.animalDetail);
+        detailFragment.setAnimalText(animalSelected);
+    }
 }
