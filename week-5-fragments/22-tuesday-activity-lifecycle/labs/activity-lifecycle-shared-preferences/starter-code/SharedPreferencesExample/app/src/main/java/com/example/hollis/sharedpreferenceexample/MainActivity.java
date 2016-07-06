@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,46 +43,44 @@ public class MainActivity extends AppCompatActivity {
 
         //These Click Listeners determine which type of temperature should be shown
         //TODO: Save the users preferences on shared preferences
-        //TODO: Have the correct one load up onCreate or onResume;
+        //TODO: Have the correct one load inside of onResume;
         fahr = (Button) findViewById(R.id.fahr_button);
         cels = (Button) findViewById(R.id.celsius_button);
         kelv = (Button) findViewById(R.id.kelvin_button);
         fahr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
-                        android.R.layout.simple_list_item_2,
-                        helper.getTemp("fahrenheit"),
-                        new String[]{WeatherSQliteOpenHelper.COL_DAY, WeatherSQliteOpenHelper.COL_TEMP_FAHR},
-                        new int[] {android.R.id.text1, android.R.id.text2},
-                        0);
-                listView.setAdapter(adapter);
+                setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
             }
         });
 
         cels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
-                        android.R.layout.simple_list_item_2,
-                        helper.getTemp("celsius"),
-                        new String[]{WeatherSQliteOpenHelper.COL_DAY, WeatherSQliteOpenHelper.COL_TEMP_CEL},
-                        new int[] {android.R.id.text1, android.R.id.text2},
-                        0);
-                listView.setAdapter(adapter);
+                setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
             }
         });
         kelv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
-                        android.R.layout.simple_list_item_2,
-                        helper.getTemp("kelvin"),
-                        new String[]{WeatherSQliteOpenHelper.COL_DAY, WeatherSQliteOpenHelper.COL_TEMP_KELVIN},
-                        new int[] {android.R.id.text1, android.R.id.text2},
-                        0);
-                listView.setAdapter(adapter);
+                setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
             }
         });
     }
+
+
+    public void setAdapter(String curColumn){
+        if(curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_CEL) ||curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_KELVIN) ||curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_FAHR)) {
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
+                    android.R.layout.simple_list_item_2,
+                    helper.getTemp(curColumn),
+                    new String[]{WeatherSQliteOpenHelper.COL_DAY, curColumn},
+                    new int[]{android.R.id.text1, android.R.id.text2},
+                    0);
+            listView.setAdapter(adapter);
+        }else{
+            Toast.makeText(this, "Click a Button to show tempuratures!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
