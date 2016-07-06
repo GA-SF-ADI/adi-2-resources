@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
                 fahrClicked = true && celsClicked != true && kelvClicked != true;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString(MY_DATA, WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+                editor.commit();
             }
         });
 
@@ -74,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
                 celsClicked = true && fahrClicked != true && kelvClicked != true;
+                SharedPreferences.Editor editor =preferences.edit();
+                editor.putString(MY_DATA, WeatherSQliteOpenHelper.COL_TEMP_CEL);
+                editor.commit();
             }
         });
         kelv.setOnClickListener(new View.OnClickListener() {
@@ -82,25 +88,28 @@ public class MainActivity extends AppCompatActivity {
                 listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
                 kelvClicked = true && celsClicked != true && fahrClicked != true;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString(MY_DATA, WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
+                editor.commit();
             }
         });
     }
 
 
     public void setAdapter(String curColumn) {
-        if (curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_CEL) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_KELVIN) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_FAHR)) {
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
-                    android.R.layout.simple_list_item_2,
-                    helper.getTemp(curColumn),
-                    new String[]{WeatherSQliteOpenHelper.COL_DAY, curColumn},
-                    new int[]{android.R.id.text1, android.R.id.text2},
-                    0);
-            listView.setAdapter(adapter);
-        } else {
-            Toast.makeText(this, "Click a Button to show tempuratures!", Toast.LENGTH_SHORT).show();
-        }
+            if (curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_CEL) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_KELVIN) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_FAHR)) {
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
+                        android.R.layout.simple_list_item_2,
+                        helper.getTemp(curColumn),
+                        new String[]{WeatherSQliteOpenHelper.COL_DAY, curColumn},
+                        new int[]{android.R.id.text1, android.R.id.text2},
+                        0);
+                listView.setAdapter(adapter);
+            } else {
+                Toast.makeText(this, "Click a Button to show tempuratures!", Toast.LENGTH_SHORT).show();
+            }
 
-    }
+        }
 
     @Override
     protected void onPause() {
