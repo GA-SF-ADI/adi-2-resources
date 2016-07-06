@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     boolean kelvClicked;
 
     public static String MY_DATA = "my data";
-    SharedPreferences sharedPreferences;
+    SharedPreferences preferences;
 
 
     @Override
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //Gets an Instance of our weather helper
         helper = WeatherSQliteOpenHelper.getInstance(this);
 
-
+    preferences=getPreferences(Context.MODE_PRIVATE);
         //inserts weathers into our database
         //TODO: THIS WILL RUN ON ONCREATE EVERY TIME, USE SHAREDPREFERENCES TO MAKE IT NOT HAPPEN
         Weather weather1 = new Weather("Monday", 20, 78, 295);
@@ -115,13 +115,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         //save to shared preferences
-        sharedPreferences = MainActivity.this.getSharedPreferences("sharedPrefereces", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (fahrClicked = true) {
+        preferences = MainActivity.this.getSharedPreferences("sharedPrefereces", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if (fahrClicked == true) {
             editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_FAHR);
-        } else if (celsClicked = true) {
+        } else if (celsClicked == true) {
             editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_CEL);
-        } else if (kelvClicked = true){
+        } else if (kelvClicked == true){
             editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
         }
 
@@ -132,11 +132,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (fahrClicked = true) {
+        if (fahrClicked == true) {
             setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
-        } else if (celsClicked = true) {
+        } else if (celsClicked == true) {
             setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
-        } else if (kelvClicked = true) {
+        } else if (kelvClicked == true) {
             setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
         }
     }
