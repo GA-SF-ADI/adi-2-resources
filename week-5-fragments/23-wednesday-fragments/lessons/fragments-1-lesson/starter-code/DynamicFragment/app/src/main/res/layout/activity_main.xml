@@ -26,7 +26,12 @@
 
 
     <!-- Create a container to hold our fragments -->
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/weekly_button"
+    android:id="@+id/fragment_dynamic_container">
+</FrameLayout>
 
 
 </RelativeLayout>
