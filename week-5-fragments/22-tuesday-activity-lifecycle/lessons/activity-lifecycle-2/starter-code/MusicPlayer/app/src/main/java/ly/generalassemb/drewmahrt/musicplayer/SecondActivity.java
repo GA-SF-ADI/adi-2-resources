@@ -20,5 +20,11 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }

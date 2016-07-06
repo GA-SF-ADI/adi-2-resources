@@ -1,4 +1,4 @@
-package ly.generalassemb.drewmahrt.scrollingwithtoolbar;
+package com.example.generalassembly.myapplication;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,9 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ScrollingActivity extends AppCompatActivity {
-
-    Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar_bottom);
-    setSupportActionBar(toolbar);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

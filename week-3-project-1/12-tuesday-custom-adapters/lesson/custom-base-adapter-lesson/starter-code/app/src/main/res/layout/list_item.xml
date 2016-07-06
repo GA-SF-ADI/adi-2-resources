@@ -14,20 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="First"/>
+        android:text="@string/First"/>
 
     <TextView
         android:id="@+id/list_item_tv_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Second"/>
+        android:text="@string/Second"/>
 
     <Button
         android:id="@+id/list_item_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Click me"/>
+        android:text="@string/Click_me"/>
 
 </LinearLayout>
