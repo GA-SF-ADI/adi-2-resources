@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by drewmahrt on 2/25/16.
@@ -18,6 +19,9 @@ public class DetailFragment extends Fragment {
     }
 
     // TODO: Create your helper method that takes selected planet name and sets it as text to TextView
-
+    public void setPlanetText(String selectedPlanet) {
+        TextView textView = (TextView) getView().findViewById(R.id.text);
+        textView.setText(selectedPlanet);
+    }
 
 }
