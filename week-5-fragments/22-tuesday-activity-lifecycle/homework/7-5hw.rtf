@@ -12,7 +12,12 @@ onPause()-activity still visible in the background, user can\'92t interact with 
 onStop()-activity not visible \
 onDestroy()- activity shut down\
 \
-                                                      |\'97\'97\'97\'97\'97\'97\'97|\
+  \
+\
+	                 onStop can go back to onStart to restart the activity\
+		        _____________________________________	\
+		        |							      |	\
+                              |                      |\'97\'97\'97\'97\'97\'97\'97|		      |	\
 onCreate >>>> onStart >>> onResume >>>> onPause >>>> onStop >>> onDestroy\
                                                       |_____________|\
                                            after onPause app can go back to onResume\
