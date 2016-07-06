@@ -70,10 +70,10 @@ public class WeatherSQliteOpenHelper extends SQLiteOpenHelper {
     public Cursor getTemp(String wantedTemp){
         String column;
         switch(wantedTemp){
-            case "celsius":
+            case "Celsius":
                 column = COL_TEMP_CEL;
                 break;
-            case "kelvin":
+            case "Kelvin":
                 column = COL_TEMP_KELVIN;
                 break;
             default:
