@@ -15,16 +15,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Declare a Toolbar and link to xml Resource
         Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        //Set support action bar for our Toolbar
         setSupportActionBar(toolbar);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //we are gathering out menu items and inflating the options
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
+        //returning our menu after inflation
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -37,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.action_share:
 
+                Toast.makeText(MainActivity.this, "Share!", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.action_security:
+
+                Toast.makeText(MainActivity.this, "Security", Toast.LENGTH_LONG).show();
                 return true;
 
             case R.id.action_press:

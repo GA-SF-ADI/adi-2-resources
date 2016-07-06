@@ -5,6 +5,7 @@
         android:id="@+id/action_share"
         android:icon="@android:drawable/ic_menu_share"
         android:title="@string/action_share"
+<<<<<<< HEAD
         app:showAsAction="always"/>
 
     <item
@@ -18,9 +19,20 @@
         android:icon="@android:drawable/ic_menu_camera"
         android:title="Camera"
         app:showAsAction="always"/>
+=======
+        app:showAsAction="ifRoom" />
+>>>>>>> 4c3b9f727c6411e3bc4ea1556d56716b69333def
 
-    <item android:id="@+id/action_settings"
+    <item
+        android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_security"
+        android:icon="@android:drawable/ic_secure"
+        android:title="@string/action_security"
+        app:showAsAction="ifRoom" />
+
 
 </menu>
