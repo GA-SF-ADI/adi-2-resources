@@ -23,10 +23,10 @@
         android:layout_alignParentRight="true"
         android:text="Weekly Weather"/>
 
-    <!-- Container where we will swap fragments -->
-    <FrameLayout
-        android:id="@+id/weather_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/daily_button"></FrameLayout>
+
+
+    <!-- Create a container to hold our fragments -->
+
+
+
 </RelativeLayout>
