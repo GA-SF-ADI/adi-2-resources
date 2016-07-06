@@ -50,6 +50,7 @@ Grab [starter code](starter-code/UsabilityTestingStarterCode) and import it into
 
 *NOTE:* This lab utilizes [WebViews](https://developer.android.com/reference/android/webkit/WebView.html), and the basic code for the WebViews will be included for you in the starter code. A WebView is a View that displays a WebPage from an endpoint, and it does require the INTERNET permission in the Manifest. Take a moment to briefly look over the Android Developer documentation on WebViews.
 
+
 Included in this lab are the following:
 
 * Two activities: **Main Activity** and **Details Activity**.
@@ -57,6 +58,19 @@ Included in this lab are the following:
 	* Main Activity is an empty activity. It does not require any code added. Your task is to add a new layout for tablet devices.
 	* Details Activity should send an implicit intent to bring up a webView and open a link with the information about the corresponding
 	horoscope sign.
+
+	WebViews are inflated the same as other views you are already familiar with. For opening the link from the webview, use the following methods (where wv is a WebView):
+
+	```java
+    wv.loadUrl("http://www.horoscopedates.com/zodiac-signs/" + sign + "/");
+    wv.setWebViewClient(new WebViewClient() {
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        view.loadUrl(url);
+        return true;
+      }
+    });
+    ```
 
 * Two fragments: **List Fragment** and **Details Fragment**.
 These are the classes that require most of the work done. In the imported project you will find TODO: to finish.
