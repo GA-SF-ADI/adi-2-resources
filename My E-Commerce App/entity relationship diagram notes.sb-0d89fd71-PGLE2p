@@ -1,0 +1,22 @@
+
+
+Shopping Cart Table
+	•Singleton class that manages the products
+	•https://github.com/GA-SF-ADI/adi-2-resources/tree/master/week-4-databases/18-wednesday-joins-sqlite-helper/lessons/detail-view-lesson#codealong-using-a-singleton-with-sqliteopenhelper-20-mins
+
+Customer Table
+	•Customer ID
+
+Products Table
+	•Product ID
+
+Class that defines ALL products
+
+Individual product class
+
+Individual customer class
+
+
+
+
+
