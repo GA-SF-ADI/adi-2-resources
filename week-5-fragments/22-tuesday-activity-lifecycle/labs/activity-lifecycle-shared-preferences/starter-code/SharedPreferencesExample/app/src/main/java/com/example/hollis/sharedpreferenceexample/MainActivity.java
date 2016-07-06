@@ -1,5 +1,7 @@
 package com.example.hollis.sharedpreferenceexample;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,14 @@ public class MainActivity extends AppCompatActivity {
     Button fahr;
     Button cels;
     Button kelv;
+    boolean fahrClicked;
+    boolean celsClicked;
+    boolean kelvClicked;
+
+    public static String MY_DATA = "my data";
+    SharedPreferences sharedPreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,36 +51,44 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listview);
 
+
         //These Click Listeners determine which type of temperature should be shown
         //TODO: Save the users preferences on shared preferences
         //TODO: Have the correct one load inside of onResume;
         fahr = (Button) findViewById(R.id.fahr_button);
         cels = (Button) findViewById(R.id.celsius_button);
         kelv = (Button) findViewById(R.id.kelvin_button);
+
         fahr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+                fahrClicked = true && celsClicked != true && kelvClicked != true;
             }
         });
 
         cels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
+                celsClicked = true && fahrClicked != true && kelvClicked != true;
             }
         });
         kelv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listView.setAdapter(null);
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
+                kelvClicked = true && celsClicked != true && fahrClicked != true;
             }
         });
     }
 
 
-    public void setAdapter(String curColumn){
-        if(curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_CEL) ||curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_KELVIN) ||curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_FAHR)) {
+    public void setAdapter(String curColumn) {
+        if (curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_CEL) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_KELVIN) || curColumn.equals(WeatherSQliteOpenHelper.COL_TEMP_FAHR)) {
             SimpleCursorAdapter adapter = new SimpleCursorAdapter(MainActivity.this,
                     android.R.layout.simple_list_item_2,
                     helper.getTemp(curColumn),
@@ -78,9 +96,55 @@ public class MainActivity extends AppCompatActivity {
                     new int[]{android.R.id.text1, android.R.id.text2},
                     0);
             listView.setAdapter(adapter);
-        }else{
+        } else {
             Toast.makeText(this, "Click a Button to show tempuratures!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //save to shared preferences
+        sharedPreferences = MainActivity.this.getSharedPreferences("sharedPrefereces", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (fahrClicked = true) {
+            editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+        } else if (celsClicked = true) {
+            editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_CEL);
+        } else if (kelvClicked = true){
+            editor.putString("text", WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
+        }
+
+        editor.commit();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (fahrClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+        } else if (celsClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
+        } else if (kelvClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (fahrClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+        } else if (celsClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
+        } else if (kelvClicked = true) {
+            setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
+        }
+    }
+
+
 }
+
+

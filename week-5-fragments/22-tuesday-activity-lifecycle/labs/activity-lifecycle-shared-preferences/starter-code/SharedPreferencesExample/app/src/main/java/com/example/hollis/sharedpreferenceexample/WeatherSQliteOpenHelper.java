@@ -2,16 +2,23 @@ package com.example.hollis.sharedpreferenceexample;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Parcelable;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Created by hollis on 6/30/16.
  */
 public class WeatherSQliteOpenHelper extends SQLiteOpenHelper {
+
+    ListView listView;
+
+
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Weather_DB";
     public static final String TABLE_NAME = "Weather";
@@ -44,6 +51,7 @@ public class WeatherSQliteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE);
+
     }
 
     @Override
@@ -73,5 +81,6 @@ public class WeatherSQliteOpenHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_NAME,projection, null, null, null, null, null);
         return cursor;
     }
+
 
 }
