@@ -1,20 +1,29 @@
 package com.example.hollis.fragmentinterfacepractice;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnAnimalSelectedListener {
     List<Animal> animalList;
+    AnimalListFragment mAnimalList;
+    DetailFragment detailFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setAnimalList();
+        mAnimalList = new AnimalListFragment();
+        mAnimalList.getAnimalList(animalList);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container,mAnimalList);
+        fragmentTransaction.commit();
 
     }
 
@@ -26,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
         animalList.add(animal);
         animalList.add(animal1);
         animalList.add(animal2);
+
+
     }
 
+
+    @Override
+    public void onAnimalSelected(Animal animal) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (detailFragment == null) {
+            detailFragment = new DetailFragment();
+        }
+        detailFragment.setText(animal);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, detailFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 }
