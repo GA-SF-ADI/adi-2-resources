@@ -13,11 +13,7 @@ import android.widget.TextView;
  */
 public class DetailFragment extends Fragment {
     TextView textView1, textView2, textView3;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    Animal animal;
 
     @Nullable
     @Override
@@ -26,12 +22,15 @@ public class DetailFragment extends Fragment {
         textView1 = (TextView) v.findViewById(R.id.text1);
         textView2 = (TextView) v.findViewById(R.id.text2);
         textView3 = (TextView) v.findViewById(R.id.text3);
+
+        textView1.setText(animal.getName());
+        textView2.setText(animal.getNumLegs());
+        textView3.setText(animal.getSize()+"");
         return v;
     }
 
     public void setText(Animal animal){
-        textView1.setText(animal.getName());
-        textView2.setText(animal.getNumLegs());
-        textView3.setText(animal.getSize());
+        this.animal=animal;
     }
+
 }

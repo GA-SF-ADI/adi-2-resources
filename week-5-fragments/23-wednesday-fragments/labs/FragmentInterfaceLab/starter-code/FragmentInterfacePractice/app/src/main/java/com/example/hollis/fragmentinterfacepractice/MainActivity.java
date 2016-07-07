@@ -42,10 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnAnimalSelectedL
 
     @Override
     public void onAnimalSelected(Animal animal) {
+        DetailFragment detailFragment = new DetailFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if (detailFragment == null) {
-            detailFragment = new DetailFragment();
-        }
+
         detailFragment.setText(animal);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, detailFragment);
