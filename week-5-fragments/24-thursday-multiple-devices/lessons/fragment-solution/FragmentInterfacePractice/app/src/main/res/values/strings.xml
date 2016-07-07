@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FragmentInterfacePractice</string>
+    <string name="lion_name">Lion</string>
+    <string name="lion_size">Big</string>
+
+    <string name="koala_name">Koala</string>
+    <string name="koala_size">Medium</string>
+
+    <string name="fish_name">Fish</string>
+    <string name="fish_size">Small</string>
+
+</resources>
