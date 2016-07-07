@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity implements AnimalListFragmen
 
     public void setAnimalList(){
         animalList = new ArrayList<>();
-        Animal animal = new Animal("Lion", "big", 4);
-        Animal animal1 = new Animal("Fish", "small", 0);
-        Animal animal2 = new Animal("Koala", "medium", 2);
+        Animal animal = new Animal(getString(R.string.lion_name), getString(R.string.lion_size), 4);
+        Animal animal1 = new Animal(getString(R.string.fish_name), getString(R.string.fish_size), 0);
+        Animal animal2 = new Animal(getString(R.string.koala_name), getString(R.string.koala_size), 2);
         animalList.add(animal);
         animalList.add(animal1);
         animalList.add(animal2);
