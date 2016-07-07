@@ -15,20 +15,26 @@ public class ResultFragment extends Fragment {
     TextView animalName;
     TextView animalSize;
     TextView animalLegs;
+    Animal animal;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         animalName = (TextView) getView().findViewById(R.id.animal_name);
-         animalSize = (TextView) getView().findViewById(R.id.animal_size);
-         animalLegs = (TextView) getView().findViewById(R.id.animal_legs);
-
-        return inflater.inflate(R.layout.fragment_animal_info,container,false);
-    }
-    public void setAnimal(Animal animal){
-
+        View v = inflater.inflate(R.layout.fragment_animal_info, container, false);
+        animalName = (TextView) v.findViewById(R.id.animal_name);
+        animalSize = (TextView) v.findViewById(R.id.animal_size);
+        animalLegs = (TextView) v.findViewById(R.id.animal_legs);
         animalName.setText(animal.getName());
         animalSize.setText(animal.getSize());
-        animalLegs.setText(animal.getNumLegs());
+       //animalLegs.setText(animal.getNumLegs());
+        return v;
+
+
+    }
+
+    public void setAnimal(Animal animal) {
+        this.animal = animal;
+
 
     }
 }

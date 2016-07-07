@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements OnAnimalSelectedL
     List<Animal> animalList;
     FragmentManager fragmentManager;
     AnimalListFragment animalDisplay;
-    ResultFragment resultDisplay;
+
 
 
 
@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity implements OnAnimalSelectedL
         setContentView(R.layout.activity_main);
         setAnimalList();
         fragmentManager= getSupportFragmentManager();
-
-
         animalDisplay = new AnimalListFragment();
         animalDisplay.setAnimalList(animalList);
         FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements OnAnimalSelectedL
     }
     @Override
     public void onAnimalSelected(Animal selectedAnimal) {
-
+        ResultFragment resultDisplay = new ResultFragment();
         resultDisplay.setAnimal(selectedAnimal);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, resultDisplay);

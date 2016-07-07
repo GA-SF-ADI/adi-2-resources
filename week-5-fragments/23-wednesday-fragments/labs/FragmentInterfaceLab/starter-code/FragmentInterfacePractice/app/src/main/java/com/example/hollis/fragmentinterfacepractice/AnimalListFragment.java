@@ -2,7 +2,6 @@ package com.example.hollis.fragmentinterfacepractice;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -22,9 +21,10 @@ public class AnimalListFragment extends android.support.v4.app.ListFragment{
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         onAnimalSelectedListener = (OnAnimalSelectedListener)getActivity();
+
     }
 
     @Override
@@ -39,8 +39,7 @@ public class AnimalListFragment extends android.support.v4.app.ListFragment{
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Animal selectedAnimal = animalList.get(position);
-        onAnimalSelectedListener.onAnimalSelected(selectedAnimal);
+        onAnimalSelectedListener.onAnimalSelected(animalList.get(position));
     }
 
     public void setAnimalList(List<Animal> animalList) {
