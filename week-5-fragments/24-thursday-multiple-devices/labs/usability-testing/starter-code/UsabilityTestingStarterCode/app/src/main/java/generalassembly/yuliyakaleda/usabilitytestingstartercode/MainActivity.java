@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     //TODO: Create a separate layout xml file for tablet devices.
-    //Done.  See activity_main.xml(Large)
+    //Done.  See activity_main.xml(Large).  Just added size as an attribute
   }
 }
