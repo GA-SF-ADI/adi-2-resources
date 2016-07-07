@@ -20,6 +20,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         //TODO: Inflate the view and change the return type;
+        //done.  see below
         View view = inflater.inflate(R.layout.details_fragment_layout, container, false);
         webView = (WebView) view.findViewById(R.id.web_view);
 
