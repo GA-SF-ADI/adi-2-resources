@@ -9,5 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hollis.fragmentinterfacepractice.MainActivity">
 
+    <fragment
+    android:id="@+id/upfrag"
+    android:name="com.example.hollis.fragmentinterfacepractice.Detailfrag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
 
 </RelativeLayout>

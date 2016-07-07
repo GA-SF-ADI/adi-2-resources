@@ -1,14 +1,11 @@
 package com.example.hollis.fragmentinterfacepractice;
-
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements On{
     List<Animal> animalList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setAnimalList();
 
     }
+
 
     public void setAnimalList(){
         animalList = new ArrayList<>();
@@ -27,5 +25,6 @@ public class MainActivity extends AppCompatActivity {
         animalList.add(animal1);
         animalList.add(animal2);
     }
+
 
 }
