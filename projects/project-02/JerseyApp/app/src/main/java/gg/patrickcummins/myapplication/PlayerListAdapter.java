@@ -52,11 +52,14 @@ public class PlayerListAdapter extends BaseAdapter {
         TextView nameTextView = (TextView) convertView.findViewById(R.id.playerNameTextView);
         TextView positionTextView = (TextView) convertView.findViewById(R.id.playerPositionTextView);
         TextView numberTextView = (TextView) convertView.findViewById(R.id.playerNumberTextView);
-        //TODO: Set ImageView for different players
+
+
         nameTextView.setText(currentPlayer.getName());
         positionTextView.setText("Position: " + currentPlayer.getPosition());
         numberTextView.setText("Number: " + currentPlayer.getNumber());
         playerImageView.setImageResource(currentPlayer.getPlayerPicture());
+
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

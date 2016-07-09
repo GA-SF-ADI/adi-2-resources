@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_jersey"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gg.patrickcummins.myapplication.JerseyActivity">
-    <TextView
-        android:text="yoyooyoyoyoyoy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/jerseyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/klay_thompson_white" />
+
+
+    <TextView
+        android:id="@+id/jersey1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:background="@android:color/holo_blue_dark"
+
+        />
+
+    <TextView
+        android:id="@+id/jersey2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jersey1"
+        android:background="@drawable/black_border"
+
+        />
+
+    <TextView
+        android:id="@+id/jersey3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jersey2"
+        android:background="@android:color/black"
+
+        />
+
+</RelativeLayout>
