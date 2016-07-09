@@ -3,7 +3,7 @@ package com.test.snug;
 /**
  * Created by LangstonSmith on 7/8/16.
  */
-public class HatObjectClass {
+public class Hat {
 
     private double price;
     private String material;
@@ -12,7 +12,7 @@ public class HatObjectClass {
     private String color;
     private int hatPicture;
 
-    public HatObjectClass(double price, String material, boolean fittedOrSnap, String description, String color, int hatPicture) {
+    public Hat(double price, String material, boolean fittedOrSnap, String description, String color, int hatPicture) {
         this.price = price;
         this.material = material;
         this.fittedOrSnap = fittedOrSnap;
