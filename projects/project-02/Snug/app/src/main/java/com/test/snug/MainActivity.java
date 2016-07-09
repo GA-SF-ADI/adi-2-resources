@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        TODO: Set up recycler view stuff
 
-        RecyclerView recyclerViewCardListOfHats = (RecyclerView) findViewById(R.id.hatCardList);
+        RecyclerView recyclerViewCardListOfHats = (RecyclerView) findViewById(R.id.cardList);
         recyclerViewCardListOfHats.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
