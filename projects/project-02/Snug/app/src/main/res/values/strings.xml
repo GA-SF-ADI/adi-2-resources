@@ -2,4 +2,7 @@
     <string name="app_name">Snug</string>
     <string name="title_activity_single_hat_view">SingleHatViewActivity</string>
     <string name="title_activity_shopping_cart">ShoppingCartActivity</string>
+    <string name="Hat_name">Hat name</string>
+    <string name="Hat_price">Hat price</string>
+    <string name="Hat_fittedOrSnap">fittedOrSnap</string>
 </resources>
