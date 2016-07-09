@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/playerImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/klay_thompson" />
+
+    <TextView
+        android:id="@+id/playerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/playerImageView"
+        android:text="Klay Thompson"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/playerPositionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerNameTextView"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/playerImageView"
+        android:text="Position: Shooting Guard"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/playerNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerPositionTextView"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/playerImageView"
+        android:text="Number: 11"
+        android:textColor="@color/colorPrimary" />
+
+</RelativeLayout>
