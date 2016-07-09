@@ -10,7 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardBackgroundColor="#ffffff"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="6dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -25,7 +29,7 @@
                 android:src="@drawable/braves_hat" />
 
             <LinearLayout
-                android:id="@+id/hat_name"
+                android:id="@+id/layout_hat_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hat_photo"
@@ -33,10 +37,11 @@
 
 
                 <TextView
-                    android:id="@+id/txtName"
+                    android:id="@+id/hat_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/hat_photo"
+                    android:textColor="#4b4444"
                     android:gravity="center"
                     android:text="@string/Hat_name"
                     android:textSize="18sp" />
@@ -47,27 +52,28 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/hat_name">
+                android:layout_below="@id/layout_hat_name">
 
                 <TextView
-                    android:id="@+id/txtSurname"
+                    android:id="@+id/hat_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center"
                     android:text="@string/Hat_price"
-                    android:textSize="12sp" />
+                    android:paddingBottom="5dp"
+                    android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/txtEmail"
+                    android:id="@+id/hat_fittedOrSnap"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center"
                     android:text="@string/Hat_fittedOrSnap"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

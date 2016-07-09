@@ -16,13 +16,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/cardList"
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-
+        android:layout_below="@+id/my_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></GridLayout>
 
 
 </RelativeLayout>

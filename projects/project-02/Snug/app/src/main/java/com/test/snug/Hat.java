@@ -1,5 +1,7 @@
 package com.test.snug;
 
+import java.util.ArrayList;
+
 /**
  * Created by LangstonSmith on 7/8/16.
  */
@@ -82,4 +84,8 @@ public class Hat {
     public void setId(int id) {
         this.id = id;
     }
+
+
+
+
 }

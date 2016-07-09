@@ -84,25 +84,15 @@ public class DatabaseHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public Hat getSpecificHat(int id) {
 
-        // Get a reference to the database
         SQLiteDatabase db = getReadableDatabase();
-
-        // Define a projection, which tells the query to return only the columns mentioned
-        // similar to "SELECT column1, column2, column3"
         String[] projection = new String[]{"id", "picture", "price", "material", "fittedOrSnap", "description", "color"};
 
-        // Define a selection, which defines the WHERE clause of the query (but not the values for it)
-        // similar to "WHERE x < 23", only without the value; "WHERE x < ?"
         String selection = "id = ?";
 
-        // Define the selection values. The ?'s in the selection
-        // The number of values in the following array should equal the number of ? in the where clause
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
-        // Make the query, getting the cursor object
         Cursor cursor = db.query("hats", projection, selection, selectionArgs, null, null, null, null);
 
-        // With the cursor, create a new game object and return it
         cursor.moveToFirst();
 
         int picture = cursor.getInt(cursor.getColumnIndex("picture"));

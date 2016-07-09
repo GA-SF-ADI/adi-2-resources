@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
