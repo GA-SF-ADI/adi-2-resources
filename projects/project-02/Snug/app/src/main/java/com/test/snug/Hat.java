@@ -5,20 +5,34 @@ package com.test.snug;
  */
 public class Hat {
 
+    private int id;
     private double price;
     private String material;
-    private boolean fittedOrSnap;
+    private int fittedOrSnap;
     private String description;
     private String color;
-    private int hatPicture;
+    private int picture;
 
-    public Hat(double price, String material, boolean fittedOrSnap, String description, String color, int hatPicture) {
+
+    /*id, picture, price, material, fittedOrSnap,
+    description, color*/
+
+    public Hat(int id, int picture, double price, String material, int fittedOrSnap, String description, String color) {
+        this.id = id;
         this.price = price;
         this.material = material;
         this.fittedOrSnap = fittedOrSnap;
         this.description = description;
         this.color = color;
-        this.hatPicture = hatPicture;
+        this.picture = picture;
+    }
+
+    public int getPicture() {
+        return picture;
+    }
+
+    public void setPicture(int picture) {
+        this.picture = picture;
     }
 
     public double getPrice() {
@@ -37,11 +51,11 @@ public class Hat {
         this.material = material;
     }
 
-    public boolean isFittedOrSnap() {
+    public int getFittedOrSnap() {
         return fittedOrSnap;
     }
 
-    public void setFittedOrSnap(boolean fittedOrSnap) {
+    public void setFittedOrSnap(int fittedOrSnap) {
         this.fittedOrSnap = fittedOrSnap;
     }
 
@@ -61,11 +75,11 @@ public class Hat {
         this.color = color;
     }
 
-    public int getHatPicture() {
-        return hatPicture;
+    public int getId() {
+        return id;
     }
 
-    public void setHatPicture(int hatPicture) {
-        this.hatPicture = hatPicture;
+    public void setId(int id) {
+        this.id = id;
     }
 }
