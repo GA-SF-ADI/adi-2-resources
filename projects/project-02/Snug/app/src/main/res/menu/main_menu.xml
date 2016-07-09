@@ -2,16 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <item
-        android:id="@+id/search_hats"
-        android:icon="@drawable/light_green_hat_only_for_menu"
-        app:showAsAction="always" />
-
-
     <item
         android:id="@+id/add_to_cart"
         android:icon="@drawable/ic_action_cart"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/app_logo_for_menu"
+        android:icon="@drawable/light_green_hat_only_for_menu"
+        app:showAsAction="always" />
+
+
+
+
+    <item
+        android:id="@+id/search_hats"
+        android:icon="@drawable/ic_action_search"
+        app:showAsAction="always" />
+
+
 
 </menu>
