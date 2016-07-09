@@ -1,5 +1,6 @@
 package com.test.snug;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,11 @@ public class SingleHatViewActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
+                startActivity(intent);
 
 
             }
