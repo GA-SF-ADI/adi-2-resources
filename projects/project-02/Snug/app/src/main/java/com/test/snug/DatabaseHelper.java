@@ -63,7 +63,7 @@ public class DatabaseHelper extends android.database.sqlite.SQLiteOpenHelper {
         values.put("description", description);
         values.put("color", color);
 
-        db.insert("table", null, values);
+        db.insert(HAT_TABLE_NAME, null, values);
         db.close();
 
     }
@@ -119,10 +119,9 @@ public class DatabaseHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public Cursor getAllHats() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery( "SELECT * FROM " + HAT_TABLE_NAME, null );
+        Cursor res = db.rawQuery("SELECT * FROM " + HAT_TABLE_NAME, null);
         return res;
     }
-
 
 
 }
