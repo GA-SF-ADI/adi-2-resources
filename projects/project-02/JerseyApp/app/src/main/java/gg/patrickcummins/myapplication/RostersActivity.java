@@ -16,29 +16,37 @@ public class RostersActivity extends AppCompatActivity {
     Intent currentIntent;
     String team;
     ImageView teamImageView;
-    ArrayList<Player> playerArrayList = new ArrayList<>();
+    ArrayList<Player> playerArrayList;
     ListView playerListView;
     PlayerListAdapter playerListAdapter;
+    DatabaseHelper helper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rosters);
-        currentIntent = getIntent();
-        team = currentIntent.getStringExtra("team");
-        teamImageView = (ImageView) findViewById(R.id.teamImageView);
 
 
-        setGetIntentandSetVariables();
+
+        getIntentandSetVariables();
         setTeam();
+        setAdapter();
+
 
 
     }
 
+    private void setAdapter() {
+        playerListAdapter = new PlayerListAdapter(playerArrayList, RostersActivity.this);
+        playerListView.setAdapter(playerListAdapter);
+    }
+
+
     private void setTeam() {
         if (team.equals("warriors")) {
             teamImageView.setImageResource(R.drawable.warriors);
+            playerArrayList = helper.getTeamPlayerList("warriors");
         } else if (team.equals("raiders")) {
             teamImageView.setImageResource(R.drawable.raiders);
         } else if (team.equals("sharks")) {
@@ -46,7 +54,7 @@ public class RostersActivity extends AppCompatActivity {
         }
     }
 
-    private void setGetIntentandSetVariables() {
+    private void getIntentandSetVariables() {
         currentIntent = getIntent();
         team = currentIntent.getStringExtra("team");
 
@@ -54,14 +62,14 @@ public class RostersActivity extends AppCompatActivity {
         playerListView = (ListView) findViewById(R.id.playersListView);
 
 
-        //TODO: add Players from dataBase
-        for (int i = 0; i < 10; i++) {
-            playerArrayList.add(new Player("Klay Thompson", "Shooting Guard", 11, R.drawable.klay_thompson));
-        }
 
-        playerListAdapter = new PlayerListAdapter(playerArrayList, RostersActivity.this);
-        playerListView.setAdapter(playerListAdapter);
+
+        currentIntent = getIntent();
+        team = currentIntent.getStringExtra("team");
+        teamImageView = (ImageView) findViewById(R.id.teamImageView);
+        helper = DatabaseHelper.getInstance(RostersActivity.this);
 
 
     }
+
 }
