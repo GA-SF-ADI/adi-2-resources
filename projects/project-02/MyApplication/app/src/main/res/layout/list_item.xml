@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/list_alc_image"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/list_alc_name"
+        android:layout_toRightOf="@id/list_alc_image"
+        android:text="Jameson"
+        android:textSize="25dp"
+        android:paddingLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/list_alc_price"
+        android:layout_alignParentRight="true"
+        android:text="$40"
+        android:textSize="25dp"
+        android:gravity="right"
+        android:paddingRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+
+
+</RelativeLayout>
