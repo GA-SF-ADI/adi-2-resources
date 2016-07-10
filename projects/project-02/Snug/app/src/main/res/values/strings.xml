@@ -5,4 +5,10 @@
     <string name="Hat_name">Atlanta Braves On-Field</string>
     <string name="Hat_price">$29.99</string>
     <string name="Hat_fittedOrSnap">Fitted</string>
+    <string name="Go_to_hat_button">Go to single hat</string>
+    <string name="Single_hat_title">San Francisco Giants July 4th</string>
+    <string name="Single_hat_price">$29.99</string>
+    <string name="Single_hat_static_description_with_colon">Description: </string>
+    <string name="Single_hat_static_back_with_colon">Back: </string>
+    <string name="Single_hat_static_material_with_colon">Material :</string>
 </resources>

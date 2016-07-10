@@ -14,7 +14,6 @@ public class Hat {
     private int pictureID;
 
 
-
     public Hat(int id, int picture, double price, String material, int fittedOrSnap, String description, String color) {
         this.id = id;
         this.price = price;
@@ -80,8 +79,6 @@ public class Hat {
     public void setId(int id) {
         this.id = id;
     }
-
-
 
 
 }

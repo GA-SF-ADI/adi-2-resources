@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-public class DatabaseHelper extends android.database.sqlite.SQLiteOpenHelper {
+public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public static final String HAT_TABLE_NAME = "hats";
     public static final String HAT_COLUMN_ID = "_id";
@@ -30,7 +30,7 @@ public class DatabaseHelper extends android.database.sqlite.SQLiteOpenHelper {
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
 
 
-    public DatabaseHelper(Context context) {
+    public SQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }

@@ -1,16 +1,13 @@
 package com.test.snug;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,14 +15,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
 
 //        TODO: Set up recycler view stuff
 
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        SQLiteOpenHelper db = new SQLiteOpenHelper(this);
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
         db.addHat(0, 2323, 29.99, "cotton", 1, "Plush and soft, this hat will keep you looking great!", "blue");
@@ -33,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
 //        TODO: Eventually will have to fetch hat records?
 
+
+        Button goToSingleHat = (Button) findViewById(R.id.go_to_hat_button);
+
+        goToSingleHat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -46,5 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
 

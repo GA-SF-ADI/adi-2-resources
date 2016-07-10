@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,21 +16,67 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:scaleX="1.8"
         android:id="@+id/imageview_single_hat"
-        android:scaleY="1.8"
-        android:src="@drawable/braves_hat" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="72dp"
+        android:scaleX="3"
+        android:scaleY="3" />
+
+    <!--android:src="@drawable/giants"-->
+
+    <TextView
+        android:id="@+id/textView_single_hat_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="@string/Single_hat_title"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView_single_hat_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_single_hat_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/Single_hat_price"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textview_single_hat_static_description_with_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/textView_single_hat_price"
+        android:paddingTop="5dp"
+        android:text="@string/Single_hat_static_description_with_colon" />
+
+    <TextView
+        android:id="@+id/textview_single_hat_static_back"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_single_hat_static_description_with_colon"
+        android:paddingTop="20dp"
+        android:text="@string/Single_hat_static_back_with_colon" />
+
+    <TextView
+        android:id="@+id/textview_single_hat_static_matrial_with_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/textview_single_hat_static_back"
+        android:paddingTop="20dp"
+        android:text="@string/Single_hat_static_material_with_colon" />
 
 
-        />
-
-
-
-</LinearLayout>
+</RelativeLayout>
