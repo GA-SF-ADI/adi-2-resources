@@ -31,6 +31,10 @@
             android:name=".ShoppingCartActivity"
             android:label="@string/title_activity_shopping_cart"
             android:theme="@style/AppTheme"></activity>
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+
     </application>
 
 </manifest>

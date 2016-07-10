@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -48,10 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }
-
 
 
     @Override
@@ -60,9 +57,29 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
+
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
 
+        switch (item.getItemId()) {
+            case R.id.search_hats:
+
+                break;
+
+            case R.id.view_cart:
+
+                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 
