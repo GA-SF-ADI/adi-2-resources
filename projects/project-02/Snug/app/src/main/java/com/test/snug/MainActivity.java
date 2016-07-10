@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -22,14 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
 //        TODO: Set up recycler view stuff
 
-        RecyclerView recyclerViewCardListOfHats = (RecyclerView) findViewById(R.id.cardList);
-        recyclerViewCardListOfHats.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerViewCardListOfHats.setLayoutManager(llm);
-
-
-
 
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -40,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 //        TODO: Eventually will have to fetch hat records?
 
 
+    }
 
 
     @Override
@@ -52,3 +47,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+

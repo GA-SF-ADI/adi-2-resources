@@ -1,7 +1,5 @@
 package com.test.snug;
 
-import java.util.ArrayList;
-
 /**
  * Created by LangstonSmith on 7/8/16.
  */
@@ -13,11 +11,9 @@ public class Hat {
     private int fittedOrSnap;
     private String description;
     private String color;
-    private int picture;
+    private int pictureID;
 
 
-    /*id, picture, price, material, fittedOrSnap,
-    description, color*/
 
     public Hat(int id, int picture, double price, String material, int fittedOrSnap, String description, String color) {
         this.id = id;
@@ -26,15 +22,15 @@ public class Hat {
         this.fittedOrSnap = fittedOrSnap;
         this.description = description;
         this.color = color;
-        this.picture = picture;
+        this.pictureID = picture;
     }
 
-    public int getPicture() {
-        return picture;
+    public int getPictureID() {
+        return pictureID;
     }
 
-    public void setPicture(int picture) {
-        this.picture = picture;
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
     }
 
     public double getPrice() {
