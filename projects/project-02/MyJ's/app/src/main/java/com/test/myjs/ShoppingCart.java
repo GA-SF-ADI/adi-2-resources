@@ -7,24 +7,28 @@ import java.util.List;
  */
 public class ShoppingCart {
     List<Shoe> shoeItems;
+    int id;
     int numItems;
     double totalPrice;
     int itemId;
 
-    public int getItemId() {
-        return itemId;
-    }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
 
-    public ShoppingCart(List<Shoe> shoeItems, int numItems, double totalPrice) {
+    public ShoppingCart(int id,List<Shoe> shoeItems, int numItems, double totalPrice,int itemId) {
+        this.id = id;
         this.shoeItems = shoeItems;
         this.numItems = numItems;
         this.totalPrice = totalPrice;
         this.itemId = itemId;
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<Shoe> getShoeItems() {
@@ -49,5 +53,13 @@ public class ShoppingCart {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 }
