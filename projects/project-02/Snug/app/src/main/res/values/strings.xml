@@ -11,4 +11,8 @@
     <string name="Single_hat_static_description_with_colon">Description: </string>
     <string name="Single_hat_static_back_with_colon">Back: </string>
     <string name="Single_hat_static_material_with_colon">Material :</string>
+    <string name="title_of_search_icon_in_toolbar">search</string>
+    <string name="title_of_cart_icon_in_toolbar">view cart</string>
+    <string name="title_of_app_logo_icon_in_toolbar">logo</string>
+
 </resources>

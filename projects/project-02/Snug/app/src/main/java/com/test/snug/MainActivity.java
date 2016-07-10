@@ -11,11 +11,14 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -44,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
+
 
 
     @Override
@@ -53,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
-
-
     }
+
 
 
 }
