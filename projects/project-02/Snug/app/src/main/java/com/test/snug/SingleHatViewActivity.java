@@ -17,7 +17,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_hat_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_action_back_arrow);
+
 
 
 
