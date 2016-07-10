@@ -25,10 +25,26 @@ public class MainActivity extends AppCompatActivity {
         setImageViews();
         setOnClickListeners();
 
+        if (helper.getTeamPlayerList("warriors").size() < 1){
+            initializeTeams(helper);
+        }
 
-        initializeWarriors(helper);
+        
 
         //TODO: Make it so database table doesn't keep duplicating every time onCreate is called
+    }
+
+    private void initializeTeams(DatabaseHelper helper) {
+        initializeWarriors(helper);
+        initializeRaiders(helper);
+        initializeSharks(helper);
+    }
+
+    private void initializeSharks(DatabaseHelper helper) {
+        helper.insertPlayerRow(new Player("Joe Thorton", "Center", 19, R.drawable.joe_thorton, "sharks"));
+        helper.insertPlayerRow(new Player("Joe Pavelski", "Center", 8, R.drawable.joe_pavelski, "sharks"));
+        helper.insertPlayerRow(new Player("Brent Burns", "Defense", 8, R.drawable.brent_burns, "sharks"));
+
     }
 
     private void initializeWarriors(DatabaseHelper helper) {
@@ -45,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
         helper.insertPlayerRow(new Player("Marreese Speights", "Forward-Center", 5, R.drawable.marreese_speights, "warriors"));
 
 
+
+    }
+
+    private void initializeRaiders(DatabaseHelper helper){
+        helper.insertPlayerRow(new Player("Derek Carr", "Quarterback", 4, R.drawable.derek_carr, "raiders"));
+        helper.insertPlayerRow(new Player("Khalil Mack", "Defensive End", 53, R.drawable.khalil_mack, "raiders"));
+        helper.insertPlayerRow(new Player("Amari Cooper", "Wide Reciever", 89, R.drawable.amari_cooper, "raiders"));
+        helper.insertPlayerRow(new Player("Michael Crabtree", "Wide Reciever", 15, R.drawable.michael_crabtree, "raiders"));
 
     }
 

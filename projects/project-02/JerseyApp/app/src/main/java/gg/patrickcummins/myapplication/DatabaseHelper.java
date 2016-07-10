@@ -53,6 +53,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public static DatabaseHelper getINSTANCE() {
+        return INSTANCE;
+    }
+
     public void insertPlayerRow(Player player) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -76,11 +80,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else if (team.equals("raiders")) {
             query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='raiders'";
         } else if (team.equals("sharks")) {
-            query = "SELECT " + PlayerValues.NAME + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='sharks'";
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='sharks'";
         }
 
         Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
         while (cursor.moveToNext()){
             String name = cursor.getString(cursor.getColumnIndex(PlayerValues.NAME));
             String position = cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION));
