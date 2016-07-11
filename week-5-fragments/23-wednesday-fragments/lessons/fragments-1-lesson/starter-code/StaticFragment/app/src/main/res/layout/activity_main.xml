@@ -11,6 +11,11 @@
     tools:context="ly.generalassemb.staticfragment.MainActivity">
 
     <!-- Add an Example fragment here -->
+    <fragment android:name="ly.generalassemb.staticfragment.Fragment"
+        android:id="@+id/fragment1"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
     <!-- Bonus: Add another example fragment -->
