@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/shopping_cart"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Shopping Cart" />
+        <item
+            android:id="@+id/wish_list"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Wishlist" />
+        <item
+            android:id="@+id/sign_up"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Sign Up" />
+    </group>
+
+    <item android:title="The Company">
+        <menu>
+            <item
+                android:id="@+id/about_us"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="About Us" />
+            <item
+                android:id="@+id/FAQ"
+                android:icon="@drawable/ic_menu_send"
+                android:title="FAQ" />
+        </menu>
+    </item>
+
+</menu>
