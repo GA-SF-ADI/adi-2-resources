@@ -2,17 +2,9 @@ package ly.generalassemb.drewmahrt.shoppinglistwithsearch;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.TextUtils;
-import android.util.Log;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * Created by drewmahrt on 12/28/15.
@@ -95,5 +87,20 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
                 new String[]{String.valueOf(id)});
         db.close();
         return deleteNum;
+    }
+
+    public Cursor searchList(String query) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(SHOPPING_LIST_TABLE_NAME, // a. table
+                SHOPPING_COLUMNS, // b. column names
+                COL_ITEM_NAME+" LIKE ? OR "+COL_ITEM_TYPE+" LIKE ?", // c. selections
+                new String[]{"%"+query+"%", "%"+query+"%"}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
     }
 }
