@@ -11,31 +11,65 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static gg.patrickcummins.myapplication.R.drawable.raiders;
+import static gg.patrickcummins.myapplication.R.drawable.warriors;
+
 public class JerseyActivity extends AppCompatActivity {
-    TextView jerseyColor1, jerseyColor2, jerseyColor3;
+    TextView jerseyColor1, jerseyColor2, jerseyColor3, nameTextView, numberTextView, priceTextView;
     ImageView jerseyImageView;
-    String currentPlayer;
-    //TODO: Alot of shit, connect to db
+    String currentPlayer, team;
+    int currentPlayerNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jersey);
 
-        Intent currentIntent = getIntent();
-        currentPlayer = currentIntent.getStringExtra("playerName");
+        getIntentExtras();
+
+
 
         setViews();
-        setOnClickListenersAndJerseyDefault();
+        setViewText();
+        setUpJerseys();
     }
-    //TODO:Fix for Raiders 2 Jerseys
-    private void setOnClickListenersAndJerseyDefault() {
+
+    private void getIntentExtras() {
+        Intent currentIntent = getIntent();
+        currentPlayer = currentIntent.getStringExtra("playerName");
+        currentPlayerNumber = currentIntent.getIntExtra("playerNumber", -1);
+        team = currentIntent.getStringExtra("playerTeam");
+    }
+
+    private void setViewText() {
+        nameTextView.setText(currentPlayer);
+        numberTextView.setText("#" + currentPlayerNumber);
+        if (team.equals("warriors")){
+            priceTextView.setText("Price: $69.99");
+        }else if(team.equals("raiders")){
+            priceTextView.setText("Price: $99.99");
+        } else{
+            priceTextView.setText("Price: $49.99");
+        }
+
+
+    }
+
+    //TODO:Fix Color Of Box for Mack Pro Bowl
+    private void setUpJerseys() {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(JerseyActivity.this);
         ArrayList<Integer> playerJerseysList = databaseHelper.getPlayerJerseysList(currentPlayer);
-        jerseyImageView.setImageResource(playerJerseysList.get(0));
-        setColorOnClick(jerseyColor1, playerJerseysList.get(0) );
+        if (playerJerseysList.get(0) != -1) {
+            jerseyImageView.setImageResource(playerJerseysList.get(0));
+            setColorOnClick(jerseyColor1, playerJerseysList.get(0));
+        }
+        else {
+            jerseyImageView.setImageResource(playerJerseysList.get(1));
+            jerseyColor1.setVisibility(View.GONE);
+        }
         setColorOnClick(jerseyColor2, playerJerseysList.get(1) );
         setColorOnClick(jerseyColor3, playerJerseysList.get(2) );
+
     }
 
     private void setColorOnClick(TextView textView, final int jerseyDrawable) {
@@ -52,5 +86,8 @@ public class JerseyActivity extends AppCompatActivity {
         jerseyColor2 = (TextView) findViewById(R.id.jersey2);
         jerseyColor3 = (TextView) findViewById(R.id.jersey3);
         jerseyImageView = (ImageView) findViewById(R.id.jerseyImageView);
+        nameTextView = (TextView) findViewById(R.id.playerNameTextView);
+        numberTextView = (TextView) findViewById(R.id.playerNumberTextView);
+        priceTextView = (TextView) findViewById(R.id.priceTextView);
     }
 }

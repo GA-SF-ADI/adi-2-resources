@@ -65,6 +65,8 @@ public class PlayerListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent playerJerseyIntent = new Intent(context, JerseyActivity.class);
                 playerJerseyIntent.putExtra("playerName", currentPlayer.getName());
+                playerJerseyIntent.putExtra("playerNumber", currentPlayer.getNumber());
+                playerJerseyIntent.putExtra("playerTeam", currentPlayer.getTeam());
                 context.startActivity(playerJerseyIntent);
             }
         });

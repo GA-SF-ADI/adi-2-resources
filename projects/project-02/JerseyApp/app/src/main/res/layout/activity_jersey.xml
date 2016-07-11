@@ -11,14 +11,46 @@
         android:id="@+id/jerseyImageView"
         android:layout_width="@dimen/jersey_picture"
         android:layout_height="@dimen/jersey_picture"
+        android:layout_margin="@dimen/margin_5dp"
         android:src="@drawable/klay_thompson_white" />
 
+    <TextView
+        android:id="@+id/playerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:text="Player Name"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/player_name_text_size" />
+
+    <TextView
+        android:id="@+id/playerNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerNameTextView"
+        android:layout_margin="@dimen/margin_5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:text="#00"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/player_name_text_size" />
+
+    <TextView
+        android:id="@+id/chooseAColorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerNumberTextView"
+        android:layout_margin="@dimen/margin_5dp"
+        android:layout_toRightOf="@+id/jerseyImageView"
+        android:text="Choose A Color"
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/jersey1"
         android:layout_width="@dimen/jersey_select"
         android:layout_height="@dimen/jersey_select"
-        android:layout_margin="5dp"
+        android:layout_below="@id/chooseAColorTextView"
+        android:layout_margin="@dimen/margin_5dp"
         android:layout_toRightOf="@id/jerseyImageView"
         android:background="@android:color/holo_blue_dark"
 
@@ -28,7 +60,8 @@
         android:id="@+id/jersey2"
         android:layout_width="@dimen/jersey_select"
         android:layout_height="@dimen/jersey_select"
-        android:layout_margin="5dp"
+        android:layout_below="@id/chooseAColorTextView"
+        android:layout_margin="@dimen/margin_5dp"
         android:layout_toRightOf="@id/jersey1"
         android:background="@drawable/black_border"
 
@@ -38,19 +71,30 @@
         android:id="@+id/jersey3"
         android:layout_width="@dimen/jersey_select"
         android:layout_height="@dimen/jersey_select"
-        android:layout_margin="5dp"
+        android:layout_below="@id/chooseAColorTextView"
+        android:layout_margin="@dimen/margin_5dp"
         android:layout_toRightOf="@id/jersey2"
         android:background="@android:color/black"
 
         />
 
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jersey3"
+        android:layout_margin="@dimen/margin_5dp"
+        android:layout_toRightOf="@+id/jerseyImageView"
+        android:text="Price: $00"
+        android:textColor="@color/colorAccent" />
+
 
     <Button
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:id="@+id/addToCartButton"
-        android:text="@string/add_to_cart"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/add_to_cart" />
 
 </RelativeLayout>

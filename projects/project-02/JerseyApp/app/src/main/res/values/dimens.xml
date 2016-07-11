@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="jersey_select">50dp</dimen>
     <dimen name="jersey_picture">200dp</dimen>
+    <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="player_name_text_size">20sp</dimen>
 </resources>

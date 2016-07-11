@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by patrickcummins on 7/9/16.
  */
-
+//TODO:Implement Cart Table
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper INSTANCE;
 
