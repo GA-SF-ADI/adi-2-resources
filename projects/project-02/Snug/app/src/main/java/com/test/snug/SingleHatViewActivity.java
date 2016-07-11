@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,10 +17,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
 
         ImageView mImageView = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -29,8 +29,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 R.drawable.a_s_america,
                 R.drawable.a_s_america2,
                 R.drawable.backs,
-                R.drawable.benatown,
-                R.drawable.braves_hat,
+                R.drawable.beantown,
                 R.drawable.brew_america,
                 R.drawable.dodgers,
                 R.drawable.florida,
@@ -52,6 +51,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         // Get a random between 0 and images.length-1
         int imageId = (int) (Math.random() * images.length);
 
+
         // Set the image
         mImageView.setBackgroundResource(images[imageId]);
 
@@ -71,5 +71,14 @@ public class SingleHatViewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
 
+
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
 }

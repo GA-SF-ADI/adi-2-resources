@@ -6,7 +6,8 @@ package com.test.snug;
 public class Hat {
 
     private int id;
-    private double price;
+    private String name;
+    private String price;
     private String material;
     private int fittedOrSnap;
     private String description;
@@ -14,30 +15,35 @@ public class Hat {
     private int pictureID;
 
 
-    public Hat(int id, int picture, double price, String material, int fittedOrSnap, String description, String color) {
+    public Hat(int id, int pictureID, String name, String price, String material, int fittedOrSnap, String description, String color) {
         this.id = id;
+        this.name = name;
         this.price = price;
         this.material = material;
         this.fittedOrSnap = fittedOrSnap;
         this.description = description;
         this.color = color;
-        this.pictureID = picture;
-    }
-
-    public int getPictureID() {
-        return pictureID;
-    }
-
-    public void setPictureID(int pictureID) {
         this.pictureID = pictureID;
     }
 
-    public double getPrice() {
-        return price;
+    public int getId() {
+        return id;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrice() {
+        return price;
     }
 
     public String getMaterial() {
@@ -72,13 +78,11 @@ public class Hat {
         this.color = color;
     }
 
-    public int getId() {
-        return id;
+    public int getPictureID() {
+        return pictureID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPictureID(int pictureID) {
+        this.pictureID = pictureID;
     }
-
-
 }

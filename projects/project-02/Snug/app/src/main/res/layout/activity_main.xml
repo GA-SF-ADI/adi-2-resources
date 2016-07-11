@@ -21,16 +21,15 @@
         android:layout_width="wrap_content"
         android:text="@string/Go_to_hat_button"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/my_toolbar"
         android:layout_centerHorizontal="true" />
 
-    <GridLayout
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/my_toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></GridLayout>
+        android:layout_below="@id/go_to_hat_button"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
 
 
 </RelativeLayout>
