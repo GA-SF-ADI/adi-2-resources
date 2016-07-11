@@ -37,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
         helper.insertRowDepartment(department1);
         helper.insertRowDepartment(department2);
 
-        String name = helper.getNameJoins();
+        //String name = helper.getNameJoins();
+        String info = helper.getFullInformation();
 
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"
         //String fullInfo = helper.getFullInformation();
-        return name;
+        //return name;
+        return info;
       }
 
       @Override
