@@ -16,4 +16,29 @@ public class HelpfulUnitTest {
         assertNull(null);
         assertNotNull("Not null");
     }
+
+    @Test
+    public void testIfMultiplyIsCorrect(){
+        int actual = MathUtils.multiply(2,3,5);
+        int expected = 30;
+
+        assertEquals(expected,actual);
+    }
+
+//    @Test
+//    public void testIfMultiplyIsCorrect(){
+//        double actual = MathUtils.multiply(2,5,.5);
+//        double expected = 10;
+//
+//        assertEquals(expected,actual);
+//    }
+    @Test
+    public void testIfAddIsCorrect(){
+        int actual = MathUtils.add(2,4,8,10);
+        int expected = 24;
+
+        assertEquals(expected,actual);
+    }
+
+
 }
