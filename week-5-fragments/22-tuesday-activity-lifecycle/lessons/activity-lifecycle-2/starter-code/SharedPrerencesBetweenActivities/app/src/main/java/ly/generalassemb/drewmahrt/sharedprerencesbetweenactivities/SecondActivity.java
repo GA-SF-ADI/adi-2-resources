@@ -17,6 +17,6 @@ public class SecondActivity extends AppCompatActivity {
 
         //TODO: Retrieve the text from SharedPreferences and set it to the String variable "message"
 
-        textView.setText("Message from MainActivity: "+message);
+        SharedPreferences sterlingPreference = getPreferences(Context.MODE_PRIVATE);
     }
 }
