@@ -208,7 +208,6 @@ OnView is much like `findViewbyId`, in which they both reference a view on the s
 
 The method takes one parameter; a Matcher. This tells the class what you want to interact with in the view hierarchy. Usually, `withId()` is the easiest way of going about this. However, if you are trying to access a view without an ID, you'll have to find other ways to match it.
 
-> Check: How else do you think you could select an Activity? Don't worry about syntax, but what attributes of each Activity could you select for?
 
 * withId()
 * withText()
