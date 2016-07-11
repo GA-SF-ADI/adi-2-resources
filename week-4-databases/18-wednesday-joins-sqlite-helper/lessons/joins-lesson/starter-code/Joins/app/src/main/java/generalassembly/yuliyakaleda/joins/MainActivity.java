@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Department department2 = new Department("Sales", 8);
 
         Helper helper = Helper.getInstance(MainActivity.this);
-        helper.insertRow(employee);
-        helper.insertRow(employee1);
-        helper.insertRow(employee2);
+        helper.insertRowEmployee(employee);
+        helper.insertRowEmployee(employee1);
+        helper.insertRowEmployee(employee2);
 
         helper.insertRowDepartment(department);
         helper.insertRowDepartment(department1);
@@ -39,10 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
         String name = helper.getNameJoins();
 
+        String fullInfo = helper.getFullInformation();
+
+
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"
         //String fullInfo = helper.getFullInformation();
-        return name;
+        return fullInfo;
       }
 
       @Override
