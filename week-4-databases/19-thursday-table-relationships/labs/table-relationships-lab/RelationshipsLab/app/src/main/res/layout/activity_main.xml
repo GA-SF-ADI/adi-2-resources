@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.relationshipslab.MainActivity">
+
+    <TextView
+        android:id="@+id/high_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+    <ListView
+        android:id="@+id/list_view1"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_below="@+id/high_text"></ListView>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/list_view2"
+        android:layout_below="@+id/list_view1"
+        ></ListView>
+
+    <Button
+        android:layout_below="@+id/list_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add data"
+        android:id="@+id/add_data_button"/>
+
+    <Button
+        android:layout_below="@+id/add_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Same Company"
+        android:id="@+id/same_company_button"/>
+
+    <Button
+        android:layout_below="@+id/same_company_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company in boston"
+        android:id="@+id/boston_button"/>
+
+    <Button
+        android:layout_below="@+id/boston_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="highest salary"
+        android:id="@+id/high_salary_button" />
+
+
+</RelativeLayout>
