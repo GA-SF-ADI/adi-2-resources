@@ -11,21 +11,42 @@ import android.widget.EditText;
 import android.content.SharedPreferences.Editor;
 
 public class MainActivity extends AppCompatActivity {
+
     private EditText editText;
+    public static String MY_MESSAGE = "my message";
+    SharedPreferences sharedPreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = (EditText)findViewById(R.id.message_edit_text);
-        Button submitButton = (Button)findViewById(R.id.submit_button);
+        editText = (EditText) findViewById(R.id.message_edit_text);
+        Button submitButton = (Button) findViewById(R.id.submit_button);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get the text from the editText
+                String str = editText.getText().toString();
+
+                //get shared preferences and USE THAT KEY FOR SECOND ACTIVITY
+                sharedPreferences = MainActivity.this.getSharedPreferences("com.example.app.MY_MESSAGE", Context.MODE_PRIVATE);
                 //TODO: Save the text from the EditText to the SharedPreferences
 
-                Intent i = new Intent(MainActivity.this,SecondActivity.class);
+                //First, make the editor
+                Editor editor = sharedPreferences.edit();
+
+                //put it into our string
+                editor.putString("text", editText.getText().toString());
+                //or you could write this instead
+                //editor.putString("text", editText.getText().toString());
+
+                //commit it
+                editor.commit();
+
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(i);
             }
         });

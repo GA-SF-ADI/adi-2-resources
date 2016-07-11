@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     TextView addressView;
     TextView nameView;
     EditText addressEdit;
+
+
     EditText nameEdit;
 
 
@@ -40,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Retrieve name and address from savedInstanceState with getString() method.
 
+        if (savedInstanceState != null) {
+            name = savedInstanceState.getString(MY_NAME);
+            address = savedInstanceState.getString(MY_ADDRESS);
+            Toast.makeText(MainActivity.this, "Saving Name and Address", Toast.LENGTH_SHORT).show();
+        } else {
+            name = null;
+            address = null;
+            Toast.makeText(MainActivity.this, "Type in a name and address.", Toast.LENGTH_SHORT).show();
+        }
 
         if (address != null && name != null) {
             addressView.setText("Your Address: " + address);
@@ -52,11 +63,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //set TextViews with EditText inputs here.
+                name = nameEdit.getText().toString();
+                address = addressEdit.getText().toString();
 
+                if (name.equals("") || address.equals("")) {
+                    Toast.makeText(MainActivity.this, "Type in a name and address.", Toast.LENGTH_SHORT).show();
+                } else {
 
-                //Clear the EditTexts for new inputs.
-                addressEdit.getText().clear();
-                nameEdit.getText().clear();
+                    nameView.setText("Your name is " + name + " and your address is " + address + ".");
+                    Toast.makeText(MainActivity.this, "Saving Name" + name + " and Address " + address, Toast.LENGTH_SHORT).show();
+                    //Clear the EditTexts for new inputs.
+                    addressEdit.getText().clear();
+                    nameEdit.getText().clear();
+                }
             }
         });
     }
@@ -66,9 +85,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         // Save custom values into the bundle
-
         // Always call the superclass so it can save the view hierarchy state
 
+        savedInstanceState.putString(MY_NAME, name);
+        savedInstanceState.putString(MY_ADDRESS, address);
+        super.onSaveInstanceState(savedInstanceState);
+        Toast.makeText(MainActivity.this, "Saving onSaveInstanceState ", Toast.LENGTH_SHORT).show();
     }
 
     //In onRestoreInstanceState, use getString to retrieve the address and name.
@@ -76,8 +98,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view hierarchy
-
         // Restore state members from saved instance
+        savedInstanceState.putString(MY_NAME, name);
+        savedInstanceState.putString(MY_ADDRESS, address);
+        super.onRestoreInstanceState(savedInstanceState);
+        Toast.makeText(MainActivity.this, "Saving onRestoreInstanceState ", Toast.LENGTH_SHORT).show();
 
 
     }
