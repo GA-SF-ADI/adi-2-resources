@@ -39,7 +39,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES_SHOES);
-        db.execSQL(SQL_CREATE_ENTRIES_SHOPPING_CART);
+        db.execSQL(SQL_DELETE_ENTRIES_SHOPPING_CART);
         onCreate(db);
 
     }
