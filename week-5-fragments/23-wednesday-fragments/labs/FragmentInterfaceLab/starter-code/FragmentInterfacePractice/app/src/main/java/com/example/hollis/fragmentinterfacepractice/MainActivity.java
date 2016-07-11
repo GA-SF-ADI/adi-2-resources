@@ -8,13 +8,25 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnAnimalSelectedListener {
     List<Animal> animalList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setAnimalList();
+
+        // setup fragment manager and transaction
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // create animal list fragment
+        AnimalListFragment animalListFragment = new AnimalListFragment();
+        animalListFragment.setAnimalList(animalList);
+
+        // TODO: add the daily forecast fragment to the container and commit the change
+        fragmentTransaction.add(R.id.fragment_container, animalListFragment);
+        fragmentTransaction.commit();
 
     }
 
@@ -26,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
         animalList.add(animal);
         animalList.add(animal1);
         animalList.add(animal2);
+    }
+
+    @Override
+    public void onAnimalSelected(Animal animal) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        DetailFragment detailFragment = new DetailFragment();
+        detailFragment.setAnimalText(animal);
+
+        fragmentTransaction.replace(R.id.fragment_container, detailFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
 }

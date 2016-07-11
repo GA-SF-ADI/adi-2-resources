@@ -1,5 +1,6 @@
 package ly.generalassemb.drewmahrt.morefragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -15,10 +16,20 @@ public class MyListFragment extends ListFragment {
     // TODO: 1. create a OnPlanetSelectedListener.java interface in its own file
 
     // TODO: 2. declare a OnPlanetSelectedListener variable
-
+    OnPlanetSelectedListener onPlanetSelectedListener;
 
     // TODO: 3. Override onAttach()
     // TODO: 3a. inside onAttach() set the value of your variable you created in 2.
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            onPlanetSelectedListener = (OnPlanetSelectedListener) getActivity();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().toString() + " must implement OnPlanetSelectedListener");
+        }
+    }
 
 
     @Override
@@ -32,5 +43,7 @@ public class MyListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         // TODO: 4. Pass the selected planet to the interface variable
+        String selectedPlanetString = l.getAdapter().getItem(position).toString();
+        onPlanetSelectedListener.onPlanetSelected(selectedPlanetString);
     }
 }
