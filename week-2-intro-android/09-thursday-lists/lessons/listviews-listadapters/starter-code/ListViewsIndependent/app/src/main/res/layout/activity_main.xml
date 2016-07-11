@@ -11,6 +11,22 @@
 
     <!-- Add your ListView below this comment -->
 
+    <EditText
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etxt"
+        android:hint="item"
+        />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_view">
+    </ListView>
+
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
