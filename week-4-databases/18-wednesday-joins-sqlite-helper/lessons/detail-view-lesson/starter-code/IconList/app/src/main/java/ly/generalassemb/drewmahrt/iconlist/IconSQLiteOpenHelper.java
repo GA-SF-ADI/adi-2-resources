@@ -18,6 +18,7 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String COL_ID = "_id";
     public static final String COL_ICON_NAME = "ICON_NAME";
 
+
     public static final String[] ICON_COLUMNS = {COL_ID,COL_ICON_NAME};
 
     private static final String CREATE_ICON_LIST_TABLE =
@@ -65,4 +66,27 @@ public class IconSQLiteOpenHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
+
+    public String getDescriptionById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(ICON_LIST_TABLE_NAME,
+                new String[]{COL_ICON_NAME},
+                COL_ID+" =?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null,
+                null);
+
+        if(cursor.moveToFirst()){
+            return cursor.getString(cursor.getColumnIndex(COL_ICON_NAME));
+        }
+        else {
+            return "No name found";
+        }
+
+
+    }
+
 }
