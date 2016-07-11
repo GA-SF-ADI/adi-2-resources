@@ -1,29 +1,14 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
-import android.graphics.Color;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.MediumTest;
-import android.widget.Button;
 import android.widget.TextView;
 
 
-import ly.generalassemb.drewmahrt.classes_lab.Animal;
-import ly.generalassemb.drewmahrt.classes_lab.MainActivity;
-import ly.generalassemb.drewmahrt.classes_lab.R;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
