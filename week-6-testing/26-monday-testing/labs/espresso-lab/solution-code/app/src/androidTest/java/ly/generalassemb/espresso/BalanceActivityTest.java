@@ -29,6 +29,7 @@ public class BalanceActivityTest {
     public void testIfBalanceIsVisible() throws Exception {
         onView(withId(R.id.balanceTextView))
                 .check(matches(isDisplayed()));
+
     }
 
     /**
