@@ -63,10 +63,10 @@ public class Helper extends SQLiteOpenHelper {
       DataEntryDepartment.COLUMN_DEPARTMENT + " TEXT," +
       DataEntryDepartment.COLUMN_EMP_ID + " INTEGER" + ")";
 
-  private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
-      DataEntryCompany.TABLE_NAME;
-  private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
-      DataEntryDepartment.TABLE_NAME;
+      private static final String SQL_DELETE_ENTRIES_COMPANY = "DROP TABLE IF EXISTS " +
+          DataEntryCompany.TABLE_NAME;
+      private static final String SQL_DELETE_ENTRIES_DEPARTMENT = "DROP TABLE IF EXISTS " +
+          DataEntryDepartment.TABLE_NAME;
 
   public void insertRow(Employee employee) {
     SQLiteDatabase db = getWritableDatabase();
@@ -88,11 +88,37 @@ public class Helper extends SQLiteOpenHelper {
 
   public String getNameJoins() {
     //TODO: add the code from the lesson.
+
+      String result = "default name";
+      SQLiteDatabase db = getWritableDatabase();
+      // Building query using INNER JOIN keyword.
+      String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+      Cursor cursor = db.rawQuery(query, null);
+      while(cursor.moveToNext()) {
+          result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+      }
+      cursor.close();
+      return result;
+
   }
 
   //The method is the solution for the independent part of the lesson
   public String getFullInformation() {
     //TODO: add the code from the lesson.
+      String result = "default name";
+      SQLiteDatabase db = getWritableDatabase();
+      // Building query using INNER JOIN keyword.
+      String query = "SELECT NAME, AGE, ADDRESS, SALARY, DEPARTMENT FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+      Cursor cursor = db.rawQuery(query, null);
+      while(cursor.moveToNext()) {
+          result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME)) + " who is " +
+                  cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_AGE)) + " lives in " +
+                  cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_ADDRESS)) + " gets paid " +
+                  cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_SALARY)) + "k/year and works in " +
+                  cursor.getString(cursor.getColumnIndex(DataEntryDepartment.COLUMN_DEPARTMENT)) + " department.";
+      }
+      cursor.close();
+      return result;
   }
 }
 
