@@ -28,6 +28,7 @@ public class MyCustomToast extends Toast {
 
     public static Toast makeText(Context context, CharSequence text, @Duration int duration) {
 
+        return android.widget.Toast.makeText(context, "My Custom Toast: "+text, duration);
 
     }
 }
