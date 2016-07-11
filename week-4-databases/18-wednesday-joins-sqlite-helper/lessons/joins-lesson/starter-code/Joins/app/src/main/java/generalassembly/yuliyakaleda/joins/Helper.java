@@ -87,12 +87,22 @@ public class Helper extends SQLiteOpenHelper {
   }
 
   public String getNameJoins() {
-    //TODO: add the code from the lesson.
+    // The string "default name will be returned if the right entries in the db cannot be found.
+    String result = "default name";
+    SQLiteDatabase db = getWritableDatabase();
+    // Building query using INNER JOIN keyword
+    String query = "SELECT NAME FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY._ID = DEPARTMENT.EMP_ID";
+    Cursor cursor = db.rawQuery(query, null);
+    while(cursor.moveToNext()) {
+      result = cursor.getString(cursor.getColumnIndex(DataEntryCompany.COLUMN_NAME));
+    }
+    cursor.close();
+    return result;
   }
 
   //The method is the solution for the independent part of the lesson
-  public String getFullInformation() {
-    //TODO: add the code from the lesson.
-  }
+//  public String getFullInformation() {
+//    //TODO: add the code from the lesson.
+//  }
 }
 
