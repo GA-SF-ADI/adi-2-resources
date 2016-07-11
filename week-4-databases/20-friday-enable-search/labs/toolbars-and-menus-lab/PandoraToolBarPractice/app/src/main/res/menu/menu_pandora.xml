@@ -1,0 +1,41 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Pandora"
+
+    >
+
+    <item
+        android:id="@+id/back_button"
+        android:icon="@android:drawable/ic_media_previous"
+        android:title="back"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/play_button"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="play"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/next_button"
+        android:icon="@android:drawable/ic_media_next"
+        android:title="next"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/pause_button"
+        android:icon="@android:drawable/ic_media_pause"
+        android:title="pause"
+        app:showAsAction="always"/>
+
+
+    <item
+        android:id="@+id/like_button"
+        android:title="like"
+        app:showAsAction="always"/>
+
+
+</menu>

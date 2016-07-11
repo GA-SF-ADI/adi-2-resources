@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom"
+        android:background="#8e8e8e"/>
+
+
+    <Button
+        android:id="@+id/pandora_nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="next"/>
+
+</FrameLayout>

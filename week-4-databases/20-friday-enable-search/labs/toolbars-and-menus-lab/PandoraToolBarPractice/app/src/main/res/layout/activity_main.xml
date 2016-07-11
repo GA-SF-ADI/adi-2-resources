@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.gradecodeschool.pandoratoolbarpractice.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
+
+        <TextView
+            android:id="@+id/space_button"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <TextView
+            android:id="@+id/space_button2"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <Button
+            android:id="@+id/main_back_button"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_media_previous"/>
+
+        <Button
+            android:id="@+id/main_play_button"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_media_play"/>
+
+        <Button
+            android:id="@+id/main_next_button"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_media_next"/>
+
+        <TextView
+            android:id="@+id/main_button"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/colorPrimary"
+            />
+
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/mainToolbar"
+        android:text="Next"
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>
