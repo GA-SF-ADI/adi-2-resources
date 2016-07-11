@@ -8,26 +8,33 @@
     tools:context="com.test.snug.SingleHatViewActivity">
 
 
-
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar2"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+    <ImageButton
+        android:id="@+id/button_in_toolbar_to_view_cart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:src="@drawable/ic_action_cart"
+        android:background="@null"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:visibility="visible" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar2"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+    <ImageView
+        android:id="@+id/app_logo_in_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/light_green_hat_only_for_menu" />
 
-
-
-
-
-    </android.support.design.widget.AppBarLayout>
+</android.support.v7.widget.Toolbar>
 
     <include layout="@layout/content_single_hat_view" />
 

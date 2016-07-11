@@ -1,12 +1,14 @@
 package com.test.snug;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<Hat> hatDataSet;
     private Random mRandom = new Random();
     private static MyClickListener myClickListener;
+
 
     int[] images = new int[]{
 
@@ -61,23 +64,36 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView name;
         TextView fittedOrSnap;
         TextView price;
+        public String ACTIVITY_TAG = "DataObjectHolder.class";
 
 
         public DataObjectHolder(View itemView) {
             super(itemView);
 
+            CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
             name = (TextView) itemView.findViewById(R.id.textView_hat_name);
             fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
             price = (TextView) itemView.findViewById(R.id.textView_hat_price);
 
             Log.i(LOG_TAG, "Adding Listener");
 
-            itemView.setOnClickListener(this);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Log.d("Item clicked", "Item clicked");
+
+                    myClickListener.onItemClick(getLayoutPosition(), v);
+
+
+                }
+            });
+
+
         }
 
         @Override
         public void onClick(View v) {
-            myClickListener.onItemClick(getPosition(), v);
         }
     }
 
@@ -98,7 +114,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.name.setText(hatDataSet.get(position).getName());
         holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
-        holder.price.setText(hatDataSet.get(position).getPrice());
+        holder.price.setText(hatDataSet.get(position).getPrice()+"");
     }
 
     public void addItem(Hat hat, int index) {
