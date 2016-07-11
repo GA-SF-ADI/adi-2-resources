@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FragmentInterfacePractice-Spanish</string>
+    <string name="lion_name">León</string>
+    <string name="lion_size">Grande</string>
+
+    <string name="koala_name">Coala</string>
+    <string name="koala_size">Medio</string>
+
+    <string name="fish_name">Peces</string>
+    <string name="fish_size">Pequeño</string>
+</resources>

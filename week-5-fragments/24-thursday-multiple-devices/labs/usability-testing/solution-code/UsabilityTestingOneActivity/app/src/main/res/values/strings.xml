@@ -1,0 +1,18 @@
+<resources>
+  <string name="app_name">UsabilityTestingStarterCode</string>
+  <string name="action_settings">Settings</string>
+  <string-array name="signs">
+    <item>aries</item>
+    <item>taurus</item>
+    <item>gemini</item>
+    <item>cancer</item>
+    <item>leo</item>
+    <item>virgo</item>
+    <item>libra</item>
+    <item>scorpio</item>
+    <item>sagittarius</item>
+    <item>capricorn</item>
+    <item>aquarius</item>
+    <item>pisces</item>
+  </string-array>
+</resources>
