@@ -9,14 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class SecondActivity extends AppCompatActivity {
     DatabaseHelper myDb;
-
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         setContentView(R.layout.activity_second);
+
 
         super.onCreate(savedInstanceState);
         myDb = new DatabaseHelper(this);
@@ -24,6 +27,9 @@ public class SecondActivity extends AppCompatActivity {
         myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "5", "striking", null);
         myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "5", "elegant", null);
         myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "5", "classic", null);
+
+        listView = (ListView) findViewById(R.id.second_activity_list_view);
+        listView.setAdapter(mAdapter);
 
 //        Cursor jewelryCursor = IconSQLiteOpenHelper.getInstance(SecondActivity.this).getJewelry();
 //
@@ -44,7 +50,7 @@ public class SecondActivity extends AppCompatActivity {
 //        };
 //
 //        iconListView.setAdapter(cursorAdapter);
-//    }
+    }
 
 }
-}
+

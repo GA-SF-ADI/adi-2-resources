@@ -80,7 +80,7 @@
         android:layout_alignEnd="@+id/textView2" />
 
     <ListView
-        android:id="@+id/icon_list_view"
+        android:id="@+id/second_activity_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>
