@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String REQUEST_CODE = "requestCode";
 
-    ArrayList<Animal> mAnimalArrayList;
+    Zoo zoo;
+    //ArrayList<Animal> mAnimalArrayList;
     ArrayAdapter<Animal> mAdapter;
-    Button mAddLionButton, mAddSnakeButton;
+    Button mAddLionButton, mAddSnakeButton, mRemoveLastButton;
     ListView mAnimalListView;
 
     @Override
@@ -28,14 +30,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         if(mAnimalArrayList == null){
             mAnimalArrayList = new ArrayList<>();
+        }*/
+
+        if(zoo == null) {
+            zoo = Zoo.getInstance();
         }
 
         mAddLionButton = (Button)findViewById(R.id.add_lion_button);
         mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
+        mRemoveLastButton = (Button)findViewById(R.id.remove);
 
-        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, zoo.getAnimalList());
 
         mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
         mAnimalListView.setAdapter(mAdapter);
@@ -57,13 +65,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, ADD_SNAKE);
             }
         });
+
+        mRemoveLastButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(zoo.getAnimalList().size()>0) {
+                    zoo.removeAnimal();
+                    mAdapter.notifyDataSetChanged();
+                }  else Toast.makeText(MainActivity.this, "Nothing to remove!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mAnimalListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                zoo.getAnimalList().get(position).makeNoise(MainActivity.this);
+            }
+        });
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
             Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
-            mAnimalArrayList.add(createdAnimal);
+            zoo.addAnimal(createdAnimal);
             mAdapter.notifyDataSetChanged();
         }
     }
