@@ -52,7 +52,7 @@ public class MainActivityTest {
         onView(withId(R.id.addButton))
                 .check(matches(isDisplayed()));
     }
-    
+
 
     /**
      * As a user, when I add the numbers 5.23 and 12.01
