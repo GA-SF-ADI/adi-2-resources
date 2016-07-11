@@ -1,5 +1,6 @@
 package gg.patrickcummins.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +9,12 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class JerseyActivity extends AppCompatActivity {
     TextView jerseyColor1, jerseyColor2, jerseyColor3;
     ImageView jerseyImageView;
+    String currentPlayer;
     //TODO: Alot of shit, connect to db
 
     @Override
@@ -18,14 +22,19 @@ public class JerseyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jersey);
 
+        Intent currentIntent = getIntent();
+        currentPlayer = currentIntent.getStringExtra("playerName");
+
         setViews();
         setOnClickListeners();
     }
 
     private void setOnClickListeners() {
-        setColorOnClick(jerseyColor1, R.drawable.klay_thompson_blue );
-        setColorOnClick(jerseyColor2, R.drawable.klay_thompson_white );
-        setColorOnClick(jerseyColor3, R.drawable.klay_thompson_slate );
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance(JerseyActivity.this);
+        ArrayList<Integer> playerJerseysList = databaseHelper.getPlayerJerseysList(currentPlayer);
+        setColorOnClick(jerseyColor1, playerJerseysList.get(0) );
+        setColorOnClick(jerseyColor2, playerJerseysList.get(1) );
+        setColorOnClick(jerseyColor3, playerJerseysList.get(2) );
     }
 
     private void setColorOnClick(TextView textView, final int jerseyDrawable) {

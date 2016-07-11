@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper INSTANCE;
 
-    private static final String CREATE_PLAYER_TABLE = "CREATE TABLE " + PlayerValues.TABLE_NAME + " (" + PlayerValues._ID + " INTEGER PRIMARY KEY, " + PlayerValues.NAME + " TEXT, " + PlayerValues.TEAM + " TEXT, " + PlayerValues.NUMBER + " INTEGER, " + PlayerValues.POSITION + " TEXT, " + PlayerValues.PICTURE + " INTEGER)";
+    private static final String CREATE_PLAYER_TABLE = "CREATE TABLE " + PlayerValues.TABLE_NAME + " (" + PlayerValues._ID + " INTEGER PRIMARY KEY, " + PlayerValues.NAME + " TEXT, " + PlayerValues.TEAM + " TEXT, " + PlayerValues.NUMBER + " INTEGER, " + PlayerValues.POSITION + " TEXT, " + PlayerValues.PICTURE + " INTEGER, " +PlayerValues.JERSEY1 + " INTEGER, " +PlayerValues.JERSEY2 + " INTEGER, " +PlayerValues.JERSEY3 + " INTEGER)";
     private static final String DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS " + PlayerValues.TABLE_NAME;
 
     public static abstract class PlayerValues implements BaseColumns {
@@ -56,9 +56,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public static DatabaseHelper getINSTANCE() {
-        return INSTANCE;
-    }
 
     public void insertPlayerRow(Player player) {
         SQLiteDatabase db = getWritableDatabase();
@@ -92,13 +89,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()){
-            String name = cursor.getString(cursor.getColumnIndex(PlayerValues.NAME));
-            String position = cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION));
             playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3))));
 
         }
         cursor.close();
         return playerArrayList;
+    }
+    public ArrayList<Integer> getPlayerJerseysList(String playerName){
+        ArrayList<Integer> jerseyList = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.NAME + " = " + playerName;
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()){
+            jerseyList.add(cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)));
+            jerseyList.add(cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)));
+            jerseyList.add(cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3)));
+
+        }
+        return jerseyList;
     }
 
 

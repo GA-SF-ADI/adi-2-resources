@@ -47,7 +47,7 @@ public class PlayerListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.player_list_item, parent, false);
         }
-        Player currentPlayer = playerArrayList.get(position);
+        final Player currentPlayer = playerArrayList.get(position);
         ImageView playerImageView = (ImageView) convertView.findViewById(R.id.playerImageView);
         TextView nameTextView = (TextView) convertView.findViewById(R.id.playerNameTextView);
         TextView positionTextView = (TextView) convertView.findViewById(R.id.playerPositionTextView);
@@ -64,6 +64,7 @@ public class PlayerListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent playerJerseyIntent = new Intent(context, JerseyActivity.class);
+                playerJerseyIntent.putExtra("playerName", currentPlayer.getName());
                 context.startActivity(playerJerseyIntent);
             }
         });
