@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class CreateAnimalActivity extends AppCompatActivity {
     public static final String ANIMAL_SERIALIZABLE_KEY = "animalSerializableKey";
@@ -33,10 +34,12 @@ public class CreateAnimalActivity extends AppCompatActivity {
                     //create new Lion object to pass back
                     Lion lion = new Lion(mCheckBox.isChecked());
                     intent.putExtra(ANIMAL_SERIALIZABLE_KEY, lion);
+                    Toast.makeText(CreateAnimalActivity.this, "Roar", Toast.LENGTH_LONG).show();
                 }else{
                     //create new Snake object to pass back
                     Snake snake = new Snake(mCheckBox.isChecked());
                     intent.putExtra(ANIMAL_SERIALIZABLE_KEY, snake);
+                    Toast.makeText(CreateAnimalActivity.this, "Hiss", Toast.LENGTH_LONG).show();
                 }
 
                 setResult(RESULT_OK, intent);
