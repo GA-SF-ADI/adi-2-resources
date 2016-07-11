@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,17 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
 
+        CardView individualHatCard = (CardView) findViewById(R.id.card_view);
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
 
 //        TODO: Eventually will have to fetch hat records?
-
-
-
-
-
-//        TODO: Adapter stuff
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -60,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(),context);
+        mAdapter = new MyRecyclerViewAdapter(getDataSet(), context);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -76,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
 
         insertHatData();
+
+
 
     }
 
@@ -115,11 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter.notifyDataSetChanged();
 */
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
             @Override
@@ -131,6 +125,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
     }
 
     @Override
