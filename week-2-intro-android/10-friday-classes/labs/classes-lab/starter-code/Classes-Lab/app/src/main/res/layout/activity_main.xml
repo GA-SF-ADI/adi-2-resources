@@ -10,15 +10,39 @@
     android:orientation="vertical"
     tools:context="ly.generalassemb.drewmahrt.classes_lab.MainActivity">
 
-    <TextView
-        android:id="@+id/output_text"
+    <LinearLayout
+        android:id="@+id/enter_animal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/changed_output_text"
+        <Button
+            android:id="@+id/bear"
+            android:text="BEAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/snake"
+            android:text="SNAKE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/cat"
+            android:text="CAT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/dog"
+            android:text="DOG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_of_animals"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content"></ListView>
 </LinearLayout>
