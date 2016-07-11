@@ -1,5 +1,6 @@
 package com.test.snug;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by LangstonSmith on 7/9/16.
@@ -18,8 +20,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private static String LOG_TAG = "MyRecyclerViewAdapter";
 
     public List<Hat> hatList;
-
-    private ArrayList<Hat> mDataset;
+    private Context mContext;
+    private ArrayList<Hat> hatDataSet;
+    private Random mRandom = new Random();
     private static MyClickListener myClickListener;
 
     int[] images = new int[]{
@@ -43,12 +46,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             R.drawable.texas_america,
             R.drawable.wsox,
             R.drawable.yankees,
-            R.drawable.yanks};
+            R.drawable.yanks
+    };
 
 
-    // Get a random between 0 and images.length-1
     int imageId = (int) (Math.random() * images.length);
 
+    public MyRecyclerViewAdapter(ArrayList<Hat> hatDataSet, Context mContext) {
+        this.hatDataSet = hatDataSet;
+        this.mContext = mContext;
+    }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name;
@@ -69,7 +76,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }
 
         @Override
-        public void onClick(View v) {myClickListener.onItemClick(getPosition(), v);
+        public void onClick(View v) {
+            myClickListener.onItemClick(getPosition(), v);
         }
     }
 
@@ -77,9 +85,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         this.myClickListener = myClickListener;
     }
 
-    public MyRecyclerViewAdapter(ArrayList<Hat> myDataset) {
-        mDataset = myDataset;
-    }
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -91,24 +96,24 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.name.setText(mDataset.get(position).getName());
-        holder.fittedOrSnap.setText(mDataset.get(position).getFittedOrSnap());
-        holder.price.setText(mDataset.get(position).getPrice());
+        holder.name.setText(hatDataSet.get(position).getName());
+        holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
+        holder.price.setText(hatDataSet.get(position).getPrice());
     }
 
     public void addItem(Hat hat, int index) {
-        mDataset.add(hat);
+        hatDataSet.add(hat);
         notifyItemInserted(index);
     }
 
     public void deleteItem(int index) {
-        mDataset.remove(index);
+        hatDataSet.remove(index);
         notifyItemRemoved(index);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return hatDataSet.size();
     }
 
     public interface MyClickListener {

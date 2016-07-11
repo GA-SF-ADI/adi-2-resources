@@ -1,17 +1,21 @@
 package com.test.snug;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        Context context = getApplicationContext();
+
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
@@ -41,16 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //        TODO: Eventually will have to fetch hat records?
 
 
-        Button goToSingleHat = (Button) findViewById(R.id.go_to_hat_button);
 
-        goToSingleHat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
 
 //        TODO: Adapter stuff
@@ -59,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager = new GridLayoutManager(context, 2);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyRecyclerViewAdapter(getDataSet());
+        mAdapter = new MyRecyclerViewAdapter(getDataSet(),context);
 
         mRecyclerView.setAdapter(mAdapter);
 
@@ -82,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private ArrayList<Hat> getDataSet() {
+        ArrayList results = new ArrayList<Hat>();
+        for (int index = 0; index < 20; index++) {
+            Hat hat = new Hat(index, 4, "SF Giants", "39.99", "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+            results.add(index, hat);
+        }
+        return results;
+    }
 
     private void insertHatData() {
 
@@ -112,6 +117,21 @@ public class MainActivity extends AppCompatActivity {
 */
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+
+                Log.d(LOG_TAG, "Hat item clicked");
+                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+                startActivity(intent);
+
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,9 +139,8 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
-
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
