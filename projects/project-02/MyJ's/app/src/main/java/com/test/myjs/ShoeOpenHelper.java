@@ -13,14 +13,21 @@ import android.provider.BaseColumns;
 //created datatbase helper class
 public class ShoeOpenHelper extends SQLiteOpenHelper{
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Shows.db";
+    public static final String DATABASE_NAME = "Shoes.db";
 
 
 //set constructor for helper
     public ShoeOpenHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
+    private static ShoeOpenHelper instance;
 
+    public static ShoeOpenHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new ShoeOpenHelper(context.getApplicationContext());
+        }
+        return instance;
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create tables
@@ -61,8 +68,8 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
             DataEntryShoes.COL_DESCRIPTION + " TEXT," +
             DataEntryShoes.COL_PRICE + " DOUBLE," +
             DataEntryShoes.COL_YEAR + " INTEGER," +
-            DataEntryShoes.COL_STYLE + " TEXT" +
-            DataEntryShoes.COL_IMG_ID + " INTEGER,)";
+            DataEntryShoes.COL_STYLE + " TEXT," +
+            DataEntryShoes.COL_IMG_ID + " INTEGER)";
 
     private static final String SQL_DELETE_ENTRIES_SHOES = "DROP TABLE IF EXISTS " +
             DataEntryShoes.SHOE_TABLE_NAME;
@@ -82,6 +89,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
     public void insertRowShoes(Shoe shoe) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(DataEntryShoes.COL_ID,shoe.getId());
         values.put(DataEntryShoes.COL_NAME, shoe.getName());
         values.put(DataEntryShoes.COL_DESCRIPTION, shoe.getDescription());
         values.put(DataEntryShoes.COL_PRICE, shoe.getPrice());
