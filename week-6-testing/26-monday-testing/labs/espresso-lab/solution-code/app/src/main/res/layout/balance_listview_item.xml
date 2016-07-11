@@ -13,8 +13,7 @@
         android:layout_weight="7"
         android:maxLines="2"
         android:ellipsize="end"
-        android:layout_margin="12dp"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        android:layout_margin="12dp" />
 
     <TextView
         android:layout_width="0dp"
