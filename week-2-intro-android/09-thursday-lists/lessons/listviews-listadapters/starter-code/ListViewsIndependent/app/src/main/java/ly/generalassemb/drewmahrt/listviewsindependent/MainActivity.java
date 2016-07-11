@@ -19,14 +19,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,exampleList);
+
+        listView.setAdapter(arrayAdapter);
+
         //Instantiate your LinkedList
-        mStringList =
+        mStringList = LinkedList<String> mStringList = new LinkedList<String>();
+
+        mStringList.add("item1");
+        mStringList.add("item2");
+        mStringList.add("item3");
+        mStringList.add("item3");
 
         //Instantiate your adapter
-        mAdapter =
+       mAdapter sMAdapter = new mAdapter<mStringList>(this.mAdapter,);
+
+        )
 
         //Get your ListView and set the adapter
-        ListView listView =
+        ListView listView = new (ListView) findViewById(R.id.ListView1xml);
+        )
 
         //Complete the FloatingActionButton onClick method to add a list item
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -41,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                m
                 return true;
             }
         });
