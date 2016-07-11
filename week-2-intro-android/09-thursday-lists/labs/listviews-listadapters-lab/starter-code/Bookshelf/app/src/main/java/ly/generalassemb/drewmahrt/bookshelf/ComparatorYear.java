@@ -9,5 +9,7 @@ public class ComparatorYear implements Comparator<Book> {
     @Override
     public int compare(Book lhs, Book rhs) {
         //TODO: Write the comparison for the years
+
+        return lhs.getYear().compareTo(rhs.getYear());
     }
 }
