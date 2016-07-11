@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView mShoppingListView;
     private CursorAdapter mCursorAdapter;
     private ShoppingSQLiteOpenHelper mHelper;
+    private Button mAddItem;
+    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +36,33 @@ public class MainActivity extends AppCompatActivity {
         dbSetup.getReadableDatabase();
 
         mShoppingListView = (ListView)findViewById(R.id.shopping_list_view);
-        mHelper = new ShoppingSQLiteOpenHelper(MainActivity.this);
+        mHelper = ShoppingSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Cursor cursor = mHelper.getShoppingList();
+        cursor = mHelper.getShoppingList();
 
         mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,new String[]{ShoppingSQLiteOpenHelper.COL_ITEM_NAME},new int[]{android.R.id.text1},0);
         mShoppingListView.setAdapter(mCursorAdapter);
 
         handleIntent(getIntent());
+
+        mShoppingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                cursor.moveToPosition(position);
+                intent.putExtra("id", cursor.getInt(cursor.getColumnIndex(ShoppingSQLiteOpenHelper.COL_ID)));
+                startActivity(intent);
+            }
+        });
+        mAddItem = (Button) findViewById(R.id.addItemButton);
+        mAddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,5 +92,12 @@ public class MainActivity extends AppCompatActivity {
             mCursorAdapter.changeCursor(cursor);
             mCursorAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cursor = mHelper.getShoppingList();
+        mCursorAdapter.changeCursor(cursor);
     }
 }
