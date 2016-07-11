@@ -227,7 +227,7 @@ To perform an action, you have to call ViewInteraction's `perform`:
         .perform( /* some action */ );
 ```
 
-The perform method takes in an array (comma-separated [varargs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)) of `ViewAction`s. These are actions that will be done to the matched view, sequentially.
+The perform method takes in comma-separated variable number of arguments or  [varargs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)) of `ViewAction`s. These are actions that will be done to the matched view, sequentially.
 
 > Check: Take a minute and come up with a list of ViewActions with your partner.  Share out!
 
