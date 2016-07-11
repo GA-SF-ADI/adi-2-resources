@@ -26,6 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         public static final String POSITION = "Position";
         public static final String TEAM = "Team";
         public static final String PICTURE = "PlayerPicture";
+        public static final String JERSEY1 = "Jersey1";
+        public static final String JERSEY2 = "Jersey2";
+        public static final String JERSEY3 = "Jersey3";
     }
 
     private DatabaseHelper(Context context) {
@@ -65,6 +68,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PlayerValues.NUMBER, player.getNumber());
         values.put(PlayerValues.PICTURE, player.getPlayerPicture());
         values.put(PlayerValues.POSITION, player.getPosition());
+        values.put(PlayerValues.JERSEY1, player.getJersey1());
+        values.put(PlayerValues.JERSEY2, player.getJersey2());
+        values.put(PlayerValues.JERSEY3, player.getJersey3());
+
 
         db.insertOrThrow(PlayerValues.TABLE_NAME, null, values);
         db.close();
@@ -76,18 +83,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String query = "";
         if (team.equals("warriors")) {
-            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='warriors'";
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='warriors'";
         } else if (team.equals("raiders")) {
-            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='raiders'";
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='raiders'";
         } else if (team.equals("sharks")) {
-            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='sharks'";
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " +PlayerValues.TEAM + "='sharks'";
         }
 
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()){
             String name = cursor.getString(cursor.getColumnIndex(PlayerValues.NAME));
             String position = cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION));
-            playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM))));
+            playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3))));
 
         }
         cursor.close();

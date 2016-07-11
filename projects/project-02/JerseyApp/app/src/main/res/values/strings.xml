@@ -5,4 +5,5 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="choose_a_team">Choose A Team</string>
+    <string name="add_to_cart">Add To Cart</string>
 </resources>

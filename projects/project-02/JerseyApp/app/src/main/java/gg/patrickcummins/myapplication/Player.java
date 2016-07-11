@@ -8,15 +8,41 @@ import android.graphics.drawable.Drawable;
 
 public class Player {
     String name, position, team;
-    int number, playerPicture;
+    int number, playerPicture, jersey1,jersey2,jersey3;
 
-    public Player(String name, String position, int number, int playerPicture, String team) {
+    public Player(String name, String position, int number, int playerPicture, String team, int jersey1, int jersey2, int jersey3) {
         this.name = name;
         this.position = position;
+        this.team = team;
         this.number = number;
         this.playerPicture = playerPicture;
-        this.team = team;
+        this.jersey1 = jersey1;
+        this.jersey2 = jersey2;
+        this.jersey3 = jersey3;
+    }
 
+    public int getJersey1() {
+        return jersey1;
+    }
+
+    public void setJersey1(int jersey1) {
+        this.jersey1 = jersey1;
+    }
+
+    public int getJersey2() {
+        return jersey2;
+    }
+
+    public void setJersey2(int jersey2) {
+        this.jersey2 = jersey2;
+    }
+
+    public int getJersey3() {
+        return jersey3;
+    }
+
+    public void setJersey3(int jersey3) {
+        this.jersey3 = jersey3;
     }
 
     public String getName() {

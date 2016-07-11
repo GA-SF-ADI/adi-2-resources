@@ -9,15 +9,15 @@
 
     <ImageView
         android:id="@+id/jerseyImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/jersey_picture"
+        android:layout_height="@dimen/jersey_picture"
         android:src="@drawable/klay_thompson_white" />
 
 
     <TextView
         android:id="@+id/jersey1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/jersey_select"
+        android:layout_height="@dimen/jersey_select"
         android:layout_margin="5dp"
         android:layout_toRightOf="@id/jerseyImageView"
         android:background="@android:color/holo_blue_dark"
@@ -26,8 +26,8 @@
 
     <TextView
         android:id="@+id/jersey2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/jersey_select"
+        android:layout_height="@dimen/jersey_select"
         android:layout_margin="5dp"
         android:layout_toRightOf="@id/jersey1"
         android:background="@drawable/black_border"
@@ -36,12 +36,21 @@
 
     <TextView
         android:id="@+id/jersey3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/jersey_select"
+        android:layout_height="@dimen/jersey_select"
         android:layout_margin="5dp"
         android:layout_toRightOf="@id/jersey2"
         android:background="@android:color/black"
 
         />
+
+
+    <Button
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/addToCartButton"
+        android:text="@string/add_to_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
