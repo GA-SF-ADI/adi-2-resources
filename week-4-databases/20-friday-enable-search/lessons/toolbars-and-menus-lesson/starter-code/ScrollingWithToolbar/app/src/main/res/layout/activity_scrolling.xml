@@ -57,9 +57,30 @@
         android:layout_gravity="bottom"
         android:background="#8e8e8e">
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="I am a toolbar!"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/my_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUTTON"
+                android:layout_toRightOf="@+id/pinapple"
+                android:layout_marginLeft="100dp"/>
+
+            <ImageView
+                android:id="@+id/pinapple"
+                android:layout_width="53dp"
+                android:layout_height="53dp"
+                android:src="@drawable/pineapple">
+            </ImageView>
+
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+
+
+
+
 </FrameLayout>

@@ -12,8 +12,21 @@
 
     <!-- Add an Example fragment here -->
 
+<fragment
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:name="ly.generalassemb.staticfragment.FragmentExampleClass"
+    android:id="@+id/fragment_audrey"
+    android:layout_weight="1"/>
 
     <!-- Bonus: Add another example fragment -->
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:name="ly.generalassemb.staticfragment.FragmentExampleClass"
+        android:id="@+id/fragment_audreysecond"
+        android:layout_weight="2"/>
 
 
 </LinearLayout>

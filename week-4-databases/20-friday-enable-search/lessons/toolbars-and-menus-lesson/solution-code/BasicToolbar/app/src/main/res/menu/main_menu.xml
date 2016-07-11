@@ -19,4 +19,10 @@
         app:showAsAction="ifRoom" />
 
 
+    <item android:id="@+id/my_items"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_delete"
+    android:title="@string/app_name"/>
+
+
 </menu>

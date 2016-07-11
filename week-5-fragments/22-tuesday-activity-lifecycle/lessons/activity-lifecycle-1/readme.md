@@ -129,6 +129,13 @@ onDestroy
 ```
 
 
+<<<<<<< HEAD
+Imagine we started the app, then closed it.
+
+(onCreate, onStart, onResume, onPause, onCreate, onStart, onResume, onStop, onPause, onRestart, onStart, onResume, onStop, onDestroy)
+
+=======
+>>>>>>> master
 
 <a name="introduction"></a>
 ## Introduction: Saving State with Bundles (20 mins)
