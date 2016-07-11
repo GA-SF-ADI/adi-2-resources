@@ -26,12 +26,13 @@ public class JerseyActivity extends AppCompatActivity {
         currentPlayer = currentIntent.getStringExtra("playerName");
 
         setViews();
-        setOnClickListeners();
+        setOnClickListenersAndJerseyDefault();
     }
-
-    private void setOnClickListeners() {
+    //TODO:Fix for Raiders 2 Jerseys
+    private void setOnClickListenersAndJerseyDefault() {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance(JerseyActivity.this);
         ArrayList<Integer> playerJerseysList = databaseHelper.getPlayerJerseysList(currentPlayer);
+        jerseyImageView.setImageResource(playerJerseysList.get(0));
         setColorOnClick(jerseyColor1, playerJerseysList.get(0) );
         setColorOnClick(jerseyColor2, playerJerseysList.get(1) );
         setColorOnClick(jerseyColor3, playerJerseysList.get(2) );

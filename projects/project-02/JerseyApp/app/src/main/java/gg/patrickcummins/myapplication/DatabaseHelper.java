@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<Integer> getPlayerJerseysList(String playerName){
         ArrayList<Integer> jerseyList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.NAME + " = " + playerName;
+        String query = "SELECT " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.NAME + " = " +  "'" +  playerName + "'";
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()){
             jerseyList.add(cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)));
