@@ -1,5 +1,7 @@
 package ly.generalassemb.drewmahrt.subclassinglab;
 
+import android.widget.Toast;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,11 @@ public class Snake extends Reptile{
     public Snake(boolean isPoisonous){
         super(false,5,false,"Snake");
         mIsPoisonous = isPoisonous;
+    }
+    @Override
+    public String makeNoise(){
+        return "Hisssss";
+
     }
 
     @Override

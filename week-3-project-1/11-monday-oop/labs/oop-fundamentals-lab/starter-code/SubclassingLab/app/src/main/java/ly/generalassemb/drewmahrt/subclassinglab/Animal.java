@@ -40,4 +40,7 @@ public class Animal implements Serializable {
     public void setName(String name) {
         this.mName = name;
     }
+    public String makeNoise(){
+        return "Silence";
+    }
 }
