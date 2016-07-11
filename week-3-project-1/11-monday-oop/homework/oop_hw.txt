@@ -1,0 +1,21 @@
+1) The four main charachteristics of OOP are abstraction, polymorphism, inheritance, and encapsulation.
+
+1i) Abstraction: Creating an abstract class for something like Animal. You'll never have an Animal declared as the object Animal but all Animals can share certain variables and methods.
+
+Polymorphism: The ability for an Object to be easily cast as another Object. Being able to cast a List to an ArrayList.
+
+ Inheritance: When one class is a subclass of another. Once again using the animal example, you may have a class Mammals which can then be extended by specific types of mammals which would share all variables and methods defined in the Mammals class.
+
+
+Encapsulation: Making the language simple to read and understand. Breaking the language into blocks and having all the applicable methods and variables in one place. For example having a different class for every object.
+
+1ii) In my opinion Abstraction and Inheritance are very similiar, the only difference is abstract classes cant be used to to initialize an object.
+
+2) The comparable interface is often used to sort arrays of Objects.
+
+2i)Classes can implement as many interfaces as they want but can only extend one abstract class.
+
+2ii)Abstract classes relate to Polymorphism because a Abstract class object can be assigned to a object that is a subclass of that class. i.e. Animal myAnimal = new Dog();
+	Interfaces can be easily Overridden in many different ways within a class. For example if you had a HouseHold Object and implemented the Comparable interface you could easily sort an Array of HouseHolds by income.
+
+3)It helps to manage complexity and not be ovverun with many variables of the same name, also for privacy but meh. You can get private variables with getters and setters.
