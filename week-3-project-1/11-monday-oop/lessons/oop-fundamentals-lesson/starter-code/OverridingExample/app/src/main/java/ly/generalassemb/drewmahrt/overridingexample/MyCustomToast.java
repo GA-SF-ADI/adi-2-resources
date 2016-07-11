@@ -26,8 +26,9 @@ public class MyCustomToast extends Toast {
         super(context);
     }
 
-    public static Toast makeText(Context context, CharSequence text, @Duration int duration) {
 
+    public static Toast makeText(Context context, CharSequence text, @Duration int duration) {
+        return Toast.makeText(context, "My custom toast: "+text, duration);
 
     }
 }
