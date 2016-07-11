@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Text_tablesLab"
+        android:text="Tables Lab"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editText_SSN"
+        android:hint="Type in your SSN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Text_tablesLab" />
+
+    <EditText
+        android:id="@+id/editText_FirstName"
+        android:hint="Type in your First Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_SSN" />
+
+    <EditText
+        android:id="@+id/editText_LastName"
+        android:hint="Type in your Last Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_FirstName" />
+
+    <EditText
+        android:id="@+id/editText_YearBirth"
+        android:hint="Type in your Year of Birth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_LastName" />
+
+    <EditText
+        android:id="@+id/editText_City"
+        android:hint="Type in your City"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_YearBirth" />
+
+    <Button
+        android:id="@+id/button_add"
+        android:text="Add Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button_cancel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_City"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

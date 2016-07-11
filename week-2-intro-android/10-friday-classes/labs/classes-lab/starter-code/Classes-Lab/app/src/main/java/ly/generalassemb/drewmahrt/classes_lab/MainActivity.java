@@ -1,43 +1,72 @@
 package ly.generalassemb.drewmahrt.classes_lab;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+
+import ly.generalassemb.drewmahrt.subclassinglab.R;
 
 public class MainActivity extends AppCompatActivity {
+    public static final int ADD_LION = 100;
+    public static final int ADD_SNAKE = 200;
+
+    public static final String REQUEST_CODE = "requestCode";
+
+    ArrayList<Animal> mAnimalArrayList;
+    ArrayAdapter<Animal> mAdapter;
+    Button mAddLionButton, mAddSnakeButton;
+    ListView mAnimalListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Get output TextViews
-        TextView output = (TextView)findViewById(R.id.output_text);
-        TextView changedOutput = (TextView)findViewById(R.id.changed_output_text);
+        if(mAnimalArrayList == null){
+            mAnimalArrayList = new ArrayList<>();
+        }
 
-        //Instantiate new Animal
-        Animal animal = ;
+        mAddLionButton = (Button)findViewById(R.id.add_lion_button);
+        mAddSnakeButton = (Button)findViewById(R.id.add_snake_button);
 
-        String name;
-        int topSpeed;
+        mAdapter = new ArrayAdapter<Animal>(MainActivity.this, android.R.layout.simple_list_item_1, mAnimalArrayList);
 
-        //get name and speed values using getters
-        name = ;
-        topSpeed = ;
+        mAnimalListView = (ListView)findViewById(R.id.animal_list_view);
+        mAnimalListView.setAdapter(mAdapter);
 
-        //Set text of first TextView
-        output.setText();
+        mAddLionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CreateAnimalActivity.class);
+                intent.putExtra(REQUEST_CODE, ADD_LION);
+                startActivityForResult(intent, ADD_LION);
+            }
+        });
 
-        //Set new name, speed, and endangered properties values using setters
-        
+        mAddSnakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CreateAnimalActivity.class);
+                intent.putExtra(REQUEST_CODE, ADD_SNAKE);
+                startActivityForResult(intent, ADD_SNAKE);
+            }
+        });
+    }
 
-        //get new values using getters
-        name = ;
-        topSpeed = ;
-
-        //Set text of second TextView
-        changedOutput.setText();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == RESULT_OK){
+            Animal createdAnimal = (Animal)data.getSerializableExtra(CreateAnimalActivity.ANIMAL_SERIALIZABLE_KEY);
+            mAnimalArrayList.add(createdAnimal);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 }

@@ -1,17 +1,24 @@
 package ly.generalassemb.drewmahrt.cursorlab;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = MainActivity.class.getCanonicalName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout);
 
         SQLiteDatabase db;
 
@@ -31,31 +38,44 @@ public class MainActivity extends AppCompatActivity {
             db.execSQL("INSERT INTO tbl_books Values ('" + titles[i] + "', '"+ authors[i] + "', '" + years[i] +"');");
         }
 
-        /**
-         * Start your code here
-         */
+
         // 1. Get your cursor
+        Cursor cursor = db.query("tbl_books", null, null, null, null, null, null);
 
-
+        ArrayList<String> arrayList = new ArrayList<String>();
 
         // 2. Iterate on the cursor and create a string for each row that looks like "Title - author - year"
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String author = cursor.getString(cursor.getColumnIndex("author"));
+            String year = cursor.getString(cursor.getColumnIndex("year"));
+            arrayList.add(title + " - " + author  + " - " + year);
 
+
+            cursor.moveToNext();
+        }
+
+        cursor.close();
 
 
         // 3. Insert each of the strings from step 2 into an ArrayList<String>
 
 
 
-        // 4. Create ListView
 
+
+        // 4. Create ListView
+        ListView listView = (ListView)findViewById(R.id.listView);
 
 
         // 5. Create adapter for listview ( ArrayAdapter or CustomAdapter )
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
 
 
-        
+
         // 6. Link your ListView and Adapter
-
+        listView.setAdapter(arrayAdapter);
 
     }
 }
