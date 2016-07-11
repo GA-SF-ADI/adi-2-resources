@@ -1,7 +1,5 @@
 package ly.generalassemb.drewmahrt.subclassinglab;
 
-import java.io.Serializable;
-
 /**
  * Created by drewmahrt on 1/26/16.
  */
@@ -20,6 +18,9 @@ public class Lion extends Mammal {
     public void setIsAlpha(boolean mIsAlpha) {
         this.mIsAlpha = mIsAlpha;
     }
+
+    @Override
+    public String makeNoise() {return "roar!";}
 
     @Override
     public String toString() {

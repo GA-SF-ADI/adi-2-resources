@@ -3,7 +3,7 @@ package ly.generalassemb.drewmahrt.subclassinglab;
 /**
  * Created by drewmahrt on 12/7/15.
  */
-public class Reptile extends Animal {
+public abstract class Reptile extends Animal {
     boolean hasShell;
 
     public Reptile(boolean hasLegs, int topSpeed, boolean isEndangered, String name){
