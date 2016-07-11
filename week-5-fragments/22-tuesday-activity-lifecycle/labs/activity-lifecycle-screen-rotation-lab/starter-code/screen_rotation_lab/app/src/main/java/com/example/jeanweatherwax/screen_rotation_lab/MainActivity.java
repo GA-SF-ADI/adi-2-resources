@@ -1,14 +1,11 @@
 package com.example.jeanweatherwax.screen_rotation_lab;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         // Save custom values into the bundle
-
+        savedInstanceState.putInt(address, 1);
         // Always call the superclass so it can save the view hierarchy state
-
+        savedInstanceState.putString(address,name);
     }
 
     //In onRestoreInstanceState, use getString to retrieve the address and name.
@@ -76,10 +73,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view hierarchy
-
+        super.onRestoreInstanceState(savedInstanceState);
         // Restore state members from saved instance
 
-
+        someIntValue = savedInstanceState.getInt(SOME_VALUE);
+        someStringValue = savedInstanceState.getString(SOME_OTHER_VALUE);
     }
 
 }

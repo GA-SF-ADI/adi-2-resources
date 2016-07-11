@@ -1,11 +1,10 @@
 package generalassembly.yuliyakaleda.joins;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
   private TextView text;
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"
-        //String fullInfo = helper.getFullInformation();
-        return name;
+        String fullInfo = helper.getFullInformation();
+        return fullInfo;
       }
 
       @Override

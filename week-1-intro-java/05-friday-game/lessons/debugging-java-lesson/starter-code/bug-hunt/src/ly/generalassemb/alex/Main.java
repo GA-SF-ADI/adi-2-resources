@@ -1,4 +1,4 @@
-package ly.generalassemb.alex;
+package com.company;
 
 import java.util.Scanner;
 

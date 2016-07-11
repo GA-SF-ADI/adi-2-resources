@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CustomAdapters</string>
+    <string name="First">CustomAdapters</string>
+    <string name="Second">CustomAdapters</string>
+    <string name="Click_me">CustomAdapters</string>
+
 </resources>
