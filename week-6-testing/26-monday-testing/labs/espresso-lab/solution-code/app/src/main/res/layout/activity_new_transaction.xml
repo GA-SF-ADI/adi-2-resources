@@ -43,7 +43,7 @@
             android:text="Withdraw"
             android:id="@+id/withdrawButton"
             android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
+            android:backgroundTint="@android:color/holo_red_light"
             android:textColor="@android:color/white" />
 
         <Button
@@ -52,7 +52,7 @@
             android:text="Deposit"
             android:id="@+id/depositButton"
             android:layout_weight="1"
-            android:background="@color/accent_material_light"
+            android:backgroundTint="@color/accent_material_light"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
