@@ -1,5 +1,7 @@
 package com.example.hollis.sharedpreferenceexample;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,30 +18,33 @@ public class MainActivity extends AppCompatActivity {
     Button fahr;
     Button cels;
     Button kelv;
+    String currChoice;
+    SharedPreferences sharedPreferences;
+    Boolean toAddWeather = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Gets an Instance of our weather helper
+
         helper = WeatherSQliteOpenHelper.getInstance(this);
 
-
-        //inserts weathers into our database
-        //TODO: THIS WILL RUN ON ONCREATE EVERY TIME, USE SHAREDPREFERENCES TO MAKE IT NOT HAPPEN
-        Weather weather1 = new Weather("Monday", 20, 78, 295);
-        Weather weather2 = new Weather("Tuesday", 4, 23, 232);
-        Weather weather3 = new Weather("Wednesday", 2, 42, 123);
-        Weather weather4 = new Weather("Thursday", 13, 21, 245);
-        Weather weather5 = new Weather("Friday", 18, 32, 231);
-        helper.insert(weather1);
-        helper.insert(weather2);
-        helper.insert(weather3);
-        helper.insert(weather4);
-        helper.insert(weather5);
-
-
         listView = (ListView) findViewById(R.id.listview);
+
+        //TODO: THIS WILL RUN ON ONCREATE EVERY TIME, USE SHAREDPREFERENCES TO MAKE IT NOT HAPPEN
+        sharedPreferences = this.getSharedPreferences("currentState", Context.MODE_PRIVATE);
+        currChoice = sharedPreferences.getString("currentChoice", null);
+        toAddWeather = sharedPreferences.getBoolean("toAddWeather", true);
+        if(toAddWeather) {
+            addWeather();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("toAddWeather", false);
+            editor.commit();
+        }
+        if(sharedPreferences.getString("currentChoice", currChoice) != null) {
+            setAdapter(sharedPreferences.getString("currentChoice", currChoice));
+        }
 
         //These Click Listeners determine which type of temperature should be shown
         //TODO: Save the users preferences on shared preferences
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_FAHR);
+                currChoice = WeatherSQliteOpenHelper.COL_TEMP_FAHR;
+                setEditor();
             }
         });
 
@@ -58,14 +65,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_CEL);
+                currChoice = WeatherSQliteOpenHelper.COL_TEMP_CEL;
+                setEditor();
             }
         });
         kelv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setAdapter(WeatherSQliteOpenHelper.COL_TEMP_KELVIN);
+                currChoice = WeatherSQliteOpenHelper.COL_TEMP_KELVIN;
+                setEditor();
             }
         });
+
     }
 
 
@@ -83,4 +95,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //inserts weathers into our database
+    private void addWeather() {
+        Weather weather1 = new Weather("Monday", 20, 78, 295);
+        Weather weather2 = new Weather("Tuesday", 4, 23, 232);
+        Weather weather3 = new Weather("Wednesday", 2, 42, 123);
+        Weather weather4 = new Weather("Thursday", 13, 21, 245);
+        Weather weather5 = new Weather("Friday", 18, 32, 231);
+        helper.insert(weather1);
+        helper.insert(weather2);
+        helper.insert(weather3);
+        helper.insert(weather4);
+        helper.insert(weather5);
+    }
+
+    private void setEditor() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("currentChoice", currChoice);
+        editor.commit();
+        toAddWeather = false;
+    }
 }
