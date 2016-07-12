@@ -52,6 +52,12 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/margin_5dp"
         android:src="@drawable/ic_shopping_cart_black_24dp" />
+    <Button
+        android:layout_alignParentRight="true"
+        android:text="Purchase History"
+        android:id="@+id/purchaseHistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

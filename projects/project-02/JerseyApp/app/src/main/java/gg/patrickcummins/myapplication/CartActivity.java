@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CartActivity extends AppCompatActivity {
     ListView cartListView;
@@ -43,6 +44,16 @@ public class CartActivity extends AppCompatActivity {
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date date = new Date();
+                int history_id;
+                if (helper.isPurchaseHistoryEmpty()) {
+                    history_id = 0;
+                } else {
+                    history_id = helper.getLastHistoryID() + 1;
+                }
+                for (int i = 0; i < cartItems.size(); i++) {
+                    helper.insertPurchaseHistoryRow(cartItems.get(i), history_id, date.toString());
+                }
                 helper.clearCart();
                 cartItems.clear();
                 cartListAdapter.notifyDataSetChanged();
@@ -60,9 +71,9 @@ public class CartActivity extends AppCompatActivity {
 
         }
         String totalText;
-        if (total == 0){
+        if (total == 0) {
             totalText = "Total: $00.00";
-        }else{
+        } else {
             totalText = "Total: $" + total;
         }
 

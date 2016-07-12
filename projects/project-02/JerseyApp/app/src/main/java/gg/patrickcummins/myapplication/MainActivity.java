@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.SupportActionModeWrapper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import static android.R.attr.drawable;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView warriors, raiders, sharks;
     DatabaseHelper helper;
     FloatingActionButton floatingActionButton;
+    Button purchaseHistoryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        purchaseHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PurchaseHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -113,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         raiders = (ImageView) findViewById(R.id.raidersImageView);
         sharks = (ImageView) findViewById(R.id.sharksImageView);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.cartFab);
+        purchaseHistoryButton = (Button) findViewById(R.id.purchaseHistoryButton);
     }
 
 }
