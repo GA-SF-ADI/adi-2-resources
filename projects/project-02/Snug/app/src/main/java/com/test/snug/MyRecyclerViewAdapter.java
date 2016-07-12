@@ -70,6 +70,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
             price = (TextView) itemView.findViewById(R.id.textView_hat_price);
 
+
             Log.i(LOG_TAG, "Adding Listener");
 
             itemView.setOnClickListener(this);

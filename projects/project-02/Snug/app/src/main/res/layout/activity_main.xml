@@ -38,7 +38,7 @@
             android:src="@drawable/light_green_hat_only_for_menu" />
 
         <ImageButton
-
+            android:id="@+id/button_in_toolbar_to_search_for_hats"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="right"

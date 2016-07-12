@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Button cartButtonInToolbar = (Button) findViewById(R.id.button_in_toolbar_to_view_cart);
-        Button searchButtonInToolbar = (Button) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+        ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
+        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
         Context context = getApplicationContext();
 
@@ -80,11 +81,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
             }
         });
+
+        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 
     }
