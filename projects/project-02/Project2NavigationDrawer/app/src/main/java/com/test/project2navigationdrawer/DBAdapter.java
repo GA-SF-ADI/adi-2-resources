@@ -47,7 +47,7 @@ public class DBAdapter extends CursorAdapter {
         measurementOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_6_MEASUREMENT)));
         quantityOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_7_QUANTITY)));
         nameOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_8_NAME)));
-        imageOfJewelry.setImageResource(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE));
+        //imageOfJewelry.setImageResource(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE));
 
     }
 };

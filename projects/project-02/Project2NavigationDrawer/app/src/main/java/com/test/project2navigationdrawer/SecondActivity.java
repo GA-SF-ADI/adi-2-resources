@@ -7,6 +7,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,9 +30,9 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         myDb = new DatabaseHelper(this);
 
-        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "5", "striking", null);
-        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "5", "elegant", null);
-        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "5", "classic", null);
+        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
 
         populateListViewFromDB();
     }
@@ -42,7 +43,7 @@ public class SecondActivity extends AppCompatActivity {
         Cursor cursor = myDb.getJewelry();
         //allow activity to manage cursor
         //DEPRECATED
-
+        Log.d("Second Activity", "populateListViewFromDB: Cursor" +cursor.getCount());
         startManagingCursor(cursor);
 
         //map string of column name to an id in the view

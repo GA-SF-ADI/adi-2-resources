@@ -17,15 +17,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1_ID= "_id";
     public static final String COL_2_TYPE= "TYPE";
     public static final String COL_3_PRICE= "PRICE";
-    public static final String COL_4_GOLD= "GOLD TYPE";
-    public static final String COL_5_STONE= "STONE TYPE";
+    public static final String COL_4_GOLD= "GOLD_TYPE";
+    public static final String COL_5_STONE= "STONE_TYPE";
     public static final String COL_6_MEASUREMENT= "MEASUREMENT";
     public static final String COL_7_QUANTITY= "QUANTITY";
     public static final String COL_8_NAME= "NAME";
     public static final String COL_9_IMAGE= "IMAGE";
 
 
-    public static final String[] JEWELRY_COLUMNS = {COL_2_TYPE, COL_3_PRICE, COL_4_GOLD, COL_5_STONE, COL_6_MEASUREMENT, COL_7_QUANTITY, COL_8_NAME, COL_9_IMAGE};
+    public static final String[] JEWELRY_COLUMNS = {COL_1_ID,COL_2_TYPE, COL_3_PRICE, COL_4_GOLD, COL_5_STONE, COL_6_MEASUREMENT, COL_7_QUANTITY, COL_8_NAME, COL_9_IMAGE};
 
     private static final String CREATE_SHOPPING_LIST_TABLE =
             "CREATE TABLE " + TABLE_NAME +
@@ -73,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_8_NAME, name);
         values.put(COL_9_IMAGE, image);
 
-        //db.insert(TABLE_NAME, null, values);
+        db.insert(TABLE_NAME, null, values);
 
     }
 
