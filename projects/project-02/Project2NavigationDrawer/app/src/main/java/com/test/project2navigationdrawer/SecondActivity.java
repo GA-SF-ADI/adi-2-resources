@@ -47,9 +47,9 @@ public class SecondActivity extends AppCompatActivity {
 
         //map string of column name to an id in the view
         String[] fromFieldNames = new String[]
-                {myDb.COL_2_TYPE};
+                {myDb.COL_2_TYPE, myDb.COL_3_PRICE};
         int [] toViewIds = new int[]
-                {R.id.text_view_type_of_jewelry};
+                {R.id.text_view_type_of_jewelry, R.id.text_view_price_of_jewelry};
         //create adapter to map columns of DB
 
         customAdapter = new DBAdapter(this,cursor,0);
