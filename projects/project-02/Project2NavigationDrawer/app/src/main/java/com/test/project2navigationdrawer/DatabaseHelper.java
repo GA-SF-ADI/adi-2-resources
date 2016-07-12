@@ -10,10 +10,11 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by audreyeso on 7/10/16.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String TAG = "DBAdapter";
     public static final int DATABASE_VERSION =1;
     public static final String DATABASE_NAME= "Jewelry.db";
     public static final String TABLE_NAME= "jewelry_table";
-    public static final String COL_1_ID= "ID";
+    public static final String COL_1_ID= "_id";
     public static final String COL_2_TYPE= "TYPE";
     public static final String COL_3_PRICE= "PRICE";
     public static final String COL_4_GOLD= "GOLD TYPE";

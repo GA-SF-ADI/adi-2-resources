@@ -15,6 +15,7 @@ import android.widget.ListView;
 public class SecondActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     ListView listView;
+    DBAdapter customAdapter;
     int[] imagePic = {R.drawable.rounddiamond
             };
 
@@ -33,44 +34,32 @@ public class SecondActivity extends AppCompatActivity {
         myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "5", "classic", null);
 
         populateListViewFromDB();
-
-
-//        Cursor jewelryCursor = IconSQLiteOpenHelper.getInstance(SecondActivity.this).getJewelry();
-//
-//        CursorAdapter cursorAdapter = new CursorAdapter(MainActivity.this,iconCursor,0) {
-//            @Override
-//            public View newView(Context context, Cursor cursor, ViewGroup parent) {
-//                return LayoutInflater.from(context).inflate(R.layout.icon_list_item,parent,false);
-//            }
-//
-//            @Override
-//            public void bindView(View view, Context context, Cursor cursor) {
-//                ImageView iconImageView = (ImageView)view.findViewById(R.id.icon_image_view);
-//                TextView iconTextView = (TextView)view.findViewById(R.id.icon_name_text_view);
-//
-//                iconImageView.setImageResource(getDrawableValue(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME))));
-//                iconTextView.setText(cursor.getString(cursor.getColumnIndex(IconSQLiteOpenHelper.COL_ICON_NAME)));
-//            }
-//        };
-//
-//        iconListView.setAdapter(cursorAdapter);
-
     }
+
+
 
     private void populateListViewFromDB() {
         Cursor cursor = myDb.getJewelry();
+        //allow activity to manage cursor
+        //DEPRECATED
+
+        startManagingCursor(cursor);
 
         //map string of column name to an id in the view
         String[] fromFieldNames = new String[]
-                {};
+                {myDb.COL_2_TYPE};
         int [] toViewIds = new int[]
-                {};
+                {R.id.text_view_type_of_jewelry};
         //create adapter to map columns of DB
-        SimpleCursorAdapter mAdapter = new SimpleCursorAdapter();
+
+        customAdapter = new DBAdapter(this,cursor,0);
+
+
+        //SimpleCursorAdapter mAdapter = new SimpleCursorAdapter(this, R.layout.item_layout, cursor, fromFieldNames, toViewIds);
 
         //set adapter
         listView = (ListView) findViewById(R.id.second_activity_list_view);
-        listView.setAdapter(mAdapter);
+        listView.setAdapter(customAdapter);
     }
 
 }
