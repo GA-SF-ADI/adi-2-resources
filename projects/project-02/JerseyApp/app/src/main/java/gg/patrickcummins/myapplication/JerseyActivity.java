@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +14,14 @@ import java.util.ArrayList;
 
 import static gg.patrickcummins.myapplication.R.drawable.raiders;
 import static gg.patrickcummins.myapplication.R.drawable.warriors;
+import static gg.patrickcummins.myapplication.R.id.addToCartButton;
 
 public class JerseyActivity extends AppCompatActivity {
     TextView jerseyColor1, jerseyColor2, jerseyColor3, nameTextView, numberTextView, priceTextView;
     ImageView jerseyImageView;
     String currentPlayer, team;
-    int currentPlayerNumber;
+    int currentPlayerNumber, currentImage;
+    Button addToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +31,32 @@ public class JerseyActivity extends AppCompatActivity {
         getIntentExtras();
 
 
-
         setViews();
         setViewText();
         setUpJerseys();
+        setAddToCartClick();
     }
+
+    private void setAddToCartClick() {
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            DatabaseHelper helper = DatabaseHelper.getInstance(JerseyActivity.this);
+            @Override
+            public void onClick(View v) {
+                double price = 0;
+                if (team.equals("warriors")) {
+                    price = 69.99;
+                } else if (team.equals("raiders")) {
+                    price = 99.99;
+                } else {
+                    price = 49.99;
+                }
+                CartItem cartItem = (new CartItem(currentPlayer, "blue", currentImage, price));
+                helper.insertCartRow(cartItem);
+
+            }
+        });
+    }
+
 
     private void getIntentExtras() {
         Intent currentIntent = getIntent();
@@ -44,11 +68,11 @@ public class JerseyActivity extends AppCompatActivity {
     private void setViewText() {
         nameTextView.setText(currentPlayer);
         numberTextView.setText("#" + currentPlayerNumber);
-        if (team.equals("warriors")){
+        if (team.equals("warriors")) {
             priceTextView.setText("Price: $69.99");
-        }else if(team.equals("raiders")){
+        } else if (team.equals("raiders")) {
             priceTextView.setText("Price: $99.99");
-        } else{
+        } else {
             priceTextView.setText("Price: $49.99");
         }
 
@@ -61,14 +85,15 @@ public class JerseyActivity extends AppCompatActivity {
         ArrayList<Integer> playerJerseysList = databaseHelper.getPlayerJerseysList(currentPlayer);
         if (playerJerseysList.get(0) != -1) {
             jerseyImageView.setImageResource(playerJerseysList.get(0));
+            currentImage = playerJerseysList.get(0);
             setColorOnClick(jerseyColor1, playerJerseysList.get(0));
-        }
-        else {
+        } else {
             jerseyImageView.setImageResource(playerJerseysList.get(1));
+            currentImage = playerJerseysList.get(1);
             jerseyColor1.setVisibility(View.GONE);
         }
-        setColorOnClick(jerseyColor2, playerJerseysList.get(1) );
-        setColorOnClick(jerseyColor3, playerJerseysList.get(2) );
+        setColorOnClick(jerseyColor2, playerJerseysList.get(1));
+        setColorOnClick(jerseyColor3, playerJerseysList.get(2));
 
     }
 
@@ -77,6 +102,7 @@ public class JerseyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 jerseyImageView.setImageResource(jerseyDrawable);
+                currentImage = jerseyDrawable;
             }
         });
     }
@@ -89,5 +115,6 @@ public class JerseyActivity extends AppCompatActivity {
         nameTextView = (TextView) findViewById(R.id.playerNameTextView);
         numberTextView = (TextView) findViewById(R.id.playerNumberTextView);
         priceTextView = (TextView) findViewById(R.id.priceTextView);
+        addToCart = (Button) findViewById(addToCartButton);
     }
 }
