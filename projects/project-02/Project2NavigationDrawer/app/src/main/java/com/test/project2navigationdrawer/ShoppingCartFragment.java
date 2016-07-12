@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 
 
 public class ShoppingCartFragment extends Fragment {
@@ -20,15 +20,19 @@ public class ShoppingCartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
+        shoppingCartSingleton = ShoppingCartSingleton.getInstance();
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
-    }
+
+        // create view object based on inflater
+        //get inner views from that
+        //set inner views based on shopping cart singleton
+        //return view you made
 
 
-    public ShoppingCartSingleton getShoppingCartSingleton() {
-        shoppingCartSingleton.getItem();
-        return shoppingCartSingleton;
     }
+
 
     public double returnTotal (Item item) {
 
@@ -44,6 +48,7 @@ public class ShoppingCartFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
+
 
     }
 

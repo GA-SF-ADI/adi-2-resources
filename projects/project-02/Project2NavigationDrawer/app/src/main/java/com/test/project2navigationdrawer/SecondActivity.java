@@ -28,6 +28,7 @@ public class SecondActivity extends AppCompatActivity {
     DBAdapter customAdapter;
     Button shoppingCartButton;
 
+
     int[] imagePic = {R.drawable.rounddiamond
     };
 
