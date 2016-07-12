@@ -17,6 +17,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <ImageButton
+
             android:id="@+id/button_in_toolbar_to_view_cart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -28,20 +29,20 @@
 
         <ImageView
             android:id="@+id/app_logo_in_toolbar"
-            android:scaleX=".6"
-            android:scaleY=".6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            android:scaleX=".4"
+            android:scaleY=".4"
 
             android:src="@drawable/light_green_hat_only_for_menu" />
 
 
     </android.support.v7.widget.Toolbar>
 
-=======
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
->>>>>>> parent of a25a1fe... toolbars are much better. recycler works! Card view onclick works!
+    =======
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    >>>>>>> parent of a25a1fe... toolbars are much better. recycler works! Card view onclick works!
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

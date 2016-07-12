@@ -29,6 +29,4 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
 
 
-
-
 }

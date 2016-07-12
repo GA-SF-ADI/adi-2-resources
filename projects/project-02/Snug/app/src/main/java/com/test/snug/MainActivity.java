@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         insertHatData();
 
 
-
     }
 
     private ArrayList<Hat> getDataSet() {
@@ -129,41 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        switch (item.getItemId()) {
-            case R.id.search_hats:
-
-                break;
-
-            case R.id.view_cart:
-
-                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
-
-                break;
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
 }
 
