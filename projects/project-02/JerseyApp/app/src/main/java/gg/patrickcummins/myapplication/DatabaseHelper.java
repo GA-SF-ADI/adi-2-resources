@@ -17,7 +17,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper INSTANCE;
 
     private static final String CREATE_PLAYER_TABLE = "CREATE TABLE " + PlayerValues.TABLE_NAME + " (" + PlayerValues._ID + " INTEGER PRIMARY KEY, " + PlayerValues.NAME + " TEXT, " + PlayerValues.TEAM + " TEXT, " + PlayerValues.NUMBER + " INTEGER, " + PlayerValues.POSITION + " TEXT, " + PlayerValues.PICTURE + " INTEGER, " +PlayerValues.JERSEY1 + " INTEGER, " +PlayerValues.JERSEY2 + " INTEGER, " +PlayerValues.JERSEY3 + " INTEGER)";
+    private static final String CREATE_CART_TABLE = "CREATE TABLE " + CartValues.TABLE_NAME + " (" + CartValues._ID + " INTEGER PRIMARY KEY, " + CartValues.PLAYERNAME + " TEXT, " + CartValues.COLOR + " TEXT, " + CartValues.PICTURE + " INTEGER, " + CartValues.PRICE + " REAL)";
+
     private static final String DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS " + PlayerValues.TABLE_NAME;
+    private static final String DROP_CART_TABLE = "DROP TABLE IF EXISTS " +CartValues.TABLE_NAME;
 
     public static abstract class PlayerValues implements BaseColumns {
         public static final String TABLE_NAME = "PlayerTable";
@@ -29,6 +32,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         public static final String JERSEY1 = "Jersey1";
         public static final String JERSEY2 = "Jersey2";
         public static final String JERSEY3 = "Jersey3";
+    }
+    public static abstract class CartValues implements BaseColumns {
+        public static final String TABLE_NAME = "CartTable";
+        public static final String PICTURE = "JerseyPicture";
+        public static final String PLAYERNAME = "Player Name";
+        public static final String PRICE = "Price";
+        public static final String COLOR= "Color";
+
     }
 
     private DatabaseHelper(Context context) {
@@ -46,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PLAYER_TABLE);
+        db.execSQL(CREATE_CART_TABLE);
 
 
     }
@@ -53,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_PLAYER_TABLE);
+        db.execSQL(DROP_CART_TABLE);
         onCreate(db);
     }
 
@@ -73,6 +86,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insertOrThrow(PlayerValues.TABLE_NAME, null, values);
         db.close();
 
+    }
+
+    public void insertCartRow(CartItem cartItem){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(CartValues.PLAYERNAME, cartItem.getPlayerName());
+        values.put(CartValues.COLOR, cartItem.getColor());
+        values.put(CartValues.PICTURE, cartItem.getPicture());
+        values.put(CartValues.PRICE, cartItem.getPrice());
+
+        db.insertOrThrow(CartValues.TABLE_NAME, null, values);
+        db.close();
     }
 
     public ArrayList<Player> getTeamPlayerList(String team) {
@@ -108,6 +133,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return jerseyList;
     }
+
+
 
 
 }
