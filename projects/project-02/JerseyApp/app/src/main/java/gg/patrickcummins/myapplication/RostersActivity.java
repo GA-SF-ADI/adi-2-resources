@@ -61,12 +61,15 @@ public class RostersActivity extends AppCompatActivity {
         if (team.equals("warriors")) {
             teamImageView.setImageResource(R.drawable.warriors);
             playerArrayList = helper.getTeamPlayerList("warriors");
+            setTheme(R.style.WarriorsTheme);
         } else if (team.equals("raiders")) {
             teamImageView.setImageResource(R.drawable.raiders);
             playerArrayList = helper.getTeamPlayerList("raiders");
+            setTheme(R.style.RaidersTheme);
         } else if (team.equals("sharks")) {
             teamImageView.setImageResource(R.drawable.sharks);
             playerArrayList = helper.getTeamPlayerList("sharks");
+            setTheme(R.style.SharksTheme);
         }
     }
 

@@ -9,6 +9,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="WarriorsTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/warriorPrimary</item>
+        <item name="colorPrimaryDark">@color/warriorPrimaryDark</item>
+        <item name="colorAccent">@color/warriorAccent</item>
+    </style>
+
+    <style name="RaidersTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/raiderPrimary</item>
+        <item name="colorPrimaryDark">@color/raiderPrimaryDark</item>
+        <item name="colorAccent">@color/raiderAccent</item>
+    </style>
+
+    <style name="SharksTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/sharkPrimary</item>
+        <item name="colorPrimaryDark">@color/sharkPrimaryDark</item>
+        <item name="colorAccent">@color/sharkAccent</item>
+    </style>
+
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>

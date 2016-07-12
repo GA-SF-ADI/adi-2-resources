@@ -4,5 +4,18 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="warriorPrimary">#2D88C7</color>
+    <color name="warriorPrimaryDark">#004DBD</color>
+    <color name="warriorAccent">#FFC700</color>
+
+    <color name="raiderPrimary">#FFFFFF</color>
+    <color name="raiderPrimaryDark">#000000</color>
+    <color name="raiderAccent">#C2C7C9</color>
+
+    <color name="sharkPrimary">#010101</color>
+    <color name="sharkPrimaryDark">#008697</color>
+    <color name="sharkAccent">#F49000</color>
+
+
     <color name="black_overlay">#66000000</color>
 </resources>
