@@ -108,23 +108,14 @@ public class SecondActivity extends AppCompatActivity {
 
                 Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
                 Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item3 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item4 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item5 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item6 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item7 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item8 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item9 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
+                Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);
+                Item item5 = new Item("5", "earrings", 79.00, "white gold", "diamond", null, 1);
+                Item item6 = new Item("6", "earrings", 89.00, "platinum", "diamond", null, 1);
+                Item item7 = new Item("7", "necklace", 49.00, "yellow gold", "ruby", null, 1);
+                Item item8 = new Item("8", "necklace", 79.00, "white gold", "diamond", null, 1);
+                Item item9 = new Item("9", "necklace", 89.00, "platinum", "diamond", null, 1);
 
-
-
-//        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-//        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-//        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-//        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-//        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-//        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-//        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
                 Item newItem=  myItems.get(position);
                 shoppingCart.addItem(newItem);
             }

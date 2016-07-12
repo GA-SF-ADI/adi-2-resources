@@ -15,6 +15,10 @@ public class ShoppingCartFragment extends Fragment {
 
     ShoppingCartSingleton shoppingCartSingleton;
 
+    public ShoppingCartSingleton getShoppingCartSingleton() {
+        return shoppingCartSingleton;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
