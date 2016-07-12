@@ -133,6 +133,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PurchaseHistoryValues.PICTURE, cartItem.getPicture());
         values.put(PurchaseHistoryValues.PRICE, cartItem.getPrice());
         values.put(PurchaseHistoryValues.DATE, date);
+
+        db.insertOrThrow(PurchaseHistoryValues.TABLE_NAME, null, values);
+        db.close();
     }
 
 
@@ -200,9 +203,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getLastHistoryID() {
         int max;
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT MAX(" + PurchaseHistoryValues.HISTORY_ID + ") FROM " + PurchaseHistoryValues.TABLE_NAME;
+        String query = "SELECT MAX(" + PurchaseHistoryValues.HISTORY_ID + ") AS " + PurchaseHistoryValues.HISTORY_ID + " FROM " + PurchaseHistoryValues.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToLast();
+        cursor.moveToFirst();
         max = cursor.getInt(cursor.getColumnIndex(PurchaseHistoryValues.HISTORY_ID));
         cursor.close();
         return max;
@@ -225,6 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT " + PurchaseHistoryValues.DATE + " FROM " + PurchaseHistoryValues.TABLE_NAME + " WHERE " + PurchaseHistoryValues.HISTORY_ID + " = " + historyID;
         Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
         String date = cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.DATE));
         cursor.close();
         return date;

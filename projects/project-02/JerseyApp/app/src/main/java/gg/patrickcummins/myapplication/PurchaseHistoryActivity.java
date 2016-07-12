@@ -24,7 +24,7 @@ public class PurchaseHistoryActivity extends AppCompatActivity {
         if (!helper.isPurchaseHistoryEmpty()) {
 
 
-            for (int i = 0; i < helper.getLastHistoryID(); i++) {
+            for (int i = 0; i <= helper.getLastHistoryID(); i++) {
                 String currentDate = helper.getDateFromHistoryID(i);
                 double currentPrice = helper.getPriceFromHistoryID(i);
                 purchaseHistoryArrayList.add(new PurchaseHistoryItem(i, currentPrice, currentDate));
