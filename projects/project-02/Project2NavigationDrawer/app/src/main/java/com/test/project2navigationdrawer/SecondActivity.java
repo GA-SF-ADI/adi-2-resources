@@ -27,6 +27,7 @@ public class SecondActivity extends AppCompatActivity {
     ListView listView;
     DBAdapter customAdapter;
     Button shoppingCartButton;
+    Toolbar toolbar;
 
     int[] imagePic = {R.drawable.rounddiamond
     };
@@ -36,6 +37,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         setContentView(R.layout.activity_second);
+
+        toolbar =(Toolbar) findViewById(R.id.second_toolbar);
 
         super.onCreate(savedInstanceState);
 
@@ -115,6 +118,16 @@ public class SecondActivity extends AppCompatActivity {
                 Item item7 = new Item("7", "necklace", 49.00, "yellow gold", "ruby", null, 1);
                 Item item8 = new Item("8", "necklace", 79.00, "white gold", "diamond", null, 1);
                 Item item9 = new Item("9", "necklace", 89.00, "platinum", "diamond", null, 1);
+
+                shoppingCart.addItem(item1);
+                shoppingCart.addItem(item2);
+                shoppingCart.addItem(item3);
+                shoppingCart.addItem(item4);
+                shoppingCart.addItem(item5);
+                shoppingCart.addItem(item6);
+                shoppingCart.addItem(item7);
+                shoppingCart.addItem(item8);
+                shoppingCart.addItem(item9);
 
                 Item newItem=  myItems.get(position);
                 shoppingCart.addItem(newItem);

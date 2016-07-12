@@ -1,5 +1,6 @@
 package com.test.project2navigationdrawer;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +16,10 @@ public class ShoppingCartFragment extends Fragment {
 
     ShoppingCartSingleton shoppingCartSingleton;
 
+
+
     public ShoppingCartSingleton getShoppingCartSingleton() {
+        shoppingCartSingleton.getItem();
         return shoppingCartSingleton;
     }
 
@@ -30,7 +34,6 @@ public class ShoppingCartFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
 
-        //add up prices of each item
     }
 
 }
