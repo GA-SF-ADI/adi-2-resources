@@ -2,8 +2,10 @@ package gg.patrickcummins.myapplication;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -20,6 +22,7 @@ public class RostersActivity extends AppCompatActivity {
     ListView playerListView;
     PlayerListAdapter playerListAdapter;
     DatabaseHelper helper;
+    FloatingActionButton floatingActionButton;
 
 
     @Override
@@ -32,9 +35,20 @@ public class RostersActivity extends AppCompatActivity {
         getIntentandSetVariables();
         setTeam();
         setAdapter();
+        setFabOnClick();
 
 
 
+    }
+
+    private void setFabOnClick() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RostersActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setAdapter() {
@@ -62,13 +76,15 @@ public class RostersActivity extends AppCompatActivity {
 
         teamImageView = (ImageView) findViewById(R.id.teamImageView);
         playerListView = (ListView) findViewById(R.id.playersListView);
+        teamImageView = (ImageView) findViewById(R.id.teamImageView);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.cartFab);
+
 
 
 
 
         currentIntent = getIntent();
         team = currentIntent.getStringExtra("team");
-        teamImageView = (ImageView) findViewById(R.id.teamImageView);
         helper = DatabaseHelper.getInstance(RostersActivity.this);
 
 

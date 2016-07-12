@@ -1,5 +1,7 @@
 package gg.patrickcummins.myapplication;
 
+
+
 /**
  * Created by patrickcummins on 7/12/16.
  */
@@ -46,5 +48,8 @@ public class CartItem {
         this.price = price;
     }
 
-
+    @Override
+    public String toString() {
+        return getPlayerName() + " " + getColor() + " " + getPrice();
+    }
 }

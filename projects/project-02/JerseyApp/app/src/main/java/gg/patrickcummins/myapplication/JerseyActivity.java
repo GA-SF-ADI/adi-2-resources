@@ -1,6 +1,7 @@
 package gg.patrickcummins.myapplication;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class JerseyActivity extends AppCompatActivity {
     String currentPlayer, team;
     int currentPlayerNumber, currentImage;
     Button addToCart;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,17 @@ public class JerseyActivity extends AppCompatActivity {
         setViewText();
         setUpJerseys();
         setAddToCartClick();
+        setFabOnClick();
+    }
+
+    private void setFabOnClick() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(JerseyActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setAddToCartClick() {
@@ -116,5 +129,6 @@ public class JerseyActivity extends AppCompatActivity {
         numberTextView = (TextView) findViewById(R.id.playerNumberTextView);
         priceTextView = (TextView) findViewById(R.id.priceTextView);
         addToCart = (Button) findViewById(addToCartButton);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.cartFab);
     }
 }

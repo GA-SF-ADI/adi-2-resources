@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RostersActivity" />
-        <activity android:name=".JerseyActivity"></activity>
+        <activity android:name=".JerseyActivity" />
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>

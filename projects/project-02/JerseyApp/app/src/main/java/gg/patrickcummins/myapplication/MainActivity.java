@@ -2,6 +2,7 @@ package gg.patrickcummins.myapplication;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.SupportActionModeWrapper;
@@ -14,6 +15,7 @@ import static android.R.attr.process;
 public class MainActivity extends AppCompatActivity {
     ImageView warriors, raiders, sharks;
     DatabaseHelper helper;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
                 startRosterActivity("sharks");
             }
         });
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -103,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         warriors = (ImageView) findViewById(R.id.warriorsImageView);
         raiders = (ImageView) findViewById(R.id.raidersImageView);
         sharks = (ImageView) findViewById(R.id.sharksImageView);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.cartFab);
     }
 
 }

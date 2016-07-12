@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static abstract class CartValues implements BaseColumns {
         public static final String TABLE_NAME = "CartTable";
         public static final String PICTURE = "JerseyPicture";
-        public static final String PLAYERNAME = "Player Name";
+        public static final String PLAYERNAME = "PlayerName";
         public static final String PRICE = "Price";
         public static final String COLOR = "Color";
 
