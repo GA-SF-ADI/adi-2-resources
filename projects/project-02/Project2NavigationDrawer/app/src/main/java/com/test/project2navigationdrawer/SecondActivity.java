@@ -81,9 +81,10 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ShoppingCartFragment fragment = new ShoppingCartFragment();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                listView.setVisibility(View.GONE);
 
                 switch (view.getId()) {
-                    case R.id.shopping_cart: {
+                    case R.id.shopping_cart_button: {
                         Log.d("case shopping cart", "in switch case");
                         fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
                         fragmentTransaction.commit();

@@ -36,6 +36,8 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:id="@+id/fragment_container_second_activity"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_height="wrap_content"></FrameLayout>
 
 
