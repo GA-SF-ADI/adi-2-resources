@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/jerseyImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/amari_cooper_black"
+        />
+
+    <TextView
+        android:id="@+id/playerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/jerseyImageView"
+        android:text="Amari Cooper-Black"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/playerNameTextView"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:text="Price: $99.99"
+        android:textColor="@color/colorPrimary" />
+
+
+</RelativeLayout>

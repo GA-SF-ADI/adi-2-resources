@@ -70,6 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void clearCart(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL(DROP_CART_TABLE);
+        db.execSQL(CREATE_CART_TABLE);
+    }
+
 
     public void insertPlayerRow(Player player) {
         SQLiteDatabase db = getWritableDatabase();

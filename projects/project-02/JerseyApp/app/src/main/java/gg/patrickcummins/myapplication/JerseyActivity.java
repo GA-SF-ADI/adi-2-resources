@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -21,6 +22,7 @@ public class JerseyActivity extends AppCompatActivity {
     TextView jerseyColor1, jerseyColor2, jerseyColor3, nameTextView, numberTextView, priceTextView;
     ImageView jerseyImageView;
     String currentPlayer, team;
+    String currentJerseyColor;
     int currentPlayerNumber, currentImage;
     Button addToCart;
     FloatingActionButton floatingActionButton;
@@ -63,8 +65,9 @@ public class JerseyActivity extends AppCompatActivity {
                 } else {
                     price = 49.99;
                 }
-                CartItem cartItem = (new CartItem(currentPlayer, "blue", currentImage, price));
+                CartItem cartItem = (new CartItem(currentPlayer, currentJerseyColor, currentImage, price));
                 helper.insertCartRow(cartItem);
+                Toast.makeText(JerseyActivity.this, "Item Added To Cart!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -99,23 +102,26 @@ public class JerseyActivity extends AppCompatActivity {
         if (playerJerseysList.get(0) != -1) {
             jerseyImageView.setImageResource(playerJerseysList.get(0));
             currentImage = playerJerseysList.get(0);
-            setColorOnClick(jerseyColor1, playerJerseysList.get(0));
+            currentJerseyColor = "Blue";
+            setColorOnClick(jerseyColor1, playerJerseysList.get(0), "Blue");
         } else {
             jerseyImageView.setImageResource(playerJerseysList.get(1));
             currentImage = playerJerseysList.get(1);
+            currentJerseyColor = "White";
             jerseyColor1.setVisibility(View.GONE);
         }
-        setColorOnClick(jerseyColor2, playerJerseysList.get(1));
-        setColorOnClick(jerseyColor3, playerJerseysList.get(2));
+        setColorOnClick(jerseyColor2, playerJerseysList.get(1), "White");
+        setColorOnClick(jerseyColor3, playerJerseysList.get(2), "Black");
 
     }
 
-    private void setColorOnClick(TextView textView, final int jerseyDrawable) {
+    private void setColorOnClick(TextView textView, final int jerseyDrawable, final String color) {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jerseyImageView.setImageResource(jerseyDrawable);
                 currentImage = jerseyDrawable;
+                currentJerseyColor = color;
             }
         });
     }
