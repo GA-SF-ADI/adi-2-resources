@@ -61,9 +61,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     //TODO: have the adapter take in a cursor. Edit your recycler view adapter and make it so that it takes in a cursor
 
 
-    public MyRecyclerViewAdapter(ArrayList<Hat> hatDataSet, Context mContext) {
-        this.hatDataSet = hatDataSet;
+    public MyRecyclerViewAdapter(Cursor cursor, Context mContext) {
         this.mContext = mContext;
+
+
     }
 
         public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

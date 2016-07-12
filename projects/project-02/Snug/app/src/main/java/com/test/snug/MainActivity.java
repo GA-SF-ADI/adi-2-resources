@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
+        insertHatData();
+
+        Cursor allHatsCursor = db.getAllHats();
+
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
@@ -60,14 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyRecyclerViewAdapter(getDataSet(), context);
+
+        mAdapter = new MyRecyclerViewAdapter(allHatsCursor, context);
 
         mRecyclerView.setAdapter(mAdapter);
-
-
-        insertHatData();
-
-
 
 
         //        TODO: Eventually will have to fetch hat records?
@@ -117,10 +117,9 @@ public class MainActivity extends AppCompatActivity {
         db.addHat(3, 2, "Yankees", 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
 
 
-        mAdapter.notifyDataSetChanged();
 
 
-        ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
+        /*((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
 
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
 
 
     }

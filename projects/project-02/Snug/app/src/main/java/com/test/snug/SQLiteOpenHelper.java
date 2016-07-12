@@ -32,8 +32,6 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
                     HAT_COLUMN_FittedOrSnap + " INTEGER," + HAT_COLUMN_DESCRIPTION + " TEXT, " +
                     HAT_COLUMN_COLOR + " TEXT);";
 
-//    (int id, int pictureID, String name, int price, String material, int fittedOrSnap, String description, String color)
-
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
 
