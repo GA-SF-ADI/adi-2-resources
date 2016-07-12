@@ -26,6 +26,7 @@
             android:id="@+id/checkoutButton"
             android:layout_weight="1"
             android:text="Checkout"
+            android:backgroundTint="@color/sharkAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
