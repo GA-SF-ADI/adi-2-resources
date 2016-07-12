@@ -64,14 +64,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView name;
         TextView fittedOrSnap;
         TextView price;
+        CardView cardView;
 
 
         public DataObjectHolder(View itemView) {
             super(itemView);
 
-            TextView name = (TextView) itemView.findViewById(R.id.textView_hat_name);
-            TextView fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
-            TextView price = (TextView) itemView.findViewById(R.id.textView_hat_price);
+            name = (TextView) itemView.findViewById(R.id.textView_hat_name);
+            fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
+            price = (TextView) itemView.findViewById(R.id.textView_hat_price);
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
             Log.i(LOG_TAG, "Adding Listener");
@@ -110,7 +111,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.name.setText(hatDataSet.get(position).getName());
         holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
-        holder.price.setText(hatDataSet.get(position).getPrice());
+        holder.price.setText(hatDataSet.get(position).getPrice()+"");
     }
 
     public void addItem(Hat hat, int index) {
