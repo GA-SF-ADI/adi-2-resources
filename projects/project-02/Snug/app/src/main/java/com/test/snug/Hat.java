@@ -6,13 +6,14 @@ package com.test.snug;
 public class Hat {
 
     private int id;
+    private int pictureID;
     private String name;
     private int price;
     private String material;
     private int fittedOrSnap;
     private String description;
     private String color;
-    private int pictureID;
+
 
 
     public Hat(int id, int pictureID, String name, int price, String material, int fittedOrSnap, String description, String color) {

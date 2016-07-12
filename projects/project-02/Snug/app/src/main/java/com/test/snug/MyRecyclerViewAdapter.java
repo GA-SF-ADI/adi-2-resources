@@ -80,8 +80,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 @Override
                 public void onClick(View v) {
 
-                    Log.d("Item clicked", "Item clicked");
-
                     myClickListener.onItemClick(getLayoutPosition(), v);
 
                 }

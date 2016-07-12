@@ -40,15 +40,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        Context context = getApplicationContext();
+        SQLiteOpenHelper db = new SQLiteOpenHelper(context);
+
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
-        Context context = getApplicationContext();
 
         CardView individualHatCard = (CardView) findViewById(R.id.card_view);
-
-
-//        TODO: Get instance of database helper to make database/tables
 
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
@@ -78,27 +77,19 @@ public class MainActivity extends AppCompatActivity {
 
         // Code to remove an item with default animation
         //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
-
         insertHatData();
 
 
+       /* individualHatCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+                startActivity(intent);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            }
+        });
+*/
 
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,10 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Hat> getDataSet() {
         ArrayList results = new ArrayList<Hat>();
-        for (int index = 0; index < 20; index++) {
-            Hat hat = new Hat(index, 4, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
-            results.add(index, hat);
-        }
+
+        results.add(new Hat(0, 4, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black"));
+        results.add(new Hat(1, 1, "Oakland", 29, "50% Cotton", 1, "Great for a day at the beach!", "green"));
+        results.add(new Hat(2, 3, "Boston", 19, "100% Polyester", 1, "Play the outfield with confidence", "red"));
+        results.add(new Hat(3, 2, "Yankees", 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue"));
+
         return results;
     }
 
