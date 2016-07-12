@@ -2,23 +2,34 @@ package com.test.project2navigationdrawer;
 
 import android.database.Cursor;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+
 
 public class SecondActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     ListView listView;
     DBAdapter customAdapter;
+    Button shoppingCartButton;
+
     int[] imagePic = {R.drawable.rounddiamond
-            };
+    };
 
 
     @Override
@@ -26,42 +37,97 @@ public class SecondActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_second);
 
-
         super.onCreate(savedInstanceState);
+
         myDb = new DatabaseHelper(this);
 
-        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-
+//        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+//        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+//        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+//        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+//        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+//        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+//        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+//        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+//        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
         populateListViewFromDB();
     }
-
 
 
     private void populateListViewFromDB() {
         Cursor cursor = myDb.getJewelry();
         //allow activity to manage cursor
         //DEPRECATED
-        Log.d("Second Activity", "populateListViewFromDB: Cursor" +cursor.getCount());
+        Log.d("Second Activity", "populateListViewFromDB: Cursor" + cursor.getCount());
         startManagingCursor(cursor);
 
         //map string of column name to an id in the view
         String[] fromFieldNames = new String[]
                 {myDb.COL_2_TYPE, myDb.COL_3_PRICE};
-        int [] toViewIds = new int[]
+        int[] toViewIds = new int[]
                 {R.id.text_view_type_of_jewelry, R.id.text_view_price_of_jewelry};
         //create adapter to map columns of DB
 
-        customAdapter = new DBAdapter(this,cursor,0);
+        customAdapter = new DBAdapter(this, cursor, 0);
 
 
-        //SimpleCursorAdapter mAdapter = new SimpleCursorAdapter(this, R.layout.item_layout, cursor, fromFieldNames, toViewIds);
-
-        //set adapter
         listView = (ListView) findViewById(R.id.second_activity_list_view);
         listView.setAdapter(customAdapter);
+
+        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
+        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShoppingCartFragment fragment = new ShoppingCartFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+                switch (view.getId()) {
+                    case R.id.shopping_cart: {
+                        fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
+                        fragmentTransaction.commit();
+                        break;
+                    }
+
+
+                }
+            }
+
+        });
+
+        //when you click "Item"
+
+        final ShoppingCartSingleton shoppingCart = ShoppingCartSingleton.getInstance();
+
+        final ArrayList<Item> myItems = new ArrayList<Item>();
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
+                Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item3 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item4 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item5 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item6 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item7 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item8 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+                Item item9 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+
+
+
+//        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+//        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+//        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+//        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+//        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+//        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+//        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+                Item newItem=  myItems.get(position);
+                shoppingCart.addItem(newItem);
+            }
+        });
     }
-
 }
-

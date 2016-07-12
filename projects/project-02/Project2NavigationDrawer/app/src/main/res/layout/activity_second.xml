@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,10 +9,27 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.project2navigationdrawer.SecondActivity">
-    
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shopping_cart_button"
+        android:text="shopping cart"/>
 
     <ListView
         android:id="@+id/second_activity_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
-</LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/fragment_container_second_activity"
+        android:layout_height="wrap_content"></FrameLayout>
+
+
+</RelativeLayout>

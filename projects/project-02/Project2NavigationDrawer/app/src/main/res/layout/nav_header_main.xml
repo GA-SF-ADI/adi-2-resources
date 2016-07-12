@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comp. Sci. Tutorials"
+        android:text="Jewelry Store"
         android:textSize="14sp"
         android:textColor="#FFF"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="user@host.com"
+        android:text="WELCOME"
         android:id="@+id/email"
         android:gravity="left"
         android:layout_marginBottom="8dp"
