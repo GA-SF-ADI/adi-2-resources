@@ -7,7 +7,7 @@ public class Hat {
 
     private int id;
     private String name;
-    private int price;
+    private String price;
     private String material;
     private int fittedOrSnap;
     private String description;
@@ -15,7 +15,7 @@ public class Hat {
     private int pictureID;
 
 
-    public Hat(int id, int pictureID, String name, int price, String material, int fittedOrSnap, String description, String color) {
+    public Hat(int id, int pictureID, String name, String price, String material, int fittedOrSnap, String description, String color) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -42,12 +42,8 @@ public class Hat {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public String getMaterial() {

@@ -17,12 +17,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
         ImageView mImageView = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -75,4 +71,14 @@ public class SingleHatViewActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
 }

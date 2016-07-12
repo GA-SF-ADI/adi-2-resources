@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "Main Activity";
+    private static String LOG_TAG = "RecyclerViewActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,26 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
-
-
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Context context = getApplicationContext();
 
-        ImageButton viewCartButton = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
-        viewCartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-//        TODO: Get instance of database helper to make database/tables
+        CardView individualHatCard = (CardView) findViewById(R.id.card_view);
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
+
+//        TODO: Eventually will have to fetch hat records?
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
@@ -84,14 +73,14 @@ public class MainActivity extends AppCompatActivity {
 
         insertHatData();
 
-//        TODO: Eventually will have to fetch hat records?
+
 
     }
 
     private ArrayList<Hat> getDataSet() {
         ArrayList results = new ArrayList<Hat>();
         for (int index = 0; index < 20; index++) {
-            Hat hat = new Hat(index, 4, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+            Hat hat = new Hat(index, 4, "SF Giants", "39.99", "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
             results.add(index, hat);
         }
         return results;
@@ -101,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteOpenHelper db = new SQLiteOpenHelper(this);
 
-        db.addHat(0, "SF Giants", 4, 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
-        db.addHat(1, "Oakland", 1, 29, "50% Cotton", 1, "Great for a day at the beach!", "green");
-        db.addHat(2, "Boston", 3, 19, "100% Polyester", 1, "Play the outfield with confidence", "red");
-        db.addHat(3, "Yankees", 2, 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
+        db.addHat(0, "SF Giants", 4, 39.99, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+        db.addHat(1, "Oakland", 1, 29.99, "50% Cotton", 1, "Great for a day at the beach!", "green");
+        db.addHat(2, "Boston", 3, 19.99, "100% Polyester", 1, "Play the outfield with confidence", "red");
+        db.addHat(3, "Yankees", 2, 59.99, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
 
 
         /*Hat hat = new Hat(1, 4, "SF Giants", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
@@ -147,7 +136,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.search_hats:
+
+                break;
+
+            case R.id.view_cart:
+
+                Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 

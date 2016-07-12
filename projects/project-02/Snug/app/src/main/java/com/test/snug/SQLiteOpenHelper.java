@@ -50,7 +50,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     }
 
-    public void addHat(int id, String name, int picture, int price, String material, int fittedOrSnap,
+    public void addHat(int id, String name, int picture, double price, String material, int fittedOrSnap,
                        String description, String color) {
 
 
@@ -100,7 +100,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
         String name = cursor.getString(cursor.getColumnIndex("name"));
         int pictureID = cursor.getInt(cursor.getColumnIndex("pictureID"));
-        int price = cursor.getInt(cursor.getColumnIndex("price"));
+        String price = cursor.getString(cursor.getColumnIndex("price"));
         String material = cursor.getString(cursor.getColumnIndex("material"));
         int fittedOrSnap = cursor.getInt(cursor.getColumnIndex("fittedOrSnap"));
         String description = cursor.getString(cursor.getColumnIndex("description"));

@@ -5,6 +5,12 @@
 
 
     <item
+        android:title="@string/title_of_cart_icon_in_toolbar"
+        android:icon="@drawable/ic_action_cart"
+        android:id="@+id/view_cart"
+        app:showAsAction="always" />
+
+    <item
         android:title="@string/title_of_app_logo_icon_in_toolbar"
         android:icon="@drawable/light_green_hat_only_for_menu"
         android:id="@+id/app_logo_for_menu"

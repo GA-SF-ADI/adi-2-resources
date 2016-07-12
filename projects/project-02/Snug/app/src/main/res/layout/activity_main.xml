@@ -39,6 +39,9 @@
 
     </android.support.v7.widget.Toolbar>
 
+=======
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+>>>>>>> parent of a25a1fe... toolbars are much better. recycler works! Card view onclick works!
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
