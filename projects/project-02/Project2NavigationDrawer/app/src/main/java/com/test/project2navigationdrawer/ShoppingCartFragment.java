@@ -23,6 +23,16 @@ public class ShoppingCartFragment extends Fragment {
         return shoppingCartSingleton;
     }
 
+    public double returnTotal (Item item) {
+
+        double totalCost = 0;
+
+        for(int i = 0; i < shoppingCartSingleton.getItem().size(); i++) {
+            totalCost = totalCost + item.getPrice();
+        }
+        return totalCost;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

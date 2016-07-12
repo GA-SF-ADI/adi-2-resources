@@ -27,7 +27,6 @@ public class SecondActivity extends AppCompatActivity {
     ListView listView;
     DBAdapter customAdapter;
     Button shoppingCartButton;
-    Toolbar toolbar;
 
     int[] imagePic = {R.drawable.rounddiamond
     };
@@ -38,21 +37,20 @@ public class SecondActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_second);
 
-        toolbar =(Toolbar) findViewById(R.id.second_toolbar);
 
         super.onCreate(savedInstanceState);
 
         myDb = new DatabaseHelper(this);
 
-//        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-//        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-//        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-//        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-//        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-//        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-//        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-//        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-//        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
+        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
+        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
         populateListViewFromDB();
     }
 
@@ -86,6 +84,7 @@ public class SecondActivity extends AppCompatActivity {
 
                 switch (view.getId()) {
                     case R.id.shopping_cart: {
+                        Log.d("case shopping cart", "in switch case");
                         fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
                         fragmentTransaction.commit();
                         break;
@@ -103,34 +102,35 @@ public class SecondActivity extends AppCompatActivity {
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
+        Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
+        Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
+        Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
+        Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);
+        Item item5 = new Item("5", "earrings", 79.00, "white gold", "diamond", null, 1);
+        Item item6 = new Item("6", "earrings", 89.00, "platinum", "diamond", null, 1);
+        Item item7 = new Item("7", "necklace", 49.00, "yellow gold", "ruby", null, 1);
+        Item item8 = new Item("8", "necklace", 79.00, "white gold", "diamond", null, 1);
+        Item item9 = new Item("9", "necklace", 89.00, "platinum", "diamond", null, 1);
 
+        myItems.add(item1);
+        myItems.add(item2);
+        myItems.add(item3);
+        myItems.add(item4);
+        myItems.add(item5);
+        myItems.add(item6);
+        myItems.add(item7);
+        myItems.add(item8);
+        myItems.add(item9);
 
+        
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
-                Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-                Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
-                Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);
-                Item item5 = new Item("5", "earrings", 79.00, "white gold", "diamond", null, 1);
-                Item item6 = new Item("6", "earrings", 89.00, "platinum", "diamond", null, 1);
-                Item item7 = new Item("7", "necklace", 49.00, "yellow gold", "ruby", null, 1);
-                Item item8 = new Item("8", "necklace", 79.00, "white gold", "diamond", null, 1);
-                Item item9 = new Item("9", "necklace", 89.00, "platinum", "diamond", null, 1);
+                shoppingCart.addItem(myItems.get(position));
+                Log.d("added to cart ", myItems.get(position).getType());
+                customAdapter.notifyDataSetChanged();
 
-                shoppingCart.addItem(item1);
-                shoppingCart.addItem(item2);
-                shoppingCart.addItem(item3);
-                shoppingCart.addItem(item4);
-                shoppingCart.addItem(item5);
-                shoppingCart.addItem(item6);
-                shoppingCart.addItem(item7);
-                shoppingCart.addItem(item8);
-                shoppingCart.addItem(item9);
-
-                Item newItem=  myItems.get(position);
-                shoppingCart.addItem(newItem);
             }
         });
     }

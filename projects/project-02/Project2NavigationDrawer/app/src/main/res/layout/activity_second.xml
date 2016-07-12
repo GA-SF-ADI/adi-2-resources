@@ -11,22 +11,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.project2navigationdrawer.SecondActivity">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/second_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/second_activity_list_view"
             android:id="@+id/shopping_cart_button"
             android:text="shopping cart"/>
 
@@ -34,17 +22,16 @@
             android:id="@+id/featured_jewelry_button"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/shopping_cart_button"
             android:fontFamily="casual"
             android:text="Featured Jewelry"/>
 
-    </android.support.v7.widget.Toolbar>
-
-
     <ListView
         android:id="@+id/second_activity_list_view"
+        android:layout_below="@+id/featured_jewelry_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
+
 
     <FrameLayout
         android:layout_width="wrap_content"
