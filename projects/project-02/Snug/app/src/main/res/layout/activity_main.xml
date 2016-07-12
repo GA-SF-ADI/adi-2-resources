@@ -21,6 +21,7 @@
             android:id="@+id/button_in_toolbar_to_view_cart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:background="@null"
             android:scaleX="1.2"
             android:scaleY="1.2"
@@ -31,18 +32,26 @@
             android:id="@+id/app_logo_in_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:scaleX=".4"
             android:scaleY=".4"
-
             android:src="@drawable/light_green_hat_only_for_menu" />
+
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:scaleX="1.2"
+            android:paddingRight="20dp"
+            android:scaleY="1.2"
+            android:src="@drawable/ic_action_search"
+            android:visibility="visible" />
 
 
     </android.support.v7.widget.Toolbar>
 
-    =======
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    >>>>>>> parent of a25a1fe... toolbars are much better. recycler works! Card view onclick works!
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

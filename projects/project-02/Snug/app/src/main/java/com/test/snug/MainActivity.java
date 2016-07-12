@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        Button cartButtonInToolbar = (Button) findViewById(R.id.button_in_toolbar_to_view_cart);
+        Button searchButtonInToolbar = (Button) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+
         Context context = getApplicationContext();
 
         CardView individualHatCard = (CardView) findViewById(R.id.card_view);
@@ -72,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
         //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
 
         insertHatData();
+
+        cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
