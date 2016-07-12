@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static String LOG_TAG = "RecyclerViewActivity";
+    private static String LOG_TAG = "Main Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         Context context = getApplicationContext();
 
         CardView individualHatCard = (CardView) findViewById(R.id.card_view);
+
+
+//        TODO: Get instance of database helper to make database/tables
+
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
@@ -77,6 +81,25 @@ public class MainActivity extends AppCompatActivity {
 
         insertHatData();
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,14 +121,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private ArrayList<Hat> getDataSet() {
         ArrayList results = new ArrayList<Hat>();
         for (int index = 0; index < 20; index++) {
-            Hat hat = new Hat(index, 4, "SF Giants", "39.99", "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+            Hat hat = new Hat(index, 4, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
             results.add(index, hat);
         }
         return results;
@@ -115,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteOpenHelper db = new SQLiteOpenHelper(this);
 
-        db.addHat(0, "SF Giants", 4, 39.99, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
-        db.addHat(1, "Oakland", 1, 29.99, "50% Cotton", 1, "Great for a day at the beach!", "green");
-        db.addHat(2, "Boston", 3, 19.99, "100% Polyester", 1, "Play the outfield with confidence", "red");
-        db.addHat(3, "Yankees", 2, 59.99, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
+        db.addHat(0, "SF Giants", 4, 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+        db.addHat(1, "Oakland", 1, 29, "50% Cotton", 1, "Great for a day at the beach!", "green");
+        db.addHat(2, "Boston", 3, 19, "100% Polyester", 1, "Play the outfield with confidence", "red");
+        db.addHat(3, "Yankees", 2, 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
 
 
         /*Hat hat = new Hat(1, 4, "SF Giants", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");

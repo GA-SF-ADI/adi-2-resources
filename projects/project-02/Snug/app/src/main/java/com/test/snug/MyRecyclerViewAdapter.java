@@ -1,12 +1,15 @@
 package com.test.snug;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +69,24 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         public DataObjectHolder(View itemView) {
             super(itemView);
 
-            name = (TextView) itemView.findViewById(R.id.textView_hat_name);
-            fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
-            price = (TextView) itemView.findViewById(R.id.textView_hat_price);
-
+            TextView name = (TextView) itemView.findViewById(R.id.textView_hat_name);
+            TextView fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
+            TextView price = (TextView) itemView.findViewById(R.id.textView_hat_price);
+            CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
             Log.i(LOG_TAG, "Adding Listener");
 
-            itemView.setOnClickListener(this);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Log.d("Item clicked", "Item clicked");
+
+                    myClickListener.onItemClick(getLayoutPosition(), v);
+
+                }
+            });
+
         }
 
         @Override
