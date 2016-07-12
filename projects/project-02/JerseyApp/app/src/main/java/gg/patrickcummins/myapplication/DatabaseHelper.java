@@ -220,7 +220,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT " + PurchaseHistoryValues.DATE + " FROM " + PurchaseHistoryValues.TABLE_NAME + " WHERE " + PurchaseHistoryValues.HISTORY_ID + " = " + historyID;
         Cursor cursor = db.rawQuery(query, null);
-        String date = cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.DATE);
+        String date = cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.DATE));
         cursor.close();
         return date;
     }
