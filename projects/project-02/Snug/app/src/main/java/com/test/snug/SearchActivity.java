@@ -32,17 +32,15 @@ public class SearchActivity extends AppCompatActivity {
 
 
                 if (fittedRadioButton.isChecked()) {
-                    if (!fitted) {
-                        fittedRadioButton.setChecked(true);
-                        snapbackRadioButton.setChecked(false);
 
-                    } else {
+                    fittedRadioButton.setChecked(true);
+                    snapbackRadioButton.setChecked(false);
 
-                        fittedRadioButton.setChecked(false);
-                        snapbackRadioButton.setChecked(false);
-                    }
+                } else {
+
+                    fittedRadioButton.setChecked(false);
+                    snapbackRadioButton.setChecked(false);
                 }
-
             }
 
 
@@ -53,19 +51,18 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (snapbackRadioButton.isChecked()) {
-                    if (!snapback) {
-                        snapbackRadioButton.setChecked(true);
-                        fittedRadioButton.setChecked(false);
 
-                    } else {
+                    snapbackRadioButton.setChecked(true);
+                    fittedRadioButton.setChecked(false);
 
-                        snapbackRadioButton.setChecked(false);
-                        fittedRadioButton.setChecked(false);
-                    }
+                } else {
+
+                    snapbackRadioButton.setChecked(false);
+                    fittedRadioButton.setChecked(false);
                 }
-
-
             }
+
+
         });
 
         startSearchFAB.setOnClickListener(new View.OnClickListener() {
@@ -74,14 +71,11 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
                 startActivity(intent);
 
-
             }
         });
 
 
     }
-
-
 
 
 }

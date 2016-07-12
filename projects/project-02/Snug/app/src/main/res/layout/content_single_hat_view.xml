@@ -22,12 +22,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="110dp"
+        android:scaleType="centerCrop"
         android:scaleX="3"
         android:scaleY="3" />
-
     <!--android:src="@drawable/giants"-->
-
     <TextView
         android:id="@+id/textView_single_hat_title"
         android:layout_width="wrap_content"
@@ -55,35 +54,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_below="@+id/textView_single_hat_price"
         android:paddingTop="5dp"
-        android:text="@string/Single_hat_static_description_with_colon" />
+        android:text="@string/Single_hat_static_description_with_colon"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/textview_SQL_based_description"
         android:layout_width="wrap_content"
-        android:layout_alignRight="@+id/textview_single_hat_static_description_with_colon"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textview_single_hat_static_description_with_colon" />
 
 
     <TextView
         android:id="@+id/textview_single_hat_static_back"
         android:layout_width="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_height="wrap_content"
         android:layout_below="@id/textview_single_hat_static_description_with_colon"
         android:paddingTop="20dp"
-        android:text="@string/Single_hat_static_back_with_colon" />
+        android:text="@string/Single_hat_static_back_with_colon"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/textview_single_hat_static_matrial_with_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_below="@+id/textview_single_hat_static_back"
         android:paddingTop="20dp"
-        android:text="@string/Single_hat_static_material_with_colon" />
+        android:text="@string/Single_hat_static_material_with_colon"
+        android:textColor="@color/colorPrimaryDark" />
 
 
 </RelativeLayout>

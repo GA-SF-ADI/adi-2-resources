@@ -2,6 +2,7 @@ package com.test.snug;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         SQLiteOpenHelper db = new SQLiteOpenHelper(context);
 
+
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+
 
 //        TODO: Set text to # of cart items
 /*
@@ -48,9 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
 
 
-//        TODO: Eventually will have to fetch hat records?
-
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -62,29 +64,14 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(mAdapter);
 
-            /*RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, LinearLayoutManager.VERTICAL);
 
-            mRecyclerView.addItemDecoration(itemDecoration);*/
-
-
-        // Code to Add an item with default animation
-        //((MyRecyclerViewAdapter) mAdapter).addItem(obj, index);
-
-        // Code to remove an item with default animation
-        //((MyRecyclerViewAdapter) mAdapter).deleteItem(index);
         insertHatData();
 
 
-       /* individualHatCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
-                startActivity(intent);
 
-            }
-        });
-*/
+        //        TODO: Eventually will have to fetch hat records?
+
 
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,10 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
         SQLiteOpenHelper db = new SQLiteOpenHelper(this);
 
-        db.addHat(0, "SF Giants", 4, 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
-        db.addHat(1, "Oakland", 1, 29, "50% Cotton", 1, "Great for a day at the beach!", "green");
-        db.addHat(2, "Boston", 3, 19, "100% Polyester", 1, "Play the outfield with confidence", "red");
-        db.addHat(3, "Yankees", 2, 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
+        db.addHat(0, 2, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+        db.addHat(1, 1, "Oakland", 29, "50% Cotton", 1, "Great for a day at the beach!", "green");
+        db.addHat(2, 3, "Boston", 19, "100% Polyester", 1, "Play the outfield with confidence", "red");
+        db.addHat(3, 2, "Yankees", 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
 
 
         mAdapter.notifyDataSetChanged();

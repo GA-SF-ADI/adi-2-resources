@@ -13,12 +13,12 @@
     tools:showIn="@layout/activity_shopping_cart">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHOPPING CART ACTIVITY"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
 
+    <ListView
+        android:id="@+id/listview_of_cart_items"
+        android:layout_width="wrap_content"
+        android:divider="#d7d7d7"
+        android:dividerHeight="1dp"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

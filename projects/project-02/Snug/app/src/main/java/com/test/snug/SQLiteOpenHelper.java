@@ -21,8 +21,12 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "snugApp.db";
 
+    public static final String[] HAT_COLUMNS = {HAT_COLUMN_ID, HAT_COLUMN_PICTUREID, HAT_COLUMN_HATNAME, HAT_COLUMN_PRICE,
+            HAT_COLUMN_MATERIAL, HAT_COLUMN_FittedOrSnap, HAT_COLUMN_DESCRIPTION, HAT_COLUMN_COLOR};
+
+
     public static final String SQL_CREATE_HATS_TABLE =
-            "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY, "
+            "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + HAT_COLUMN_PICTUREID + " INTEGER, " + HAT_COLUMN_HATNAME + " TEXT, " +
                     HAT_COLUMN_PRICE + " INTEGER, " + HAT_COLUMN_MATERIAL + " TEXT, " +
                     HAT_COLUMN_FittedOrSnap + " INTEGER," + HAT_COLUMN_DESCRIPTION + " TEXT, " +
@@ -52,23 +56,24 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     }
 
-    public void addHat(int id, String name, int picture, int price, String material, int fittedOrSnap,
+    public void addHat(int id, int picture, String name, int price, String material, int fittedOrSnap,
                        String description, String color) {
 
-
-        SQLiteDatabase db = getWritableDatabase();
-
         ContentValues values = new ContentValues();
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(HAT_TABLE_NAME, null, values);
+
+
         values.put("id", id);
-        values.put("name", name);
         values.put("pictureID", picture);
+        values.put("name", name);
         values.put("price", price);
         values.put("material", material);
         values.put("fittedOrSnap", fittedOrSnap);
         values.put("description", description);
         values.put("color", color);
 
-        db.insert(HAT_TABLE_NAME, null, values);
+
         db.close();
 
     }
@@ -82,12 +87,27 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
-        db.delete(HAT_TABLE_NAME, selection, selectionArgs);
+        db.delete(HAT_TABLE_NAME, HAT_COLUMN_ID + "= ?", new String[]{String.valueOf(id)});
         db.close();
 
     }
 
-    public Hat getSpecificHat(int id) {
+
+    public Cursor getHat(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                HAT_COLUMN_ID + " = ?", // c. selections
+                new String[]{String.valueOf(id)}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
+    }
+
+    /*public Hat getSpecificHat(int id) {
 
         SQLiteDatabase db = getReadableDatabase();
         String[] projection = new String[]{"id", "name", "pictureID", "price", "material", "fittedOrSnap", "description", "color"};
@@ -110,14 +130,30 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
         return new Hat(id, pictureID, name, price, material, fittedOrSnap, description, color);
 
-    }
+    }*/
 
     public Cursor getAllHats() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " + HAT_TABLE_NAME, null);
-        return res;
+        Cursor cursor = db.query(HAT_TABLE_NAME, HAT_COLUMNS, null, null, null, null, null);
+        return cursor;
     }
 
 
+    public Cursor searchHatList(String query) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                HAT_TABLE_NAME + " LIKE ?", // c. selections
+                new String[]{"%" + query + "%"}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
+
+
+    }
 }
 

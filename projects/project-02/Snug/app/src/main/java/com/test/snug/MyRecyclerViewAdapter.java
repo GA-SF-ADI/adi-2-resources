@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import android.database.Cursor;
+import android.database.DataSetObserver;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -55,12 +58,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     int imageId = (int) (Math.random() * images.length);
 
+    //TODO: have the adapter take in a cursor. Edit your recycler view adapter and make it so that it takes in a cursor
+
+
     public MyRecyclerViewAdapter(ArrayList<Hat> hatDataSet, Context mContext) {
         this.hatDataSet = hatDataSet;
         this.mContext = mContext;
     }
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name;
         TextView fittedOrSnap;
         TextView price;
@@ -111,7 +117,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.name.setText(hatDataSet.get(position).getName());
         holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
-        holder.price.setText(hatDataSet.get(position).getPrice()+"");
+        holder.price.setText(hatDataSet.get(position).getPrice() + "");
     }
 
     public void addItem(Hat hat, int index) {
