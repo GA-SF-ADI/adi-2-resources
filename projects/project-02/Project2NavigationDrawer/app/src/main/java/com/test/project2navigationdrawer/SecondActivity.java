@@ -90,7 +90,6 @@ public class SecondActivity extends AppCompatActivity {
                         break;
                     }
 
-
                 }
             }
 
@@ -122,7 +121,7 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item8);
         myItems.add(item9);
 
-        
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

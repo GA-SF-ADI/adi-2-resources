@@ -17,6 +17,13 @@ public class ShoppingCartFragment extends Fragment {
     ShoppingCartSingleton shoppingCartSingleton;
 
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+    }
+
 
     public ShoppingCartSingleton getShoppingCartSingleton() {
         shoppingCartSingleton.getItem();
@@ -31,12 +38,6 @@ public class ShoppingCartFragment extends Fragment {
             totalCost = totalCost + item.getPrice();
         }
         return totalCost;
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
