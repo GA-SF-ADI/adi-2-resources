@@ -4,20 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -46,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
-
-        CardView individualHatCard = (CardView) findViewById(R.id.card_view);
+//        TODO: Set text to # of cart items
+/*
+        TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+        cartItemCounter.setText(__);
+*/
 
 
 //        TODO: Add hats below!(int id, int picture, double price, String material, int fittedOrSnap, String description, String color
@@ -135,23 +130,7 @@ public class MainActivity extends AppCompatActivity {
         db.addHat(3, "Yankees", 2, 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
 
 
-        /*Hat hat = new Hat(1, 4, "SF Giants", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
-        hatList.add(hat);
-
-        Hat hat2 = new Hat(1, 4, "Oakland", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
-        hatList.add(hat2);
-
-        Hat hat3 = new Hat(1, 4, "Seattle", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
-        hatList.add(hat3);
-
-        Hat hat4 = new Hat(1, 4, "Boston", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
-        hatList.add(hat4);
-
-        Hat hat5 = new Hat(1, 4, "Yankees", "39.99", "100% Cotton", 3, "Plush and soft, this hat will keep you comfortable", "black");
-        hatList.add(hat5);
-
         mAdapter.notifyDataSetChanged();
-*/
 
 
         ((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {

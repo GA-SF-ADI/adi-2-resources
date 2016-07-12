@@ -12,21 +12,23 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     public static final String HAT_COLUMN_ID = "_id";
     public static final String HAT_COLUMN_HATNAME = "name";
     public static final String HAT_COLUMN_PICTUREID = "pictureID";
-    public static final String HAT_COLUMN_GENDER = "gender";
     public static final String HAT_COLUMN_PRICE = "price";
     public static final String HAT_COLUMN_MATERIAL = "material";
     public static final String HAT_COLUMN_FittedOrSnap = "fittedOrSnap";
     public static final String HAT_COLUMN_DESCRIPTION = "description";
+    public static final String HAT_COLUMN_COLOR = "color";
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "snugApp.db";
 
     public static final String SQL_CREATE_HATS_TABLE =
             "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY, "
-                    + HAT_COLUMN_HATNAME + " TEXT, " + HAT_COLUMN_PICTUREID + " TEXT, " +
-                    HAT_COLUMN_GENDER + " TEXT, " + HAT_COLUMN_PRICE + " INTEGER, " +
-                    HAT_COLUMN_MATERIAL + " TEXT, " + HAT_COLUMN_FittedOrSnap + " INTEGER," +
-                    HAT_COLUMN_DESCRIPTION + " TEXT)";
+                    + HAT_COLUMN_PICTUREID + " INTEGER, " + HAT_COLUMN_HATNAME + " TEXT, " +
+                    HAT_COLUMN_PRICE + " INTEGER, " + HAT_COLUMN_MATERIAL + " TEXT, " +
+                    HAT_COLUMN_FittedOrSnap + " INTEGER," + HAT_COLUMN_DESCRIPTION + " TEXT, " +
+                    HAT_COLUMN_COLOR + " TEXT);";
+
+//    (int id, int pictureID, String name, int price, String material, int fittedOrSnap, String description, String color)
 
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;

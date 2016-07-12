@@ -13,7 +13,7 @@
 
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar"
+            android:id="@+id/main_activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -50,7 +50,7 @@
                     android:src="@drawable/red_circle" />
 
                 <TextView
-                    android:id="@+id/count"
+                    android:id="@+id/textview_num_of_hats_in_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -92,7 +92,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/my_toolbar"
+        android:layout_below="@id/main_activity_main_toolbar"
         android:scrollbars="vertical" />
 
 
