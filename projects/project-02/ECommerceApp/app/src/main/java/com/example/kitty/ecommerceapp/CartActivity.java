@@ -22,6 +22,7 @@ public class CartActivity extends AppCompatActivity {
         setContentView(R.layout.shipping_cart_layout);
 
         db = Helper.getInstance(CartActivity.this);
+        shoppingList = (ListView) findViewById(R.id.shopping_cart_listview);
 
         cursor = db.getItemJoinCart();
         cartCursorAdapter = new CartCursorAdapter(this, cursor);

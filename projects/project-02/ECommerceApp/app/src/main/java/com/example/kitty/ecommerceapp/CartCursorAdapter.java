@@ -2,6 +2,7 @@ package com.example.kitty.ecommerceapp;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +32,10 @@ public class CartCursorAdapter extends CursorAdapter {
         TextView itemQuantity = (TextView) view.findViewById(R.id.cart_list_quantity);
         TextView itemPrice = (TextView) view.findViewById(R.id.cart_list_price);
 
-        //to update
         itemImage.setImageResource(cursor.getInt(cursor.getColumnIndex(Helper.COL_ITEM_PIC)));
         itemBrand.setText(cursor.getString(cursor.getColumnIndex(Helper.COL_ITEM_BRAND)));
         itemName.setText(cursor.getString(cursor.getColumnIndex(Helper.COL_ITEM_NAME)));
-        itemQuantity.setText(cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY)));
+        itemQuantity.setText(String.valueOf(cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY))));
 
         //calculating price for the number of quantity saved in cart.
         double price = cursor.getDouble(cursor.getColumnIndex(Helper.COL_ITEM_PRICE)) * cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY));

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_cart:
-
+                toCart();
                 return true;
 
             case R.id.action_menu:
@@ -91,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             tpListFragment.searchTPList(intent.getStringExtra(SearchManager.QUERY));
         }
+    }
+
+    private void toCart() {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -239,7 +239,7 @@ public class Helper extends SQLiteOpenHelper {
     // get joint table
     public Cursor getItemJoinCart() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE + COL_CART_QUANTITY +
+        String query = "SELECT " + TP_TABLE_NAME + "." + COL_ID  + ", " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ID + ", " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE  + ", " + COL_CART_QUANTITY +
                 " FROM [" + TP_TABLE_NAME + "] JOIN " + SHOPPING_CART_TABLE_NAME +
                 " ON [" + TP_TABLE_NAME + "]." + COL_ID + " = " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID;
         Cursor cursor = db.rawQuery(query, null);
