@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,114 +20,26 @@ import java.util.Random;
 /**
  * Created by LangstonSmith on 7/9/16.
  */
-public class CartCustomCursorAdapter extends RecyclerView.Adapter<CartCustomCursorAdapter.DataObjectHolder> {
-
-    private static String LOG_TAG = "HatsMyRecyclerViewAdapter";
-
-    public List<Hat> hatList;
-    private Context mContext;
-    public Cursor cursor;
-    private ArrayList<Hat> hatDataSet;
-    private Random mRandom = new Random();
-    private static MyClickListener myClickListener;
-    private AdapterView.OnItemClickListener mListener;
+public class CartCustomCursorAdapter extends CursorAdapter {
+    private LayoutInflater mInflater;
 
 
-    public CartCustomCursorAdapter(Cursor cursor, Context mContext) {
-        this.mContext = mContext;
-        this.cursor = cursor;
+    public CartCustomCursorAdapter(Context context, Cursor c, int flags) {
+        super(context, c, flags);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-    }
-
-    public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView name;
-        TextView fittedOrSnap;
-        TextView price;
-        ImageView image;
-        CardView cardView;
-
-
-        public DataObjectHolder(View itemView) {
-            super(itemView);
-
-            name = (TextView) itemView.findViewById(R.id.textView_hat_name);
-            fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
-            price = (TextView) itemView.findViewById(R.id.textView_hat_price);
-            image = (ImageView) itemView.findViewById(R.id.hat_photo);
-
-            CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
-
-
-            itemView.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-
-            Log.i(LOG_TAG, "Clicked on hat");
-
-
-
-        }
-    }
-
-    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
-    }
-
-
-    @Override
-    public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout, parent, false);
-
-        DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
-        return dataObjectHolder;
     }
 
     @Override
-    public void onBindViewHolder(DataObjectHolder holder, int position) {
-
-        cursor.moveToPosition(position);
-
-
-        holder.name.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
-        holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-        holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
-        holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+    public void bindView(View view, Context context, Cursor cursor) {
+        // TODO Auto-generated method stub
 
     }
-
-//    TODO: Fix method below
-
-/*
-    public void addItem(Hat hat, int index) {
-
-            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper();
-
-        cursor.add
-        notifyItemInserted(index);
-    }
-*/
-
-    //    TODO: Fix method below
-    /*public void deleteItem(int index) {
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper();
-
-        Cursor cursor = db.deleteHat();
-
-    }*/
-
 
     @Override
-    public int getItemCount() {
-        Log.d(LOG_TAG, cursor.getCount() + "");
-        return cursor.getCount();
-
-    }
-
-    public interface MyClickListener {
-        public void onItemClick(int position, View v);
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

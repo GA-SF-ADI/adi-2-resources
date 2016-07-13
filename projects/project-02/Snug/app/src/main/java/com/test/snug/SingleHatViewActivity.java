@@ -61,8 +61,13 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_LONG).show();
 
+//                TODO: Get instance of cart database and add particular hat to the cart
+
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
                 startActivity(intent);
+
+
+
 
 
             }

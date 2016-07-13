@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 
@@ -27,6 +28,8 @@ public class SearchActivity extends AppCompatActivity {
 
         final RadioButton fittedRadioButton = (RadioButton) findViewById(R.id.fitted_cap_radio_button);
         final RadioButton snapbackRadioButton = (RadioButton) findViewById(R.id.snapback_cap_radio_button);
+        final EditText priceMax = (EditText) findViewById(R.id.editText_price);
+
         final boolean fitted = false;
         final boolean snapback = false;
 
@@ -73,8 +76,19 @@ public class SearchActivity extends AppCompatActivity {
         startSearchFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+
+//                intent.putExtra("maxPriceSearch", maxPrice);
+
+
                 startActivity(intent);
+
+
+
+
+
 
             }
         });
@@ -88,6 +102,8 @@ public class SearchActivity extends AppCompatActivity {
 
 */
     }
+
+
 
 
 }
