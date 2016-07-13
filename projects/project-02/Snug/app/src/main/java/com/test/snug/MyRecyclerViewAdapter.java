@@ -90,21 +90,29 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
+
+        holder.
+
         holder.name.setText(hatDataSet.get(position).getName());
         holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
         holder.price.setText(String.valueOf(hatDataSet.get(position).getPrice() + ""));
     }
+
+//    TODO: Fix method below
 
     /*public void addItem(Hat hat, int index) {
         cursor.add(hat);
         notifyItemInserted(index);
     }
     */
-    /*public void deleteItem(int index) {
-        cursor;
-        notifyItemRemoved(index);
+
+//    TODO: Fix method below
+    public void deleteItem(int index) {
+        SQLiteOpenHelper db = new SQLiteOpenHelper();
+
+        Cursor cursor = db.deleteHat();
+
     }
-*/
     @Override
     public int getItemCount() {
         Log.d("dkjfad", cursor.getCount()+"");

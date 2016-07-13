@@ -86,7 +86,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     }
 
 
-    public void deleteHat(int id) {
+    public Cursor deleteHat(int id) {
 
         SQLiteDatabase db = getWritableDatabase();
 

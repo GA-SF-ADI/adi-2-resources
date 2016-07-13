@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        TODO: Check for cart items. If cart has items, dired dot and counter
+//        TODO: Check for cart items. If cart has items, display the red dot and counter
 
 
     }
