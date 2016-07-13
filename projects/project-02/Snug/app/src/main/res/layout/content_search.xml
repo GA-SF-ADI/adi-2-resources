@@ -47,17 +47,27 @@
         android:text="@string/Fitteds_only"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fitted_cap_radio_button"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:text="@string/enter_lower_than_amount"
+        android:textColor="#2d7230"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/editText_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/price_edittext"
+        android:inputType="number"
         android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_marginTop="101dp"
-        android:hint="@string/enter_lower_than_amount"
-        android:inputType="number" />
+        android:paddingRight="30dp" />
 
 
 </RelativeLayout>
