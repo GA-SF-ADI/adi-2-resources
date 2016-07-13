@@ -7,4 +7,5 @@
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="player_name_text_size">20sp</dimen>
     <dimen name="header_text_size">30sp</dimen>
+    <dimen name="size_text_view">20dp</dimen>
 </resources>

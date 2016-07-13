@@ -21,6 +21,7 @@
         android:layout_margin="@dimen/margin_5dp"
         android:layout_toRightOf="@id/jerseyImageView"
         android:text="Player Name"
+
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/player_name_text_size" />
 
@@ -78,11 +79,79 @@
 
         />
 
+    <LinearLayout
+        android:id="@+id/sizeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jersey2"
+        android:layout_toRightOf="@+id/jerseyImageView"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/extraSmallTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:text="XS"
+            android:textAlignment="center"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/smallTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:text="S"
+            android:textAlignment="center"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/mediumTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:text="M"
+            android:textAlignment="center"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/largeTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:text="L"
+            android:textAlignment="center"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/extraLargeTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:text="XL"
+            android:textAlignment="center"
+            android:textColor="@color/raiderPrimaryDark" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sizeLayout"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:inputType="number"
+        android:hint="Quantity" />
+
     <TextView
         android:id="@+id/priceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/jersey3"
+        android:layout_below="@+id/quantityEditText"
         android:layout_margin="@dimen/margin_5dp"
         android:layout_toRightOf="@+id/jerseyImageView"
         android:text="Price: $00"
