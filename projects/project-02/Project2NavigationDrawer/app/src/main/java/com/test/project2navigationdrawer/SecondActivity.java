@@ -183,11 +183,11 @@ public class SecondActivity extends AppCompatActivity {
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            Log.d("handleIntent", "");
             String query = intent.getStringExtra(SearchManager.QUERY);
             Toast.makeText(SecondActivity.this, "Looking for " + query, Toast.LENGTH_SHORT).show();
             Cursor cursor = DatabaseHelper.getInstance(SecondActivity.this).searchShoppingList(query);
-
-            textViewSearch.setText("We have " + query + " in the store! What's available? " + cursor.getCount());
+            customAdapter.changeCursor(cursor);
         }
 
     }
