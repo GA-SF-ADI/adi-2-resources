@@ -48,7 +48,7 @@ public class DBAdapter extends CursorAdapter {
 
 
         final String type = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_2_TYPE));
-        final String price = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE));
+        final double price = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE));
         final String gold = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_4_GOLD));
         final String stone = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_5_STONE));
         final String measurement = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_6_MEASUREMENT));
@@ -59,7 +59,7 @@ public class DBAdapter extends CursorAdapter {
         Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE)) + "", "images");
 
         typeOfJewelryTextView.setText(type);
-        priceOfJewelryTextView.setText(price);
+        priceOfJewelryTextView.setText(Double.toString(price));
         goldOfJewelryTextView.setText(gold);
         stoneOfJewelryTextView.setText(stone);
         measurementOfJewelryTextView.setText(measurement);
@@ -69,7 +69,7 @@ public class DBAdapter extends CursorAdapter {
 
         //DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
-        //Jamey
+
         final DatabaseHelper helper= DatabaseHelper.getInstance(context);
 
         addToCartButton.setOnClickListener(new View.OnClickListener() {

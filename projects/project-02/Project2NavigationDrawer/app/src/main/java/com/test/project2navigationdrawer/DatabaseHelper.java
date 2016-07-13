@@ -56,7 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "(" +
                     COL_1_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_2_TYPE + " TEXT, " +
-                    COL_3_PRICE + " TEXT, " +
+                    COL_3_PRICE + " DOUBLE, " +
                     COL_4_GOLD + " TEXT, " +
                     COL_5_STONE + " TEXT, " +
                     COL_6_MEASUREMENT + " TEXT, " +
@@ -69,7 +69,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
                 "(" +
                 COL_1_ID_SHOPPING_CART + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_2_TYPE_SHOPPING_CART + " TEXT, " +
-                COL_3_PRICE_SHOPPING_CART + " TEXT, " +
+                COL_3_PRICE_SHOPPING_CART + " DOUBLE, " +
                 COL_4_GOLD_SHOPPING_CART + " TEXT, " +
                 COL_5_STONE_SHOPPING_CART + " TEXT, " +
                 COL_6_MEASUREMENT_SHOPPING_CART + " TEXT, " +
@@ -98,7 +98,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
         onCreate(db);
     }
 
-    public void insert(String id, String type, String price, String gold, String stone, String measurement,String quantity,String name, int image) {
+    public void insert(String id, String type, double price, String gold, String stone, String measurement,String quantity,String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -116,7 +116,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
 
     }
 
-    public void insertShoppingCart(String type, String price,
+    public void insertShoppingCart(String type, double price,
                        String gold, String stone, String measurement,String quantity,String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
@@ -131,8 +131,8 @@ private static final String CREATE_SHOPPING_CART_TABLE =
         values.put(COL_9_IMAGE_SHOPPING_CART, image);
 
         db.insert(TABLE_NAME_SHOPPING_CART, null, values);
-
-    }
+        db.close();
+}
 
     public Cursor getJewelry(){
 

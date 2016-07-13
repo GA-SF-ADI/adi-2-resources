@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.view.menu.ActionMenuItemView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,14 +58,18 @@ public class ShoppingCartFragment extends Fragment {
 
         double totalCost = 0;
         Cursor cursor = databaseHelper.getShoppingCart();
+        Log.d("cursor", " "+ cursor.getCount());
+        cursor.moveToFirst();
 
-        while(cursor.isAfterLast() ==false) {
-            double price = databaseHelper.getShoppingCart();
+        while(cursor.isAfterLast() == false) {
+           double price = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE_SHOPPING_CART));
+            Log.d("price", " " + price);
             totalCost = totalCost + price;
             cursor.moveToNext();
-            cursor.close();
         }
+        cursor.close();
         return totalCost;
+
     }
 //
 //        while (int i = 0; i < databaseHelper.getShoppingCart(); i++) {

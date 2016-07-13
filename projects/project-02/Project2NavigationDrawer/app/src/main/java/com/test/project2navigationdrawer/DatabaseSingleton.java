@@ -19,7 +19,7 @@ public class DatabaseSingleton {
         return databaseSingleton;
     }
 
-    public void insertItem(String type, String price, String gold, String stone, String measurement, String quantity, String name, int image){
+    public void insertItem(String type, double price, String gold, String stone, String measurement, String quantity, String name, int image){
         databaseSingleton.insertItem(type, price, gold, stone, measurement, quantity, name, image);
     }
 
