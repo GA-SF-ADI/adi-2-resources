@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_6_MEASUREMENT= "MEASUREMENT";
     public static final String COL_7_QUANTITY= "QUANTITY";
     public static final String COL_8_NAME= "NAME";
-    public static final String COL_9_IMAGE= "IMAGE";
+    public static final String COL_9_IMAGE = "IMAGE";
 
 
     public static final String[] JEWELRY_COLUMNS = {COL_1_ID,COL_2_TYPE, COL_3_PRICE, COL_4_GOLD, COL_5_STONE, COL_6_MEASUREMENT, COL_7_QUANTITY, COL_8_NAME, COL_9_IMAGE};
@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COL_6_MEASUREMENT + " TEXT, " +
                     COL_7_QUANTITY + " TEXT, " +
                     COL_8_NAME + " TEXT, " +
-                    COL_9_IMAGE + " TEXT )";
+                    COL_9_IMAGE + " INTEGER )";
 
 
     public DatabaseHelper(Context context) {
@@ -60,7 +60,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String id, String type, String price, String gold, String stone, String measurement,String quantity,String name, String image) {
+    public void insert(String id, String type, String price, String gold, String stone, String measurement,String quantity,String name, int image) {
+
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_1_ID,id);
@@ -71,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_6_MEASUREMENT, measurement);
         values.put(COL_7_QUANTITY,quantity);
         values.put(COL_8_NAME, name);
-        values.put(COL_9_IMAGE, image);
+        values.put(COL_9_IMAGE, 0);
 
         db.insert(TABLE_NAME, null, values);
 

@@ -29,7 +29,8 @@ public class SecondActivity extends AppCompatActivity {
     Button shoppingCartButton;
 
 
-    int[] imagePic = {R.drawable.rounddiamond
+    int[] imagePic = {R.drawable.rounddiamond,
+            R.drawable.id1
     };
 
 
@@ -43,15 +44,15 @@ public class SecondActivity extends AppCompatActivity {
 
         myDb = new DatabaseHelper(this);
 
-        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
-        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", null);
-        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", null);
-        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", null);
+        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking",R.drawable.id1);
+        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
+        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
+        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
+        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
+        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
+        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
+        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
+        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
         populateListViewFromDB();
     }
 

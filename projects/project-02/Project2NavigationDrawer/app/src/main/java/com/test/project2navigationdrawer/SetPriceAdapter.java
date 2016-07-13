@@ -26,12 +26,14 @@ public class SetPriceAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.fragment_shopping_cart, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.price_layout, parent, false);
 
     }
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView priceTextView = (TextView) view.findViewById(R.id.shopping_fragment_total_cost);
+        TextView priceTextView = (TextView) view.findViewById(R.id.text_view_total_price_of_jewels);
+
+       priceTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE)));
 
     }
 };
