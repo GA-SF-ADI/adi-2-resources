@@ -11,7 +11,8 @@
         android:layout_margin="@dimen/margin_5dp"
         android:layout_weight="1"
         android:text="Price: $999.999"
-        android:textColor="@color/colorPrimary" />
+        android:textSize="@dimen/player_name_text_size"
+        android:textColor="@color/colorAccent" />
 
     <TextView
         android:id="@+id/dateTextView"
@@ -20,6 +21,7 @@
         android:layout_margin="@dimen/margin_5dp"
         android:layout_weight="1"
         android:text="Date: This is the Date"
+        android:textSize="@dimen/player_name_text_size"
         android:textColor="@color/colorPrimary" />
 
 </LinearLayout>

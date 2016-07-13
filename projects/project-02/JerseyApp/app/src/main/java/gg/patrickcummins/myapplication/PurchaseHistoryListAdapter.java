@@ -1,6 +1,7 @@
 package gg.patrickcummins.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by patrickcummins on 7/12/16.
@@ -47,8 +50,20 @@ public class PurchaseHistoryListAdapter extends BaseAdapter {
         TextView priceTextView = (TextView) convertView.findViewById(R.id.priceTextView);
         TextView dateTextView = (TextView) convertView.findViewById(R.id.dateTextView);
 
-        priceTextView.setText("Price: $" + currentItem.getPrice());
-        dateTextView.setText("Date Ordered: " + currentItem.getDate());
+        priceTextView.setText("Price:\n$" + currentItem.getPrice());
+        dateTextView.setText("Date Ordered:\n" + currentItem.getDate());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, CartActivity.class);
+                intent.putExtra("history_id", currentItem.getHistory_ID());
+                intent.putExtra("date", currentItem.getDate());
+                context.startActivity(intent);
+
+            }
+        });
+
+
         return convertView;
     }
 }

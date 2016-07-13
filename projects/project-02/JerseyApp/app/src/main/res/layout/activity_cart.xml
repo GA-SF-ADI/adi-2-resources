@@ -29,6 +29,15 @@
             android:backgroundTint="@color/sharkAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/dateOrderedTextView"
+            android:layout_weight="1"
+            android:text="Date Ordered: DATE"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone"
+            android:textSize="@dimen/player_name_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
     <ListView
