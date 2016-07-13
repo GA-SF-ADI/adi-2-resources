@@ -51,20 +51,34 @@ public class MainActivity extends AppCompatActivity {
 
         insertHatData();
 
+
         Cursor allHatsCursor = db.getAllHats();
 
+        Log.d(LOG_TAG, "allHatsCursor created");
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
+        Log.d(LOG_TAG, "recyclerview bound");
+
         mRecyclerView.setHasFixedSize(true);
+
+        Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
         mLayoutManager = new GridLayoutManager(context, 2);
 
+        Log.d(LOG_TAG, "GridLayoutManager context set");
+
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
         mAdapter = new MyRecyclerViewAdapter(allHatsCursor, context);
 
+        Log.d(LOG_TAG, "mAdapter created");
+
         mRecyclerView.setAdapter(mAdapter);
+
+        Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
 
 
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
     private void insertHatData() {
 
         SQLiteOpenHelper hatDatabase = SQLiteOpenHelper.getInstance(MainActivity.this);
+
+        Log.d(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
 
         hatDatabase.addHat(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", 0, "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHat(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", 0, "Great for a day at the beach!", "green");
@@ -209,23 +225,20 @@ public class MainActivity extends AppCompatActivity {
         hatDatabase.addHat(98, R.drawable.yanks, "New York Yankees", 14.95, "100% cotton", 1, "Turn a double play in this stylish hat", "blue");
         hatDatabase.addHat(99, R.drawable.yellow_top_pirates, "Pittsburgh Pirates", 50, "50% polyester 50% wool ", 1, "Block the sun and look good in this beautiful hat", "yellow");
 
-
-
-
-
-        /*((MyRecyclerViewAdapter) mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-
-                Log.d(LOG_TAG, "Hat item clicked");
-                Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
-                startActivity(intent);
-
-            }
-        });*/
-
+        Log.d(LOG_TAG, "All hats inserted into database");
 
     }
+
+   /* (MyRecyclerViewAdapter)mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
+        @Override
+        public void onItemClick ( int position, View v){
+
+            Log.d(LOG_TAG, "Hat item clicked");
+            Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+            startActivity(intent);
+
+        }
+    }*/
 
 
 }

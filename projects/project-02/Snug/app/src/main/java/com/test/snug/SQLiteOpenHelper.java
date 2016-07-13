@@ -26,7 +26,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
 
     public static final String SQL_CREATE_HATS_TABLE =
-            "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY, "
                     + HAT_COLUMN_PICTUREID + " INTEGER, " + HAT_COLUMN_HATNAME + " TEXT, " +
                     HAT_COLUMN_PRICE + " INTEGER, " + HAT_COLUMN_MATERIAL + " TEXT, " +
                     HAT_COLUMN_FittedOrSnap + " INTEGER, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
@@ -37,8 +37,8 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     private static SQLiteOpenHelper mInstance;
 
-    public static SQLiteOpenHelper getInstance(Context context){
-        if(mInstance == null){
+    public static SQLiteOpenHelper getInstance(Context context) {
+        if (mInstance == null) {
             mInstance = new SQLiteOpenHelper(context.getApplicationContext());
         }
         return mInstance;
@@ -68,10 +68,9 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
-        db.insert(HAT_TABLE_NAME, null, values);
 
 
-        values.put("id", id);
+        values.put("_id", id);
         values.put("pictureID", picture);
         values.put("name", name);
         values.put("price", price);
@@ -80,21 +79,8 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
         values.put("description", description);
         values.put("color", color);
 
+        db.insert(HAT_TABLE_NAME, null, values);
 
-        db.close();
-
-    }
-
-
-    public Cursor deleteHat(int id) {
-
-        SQLiteDatabase db = getWritableDatabase();
-
-        String selection = "id = ?";
-
-        String[] selectionArgs = new String[]{String.valueOf(id)};
-
-        db.delete(HAT_TABLE_NAME, HAT_COLUMN_ID + "= ?", new String[]{String.valueOf(id)});
         db.close();
 
     }
@@ -145,6 +131,19 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
         return cursor;
     }
 
+//    TODO: Add getHatTeams method below
+
+    /*public Cursor getHatTeams(String query) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                HAT_TABLE_NAME + " LIKE ?", // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit*/
 
     public Cursor searchHatList(String query) {
         SQLiteDatabase db = this.getReadableDatabase();

@@ -14,7 +14,7 @@
 
 
     <MultiAutoCompleteTextView
-        android:id="@+id/editText_search_description_etc"
+        android:id="@+id/auto_search_description_etc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/snapback_cap_radio_button"
@@ -67,7 +67,8 @@
         android:hint="@string/price_edittext"
         android:inputType="number"
         android:paddingLeft="30dp"
-        android:paddingRight="30dp" />
+        android:paddingRight="30dp"
+        android:singleLine="true" />
 
 
 </RelativeLayout>

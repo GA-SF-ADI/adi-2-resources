@@ -26,8 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/giants" />
+                android:layout_centerHorizontal="true" />
 
             <LinearLayout
                 android:id="@+id/layout_hat_name"
@@ -63,7 +62,6 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center"
                     android:paddingBottom="5dp"
-                    android:text="@string/Hat_price"
                     android:textSize="14sp" />
 
                 <TextView
@@ -73,7 +71,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center"
-                    android:text="@string/Hat_fittedOrSnap"
                     android:textSize="14sp" />
 
             </LinearLayout>

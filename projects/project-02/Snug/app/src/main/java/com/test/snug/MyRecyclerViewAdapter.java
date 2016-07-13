@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.database.Cursor;
@@ -43,6 +44,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView name;
         TextView fittedOrSnap;
         TextView price;
+        ImageView image;
         CardView cardView;
 
 
@@ -52,6 +54,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             name = (TextView) itemView.findViewById(R.id.textView_hat_name);
             fittedOrSnap = (TextView) itemView.findViewById(R.id.textView_is_hat_fittedOrSnap);
             price = (TextView) itemView.findViewById(R.id.textView_hat_price);
+            image = (ImageView) itemView.findViewById(R.id.hat_photo);
+
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
             Log.i(LOG_TAG, "Adding Listener");
@@ -91,31 +95,41 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
 
-        holder.
+        cursor.moveToPosition(position);
 
-        holder.name.setText(hatDataSet.get(position).getName());
-        holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
-        holder.price.setText(String.valueOf(hatDataSet.get(position).getPrice() + ""));
+//        TODO: get column index based off of cursor
+
+        holder.name.setText(cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+        holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
+        holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_PRICE)));
+        holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+
     }
 
 //    TODO: Fix method below
 
-    /*public void addItem(Hat hat, int index) {
-        cursor.add(hat);
+/*
+    public void addItem(Hat hat, int index) {
+
+            SQLiteOpenHelper db = new SQLiteOpenHelper();
+
+        cursor.add
         notifyItemInserted(index);
     }
-    */
+*/
 
-//    TODO: Fix method below
-    public void deleteItem(int index) {
+    //    TODO: Fix method below
+    /*public void deleteItem(int index) {
         SQLiteOpenHelper db = new SQLiteOpenHelper();
 
         Cursor cursor = db.deleteHat();
 
-    }
+    }*/
+
+
     @Override
     public int getItemCount() {
-        Log.d("dkjfad", cursor.getCount()+"");
+        Log.d(LOG_TAG, cursor.getCount() + "");
         return cursor.getCount();
 
     }
