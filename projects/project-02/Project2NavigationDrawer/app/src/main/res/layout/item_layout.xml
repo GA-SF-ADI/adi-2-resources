@@ -37,8 +37,38 @@
         android:id="@+id/text_view_name_of_jewelry"/>
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/image_view_of_jewelry"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/add_button_to_shopping_cart"
+        android:text="ADD TO SHOPPING CART"/>
+
+    <Button
+        android:id="@+id/increment_button_view"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:onClick="increment"
+        android:textAlignment="center"
+        android:text="+" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/quantity_text"
+        android:text="QUANTITY ="/>
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="decrement"
+        android:layout_alignParentRight="true"
+        android:textAlignment="center"
+        android:text="-" />
+
 
 </LinearLayout>

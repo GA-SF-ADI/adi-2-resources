@@ -10,9 +10,7 @@ import java.util.ArrayList;
 public class ShoppingCartSingleton {
 
     private static ShoppingCartSingleton shoppingCart;
-
-
-    private static ArrayList<Item> item;
+    private ArrayList<Item> item;
 
     private ShoppingCartSingleton(){
         item = new ArrayList<>();
@@ -25,11 +23,11 @@ public class ShoppingCartSingleton {
     }
 
     public void addItem(Item addItem){
-        item.add(addItem);
+        shoppingCart.item.add(addItem);
     }
 
-    public ArrayList<Item> getItem(){
-        return item;
+    public ArrayList<Item> getItems(){
+        return shoppingCart.item;
     }
 }
 

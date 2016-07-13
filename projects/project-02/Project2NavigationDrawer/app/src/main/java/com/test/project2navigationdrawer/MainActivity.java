@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.shopping_cart) {
+        if (id == R.id.shopping_cart_menu_icon) {
             // Handle the shopping cart
 
             ShoppingCartFragment fragment = new ShoppingCartFragment();

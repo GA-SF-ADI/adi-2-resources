@@ -34,43 +34,33 @@ public class ShoppingCartFragment extends Fragment {
         textView = (TextView) view.findViewById(R.id.shopping_fragment_total_cost_text_view);
         listView = (ListView) view.findViewById(R.id.shopping_fragment_total_cost_list_view);
 
+
         //set to String
-        textView.setText(returnTotal()+"");
+        //textView.setText("Your total is $" + returnTotal()+"0");
         listView.setAdapter(setPriceAdapter);
         return view;
 
-//        just added this part...tried to set custom adapter and listview to show price...
-
-//        Cursor cursor = myDb.getJewelry();
-//        setPriceAdapter = new SetPriceAdapter(this, cursor, 0);
-//        listView = (ListView) findViewById(R.id.shopping_fragment_total_cost_list_view);
-//        listView.setAdapter(setPriceAdapter);
-
-        // create view object based on inflater
-        //get inner views from that
-        //set inner views based on shopping cart singleton
-        //return view you made
-
 
     }
 
 
-    public double returnTotal() {
+//    public double returnTotal() {
+//
+//        double totalCost = 0;
+//
+//        for (int i = 0; i < shoppingCartSingleton.getItem().size(); i++) {
+//            double price = shoppingCartSingleton.getItem().get(i).getPrice();
+//            totalCost = totalCost + price;
+//        }
+//        return totalCost;
+//    }
 
-        double totalCost = 0;
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        setRetainInstance(true);
+//
+//    }
 
-        for (int i = 0; i < shoppingCartSingleton.getItem().size(); i++) {
-            double price = shoppingCartSingleton.getItem().get(i).getPrice();
-            totalCost = totalCost + price;
-        }
-        return totalCost;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        setRetainInstance(true);
-
-    }
-
-}

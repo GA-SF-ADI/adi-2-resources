@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,34 +12,40 @@
     tools:context="com.test.project2navigationdrawer.SecondActivity">
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/shopping_cart_button"
-            android:text="shopping cart"/>
+    <Button
+        android:id="@+id/shopping_cart_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="shopping cart" />
 
-        <Button
-            android:id="@+id/featured_jewelry_button"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_toRightOf="@+id/shopping_cart_button"
-            android:fontFamily="casual"
-            android:text="Featured Jewelry"/>
+    <Button
+        android:id="@+id/featured_jewelry_button_second_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shopping_cart_button"
+        android:fontFamily="casual"
+        android:text="Featured Jewelry" />
+
+    <Button
+        android:id="@+id/return_home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/featured_jewelry_button_second_act"
+        android:text="HOME" />
 
     <ListView
         android:id="@+id/second_activity_list_view"
-        android:layout_below="@+id/featured_jewelry_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/shopping_cart_button"></ListView>
 
 
     <FrameLayout
-        android:layout_width="wrap_content"
         android:id="@+id/fragment_container_second_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"></FrameLayout>
+        android:layout_centerVertical="true"></FrameLayout>
 
 
 </RelativeLayout>

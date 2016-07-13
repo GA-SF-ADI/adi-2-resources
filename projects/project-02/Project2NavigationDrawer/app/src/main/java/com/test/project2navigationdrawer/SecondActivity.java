@@ -1,5 +1,6 @@
 package com.test.project2navigationdrawer;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,12 +28,9 @@ public class SecondActivity extends AppCompatActivity {
     ListView listView;
     DBAdapter customAdapter;
     Button shoppingCartButton;
-    Button addButton;
-
-
-    int[] imagePic = {R.drawable.rounddiamond,
-            R.drawable.id1
-    };
+    Button featuredJewelryButton;
+    Button returnHomeButton;
+    Button addToCartButton;
 
 
     @Override
@@ -59,7 +57,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
     private void populateListViewFromDB() {
-        Cursor cursor = myDb.getJewelry();
+        final Cursor cursor = myDb.getJewelry();
         //allow activity to manage cursor
         //DEPRECATED
         Log.d("Second Activity", "populateListViewFromDB: Cursor" + cursor.getCount());
@@ -78,8 +76,29 @@ public class SecondActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.second_activity_list_view);
         listView.setAdapter(customAdapter);
 
-        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
-        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
+        returnHomeButton = (Button) findViewById(R.id.return_home_button);
+        returnHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button_second_act);
+        featuredJewelryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
+                startActivity(intent);
+
+                                                     }
+                                                 });
+                shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
+                shoppingCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ShoppingCartFragment fragment = new ShoppingCartFragment();
@@ -135,15 +154,25 @@ public class SecondActivity extends AppCompatActivity {
 //            }
 //        });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                shoppingCart.addItem(myItems.get(position));
-                Log.d("added to cart ", myItems.get(position).getType());
-                customAdapter.notifyDataSetChanged();
-
-            }
-        });
+        //quantity button
+        //add button
+//
+//       addToCartButton.setOnClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View view,
+//                                    int position, long id) {
+//
+//                cursor.moveToPosition(position);
+//                int id = cursor.getString();
+//                String type = cursor.getString();
+//
+//                // database helper
+//                helper.insertIntoShoppingCart(id, type, )
+//
+//                shoppingCart.addItem(myItems.get(position));
+//                Log.d("added to cart ", myItems.get(position).getType());
+//                customAdapter.notifyDataSetChanged();
+//
+//            }
+//        });
     }
 }

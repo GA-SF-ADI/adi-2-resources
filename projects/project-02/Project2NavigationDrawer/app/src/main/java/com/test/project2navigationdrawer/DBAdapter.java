@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.database.Cursor;
 import android.widget.ImageView;
@@ -40,6 +41,7 @@ public class DBAdapter extends CursorAdapter {
         TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
         TextView nameOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_name_of_jewelry);
         ImageView imageOfJewelry = (ImageView) view.findViewById(R.id.image_view_of_jewelry);
+        Button addToCartButton = (Button) view.findViewById(R.id.add_button_to_shopping_cart);
 
         typeOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_2_TYPE)));
         priceOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE)));
@@ -50,6 +52,14 @@ public class DBAdapter extends CursorAdapter {
         nameOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_8_NAME)));
         Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE))+ "", "images");
         imageOfJewelry.setImageResource(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE)));
+
+//        addToCartButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//
+//                notifyDataSetChanged();
+//            }
+//        });
 
     }
 };
