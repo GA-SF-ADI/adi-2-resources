@@ -30,7 +30,7 @@ public class PurchaseHistoryActivity extends AppCompatActivity {
                 purchaseHistoryArrayList.add(new PurchaseHistoryItem(i, currentPrice, currentDate));
             }
 
-            ArrayAdapter<PurchaseHistoryItem> purchaseHistoryAdapter = new ArrayAdapter<PurchaseHistoryItem>(this, android.R.layout.simple_list_item_1, purchaseHistoryArrayList);
+            PurchaseHistoryListAdapter purchaseHistoryAdapter = new PurchaseHistoryListAdapter(purchaseHistoryArrayList, this);
 
             purchaseHistoryListView.setAdapter(purchaseHistoryAdapter);
         }
