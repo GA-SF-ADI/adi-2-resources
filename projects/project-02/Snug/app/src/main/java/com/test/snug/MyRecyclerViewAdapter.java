@@ -27,6 +27,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public List<Hat> hatList;
     private Context mContext;
+    public Cursor cursor;
     private ArrayList<Hat> hatDataSet;
     private Random mRandom = new Random();
     private static MyClickListener myClickListener;
@@ -63,11 +64,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public MyRecyclerViewAdapter(Cursor cursor, Context mContext) {
         this.mContext = mContext;
-
+        this.cursor = cursor;
 
     }
 
-        public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name;
         TextView fittedOrSnap;
         TextView price;
@@ -114,6 +115,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return dataObjectHolder;
     }
 
+//    TODO: Look in the cursor for onBindViewHolder
+
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.name.setText(hatDataSet.get(position).getName());
@@ -121,19 +124,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.price.setText(hatDataSet.get(position).getPrice() + "");
     }
 
-    public void addItem(Hat hat, int index) {
-        hatDataSet.add(hat);
+    /*public void addItem(Hat hat, int index) {
+        cursor.add(hat);
         notifyItemInserted(index);
     }
-
-    public void deleteItem(int index) {
-        hatDataSet.remove(index);
+    */
+    /*public void deleteItem(int index) {
+        cursor;
         notifyItemRemoved(index);
     }
-
+*/
     @Override
     public int getItemCount() {
-        return hatDataSet.size();
+        Log.d("dkjfad", cursor.getCount()+"");
+        return cursor.getCount();
+
     }
 
     public interface MyClickListener {

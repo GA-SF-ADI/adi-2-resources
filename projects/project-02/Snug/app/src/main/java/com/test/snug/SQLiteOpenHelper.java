@@ -29,7 +29,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
             "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + HAT_COLUMN_PICTUREID + " INTEGER, " + HAT_COLUMN_HATNAME + " TEXT, " +
                     HAT_COLUMN_PRICE + " INTEGER, " + HAT_COLUMN_MATERIAL + " TEXT, " +
-                    HAT_COLUMN_FittedOrSnap + " INTEGER," + HAT_COLUMN_DESCRIPTION + " TEXT, " +
+                    HAT_COLUMN_FittedOrSnap + " INTEGER, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
                     HAT_COLUMN_COLOR + " TEXT);";
 
 

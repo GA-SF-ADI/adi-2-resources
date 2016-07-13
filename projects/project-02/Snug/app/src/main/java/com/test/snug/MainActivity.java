@@ -109,9 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void insertHatData() {
 
+//        TODO: Use singleton
+
         SQLiteOpenHelper db = new SQLiteOpenHelper(this);
 
-        db.addHat(0, 2, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
+        db.addHat(0, R.drawable.all_black_braves, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black");
         db.addHat(1, 1, "Oakland", 29, "50% Cotton", 1, "Great for a day at the beach!", "green");
         db.addHat(2, 3, "Boston", 19, "100% Polyester", 1, "Play the outfield with confidence", "red");
         db.addHat(3, 2, "Yankees", 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue");
