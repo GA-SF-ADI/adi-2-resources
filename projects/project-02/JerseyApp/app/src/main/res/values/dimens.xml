@@ -6,4 +6,5 @@
     <dimen name="jersey_picture">200dp</dimen>
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="player_name_text_size">20sp</dimen>
+    <dimen name="header_text_size">30sp</dimen>
 </resources>

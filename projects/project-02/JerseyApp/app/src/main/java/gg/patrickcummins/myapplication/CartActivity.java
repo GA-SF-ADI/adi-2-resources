@@ -91,7 +91,7 @@ public class CartActivity extends AppCompatActivity {
         if (total == 0) {
             totalText = "Total:\n$00.00";
         } else {
-            totalText = "Total:\n$" + total;
+            totalText = "Total:\n$" + Math.round(total*100.0)/100.0;
         }
 
         priceTextView.setText(totalText);
