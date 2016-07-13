@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import android.support.v4.view.ViewPager;
@@ -15,7 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeFragment.OnRandImageClickListener{
     private ShoeOpenHelper mHelper;
 
     @Override
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        mHelper = mHelper.getInstance(MainActivity.this);
+        mHelper = new ShoeOpenHelper(MainActivity.this);
         insertDatabaseValues();
         setPageView();
 
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void insertDatabaseValues() {
-        if (mHelper.getShoesList().getColumnCount() == 0) {
+        if (mHelper.getShoesList().getCount()==0) {
+
 
             Shoe shoe1 = new Shoe(1, "Jordan 1", " ", 109.99, "High top", 1984, R.drawable.j_1);
             Shoe shoe2 = new Shoe(2, "Jordan 2", " ", 109.99, "High top", 1987, R.drawable.j_2);
@@ -118,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
             helper.insertRowShoes(shoe22);
             helper.insertRowShoes(shoe23);
 
-
         }
+
     }
 
     public void setPageView() {
@@ -152,6 +154,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onRandImageSelected(int position) {
+        // need to make a static final for tag
+
+        Intent intent = new Intent(MainActivity.this,DetailsActivity.class);
+        intent.putExtra("Position",position);
+        startActivity(intent);
     }
 }
 

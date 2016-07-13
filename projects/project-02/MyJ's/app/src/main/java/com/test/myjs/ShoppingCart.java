@@ -6,7 +6,6 @@ import java.util.List;
  * Created by nolbertoarroyo on 7/9/16.
  */
 public class ShoppingCart {
-    List<Shoe> shoeItems;
     int id;
     int numItems;
     double totalPrice;
@@ -14,9 +13,8 @@ public class ShoppingCart {
 
 
 
-    public ShoppingCart(int id,List<Shoe> shoeItems, int numItems, double totalPrice,int itemId) {
+    public ShoppingCart(int id, int numItems, double totalPrice,int itemId) {
         this.id = id;
-        this.shoeItems = shoeItems;
         this.numItems = numItems;
         this.totalPrice = totalPrice;
         this.itemId = itemId;
@@ -29,14 +27,6 @@ public class ShoppingCart {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public List<Shoe> getShoeItems() {
-        return shoeItems;
-    }
-
-    public void setShoeItems(List<Shoe> shoeItems) {
-        this.shoeItems = shoeItems;
     }
 
     public int getNumItems() {

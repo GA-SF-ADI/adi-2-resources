@@ -54,7 +54,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
         public static final String COL_ID = "_ID";
     }
 
-    public static abstract class DataEntryShopppingCart implements BaseColumns {
+    public static abstract class DataEntryShoppingCart implements BaseColumns {
         public static final String TABLE_NAME = "SHOPPING_CART";
         public static final String COL_NUM_ITEMS = "NUM_ITEMS";
         public static final String COL_TOTAL_PRICE = "TOTAL_PRICE";
@@ -76,15 +76,15 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
     public static final String[] SHOES_COLUMNS= {DataEntryShoes.COL_ID,DataEntryShoes.COL_NAME,DataEntryShoes.COL_DESCRIPTION,DataEntryShoes.COL_PRICE,DataEntryShoes.COL_YEAR,DataEntryShoes.COL_STYLE,DataEntryShoes.COL_IMG_ID};
 
     private static final String SQL_CREATE_ENTRIES_SHOPPING_CART = "CREATE TABLE " +
-            DataEntryShopppingCart.TABLE_NAME + " (" +
-            DataEntryShopppingCart.COL_ID + " INTEGER PRIMARY KEY," +
-            DataEntryShopppingCart.COL_TOTAL_PRICE + " DOUBLE," +
-            DataEntryShopppingCart.COL_NUM_ITEMS + " INTEGER," +
-            DataEntryShopppingCart.COL_ITEM_ID + " INTEGER" + ")";
+            DataEntryShoppingCart.TABLE_NAME + " (" +
+            DataEntryShoppingCart.COL_ID + " INTEGER PRIMARY KEY," +
+            DataEntryShoppingCart.COL_TOTAL_PRICE + " DOUBLE," +
+            DataEntryShoppingCart.COL_NUM_ITEMS + " INTEGER," +
+            DataEntryShoppingCart.COL_ITEM_ID + " INTEGER" + ")";
 
     private static final String SQL_DELETE_ENTRIES_SHOPPING_CART = "DROP TABLE IF EXISTS " +
-            DataEntryShopppingCart.TABLE_NAME;
-    public static final String[] SHOPPING_CART_COLUMNS = {DataEntryShopppingCart.COL_ID,DataEntryShopppingCart.COL_ITEM_ID,DataEntryShopppingCart.COL_NUM_ITEMS,DataEntryShopppingCart.COL_TOTAL_PRICE};
+            DataEntryShoppingCart.TABLE_NAME;
+    public static final String[] SHOPPING_CART_COLUMNS = {DataEntryShoppingCart.COL_ID,DataEntryShoppingCart.COL_ITEM_ID,DataEntryShoppingCart.COL_NUM_ITEMS,DataEntryShoppingCart.COL_TOTAL_PRICE};
 
     public void insertRowShoes(Shoe shoe) {
         SQLiteDatabase db = getWritableDatabase();
@@ -101,11 +101,11 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
     public void insertRowShoppingCart(ShoppingCart cart) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DataEntryShopppingCart.COL_ID,cart.getId());
-        values.put(DataEntryShopppingCart.COL_TOTAL_PRICE, cart.getTotalPrice());
-        values.put(DataEntryShopppingCart.COL_NUM_ITEMS,cart.getNumItems());
-        values.put(DataEntryShopppingCart.COL_ITEM_ID,cart.getNumItems());
-        db.insertOrThrow(DataEntryShopppingCart.TABLE_NAME, null, values);
+        values.put(DataEntryShoppingCart.COL_ID,cart.getId());
+        values.put(DataEntryShoppingCart.COL_TOTAL_PRICE, cart.getTotalPrice());
+        values.put(DataEntryShoppingCart.COL_NUM_ITEMS,cart.getNumItems());
+        values.put(DataEntryShoppingCart.COL_ITEM_ID,cart.getNumItems());
+        db.insertOrThrow(DataEntryShoppingCart.TABLE_NAME, null, values);
     }
     public Cursor getShoesList(){
         //returning shoelist table with cursor
@@ -135,7 +135,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(DataEntryShopppingCart.TABLE_NAME, // a. table
+        Cursor cursor = db.query(DataEntryShoppingCart.TABLE_NAME, // a. table
                 SHOPPING_CART_COLUMNS, // b. column names
                 null, // c. selections
                 null, // d. selections args
@@ -148,11 +148,25 @@ public class ShoeOpenHelper extends SQLiteOpenHelper{
 
     public int deleteItemFromCart(int id){
         SQLiteDatabase db = getWritableDatabase();
-        int deleteNum = db.delete(DataEntryShopppingCart.TABLE_NAME,
-                DataEntryShopppingCart.COL_ID + " = ?",
+        int deleteNum = db.delete(DataEntryShoppingCart.TABLE_NAME,
+                DataEntryShoppingCart.COL_ID + " = ?",
                 new String[]{String.valueOf(id)});
         db.close();
         return deleteNum;
+    }
+    // create method getShoeById, to use for getting item
+    public Cursor getShoeById(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DataEntryShoes.SHOE_TABLE_NAME, // a. table
+                SHOES_COLUMNS, // b. column names
+                DataEntryShoes.COL_ID + " = ?", // c. selections
+                new String[]{String.valueOf(id)}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
     }
 
 

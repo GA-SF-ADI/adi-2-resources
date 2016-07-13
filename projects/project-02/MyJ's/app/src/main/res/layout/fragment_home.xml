@@ -4,11 +4,12 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/homeImage"
+        android:id="@+id/homeImageButton"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/j_1"
         android:scaleType="fitXY"/>
+
     <TextView
         android:id="@+id/home_shoe_tv"
         android:layout_width="wrap_content"
