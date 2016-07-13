@@ -1,19 +1,16 @@
 package com.test.snug;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import android.database.Cursor;
-import android.database.DataSetObserver;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +19,9 @@ import java.util.Random;
 /**
  * Created by LangstonSmith on 7/9/16.
  */
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.DataObjectHolder> {
+public class CartCustomCursorAdapter extends RecyclerView.Adapter<CartCustomCursorAdapter.DataObjectHolder> {
 
-    private static String LOG_TAG = "MyRecyclerViewAdapter";
+    private static String LOG_TAG = "HatsMyRecyclerViewAdapter";
 
     public List<Hat> hatList;
     private Context mContext;
@@ -32,9 +29,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<Hat> hatDataSet;
     private Random mRandom = new Random();
     private static MyClickListener myClickListener;
+    private AdapterView.OnItemClickListener mListener;
 
 
-    public MyRecyclerViewAdapter(Cursor cursor, Context mContext) {
+    public CartCustomCursorAdapter(Cursor cursor, Context mContext) {
         this.mContext = mContext;
         this.cursor = cursor;
 
@@ -58,22 +56,18 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
-            Log.i(LOG_TAG, "Adding Listener");
 
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    myClickListener.onItemClick(getLayoutPosition(), v);
-
-                }
-            });
+            itemView.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
-            myClickListener.onItemClick(getPosition(), v);
+
+            Log.i(LOG_TAG, "Clicked on hat");
+
+
+
         }
     }
 
@@ -90,19 +84,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return dataObjectHolder;
     }
 
-//    TODO: Look in the cursor for onBindViewHolder
-
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
 
         cursor.moveToPosition(position);
 
-//        TODO: get column index based off of cursor
 
-        holder.name.setText(cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_HATNAME)));
-        holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-        holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_PRICE)));
-        holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(SQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+        holder.name.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+        holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
+        holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
+        holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
 
     }
 
@@ -111,7 +102,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 /*
     public void addItem(Hat hat, int index) {
 
-            SQLiteOpenHelper db = new SQLiteOpenHelper();
+            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper();
 
         cursor.add
         notifyItemInserted(index);
@@ -120,7 +111,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     //    TODO: Fix method below
     /*public void deleteItem(int index) {
-        SQLiteOpenHelper db = new SQLiteOpenHelper();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper();
 
         Cursor cursor = db.deleteHat();
 

@@ -2,6 +2,7 @@ package com.test.snug;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,6 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,13 +34,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Context context = getApplicationContext();
-        SQLiteOpenHelper db = new SQLiteOpenHelper(context);
-
 
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
 
 //        TODO: Set text to # of cart items
 /*
@@ -49,37 +47,46 @@ public class MainActivity extends AppCompatActivity {
 */
 
 
-        insertHatData();
+        if (!sharedPreferences.contains("hatsAdded")) {
 
+            Context context = getApplicationContext();
+            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        Cursor allHatsCursor = db.getAllHats();
+            insertHatData();
 
-        Log.d(LOG_TAG, "allHatsCursor created");
+        } else {
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
+            Context context = getApplicationContext();
+            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        Log.d(LOG_TAG, "recyclerview bound");
+            Cursor allHatsCursor = db.getAllHats();
 
-        mRecyclerView.setHasFixedSize(true);
+            Log.d(LOG_TAG, "allHatsCursor created");
 
-        Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
+            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
-        mLayoutManager = new GridLayoutManager(context, 2);
+            Log.d(LOG_TAG, "recyclerview bound");
 
-        Log.d(LOG_TAG, "GridLayoutManager context set");
+            mRecyclerView.setHasFixedSize(true);
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
+            Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
-        Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
+            mLayoutManager = new GridLayoutManager(context, 2);
 
-        mAdapter = new MyRecyclerViewAdapter(allHatsCursor, context);
+            Log.d(LOG_TAG, "GridLayoutManager context set");
 
-        Log.d(LOG_TAG, "mAdapter created");
+            mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mRecyclerView.setAdapter(mAdapter);
+            Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
-        Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
+            mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context);
 
+            Log.d(LOG_TAG, "mAdapter created");
+
+            mRecyclerView.setAdapter(mAdapter);
+
+            Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
+        }
 
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,20 +114,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* private ArrayList<Hat> getDataSet() {
-         ArrayList results = new ArrayList<Hat>();
 
-         results.add(new Hat(0, 4, "SF Giants", 39, "100% Cotton", 0, "Plush and soft, this hat will keep you comfortable", "black"));
-         results.add(new Hat(1, 1, "Oakland", 29, "50% Cotton", 1, "Great for a day at the beach!", "green"));
-         results.add(new Hat(2, 3, "Boston", 19, "100% Polyester", 1, "Play the outfield with confidence", "red"));
-         results.add(new Hat(3, 2, "Yankees", 59, "50% Polyester", 0, "Turn a double play in this stylish hat", "dark blue"));
-
-         return results;
-     }
- */
     private void insertHatData() {
 
-        SQLiteOpenHelper hatDatabase = SQLiteOpenHelper.getInstance(MainActivity.this);
+        HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
         Log.d(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
 
@@ -227,18 +224,12 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, "All hats inserted into database");
 
+        SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("hatsAdded", "hatsin");
+        editor.apply();
+
     }
-
-   /* (MyRecyclerViewAdapter)mAdapter).setOnItemClickListener(new MyRecyclerViewAdapter.MyClickListener() {
-        @Override
-        public void onItemClick ( int position, View v){
-
-            Log.d(LOG_TAG, "Hat item clicked");
-            Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
-            startActivity(intent);
-
-        }
-    }*/
 
 
 }

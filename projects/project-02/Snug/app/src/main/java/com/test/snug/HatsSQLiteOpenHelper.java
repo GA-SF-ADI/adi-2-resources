@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
+public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public static final String HAT_TABLE_NAME = "hats";
     public static final String HAT_COLUMN_ID = "_id";
@@ -35,17 +35,17 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
 
-    private static SQLiteOpenHelper mInstance;
+    private static HatsSQLiteOpenHelper mInstance;
 
-    public static SQLiteOpenHelper getInstance(Context context) {
+    public static HatsSQLiteOpenHelper getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new SQLiteOpenHelper(context.getApplicationContext());
+            mInstance = new HatsSQLiteOpenHelper(context.getApplicationContext());
         }
         return mInstance;
     }
 
 
-    public SQLiteOpenHelper(Context context) {
+    public HatsSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
@@ -131,19 +131,24 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
         return cursor;
     }
 
-//    TODO: Add getHatTeams method below
+//    TODO: Create array of team names in the method below
+
 
     /*public Cursor getHatTeams(String query) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getRea dableDatabase();
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
-                HAT_COLUMNS, // b. column names
+                HAT_COLUMN_HATNAME, // b. column names
                 HAT_TABLE_NAME + " LIKE ?", // c. selections
                 null, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by
-                null); // h. limit*/
+                null); // h. limit
+
+        return cursor;
+
+    }*/
 
     public Cursor searchHatList(String query) {
         SQLiteDatabase db = this.getReadableDatabase();

@@ -1,5 +1,6 @@
 package com.test.snug;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 
@@ -19,6 +19,9 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
+
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         final FloatingActionButton startSearchFAB = (FloatingActionButton) findViewById(R.id.fab_to_start_search);
 
@@ -76,16 +79,15 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+
+       /* ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, C);
         MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) findViewById(R.id.auto_search_description_etc);
         textView.setAdapter(adapter);
         textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
-
+*/
     }
 
-    private static final String[] COUNTRIES = new String[]{
-            "Belgium", "France", "Italy", "Germany", "Spain"
-    };
+
 }
