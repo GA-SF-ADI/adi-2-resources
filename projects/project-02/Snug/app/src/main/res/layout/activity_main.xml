@@ -39,15 +39,14 @@
 
 
                 <ImageView
-                    android:id="@+id/cart_counter_red_circle"
+                    android:id="@+id/cart_counter_red_circle_area"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="19dp"
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="-7dp"
                     android:scaleX=".4"
-                    android:scaleY=".4"
-                    android:src="@drawable/red_circle" />
+                    android:scaleY=".4"/>
 
                 <TextView
                     android:id="@+id/textview_num_of_hats_in_cart"

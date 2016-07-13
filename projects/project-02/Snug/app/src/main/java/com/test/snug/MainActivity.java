@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,14 +45,24 @@ public class MainActivity extends AppCompatActivity {
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
 
-        TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
         Cursor cursor = db.getNumOfCartItems();
-        cartItemCounter.setText(String.valueOf(cursor.getCount()));
+
+
+        if (cursor.getCount() > 0) {
+
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(cursor.getCount()));
+
+        }
 
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPreferences.contains("hatsAdded") == false) {
+        if (sharedPreferences.contains("hatsAdded")) {
 
             insertHatData();
 
