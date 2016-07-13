@@ -15,7 +15,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         card_view:cardBackgroundColor="#ffffff"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="6dp">
+        card_view:cardElevation="5dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -60,10 +60,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:text="$$"
-                    android:textColor="@color/colorPrimaryDark"
                     android:gravity="center_horizontal|center"
                     android:paddingBottom="5dp"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
 
                 <TextView

@@ -10,14 +10,14 @@ public class Hat {
     private String name;
     private double price;
     private String material;
-    private int fittedOrSnap;
+    private String fittedOrSnap;
     private String description;
     private String color;
 
     private static Hat hat = null;
 
 
-    public Hat(int id, int pictureID, String name, double price, String material, int fittedOrSnap, String description, String color) {
+    public Hat(int id, int pictureID, String name, double price, String material, String fittedOrSnap, String description, String color) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -61,11 +61,11 @@ public class Hat {
         this.material = material;
     }
 
-    public int getFittedOrSnap() {
+    public String getFittedOrSnap() {
         return fittedOrSnap;
     }
 
-    public void setFittedOrSnap(int fittedOrSnap) {
+    public void setFittedOrSnap(String fittedOrSnap) {
         this.fittedOrSnap = fittedOrSnap;
     }
 

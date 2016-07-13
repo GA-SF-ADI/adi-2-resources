@@ -90,7 +90,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
         cursor.moveToPosition(position);
 
-
         holder.name.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
         holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
         holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));

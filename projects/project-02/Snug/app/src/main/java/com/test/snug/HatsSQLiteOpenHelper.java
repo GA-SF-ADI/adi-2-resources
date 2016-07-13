@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.Random;
+
 
 public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
@@ -29,7 +31,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
             "CREATE TABLE " + HAT_TABLE_NAME + " (" + HAT_COLUMN_ID + " INTEGER PRIMARY KEY, "
                     + HAT_COLUMN_PICTUREID + " INTEGER, " + HAT_COLUMN_HATNAME + " TEXT, " +
                     HAT_COLUMN_PRICE + " INTEGER, " + HAT_COLUMN_MATERIAL + " TEXT, " +
-                    HAT_COLUMN_FittedOrSnap + " INTEGER, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
+                    HAT_COLUMN_FittedOrSnap + " TEXT, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
                     HAT_COLUMN_COLOR + " TEXT);";
 
 
@@ -63,7 +65,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public void addHat(int id, int picture, String name, double price, String material, int fittedOrSnap,
+    public void addHat(int id, int picture, String name, double price, String material, String fittedOrSnap,
                        String description, String color) {
 
         ContentValues values = new ContentValues();
@@ -87,7 +89,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
 
 //    TODO: Create deleteHat() method
-    
 
 
     public Cursor getSpecificHat(int id) {
@@ -104,7 +105,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-
     public Cursor getALLHats() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
@@ -112,30 +112,14 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
                 null, // c. selections
                 null, // d. selections args
                 null, // e. group by
-                null, // f. having
-                null, // g. order by
+                null,// f. having,
+                "RANDOM ()",// g. order by
                 null); // h. limit
         return cursor;
     }
 
 //    TODO: Create array of team names in the method below
 
-
-    /*public Cursor getHatTeams(String query) {
-        SQLiteDatabase db = this.getRea dableDatabase();
-
-        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
-                HAT_COLUMN_HATNAME, // b. column names
-                HAT_TABLE_NAME + " LIKE ?", // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-
-        return cursor;
-
-    }*/
 
     public Cursor getHatTeams(String query) {
         SQLiteDatabase db = this.getReadableDatabase();
