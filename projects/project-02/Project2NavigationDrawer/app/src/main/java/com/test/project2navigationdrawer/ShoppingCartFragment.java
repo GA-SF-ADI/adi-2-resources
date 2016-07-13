@@ -31,8 +31,11 @@ public class ShoppingCartFragment extends Fragment {
         shoppingCartSingleton = ShoppingCartSingleton.getInstance();
 
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        textView = (TextView) view.findViewById(R.id.shopping_fragment_total_cost_text_view);
+        listView = (ListView) view.findViewById(R.id.shopping_fragment_total_cost_list_view);
 
-        //listView = (ListView) findViewById(R.id.shopping_fragment_total_cost_list_view);
+        //set to String
+        textView.setText(returnTotal()+"");
         listView.setAdapter(setPriceAdapter);
         return view;
 
@@ -52,12 +55,13 @@ public class ShoppingCartFragment extends Fragment {
     }
 
 
-    public double returnTotal(Item item) {
+    public double returnTotal() {
 
         double totalCost = 0;
 
         for (int i = 0; i < shoppingCartSingleton.getItem().size(); i++) {
-            totalCost = totalCost + item.getPrice();
+            double price = shoppingCartSingleton.getItem().get(i).getPrice();
+            totalCost = totalCost + price;
         }
         return totalCost;
     }

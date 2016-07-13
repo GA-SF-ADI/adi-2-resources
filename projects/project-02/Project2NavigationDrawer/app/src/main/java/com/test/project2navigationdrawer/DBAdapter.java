@@ -1,6 +1,7 @@
 package com.test.project2navigationdrawer;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,8 @@ public class DBAdapter extends CursorAdapter {
         measurementOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_6_MEASUREMENT)));
         quantityOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_7_QUANTITY)));
         nameOfJewelryTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_8_NAME)));
-        imageOfJewelry.setImageResource(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE));
+        Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE))+ "", "images");
+        imageOfJewelry.setImageResource(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE)));
 
     }
 };

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_1);
         featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");

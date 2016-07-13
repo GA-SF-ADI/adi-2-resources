@@ -27,6 +27,7 @@ public class SecondActivity extends AppCompatActivity {
     ListView listView;
     DBAdapter customAdapter;
     Button shoppingCartButton;
+    Button addButton;
 
 
     int[] imagePic = {R.drawable.rounddiamond,
@@ -44,15 +45,15 @@ public class SecondActivity extends AppCompatActivity {
 
         myDb = new DatabaseHelper(this);
 
-        myDb.insert("1", "bracelet", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking",R.drawable.id1);
-        myDb.insert("2", "bracelet", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
-        myDb.insert("3", "bracelet", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
-        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
-        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
-        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
-        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
-        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id1);
-        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id1);
+        myDb.insert("1", "bracelet", "$149.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
+        myDb.insert("2", "bracelet", "$179.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id2);
+        myDb.insert("3", "bracelet", "$189.00", "platinum", "sapphire", null, "quantity 5", "classic", R.drawable.id3);
+        myDb.insert("4", "earrings", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id4);
+        myDb.insert("5", "earrings", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id5);
+        myDb.insert("6", "earrings", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id6);
+        myDb.insert("7", "necklace", "$49.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id7);
+        myDb.insert("8", "necklace", "$79.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id8);
+        myDb.insert("9", "necklace", "$89.00", "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id9);
         populateListViewFromDB();
     }
 
@@ -124,6 +125,15 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item8);
         myItems.add(item9);
 
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                shoppingCart.addItem(myItems.get(position));
+//                Log.d("added to cart ", myItems.get(position).getType());
+//                customAdapter.notifyDataSetChanged();
+//
+//            }
+//        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,

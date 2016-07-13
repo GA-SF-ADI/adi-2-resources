@@ -30,7 +30,8 @@
         android:id="@+id/second_activity_list_view"
         android:layout_below="@+id/featured_jewelry_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent">
+    </ListView>
 
 
     <FrameLayout

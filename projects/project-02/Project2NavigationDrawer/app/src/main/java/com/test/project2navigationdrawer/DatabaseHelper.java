@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_6_MEASUREMENT, measurement);
         values.put(COL_7_QUANTITY,quantity);
         values.put(COL_8_NAME, name);
-        values.put(COL_9_IMAGE, 0);
+        values.put(COL_9_IMAGE, image);
 
         db.insert(TABLE_NAME, null, values);
 
