@@ -13,26 +13,29 @@
     tools:showIn="@layout/activity_search">
 
 
-    <EditText
+    <MultiAutoCompleteTextView
         android:id="@+id/editText_search_description_etc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/snapback_cap_radio_button"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
         android:hint="@string/hat_name_hint_text"
-        android:singleLine="true"
-        android:layout_above="@+id/snapback_cap_radio_button"
-        android:layout_centerHorizontal="true" />
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:singleLine="true" />
+
 
     <RadioButton
         android:id="@+id/snapback_cap_radio_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/fitted_cap_radio_button"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
         android:onClick="onRadioButtonClicked"
         android:text="@string/Snapback_only"
-        android:textSize="20sp"
-        android:layout_above="@+id/fitted_cap_radio_button"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20sp" />
 
     <RadioButton
         android:id="@+id/fitted_cap_radio_button"
@@ -48,11 +51,13 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:inputType="number"
-        android:hint="@string/enter_lower_than_amount"
         android:layout_below="@+id/fitted_cap_radio_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginTop="101dp"
+        android:hint="@string/enter_lower_than_amount"
+        android:inputType="number" />
 
 
 </RelativeLayout>
