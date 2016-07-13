@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.contains("hatsAdded") == false) {
 
             Context context = getApplicationContext();
-            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+            SQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
             insertHatData();
 
@@ -140,13 +141,13 @@ public class MainActivity extends AppCompatActivity {
         hatDatabase.addHatToHatDatabase(13, R.drawable.all_red_reds, "Cincinnati Reds", 19.99, "100% wool","Snap", "Turn a double play in this stylish hat", "red");
         hatDatabase.addHatToHatDatabase(14, R.drawable.army_pirates, "Pittsburgh Pirates", 19.99, "100% cotton","Snap", "Block the sun and look good in this beautiful hat", "brown");
         hatDatabase.addHatToHatDatabase(15, R.drawable.army_reds, "Cincinnati Reds", 19.99, "50% polyester 50% wool ","Snap", "Plush and soft, this hat will keep you comfortable", "borwn");
-        hatDatabase.addHatToHatDatabase(16, R.drawable.backs, "Arizona Diamondbacks", 50, "50% polyester 50% cotton ","Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(16, R.drawable.backs, "AZ Diamondbacks", 50, "50% polyester 50% cotton ","Snap", "Great for a day at the beach!", "black");
         hatDatabase.addHatToHatDatabase(17, R.drawable.beantown, "Boston Red Sox", 19.99, "50% wool 50% cotton ","Snap", "Play the outfield with confidence", "blue");
         hatDatabase.addHatToHatDatabase(18, R.drawable.black_brim_reds, "Cincinnati Reds", 19.99, "100% polyester","Snap", "Turn a double play in this stylish hat", "red");
         hatDatabase.addHatToHatDatabase(19, R.drawable.black_home_giants, "San Francisco Giants", 50, "100% wool","Snap", "Block the sun and look good in this beautiful hat", "black");
         hatDatabase.addHatToHatDatabase(20, R.drawable.black_miami, "Miami Marlins", 19.99, "100% cotton","Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToHatDatabase(21, R.drawable.black_rattles, "Arizona Diamondbacks", 29.99, "50% polyester 50% wool ","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(22, R.drawable.black_red_a_on_black_arizona, "Arizona Diamondbacks", 29.99, "50% polyester 50% cotton ","Snap", "Play the outfield with confidence", "black");
+        hatDatabase.addHatToHatDatabase(21, R.drawable.black_rattles, "AZ Diamondbacks", 29.99, "50% polyester 50% wool ","Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(22, R.drawable.black_red_a_on_black_arizona, "AZ Diamondbacks", 29.99, "50% polyester 50% cotton ","Snap", "Play the outfield with confidence", "black");
         hatDatabase.addHatToHatDatabase(23, R.drawable.black_rockies, "Colorado Rockies", 29.99, "50% wool 50% cotton ","Snap", "Turn a double play in this stylish hat", "black");
         hatDatabase.addHatToHatDatabase(24, R.drawable.black_throwback_marlins, "Miami Marlins", 50, "100% polyester","Snap", "Block the sun and look good in this beautiful hat", "black");
         hatDatabase.addHatToHatDatabase(25, R.drawable.black_top_baltimore, "Baltimore Orioles", 29.99, "100% wool","Snap", "Plush and soft, this hat will keep you comfortable", "black");
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         hatDatabase.addHatToHatDatabase(62, R.drawable.phils_america, "Philadelphia Phillies", 9.99, "100% cotton", "Fitted", "Play the outfield with confidence", "red");
         hatDatabase.addHatToHatDatabase(63, R.drawable.purple_rockies, "Colorado Rockies", 9.99, "50% polyester 50% wool ", "Fitted", "Turn a double play in this stylish hat", "purple");
         hatDatabase.addHatToHatDatabase(64, R.drawable.rangers_red_top, "Texas Rangers", 50, "50% polyester 50% cotton ", "Fitted", "Block the sun and look good in this beautiful hat", "red");
-        hatDatabase.addHatToHatDatabase(65, R.drawable.red_blue_diamondbacks, "Arizona Diamondbacks", 9.99, "50% wool 50% cotton ", "Fitted", "Plush and soft, this hat will keep you comfortable", "black");
+        hatDatabase.addHatToHatDatabase(65, R.drawable.red_blue_diamondbacks, "AZ Diamondbacks", 9.99, "50% wool 50% cotton ", "Fitted", "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHatToHatDatabase(66, R.drawable.red_brim_atlanta, "Atlanta Braves", 9.99, "100% polyester", "Fitted", "Great for a day at the beach!", "blue");
         hatDatabase.addHatToHatDatabase(67, R.drawable.red_brim_braves, "Atlanta Braves", 9.99, "100% wool", "Fitted", "Play the outfield with confidence", "blue");
         hatDatabase.addHatToHatDatabase(68, R.drawable.red_brim_cardinals, "St. Louis Cardinals", 50, "100% cotton", "Fitted", "Turn a double play in this stylish hat", "blue");
@@ -197,13 +198,13 @@ public class MainActivity extends AppCompatActivity {
         hatDatabase.addHatToHatDatabase(70, R.drawable.red_brim_indians, "Cleveland Indians", 9.99, "50% polyester 50% cotton ", "Fitted", "Plush and soft, this hat will keep you comfortable", "blue");
         hatDatabase.addHatToHatDatabase(71, R.drawable.red_brim_reds, "Cincinnati Reds", 9.99, "50% wool 50% cotton ", "Fitted", "Great for a day at the beach!", "black");
         hatDatabase.addHatToHatDatabase(72, R.drawable.red_brim_twins, "Minnesota Twins", 50, "100% polyester", "Fitted", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(73, R.drawable.red_hat_backs, "Arizona Diamondbacks", 9.99, "100% wool", "Fitted", "Turn a double play in this stylish hat", "red");
+        hatDatabase.addHatToHatDatabase(73, R.drawable.red_hat_backs, "AZ Diamondbacks", 9.99, "100% wool", "Fitted", "Turn a double play in this stylish hat", "red");
         hatDatabase.addHatToHatDatabase(74, R.drawable.red_hat_nats, "DC Nationals", 9.99, "100% cotton", "Fitted", "Block the sun and look good in this beautiful hat", "red");
         hatDatabase.addHatToHatDatabase(75, R.drawable.red_hat_twins, "Minnesota Twins", 9.99, "50% polyester 50% wool ", "Fitted", "Plush and soft, this hat will keep you comfortable", "red");
         hatDatabase.addHatToHatDatabase(76, R.drawable.red_p_phillies, "Philadelphia Phillies", 50, "50% polyester 50% cotton ", "Fitted", "Great for a day at the beach!", "blue");
         hatDatabase.addHatToHatDatabase(77, R.drawable.red_sox_america, "Boston Red Sox", 9.99, "50% wool 50% cotton ", "Fitted", "Play the outfield with confidence", "black");
         hatDatabase.addHatToHatDatabase(78, R.drawable.red_top_philly, "Philadelphia Phillies", 9.99, "100% polyester", "Fitted", "Turn a double play in this stylish hat", "red");
-        hatDatabase.addHatToHatDatabase(79, R.drawable.redsnakes, "Arizona Diamondbacks", 50, "100% wool", "Fitted", "Block the sun and look good in this beautiful hat", "red");
+        hatDatabase.addHatToHatDatabase(79, R.drawable.redsnakes, "AZ Diamondbacks", 50, "100% wool", "Fitted", "Block the sun and look good in this beautiful hat", "red");
         hatDatabase.addHatToHatDatabase(80, R.drawable.rockies_america, "Colorado Rockies", 14.95, "100% cotton", "Fitted", "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHatToHatDatabase(81, R.drawable.rsox, "Boston Red Sox", 14.95, "50% polyester 50% wool ", "Fitted", "Great for a day at the beach!", "black");
         hatDatabase.addHatToHatDatabase(82, R.drawable.s_mariners, "Seattle Mariners", 14.95, "50% polyester 50% cotton ", "Fitted", "Play the outfield with confidence", "black");

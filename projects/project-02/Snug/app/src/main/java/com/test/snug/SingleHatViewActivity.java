@@ -1,12 +1,15 @@
 package com.test.snug;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SingleHatViewActivity extends AppCompatActivity {
@@ -19,40 +22,23 @@ public class SingleHatViewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        ImageView mImageView = (ImageView) findViewById(R.id.imageview_single_hat);
+        final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
+        final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
+        final TextView selectedHatPrice = (TextView) findViewById(R.id.textView_single_hat_price);
+        final TextView selectedHatDescription = (TextView) findViewById(R.id.textview_single_hat_static_description_with_colon);
+        final TextView selectedHatBack = (TextView) findViewById(R.id.textview_single_hat_static_back);
+        final TextView selectedHatMaterial = (TextView) findViewById(R.id.textview_single_hat_static_material_with_colon);
 
 
-        int[] images = new int[]{
+//        TODO:Add hat ID and color too, for passing on to cart?
 
-                R.drawable.a_s_america,
-                R.drawable.a_s_america2,
-                R.drawable.backs,
-                R.drawable.beantown,
-                R.drawable.brew_america,
-                R.drawable.dodgers,
-                R.drawable.florida,
-                R.drawable.giants,
-                R.drawable.marlins_america,
-                R.drawable.padres,
-                R.drawable.phils_america,
-                R.drawable.red_sox_america,
-                R.drawable.rockies_america,
-                R.drawable.rsox,
-                R.drawable.sgiants,
-                R.drawable.tb,
-                R.drawable.texas_america,
-                R.drawable.wsox,
-                R.drawable.yankees,
-                R.drawable.yanks};
-
-
-        // Get a random between 0 and images.length-1
-        int imageId = (int) (Math.random() * images.length);
-
-
-        // Set the image
-        mImageView.setBackgroundResource(images[imageId]);
-
+       /* selectedHatImage.setBackgroundResource(R.drawable.dodgers);
+        selectedHatTitle.setText();
+        selectedHatPrice.setText();
+        selectedHatDescription.setText();
+        selectedHatBack.setText();
+        selectedHatMaterial.setText();
+*/
 
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +47,16 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_LONG).show();
 
-//                TODO: Get instance of cart database and add particular hat to the cart
+
+                Context context = getApplicationContext();
+                HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+//                TODO: Figure out to add particular hat to the cart
+
+//                Cursor cursor = db.addHatToCart();
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
                 startActivity(intent);
-
-
-
 
 
             }

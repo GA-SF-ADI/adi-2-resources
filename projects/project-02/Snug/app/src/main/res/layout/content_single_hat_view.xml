@@ -34,7 +34,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:gravity="center"
-        android:text="@string/Single_hat_title"
         android:textColor="#000000"
         android:textSize="20sp" />
 
@@ -60,13 +59,6 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/textview_SQL_based_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textview_single_hat_static_description_with_colon" />
-
-
-    <TextView
         android:id="@+id/textview_single_hat_static_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +68,7 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/textview_single_hat_static_matrial_with_colon"
+        android:id="@+id/textview_single_hat_static_material_with_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_single_hat_static_back"
