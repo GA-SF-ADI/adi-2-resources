@@ -53,9 +53,12 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 //                TODO: Figure out to add particular hat to the cart
 
+
+
 //                Cursor cursor = db.addHatToCart();
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
+
                 startActivity(intent);
 
 

@@ -49,17 +49,14 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = db.getNumOfCartItems();
 
 
-        if (cursor.getCount() == 0) {
+        if (cursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
             redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
 
-//            cartItemCounter.setText(String.valueOf(cursor.getCount()));
-
-            cartItemCounter.setText("4");
-
+            cartItemCounter.setText(String.valueOf(cursor.getCount()));
 
 
         } else {
@@ -127,9 +124,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-//        TODO: Check for cart items. If cart has items, display the red dot and counter
 
 
     }
