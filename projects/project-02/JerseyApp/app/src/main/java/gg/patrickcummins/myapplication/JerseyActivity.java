@@ -161,7 +161,7 @@ public class JerseyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (quantity== 0 || size.equals("") ){
-                    Toast.makeText(JerseyActivity.this, "Make Sure You Input a Price and Quantity", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JerseyActivity.this, "Make Sure You Input a Size and Quantity", Toast.LENGTH_SHORT).show();
                     if (quantity == 0){
                         quantityEditText.setError("Please Enter a Quantity");
                     }
@@ -169,6 +169,7 @@ public class JerseyActivity extends AppCompatActivity {
                     CartItem cartItem = (new CartItem(currentPlayer, currentJerseyColor, currentImage, price, quantity, size));
                     helper.insertCartRow(cartItem);
                     Toast.makeText(JerseyActivity.this, "Item Added To Cart!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
@@ -216,13 +217,17 @@ public class JerseyActivity extends AppCompatActivity {
 
     }
 
-    private void setColorOnClick(TextView textView, final int jerseyDrawable, final String color) {
+    private void setColorOnClick(final TextView textView, final int jerseyDrawable, final String color) {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jerseyImageView.setImageResource(jerseyDrawable);
                 currentImage = jerseyDrawable;
                 currentJerseyColor = color;
+                jerseyColor1.setText("");
+                jerseyColor2.setText("");
+                jerseyColor3.setText("");
+                textView.setText("X");
             }
         });
     }

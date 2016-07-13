@@ -6,4 +6,6 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="choose_a_team">Choose A Team</string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="enter_a_quantity">Enter A Quantity</string>
+    <string name="choose_a_size">Choose A Size</string>
 </resources>
