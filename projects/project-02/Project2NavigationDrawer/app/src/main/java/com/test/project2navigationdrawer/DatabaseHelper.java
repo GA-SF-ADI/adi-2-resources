@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COL_9_IMAGE + " INTEGER )";
 
 private static final String CREATE_SHOPPING_CART_TABLE =
-        "CREATE TABLE " + TABLE_NAME +
+        "CREATE TABLE " + TABLE_NAME_SHOPPING_CART +
                 "(" +
                 COL_1_ID_SHOPPING_CART + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_2_TYPE_SHOPPING_CART + " TEXT, " +
@@ -124,7 +124,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
         values.put(COL_8_NAME_SHOPPING_CART, name);
         values.put(COL_9_IMAGE_SHOPPING_CART, image);
 
-        db.insert(TABLE_NAME, null, values);
+        db.insert(TABLE_NAME_SHOPPING_CART, null, values);
 
     }
 
@@ -147,7 +147,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME, // a. table
+        Cursor cursor = db.query(TABLE_NAME_SHOPPING_CART, // a. table
                 SHOPPING_CART_COLUMNS, // b. column names
                 null, // c. selections
                 null, // d. selections args

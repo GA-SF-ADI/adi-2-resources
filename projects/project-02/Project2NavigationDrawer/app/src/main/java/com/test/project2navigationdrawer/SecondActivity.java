@@ -31,6 +31,8 @@ public class SecondActivity extends AppCompatActivity {
     Button featuredJewelryButton;
     Button returnHomeButton;
     Button addToCartButton;
+    Button incrementButton;
+    Button decrementButton;
 
 
     @Override
@@ -41,6 +43,7 @@ public class SecondActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        // badd bad bad, use a singleton.    DatabaseHelper.getInstance(this);
         myDb = new DatabaseHelper(this);
 
         myDb.insert("1", "bracelet", "$149.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
@@ -95,10 +98,10 @@ public class SecondActivity extends AppCompatActivity {
                 Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
                 startActivity(intent);
 
-                                                     }
-                                                 });
-                shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
-                shoppingCartButton.setOnClickListener(new View.OnClickListener() {
+            }
+        });
+        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
+        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ShoppingCartFragment fragment = new ShoppingCartFragment();
@@ -124,7 +127,7 @@ public class SecondActivity extends AppCompatActivity {
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
-        Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
+        final Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
         Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
         Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
         Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);
@@ -144,35 +147,48 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item8);
         myItems.add(item9);
 
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                shoppingCart.addItem(myItems.get(position));
-//                Log.d("added to cart ", myItems.get(position).getType());
-//                customAdapter.notifyDataSetChanged();
-//
-//            }
-//        });
 
-        //quantity button
-        //add button
-//
-//       addToCartButton.setOnClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//
-//                cursor.moveToPosition(position);
-//                int id = cursor.getString();
-//                String type = cursor.getString();
-//
-//                // database helper
-//                helper.insertIntoShoppingCart(id, type, )
-//
-//                shoppingCart.addItem(myItems.get(position));
-//                Log.d("added to cart ", myItems.get(position).getType());
-//                customAdapter.notifyDataSetChanged();
-//
-//            }
-//        });
+        addToCartButton = (Button) findViewById(R.id.add_button_to_shopping_cart);
+        addToCartButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+
+                cursor.moveToPosition(position);
+                String idShop = cursor.getString(0);
+                String type = cursor.getString(0);
+                String price = cursor.getString(0);
+                String gold = cursor.getString(0);
+                String stone = cursor.getString(0);
+                String measurement = cursor.getString(0);
+                String quantity = cursor.getString(0);
+                String name = cursor.getString(0);
+                int imageShop = cursor.getInt(0);
+
+                // database helper
+
+                myDb.insertShoppingCart(idShop, type, price, gold, stone, measurement, quantity, name, imageShop);
+                shoppingCart.addItem(myItems.get(position));
+                Log.d("added to cart ", myItems.get(position).getType());
+                myDb.getShoppingCart();
+                customAdapter.notifyDataSetChanged();
+
+            }
+        });
+
+        incrementButton = (Button) findViewById(R.id.increment_button_view);
+        incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+
+        });
+
+        decrementButton = (Button) findViewById(R.id.decrement_button_view);
+        decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+
+        });
     }
 }

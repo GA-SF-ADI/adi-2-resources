@@ -7,9 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +24,7 @@ public class ShoppingCartFragment extends Fragment {
     TextView textView;
     SetPriceAdapter setPriceAdapter;
     DatabaseHelper myDb;
+    Button removeButton;
 
 
     @Override
@@ -33,6 +37,13 @@ public class ShoppingCartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         textView = (TextView) view.findViewById(R.id.shopping_fragment_total_cost_text_view);
         listView = (ListView) view.findViewById(R.id.shopping_fragment_total_cost_list_view);
+        removeButton = (Button) view.findViewById(R.id.remove_button);
+
+        removeButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+        });
 
 
         //set to String
@@ -40,10 +51,11 @@ public class ShoppingCartFragment extends Fragment {
         listView.setAdapter(setPriceAdapter);
         return view;
 
-
     }
 
 
+//
+//
 //    public double returnTotal() {
 //
 //        double totalCost = 0;
@@ -55,12 +67,13 @@ public class ShoppingCartFragment extends Fragment {
 //        return totalCost;
 //    }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        setRetainInstance(true);
-//
-//    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRetainInstance(true);
 
     }
+
+
+}
 
