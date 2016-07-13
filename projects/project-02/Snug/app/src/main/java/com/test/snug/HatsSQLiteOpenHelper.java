@@ -31,7 +31,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     public static final String CART_COLUMN_COLOR = "color";
 
 
-
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "snugApp.db";
 
@@ -49,11 +48,11 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
                     HAT_COLUMN_FittedOrSnap + " TEXT, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
                     HAT_COLUMN_COLOR + " TEXT);";
 
-    public static final String  SQL_CREATE_CART_TABLE = "CREATE TABLE " + CART_TABLE_NAME + " (" + CART_COLUMN_ID + " INTEGER PRIMARY KEY, "
-                    + CART_COLUMN_PICTUREID + " INTEGER, " + CART_COLUMN_HATNAME + " TEXT, " +
-                    CART_COLUMN_PRICE + " INTEGER, " + CART_COLUMN_MATERIAL + " TEXT, " +
-                    CART_COLUMN_FittedOrSnap + " TEXT, " + CART_COLUMN_DESCRIPTION + " TEXT, " +
-                    CART_COLUMN_COLOR + " TEXT);";
+    public static final String SQL_CREATE_CART_TABLE = "CREATE TABLE " + CART_TABLE_NAME + " (" + CART_COLUMN_ID + " INTEGER PRIMARY KEY, "
+            + CART_COLUMN_PICTUREID + " INTEGER, " + CART_COLUMN_HATNAME + " TEXT, " +
+            CART_COLUMN_PRICE + " INTEGER, " + CART_COLUMN_MATERIAL + " TEXT, " +
+            CART_COLUMN_FittedOrSnap + " TEXT, " + CART_COLUMN_DESCRIPTION + " TEXT, " +
+            CART_COLUMN_COLOR + " TEXT);";
 
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
@@ -135,7 +134,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     }
 
 
-
 //    TODO: Create deleteHat() method
 
 
@@ -185,5 +183,30 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
 
     }
+
+//    TODO: Create method to return # of items in cart table
+
+
+    public Cursor getNumOfCartItems() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(CART_TABLE_NAME, // a. table
+                CART_COLUMNS, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
+
+
+
+
+
+    }
+
+
 }
 

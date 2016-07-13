@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,26 +41,24 @@ public class MainActivity extends AppCompatActivity {
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
         SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//        TODO: Set text to # of cart items
-/*
+
         TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-        cartItemCounter.setText(__);
-*/
+        Cursor cursor = db.getNumOfCartItems();
+        cartItemCounter.setText(String.valueOf(cursor.getCount()));
 
+
+        ////////////////////////////////////////////////////////////////////////////////
 
         if (sharedPreferences.contains("hatsAdded") == false) {
-
-            Context context = getApplicationContext();
-            SQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
             insertHatData();
 
 
         } else {
 
-            Context context = getApplicationContext();
-            HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
             Cursor allHatsCursor = db.getALLHats();
 
@@ -114,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
 //        TODO: Check for cart items. If cart has items, display the red dot and counter
 
 
-
-
     }
 
 
@@ -125,57 +122,57 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
 
-        hatDatabase.addHatToHatDatabase(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester","Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToHatDatabase(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool","Snap", "Great for a day at the beach!", "green");
-        hatDatabase.addHatToHatDatabase(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton","Snap", "Play the outfield with confidence", "black");
-        hatDatabase.addHatToHatDatabase(3, R.drawable.all_black_colorado, "Colorado Rockies", 19.99, "50% polyester 50% wool ","Snap", "Turn a double play in this stylish hat", "black");
-        hatDatabase.addHatToHatDatabase(4, R.drawable.all_blue_cubs, "Chicago Cubs", 19.99, "50% polyester 50% cotton ","Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToHatDatabase(5, R.drawable.all_blue_mets, "New York Mets", 19.99, "50% wool 50% cotton ","Snap", "Plush and soft, this hat will keep you comfortable", "blue");
-        hatDatabase.addHatToHatDatabase(6, R.drawable.all_blue_tribe, "Cleveland Indians", 50, "100% polyester","Snap", "Great for a day at the beach!", "blue");
-        hatDatabase.addHatToHatDatabase(7, R.drawable.all_blue_twins, "Minnesota Twins", 19.99, "100% wool","Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(8, R.drawable.all_green_a_s, "Oakland A’s", 19.99, "100% cotton","Snap", "Turn a double play in this stylish hat", "green");
-        hatDatabase.addHatToHatDatabase(9, R.drawable.all_orange_houston, "Houston Astros", 19.99, "50% polyester 50% wool ","Snap", "Block the sun and look good in this beautiful hat", "orange");
-        hatDatabase.addHatToHatDatabase(10, R.drawable.all_read_angels, "LA Angels", 19.99, "50% polyester 50% cotton ","Snap", "Plush and soft, this hat will keep you comfortable", "read");
-        hatDatabase.addHatToHatDatabase(11, R.drawable.all_read_cardnials, "St. Louis Cardinals", 19.99, "50% wool 50% cotton ","Snap", "Great for a day at the beach!", "read");
-        hatDatabase.addHatToHatDatabase(12, R.drawable.all_red_dc, "DC Nationals", 19.99, "100% polyester","Snap", "Play the outfield with confidence", "red");
-        hatDatabase.addHatToHatDatabase(13, R.drawable.all_red_reds, "Cincinnati Reds", 19.99, "100% wool","Snap", "Turn a double play in this stylish hat", "red");
-        hatDatabase.addHatToHatDatabase(14, R.drawable.army_pirates, "Pittsburgh Pirates", 19.99, "100% cotton","Snap", "Block the sun and look good in this beautiful hat", "brown");
-        hatDatabase.addHatToHatDatabase(15, R.drawable.army_reds, "Cincinnati Reds", 19.99, "50% polyester 50% wool ","Snap", "Plush and soft, this hat will keep you comfortable", "borwn");
-        hatDatabase.addHatToHatDatabase(16, R.drawable.backs, "AZ Diamondbacks", 50, "50% polyester 50% cotton ","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(17, R.drawable.beantown, "Boston Red Sox", 19.99, "50% wool 50% cotton ","Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(18, R.drawable.black_brim_reds, "Cincinnati Reds", 19.99, "100% polyester","Snap", "Turn a double play in this stylish hat", "red");
-        hatDatabase.addHatToHatDatabase(19, R.drawable.black_home_giants, "San Francisco Giants", 50, "100% wool","Snap", "Block the sun and look good in this beautiful hat", "black");
-        hatDatabase.addHatToHatDatabase(20, R.drawable.black_miami, "Miami Marlins", 19.99, "100% cotton","Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToHatDatabase(21, R.drawable.black_rattles, "AZ Diamondbacks", 29.99, "50% polyester 50% wool ","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(22, R.drawable.black_red_a_on_black_arizona, "AZ Diamondbacks", 29.99, "50% polyester 50% cotton ","Snap", "Play the outfield with confidence", "black");
-        hatDatabase.addHatToHatDatabase(23, R.drawable.black_rockies, "Colorado Rockies", 29.99, "50% wool 50% cotton ","Snap", "Turn a double play in this stylish hat", "black");
-        hatDatabase.addHatToHatDatabase(24, R.drawable.black_throwback_marlins, "Miami Marlins", 50, "100% polyester","Snap", "Block the sun and look good in this beautiful hat", "black");
-        hatDatabase.addHatToHatDatabase(25, R.drawable.black_top_baltimore, "Baltimore Orioles", 29.99, "100% wool","Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToHatDatabase(26, R.drawable.black_top_chi_sox, "Chicago White Sox", 29.99, "100% cotton","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(27, R.drawable.black_top_pitts, "Pittsburgh Pirates", 29.99, "50% polyester 50% wool ","Snap", "Play the outfield with confidence", "black");
-        hatDatabase.addHatToHatDatabase(28, R.drawable.blue_brim_astros, "Houston Astros", 50, "50% polyester 50% cotton ","Snap", "Turn a double play in this stylish hat", "blue");
-        hatDatabase.addHatToHatDatabase(29, R.drawable.blue_mets, "New York Mets", 29.99, "50% wool 50% cotton ","Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToHatDatabase(30, R.drawable.blue_rangers, "Texas Rangers", 29.99, "100% polyester","Snap", "Plush and soft, this hat will keep you comfortable", "blue");
-        hatDatabase.addHatToHatDatabase(31, R.drawable.blue_top_brewers, "Milwaukee Brewers", 29.99, "100% wool","Snap", "Great for a day at the beach!", "blue");
-        hatDatabase.addHatToHatDatabase(32, R.drawable.all_blue_mets, "New York Mets", 50, "100% cotton","Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(33, R.drawable.blueleafjays, "Toronto Blue Jays", 29.99, "50% polyester 50% wool ","Snap", "Turn a double play in this stylish hat", "blue");
-        hatDatabase.addHatToHatDatabase(34, R.drawable.brew_america, "Milwaukee Brewers", 29.99, "50% polyester 50% cotton ","Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToHatDatabase(35, R.drawable.brewers_glove, "Milwaukee Brewers", 29.99, "50% wool 50% cotton ","Snap", "Plush and soft, this hat will keep you comfortable", "blue");
-        hatDatabase.addHatToHatDatabase(36, R.drawable.cursive_o_s_baltimore, "Baltimore Orioles", 29.99, "100% polyester","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(37, R.drawable.dark_blue_boston, "Boston Red Sox", 29.99, "100% wool","Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(38, R.drawable.dark_blue_rays, "Toronto Blue Jays", 29.99, "100% cotton","Snap", "Turn a double play in this stylish hat", "blue");
-        hatDatabase.addHatToHatDatabase(39, R.drawable.dodgers, "LA Dodgers", 50, "50% polyester 50% wool ","Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToHatDatabase(40, R.drawable.florida, "Miami Marlins", 39.99, "50% polyester 50% cotton ","Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToHatDatabase(41, R.drawable.giants, "San Francisco Giants", 39.99, "50% wool 50% cotton ","Snap", "Great for a day at the beach!", "black");
-        hatDatabase.addHatToHatDatabase(42, R.drawable.green_road_a_s, "Oakland A’s", 39.99, "100% polyester","Snap", "Play the outfield with confidence", "green");
-        hatDatabase.addHatToHatDatabase(43, R.drawable.hanging_red_sox_for_boston, "Boston Red Sox", 39.99, "100% wool","Snap", "Turn a double play in this stylish hat", "blue");
-        hatDatabase.addHatToHatDatabase(44, R.drawable.left_facing_blue_jay, "Toronto Blue Jays", 39.99, "100% cotton","Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToHatDatabase(45, R.drawable.light_blue_90s_seattle, "Seattle Mariners", 50, "50% polyester 50% wool ","Snap", "Plush and soft, this hat will keep you comfortable", "blue");
-        hatDatabase.addHatToHatDatabase(46, R.drawable.marlins_america, "Miami Marlins", 39.99, "50% polyester 50% cotton ","Snap", "Great for a day at the beach!", "blue");
-        hatDatabase.addHatToHatDatabase(47, R.drawable.old_blue_breweers, "Milwaukee Brewers", 39.99, "50% wool 50% cotton ","Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToHatDatabase(48, R.drawable.old_orioles, "Baltimore Orioles", 39.99, "100% polyester","Snap", "Turn a double play in this stylish hat", "white");
-        hatDatabase.addHatToHatDatabase(49, R.drawable.old_padres, "San Diego Padres", 50, "100% wool","Snap", "Block the sun and look good in this beautiful hat", "yellow");
-        hatDatabase.addHatToHatDatabase(50, R.drawable.old_school_blue_cardinals, "St. Louis Cardinals", 39.99, "100% cotton","Snap", "Plush and soft, this hat will keep you comfortable", "blue");
+        hatDatabase.addHatToHatDatabase(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
+        hatDatabase.addHatToHatDatabase(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
+        hatDatabase.addHatToHatDatabase(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton", "Snap", "Play the outfield with confidence", "black");
+        hatDatabase.addHatToHatDatabase(3, R.drawable.all_black_colorado, "Colorado Rockies", 19.99, "50% polyester 50% wool ", "Snap", "Turn a double play in this stylish hat", "black");
+        hatDatabase.addHatToHatDatabase(4, R.drawable.all_blue_cubs, "Chicago Cubs", 19.99, "50% polyester 50% cotton ", "Snap", "Block the sun and look good in this beautiful hat", "blue");
+        hatDatabase.addHatToHatDatabase(5, R.drawable.all_blue_mets, "New York Mets", 19.99, "50% wool 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
+        hatDatabase.addHatToHatDatabase(6, R.drawable.all_blue_tribe, "Cleveland Indians", 50, "100% polyester", "Snap", "Great for a day at the beach!", "blue");
+        hatDatabase.addHatToHatDatabase(7, R.drawable.all_blue_twins, "Minnesota Twins", 19.99, "100% wool", "Snap", "Play the outfield with confidence", "blue");
+        hatDatabase.addHatToHatDatabase(8, R.drawable.all_green_a_s, "Oakland A’s", 19.99, "100% cotton", "Snap", "Turn a double play in this stylish hat", "green");
+        hatDatabase.addHatToHatDatabase(9, R.drawable.all_orange_houston, "Houston Astros", 19.99, "50% polyester 50% wool ", "Snap", "Block the sun and look good in this beautiful hat", "orange");
+        hatDatabase.addHatToHatDatabase(10, R.drawable.all_read_angels, "LA Angels", 19.99, "50% polyester 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "read");
+        hatDatabase.addHatToHatDatabase(11, R.drawable.all_read_cardnials, "St. Louis Cardinals", 19.99, "50% wool 50% cotton ", "Snap", "Great for a day at the beach!", "read");
+        hatDatabase.addHatToHatDatabase(12, R.drawable.all_red_dc, "DC Nationals", 19.99, "100% polyester", "Snap", "Play the outfield with confidence", "red");
+        hatDatabase.addHatToHatDatabase(13, R.drawable.all_red_reds, "Cincinnati Reds", 19.99, "100% wool", "Snap", "Turn a double play in this stylish hat", "red");
+        hatDatabase.addHatToHatDatabase(14, R.drawable.army_pirates, "Pittsburgh Pirates", 19.99, "100% cotton", "Snap", "Block the sun and look good in this beautiful hat", "brown");
+        hatDatabase.addHatToHatDatabase(15, R.drawable.army_reds, "Cincinnati Reds", 19.99, "50% polyester 50% wool ", "Snap", "Plush and soft, this hat will keep you comfortable", "borwn");
+        hatDatabase.addHatToHatDatabase(16, R.drawable.backs, "AZ Diamondbacks", 50, "50% polyester 50% cotton ", "Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(17, R.drawable.beantown, "Boston Red Sox", 19.99, "50% wool 50% cotton ", "Snap", "Play the outfield with confidence", "blue");
+        hatDatabase.addHatToHatDatabase(18, R.drawable.black_brim_reds, "Cincinnati Reds", 19.99, "100% polyester", "Snap", "Turn a double play in this stylish hat", "red");
+        hatDatabase.addHatToHatDatabase(19, R.drawable.black_home_giants, "San Francisco Giants", 50, "100% wool", "Snap", "Block the sun and look good in this beautiful hat", "black");
+        hatDatabase.addHatToHatDatabase(20, R.drawable.black_miami, "Miami Marlins", 19.99, "100% cotton", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
+        hatDatabase.addHatToHatDatabase(21, R.drawable.black_rattles, "AZ Diamondbacks", 29.99, "50% polyester 50% wool ", "Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(22, R.drawable.black_red_a_on_black_arizona, "AZ Diamondbacks", 29.99, "50% polyester 50% cotton ", "Snap", "Play the outfield with confidence", "black");
+        hatDatabase.addHatToHatDatabase(23, R.drawable.black_rockies, "Colorado Rockies", 29.99, "50% wool 50% cotton ", "Snap", "Turn a double play in this stylish hat", "black");
+        hatDatabase.addHatToHatDatabase(24, R.drawable.black_throwback_marlins, "Miami Marlins", 50, "100% polyester", "Snap", "Block the sun and look good in this beautiful hat", "black");
+        hatDatabase.addHatToHatDatabase(25, R.drawable.black_top_baltimore, "Baltimore Orioles", 29.99, "100% wool", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
+        hatDatabase.addHatToHatDatabase(26, R.drawable.black_top_chi_sox, "Chicago White Sox", 29.99, "100% cotton", "Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(27, R.drawable.black_top_pitts, "Pittsburgh Pirates", 29.99, "50% polyester 50% wool ", "Snap", "Play the outfield with confidence", "black");
+        hatDatabase.addHatToHatDatabase(28, R.drawable.blue_brim_astros, "Houston Astros", 50, "50% polyester 50% cotton ", "Snap", "Turn a double play in this stylish hat", "blue");
+        hatDatabase.addHatToHatDatabase(29, R.drawable.blue_mets, "New York Mets", 29.99, "50% wool 50% cotton ", "Snap", "Block the sun and look good in this beautiful hat", "blue");
+        hatDatabase.addHatToHatDatabase(30, R.drawable.blue_rangers, "Texas Rangers", 29.99, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
+        hatDatabase.addHatToHatDatabase(31, R.drawable.blue_top_brewers, "Milwaukee Brewers", 29.99, "100% wool", "Snap", "Great for a day at the beach!", "blue");
+        hatDatabase.addHatToHatDatabase(32, R.drawable.all_blue_mets, "New York Mets", 50, "100% cotton", "Snap", "Play the outfield with confidence", "blue");
+        hatDatabase.addHatToHatDatabase(33, R.drawable.blueleafjays, "Toronto Blue Jays", 29.99, "50% polyester 50% wool ", "Snap", "Turn a double play in this stylish hat", "blue");
+        hatDatabase.addHatToHatDatabase(34, R.drawable.brew_america, "Milwaukee Brewers", 29.99, "50% polyester 50% cotton ", "Snap", "Block the sun and look good in this beautiful hat", "blue");
+        hatDatabase.addHatToHatDatabase(35, R.drawable.brewers_glove, "Milwaukee Brewers", 29.99, "50% wool 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
+        hatDatabase.addHatToHatDatabase(36, R.drawable.cursive_o_s_baltimore, "Baltimore Orioles", 29.99, "100% polyester", "Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(37, R.drawable.dark_blue_boston, "Boston Red Sox", 29.99, "100% wool", "Snap", "Play the outfield with confidence", "blue");
+        hatDatabase.addHatToHatDatabase(38, R.drawable.dark_blue_rays, "Toronto Blue Jays", 29.99, "100% cotton", "Snap", "Turn a double play in this stylish hat", "blue");
+        hatDatabase.addHatToHatDatabase(39, R.drawable.dodgers, "LA Dodgers", 50, "50% polyester 50% wool ", "Snap", "Block the sun and look good in this beautiful hat", "blue");
+        hatDatabase.addHatToHatDatabase(40, R.drawable.florida, "Miami Marlins", 39.99, "50% polyester 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
+        hatDatabase.addHatToHatDatabase(41, R.drawable.giants, "San Francisco Giants", 39.99, "50% wool 50% cotton ", "Snap", "Great for a day at the beach!", "black");
+        hatDatabase.addHatToHatDatabase(42, R.drawable.green_road_a_s, "Oakland A’s", 39.99, "100% polyester", "Snap", "Play the outfield with confidence", "green");
+        hatDatabase.addHatToHatDatabase(43, R.drawable.hanging_red_sox_for_boston, "Boston Red Sox", 39.99, "100% wool", "Snap", "Turn a double play in this stylish hat", "blue");
+        hatDatabase.addHatToHatDatabase(44, R.drawable.left_facing_blue_jay, "Toronto Blue Jays", 39.99, "100% cotton", "Snap", "Block the sun and look good in this beautiful hat", "blue");
+        hatDatabase.addHatToHatDatabase(45, R.drawable.light_blue_90s_seattle, "Seattle Mariners", 50, "50% polyester 50% wool ", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
+        hatDatabase.addHatToHatDatabase(46, R.drawable.marlins_america, "Miami Marlins", 39.99, "50% polyester 50% cotton ", "Snap", "Great for a day at the beach!", "blue");
+        hatDatabase.addHatToHatDatabase(47, R.drawable.old_blue_breweers, "Milwaukee Brewers", 39.99, "50% wool 50% cotton ", "Snap", "Play the outfield with confidence", "blue");
+        hatDatabase.addHatToHatDatabase(48, R.drawable.old_orioles, "Baltimore Orioles", 39.99, "100% polyester", "Snap", "Turn a double play in this stylish hat", "white");
+        hatDatabase.addHatToHatDatabase(49, R.drawable.old_padres, "San Diego Padres", 50, "100% wool", "Snap", "Block the sun and look good in this beautiful hat", "yellow");
+        hatDatabase.addHatToHatDatabase(50, R.drawable.old_school_blue_cardinals, "St. Louis Cardinals", 39.99, "100% cotton", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
         hatDatabase.addHatToHatDatabase(51, R.drawable.old_school_blue_seattle, "Seattle Mariners", 39.99, "50% polyester 50% wool ", "Fitted", "Great for a day at the beach!", "blue");
         hatDatabase.addHatToHatDatabase(52, R.drawable.old_school_c_indians, "Cleveland Indians", 39.99, "50% polyester 50% cotton ", "Fitted", "Play the outfield with confidence", "blue");
         hatDatabase.addHatToHatDatabase(53, R.drawable.old_school_cleveland, "Cleveland Indians", 50, "50% wool 50% cotton ", "Fitted", "Turn a double play in this stylish hat", "red");
