@@ -35,6 +35,15 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
 
+    private static SQLiteOpenHelper mInstance;
+
+    public static SQLiteOpenHelper getInstance(Context context){
+        if(mInstance == null){
+            mInstance = new SQLiteOpenHelper(context.getApplicationContext());
+        }
+        return mInstance;
+    }
+
 
     public SQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,7 +63,7 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
 
     }
 
-    public void addHat(int id, int picture, String name, int price, String material, int fittedOrSnap,
+    public void addHat(int id, int picture, String name, double price, String material, int fittedOrSnap,
                        String description, String color) {
 
         ContentValues values = new ContentValues();

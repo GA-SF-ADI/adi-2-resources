@@ -8,15 +8,16 @@ public class Hat {
     private int id;
     private int pictureID;
     private String name;
-    private int price;
+    private double price;
     private String material;
     private int fittedOrSnap;
     private String description;
     private String color;
 
+    private static Hat hat = null;
 
 
-    public Hat(int id, int pictureID, String name, int price, String material, int fittedOrSnap, String description, String color) {
+    public Hat(int id, int pictureID, String name, double price, String material, int fittedOrSnap, String description, String color) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -26,6 +27,7 @@ public class Hat {
         this.color = color;
         this.pictureID = pictureID;
     }
+
 
     public int getId() {
         return id;
@@ -43,11 +45,11 @@ public class Hat {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -32,35 +32,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private Random mRandom = new Random();
     private static MyClickListener myClickListener;
 
-    int[] images = new int[]{
-
-            R.drawable.a_s_america,
-            R.drawable.a_s_america2,
-            R.drawable.backs,
-            R.drawable.beantown,
-            R.drawable.brew_america,
-            R.drawable.dodgers,
-            R.drawable.florida,
-            R.drawable.giants,
-            R.drawable.marlins_america,
-            R.drawable.padres,
-            R.drawable.phils_america,
-            R.drawable.red_sox_america,
-            R.drawable.rockies_america,
-            R.drawable.rsox,
-            R.drawable.sgiants,
-            R.drawable.tb,
-            R.drawable.texas_america,
-            R.drawable.wsox,
-            R.drawable.yankees,
-            R.drawable.yanks
-    };
-
-
-    int imageId = (int) (Math.random() * images.length);
-
-    //TODO: have the adapter take in a cursor. Edit your recycler view adapter and make it so that it takes in a cursor
-
 
     public MyRecyclerViewAdapter(Cursor cursor, Context mContext) {
         this.mContext = mContext;
@@ -121,7 +92,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.name.setText(hatDataSet.get(position).getName());
         holder.fittedOrSnap.setText(String.valueOf(hatDataSet.get(position).getFittedOrSnap()));
-        holder.price.setText(hatDataSet.get(position).getPrice() + "");
+        holder.price.setText(String.valueOf(hatDataSet.get(position).getPrice() + ""));
     }
 
     /*public void addItem(Hat hat, int index) {
