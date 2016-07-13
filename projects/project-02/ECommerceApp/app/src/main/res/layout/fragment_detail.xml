@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/detail_item_image"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/tp_1"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/detail_item_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brand"
+        android:layout_toRightOf="@+id/detail_item_image"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="12dp"/>
+
+    <TextView
+        android:id="@+id/detail_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="20dp"
+        android:layout_below="@+id/detail_item_brand"
+        android:layout_toRightOf="@+id/detail_item_image"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="12dp"/>
+
+    <TextView
+        android:id="@+id/detail_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$14.99"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:textSize="24dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/detail_rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate it: "
+        android:layout_below="@+id/detail_linear_layout"
+        android:padding="16dp"/>
+
+    <RatingBar
+        android:id="@+id/detail_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:numStars="5"
+        android:max="5"
+        android:rating="0.0"
+        android:stepSize="0.0"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_weight="1"
+        android:layout_below="@+id/detail_linear_layout"
+        android:layout_toRightOf="@id/detail_rating_text"
+        android:padding="12dp"/>
+
+    <LinearLayout
+        android:id="@+id/detail_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/detail_item_image"
+        android:layout_below="@+id/detail_item_name">
+
+        <ImageButton
+            android:id="@+id/remove_quantity_button"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+
+            android:baselineAlignBottom="true"
+            android:src="@drawable/ic_remove_black_hdpi"/>
+
+        <TextView
+            android:id="@+id/detail_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="0"/>
+
+        <ImageButton
+            android:id="@+id/add_quantity_button"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:baselineAlignBottom="true"
+            android:src="@drawable/ic_add_black_hdpi" />
+
+        <Button
+            android:id="@+id/add_to_cart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Add to Cart"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:layout_below="@id/detail_rating">
+
+        <TextView
+            android:id="@+id/detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/detail_num_ply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/detail_num_rolls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/detail_roll_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>

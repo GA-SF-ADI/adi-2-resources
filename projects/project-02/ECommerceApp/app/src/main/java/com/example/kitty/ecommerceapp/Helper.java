@@ -23,6 +23,7 @@ public class Helper extends SQLiteOpenHelper {
     //TP table columns
     public static final String COL_ID = "_id";
     public static final String COL_ITEM_NAME = "ITEM_NAME";
+    public static final String COL_ITEM_PIC = "ITEM_PIC";
     public static final String COL_ITEM_BRAND = "BRAND";
     public static final String COL_ITEM_PRICE = "PRICE";
     public static final String COL_ITEM_DESCRIPTION = "DESCRIPTION";
@@ -49,7 +50,7 @@ public class Helper extends SQLiteOpenHelper {
 
     private static Helper mInstance;
 
-    public static final String[] TP_COLUMNS = {COL_ID,COL_ITEM_NAME,COL_ITEM_BRAND, COL_ITEM_PRICE, COL_ITEM_DESCRIPTION, COL_ITEM_PLY,
+    public static final String[] TP_COLUMNS = {COL_ID,COL_ITEM_NAME,COL_ITEM_PIC, COL_ITEM_BRAND, COL_ITEM_PRICE, COL_ITEM_DESCRIPTION, COL_ITEM_PLY,
             COL_ITEM_SIZE, COL_ITEM_NUM_ROLL, COL_ITEM_AVG_RATING};
     public static final String[] REVIEW_COLUMNS = {COL_REVIEW_ID, COL_REVIEW_COMMENT, COL_REVIEW_RATING, COL_REVIEW_ITEM_ID};
     public static final String[] CART_COLUMNS = {COL_CART_ID, COL_CART_ITEM_ID, COL_CART_QUANTITY};
@@ -60,6 +61,7 @@ public class Helper extends SQLiteOpenHelper {
                     "(" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_ITEM_NAME + " TEXT, " +
+                    COL_ITEM_PIC + " INTEGER, " +
                     COL_ITEM_BRAND + " TEXT, " +
                     COL_ITEM_PRICE + " DOUBLE, " +
                     COL_ITEM_DESCRIPTION + " TEXT, " +
@@ -73,18 +75,21 @@ public class Helper extends SQLiteOpenHelper {
                     COL_REVIEW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_REVIEW_COMMENT + " TEXT, " +
                     COL_REVIEW_RATING + " INTEGER, " +
+                    COL_REVIEW_ITEM_ID + " INTEGER, " +
                     "FOREIGN KEY (" + COL_REVIEW_ITEM_ID + ") REFERENCES " + TP_TABLE_NAME + "(" + COL_ID + "))";
     private static final String CREATE_CART_TABLE =
             "CREATE TABLE " + SHOPPING_CART_TABLE_NAME +
                     "(" +
                     COL_CART_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_CART_QUANTITY + " INTEGER, " +
+                    COL_CART_ITEM_ID + " INTEGER, " +
                     "FOREIGN KEY (" + COL_CART_ITEM_ID + ") REFERENCES " + TP_TABLE_NAME + "(" + COL_ID + "))";
     private static final String CREATE_SALE_TABLE =
             "CREATE TABLE " + SALE_TABLE_NAME +
                     "(" +
                     COL_SALE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_SALE_PRICE + " DOUBLE, " +
+                    COL_SALE_ITEM_ID + " INTEGER, " +
                     "FOREIGN KEY (" + COL_SALE_ITEM_ID + ") REFERENCES " + TP_TABLE_NAME + "(" + COL_ID + "))";
 
     public static Helper getInstance(Context context){
@@ -112,17 +117,20 @@ public class Helper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public long addTP(String name, String brand, double price, String description, int ply, String size, int numRoll){
+    // adding new products to list
+    public long addTP(TP tp){
         ContentValues values = new ContentValues();
-        values.put(COL_ITEM_NAME, name);
-        values.put(COL_ITEM_BRAND, brand);
-        values.put(COL_ITEM_PRICE, price);
-        values.put(COL_ITEM_DESCRIPTION, description);
-        values.put(COL_ITEM_PLY, ply);
-        values.put(COL_ITEM_SIZE, size);
-        values.put(COL_ITEM_NUM_ROLL, numRoll);
+        values.put(COL_ITEM_PIC, tp.getPic());
+        values.put(COL_ITEM_NAME, tp.getName());
+        values.put(COL_ITEM_BRAND, tp.getBrand());
+        values.put(COL_ITEM_PRICE, tp.getPrice());
+        values.put(COL_ITEM_DESCRIPTION, tp.getDescription());
+        values.put(COL_ITEM_PLY, tp.getPly());
+        values.put(COL_ITEM_SIZE, tp.getSize());
+        values.put(COL_ITEM_NUM_ROLL, tp.getNumRolls());
 
         //need to add coding to pull user rating from other table and take average.
+        values.put(COL_ITEM_AVG_RATING, "0");
 
         SQLiteDatabase db = this.getWritableDatabase();
         long returnId = db.insert(TP_TABLE_NAME, null, values);
@@ -130,6 +138,36 @@ public class Helper extends SQLiteOpenHelper {
         return returnId;
     }
 
+    // adding items to shopping cart table
+    public long addItemToCart(int tpID, int quantity) {
+        ContentValues values = new ContentValues();
+        values.put(COL_CART_ITEM_ID, tpID);
+        values.put(COL_CART_QUANTITY, quantity);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long returnID = db.insert(SHOPPING_CART_TABLE_NAME, null, values);
+        db.close();
+        return returnID;
+    }
+
+    // returning the TP id so can be used
+    public int getTPID(String tpName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TP_TABLE_NAME, // a. table
+                TP_COLUMNS, // b. column names
+                COL_ITEM_NAME + " = ? ", // c. selections
+                new String[]{tpName}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex(COL_ID));
+    }
+
+    // get the list of all products
     public Cursor getTPList(){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -195,6 +233,16 @@ public class Helper extends SQLiteOpenHelper {
                 null, // g. order by
                 null); // h. limit
 
+        return cursor;
+    }
+
+    // get joint table
+    public Cursor getItemJoinCart() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE + COL_CART_QUANTITY +
+                " FROM [" + TP_TABLE_NAME + "] JOIN " + SHOPPING_CART_TABLE_NAME +
+                " ON [" + TP_TABLE_NAME + "]." + COL_ID + " = " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID;
+        Cursor cursor = db.rawQuery(query, null);
         return cursor;
     }
 }
