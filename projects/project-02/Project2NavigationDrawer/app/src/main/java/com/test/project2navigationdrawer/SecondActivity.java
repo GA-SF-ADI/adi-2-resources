@@ -44,7 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // badd bad bad, use a singleton.    DatabaseHelper.getInstance(this);
-        myDb = new DatabaseHelper(this);
+        myDb = DatabaseHelper.getInstance(this);
 
         myDb.insert("1", "bracelet", "$149.00", "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
         myDb.insert("2", "bracelet", "$179.00", "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id2);
@@ -123,7 +123,9 @@ public class SecondActivity extends AppCompatActivity {
 
         //when you click "Item"
 
-        final ShoppingCartSingleton shoppingCart = ShoppingCartSingleton.getInstance();
+        //final ShoppingCartSingleton shoppingCart = ShoppingCartSingleton.getInstance();
+
+        final DatabaseSingleton databaseSingleton = DatabaseSingleton.getInstance();
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
@@ -148,32 +150,35 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item9);
 
 
-        addToCartButton = (Button) findViewById(R.id.add_button_to_shopping_cart);
-        addToCartButton.setOnClickListener(new AdapterView.OnClickListener() {
-            public void onClick(View view) {
-
-
-                cursor.moveToPosition(position);
-                String idShop = cursor.getString(0);
-                String type = cursor.getString(0);
-                String price = cursor.getString(0);
-                String gold = cursor.getString(0);
-                String stone = cursor.getString(0);
-                String measurement = cursor.getString(0);
-                String quantity = cursor.getString(0);
-                String name = cursor.getString(0);
-                int imageShop = cursor.getInt(0);
-
-                // database helper
-
-                myDb.insertShoppingCart(idShop, type, price, gold, stone, measurement, quantity, name, imageShop);
-                shoppingCart.addItem(myItems.get(position));
-                Log.d("added to cart ", myItems.get(position).getType());
-                myDb.getShoppingCart();
-                customAdapter.notifyDataSetChanged();
-
-            }
-        });
+//        addToCartButton = (Button) findViewById(R.id.add_button_to_shopping_cart);
+//        addToCartButton.setOnClickListener(new AdapterView.OnClickListener() {
+//            public void onClick(View view) {
+//
+//
+//               ;
+//                cursor.moveToPosition(position);
+//                String idShop = cursor.getString(0);
+//                String type = cursor.getString(0);
+//                String price = cursor.getString(0);
+//                String gold = cursor.getString(0);
+//                String stone = cursor.getString(0);
+//                String measurement = cursor.getString(0);
+//                String quantity = cursor.getString(0);
+//                String name = cursor.getString(0);
+//                int imageShop = cursor.getInt(0);
+//
+//
+//
+//                // database helper
+////
+////                myDb.insertShoppingCart(idShop, type, price, gold, stone, measurement, quantity, name, imageShop);
+////                shoppingCart.addItem(myItems.get(position));
+////                Log.d("added to cart ", myItems.get(position).getType());
+////                myDb.getShoppingCart();
+////                customAdapter.notifyDataSetChanged();
+//
+//            }
+//        });
 
         incrementButton = (Button) findViewById(R.id.increment_button_view);
         incrementButton.setOnClickListener(new AdapterView.OnClickListener() {

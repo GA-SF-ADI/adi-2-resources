@@ -10,6 +10,13 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by audreyeso on 7/10/16.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    public static DatabaseHelper databaseHelper;
+    public static DatabaseHelper getInstance(Context context){
+        if(databaseHelper == null)
+            databaseHelper = new DatabaseHelper(context.getApplicationContext());
+        return databaseHelper;
+    }
     private static final String TAG = "DBAdapter";
     public static final int DATABASE_VERSION =1;
     public static final String DATABASE_NAME= "Jewelry.db";
@@ -109,12 +116,11 @@ private static final String CREATE_SHOPPING_CART_TABLE =
 
     }
 
-    public void insertShoppingCart(String id, String type, String price,
+    public void insertShoppingCart(String type, String price,
                        String gold, String stone, String measurement,String quantity,String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_1_ID_SHOPPING_CART,id);
         values.put(COL_2_TYPE_SHOPPING_CART, type);
         values.put(COL_3_PRICE_SHOPPING_CART, price);
         values.put(COL_4_GOLD_SHOPPING_CART,gold);

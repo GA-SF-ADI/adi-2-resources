@@ -22,6 +22,7 @@ public class DBAdapter extends CursorAdapter {
     public DBAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         this.layoutInflater = layoutInflater;
+
     }
 
     //create custom adapter
@@ -54,7 +55,7 @@ public class DBAdapter extends CursorAdapter {
         final String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_8_NAME));
         final int jewelry = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE));
 
-        Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE))+ "", "images");
+        Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE)) + "", "images");
 
         typeOfJewelryTextView.setText(type);
         priceOfJewelryTextView.setText(price);
@@ -66,8 +67,11 @@ public class DBAdapter extends CursorAdapter {
         imageOfJewelry.setImageResource(jewelry);
 
         //DatabaseHelper helper = DatabaseHelper.getInstance(context);
-        final DatabaseSingleton helperSingleton = DatabaseSingleton.getInstance();
-        addToCartButton.setOnClickListener(new View.OnClickListener(){
+
+        //Jamey
+        final DatabaseHelper helper= DatabaseHelper.getInstance(context);
+
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -75,7 +79,8 @@ public class DBAdapter extends CursorAdapter {
 
                 // you can get this item
 //                helper.insertShippingCart(type, , , ,);
-                helperSingleton.insertItem(type, price, gold, stone, measurement, quantity, name, jewelry);
+                helper.insertShoppingCart(type, price, gold, stone, measurement, quantity, name, jewelry);
+
             }
         });
 

@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class ShoppingCartFragment extends Fragment {
 
-    ShoppingCartSingleton shoppingCartSingleton;
+    DatabaseSingleton databaseSingleton;
     ListView listView;
     TextView textView;
     SetPriceAdapter setPriceAdapter;
@@ -32,7 +32,11 @@ public class ShoppingCartFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        shoppingCartSingleton = ShoppingCartSingleton.getInstance();
+       // shoppingCartSingleton = ShoppingCartSingleton.getInstance();
+        databaseSingleton = DatabaseSingleton.getInstance();
+
+        myDb= DatabaseHelper.getInstance(getContext());
+
 
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         textView = (TextView) view.findViewById(R.id.shopping_fragment_total_cost_text_view);
@@ -54,18 +58,20 @@ public class ShoppingCartFragment extends Fragment {
     }
 
 
-//
-//
-//    public double returnTotal() {
-//
-//        double totalCost = 0;
-//
-//        for (int i = 0; i < shoppingCartSingleton.getItem().size(); i++) {
-//            double price = shoppingCartSingleton.getItem().get(i).getPrice();
-//            totalCost = totalCost + price;
-//        }
-//        return totalCost;
-//    }
+
+
+
+
+    public double returnTotal() {
+
+        double totalCost = 0;
+
+        for (int i = 0; i < databaseSingleton.getItems().size(); i++) {
+            double price = databaseSingleton.getItems().get(i).getPrice();
+            totalCost = totalCost + price;
+        }
+        return totalCost;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
