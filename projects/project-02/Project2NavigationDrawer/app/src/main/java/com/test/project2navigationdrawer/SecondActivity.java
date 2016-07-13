@@ -1,24 +1,29 @@
 package com.test.project2navigationdrawer;
 
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.CursorAdapter;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,9 +35,7 @@ public class SecondActivity extends AppCompatActivity {
     Button shoppingCartButton;
     Button featuredJewelryButton;
     Button returnHomeButton;
-    Button addToCartButton;
-    Button incrementButton;
-    Button decrementButton;
+    TextView textViewSearch;
 
 
     @Override
@@ -42,7 +45,6 @@ public class SecondActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        // badd bad bad, use a singleton.    DatabaseHelper.getInstance(this);
         myDb = DatabaseHelper.getInstance(this);
 
         myDb.insert("1", "bracelet", 149.00, "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
@@ -55,6 +57,13 @@ public class SecondActivity extends AppCompatActivity {
         myDb.insert("8", "necklace", 79.00, "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id8);
         myDb.insert("9", "necklace", 89.00, "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id9);
         populateListViewFromDB();
+
+        textViewSearch = (TextView) findViewById(R.id.text_view_search);
+        handleIntent(getIntent());
+
+        DatabaseHelper helper = new DatabaseHelper(SecondActivity.this);
+        Cursor cursor = helper.getJewelry();
+
     }
 
 
@@ -147,37 +156,39 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item7);
         myItems.add(item8);
         myItems.add(item9);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.second, menu);
+
+        // Find searchManager and searchableInfo
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+
+        // Associate searchable info with the SearchView
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(searchableInfo);
+
+        // Return true to show menu, returning false will not show it.
+        return true;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
 
 
-//        addToCartButton = (Button) findViewById(R.id.add_button_to_shopping_cart);
-//        addToCartButton.setOnClickListener(new AdapterView.OnClickListener() {
-//            public void onClick(View view) {
-//
-//
-//               ;
-//                cursor.moveToPosition(position);
-//                String idShop = cursor.getString(0);
-//                String type = cursor.getString(0);
-//                String price = cursor.getString(0);
-//                String gold = cursor.getString(0);
-//                String stone = cursor.getString(0);
-//                String measurement = cursor.getString(0);
-//                String quantity = cursor.getString(0);
-//                String name = cursor.getString(0);
-//                int imageShop = cursor.getInt(0);
-//
-//
-//
-//                // database helper
-////
-////                myDb.insertShoppingCart(idShop, type, price, gold, stone, measurement, quantity, name, imageShop);
-////                shoppingCart.addItem(myItems.get(position));
-////                Log.d("added to cart ", myItems.get(position).getType());
-////                myDb.getShoppingCart();
-////                customAdapter.notifyDataSetChanged();
-//
-//            }
-//        });
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(SecondActivity.this, "Looking for " + query, Toast.LENGTH_SHORT).show();
+            Cursor cursor = DatabaseHelper.getInstance(SecondActivity.this).searchShoppingList(query);
+
+            textViewSearch.setText("We have " + query + " in the store! What's available? " + cursor.getCount());
+        }
 
     }
 }

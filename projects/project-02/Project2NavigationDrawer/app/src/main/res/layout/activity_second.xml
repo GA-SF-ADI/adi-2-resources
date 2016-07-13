@@ -39,6 +39,11 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/shopping_cart_button"></ListView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_search"/>
+
 
     <FrameLayout
         android:id="@+id/fragment_container_second_activity"

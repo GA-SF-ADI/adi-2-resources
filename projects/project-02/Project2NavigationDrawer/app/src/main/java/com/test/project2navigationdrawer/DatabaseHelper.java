@@ -12,43 +12,45 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static DatabaseHelper databaseHelper;
-    public static DatabaseHelper getInstance(Context context){
-        if(databaseHelper == null)
+
+    public static DatabaseHelper getInstance(Context context) {
+        if (databaseHelper == null)
             databaseHelper = new DatabaseHelper(context.getApplicationContext());
         return databaseHelper;
     }
+
     private static final String TAG = "DBAdapter";
-    public static final int DATABASE_VERSION =1;
-    public static final String DATABASE_NAME= "Jewelry.db";
-    public static final String TABLE_NAME= "jewelry_table";
-    public static final String COL_1_ID= "_id";
-    public static final String COL_2_TYPE= "TYPE";
-    public static final String COL_3_PRICE= "PRICE";
-    public static final String COL_4_GOLD= "GOLD_TYPE";
-    public static final String COL_5_STONE= "STONE_TYPE";
-    public static final String COL_6_MEASUREMENT= "MEASUREMENT";
-    public static final String COL_7_QUANTITY= "QUANTITY";
-    public static final String COL_8_NAME= "NAME";
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "Jewelry.db";
+    public static final String TABLE_NAME = "jewelry_table";
+    public static final String COL_1_ID = "_id";
+    public static final String COL_2_TYPE = "TYPE";
+    public static final String COL_3_PRICE = "PRICE";
+    public static final String COL_4_GOLD = "GOLD_TYPE";
+    public static final String COL_5_STONE = "STONE_TYPE";
+    public static final String COL_6_MEASUREMENT = "MEASUREMENT";
+    public static final String COL_7_QUANTITY = "QUANTITY";
+    public static final String COL_8_NAME = "NAME";
     public static final String COL_9_IMAGE = "IMAGE";
 
 
-    public static final String TABLE_NAME_SHOPPING_CART= "shopping_cart_table";
-    public static final String COL_1_ID_SHOPPING_CART= "_id";
-    public static final String COL_2_TYPE_SHOPPING_CART= "TYPE";
-    public static final String COL_3_PRICE_SHOPPING_CART= "PRICE";
-    public static final String COL_4_GOLD_SHOPPING_CART= "GOLD_TYPE";
-    public static final String COL_5_STONE_SHOPPING_CART= "STONE_TYPE";
-    public static final String COL_6_MEASUREMENT_SHOPPING_CART= "MEASUREMENT";
-    public static final String COL_7_QUANTITY_SHOPPING_CART= "QUANTITY";
-    public static final String COL_8_NAME_SHOPPING_CART= "NAME";
+    public static final String TABLE_NAME_SHOPPING_CART = "shopping_cart_table";
+    public static final String COL_1_ID_SHOPPING_CART = "_id";
+    public static final String COL_2_TYPE_SHOPPING_CART = "TYPE";
+    public static final String COL_3_PRICE_SHOPPING_CART = "PRICE";
+    public static final String COL_4_GOLD_SHOPPING_CART = "GOLD_TYPE";
+    public static final String COL_5_STONE_SHOPPING_CART = "STONE_TYPE";
+    public static final String COL_6_MEASUREMENT_SHOPPING_CART = "MEASUREMENT";
+    public static final String COL_7_QUANTITY_SHOPPING_CART = "QUANTITY";
+    public static final String COL_8_NAME_SHOPPING_CART = "NAME";
     public static final String COL_9_IMAGE_SHOPPING_CART = "IMAGE";
 
-    public static final String [] SHOPPING_CART_COLUMNS = {COL_1_ID_SHOPPING_CART, COL_2_TYPE_SHOPPING_CART,
-    COL_3_PRICE_SHOPPING_CART, COL_4_GOLD_SHOPPING_CART, COL_5_STONE_SHOPPING_CART, COL_6_MEASUREMENT_SHOPPING_CART,
-    COL_7_QUANTITY_SHOPPING_CART, COL_8_NAME_SHOPPING_CART, COL_9_IMAGE_SHOPPING_CART};
+    public static final String[] SHOPPING_CART_COLUMNS = {COL_1_ID_SHOPPING_CART, COL_2_TYPE_SHOPPING_CART,
+            COL_3_PRICE_SHOPPING_CART, COL_4_GOLD_SHOPPING_CART, COL_5_STONE_SHOPPING_CART, COL_6_MEASUREMENT_SHOPPING_CART,
+            COL_7_QUANTITY_SHOPPING_CART, COL_8_NAME_SHOPPING_CART, COL_9_IMAGE_SHOPPING_CART};
 
 
-    public static final String[] JEWELRY_COLUMNS = {COL_1_ID,COL_2_TYPE, COL_3_PRICE, COL_4_GOLD,
+    public static final String[] JEWELRY_COLUMNS = {COL_1_ID, COL_2_TYPE, COL_3_PRICE, COL_4_GOLD,
             COL_5_STONE, COL_6_MEASUREMENT, COL_7_QUANTITY, COL_8_NAME, COL_9_IMAGE};
 
     private static final String CREATE_SHOPPING_LIST_TABLE =
@@ -64,18 +66,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COL_8_NAME + " TEXT, " +
                     COL_9_IMAGE + " INTEGER )";
 
-private static final String CREATE_SHOPPING_CART_TABLE =
-        "CREATE TABLE " + TABLE_NAME_SHOPPING_CART +
-                "(" +
-                COL_1_ID_SHOPPING_CART + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_2_TYPE_SHOPPING_CART + " TEXT, " +
-                COL_3_PRICE_SHOPPING_CART + " DOUBLE, " +
-                COL_4_GOLD_SHOPPING_CART + " TEXT, " +
-                COL_5_STONE_SHOPPING_CART + " TEXT, " +
-                COL_6_MEASUREMENT_SHOPPING_CART + " TEXT, " +
-                COL_7_QUANTITY_SHOPPING_CART + " TEXT, " +
-                COL_8_NAME_SHOPPING_CART+ " TEXT, " +
-                COL_9_IMAGE_SHOPPING_CART + " INTEGER )";
+    private static final String CREATE_SHOPPING_CART_TABLE =
+            "CREATE TABLE " + TABLE_NAME_SHOPPING_CART +
+                    "(" +
+                    COL_1_ID_SHOPPING_CART + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL_2_TYPE_SHOPPING_CART + " TEXT, " +
+                    COL_3_PRICE_SHOPPING_CART + " DOUBLE, " +
+                    COL_4_GOLD_SHOPPING_CART + " TEXT, " +
+                    COL_5_STONE_SHOPPING_CART + " TEXT, " +
+                    COL_6_MEASUREMENT_SHOPPING_CART + " TEXT, " +
+                    COL_7_QUANTITY_SHOPPING_CART + " TEXT, " +
+                    COL_8_NAME_SHOPPING_CART + " TEXT, " +
+                    COL_9_IMAGE_SHOPPING_CART + " INTEGER )";
 
 
     public DatabaseHelper(Context context) {
@@ -98,17 +100,17 @@ private static final String CREATE_SHOPPING_CART_TABLE =
         onCreate(db);
     }
 
-    public void insert(String id, String type, double price, String gold, String stone, String measurement,String quantity,String name, int image) {
+    public void insert(String id, String type, double price, String gold, String stone, String measurement, String quantity, String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COL_1_ID,id);
+        values.put(COL_1_ID, id);
         values.put(COL_2_TYPE, type);
         values.put(COL_3_PRICE, price);
-        values.put(COL_4_GOLD,gold);
+        values.put(COL_4_GOLD, gold);
         values.put(COL_5_STONE, stone);
         values.put(COL_6_MEASUREMENT, measurement);
-        values.put(COL_7_QUANTITY,quantity);
+        values.put(COL_7_QUANTITY, quantity);
         values.put(COL_8_NAME, name);
         values.put(COL_9_IMAGE, image);
 
@@ -117,24 +119,24 @@ private static final String CREATE_SHOPPING_CART_TABLE =
     }
 
     public void insertShoppingCart(String type, double price,
-                       String gold, String stone, String measurement,String quantity,String name, int image) {
+                                   String gold, String stone, String measurement, String quantity, String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_2_TYPE_SHOPPING_CART, type);
         values.put(COL_3_PRICE_SHOPPING_CART, price);
-        values.put(COL_4_GOLD_SHOPPING_CART,gold);
+        values.put(COL_4_GOLD_SHOPPING_CART, gold);
         values.put(COL_5_STONE_SHOPPING_CART, stone);
         values.put(COL_6_MEASUREMENT_SHOPPING_CART, measurement);
-        values.put(COL_7_QUANTITY_SHOPPING_CART,quantity);
+        values.put(COL_7_QUANTITY_SHOPPING_CART, quantity);
         values.put(COL_8_NAME_SHOPPING_CART, name);
         values.put(COL_9_IMAGE_SHOPPING_CART, image);
 
         db.insert(TABLE_NAME_SHOPPING_CART, null, values);
         db.close();
-}
+    }
 
-    public Cursor getJewelry(){
+    public Cursor getJewelry() {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -149,7 +151,7 @@ private static final String CREATE_SHOPPING_CART_TABLE =
         return cursor;
     }
 
-    public Cursor getShoppingCart(){
+    public Cursor getShoppingCart() {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -158,6 +160,21 @@ private static final String CREATE_SHOPPING_CART_TABLE =
                 null, // c. selections
                 null, // d. selections args
                 null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
+    public Cursor searchShoppingList(String query) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, // a. table
+                JEWELRY_COLUMNS, // b. column names
+                COL_2_TYPE + " LIKE ?", // c. selections
+                new String[]{"%" + query + "%"}, // d. selections args
+                null,
                 null, // f. having
                 null, // g. order by
                 null); // h. limit
