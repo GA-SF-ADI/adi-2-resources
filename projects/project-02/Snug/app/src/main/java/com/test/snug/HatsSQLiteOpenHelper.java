@@ -86,7 +86,11 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     }
 
 
-    public Cursor getHat(int id) {
+//    TODO: Create deleteHat() method
+    
+
+
+    public Cursor getSpecificHat(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
@@ -100,34 +104,17 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-    /*public Hat getSpecificHat(int id) {
 
-        SQLiteDatabase db = getReadableDatabase();
-        String[] projection = new String[]{"id", "name", "pictureID", "price", "material", "fittedOrSnap", "description", "color"};
-
-        String selection = "id = ?";
-
-        String[] selectionArgs = new String[]{String.valueOf(id)};
-
-        Cursor cursor = db.query("hats", projection, selection, selectionArgs, null, null, null, null);
-
-        cursor.moveToFirst();
-
-        String name = cursor.getString(cursor.getColumnIndex("name"));
-        int pictureID = cursor.getInt(cursor.getColumnIndex("pictureID"));
-        int price = cursor.getInt(cursor.getColumnIndex("price"));
-        String material = cursor.getString(cursor.getColumnIndex("material"));
-        int fittedOrSnap = cursor.getInt(cursor.getColumnIndex("fittedOrSnap"));
-        String description = cursor.getString(cursor.getColumnIndex("description"));
-        String color = cursor.getString(cursor.getColumnIndex("year"));
-
-        return new Hat(id, pictureID, name, price, material, fittedOrSnap, description, color);
-
-    }*/
-
-    public Cursor getAllHats() {
+    public Cursor getALLHats() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(HAT_TABLE_NAME, HAT_COLUMNS, null, null, null, null, null);
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
         return cursor;
     }
 
@@ -150,7 +137,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }*/
 
-    public Cursor searchHatList(String query) {
+    public Cursor getHatTeams(String query) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table

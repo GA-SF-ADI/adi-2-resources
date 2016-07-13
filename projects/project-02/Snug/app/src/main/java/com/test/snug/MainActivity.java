@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-            Cursor allHatsCursor = db.getAllHats();
+            Cursor allHatsCursor = db.getALLHats();
 
             Log.d(LOG_TAG, "allHatsCursor created");
 
