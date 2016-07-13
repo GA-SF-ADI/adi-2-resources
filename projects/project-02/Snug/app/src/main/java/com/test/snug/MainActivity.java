@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Main Activity";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = db.getNumOfCartItems();
 
 
-        if (cursor.getCount() > 0) {
+     /*   if (cursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -57,12 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
             cartItemCounter.setText(String.valueOf(cursor.getCount()));
 
-        }
+        } else {
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(cursor.getCount()));
+        }
+*/
 
         ////////////////////////////////////////////////////////////////////////////////
 
-        if (sharedPreferences.contains("hatsAdded")) {
+        if (sharedPreferences.contains("hatsAdded") == false) {
 
             insertHatData();
 
