@@ -47,10 +47,14 @@ public class CartListAdapter extends BaseAdapter {
         ImageView jerseyImageView = (ImageView) convertView.findViewById(R.id.jerseyImageView);
         TextView jerseyTextView = (TextView) convertView.findViewById(R.id.playerNameTextView);
         TextView priceTextView = (TextView) convertView.findViewById(R.id.priceTextView);
+        TextView quantityTextView = (TextView) convertView.findViewById(R.id.quantityTextView);
+        TextView sizeTextView = (TextView) convertView.findViewById(R.id.sizeTextView);
 
         jerseyImageView.setImageResource(currentItem.getPicture());
         jerseyTextView.setText(currentItem.getPlayerName() + "-" + currentItem.getColor());
-        priceTextView.setText("Price: $" + currentItem.getPrice());
+        priceTextView.setText("Price: $" + Math.round(currentItem.getPrice() *100.0)/100.0);
+        quantityTextView.setText("Quantity: " + currentItem.getQuantity());
+        sizeTextView.setText("Size: " + currentItem.getSize());
 
         return convertView;
     }

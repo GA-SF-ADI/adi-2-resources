@@ -19,8 +19,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper INSTANCE;
 
     private static final String CREATE_PLAYER_TABLE = "CREATE TABLE " + PlayerValues.TABLE_NAME + " (" + PlayerValues._ID + " INTEGER PRIMARY KEY, " + PlayerValues.NAME + " TEXT, " + PlayerValues.TEAM + " TEXT, " + PlayerValues.NUMBER + " INTEGER, " + PlayerValues.POSITION + " TEXT, " + PlayerValues.PICTURE + " INTEGER, " + PlayerValues.JERSEY1 + " INTEGER, " + PlayerValues.JERSEY2 + " INTEGER, " + PlayerValues.JERSEY3 + " INTEGER)";
-    private static final String CREATE_CART_TABLE = "CREATE TABLE " + CartValues.TABLE_NAME + " (" + CartValues._ID + " INTEGER PRIMARY KEY, " + CartValues.PLAYERNAME + " TEXT, " + CartValues.COLOR + " TEXT, " + CartValues.PICTURE + " INTEGER, " + CartValues.PRICE + " REAL)";
-    private static final String CREATE_PURCHASE_HISTORY_TABLE = "CREATE TABLE " + PurchaseHistoryValues.TABLE_NAME + " (" + PurchaseHistoryValues._ID + " INTEGER PRIMARY KEY, " + PurchaseHistoryValues.HISTORY_ID + " INTEGER, " + PurchaseHistoryValues.PLAYERNAME + " TEXT, " + PurchaseHistoryValues.COLOR + " TEXT, " + PurchaseHistoryValues.DATE + " TEXT, " + PurchaseHistoryValues.PICTURE + " INTEGER, " + PurchaseHistoryValues.PRICE + " REAL)";
+    private static final String CREATE_CART_TABLE = "CREATE TABLE " + CartValues.TABLE_NAME + " (" + CartValues._ID + " INTEGER PRIMARY KEY, " + CartValues.PLAYERNAME + " TEXT, " + CartValues.COLOR + " TEXT, " + CartValues.PICTURE + " INTEGER, " + CartValues.PRICE + " REAL, "+ CartValues.QUANTITY + " INTEGER, "+ CartValues.SIZE + " TEXT)";
+    private static final String CREATE_PURCHASE_HISTORY_TABLE = "CREATE TABLE " + PurchaseHistoryValues.TABLE_NAME + " (" + PurchaseHistoryValues._ID + " INTEGER PRIMARY KEY, " + PurchaseHistoryValues.HISTORY_ID + " INTEGER, " + PurchaseHistoryValues.PLAYERNAME + " TEXT, " + PurchaseHistoryValues.COLOR + " TEXT, " + PurchaseHistoryValues.DATE + " TEXT, " + PurchaseHistoryValues.PICTURE + " INTEGER, " + PurchaseHistoryValues.PRICE + " REAL, "+ PurchaseHistoryValues.QUANTITY + " INTEGER, "+ PurchaseHistoryValues.SIZE + " TEXT)";
 
     private static final String DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS " + PlayerValues.TABLE_NAME;
     private static final String DROP_CART_TABLE = "DROP TABLE IF EXISTS " + CartValues.TABLE_NAME;
@@ -44,6 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         public static final String PLAYERNAME = "PlayerName";
         public static final String PRICE = "Price";
         public static final String COLOR = "Color";
+        public static final String SIZE = "Size";
+        public static final String QUANTITY = "Quantity";
 
     }
 
@@ -55,6 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         public static final String PRICE = "Price";
         public static final String COLOR = "Color";
         public static final String DATE = "Date";
+        public static final String SIZE = "Size";
+        public static final String QUANTITY = "Quantity";
 
     }
 
@@ -119,6 +123,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(CartValues.COLOR, cartItem.getColor());
         values.put(CartValues.PICTURE, cartItem.getPicture());
         values.put(CartValues.PRICE, cartItem.getPrice());
+        values.put(CartValues.QUANTITY, cartItem.getQuantity());
+        values.put(CartValues.SIZE, cartItem.getSize());
 
         db.insertOrThrow(CartValues.TABLE_NAME, null, values);
         db.close();
@@ -133,6 +139,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(PurchaseHistoryValues.PICTURE, cartItem.getPicture());
         values.put(PurchaseHistoryValues.PRICE, cartItem.getPrice());
         values.put(PurchaseHistoryValues.DATE, date);
+        values.put(PurchaseHistoryValues.QUANTITY, cartItem.getQuantity());
+        values.put(PurchaseHistoryValues.SIZE, cartItem.getSize());
 
         db.insertOrThrow(PurchaseHistoryValues.TABLE_NAME, null, values);
         db.close();
@@ -177,10 +185,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<CartItem> getCartItemArrayList() {
         ArrayList<CartItem> cartItemArrayList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + CartValues.PLAYERNAME + ", " + CartValues.COLOR + ", " + CartValues.PRICE + ", " + CartValues.PICTURE + " FROM " + CartValues.TABLE_NAME;
+        String query = "SELECT " + CartValues.PLAYERNAME + ", " + CartValues.COLOR + ", " + CartValues.PRICE + ", " + CartValues.PICTURE + ", " + CartValues.QUANTITY + ", " +CartValues.SIZE + " FROM " + CartValues.TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
-            CartItem cartItem = new CartItem(cursor.getString(cursor.getColumnIndex(CartValues.PLAYERNAME)), cursor.getString(cursor.getColumnIndex(CartValues.COLOR)), cursor.getInt(cursor.getColumnIndex(CartValues.PICTURE)), cursor.getDouble(cursor.getColumnIndex(CartValues.PRICE)));
+            CartItem cartItem = new CartItem(cursor.getString(cursor.getColumnIndex(CartValues.PLAYERNAME)), cursor.getString(cursor.getColumnIndex(CartValues.COLOR)), cursor.getInt(cursor.getColumnIndex(CartValues.PICTURE)), cursor.getDouble(cursor.getColumnIndex(CartValues.PRICE)), cursor.getInt(cursor.getColumnIndex(CartValues.QUANTITY)), cursor.getString(cursor.getColumnIndex(CartValues.SIZE)));
             cartItemArrayList.add(cartItem);
         }
         cursor.close();
@@ -190,10 +198,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<CartItem> getCartItemArrayListByHistoryID(int historyID) {
         ArrayList<CartItem> cartItemArrayList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + PurchaseHistoryValues.PLAYERNAME + ", " + PurchaseHistoryValues.COLOR + ", " + PurchaseHistoryValues.PRICE + ", " + PurchaseHistoryValues.PICTURE + " FROM " + PurchaseHistoryValues.TABLE_NAME + " WHERE " + PurchaseHistoryValues.HISTORY_ID + " = " + historyID;
+        String query = "SELECT " + PurchaseHistoryValues.PLAYERNAME + ", " + PurchaseHistoryValues.COLOR + ", " + PurchaseHistoryValues.PRICE + ", " + PurchaseHistoryValues.PICTURE + ", " + PurchaseHistoryValues.QUANTITY + ", " + PurchaseHistoryValues.SIZE + " FROM " + PurchaseHistoryValues.TABLE_NAME + " WHERE " + PurchaseHistoryValues.HISTORY_ID + " = " + historyID;
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
-            CartItem cartItem = new CartItem(cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.PLAYERNAME)), cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.COLOR)), cursor.getInt(cursor.getColumnIndex(PurchaseHistoryValues.PICTURE)), cursor.getDouble(cursor.getColumnIndex(PurchaseHistoryValues.PRICE)));
+            CartItem cartItem = new CartItem(cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.PLAYERNAME)), cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.COLOR)), cursor.getInt(cursor.getColumnIndex(PurchaseHistoryValues.PICTURE)), cursor.getDouble(cursor.getColumnIndex(PurchaseHistoryValues.PRICE)), cursor.getInt(cursor.getColumnIndex(PurchaseHistoryValues.QUANTITY)), cursor.getString(cursor.getColumnIndex(PurchaseHistoryValues.SIZE)));
             cartItemArrayList.add(cartItem);
         }
         cursor.close();

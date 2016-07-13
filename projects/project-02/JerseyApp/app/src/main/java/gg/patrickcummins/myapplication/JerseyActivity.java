@@ -166,7 +166,7 @@ public class JerseyActivity extends AppCompatActivity {
                         quantityEditText.setError("Please Enter a Quantity");
                     }
                 }else {
-                    CartItem cartItem = (new CartItem(currentPlayer, currentJerseyColor, currentImage, price));
+                    CartItem cartItem = (new CartItem(currentPlayer, currentJerseyColor, currentImage, price, quantity, size));
                     helper.insertCartRow(cartItem);
                     Toast.makeText(JerseyActivity.this, "Item Added To Cart!", Toast.LENGTH_SHORT).show();
                 }

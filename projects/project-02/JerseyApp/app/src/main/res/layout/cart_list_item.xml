@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/jerseyImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/amari_cooper_black"
         />
 
@@ -21,10 +21,28 @@
         android:textColor="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/priceTextView"
+        android:id="@+id/sizeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/playerNameTextView"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:text="Quantity: 1"
+        android:textColor="@color/colorPrimary" />
+    <TextView
+        android:id="@+id/quantityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sizeTextView"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/jerseyImageView"
+        android:text="Size: Small"
+        android:textColor="@color/colorPrimary" />
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quantityTextView"
         android:layout_margin="5dp"
         android:layout_toRightOf="@id/jerseyImageView"
         android:text="Price: $99.99"

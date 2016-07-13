@@ -6,15 +6,17 @@ package gg.patrickcummins.myapplication;
  * Created by patrickcummins on 7/12/16.
  */
 public class CartItem {
-    String playerName, color;
-    int picture;
+    String playerName, color, size;
+    int picture, quantity;
     double price;
-    public CartItem(String playerName, String color, int picture, double price) {
+    public CartItem(String playerName, String color, int picture, double price, int quantity, String size) {
 
         this.playerName = playerName;
         this.color = color;
         this.picture = picture;
         this.price = price;
+        this.quantity = quantity;
+        this.size = size;
     }
     public String getPlayerName() {
         return playerName;
@@ -46,6 +48,22 @@ public class CartItem {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
