@@ -18,12 +18,10 @@ import android.widget.TextView;
 
 
 public class ShoppingCartFragment extends Fragment {
-
-    DatabaseSingleton databaseSingleton;
+    DatabaseHelper databaseHelper;
     ListView listView;
     TextView textView;
     SetPriceAdapter setPriceAdapter;
-    DatabaseHelper myDb;
     Button removeButton;
 
 
@@ -33,9 +31,8 @@ public class ShoppingCartFragment extends Fragment {
 
         // Inflate the layout for this fragment
        // shoppingCartSingleton = ShoppingCartSingleton.getInstance();
-        databaseSingleton = DatabaseSingleton.getInstance();
+        databaseHelper = DatabaseHelper.getInstance(getContext());
 
-        myDb= DatabaseHelper.getInstance(getContext());
 
 
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
@@ -49,29 +46,30 @@ public class ShoppingCartFragment extends Fragment {
             }
         });
 
-
         //set to String
-        //textView.setText("Your total is $" + returnTotal()+"0");
+        textView.setText("Your total is $" + returnTotal()+"0");
         listView.setAdapter(setPriceAdapter);
         return view;
 
     }
 
-
-
-
-
-
     public double returnTotal() {
 
         double totalCost = 0;
+        Cursor cursor = databaseHelper.getShoppingCart();
 
-        for (int i = 0; i < databaseSingleton.getItems().size(); i++) {
-            double price = databaseSingleton.getItems().get(i).getPrice();
+        while(cursor.isAfterLast() ==false) {
+            double price = databaseHelper.getShoppingCart();
             totalCost = totalCost + price;
+            cursor.moveToNext();
+            cursor.close();
         }
         return totalCost;
     }
+//
+//        while (int i = 0; i < databaseHelper.getShoppingCart(); i++) {
+//            double price = databaseHelper.getShoppingCart().get(i).getPrice();
+//            totalCost = totalCost + price;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -79,7 +77,6 @@ public class ShoppingCartFragment extends Fragment {
         setRetainInstance(true);
 
     }
-
 
 }
 

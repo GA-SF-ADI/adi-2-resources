@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.database.Cursor;
@@ -83,6 +84,22 @@ public class DBAdapter extends CursorAdapter {
 
             }
         });
+//
+//        incrementButton = (Button) findViewById(R.id.increment_button_view);
+//        incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+//            public void onClick(View view) {
+//
+//            }
+//
+//        });
+//
+//        decrementButton = (Button) findViewById(R.id.decrement_button_view);
+//        decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+//            public void onClick(View view) {
+//
+//            }
+//
+//        });
 
     }
 };

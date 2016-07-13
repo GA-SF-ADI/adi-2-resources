@@ -40,7 +40,6 @@ public class SecondActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_second);
 
-
         super.onCreate(savedInstanceState);
 
         // badd bad bad, use a singleton.    DatabaseHelper.getInstance(this);
@@ -180,20 +179,5 @@ public class SecondActivity extends AppCompatActivity {
 //            }
 //        });
 
-        incrementButton = (Button) findViewById(R.id.increment_button_view);
-        incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
-            public void onClick(View view) {
-
-            }
-
-        });
-
-        decrementButton = (Button) findViewById(R.id.decrement_button_view);
-        decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
-            public void onClick(View view) {
-
-            }
-
-        });
     }
 }
