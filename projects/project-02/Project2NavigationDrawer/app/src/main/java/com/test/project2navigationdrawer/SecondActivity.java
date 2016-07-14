@@ -64,6 +64,7 @@ public class SecondActivity extends AppCompatActivity {
         DatabaseHelper helper = new DatabaseHelper(SecondActivity.this);
         Cursor cursor = helper.getJewelry();
 
+
     }
 
 
@@ -90,18 +91,27 @@ public class SecondActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Cursor jewelCursor = DatabaseHelper.getInstance(SecondActivity.this).getJewelry();
 
                 Log.d("Second Act", "onItemClick: item clicked");
 
                 Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
+                jewelCursor.moveToPosition(position);
+                intent.putExtra("id",jewelCursor.getInt(jewelCursor.getColumnIndex(DatabaseHelper.COL_1_ID)));
+//
+//                iconCursor.moveToPosition(position);
+//                intent.putExtra("id", iconCursor.getInt(iconCursor.getColumnIndex(IconSQLiteOpenHelper.COL_ID)));
                 startActivity(intent);
 
                 //does not go to third activity and does not display list
                 //cannot focus on the cell/list item
+                //tell what id is clicked
+                //use extras..put
             }
         });
 
-
+//detail view lesson:
+        //pass intent
 
         returnHomeButton = (Button) findViewById(R.id.return_home_button);
         returnHomeButton.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +163,7 @@ public class SecondActivity extends AppCompatActivity {
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
-        final Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, 1);
+        final Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, R.drawable.id1);
         Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
         Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
         Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);

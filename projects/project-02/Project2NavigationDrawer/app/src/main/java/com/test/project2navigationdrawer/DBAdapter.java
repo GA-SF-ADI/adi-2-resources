@@ -12,6 +12,9 @@ import android.widget.CursorAdapter;
 import android.database.Cursor;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by audreyeso on 7/11/16.
@@ -19,6 +22,9 @@ import android.widget.TextView;
 public class DBAdapter extends CursorAdapter {
 
     LayoutInflater layoutInflater;
+    Button incrementButton;
+    Button decrementButton;
+    String display;
 
     public DBAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
@@ -36,15 +42,18 @@ public class DBAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+        final TextView quantityText = (TextView) view.findViewById(R.id.quantity_text);
         TextView typeOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_type_of_jewelry);
         TextView priceOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_price_of_jewelry);
         TextView goldOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_gold_of_jewelry);
         TextView stoneOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_stone_of_jewelry);
         TextView measurementOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_measurement_of_jewelry);
-        TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
+        final TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
         TextView nameOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_name_of_jewelry);
         ImageView imageOfJewelry = (ImageView) view.findViewById(R.id.image_view_of_jewelry);
         Button addToCartButton = (Button) view.findViewById(R.id.add_button_to_shopping_cart);
+        incrementButton = (Button) view.findViewById(R.id.increment_button_view);
+        decrementButton = (Button) view.findViewById(R.id.decrement_button_view);
 
 
         final String type = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_2_TYPE));
@@ -56,52 +65,58 @@ public class DBAdapter extends CursorAdapter {
         final String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_8_NAME));
         final int jewelry = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE));
 
+
         Log.d(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.COL_9_IMAGE)) + "", "images");
 
+        //variables
         typeOfJewelryTextView.setText(type);
         priceOfJewelryTextView.setText(Double.toString(price));
         goldOfJewelryTextView.setText(gold);
         stoneOfJewelryTextView.setText(stone);
         measurementOfJewelryTextView.setText(measurement);
-        //quantityOfJewelryTextView.setText(quantity);
         nameOfJewelryTextView.setText(name);
         imageOfJewelry.setImageResource(jewelry);
+        quantityText.setText("0");
 
         //DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
 
-        final DatabaseHelper helper= DatabaseHelper.getInstance(context);
+        final DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // Insert this item into the Shopping cart table
-
-                // you can get this item
-//                helper.insertShippingCart(type, , , ,);
                 helper.insertShoppingCart(type, price, gold, stone, measurement, quantity, name, jewelry);
 
             }
         });
-//
-//        incrementButton = (Button) findViewById(R.id.increment_button_view);
-//        incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
-//            public void onClick(View view) {
-//
-//            }
-//
-//        });
-//
-//        decrementButton = (Button) findViewById(R.id.decrement_button_view);
-//        decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
-//            public void onClick(View view) {
-//
-//            }
-//
-//        });
+        decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+                String presentValStr = quantityText.getText().toString();
+                int presentIntVal = Integer.parseInt(presentValStr);
+                presentIntVal--;
+                quantityText.setText(String.valueOf(presentIntVal));
+
+            }
+
+        });
+
+        incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
+            public void onClick(View view) {
+
+                String presentValStr = quantityText.getText().toString();
+                int presentIntVal = Integer.parseInt(presentValStr);
+                presentIntVal++;
+                quantityText.setText(String.valueOf(presentIntVal));
+
+            }
+        });
 
     }
-};
+}
+
+
 
 

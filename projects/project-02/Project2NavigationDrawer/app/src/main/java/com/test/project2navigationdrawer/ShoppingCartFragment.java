@@ -50,6 +50,7 @@ public class ShoppingCartFragment extends Fragment {
                 //setPriceAdapter.notifyDataSetChanged();
                 //database does not change
                 //current total price of DB needs to be changed
+                //helper method in DB that does db.delete method
 
                 textView.setText("Your total is $" + price +"0");
 

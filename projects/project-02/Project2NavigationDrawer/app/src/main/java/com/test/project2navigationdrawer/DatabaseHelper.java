@@ -13,13 +13,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static DatabaseHelper databaseHelper;
 
+    //had to make Singleton
     public static DatabaseHelper getInstance(Context context) {
         if (databaseHelper == null)
             databaseHelper = new DatabaseHelper(context.getApplicationContext());
         return databaseHelper;
     }
 
-    private static final String TAG = "DBAdapter";
+    //table 1 for list of items
+    //private static final String TAG = "DBAdapter";
+
+    private static final String TAG = DatabaseHelper.class.getCanonicalName();
+
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Jewelry.db";
     public static final String TABLE_NAME = "jewelry_table";
@@ -33,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_8_NAME = "NAME";
     public static final String COL_9_IMAGE = "IMAGE";
 
-
+    //table 2 for shopping cart
     public static final String TABLE_NAME_SHOPPING_CART = "shopping_cart_table";
     public static final String COL_1_ID_SHOPPING_CART = "_id";
     public static final String COL_2_TYPE_SHOPPING_CART = "TYPE";
@@ -45,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_8_NAME_SHOPPING_CART = "NAME";
     public static final String COL_9_IMAGE_SHOPPING_CART = "IMAGE";
 
+    //columns
     public static final String[] SHOPPING_CART_COLUMNS = {COL_1_ID_SHOPPING_CART, COL_2_TYPE_SHOPPING_CART,
             COL_3_PRICE_SHOPPING_CART, COL_4_GOLD_SHOPPING_CART, COL_5_STONE_SHOPPING_CART, COL_6_MEASUREMENT_SHOPPING_CART,
             COL_7_QUANTITY_SHOPPING_CART, COL_8_NAME_SHOPPING_CART, COL_9_IMAGE_SHOPPING_CART};
@@ -86,6 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //execute tables
     @Override
     public void onCreate(SQLiteDatabase db) {
         //will execute query
@@ -151,14 +158,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Item getItemById(String id) {
+    public Item getItemById(int id) {
 
-        int x = Integer.parseInt(id);
+        //int x = Integer.parseInt(id);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, JEWELRY_COLUMNS,
-                COL_1_ID + " ?",
-                new String [] {String.valueOf(x)},
+                COL_1_ID +" = ?",
+                new String [] {String.valueOf(id)},
                 null,
                 null,
                 null,
@@ -194,6 +201,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //created so that user can search based on COL 2, 4, 5, and 8 only
     public Cursor searchShoppingList(String query) {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -213,5 +221,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return cursor;
     }
+
+    //remove all from table...
+    //db.delete method
 }
 
