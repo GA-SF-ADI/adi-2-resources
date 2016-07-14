@@ -1,3 +1,4 @@
+
 <resources>
     <string name="app_name">Snug</string>
     <string name="title_activity_single_hat_view">SingleHatViewActivity</string>
@@ -22,6 +23,7 @@
     <string name="Fitteds_only">Fitteds only</string>
     <string name="enter_lower_than_amount">Search for hats under a certain price</string>
     <string name="price_edittext">$</string>
+    <string name="no_combined_search_variables">Combined search not possible at the moment!\n(e.g. Giants AND fitted)</string>
 
 
     <string name="title_activity_search">SearchActivity</string>

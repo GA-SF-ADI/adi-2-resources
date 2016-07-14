@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SingleHatViewActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -39,21 +39,38 @@ public class SingleHatViewActivity extends AppCompatActivity {
         final TextView selectedHatMaterial = (TextView) findViewById(R.id.textview_single_hat_static_material_with_colon);
 
 
-//        TODO: Receive info about hat that was clicked on
+//        Receiving table position about the specific hat that was clicked on
+
+        Intent intent = getIntent();
+
+        int selectedHatPosition = intent.getIntExtra("hatPosition",-1);
+
+//        TODO: Pull required info from table for specific hat
+
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
+
+
+        Cursor cursor = hatDatabase.getSpecificHat(selectedHatPosition);
 
 
 //        TODO:Add hat ID and color too, for passing on to cart?
 
         //Setting the passed through data for the single hat being viewed
+        cursor.moveToFirst(); //<–TODO: Need to do more than just .moveToNext()? Close it?
+
+            selectedHatImage.setBackgroundResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+            selectedHatTitle.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+            selectedHatPrice.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
+            selectedHatDescription.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
+            selectedHatBack.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
+            selectedHatMaterial.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
 
 
-        selectedHatImage.setBackgroundResource(R.drawable.dodgers);
-        selectedHatTitle.setText("");
-        selectedHatPrice.setText("");
-        selectedHatDescription.setText("");
-        selectedHatBack.setText("");
-        selectedHatMaterial.setText("");
+
+        cursor.close();
+
+        Log.d("SingleHatViewActivity", "Cursor closed");
+
 
         //FAB for adding hat to cart
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
@@ -79,7 +96,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 
 
-        //Menu image button click listeners
+        /*//Menu image button click listeners
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,8 +106,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
             }
         });
-
-        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+*/
+      /*  searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -98,9 +115,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
-
-
+        });*/
 
 
     }

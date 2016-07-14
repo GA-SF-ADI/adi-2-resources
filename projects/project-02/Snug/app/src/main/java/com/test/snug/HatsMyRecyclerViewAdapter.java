@@ -30,13 +30,12 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
     public Cursor cursor;
     private ArrayList<Hat> hatDataSet;
     private Random mRandom = new Random();
-    private static MyClickListener myClickListener;
-    private AdapterView.OnItemClickListener mListener;
+    private static MyItemClickListener myItemClickListener;
 
-
-    public HatsMyRecyclerViewAdapter(Cursor cursor, Context mContext) {
+    public HatsMyRecyclerViewAdapter(Cursor cursor, Context mContext, MyItemClickListener myListener) {
         this.mContext = mContext;
         this.cursor = cursor;
+        this.myItemClickListener = myListener;
 
     }
 
@@ -57,17 +56,16 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
             price = (TextView) itemView.findViewById(R.id.textView_hat_price);
             image = (ImageView) itemView.findViewById(R.id.hat_photo);
 
-            CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
+            final CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {//<–– TODO: Ask if this is the right place for intent to be passed. Also ask about interface stuff...
+                    Log.d(LOG_TAG, "Clicked on hat at " + getAdapterPosition());
 
-                    Intent intent = new Intent(view.getContext(), SingleHatViewActivity.class);
-//                  intent.putExtra("table index position of clicked on hat", );
+                    myItemClickListener.onItemClick(getLayoutPosition());
 
 
-                    view.getContext().startActivity(intent);
                 }
             });
 
@@ -77,22 +75,18 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
         @Override
         public void onClick(View v) {
 
-            Log.d(LOG_TAG, "Clicked on hat at " + getAdapterPosition());
-
 
         }
 
     }
 
-    public void setOnItemClickListener(MyClickListener myClickListener) {
-        this.myClickListener = myClickListener;
 
+    public interface MyItemClickListener {
+
+        void onItemClick(int position);
 
     }
 
-    public interface mClickListener {
-        void mClick(View v, int position);
-    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -140,10 +134,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
     public int getItemCount() {
         return cursor.getCount();
 
-    }
-
-    public interface MyClickListener {
-        public void onItemClick(int position, View v);
     }
 
 }

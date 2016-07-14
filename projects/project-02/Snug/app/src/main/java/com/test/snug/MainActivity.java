@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HatsMyRecyclerViewAdapter.MyItemClickListener {
 
     private List<Hat> hatList = new ArrayList<>();
 
@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Main Activity";
-
-
+    Cursor cursor;
 
 
     @Override
@@ -48,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-        Cursor cursor = db.getNumOfCartItems();
 
+        cursor = db.getNumOfCartItems();
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
             redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
 
-            cartItemCounter.setText(String.valueOf(cursor.getCount()-1));
+            cartItemCounter.setText(String.valueOf(cursor.getCount() - 1));
 
         } else {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
             Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
-            mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context);
+            mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
 
             Log.d(LOG_TAG, "mAdapter created");
 
@@ -129,6 +128,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    //Getting hat table position of individual recyclerview hat that was clicked on
+
+    @Override
+    public void onItemClick(int position) {
+
+
+
+        HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
+
+        Log.d(LOG_TAG, "position of hat is: " + position);
+
+        Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
+
+        intent.putExtra("hatPosition",position);
+
+        Log.d(LOG_TAG, "position of hat is: " + position + " and " +
+                hatDatabase.getSpecificHat(position) + " has been put into the intent");
+
+
+        startActivity(intent);
 
 
     }

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
@@ -34,6 +35,8 @@ public class SearchActivity extends AppCompatActivity {
 
         final RadioButton fittedRadioButton = (RadioButton) findViewById(R.id.fitted_cap_radio_button);
         final RadioButton snapbackRadioButton = (RadioButton) findViewById(R.id.snapback_cap_radio_button);
+        final Button clearSearchButton = (Button) findViewById(R.id.button_clear_search_paramaters);
+
 
         final EditText priceMax = (EditText) findViewById(R.id.editText_price);
         final EditText requestedTeam = (EditText) findViewById(R.id.auto_search_description_etc);
@@ -104,6 +107,19 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        //Clearing search paramaters when "Clear Search" button is clicked
+
+        clearSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ((MultiAutoCompleteTextView) findViewById(R.id.auto_search_description_etc)).setText("");
+                ((RadioButton) findViewById(R.id.fitted_cap_radio_button)).setChecked(false);
+                ((RadioButton) findViewById(R.id.snapback_cap_radio_button)).setChecked(false);
+                ((EditText) findViewById(R.id.editText_price)).setText("");
+            }
+        });
+
 
         //Grabbing unique ArrayList of team names and eventually passing it to MultiAutoCompleteTextView and its cursor
 
@@ -122,6 +138,11 @@ public class SearchActivity extends AppCompatActivity {
         }
 
         Log.d(LOG_TAG, "ArrayList full with all team names");
+
+        cursor.close();
+
+        Log.d(LOG_TAG, "Cursor closed");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamNamesFromDatabaseArrayList);
 

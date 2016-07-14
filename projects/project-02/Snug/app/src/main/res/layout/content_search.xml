@@ -12,18 +12,30 @@
     tools:context="com.test.snug.SearchActivity"
     tools:showIn="@layout/activity_search">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="@string/no_combined_search_variables"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        android:textSize="11sp"
+        android:layout_marginBottom="31dp"
+        android:layout_above="@+id/auto_search_description_etc"
+        android:layout_centerHorizontal="true" />
+
 
     <MultiAutoCompleteTextView
         android:id="@+id/auto_search_description_etc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/snapback_cap_radio_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="36dp"
         android:hint="@string/hat_name_hint_text"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:layout_above="@+id/snapback_cap_radio_button"
+        android:layout_centerHorizontal="true" />
 
 
     <RadioButton
@@ -60,6 +72,17 @@
         android:layout_below="@+id/fitted_cap_radio_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="87dp" />
+
+    <Button
+
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear search"
+        android:id="@+id/button_clear_search_paramaters"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/editText_price"
+        android:layout_alignStart="@+id/editText_price" />
 
 
 </RelativeLayout>
