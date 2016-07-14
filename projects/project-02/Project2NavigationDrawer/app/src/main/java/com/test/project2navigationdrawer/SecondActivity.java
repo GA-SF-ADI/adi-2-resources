@@ -188,6 +188,7 @@ public class SecondActivity extends AppCompatActivity {
             Toast.makeText(SecondActivity.this, "Looking for " + query, Toast.LENGTH_SHORT).show();
             Cursor cursor = DatabaseHelper.getInstance(SecondActivity.this).searchShoppingList(query);
             customAdapter.changeCursor(cursor);
+
         }
 
     }

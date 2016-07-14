@@ -170,14 +170,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME, // a. table
-                JEWELRY_COLUMNS, // b. column names
-                COL_2_TYPE + " LIKE ?", // c. selections
-                new String[]{"%" + query + "%"}, // d. selections args
+
+        Cursor cursor = db.query(TABLE_NAME,
+                JEWELRY_COLUMNS,
+                        "_id LIKE" + "'%" + query + "%' OR " + COL_2_TYPE +
+                        " LIKE" + "'%" + query + "%' OR " + COL_4_GOLD +
+                        " LIKE" + "'%" + query + "%' OR " + COL_5_STONE +
+                        " LIKE" + "'%" + query + "%' OR " + COL_8_NAME +
+                        " LIKE" + "'%" + query + "%'",
                 null,
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
+                null,
+                null,
+                null,
+                null);
         return cursor;
     }
 }
