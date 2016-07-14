@@ -36,12 +36,15 @@ public class SecondActivity extends AppCompatActivity {
     Button featuredJewelryButton;
     Button returnHomeButton;
     TextView textViewSearch;
+    Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         setContentView(R.layout.activity_second);
+
 
         super.onCreate(savedInstanceState);
 

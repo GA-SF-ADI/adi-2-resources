@@ -24,16 +24,16 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_about_us, container, false);
         final TextView textView = (TextView) rootView.findViewById(R.id.about_us_text);
-        textView.setText("hi");
-        final Button mainButton = (Button) rootView.findViewById(R.id.about_us_button);
-        mainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
-            }
-        });
-        // Inflate the layout for this fragment
+        textView.setText("Welcome! This is a fake company. You cannot buy jewelry, but you CAN explore the app!");
+//        final Button mainButton = (Button) rootView.findViewById(R.id.about_us_button);
+//        mainButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
+//            }
+//        });
+//        // Inflate the layout for this fragment
         return rootView;
     }
 
