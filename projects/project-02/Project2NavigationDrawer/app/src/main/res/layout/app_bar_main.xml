@@ -16,7 +16,7 @@
             android:id="@+id/toolbar_1"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#000000"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <Button
@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:background="#000000"
                 android:fontFamily="casual"
                 android:text="Featured Jewelry"/>
 

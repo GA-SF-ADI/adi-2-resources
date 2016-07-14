@@ -9,8 +9,9 @@
 
     <item
         android:id="@+id/home_button"
-        android:icon="@android:drawable/ic_dialog_info"
+        android:icon="@android:drawable/ic_menu_compass"
         android:title="@string/home_button"
         app:showAsAction="ifRoom" />
+
 
 </menu>

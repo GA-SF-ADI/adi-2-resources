@@ -100,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String id, String type, double price, String gold, String stone, String measurement, String quantity, String name, int image) {
+    public void insert(String id, String type, double price, String gold, String stone, String measurement, String name, String quantity,int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();

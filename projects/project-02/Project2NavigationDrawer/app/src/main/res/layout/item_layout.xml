@@ -52,8 +52,8 @@
         android:id="@+id/text_view_name_of_jewelry"/>
 
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:textAllCaps="true"
         android:id="@+id/image_view_of_jewelry"/>
 
