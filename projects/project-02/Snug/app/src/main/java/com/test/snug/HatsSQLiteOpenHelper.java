@@ -178,27 +178,25 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-//    TODO: Create array of team names in the method below
+//    TODO: Adjust getHatTeams() method to remove multiples. Just want to have a list of 30 teams.
 
 
     public Cursor getHatTeams() {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
-                new String[]{HAT_COLUMN_HATNAME}, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
+        Cursor cursor = db.query(true, //a. set to true so that I only get unique team names
+                HAT_TABLE_NAME, // b. table
+                new String[]{HAT_COLUMN_HATNAME}, // c. column names
+                null, // d. selections
+                null, // e. selections args
+                null, // f. group by
+                null, // g. having
+                null, // h. order by
+                null); // i. limit
         return cursor;
 
 
     }
-
-
-//    TODO: Create method to return # of items in cart table
 
 
     public Cursor getNumOfCartItems() {

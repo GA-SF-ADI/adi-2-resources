@@ -101,8 +101,6 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-//    TODO: Remove Strings from cursor and put strings into Array to be passed into MultiAutoCompleteTextView adapter below
-
         Cursor cursor = db.getHatTeams();
 
         Log.d(LOG_TAG, "cursor created with getHatTeams()");
@@ -111,7 +109,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, "teamNamesFromDatabaseArrayList ArrayList created");
 
-        while (cursor.moveToNext()) {
+        while (cursor.moveToNext()) { //<–TODO: Need to do more than just .moveToNext()? Close it?
 
             teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
             Log.d(LOG_TAG, "team name pulled from cursor and added to ArrayList");
