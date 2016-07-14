@@ -28,26 +28,30 @@ public class MainActivity extends AppCompatActivity {
     private static String LOG_TAG = "Main Activity";
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        //Setting up views, toolbars, and binding data
+
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+
+        //Setting up database stuff
 
         SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-
         Cursor cursor = db.getNumOfCartItems();
 
+
+        //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
         if (cursor.getCount() > 0) {
 
@@ -58,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
             cartItemCounter.setText(String.valueOf(cursor.getCount()-1));
 
-
         } else {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        ////////////////////////////////////////////////////////////////////////////////
+        //Checking to see whether the hats table has already been created.
 
         if (sharedPreferences.contains("hatsAdded") == false) {
 
@@ -105,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
         }
 
+
+        //Menu image button click listeners
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Inserting all hats into the table
 
     private void insertHatData() {
 
@@ -238,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, "All hats inserted into database");
 
+        //Saving the hat insertions into sharedpreferences
+        
         SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("hatsAdded", "hatsin");

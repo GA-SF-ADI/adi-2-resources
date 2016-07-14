@@ -21,7 +21,7 @@ import java.util.Random;
 /**
  * Created by LangstonSmith on 7/9/16.
  */
-public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecyclerViewAdapter.DataObjectHolder>  {
+public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecyclerViewAdapter.ViewHolder> {
 
     private static String LOG_TAG = "HatsMyRecyclerViewAdapter";
 
@@ -40,7 +40,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
     }
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView fittedOrSnap;
@@ -49,7 +49,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
         CardView cardView;
 
 
-        public DataObjectHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             name = (TextView) itemView.findViewById(R.id.textView_hat_name);
@@ -59,7 +59,14 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
-            cardView.setOnClickListener(this);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {//<–– TODO: Ask if this is the right place for intent to be passed. Also ask about interface stuff...
+
+                    Intent intent = new Intent(view.getContext(), SingleHatViewActivity.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
 
 
         }
@@ -67,13 +74,13 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
         @Override
         public void onClick(View v) {
 
-            Log.i(LOG_TAG, "Clicked on hat");
+            Log.d(LOG_TAG, "Clicked on hat at " + getAdapterPosition());
 
 //            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE? Or do interface implementation from below via past ADI student?
 
 
-
         }
+
     }
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
@@ -83,30 +90,28 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
     }
 
 
-//    TODO: Interface method. Put interface in viewholder. Implement it in singel hat acivity
+//    TODO: Interface method. Put interface in viewholder. Implement it in single hat activity
 
     public interface mClickListener {
         void mClick(View v, int position);
     }
 
-
     @Override
-    public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout, parent, false);
 
-        DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
+        ViewHolder dataObjectHolder = new ViewHolder(view);
         return dataObjectHolder;
     }
 
     @Override
-    public void onBindViewHolder(DataObjectHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
         cursor.moveToPosition(position);
 
         holder.name.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
         holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-        holder.price.setText(R.string.currency_symbol_on_card_view +
-                cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));//<–Ask about this yellow area
+        holder.price.setText("$" + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));//<–Ask about this yellow area
         holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
 
 

@@ -26,7 +26,8 @@
         android:scaleType="centerCrop"
         android:scaleX="3"
         android:scaleY="3" />
-    <!--android:src="@drawable/giants"-->
+
+
     <TextView
         android:id="@+id/textView_single_hat_title"
         android:layout_width="wrap_content"
@@ -44,8 +45,8 @@
         android:layout_below="@+id/textView_single_hat_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:textColor="@color/colorPrimaryDark"
         android:text="@string/Single_hat_price"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
 
     <TextView

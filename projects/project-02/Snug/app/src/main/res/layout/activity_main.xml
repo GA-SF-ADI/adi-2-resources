@@ -46,8 +46,7 @@
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="-7dp"
                     android:scaleX=".6"
-                    android:scaleY=".6"
-                    android:src="@drawable/red_circle" />
+                    android:scaleY=".6" />
 
                 <TextView
                     android:id="@+id/textview_num_of_hats_in_cart"
@@ -57,7 +56,6 @@
                     android:layout_marginStart="33dp"
                     android:layout_marginTop="4dp"
                     android:textColor="#FFFFFF"
-                    android:text="11"
                     android:textSize="12sp" />
             </FrameLayout>
 

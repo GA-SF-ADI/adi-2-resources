@@ -12,23 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SingleHatViewActivity extends AppCompatActivity implements HatsMyRecyclerViewAdapter.mClickListener {
-
-    @Override
-    public void mClick(View v, int position) {
-
-        final Intent intent = new Intent(this, SingleHatViewActivity.class);
+public class SingleHatViewActivity extends AppCompatActivity {
 
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
-
 
 
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -37,6 +30,10 @@ public class SingleHatViewActivity extends AppCompatActivity implements HatsMyRe
         final TextView selectedHatDescription = (TextView) findViewById(R.id.textview_single_hat_static_description_with_colon);
         final TextView selectedHatBack = (TextView) findViewById(R.id.textview_single_hat_static_back);
         final TextView selectedHatMaterial = (TextView) findViewById(R.id.textview_single_hat_static_material_with_colon);
+
+
+//        TODO: Receive info about hat that was clicked on
+        HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
 
 //        TODO:Add hat ID and color too, for passing on to cart?
@@ -62,7 +59,6 @@ public class SingleHatViewActivity extends AppCompatActivity implements HatsMyRe
 //                TODO: Figure out to add particular hat to the cart
 
 
-
 //                Cursor cursor = db.addHatToCart();
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
@@ -72,12 +68,7 @@ public class SingleHatViewActivity extends AppCompatActivity implements HatsMyRe
         });
 
 
-
-
-
-
     }
-
 
 
 }
