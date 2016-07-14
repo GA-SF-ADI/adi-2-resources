@@ -21,6 +21,10 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     private static String LOG_TAG = "SearchActivity";
 
+    private static final String TAG = "SearchActivity";
+    private static final boolean VERBOSE = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,4 +169,36 @@ public class SearchActivity extends AppCompatActivity {
 
 //        Cursor cursor = db.getHatTeams(userSearchTeamRequest);
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+    }
+
 }
+
+

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CursorAdapter;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
+    private static final String TAG = "ShoppingCartActivity";
+    private static final boolean VERBOSE = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,36 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 */
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
     }
 
 }

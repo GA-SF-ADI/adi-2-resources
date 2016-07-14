@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Main Activity";
     Cursor cursor;
+    private static final String TAG = "MainActivity";
+    private static final boolean VERBOSE = true;
 
 
     @Override
@@ -138,14 +140,13 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     public void onItemClick(int position) {
 
 
-
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
         Log.d(LOG_TAG, "position of hat is: " + position);
 
         Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
 
-        intent.putExtra("hatPosition",position);
+        intent.putExtra("hatPosition", position);
 
         Log.d(LOG_TAG, "position of hat is: " + position + " and " +
                 hatDatabase.getSpecificHat(position) + " has been put into the intent");
@@ -277,5 +278,44 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     }
 
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+
+//        TODO: Show search results IF user came from search activity
+
+
+
+
+
+
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+    }
 }
+
 

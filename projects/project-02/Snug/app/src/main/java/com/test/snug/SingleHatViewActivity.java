@@ -16,11 +16,15 @@ import android.widget.Toast;
 
 public class SingleHatViewActivity extends AppCompatActivity {
 
+    private static final String TAG = "SingleHatViewActivity";
+    private static final boolean VERBOSE = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
+        if (VERBOSE) Log.e(TAG, "+++ ON CREATE +++");
+
 
         //Setting up views, toolbars, and binding data
 
@@ -43,29 +47,22 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int selectedHatPosition = intent.getIntExtra("hatPosition",-1);
-
-//        TODO: Pull required info from table for specific hat
+        int selectedHatPosition = intent.getIntExtra("hatPosition", -1);
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
-
         Cursor cursor = hatDatabase.getSpecificHat(selectedHatPosition);
 
-
-//        TODO:Add hat ID and color too, for passing on to cart?
-
         //Setting the passed through data for the single hat being viewed
-        cursor.moveToFirst(); //<–TODO: Need to do more than just .moveToNext()? Close it?
 
-            selectedHatImage.setBackgroundResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
-            selectedHatTitle.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
-            selectedHatPrice.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
-            selectedHatDescription.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
-            selectedHatBack.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-            selectedHatMaterial.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
+        cursor.moveToFirst();
 
-
+        selectedHatImage.setBackgroundResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+        selectedHatTitle.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+        selectedHatPrice.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
+        selectedHatDescription.setText("Description: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
+        selectedHatBack.setText("Hat back is: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
+        selectedHatMaterial.setText("Material: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
 
         cursor.close();
 
@@ -91,6 +88,9 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
 
                 startActivity(intent);
+
+                onStop();
+
             }
         });
 
@@ -120,5 +120,35 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+    }
 }
+
+
