@@ -208,6 +208,7 @@ public class Helper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //get all comments for product
     public Cursor getTPComment(int TPid) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -244,6 +245,16 @@ public class Helper extends SQLiteOpenHelper {
                 " ON [" + TP_TABLE_NAME + "]." + COL_ID + " = " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID;
         Cursor cursor = db.rawQuery(query, null);
         return cursor;
+    }
+
+    // remove item from cart
+    public int deleteItemFromCart(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        int deleteNum = db.delete(SHOPPING_CART_TABLE_NAME,
+                COL_CART_ID + " = ?",
+                new String[]{String.valueOf(id)});
+        db.close();
+        return deleteNum;
     }
 }
 

@@ -121,9 +121,13 @@ public class DetailFragment extends Fragment {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.getWritableDatabase();
+            db.getWritableDatabase();
+            if (quantity <1) {
+                Toast.makeText(getContext(), "Please select a quantity", Toast.LENGTH_SHORT).show();
+            } else {
                 db.addItemToCart(db.getTPID(mTP.getName()), quantity);
                 Toast.makeText(getContext(), "Item added to your cart!", Toast.LENGTH_SHORT).show();
+            }
             }
         });
 
