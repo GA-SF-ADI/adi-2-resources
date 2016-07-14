@@ -52,5 +52,5 @@ public class MainActivityTests {
         onView(withId(R.id.cartFab)).perform(click());
         onView(withId(R.id.checkoutButton)).perform(click());
     }
-    
+
 }
