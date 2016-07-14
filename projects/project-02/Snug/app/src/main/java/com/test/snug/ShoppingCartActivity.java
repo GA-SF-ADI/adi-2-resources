@@ -61,7 +61,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
-        deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
+        /*deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -71,7 +71,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
             }
         });
-
+*/
 
     }
 

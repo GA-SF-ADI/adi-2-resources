@@ -66,7 +66,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             Log.i(LOG_TAG, "Clicked on hat");
 
-//            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE!!!!
+//            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE? Or do interface implementation from below via past ADI student?
 
 
         }
@@ -74,8 +74,13 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
+
+
+
     }
 
+
+//    TODO: Interface method. Put interface in viewholder. Implement it in singel hat acivity
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -120,7 +125,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
     @Override
     public int getItemCount() {
-        Log.d(LOG_TAG, cursor.getCount() + "");
         return cursor.getCount();
 
     }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import android.widget.RadioButton;
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
+    private static String LOG_TAG = "SearchActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 startActivity(intent);
 
+                onStop();
 
             }
         });
@@ -102,22 +105,36 @@ public class SearchActivity extends AppCompatActivity {
 
         Cursor cursor = db.getHatTeams();
 
+        Log.d(LOG_TAG, "cursor created with getHatTeams()");
+
         ArrayList<String> teamNamesFromDatabaseArrayList = new ArrayList<String>();
 
+        Log.d(LOG_TAG, "teamNamesFromDatabaseArrayList ArrayList created");
 
         while (!cursor.isAfterLast()) {
 
             teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
-
-
+            Log.d(LOG_TAG, "team name pulled from cursor and added to ArrayList");
         }
 
+        Log.d(LOG_TAG, "ArrayList full with all team names");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, teamNamesFromDatabaseArrayList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamNamesFromDatabaseArrayList);
+
+        Log.d(LOG_TAG, "MultiAutoCompleteTextView created");
 
         MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) findViewById(R.id.auto_search_description_etc);
+
+        Log.d(LOG_TAG, "MultiAutoCompleteTextView view binded to activity");
+
         textView.setAdapter(adapter);
+
+        Log.d(LOG_TAG, "MultiAutoCompleteTextView adapter created");
+
         textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+        Log.d(LOG_TAG, "Tokenizer set");
+
 
     }
 
