@@ -173,9 +173,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()) {
         Item customerItem = new Item(
+                cursor.getString(cursor.getColumnIndex(COL_1_ID)),
                 cursor.getString(cursor.getColumnIndex(COL_2_TYPE)),
-                cursor.getString(cursor.getColumnIndex(COL_3_PRICE)),
-                cursor.getDouble(cursor.getColumnIndex(COL_4_GOLD)),
+                cursor.getDouble(cursor.getColumnIndex(COL_3_PRICE)),
+                cursor.getString(cursor.getColumnIndex(COL_4_GOLD)),
                 cursor.getString(cursor.getColumnIndex(COL_5_STONE)),
                 cursor.getString(cursor.getColumnIndex(COL_6_MEASUREMENT)),
                 cursor.getString(cursor.getColumnIndex(COL_8_NAME)),
@@ -222,22 +223,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor deleteAll () {
+    public void deleteAll () {
         SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_SHOPPING_CART, null, null);
 
-
-        Cursor cursor = db.query(TABLE_NAME, // a. table
-                SHOPPING_CART_COLUMNS, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-
-        db.delete(TABLE_NAME, null, null);
-
-        return cursor;
     }
 
     //remove all from table...

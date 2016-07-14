@@ -19,17 +19,20 @@ public class ThirdActivity extends AppCompatActivity {
         if (id >= 0) {
            Item myItem = DatabaseHelper.getInstance(ThirdActivity.this).getItemById(id);
             TextView textView = (TextView) findViewById(R.id.third_activity_text_price);
-            textView.setText("Price = $" + myItem.getType() + ".00");
+            textView.setText("Price = $" + myItem.getPrice() + ".00");
             TextView textView1 = (TextView) findViewById(R.id.third_activity_text_name);
-            textView1.setText("Type " + myItem.getType());
+            textView1.setText(myItem.getType());
             TextView textView2 = (TextView) findViewById(R.id.third_activity_text_gold);
             textView2.setText(myItem.getGold());
             TextView textView3 = (TextView) findViewById(R.id.third_activity_text_stone);
             textView3.setText(myItem.getStone());
-
             //IMAGE DOES NOT WORK
-            //ImageView imageView = (ImageView) findViewById(R.id.third_actvity_image);
-            //imageView.setImageResource(myItem.getImage());
+            ImageView imageView = (ImageView) findViewById(R.id.third_activity_image);
+            imageView.setImageResource(myItem.getImage());
+
+
+
+
         }
 
 

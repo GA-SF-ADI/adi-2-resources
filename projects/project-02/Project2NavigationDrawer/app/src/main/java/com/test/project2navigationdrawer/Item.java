@@ -13,19 +13,21 @@ public class Item implements Serializable {
     double price;
     String gold;
     String stone;
+    String name;
     String measurement;
     int quantity;
-    String image;
+   int image;
 
 
-public Item (String id, String type, double price, String gold, String stone, String measurement, int quantity) {
+public Item (String id, String type, double price, String gold, String stone, String measurement, String name, int image) {
     this.id = id;
     this.type = type;
     this.price = price;
     this.gold = gold;
     this.stone = stone;
+    this.name =name;
     this.measurement = measurement;
-    this.quantity =quantity;
+    this.image = image;
 
 }
 
@@ -89,11 +91,19 @@ public Item (String id, String type, double price, String gold, String stone, St
         this.quantity = quantity;
     }
 
-    public String getImage() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 }

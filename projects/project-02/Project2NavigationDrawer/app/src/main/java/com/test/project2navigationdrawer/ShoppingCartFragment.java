@@ -46,13 +46,9 @@ public class ShoppingCartFragment extends Fragment {
         removeButton.setOnClickListener(new AdapterView.OnClickListener() {
             public void onClick(View view) {
 
-                Cursor cursor = databaseHelper.deleteAll();
-                cursor.moveToFirst();
-
+               databaseHelper.deleteAll();
                 price = 0;
                 textView.setText("Your total is $" + price + "0" );
-                cursor.moveToNext();
-                cursor.close();
 
             }
         });

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,94 +11,91 @@
         android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_type_of_jewelry"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:fontFamily="casual"
-        android:textAllCaps="true"
-        android:id="@+id/text_view_price_of_jewelry"/>
+    <!--
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="#000000"
+      android:fontFamily="casual"
+      android:textAllCaps="true"
+      android:id="@+id/text_view_price_of_jewelry"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:id="@+id/text_view_gold_of_jewelry"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:id="@+id/text_view_stone_of_jewelry"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:id="@+id/text_view_measurement_of_jewelry"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:textAllCaps="true"
-        android:id="@+id/text_view_name_of_jewelry"/>
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:textAllCaps="true"
-        android:id="@+id/image_view_of_jewelry"/>
-
-    <Button
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:id="@+id/add_button_to_shopping_cart"
-        android:textAllCaps="true"
-        android:focusable="false"
-        android:text="ADD TO SHOPPING CART"/>
-
-    <Button
-        android:id="@+id/increment_button_view"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:fontFamily="casual"
-        android:layout_alignParentRight="true"
-        android:focusable="false"
-        android:textAllCaps="true"
-        android:onClick="increment"
-        android:textAlignment="center"
-        android:text="+" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:textColor="#000000"
-        android:id="@+id/quantity_text"
-        android:textAllCaps="true"
-        android:text="QUANTITY ="/>
-
-    <Button
-        android:id="@+id/decrement_button_view"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="decrement"
-        android:fontFamily="casual"
-        android:focusable="false"
-        android:textAllCaps="true"
-        android:layout_alignParentRight="true"
-        android:textAlignment="center"
-        android:text="-" />
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:textAllCaps="true"
+      android:id="@+id/text_view_gold_of_jewelry"/>
 
 
-</LinearLayout>
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:textAllCaps="true"
+      android:id="@+id/text_view_stone_of_jewelry"/>
+
+  -->
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:textAllCaps="true"
+      android:id="@+id/text_view_name_of_jewelry"/>
+
+  <ImageView
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+      android:textAllCaps="true"
+      android:id="@+id/image_view_of_jewelry"/>
+
+  <Button
+      android:layout_height="wrap_content"
+      android:layout_width="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:id="@+id/add_button_to_shopping_cart"
+      android:textAllCaps="true"
+      android:focusable="false"
+      android:text="ADD TO SHOPPING CART"/>
+
+
+  <Button
+      android:id="@+id/increment_button_view"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:fontFamily="casual"
+      android:layout_alignParentRight="true"
+      android:focusable="false"
+      android:textAllCaps="true"
+      android:onClick="increment"
+      android:textAlignment="center"
+      android:text="+" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:id="@+id/quantity_text"
+      android:textAllCaps="true"
+      android:text="QUANTITY ="/>
+
+  <Button
+      android:id="@+id/decrement_button_view"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:onClick="decrement"
+      android:fontFamily="casual"
+      android:focusable="false"
+      android:textAllCaps="true"
+      android:layout_alignParentRight="true"
+      android:textAlignment="center"
+      android:text="-" />
+
+
+  </LinearLayout>

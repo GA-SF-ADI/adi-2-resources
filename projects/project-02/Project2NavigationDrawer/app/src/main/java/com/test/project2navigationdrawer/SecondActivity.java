@@ -79,7 +79,7 @@ public class SecondActivity extends AppCompatActivity {
         String[] fromFieldNames = new String[]
                 {myDb.COL_2_TYPE, myDb.COL_3_PRICE};
         int[] toViewIds = new int[]
-                {R.id.text_view_type_of_jewelry, R.id.text_view_price_of_jewelry};
+                {R.id.text_view_type_of_jewelry};
         //create adapter to map columns of DB
 
         customAdapter = new DBAdapter(this, cursor, 0);
@@ -163,15 +163,15 @@ public class SecondActivity extends AppCompatActivity {
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
-        final Item item1 = new Item("1", "bracelet", 49.00, "yellow gold", "ruby", null, R.drawable.id1);
-        Item item2 = new Item("2", "bracelet", 79.00, "white gold", "diamond", null, 1);
-        Item item3 = new Item("3", "bracelet", 89.00, "platinum", "diamond", null, 1);
-        Item item4 = new Item("4", "earrings", 49.00, "yellow gold", "ruby", null, 1);
-        Item item5 = new Item("5", "earrings", 79.00, "white gold", "diamond", null, 1);
-        Item item6 = new Item("6", "earrings", 89.00, "platinum", "diamond", null, 1);
-        Item item7 = new Item("7", "necklace", 49.00, "yellow gold", "ruby", null, 1);
-        Item item8 = new Item("8", "necklace", 79.00, "white gold", "diamond", null, 1);
-        Item item9 = new Item("9", "necklace", 89.00, "platinum", "diamond", null, 1);
+        final Item item1 = new Item("1", "bracelet", 1490.00, "yellow gold", "ruby", null, "striking collection", R.drawable.id1);
+        Item item2 = new Item("2", "bracelet", 5790.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id2);
+        Item item3 = new Item("3", "bracelet", 1890.00, "platinum", "sapphire", null, "Classic Collection", R.drawable.id3);
+        Item item4 = new Item("4", "earrings", 4049.00, "platinum", "diamond", null, "Striking Collection", R.drawable.id4);
+        Item item5 = new Item("5", "earrings", 879.00, "white gold", "sapphire", null, "Elegant Collection", R.drawable.id5);
+        Item item6 = new Item("6", "earrings", 989.00, "yellow gold", "ruby", null, "Classic Collection", R.drawable.id6);
+        Item item7 = new Item("7", "necklace", 8049.00, "yellow gold", "emerald", null, "Striking Collection", R.drawable.id7);
+        Item item8 = new Item("8", "necklace", 6079.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id8);
+        Item item9 = new Item("9", "necklace", 1089.00, "yellow gold", "sapphire", null, "Classic Collection", R.drawable.id9);
 
         myItems.add(item1);
         myItems.add(item2);

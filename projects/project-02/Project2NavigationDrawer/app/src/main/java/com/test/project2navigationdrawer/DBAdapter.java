@@ -44,10 +44,10 @@ public class DBAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         final TextView quantityText = (TextView) view.findViewById(R.id.quantity_text);
         TextView typeOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_type_of_jewelry);
-        TextView priceOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_price_of_jewelry);
-        TextView goldOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_gold_of_jewelry);
-        TextView stoneOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_stone_of_jewelry);
-        TextView measurementOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_measurement_of_jewelry);
+       // TextView priceOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_price_of_jewelry);
+        //TextView goldOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_gold_of_jewelry);
+        //TextView stoneOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_stone_of_jewelry);
+        //TextView measurementOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_measurement_of_jewelry);
         //final TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
         TextView nameOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_name_of_jewelry);
         ImageView imageOfJewelry = (ImageView) view.findViewById(R.id.image_view_of_jewelry);
@@ -70,10 +70,10 @@ public class DBAdapter extends CursorAdapter {
 
         //variables
         typeOfJewelryTextView.setText(type);
-        priceOfJewelryTextView.setText(Double.toString(price));
-        goldOfJewelryTextView.setText(gold);
-        stoneOfJewelryTextView.setText(stone);
-        measurementOfJewelryTextView.setText(measurement);
+        //priceOfJewelryTextView.setText(Double.toString(price));
+        //goldOfJewelryTextView.setText(gold);
+        //stoneOfJewelryTextView.setText(stone);
+        //measurementOfJewelryTextView.setText(measurement);
         nameOfJewelryTextView.setText(name);
         imageOfJewelry.setImageResource(jewelry);
         quantityText.setText("0");
