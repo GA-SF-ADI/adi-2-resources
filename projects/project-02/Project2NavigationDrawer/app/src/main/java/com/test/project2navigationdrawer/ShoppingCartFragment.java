@@ -25,6 +25,8 @@ public class ShoppingCartFragment extends Fragment {
     SetPriceAdapter setPriceAdapter;
     Button removeButton;
 
+    double totalCost;
+    double price;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +45,13 @@ public class ShoppingCartFragment extends Fragment {
 
         removeButton.setOnClickListener(new AdapterView.OnClickListener() {
             public void onClick(View view) {
+                Log.d("IUSBIUABFDB", "onClick: clicked");
+                price = 0;
+                //setPriceAdapter.notifyDataSetChanged();
+                //database does not change
+                //current total price of DB needs to be changed
+
+                textView.setText("Your total is $" + price +"0");
 
             }
         });
@@ -56,13 +65,13 @@ public class ShoppingCartFragment extends Fragment {
 
     public double returnTotal() {
 
-        double totalCost = 0;
+        totalCost = 0;
         Cursor cursor = databaseHelper.getShoppingCart();
         Log.d("cursor", " "+ cursor.getCount());
         cursor.moveToFirst();
 
         while(cursor.isAfterLast() == false) {
-           double price = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE_SHOPPING_CART));
+           price = cursor.getDouble(cursor.getColumnIndex(DatabaseHelper.COL_3_PRICE_SHOPPING_CART));
             Log.d("price", " " + price);
             totalCost = totalCost + price;
             cursor.moveToNext();
