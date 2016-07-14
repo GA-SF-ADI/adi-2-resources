@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
-        if (cursor.getCount() > 0) {
+        /*if (cursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
 
-        }
+        }*/
 
         //Checking to see whether the hats table has already been created.
 

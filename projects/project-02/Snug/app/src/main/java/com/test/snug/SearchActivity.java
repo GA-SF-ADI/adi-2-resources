@@ -109,34 +109,57 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
 
 
+//                TODO: Make toast telling people to only do one search parameter!
+
 //                TODO: Grab any inputted teams
 
-                if (!userSearchTeamRequest.isEmpty()) {
+                if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
+
+                    intent = new Intent(SearchActivity.this, MainActivity.class);
+
+//                    intent.putExtra("userSearchTeamRequest", priceMaxRequest); <–– TODO: Need to figure out how to pass this through
+
+                    Toast.makeText(SearchActivity.this, "The max price is" + userSearchTeamRequest, Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+
 
                 }
 
-                intent.putExtra("userSearchTeamRequest", userSearchTeamRequest);
+
+                if (userSearchTeamRequest.isEmpty() && fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
+
+                    intent = new Intent(SearchActivity.this, MainActivity.class);
+
+                    intent.putExtra("fittedRadioButton is checked", fittedRadioButton.isChecked());
+
+                    Toast.makeText(SearchActivity.this, "The fittedRadioButton button is clicked", Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
 
 
-                if (fittedRadioButton.isChecked()) {
+                } else if (userSearchTeamRequest.isEmpty() && snapbackRadioButton.isChecked() && !fittedRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
 
-//                    TODO: Fill this out!
+                    intent = new Intent(SearchActivity.this, MainActivity.class);
 
-                } else if (snapbackRadioButton.isChecked()) {
+                    intent.putExtra("snapbackRadioButton is checked", snapbackRadioButton.isChecked());
 
-//                    TODO: Fill this out!
+                    Toast.makeText(SearchActivity.this, "The snapbackRadioButton button is clicked", Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+
+
                 }
 
 //                TODO: Check for a max price
 
-                if (!priceMaxRequest.isEmpty()) {
+                if (!priceMaxRequest.isEmpty() && userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked()) {
 
                     intent = new Intent(SearchActivity.this, MainActivity.class);
 
                     intent.putExtra("priceMaxRequest", priceMaxRequest);
 
                     Toast.makeText(SearchActivity.this, "The max price is" + priceMaxRequest, Toast.LENGTH_SHORT).show();
-
 
                     startActivity(intent);
 
@@ -169,7 +192,6 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         //Grabbing unique ArrayList of team names and eventually passing it to MultiAutoCompleteTextView and its cursor
