@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
+import android.widget.TextView;
 
 
 public class MainFragment extends Fragment {
@@ -22,7 +22,8 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
+        final TextView textView = (TextView) rootView.findViewById(R.id.main_text);
+        textView.setText("hi");
         final Button mainButton = (Button) rootView.findViewById(R.id.main_button);
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,11 +34,5 @@ public class MainFragment extends Fragment {
         });
         // Inflate the layout for this fragment
         return rootView;
-    }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

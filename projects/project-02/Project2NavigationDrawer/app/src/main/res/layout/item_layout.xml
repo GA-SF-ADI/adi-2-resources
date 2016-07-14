@@ -6,52 +6,71 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_type_of_jewelry"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_price_of_jewelry"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_gold_of_jewelry"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_stone_of_jewelry"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_measurement_of_jewelry"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_quantity_of_jewelry"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_name_of_jewelry"/>
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:textAllCaps="true"
         android:id="@+id/image_view_of_jewelry"/>
 
     <Button
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:fontFamily="casual"
         android:id="@+id/add_button_to_shopping_cart"
+        android:textAllCaps="true"
         android:text="ADD TO SHOPPING CART"/>
 
     <Button
         android:id="@+id/increment_button_view"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:fontFamily="casual"
         android:layout_alignParentRight="true"
+        android:textAllCaps="true"
         android:onClick="increment"
         android:textAlignment="center"
         android:text="+" />
@@ -59,7 +78,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:id="@+id/quantity_text"
+        android:textAllCaps="true"
         android:text="QUANTITY ="/>
 
     <Button
@@ -67,6 +88,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:onClick="decrement"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:layout_alignParentRight="true"
         android:textAlignment="center"
         android:text="-" />

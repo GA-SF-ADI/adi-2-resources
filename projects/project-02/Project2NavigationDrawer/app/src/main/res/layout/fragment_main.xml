@@ -10,11 +10,19 @@
         android:text="MAIN"
         android:padding="8dp"
         android:textColor="#fff"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:background="@color/colorPrimary"
         android:textSize="28sp"
         android:id="@+id/main_button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="main"
+        android:id="@+id/main_text"
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

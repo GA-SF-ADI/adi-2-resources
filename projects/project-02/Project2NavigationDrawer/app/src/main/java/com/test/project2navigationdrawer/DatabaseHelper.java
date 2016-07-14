@@ -151,6 +151,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Item getItemById(String id) {
+
+        int x = Integer.parseInt(id);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME, JEWELRY_COLUMNS,
+                COL_1_ID + " ?",
+                new String [] {String.valueOf(x)},
+                null,
+                null,
+                null,
+                null);
+
+        if(cursor.moveToFirst()) {
+        Item customerItem = new Item(
+                cursor.getString(cursor.getColumnIndex(COL_2_TYPE)),
+                cursor.getString(cursor.getColumnIndex(COL_3_PRICE)),
+                cursor.getDouble(cursor.getColumnIndex(COL_4_GOLD)),
+                cursor.getString(cursor.getColumnIndex(COL_5_STONE)),
+                cursor.getString(cursor.getColumnIndex(COL_6_MEASUREMENT)),
+                cursor.getString(cursor.getColumnIndex(COL_8_NAME)),
+                cursor.getInt(cursor.getColumnIndex(COL_9_IMAGE)));
+                return customerItem;
+        } else {
+            return null;
+        }
+    }
+
     public Cursor getShoppingCart() {
 
         SQLiteDatabase db = this.getReadableDatabase();

@@ -15,6 +15,8 @@
     <Button
         android:id="@+id/shopping_cart_button"
         android:layout_width="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:layout_height="wrap_content"
         android:text="shopping cart" />
 
@@ -23,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/shopping_cart_button"
+        android:textAllCaps="true"
         android:fontFamily="casual"
         android:text="Featured Jewelry" />
 
@@ -30,6 +33,8 @@
         android:id="@+id/return_home_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:fontFamily="casual"
         android:layout_toRightOf="@+id/featured_jewelry_button_second_act"
         android:text="HOME" />
 
@@ -37,11 +42,15 @@
         android:id="@+id/second_activity_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:textAllCaps="true"
+        android:fontFamily="casual"
         android:layout_below="@+id/shopping_cart_button"></ListView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:id="@+id/text_view_search"/>
 
 
@@ -49,6 +58,7 @@
         android:id="@+id/fragment_container_second_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"></FrameLayout>
 

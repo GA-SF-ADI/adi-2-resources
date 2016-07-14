@@ -63,7 +63,7 @@ public class DBAdapter extends CursorAdapter {
         goldOfJewelryTextView.setText(gold);
         stoneOfJewelryTextView.setText(stone);
         measurementOfJewelryTextView.setText(measurement);
-        quantityOfJewelryTextView.setText(quantity);
+        //quantityOfJewelryTextView.setText(quantity);
         nameOfJewelryTextView.setText(name);
         imageOfJewelry.setImageResource(jewelry);
 

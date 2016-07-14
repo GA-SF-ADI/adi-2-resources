@@ -4,6 +4,13 @@ android {
     compileSdkVersion 23
     buildToolsVersion "24.0.0"
 
+
+    defaultConfig {
+        // .. other config options ..
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
     defaultConfig {
         applicationId "com.test.project2navigationdrawer"
         minSdkVersion 14
@@ -22,6 +29,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     compile 'de.hdodenhof:circleimageview:1.3.0'

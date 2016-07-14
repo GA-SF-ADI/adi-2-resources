@@ -15,6 +15,7 @@
         app:border_color="#FF000000"
         android:layout_marginLeft="24dp"
         android:layout_centerVertical="true"
+        android:textAllCaps="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp" />
@@ -29,6 +30,7 @@
         android:gravity="left"
         android:paddingBottom="4dp"
         android:id="@+id/username"
+        android:textAllCaps="true"
         android:layout_above="@+id/email"
         android:layout_alignLeft="@+id/profile_image"
         android:layout_alignStart="@+id/profile_image" />
@@ -42,6 +44,7 @@
         android:layout_marginBottom="8dp"
         android:textSize="14sp"
         android:textColor="#fff"
+        android:textAllCaps="true"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/username"
         android:layout_alignStart="@+id/username" />

@@ -87,6 +87,19 @@ public class SecondActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.second_activity_list_view);
         listView.setAdapter(customAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //when you click on an item, go to that item in a new fragment
+//                DisplayItemFragment fragment = new DisplayItemFragment();
+//                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container_second_activity, fragment);
+//                fragmentTransaction.commit();
+
+            }
+        });
+
         returnHomeButton = (Button) findViewById(R.id.return_home_button);
         returnHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override

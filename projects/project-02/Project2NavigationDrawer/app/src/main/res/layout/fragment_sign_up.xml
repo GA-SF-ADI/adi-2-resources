@@ -12,6 +12,8 @@
         android:text="Sign Up"
         android:padding="8dp"
         android:textColor="#fff"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
         android:background="@color/colorPrimary"
         android:textSize="28sp"
         android:id="@+id/sign_up_button"
