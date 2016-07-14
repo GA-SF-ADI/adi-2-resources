@@ -89,12 +89,11 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public void addHatToHatTable(int id, int picture, String name, double price, String material, String fittedOrSnap,
-                                 String description, String color) {
+    public void addHatToHatTable(int id, int picture, String name, double price, String material,
+                String fittedOrSnap, String description, String color) {
 
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
-
 
         values.put("_id", id);
         values.put("pictureID", picture);
@@ -111,14 +110,27 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-   /* public Cursor addHatToCartFromSingleHatActivity(int id) {
+//    TODO: Finish this method below
 
-        //TODO: ADD TO DATABASE, not query
-        SQLiteDatabase db = this.getReadableDatabase();
+    public void addHatToCart(int id, int picture, String name, double price,
+                             String material, String fittedOrSnap, String description, String color) {
 
-        Cursor cursor;
-        return cursor;
-    }*/
+        ContentValues values = new ContentValues();
+        SQLiteDatabase db = getWritableDatabase();
+
+        values.put("_id", id);
+        values.put("pictureID", picture);
+        values.put("name", name);
+        values.put("price", price);
+        values.put("material", material);
+        values.put("fittedOrSnap", fittedOrSnap);
+        values.put("description", description);
+        values.put("color", color);
+
+        db.insert(CART_TABLE_NAME, null, values);
+
+        db.close();
+    }
 
 
     //    TODO: Create deleteHat() method for the X in the cart
