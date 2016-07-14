@@ -64,6 +64,9 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
                 public void onClick(View view) {//<–– TODO: Ask if this is the right place for intent to be passed. Also ask about interface stuff...
 
                     Intent intent = new Intent(view.getContext(), SingleHatViewActivity.class);
+//                  intent.putExtra("table index position of clicked on hat", );
+
+
                     view.getContext().startActivity(intent);
                 }
             });
@@ -76,8 +79,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             Log.d(LOG_TAG, "Clicked on hat at " + getAdapterPosition());
 
-//            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE? Or do interface implementation from below via past ADI student?
-
 
         }
 
@@ -88,9 +89,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
 
     }
-
-
-//    TODO: Interface method. Put interface in viewholder. Implement it in single hat activity
 
     public interface mClickListener {
         void mClick(View v, int position);

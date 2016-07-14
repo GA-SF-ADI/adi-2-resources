@@ -47,7 +47,6 @@ public class SearchActivity extends AppCompatActivity {
         final boolean snapback = false;
 
 
-
         //Radio button if statement listeners which toggle them on/off
 
         fittedRadioButton.setOnClickListener(new View.OnClickListener() {

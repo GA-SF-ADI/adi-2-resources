@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,10 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
+
+        ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
+        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+
 
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
         final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
@@ -71,6 +76,31 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+        //Menu image button click listeners
+        cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SingleHatViewActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SingleHatViewActivity.this, SearchActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 
     }
