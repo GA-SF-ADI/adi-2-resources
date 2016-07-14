@@ -109,8 +109,8 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
 
 
-                Toast.makeText(SearchActivity.this, "The requested teams are: " + userSearchTeamRequest, Toast.LENGTH_SHORT).show();
 
+/*
 //                TODO: Make toast telling people to only do one search parameter!
 
                 if (userSearchTeamRequest.isEmpty()) {
@@ -134,12 +134,17 @@ public class SearchActivity extends AppCompatActivity {
                 } else {
 
                 }
+*/
+                if (userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
+
+                    Toast.makeText(SearchActivity.this, "Please input something\n      before searching!", Toast.LENGTH_SHORT).show();
 
 
+                }
 
 //                TODO: Grab any inputted teams
 
-                if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
+                /*if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
 
                     intent = new Intent(SearchActivity.this, MainActivity.class);
 
@@ -187,7 +192,7 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-
+*/
 
             }
         });

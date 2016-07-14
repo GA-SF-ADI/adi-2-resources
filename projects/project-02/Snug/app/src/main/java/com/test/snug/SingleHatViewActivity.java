@@ -45,13 +45,13 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        final int selectedHatPosition = intent.getIntExtra("hatPosition", -1);
+        final int selectedHatID = intent.getIntExtra("hatPosition", -1);
 
         //Setting the passed through data for the single hat being viewed
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
-        Cursor cursor = hatDatabase.getSpecificHat(selectedHatPosition);
+        Cursor cursor = hatDatabase.getSpecificHat(selectedHatID);
 
         cursor.moveToFirst();
 
@@ -77,15 +77,12 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//                TODO: Figure out to add particular hat to the cart
-
-                Cursor cursor = db.addHatToCartFromSingleHatActivity(selectedHatPosition);
+//                db.addHatToCartFromSingleHatActivity(selectedHatID)//<–– TODO: Need to pass in right hat info
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
 
                 startActivity(intent);
 
-                onStop();
 
             }
         });

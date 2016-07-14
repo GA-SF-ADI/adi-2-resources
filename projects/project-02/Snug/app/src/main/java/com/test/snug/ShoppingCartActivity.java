@@ -35,9 +35,9 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         // SimpleCursorAdapter for cart hats to display in listview
 
-
+//        TODO: Look into insertOrUpdate
         Context context = getApplicationContext();
-        final HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
 
