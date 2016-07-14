@@ -45,17 +45,19 @@
                     android:layout_marginLeft="19dp"
                     android:layout_marginStart="19dp"
                     android:layout_marginTop="-7dp"
-                    android:scaleX=".4"
-                    android:scaleY=".4"/>
+                    android:scaleX=".6"
+                    android:scaleY=".6"
+                    android:src="@drawable/red_circle" />
 
                 <TextView
                     android:id="@+id/textview_num_of_hats_in_cart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginStart="33dp"
+                    android:layout_marginTop="4dp"
                     android:textColor="#FFFFFF"
+                    android:text="11"
                     android:textSize="12sp" />
             </FrameLayout>
 
@@ -90,9 +92,9 @@
         android:id="@+id/mainactivity_hat_recyclerview"
         android:layout_width="match_parent"
 
-        android:background="#f5f5f5"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#f5f5f5"
         android:scrollbars="vertical" />
 
 

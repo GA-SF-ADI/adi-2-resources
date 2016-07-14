@@ -31,7 +31,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     public static final String CART_COLUMN_DESCRIPTION = "description";
     public static final String CART_COLUMN_COLOR = "color";
 
-
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "snugApp.db";
 
@@ -90,8 +89,8 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public void addHatToHatDatabase(int id, int picture, String name, double price, String material, String fittedOrSnap,
-                                    String description, String color) {
+    public void addHatToHatTable(int id, int picture, String name, double price, String material, String fittedOrSnap,
+                                 String description, String color) {
 
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
@@ -178,13 +177,12 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-//    TODO: Adjust getHatTeams() method to remove multiples. Just want to have a list of 30 teams.
-
 
     public Cursor getHatTeams() {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(true, //a. set to true so that I only get unique team names
+        Cursor cursor = db.query(
+                true, //a. set to true so that I only get unique team names
                 HAT_TABLE_NAME, // b. table
                 new String[]{HAT_COLUMN_HATNAME}, // c. column names
                 null, // d. selections
