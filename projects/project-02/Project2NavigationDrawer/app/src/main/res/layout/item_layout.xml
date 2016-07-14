@@ -7,12 +7,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_type_of_jewelry"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#000000"
         android:fontFamily="casual"
         android:textAllCaps="true"
         android:id="@+id/text_view_price_of_jewelry"/>
@@ -21,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_gold_of_jewelry"/>
 
@@ -28,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_stone_of_jewelry"/>
 
@@ -35,12 +40,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_measurement_of_jewelry"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_quantity_of_jewelry"/>
 
@@ -48,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:textAllCaps="true"
         android:id="@+id/text_view_name_of_jewelry"/>
 
@@ -61,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:id="@+id/add_button_to_shopping_cart"
         android:textAllCaps="true"
         android:focusable="false"
@@ -81,6 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:textColor="#000000"
         android:id="@+id/quantity_text"
         android:textAllCaps="true"
         android:text="QUANTITY ="/>
