@@ -205,12 +205,14 @@ public class JerseyActivity extends AppCompatActivity {
             jerseyImageView.setImageResource(playerJerseysList.get(0));
             currentImage = playerJerseysList.get(0);
             currentJerseyColor = "Blue";
+            jerseyColor1.setText("X");
             setColorOnClick(jerseyColor1, playerJerseysList.get(0), "Blue");
         } else {
             jerseyImageView.setImageResource(playerJerseysList.get(1));
             currentImage = playerJerseysList.get(1);
             currentJerseyColor = "White";
             jerseyColor1.setVisibility(View.GONE);
+            jerseyColor2.setText("X");
         }
         setColorOnClick(jerseyColor2, playerJerseysList.get(1), "White");
         setColorOnClick(jerseyColor3, playerJerseysList.get(2), "Black");

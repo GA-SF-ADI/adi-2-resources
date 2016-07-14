@@ -246,8 +246,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<CartItem> getCartItemArrayList() {
         ArrayList<CartItem> cartItemArrayList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
+
         String query = "SELECT " + CartValues.PLAYERNAME + ", " + CartValues.COLOR + ", " + CartValues.PRICE + ", " + CartValues.PICTURE + ", " + CartValues.QUANTITY + ", " +CartValues.SIZE + " FROM " + CartValues.TABLE_NAME;
+
         Cursor cursor = db.rawQuery(query, null);
+
         while (cursor.moveToNext()) {
             CartItem cartItem = new CartItem(cursor.getString(cursor.getColumnIndex(CartValues.PLAYERNAME)), cursor.getString(cursor.getColumnIndex(CartValues.COLOR)), cursor.getInt(cursor.getColumnIndex(CartValues.PICTURE)), cursor.getDouble(cursor.getColumnIndex(CartValues.PRICE)), cursor.getInt(cursor.getColumnIndex(CartValues.QUANTITY)), cursor.getString(cursor.getColumnIndex(CartValues.SIZE)));
             cartItemArrayList.add(cartItem);
