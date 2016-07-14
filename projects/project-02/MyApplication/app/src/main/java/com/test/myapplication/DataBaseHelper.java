@@ -10,17 +10,23 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by Jon Kim on 7/8/16.
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Alcohol.db";
-    public static final String ALCOHOL_TABLE_NAME = "ALCOHOL_LIST";
-    public static final String COL_ALC_ID = "ALC_ID";
+    private static DataBaseHelper mInstance;
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "Alcohol.db";
+    public static final String CART_TABLE_NAME = "CART";
+    public static final String CART_COL_ID = "_id";
+    public static final String CART_COL_ALC_ID = "ALC_ID";
+    public static final String CART_COL_QUANTITY = "QUANTITY";
+    public static final String[] CART_COLUMN = {CART_COL_ID,CART_COL_ALC_ID,CART_COL_QUANTITY};
+    public static final String ALCOHOL_TABLE_NAME = "ALCOHOL";
+    public static final String COL_ALC_ID = "_id";
     public static final String COL_ALC_NAME = "NAME";
     public static final String COL_ALC_PRICE = "PRICE";
     public static final String COL_ALC_ABV = "ABV";
     public static final String COL_ALC_DESCRIPTION = "DESCRIPTION";
     public static final String COL_ALC_IMAGE = "IMAGE";
-    public static final String[] ALC_COLUMN = {COL_ALC_NAME,COL_ALC_PRICE,COL_ALC_ABV,COL_ALC_DESCRIPTION,COL_ALC_IMAGE};
-    public static final String SQL_CREATE_GAME_TABLE = "CREATE TABLE "
+    public static final String[] ALC_COLUMN = {COL_ALC_ID,COL_ALC_NAME,COL_ALC_PRICE,COL_ALC_ABV,COL_ALC_DESCRIPTION,COL_ALC_IMAGE};
+    public static final String SQL_CREATE_ALC_TABLE = "CREATE TABLE "
             +ALCOHOL_TABLE_NAME+"("
             +COL_ALC_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COL_ALC_NAME+" TEXT, "
@@ -28,20 +34,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             +COL_ALC_PRICE+" INTEGER, "
             +COL_ALC_DESCRIPTION+" TEXT, "
             +COL_ALC_IMAGE+" INT)";
+    public static final String SQL_CREATE_CART_TABLE = "CREATE TABLE "
+            +CART_TABLE_NAME+"("
+            +CART_COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
+            +CART_COL_QUANTITY+" INTEGER, "
+            +CART_COL_ALC_ID+" INTEGER, FOREIGN KEY ("+CART_COL_ALC_ID+") REFERENCES "+ALCOHOL_TABLE_NAME+"(id))";
 
-    public DataBaseHelper(Context context) {
+
+    public static DataBaseHelper getInstance(Context context){
+        if(mInstance == null){
+            mInstance = new DataBaseHelper(context.getApplicationContext());
+        }
+        return mInstance;
+    }
+
+
+    private DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_GAME_TABLE);
-
+        db.execSQL(SQL_CREATE_ALC_TABLE);
+        db.execSQL(SQL_CREATE_CART_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP IF TABLE EXISTS "+ALCOHOL_TABLE_NAME);
+        db.execSQL("DROP IF TABLE EXISTS "+CART_TABLE_NAME);
         this.onCreate(db);
     }
 
@@ -60,7 +81,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor getAlcohol(int id){
+    public Alcohol getAlcohol(long id){
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(ALCOHOL_TABLE_NAME,
@@ -72,7 +93,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 null,
                 null);
 
-        return cursor;
+        cursor.moveToFirst();
+
+
+        Alcohol alcohol = new Alcohol(
+                cursor.getString(cursor.getColumnIndex(COL_ALC_NAME)),
+                cursor.getInt(cursor.getColumnIndex(COL_ALC_PRICE)),
+                cursor.getInt(cursor.getColumnIndex(COL_ALC_ABV)),
+                cursor.getString(cursor.getColumnIndex(COL_ALC_DESCRIPTION)),
+                cursor.getInt(cursor.getColumnIndex(COL_ALC_IMAGE)),
+                cursor.getInt(cursor.getColumnIndex(COL_ALC_ID)));
+
+        return alcohol;
     }
 
     public void addAlcohol(Alcohol alcohol){
@@ -98,10 +130,47 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                null,
                 null);
 
         return cursor;
+    }
+
+    public void addCart(Cart cart){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(CART_COL_QUANTITY,cart.getQuantity());
+        values.put(CART_COL_ALC_ID,cart.getfAlcId());
+
+        db.insert(CART_TABLE_NAME, null, values);
+        db.close();
+    }
+
+    public void increaseQuantity(Cart cart){
+        SQLiteDatabase db = getWritableDatabase();
+
+
 
     }
+    public Cursor getCartAlcList(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT "
+                +ALCOHOL_TABLE_NAME+"."
+                +COL_ALC_NAME+", "
+                +ALCOHOL_TABLE_NAME+"."
+                +COL_ALC_PRICE+", "
+                +ALCOHOL_TABLE_NAME+"."
+                +COL_ALC_IMAGE+", "
+                +CART_TABLE_NAME+"."
+                +CART_COL_QUANTITY+", "
+                +CART_TABLE_NAME+"."
+                +CART_COL_ID+ " FROM "
+                +ALCOHOL_TABLE_NAME+" INNER JOIN "
+                +CART_TABLE_NAME+" ON "+ALCOHOL_TABLE_NAME+"."+COL_ALC_ID+" = "+CART_TABLE_NAME+"."+CART_COL_ALC_ID;
+
+        return db.rawQuery(query,null);
+
+
+    }
+
 }

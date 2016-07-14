@@ -1,9 +1,11 @@
 package com.test.myapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by Jon Kim on 7/8/16.
  */
-public class Alcohol {
+public class Alcohol implements Serializable{
     private String alcName;
     private int alcPrice;
     private int abv;
