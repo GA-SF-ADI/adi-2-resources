@@ -56,21 +56,22 @@ public class CartListAdapter extends BaseAdapter {
 
         jerseyImageView.setImageResource(currentItem.getPicture());
         jerseyTextView.setText(currentItem.getPlayerName() + "-" + currentItem.getColor());
-        priceTextView.setText("Price: $" + Math.round(currentItem.getPrice() *100.0)/100.0);
+        priceTextView.setText("Price: $" + Math.round(currentItem.getPrice() * 100.0) / 100.0);
         quantityTextView.setText("Quantity: " + currentItem.getQuantity());
         sizeTextView.setText("Size: " + currentItem.getSize());
-        if (activity.equals("cart")){
+        if (activity.equals("cart")) {
             deleteImageView.setVisibility(View.VISIBLE);
-        deleteImageView.setOnClickListener(new View.OnClickListener() {
-            DatabaseHelper helper = DatabaseHelper.getInstance(context);
-            @Override
-            public void onClick(View v) {
-                helper.removeFromCart(position + 1);
-                Toast.makeText(context, "DELETE CLICK", Toast.LENGTH_SHORT).show();
-                cartItemArrayList.remove(position);
-                notifyDataSetChanged();
-            }
-        });}
+            deleteImageView.setOnClickListener(new View.OnClickListener() {
+                DatabaseHelper helper = DatabaseHelper.getInstance(context);
+
+                @Override
+                public void onClick(View v) {
+                    helper.removeFromCart(position + 1);
+                    cartItemArrayList.remove(position);
+                    notifyDataSetChanged();
+                }
+            });
+        }
 
         return convertView;
     }

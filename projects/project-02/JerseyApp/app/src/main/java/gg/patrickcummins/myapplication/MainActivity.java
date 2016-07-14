@@ -38,9 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
     }
-
 
 
     private void setOnTouchListeners() {
@@ -101,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         helper.insertPlayerRow(new Player("Joe Thorton", "Center", 19, R.drawable.joe_thorton, "sharks", R.drawable.joe_thorton_blue, R.drawable.joe_thorton_white, R.drawable.joe_thorton_black));
         helper.insertPlayerRow(new Player("Joe Pavelski", "Center", 8, R.drawable.joe_pavelski, "sharks", R.drawable.joe_pavelski_blue, R.drawable.joe_pavelski_white, R.drawable.joe_pavelski_black));
         helper.insertPlayerRow(new Player("Brent Burns", "Defense", 88, R.drawable.brent_burns, "sharks", R.drawable.brent_burns_blue, R.drawable.brent_burns_white, R.drawable.brent_burns_black));
-        helper.insertPlayerRow(new Player("Martin Jones", "Goalie", 31, R.drawable.martin_jones, "sharks", R.drawable.martin_jones_blue, R.drawable.martin_jones_white, R.drawable.martin_jones_black ));
+        helper.insertPlayerRow(new Player("Martin Jones", "Goalie", 31, R.drawable.martin_jones, "sharks", R.drawable.martin_jones_blue, R.drawable.martin_jones_white, R.drawable.martin_jones_black));
         helper.insertPlayerRow(new Player("Joel Ward", "Right Wing", 42, R.drawable.joel_ward, "sharks", R.drawable.joel_ward_blue, R.drawable.joel_ward_white, R.drawable.joel_ward_black));
         helper.insertPlayerRow(new Player("Logan Couture", "Center", 39, R.drawable.logan_couture, "sharks", R.drawable.logan_couture_blue, R.drawable.logan_couture_white, R.drawable.logan_couture_black));
         helper.insertPlayerRow(new Player("Patrick Marleau", "Left Wing", 12, R.drawable.patrick_marleau, "sharks", R.drawable.patrick_marleau_blue, R.drawable.patrick_marleau_white, R.drawable.patrick_marleau_black));
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         helper.insertPlayerRow(new Player("Charles Woodson", "Safety", 24, R.drawable.charles_woodson, "raiders", R.drawable.charles_woodson_pro_bowl, R.drawable.charles_woodson_white, R.drawable.charles_woodson_black));
         helper.insertPlayerRow(new Player("Marquette King", "Punter", 7, R.drawable.marquette_king, "raiders", -1, R.drawable.marquette_king_white, R.drawable.marquette_king_black));
         helper.insertPlayerRow(new Player("Reggie Nelson", "Safety", 27, R.drawable.reggie_nelson, "raiders", -1, R.drawable.reggie_nelson_white, R.drawable.reggie_nelson_black));
-        helper.insertPlayerRow(new Player("Sebastian Janikowski", "Kicker", 11, R.drawable.sebastian_janikowski, "raiders", -1,R.drawable.sebastian_janikowski_white, R.drawable.sebastian_janikowski_black));
+        helper.insertPlayerRow(new Player("Sebastian Janikowski", "Kicker", 11, R.drawable.sebastian_janikowski, "raiders", -1, R.drawable.sebastian_janikowski_white, R.drawable.sebastian_janikowski_black));
         helper.insertPlayerRow(new Player("Taiwan Jones", "Running Back", 22, R.drawable.taiwan_jones, "raiders", -1, R.drawable.taiwan_jones_white, R.drawable.taiwan_jones_black));
     }
 

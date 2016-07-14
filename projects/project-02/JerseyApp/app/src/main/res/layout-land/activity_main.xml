@@ -22,9 +22,9 @@
         android:id="@+id/raidersImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_toLeftOf="@id/warriorsImageView"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_toLeftOf="@id/warriorsImageView"
         android:src="@drawable/raiders" />
 
     <ImageView
@@ -40,10 +40,10 @@
         android:id="@+id/sharksImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_toRightOf="@id/warriorsImageView"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_toRightOf="@id/warriorsImageView"
         android:src="@drawable/sharks" />
 
     <android.support.design.widget.FloatingActionButton
@@ -54,16 +54,17 @@
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/margin_5dp"
         android:src="@drawable/ic_shopping_cart_black_24dp" />
+
     <Button
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:text="Purchase History"
         android:id="@+id/purchaseHistoryButton"
-        android:backgroundTint="@color/warriorAccent"
-        android:layout_margin="@dimen/margin_5dp"
-        android:textColor="@color/raiderPrimaryDark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:backgroundTint="@color/warriorAccent"
+        android:text="Purchase History"
+        android:textColor="@color/raiderPrimaryDark" />
 
 
 </RelativeLayout>

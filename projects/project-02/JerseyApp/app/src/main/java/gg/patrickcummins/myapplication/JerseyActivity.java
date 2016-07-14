@@ -160,12 +160,12 @@ public class JerseyActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (quantity== 0 || size.equals("") ){
+                if (quantity == 0 || size.equals("")) {
                     Toast.makeText(JerseyActivity.this, "Make Sure You Input a Size and Quantity", Toast.LENGTH_SHORT).show();
-                    if (quantity == 0){
+                    if (quantity == 0) {
                         quantityEditText.setError("Please Enter a Quantity");
                     }
-                }else {
+                } else {
                     CartItem cartItem = (new CartItem(currentPlayer, currentJerseyColor, currentImage, price, quantity, size));
                     helper.insertCartRow(cartItem);
                     Toast.makeText(JerseyActivity.this, "Item Added To Cart!", Toast.LENGTH_SHORT).show();
@@ -204,9 +204,9 @@ public class JerseyActivity extends AppCompatActivity {
         if (playerJerseysList.get(0) != -1) {
             jerseyImageView.setImageResource(playerJerseysList.get(0));
             currentImage = playerJerseysList.get(0);
-            if (team.equals("raiders")){
+            if (team.equals("raiders")) {
                 currentJerseyColor = "Pro Bowl";
-            }else {
+            } else {
                 currentJerseyColor = "Blue";
             }
             jerseyColor1.setText("X");
@@ -254,6 +254,6 @@ public class JerseyActivity extends AppCompatActivity {
         sizeLargeTextView = (TextView) findViewById(R.id.largeTextView);
         sizeExtraLargeTextView = (TextView) findViewById(R.id.extraLargeTextView);
         quantityEditText = (EditText) findViewById(R.id.quantityEditText);
-        quantity=0;
+        quantity = 0;
     }
 }

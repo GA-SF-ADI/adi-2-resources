@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 
 public class Player {
     String name, position, team;
-    int number, playerPicture, jersey1,jersey2,jersey3;
+    int number, playerPicture, jersey1, jersey2, jersey3;
 
     public Player(String name, String position, int number, int playerPicture, String team, int jersey1, int jersey2, int jersey3) {
         this.name = name;

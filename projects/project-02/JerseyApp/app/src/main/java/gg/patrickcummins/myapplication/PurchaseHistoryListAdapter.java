@@ -50,7 +50,7 @@ public class PurchaseHistoryListAdapter extends BaseAdapter {
         TextView priceTextView = (TextView) convertView.findViewById(R.id.priceTextView);
         TextView dateTextView = (TextView) convertView.findViewById(R.id.dateTextView);
 
-        priceTextView.setText("Price:\n$" + Math.round(currentItem.getPrice()*100.0)/100.0);
+        priceTextView.setText("Price:\n$" + Math.round(currentItem.getPrice() * 100.0) / 100.0);
         dateTextView.setText("Date Ordered:\n" + currentItem.getDate());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

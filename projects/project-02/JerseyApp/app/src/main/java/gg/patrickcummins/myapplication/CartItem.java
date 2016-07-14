@@ -1,7 +1,6 @@
 package gg.patrickcummins.myapplication;
 
 
-
 /**
  * Created by patrickcummins on 7/12/16.
  */
@@ -9,6 +8,7 @@ public class CartItem {
     String playerName, color, size;
     int picture, quantity;
     double price;
+
     public CartItem(String playerName, String color, int picture, double price, int quantity, String size) {
 
         this.playerName = playerName;
@@ -18,6 +18,7 @@ public class CartItem {
         this.quantity = quantity;
         this.size = size;
     }
+
     public String getPlayerName() {
         return playerName;
     }

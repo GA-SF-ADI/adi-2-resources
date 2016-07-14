@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/jerseyImageView"
-        android:layout_centerHorizontal="true"
         android:layout_width="@dimen/jersey_picture"
         android:layout_height="@dimen/jersey_picture"
+        android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/margin_5dp"
         android:src="@drawable/klay_thompson_white" />
 
@@ -62,10 +62,10 @@
             android:layout_height="@dimen/jersey_select"
             android:layout_below="@id/chooseAColorTextView"
             android:layout_margin="@dimen/margin_5dp"
-            android:textColor="@color/raiderPrimary"
-            android:gravity="center"
-            android:textSize="30sp"
             android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimary"
+            android:textSize="30sp"
 
             />
 
@@ -75,11 +75,11 @@
             android:layout_height="@dimen/jersey_select"
             android:layout_below="@id/chooseAColorTextView"
             android:layout_margin="@dimen/margin_5dp"
-            android:textColor="@color/raiderPrimaryDark"
-            android:gravity="center"
-            android:textSize="30sp"
             android:layout_toRightOf="@id/jersey1"
             android:background="@drawable/black_border"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimaryDark"
+            android:textSize="30sp"
 
             />
 
@@ -87,24 +87,26 @@
             android:id="@+id/jersey3"
             android:layout_width="@dimen/jersey_select"
             android:layout_height="@dimen/jersey_select"
-            android:textColor="@color/raiderPrimary"
-            android:gravity="center"
-            android:textSize="30sp"
             android:layout_below="@id/chooseAColorTextView"
             android:layout_margin="@dimen/margin_5dp"
             android:layout_toRightOf="@id/jersey2"
             android:background="@android:color/black"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimary"
+            android:textSize="30sp"
 
             />
     </LinearLayout>
+
     <TextView
-        android:text="@string/choose_a_size"
-        android:textColor="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/colorLayout"
         android:id="@+id/chooseASizeTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/colorLayout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/choose_a_size"
+        android:textColor="@color/colorPrimary" />
+
     <LinearLayout
         android:id="@+id/sizeLayout"
         android:layout_width="wrap_content"
@@ -119,8 +121,8 @@
             android:layout_height="@dimen/size_text_view"
             android:layout_margin="@dimen/margin_5dp"
             android:background="@color/raiderAccent"
-            android:text="XS"
             android:gravity="center"
+            android:text="XS"
             android:textColor="@color/raiderPrimaryDark" />
 
         <TextView
@@ -129,8 +131,8 @@
             android:layout_height="@dimen/size_text_view"
             android:layout_margin="@dimen/margin_5dp"
             android:background="@color/raiderAccent"
-            android:text="S"
             android:gravity="center"
+            android:text="S"
             android:textColor="@color/raiderPrimaryDark" />
 
         <TextView
@@ -139,8 +141,8 @@
             android:layout_height="@dimen/size_text_view"
             android:layout_margin="@dimen/margin_5dp"
             android:background="@color/raiderAccent"
-            android:text="M"
             android:gravity="center"
+            android:text="M"
             android:textColor="@color/raiderPrimaryDark" />
 
         <TextView
@@ -149,8 +151,8 @@
             android:layout_height="@dimen/size_text_view"
             android:layout_margin="@dimen/margin_5dp"
             android:background="@color/raiderAccent"
-            android:text="L"
             android:gravity="center"
+            android:text="L"
             android:textColor="@color/raiderPrimaryDark" />
 
         <TextView
@@ -159,8 +161,8 @@
             android:layout_height="@dimen/size_text_view"
             android:layout_margin="@dimen/margin_5dp"
             android:background="@color/raiderAccent"
-            android:text="XL"
             android:gravity="center"
+            android:text="XL"
             android:textColor="@color/raiderPrimaryDark" />
     </LinearLayout>
 
@@ -179,8 +181,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/quantityEditText"
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
         android:text="Price: $00"
         android:textColor="@color/colorAccent" />
 
@@ -189,8 +191,8 @@
         android:id="@+id/addToCartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/priceTextView"
+        android:layout_centerHorizontal="true"
         android:backgroundTint="@color/sharkAccent"
         android:text="@string/add_to_cart" />
 

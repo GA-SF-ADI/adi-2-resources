@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gg.patrickcummins.myapplication.PurchaseHistoryActivity">
+
     <TextView
         android:id="@+id/historyTextView"
-        android:text="Your Purchase History"
-        android:layout_margin="@dimen/margin_5dp"
-        android:textSize="@dimen/header_text_size"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/raiderPrimaryDark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:text="Your Purchase History"
+        android:textColor="@color/raiderPrimaryDark"
+        android:textSize="@dimen/header_text_size" />
+
     <ListView
-        android:layout_below="@id/historyTextView"
         android:id="@+id/purchaseHistoryList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/historyTextView"></ListView>
 </RelativeLayout>

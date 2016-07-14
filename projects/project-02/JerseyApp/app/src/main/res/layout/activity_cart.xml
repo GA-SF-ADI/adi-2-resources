@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -8,43 +7,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="gg.patrickcummins.myapplication.CartActivity">
+
     <LinearLayout
         android:id="@+id/checkoutLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:layout_margin="@dimen/margin_5dp"
             android:id="@+id/totalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5dp"
             android:layout_weight="1"
             android:text="Total: $999.99"
-            android:textSize="@dimen/player_name_text_size"
             android:textColor="@color/colorAccent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/player_name_text_size" />
+
         <Button
-            android:layout_margin="@dimen/margin_5dp"
             android:id="@+id/checkoutButton"
-            android:layout_weight="1"
-            android:text="Checkout"
-            android:backgroundTint="@color/sharkAccent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/sharkAccent"
+            android:text="Checkout" />
+
         <TextView
             android:id="@+id/dateOrderedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Date Ordered: DATE"
             android:textColor="@color/colorPrimary"
-            android:visibility="gone"
             android:textSize="@dimen/player_name_text_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:visibility="gone" />
 
     </LinearLayout>
+
     <ListView
-        android:layout_below="@id/checkoutLayout"
         android:id="@+id/cartListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkoutLayout"></ListView>
 
 
 </RelativeLayout>

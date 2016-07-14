@@ -16,30 +16,34 @@
         />
 
     <EditText
-        android:layout_toRightOf="@id/teamImageView"
         android:id="@+id/searchEditText"
         android:layout_width="wrap_content"
-        android:hint="Search By:"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/teamImageView"
+        android:hint="Search By:" />
+
     <RadioGroup
-        android:layout_toRightOf="@id/searchEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/searchEditText">
+
         <RadioButton
             android:id="@+id/nameRadio"
-            android:text="Name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
         <RadioButton
             android:id="@+id/positionRadio"
-            android:text="Position"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Position" />
+
         <RadioButton
             android:id="@+id/numberRadio"
-            android:text="Number"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Number" />
     </RadioGroup>
 
 
@@ -54,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/margin_5dp"
         android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_5dp"
         android:src="@drawable/ic_shopping_cart_black_24dp" />
 
 </RelativeLayout>

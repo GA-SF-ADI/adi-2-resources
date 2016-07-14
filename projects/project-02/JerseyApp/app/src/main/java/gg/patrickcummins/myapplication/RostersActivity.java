@@ -61,12 +61,11 @@ public class RostersActivity extends AppCompatActivity {
                 } else {
                     if (nameRadio.isChecked()) {
                         playerArrayList = helper.getTeamPlayerByNameList(team, s.toString());
-                    }else if (positionRadio.isChecked()){
+                    } else if (positionRadio.isChecked()) {
                         playerArrayList = helper.getTeamPlayerByPositionList(team, s.toString());
-                    }else if (numberRadio.isChecked()){
+                    } else if (numberRadio.isChecked()) {
                         playerArrayList = helper.getTeamPlayerByNumberList(team, s.toString());
                     }
-
 
 
                 }
