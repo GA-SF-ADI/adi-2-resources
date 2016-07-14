@@ -2,10 +2,12 @@ package gg.patrickcummins.myapplication;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.SupportActionModeWrapper;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,13 +30,65 @@ public class MainActivity extends AppCompatActivity {
 
         setImageViews();
         setOnClickListeners();
+        setOnTouchListeners();
 
         if (helper.getTeamPlayerList("warriors").size() < 1) {
             initializeTeams(helper);
         }
 
 
+
     }
+
+
+
+    private void setOnTouchListeners() {
+
+        warriors.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event);
+                return true;
+            }
+        });
+        raiders.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event);
+                return true;
+            }
+        });
+        sharks.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event);
+                return true;
+            }
+        });
+
+
+    }
+
+    private void setImageViewOnTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                ImageView view = (ImageView) v;
+                //overlay is black with transparency of 0x77 (119)
+                view.getDrawable().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+                view.invalidate();
+                break;
+            }
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL: {
+                ImageView view = (ImageView) v;
+                //clear the overlay
+                view.getDrawable().clearColorFilter();
+                view.invalidate();
+                break;
+            }
+        }
+    }
+
 
     private void initializeTeams(DatabaseHelper helper) {
         initializeWarriors(helper);
@@ -133,5 +187,6 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButton = (FloatingActionButton) findViewById(R.id.cartFab);
         purchaseHistoryButton = (Button) findViewById(R.id.purchaseHistoryButton);
     }
+
 
 }
