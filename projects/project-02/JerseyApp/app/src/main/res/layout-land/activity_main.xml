@@ -22,8 +22,8 @@
         android:id="@+id/raidersImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_above="@+id/warriorsImageView"
-        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@id/warriorsImageView"
+        android:layout_centerVertical="true"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:src="@drawable/raiders" />
 
@@ -40,8 +40,9 @@
         android:id="@+id/sharksImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_below="@+id/warriorsImageView"
+        android:layout_toRightOf="@id/warriorsImageView"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:src="@drawable/sharks" />
 

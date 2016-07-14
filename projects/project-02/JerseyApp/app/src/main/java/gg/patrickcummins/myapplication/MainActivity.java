@@ -44,27 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void setOnTouchListeners() {
 
-        warriors.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                setImageViewOnTouch(v, event);
-                return true;
-            }
-        });
-        raiders.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                setImageViewOnTouch(v, event);
-                return true;
-            }
-        });
-        sharks.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                setImageViewOnTouch(v, event);
-                return true;
-            }
-        });
+//        warriors.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                setImageViewOnTouch(v, event);
+//                return true;
+//            }
+//        });
+//        raiders.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                setImageViewOnTouch(v, event);
+//                return true;
+//            }
+//        });
+//        sharks.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                setImageViewOnTouch(v, event);
+//                return true;
+//            }
+//        });
 
 
     }
