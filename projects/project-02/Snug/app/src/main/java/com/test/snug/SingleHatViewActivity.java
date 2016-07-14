@@ -30,6 +30,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
@@ -97,7 +99,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 
 
-        /*//Menu image button click listeners
+        //Menu image button click listeners
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,8 +109,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
             }
         });
-*/
-      /*  searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -116,7 +117,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });*/
+        });
 
 
     }
