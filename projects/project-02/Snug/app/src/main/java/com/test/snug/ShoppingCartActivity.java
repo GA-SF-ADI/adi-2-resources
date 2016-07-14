@@ -43,17 +43,9 @@ public class ShoppingCartActivity extends AppCompatActivity {
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(ShoppingCartActivity.this);
 
 
-        hatDatabase.addHatToCart(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
+/*      hatDatabase.addHatToCart(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHatToCart(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
-        hatDatabase.addHatToCart(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton", "Snap", "Play the outfield with confidence", "black");
-        hatDatabase.addHatToCart(3, R.drawable.all_black_colorado, "Colorado Rockies", 19.99, "50% polyester 50% wool ", "Snap", "Turn a double play in this stylish hat", "black");
-        hatDatabase.addHatToCart(4, R.drawable.all_blue_cubs, "Chicago Cubs", 19.99, "50% polyester 50% cotton ", "Snap", "Block the sun and look good in this beautiful hat", "blue");
-        hatDatabase.addHatToCart(5, R.drawable.all_blue_mets, "New York Mets", 19.99, "50% wool 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "blue");
-        hatDatabase.addHatToCart(6, R.drawable.all_blue_tribe, "Cleveland Indians", 50, "100% polyester", "Snap", "Great for a day at the beach!", "blue");
-        hatDatabase.addHatToCart(7, R.drawable.all_blue_twins, "Minnesota Twins", 19.99, "100% wool", "Snap", "Play the outfield with confidence", "blue");
-        hatDatabase.addHatToCart(8, R.drawable.all_green_a_s, "Oakland A’s", 19.99, "100% cotton", "Snap", "Turn a double play in this stylish hat", "green");
-        hatDatabase.addHatToCart(9, R.drawable.all_orange_houston, "Houston Astros", 19.99, "50% polyester 50% wool ", "Snap", "Block the sun and look good in this beautiful hat", "orange");
-        hatDatabase.addHatToCart(10, R.drawable.all_read_angels, "LA Angels", 19.99, "50% polyester 50% cotton ", "Snap", "Plush and soft, this hat will keep you comfortable", "read");
+        hatDatabase.addHatToCart(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton", "Snap", "Play the outfield with confidence", "black");*/
 
 
         FloatingActionButton makeFinalPaymentFab = (FloatingActionButton) findViewById(R.id.fab_make_final_payment);
@@ -64,7 +56,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
 
-                //                TODO: Reset cart counter in toolbar to 0
+//                TODO: Reset cart counter in toolbar to 0
 
 
                 startActivity(intent);

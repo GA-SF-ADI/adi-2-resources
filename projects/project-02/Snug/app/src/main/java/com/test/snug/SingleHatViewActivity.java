@@ -12,7 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SingleHatViewActivity extends AppCompatActivity {
+public class SingleHatViewActivity extends AppCompatActivity implements HatsMyRecyclerViewAdapter.mClickListener {
+
+    @Override
+    public void mClick(View v, int position) {
+
+        final Intent intent = new Intent(this, SingleHatViewActivity.class);
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +28,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_single_hat_view);
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
+
 
 
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -59,10 +68,16 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
 
                 startActivity(intent);
-
-
             }
         });
+
+
+
+
+
+
     }
+
+
 
 }

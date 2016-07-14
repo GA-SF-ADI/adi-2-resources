@@ -1,6 +1,7 @@
 package com.test.snug;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +21,7 @@ import java.util.Random;
 /**
  * Created by LangstonSmith on 7/9/16.
  */
-public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecyclerViewAdapter.DataObjectHolder> {
+public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecyclerViewAdapter.DataObjectHolder>  {
 
     private static String LOG_TAG = "HatsMyRecyclerViewAdapter";
 
@@ -40,6 +41,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
     }
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         TextView name;
         TextView fittedOrSnap;
         TextView price;
@@ -59,6 +61,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             cardView.setOnClickListener(this);
 
+
         }
 
         @Override
@@ -69,6 +72,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 //            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE? Or do interface implementation from below via past ADI student?
 
 
+
         }
     }
 
@@ -76,11 +80,15 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
         this.myClickListener = myClickListener;
 
 
-
     }
 
 
 //    TODO: Interface method. Put interface in viewholder. Implement it in singel hat acivity
+
+    public interface mClickListener {
+        void mClick(View v, int position);
+    }
+
 
     @Override
     public DataObjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -97,8 +105,10 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
         holder.name.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
         holder.fittedOrSnap.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-        holder.price.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
+        holder.price.setText(R.string.currency_symbol_on_card_view +
+                cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));//<–Ask about this yellow area
         holder.image.setImageResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+
 
     }
 

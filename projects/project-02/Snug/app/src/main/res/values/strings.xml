@@ -22,6 +22,8 @@
     <string name="Fitteds_only">Fitteds only</string>
     <string name="enter_lower_than_amount">Search for hats under a certain price</string>
     <string name="price_edittext">$</string>
+    <string name="currency_symbol_on_card_view">$</string>
+
 
     <string name="title_activity_search">SearchActivity</string>
 
