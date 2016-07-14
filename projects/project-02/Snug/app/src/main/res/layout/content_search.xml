@@ -22,7 +22,7 @@
         android:textSize="13sp"
         android:layout_marginBottom="31dp"
         android:layout_above="@+id/auto_search_description_etc"
-        android:layout_centerHorizontal="true" />   
+        android:layout_centerHorizontal="true" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/auto_search_description_etc"

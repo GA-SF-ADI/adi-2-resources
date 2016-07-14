@@ -8,7 +8,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
@@ -34,26 +33,19 @@ public class ShoppingCartActivity extends AppCompatActivity {
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
 
 
-
         // SimpleCursorAdapter for cart hats to display in listview
 
-        SimpleCursorAdapter mAdapter;
 
         Context context = getApplicationContext();
         final HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        Cursor cursor = db.getALLHats();  //<– TODO: Is this where I make an instance of the cart singleton?
+        Cursor hatsInCartCursor = db.getALLHatsFromCART();
 
-        String[] columns = new String[]{HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID, HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME}; //this code might look different from your mornings
+        String[] columns = new String[]{HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID, HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME};
+
         int[] viewNames = new int[]{R.id.image_of_hat_in_cart, R.id.textview_name_of_hat_in_cart};
-        CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(ShoppingCartActivity.this, android.R.layout.simple_list_item_1, cursor, columns, viewNames, 0);
 
-        HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(ShoppingCartActivity.this);
-
-
-/*      hatDatabase.addHatToCart(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
-        hatDatabase.addHatToCart(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
-        hatDatabase.addHatToCart(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton", "Snap", "Play the outfield with confidence", "black");*/
+        CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(ShoppingCartActivity.this, android.R.layout.simple_list_item_1, hatsInCartCursor, columns, viewNames, 0);
 
 
         // Payment FAB
@@ -83,7 +75,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 //                TODO: Need to finish deleting selected hat from cart
-                Cursor cursor = db.deleteSpecificHat(listViewOfCartItems.);
+                Cursor cursor = db.deleteSpecificHatFromCart(listViewOfCartItems.);
 
                 teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
 

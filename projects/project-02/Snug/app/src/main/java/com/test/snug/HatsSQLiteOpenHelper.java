@@ -111,36 +111,28 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public void addHatToCart(int id, int picture, String name, double price, String material, String fittedOrSnap,
-                             String description, String color) {
+    public Cursor addHatToCartFromSingleHatActivity(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                HAT_COLUMN_ID + " = ?", // c. selections
+                new String[]{String.valueOf(id)}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
 
-        ContentValues values = new ContentValues();
-        SQLiteDatabase db = getWritableDatabase();
-
-
-        values.put("_id", id);
-        values.put("pictureID", picture);
-        values.put("name", name);
-        values.put("price", price);
-        values.put("material", material);
-        values.put("fittedOrSnap", fittedOrSnap);
-        values.put("description", description);
-        values.put("color", color);
-
-        db.insert(CART_TABLE_NAME, null, values);
-
-        db.close();
-
+        return cursor;
     }
 
 
     //    TODO: Create deleteHat() method for the X in the cart
 
-    public Cursor deleteSpecificHat(int id) {
+    public Cursor deleteSpecificHatFromCart(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
-                HAT_COLUMNS, // b. column names
-                HAT_COLUMN_ID + " = ?", // c. selections
+        Cursor cursor = db.query(CART_TABLE_NAME, // a. table
+                CART_COLUMNS, // b. column names
+                CART_COLUMN_ID + " = ?", // c. selections
                 new String[]{String.valueOf(id)}, // d. selections args
                 null, // e. group by
                 null, // f. having
@@ -164,7 +156,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-    public Cursor getALLHats() {
+    public Cursor getALLHatsFromHatDatabase() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
@@ -173,6 +165,19 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
                 null, // e. group by
                 null,// f. having,
                 "RANDOM ()",// g. order by
+                null); // h. limit
+        return cursor;
+    }
+
+    public Cursor getALLHatsFromCART() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(CART_TABLE_NAME, // a. table
+                CART_COLUMNS, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null,// f. having,
+                null,// g. order by
                 null); // h. limit
         return cursor;
     }

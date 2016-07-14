@@ -12,8 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         } else {
 
 
-            allHatsCursor = db.getALLHats();
+            allHatsCursor = db.getALLHatsFromHatDatabase();
 
             Log.d(LOG_TAG, "allHatsCursor created");
 

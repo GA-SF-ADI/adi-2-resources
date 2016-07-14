@@ -31,12 +31,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
-
-
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
         final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
         final TextView selectedHatPrice = (TextView) findViewById(R.id.textView_single_hat_price);
@@ -49,30 +45,28 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int selectedHatPosition = intent.getIntExtra("hatPosition", -1);
+        final int selectedHatPosition = intent.getIntExtra("hatPosition", -1);
 
-//        Log.d("SingleHatActivity",selec)
+        //Setting the passed through data for the single hat being viewed
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
         Cursor cursor = hatDatabase.getSpecificHat(selectedHatPosition);
 
-        //Setting the passed through data for the single hat being viewed
-
         cursor.moveToFirst();
 
         selectedHatImage.setBackgroundResource(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
         selectedHatTitle.setText(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
-        selectedHatPrice.setText("$"+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
-        selectedHatDescription.setText("Description: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
-        selectedHatBack.setText("Hat back is: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
-        selectedHatMaterial.setText("Material: "+cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
+        selectedHatPrice.setText("$" + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE)));
+        selectedHatDescription.setText("Description: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
+        selectedHatBack.setText("Hat back is: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
+        selectedHatMaterial.setText("Material: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
 
         cursor.close();
 
 
-
         //FAB for adding hat to cart
+
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,13 +74,12 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_SHORT).show();
 
-
                 Context context = getApplicationContext();
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
 //                TODO: Figure out to add particular hat to the cart
 
-//                Cursor cursor = db.addHatToCart();
+                Cursor cursor = db.addHatToCartFromSingleHatActivity(selectedHatPosition);
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
 
@@ -96,7 +89,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         //Menu image button click listeners
