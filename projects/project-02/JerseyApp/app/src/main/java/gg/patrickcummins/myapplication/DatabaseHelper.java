@@ -167,6 +167,67 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return playerArrayList;
     }
+    public ArrayList<Player> getTeamPlayerByNameList(String team, String playerName) {
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "";
+        if (team.equals("warriors")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='warriors' AND " + PlayerValues.NAME + " LIKE '%" + playerName + "%'";
+        } else if (team.equals("raiders")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='raiders' AND " + PlayerValues.NAME + " LIKE '%" + playerName + "%'";
+        } else if (team.equals("sharks")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='sharks' AND " + PlayerValues.NAME + " LIKE '%" + playerName + "%'";
+        }
+
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3))));
+
+        }
+        cursor.close();
+        return playerArrayList;
+    }
+    public ArrayList<Player> getTeamPlayerByPositionList(String team, String playerPosition) {
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "";
+        if (team.equals("warriors")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='warriors' AND " + PlayerValues.POSITION + " LIKE '%" + playerPosition + "%'";
+        } else if (team.equals("raiders")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='raiders' AND " + PlayerValues.POSITION + " LIKE '%" + playerPosition + "%'";
+        } else if (team.equals("sharks")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='sharks' AND " + PlayerValues.POSITION + " LIKE '%" + playerPosition + "%'";
+        }
+
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3))));
+
+        }
+        cursor.close();
+        return playerArrayList;
+    }
+    public ArrayList<Player> getTeamPlayerByNumberList(String team, String playerNumber) {
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "";
+        if (team.equals("warriors")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='warriors' AND " + PlayerValues.NUMBER + " LIKE '%" + playerNumber + "%'";
+        } else if (team.equals("raiders")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='raiders' AND " + PlayerValues.NUMBER + " LIKE '%" + playerNumber + "%'";
+        } else if (team.equals("sharks")) {
+            query = "SELECT " + PlayerValues.NAME + ", " + PlayerValues.POSITION + ", " + PlayerValues.NUMBER + ", " + PlayerValues.PICTURE + ", " + PlayerValues.JERSEY1 + ", " + PlayerValues.JERSEY2 + ", " + PlayerValues.JERSEY3 + ", " + PlayerValues.TEAM + " FROM " + PlayerValues.TABLE_NAME + " WHERE " + PlayerValues.TEAM + "='sharks' AND " + PlayerValues.NUMBER + " LIKE '%" + playerNumber + "%'";
+        }
+
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            playerArrayList.add(new Player(cursor.getString(cursor.getColumnIndex(PlayerValues.NAME)), cursor.getString(cursor.getColumnIndex(PlayerValues.POSITION)), cursor.getInt(cursor.getColumnIndex(PlayerValues.NUMBER)), cursor.getInt(cursor.getColumnIndex(PlayerValues.PICTURE)), cursor.getString(cursor.getColumnIndex(PlayerValues.TEAM)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY1)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY2)), cursor.getInt(cursor.getColumnIndex(PlayerValues.JERSEY3))));
+
+        }
+        cursor.close();
+        return playerArrayList;
+    }
+
 
     public ArrayList<Integer> getPlayerJerseysList(String playerName) {
         ArrayList<Integer> jerseyList = new ArrayList<>();

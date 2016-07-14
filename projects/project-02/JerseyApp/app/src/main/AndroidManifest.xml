@@ -15,10 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RostersActivity" />
-        <activity android:name=".JerseyActivity" />
+        <activity android:name=".RostersActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".JerseyActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".CartActivity" />
         <activity android:name=".PurchaseHistoryActivity"></activity>
+
     </application>
 
 </manifest>

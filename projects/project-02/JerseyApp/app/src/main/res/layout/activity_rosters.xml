@@ -12,7 +12,35 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true" />
+
+        />
+
+    <EditText
+        android:layout_toRightOf="@id/teamImageView"
+        android:id="@+id/searchEditText"
+        android:layout_width="wrap_content"
+        android:hint="Search By:"
+        android:layout_height="wrap_content" />
+    <RadioGroup
+        android:layout_toRightOf="@id/searchEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/nameRadio"
+            android:text="Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/positionRadio"
+            android:text="Position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/numberRadio"
+            android:text="Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
 
 
     <ListView
