@@ -82,11 +82,13 @@ public class DetailFragment extends Fragment {
         itemImageView.setImageResource(mTP.getPic());
         brandTextView.setText(mTP.getBrand());
         nameTextView.setText(mTP.getName());
-        priceTextView.setText("$"+mTP.getPrice());
 
         // if on sale, price text in red (also need to grab new price from other table)
         if(mTP.isOnSale()) {
+            priceTextView.setText("SALE: $\n"+mTP.getPrice());
             priceTextView.setTextColor(Color.RED);
+        } else {
+            priceTextView.setText("$"+mTP.getPrice());
         }
 
         quantityTextView.setText(quantity+"");

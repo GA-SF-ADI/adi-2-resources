@@ -138,6 +138,18 @@ public class Helper extends SQLiteOpenHelper {
         return returnId;
     }
 
+    // adding sale items and prices
+    public long addSale(int itemID, double salePrice) {
+        ContentValues values = new ContentValues();
+        values.put(COL_SALE_ITEM_ID, itemID);
+        values.put(COL_SALE_PRICE, salePrice);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long returnID = db.insert(SALE_TABLE_NAME, null, values);
+        db.close();
+        return returnID;
+    }
+
     // adding items to shopping cart table
     public long addItemToCart(int tpID, int quantity) {
         ContentValues values = new ContentValues();
@@ -167,19 +179,15 @@ public class Helper extends SQLiteOpenHelper {
         return cursor.getInt(cursor.getColumnIndex(COL_ID));
     }
 
-    // get the list of all products
+    // get the list of all products left joining sale table
     public Cursor getTPList(){
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TP_TABLE_NAME, // a. table
-                TP_COLUMNS, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
+        String query = "SELECT " + TP_TABLE_NAME + "." + COL_ID  + ", " + SALE_TABLE_NAME + "." + COL_SALE_ID + ", " + COL_SALE_PRICE + ", " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE + ", " + COL_ITEM_DESCRIPTION  + ", " + COL_ITEM_PLY  + ", " +COL_ITEM_NUM_ROLL  + ", " + COL_ITEM_SIZE +
+                " FROM " + TP_TABLE_NAME + " LEFT JOIN " + SALE_TABLE_NAME +
+                " ON " + TP_TABLE_NAME + "." + COL_ID + " = " + SALE_TABLE_NAME + "." + COL_SALE_ITEM_ID;
+        Cursor cursor = db.rawQuery(query, null);
 
         return cursor;
     }
@@ -196,19 +204,30 @@ public class Helper extends SQLiteOpenHelper {
     public Cursor searchTPList(String query){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TP_TABLE_NAME, // a. table
-                TP_COLUMNS, // b. column names
-                COL_ITEM_NAME + " LIKE ? AND " + COL_ITEM_BRAND + " LIKE ?", // c. selections
-                new String[]{"%" + query + "%"}, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
+        String searchQuery = "SELECT " + TP_TABLE_NAME + "." + COL_ID  + ", " + SALE_TABLE_NAME + "." + COL_SALE_ID + ", " + COL_SALE_PRICE + ", " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE + ", " + COL_ITEM_DESCRIPTION  + ", " + COL_ITEM_PLY  + ", " +COL_ITEM_NUM_ROLL  + ", " + COL_ITEM_SIZE +
+                " FROM " + TP_TABLE_NAME + " LEFT JOIN " + SALE_TABLE_NAME +
+                " ON " + TP_TABLE_NAME + "." + COL_ID + " = " + SALE_TABLE_NAME + "." + COL_SALE_ITEM_ID +
+                " WHERE " + COL_ITEM_NAME + " LIKE '%" + query + "%'";
+        Cursor cursor = db.rawQuery(searchQuery, null);
 
         return cursor;
     }
 
-    //get all comments for product
+    //add comment
+    public long addComment(int itemID, String comment, int rating) {
+        ContentValues values = new ContentValues();
+        values.put(COL_REVIEW_ITEM_ID, itemID);
+        values.put(COL_REVIEW_COMMENT, comment);
+        values.put(COL_REVIEW_RATING, rating);
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long returnID = db.insert(REVIEW_TABLE_NAME, null, values);
+        db.close();
+        return returnID;
+    }
+
+
+    //get all comments for a product
     public Cursor getTPComment(int TPid) {
         SQLiteDatabase db = this.getReadableDatabase();
 

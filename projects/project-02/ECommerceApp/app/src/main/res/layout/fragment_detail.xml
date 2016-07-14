@@ -17,7 +17,7 @@
         android:text="Brand"
         android:layout_toRightOf="@+id/detail_item_image"
         android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:paddingTop="20dp"
         android:paddingLeft="12dp"/>
 
@@ -26,10 +26,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_below="@+id/detail_item_brand"
         android:layout_toRightOf="@+id/detail_item_image"
         android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
         android:paddingBottom="12dp"
         android:paddingLeft="12dp"/>
 
@@ -38,16 +39,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$14.99"
-        android:paddingTop="20dp"
-        android:paddingRight="20dp"
-        android:textSize="24dp"
+        android:paddingTop="12dp"
+        android:paddingRight="12dp"
+        android:textSize="20dp"
         android:layout_alignParentRight="true"/>
 
     <TextView
         android:id="@+id/detail_rating_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate it: "
+        android:text="Average User Rating: "
         android:layout_below="@+id/detail_linear_layout"
         android:padding="16dp"/>
 
@@ -68,6 +69,15 @@
         android:layout_toRightOf="@id/detail_rating_text"
         android:padding="12dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/detail_rating"
+        android:layout_below="@+id/detail_linear_layout"
+        android:text="Rate it!"
+        android:textSize="10dp"
+        />
+
     <LinearLayout
         android:id="@+id/detail_linear_layout"
         android:layout_width="match_parent"
@@ -80,7 +90,6 @@
             android:id="@+id/remove_quantity_button"
             android:layout_width="16dp"
             android:layout_height="16dp"
-
             android:baselineAlignBottom="true"
             android:src="@drawable/ic_remove_black_hdpi"/>
 
@@ -107,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:textSize="10dp"
             android:text="Add to Cart"/>
 
     </LinearLayout>
@@ -139,5 +149,7 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    LIs
 
 </RelativeLayout>

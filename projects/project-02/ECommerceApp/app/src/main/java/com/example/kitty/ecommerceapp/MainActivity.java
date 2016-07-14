@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         // setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
 
         // setup list fragment
         tpListFragment = new TPListFragment();
+
+        handleSearchIntent(getIntent());
+
 
         // get fragment manager and create transactions
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchableInfo);
 
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
     @Override
@@ -87,9 +91,15 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleSearchIntent(intent);
+    }
+
     private void handleSearchIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            tpListFragment.searchTPList(intent.getStringExtra(SearchManager.QUERY));
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            tpListFragment.searchTPList(query);
         }
     }
 
