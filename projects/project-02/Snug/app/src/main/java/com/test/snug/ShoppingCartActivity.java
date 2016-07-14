@@ -61,16 +61,16 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
-//        deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-////                TODO: Need to finish deleting selected hat from cart
-////                Cursor cursor = db.deleteSpecificHat(listViewOfCartItems.getItemAtPosition());
-//
-//
-//            }
-//        });
+        deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                TODO: Need to finish deleting selected hat from cart
+//                Cursor cursor = db.deleteSpecificHat(listViewOfCartItems.getItemAtPosition());
+
+
+            }
+        });
 
 
     }

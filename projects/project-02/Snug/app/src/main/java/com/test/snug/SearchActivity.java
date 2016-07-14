@@ -98,37 +98,29 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-//        Cursor cursor = db.getHatTeams(userSearchTeamRequest);
+//    TODO: Remove Strings from cursor and put strings into Array to be passed into MultiAutoCompleteTextView adapter below
+
+        Cursor cursor = db.getHatTeams();
+
+        ArrayList<String> teamNamesFromDatabaseArrayList = new ArrayList<String>();
 
 
-       /* ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, teamNamesFromDatabase);
+        while (!cursor.isAfterLast()) {
+
+            teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+
+
+        }
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, teamNamesFromDatabaseArrayList);
 
         MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) findViewById(R.id.auto_search_description_etc);
         textView.setAdapter(adapter);
         textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 
-*/
-
-
     }
 
-    /*private static final String[] TEAM_NAMES_FROM_DATABASE = new String[]{
-            "LA Angels", "Oakland A's", "San Francisco Giants", "LA Dodgers"
-    };
-
-    public String[] teamNamesFromDatabase() {
-        Context context = getApplicationContext();
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-        Cursor cursor = db.getHatTeams();
-        ArrayList<String> teamNamesFromDatabaseArrayList = new ArrayList<String>();
-        while (!cursor.isAfterLast()) {
-            names.add(cursor.getString(cursor.getColumnIndex("name")));
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return names.toArray(new String[names.size()]);
-    }
-*/
+//        Cursor cursor = db.getHatTeams(userSearchTeamRequest);
 
 }
