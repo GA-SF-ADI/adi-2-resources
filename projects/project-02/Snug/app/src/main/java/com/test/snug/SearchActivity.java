@@ -111,7 +111,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, "teamNamesFromDatabaseArrayList ArrayList created");
 
-        while (!cursor.isAfterLast()) {
+        while (cursor.moveToNext()) {
 
             teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
             Log.d(LOG_TAG, "team name pulled from cursor and added to ArrayList");
