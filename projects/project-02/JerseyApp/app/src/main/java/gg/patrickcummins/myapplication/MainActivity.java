@@ -29,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         helper = DatabaseHelper.getInstance(MainActivity.this);
 
         setImageViews();
-        setOnClickListeners();
         setOnTouchListeners();
+        setOnClickListeners();
+
 
         if (helper.getTeamPlayerList("warriors").size() < 1) {
             initializeTeams(helper);
@@ -44,46 +45,46 @@ public class MainActivity extends AppCompatActivity {
 
     private void setOnTouchListeners() {
 
-//        warriors.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                setImageViewOnTouch(v, event);
-//                return true;
-//            }
-//        });
-//        raiders.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                setImageViewOnTouch(v, event);
-//                return true;
-//            }
-//        });
-//        sharks.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                setImageViewOnTouch(v, event);
-//                return true;
-//            }
-//        });
+        warriors.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event, "warriors");
+                return true;
+            }
+        });
+        raiders.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event, "raiders");
+                return true;
+            }
+        });
+        sharks.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                setImageViewOnTouch(v, event, "sharks");
+                return true;
+            }
+        });
 
 
     }
 
-    private void setImageViewOnTouch(View v, MotionEvent event) {
+    private void setImageViewOnTouch(View v, MotionEvent event, String team) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 ImageView view = (ImageView) v;
-                //overlay is black with transparency of 0x77 (119)
+
                 view.getDrawable().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
-                view.invalidate();
+
                 break;
             }
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL: {
                 ImageView view = (ImageView) v;
-                //clear the overlay
+
                 view.getDrawable().clearColorFilter();
-                view.invalidate();
+                startRosterActivity(team);
                 break;
             }
         }
@@ -138,24 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setOnClickListeners() {
-        warriors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startRosterActivity("warriors");
-            }
-        });
-        raiders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startRosterActivity("raiders");
-            }
-        });
-        sharks.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startRosterActivity("sharks");
-            }
-        });
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
