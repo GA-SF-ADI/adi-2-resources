@@ -77,7 +77,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear search"
+        android:text="@string/clear_search_button_text"
         android:id="@+id/button_clear_search_paramaters"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/editText_price"
