@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "All hats inserted into database");
 
         //Saving the hat insertions into sharedpreferences
-        
+
         SharedPreferences sharedPreferences = getSharedPreferences("hats added to database.key", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("hatsAdded", "hatsin");

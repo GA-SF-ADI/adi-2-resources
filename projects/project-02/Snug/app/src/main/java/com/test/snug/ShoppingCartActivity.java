@@ -22,17 +22,22 @@ public class ShoppingCartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+
+        //Setting up views, toolbars, and binding data
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
+        ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
+        final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
+
+
+
+        // SimpleCursorAdapter for cart hats to display in listview
+
+        SimpleCursorAdapter mAdapter;
 
         Context context = getApplicationContext();
         final HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-        ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
-
-        final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
-        SimpleCursorAdapter mAdapter;
-
 
         Cursor cursor = db.getALLHats();  //<– TODO: Is this where I make an instance of the cart singleton?
 
@@ -47,6 +52,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
         hatDatabase.addHatToCart(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
         hatDatabase.addHatToCart(2, R.drawable.all_black_braves, "Atlanta Braves", 19.99, "100% cotton", "Snap", "Play the outfield with confidence", "black");*/
 
+
+        // Payment FAB
 
         FloatingActionButton makeFinalPaymentFab = (FloatingActionButton) findViewById(R.id.fab_make_final_payment);
         makeFinalPaymentFab.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +73,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
+        //onClickListener for imagebutton that deletes hat from cart
+
        /* deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,18 +88,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 */
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
 }

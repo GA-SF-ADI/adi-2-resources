@@ -24,11 +24,11 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        //Setting up views, toolbars, and binding data
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
         setSupportActionBar(toolbar);
-
-        Context context = getApplicationContext();
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         final FloatingActionButton startSearchFAB = (FloatingActionButton) findViewById(R.id.fab_to_start_search);
 
@@ -38,16 +38,21 @@ public class SearchActivity extends AppCompatActivity {
         final EditText priceMax = (EditText) findViewById(R.id.editText_price);
         final EditText requestedTeam = (EditText) findViewById(R.id.auto_search_description_etc);
 
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
         String userSearchTeamRequest = requestedTeam.getText().toString();
 
         final boolean fitted = false;
         final boolean snapback = false;
 
 
+
+        //Radio button if statement listeners which toggle them on/off
+
         fittedRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 if (fittedRadioButton.isChecked()) {
 
@@ -100,6 +105,8 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+        //Grabbing unique ArrayList of team names and eventually passing it to MultiAutoCompleteTextView and its cursor
 
         Cursor cursor = db.getHatTeams();
 

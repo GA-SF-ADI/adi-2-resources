@@ -20,9 +20,11 @@ public class SingleHatViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
+
+        //Setting up views, toolbars, and binding data
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
-
 
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
         final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
@@ -38,6 +40,9 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 //        TODO:Add hat ID and color too, for passing on to cart?
 
+        //Setting the passed through data for the single hat being viewed
+
+
         selectedHatImage.setBackgroundResource(R.drawable.dodgers);
         selectedHatTitle.setText("");
         selectedHatPrice.setText("");
@@ -45,19 +50,19 @@ public class SingleHatViewActivity extends AppCompatActivity {
         selectedHatBack.setText("");
         selectedHatMaterial.setText("");
 
+        //FAB for adding hat to cart
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_LONG).show();
+                Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_SHORT).show();
 
 
                 Context context = getApplicationContext();
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
 //                TODO: Figure out to add particular hat to the cart
-
 
 //                Cursor cursor = db.addHatToCart();
 
