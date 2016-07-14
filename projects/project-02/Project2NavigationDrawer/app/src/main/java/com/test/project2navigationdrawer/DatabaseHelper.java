@@ -107,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String id, String type, double price, String gold, String stone, String measurement, String name, String quantity,int image) {
+    public void insert(String id, String type, double price, String gold, String stone, String measurement, String name,int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -117,7 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_4_GOLD, gold);
         values.put(COL_5_STONE, stone);
         values.put(COL_6_MEASUREMENT, measurement);
-        values.put(COL_7_QUANTITY, quantity);
+        //values.put(COL_7_QUANTITY, quantity);
         values.put(COL_8_NAME, name);
         values.put(COL_9_IMAGE, image);
 
@@ -126,7 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void insertShoppingCart(String type, double price,
-                                   String gold, String stone, String measurement, String quantity, String name, int image) {
+                                   String gold, String stone, String measurement,  String name, int image) {
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -135,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_4_GOLD_SHOPPING_CART, gold);
         values.put(COL_5_STONE_SHOPPING_CART, stone);
         values.put(COL_6_MEASUREMENT_SHOPPING_CART, measurement);
-        values.put(COL_7_QUANTITY_SHOPPING_CART, quantity);
+        //values.put(COL_7_QUANTITY_SHOPPING_CART, quantity);
         values.put(COL_8_NAME_SHOPPING_CART, name);
         values.put(COL_9_IMAGE_SHOPPING_CART, image);
 
@@ -219,6 +219,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null);
+        return cursor;
+    }
+
+    public Cursor deleteAll () {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor cursor = db.query(TABLE_NAME, // a. table
+                SHOPPING_CART_COLUMNS, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        db.delete(TABLE_NAME, null, null);
+
         return cursor;
     }
 

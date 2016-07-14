@@ -48,7 +48,7 @@ public class DBAdapter extends CursorAdapter {
         TextView goldOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_gold_of_jewelry);
         TextView stoneOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_stone_of_jewelry);
         TextView measurementOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_measurement_of_jewelry);
-        final TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
+        //final TextView quantityOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_quantity_of_jewelry);
         TextView nameOfJewelryTextView = (TextView) view.findViewById(R.id.text_view_name_of_jewelry);
         ImageView imageOfJewelry = (ImageView) view.findViewById(R.id.image_view_of_jewelry);
         Button addToCartButton = (Button) view.findViewById(R.id.add_button_to_shopping_cart);
@@ -87,7 +87,7 @@ public class DBAdapter extends CursorAdapter {
             @Override
             public void onClick(View v) {
 
-                helper.insertShoppingCart(type, price, gold, stone, measurement, quantity, name, jewelry);
+                helper.insertShoppingCart(type, price, gold, stone, measurement, name, jewelry);
 
             }
         });

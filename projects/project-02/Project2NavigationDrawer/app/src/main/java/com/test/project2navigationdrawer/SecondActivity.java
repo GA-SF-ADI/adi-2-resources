@@ -47,15 +47,15 @@ public class SecondActivity extends AppCompatActivity {
 
         myDb = DatabaseHelper.getInstance(this);
 
-        myDb.insert("1", "bracelet", 149.00, "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id1);
-        myDb.insert("2", "bracelet", 179.00, "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id2);
-        myDb.insert("3", "bracelet", 189.00, "platinum", "sapphire", null, "quantity 5", "classic", R.drawable.id3);
-        myDb.insert("4", "earrings", 49.00, "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id4);
-        myDb.insert("5", "earrings", 79.00, "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id5);
-        myDb.insert("6", "earrings", 89.00, "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id6);
-        myDb.insert("7", "necklace", 49.00, "yellow gold", "ruby", null, "quantity 5", "striking", R.drawable.id7);
-        myDb.insert("8", "necklace", 79.00, "white gold", "diamond", null, "quantity 5", "elegant", R.drawable.id8);
-        myDb.insert("9", "necklace", 89.00, "platinum", "diamond", null, "quantity 5", "classic", R.drawable.id9);
+        myDb.insert("1", "bracelet", 1490.00, "yellow gold", "ruby", null, "Striking Collection", R.drawable.id1);
+        myDb.insert("2", "bracelet", 5790.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id2);
+        myDb.insert("3", "bracelet", 1890.00, "platinum", "sapphire", null, "Classic Collection", R.drawable.id3);
+        myDb.insert("4", "earrings", 4049.00, "platinum", "diamond", null, "Striking Collection", R.drawable.id4);
+        myDb.insert("5", "earrings", 879.00, "white gold", "sapphire", null, "Elegant Collection", R.drawable.id5);
+        myDb.insert("6", "earrings", 989.00, "yellow gold", "ruby", null, "Classic Collection", R.drawable.id6);
+        myDb.insert("7", "necklace", 8049.00, "yellow gold", "emerald", null, "Striking Collection", R.drawable.id7);
+        myDb.insert("8", "necklace", 6079.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id8);
+        myDb.insert("9", "necklace", 1089.00, "yellow gold", "sapphire", null, "Classic Collection", R.drawable.id9);
         populateListViewFromDB();
 
         textViewSearch = (TextView) findViewById(R.id.text_view_search);
@@ -97,7 +97,7 @@ public class SecondActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
                 jewelCursor.moveToPosition(position);
-                intent.putExtra("id",jewelCursor.getInt(jewelCursor.getColumnIndex(DatabaseHelper.COL_1_ID)));
+                intent.putExtra("id", jewelCursor.getInt(jewelCursor.getColumnIndex(DatabaseHelper.COL_1_ID)));
 //
 //                iconCursor.moveToPosition(position);
 //                intent.putExtra("id", iconCursor.getInt(iconCursor.getColumnIndex(IconSQLiteOpenHelper.COL_ID)));

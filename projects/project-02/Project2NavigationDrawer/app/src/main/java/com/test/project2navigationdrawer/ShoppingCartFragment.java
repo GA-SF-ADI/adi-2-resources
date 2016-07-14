@@ -45,14 +45,14 @@ public class ShoppingCartFragment extends Fragment {
 
         removeButton.setOnClickListener(new AdapterView.OnClickListener() {
             public void onClick(View view) {
-                Log.d("IUSBIUABFDB", "onClick: clicked");
-                price = 0;
-                //setPriceAdapter.notifyDataSetChanged();
-                //database does not change
-                //current total price of DB needs to be changed
-                //helper method in DB that does db.delete method
 
-                textView.setText("Your total is $" + price +"0");
+                Cursor cursor = databaseHelper.deleteAll();
+                cursor.moveToFirst();
+
+                price = 0;
+                textView.setText("Your total is $" + price + "0" );
+                cursor.moveToNext();
+                cursor.close();
 
             }
         });
