@@ -31,7 +31,7 @@ public class CartActivity extends AppCompatActivity {
         setIsPurchaseHistory();
 
 
-        cartListAdapter = new CartListAdapter(cartItems, CartActivity.this);
+
 
         cartListView.setAdapter(cartListAdapter);
         setTotal();
@@ -49,11 +49,12 @@ public class CartActivity extends AppCompatActivity {
             dateTextView.setText("Date Ordered:\n" + date);
             dateTextView.setVisibility(View.VISIBLE);
             checkoutButton.setVisibility(View.GONE);
+            cartListAdapter = new CartListAdapter(cartItems, CartActivity.this, "nah");
 
 
         } else {
-
             cartItems = helper.getCartItemArrayList();
+            cartListAdapter = new CartListAdapter(cartItems, CartActivity.this, "cart");
         }
     }
 

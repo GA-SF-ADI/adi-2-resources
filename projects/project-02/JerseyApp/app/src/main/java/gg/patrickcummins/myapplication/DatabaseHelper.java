@@ -255,6 +255,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
     }
+    public void removeFromCart(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "DELETE FROM " + CartValues.TABLE_NAME + " WHERE " + CartValues._ID + " = " + id;
+        db.execSQL(query);
+    }
 
 
 }
