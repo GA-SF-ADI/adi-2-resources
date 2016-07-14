@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Main Activity";
-    Cursor cursor;
+    private Cursor allHatsCursor;
     private static final String TAG = "MainActivity";
     private static final boolean VERBOSE = true;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        cursor = db.getNumOfCartItems();
+        Cursor cursor = db.getNumOfCartItems();
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         } else {
 
 
-            Cursor allHatsCursor = db.getALLHats();
+            allHatsCursor = db.getALLHats();
 
             Log.d(LOG_TAG, "allHatsCursor created");
 
@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             @Override
             public void onClick(View view) {
 
+
+//                TODO: StartActivityForResult == query I need to make
+
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
 
@@ -144,9 +147,22 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         Log.d(LOG_TAG, "position of hat is: " + position);
 
+        allHatsCursor.moveToPosition(position);
+
+        int hatId = allHatsCursor.getInt(allHatsCursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
+
+        Log.d(LOG_TAG, "Hat id is: " + hatId);
+
+
         Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
 
-        intent.putExtra("hatPosition", position);
+        intent.putExtra("hatPosition", hatId);
+
+        // position is position in recycler view list. NOT the same as item id
+
+        // Using position, move cursor to that position. Then pull out the
+
+
 
         Log.d(LOG_TAG, "position of hat is: " + position + " and " +
                 hatDatabase.getSpecificHat(position) + " has been put into the intent");

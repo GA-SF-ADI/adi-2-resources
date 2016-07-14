@@ -28,7 +28,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         //Setting up views, toolbars, and binding data
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
+        Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
         setSupportActionBar(toolbar);
 
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
@@ -49,6 +49,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         int selectedHatPosition = intent.getIntExtra("hatPosition", -1);
 
+//        Log.d("SingleHatActivity",selec)
+
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
         Cursor cursor = hatDatabase.getSpecificHat(selectedHatPosition);
@@ -66,7 +68,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         cursor.close();
 
-        Log.d("SingleHatViewActivity", "Cursor closed");
 
 
         //FAB for adding hat to cart

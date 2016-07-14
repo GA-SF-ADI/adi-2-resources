@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,7 +49,8 @@ public class SearchActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        String userSearchTeamRequest = requestedTeam.getText().toString();
+        final String userSearchTeamRequest = requestedTeam.getText().toString();
+
 
         final boolean fitted = false;
         final boolean snapback = false;
@@ -98,15 +100,45 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                final String priceMaxRequest = priceMax.getText().toString();
 
                 Intent intent = new Intent(SearchActivity.this, MainActivity.class);
 
-//                intent.putExtra("maxPriceSearch", maxPrice);
+
+//                TODO: Grab any inputted teams
+
+                if (!userSearchTeamRequest.isEmpty()) {
+
+                }
+
+                intent.putExtra("userSearchTeamRequest", userSearchTeamRequest);
 
 
-                startActivity(intent);
+                if (fittedRadioButton.isChecked()) {
 
-                onStop();
+//                    TODO: Fill this out!
+
+                } else if (snapbackRadioButton.isChecked()) {
+
+//                    TODO: Fill this out!
+                }
+
+//                TODO: Check for a max price
+
+                if (!priceMaxRequest.isEmpty()) {
+
+                    intent = new Intent(SearchActivity.this, MainActivity.class);
+
+                    intent.putExtra("priceMaxRequest", priceMaxRequest);
+
+                    Toast.makeText(SearchActivity.this, "The max price is" + priceMaxRequest, Toast.LENGTH_SHORT).show();
+
+
+                    startActivity(intent);
+
+                }
+
+
 
             }
         });

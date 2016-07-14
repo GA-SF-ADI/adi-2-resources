@@ -61,7 +61,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {//<–– TODO: Ask if this is the right place for intent to be passed. Also ask about interface stuff...
-                    Log.d(LOG_TAG, "Clicked on hat at " + getAdapterPosition());
+                    Log.d(LOG_TAG, "Clicked on hat at adapterPosition: " + getAdapterPosition());
 
                     myItemClickListener.onItemClick(getLayoutPosition());
 
