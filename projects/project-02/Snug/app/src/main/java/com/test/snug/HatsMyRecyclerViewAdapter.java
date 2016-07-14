@@ -57,8 +57,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             CardView cardView = (CardView) itemView.findViewById(R.id.card_view);
 
-
-            itemView.setOnClickListener(this);
+            cardView.setOnClickListener(this);
 
         }
 
@@ -67,6 +66,7 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
             Log.i(LOG_TAG, "Clicked on hat");
 
+//            TODO: CLICK FUNCTIONALITY WILL HAPPEN HERE!!!!
 
 
         }

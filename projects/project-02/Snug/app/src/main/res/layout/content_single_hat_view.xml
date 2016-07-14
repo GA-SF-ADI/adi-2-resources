@@ -44,6 +44,7 @@
         android:layout_below="@+id/textView_single_hat_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/Single_hat_price"
         android:textSize="18sp" />
 
@@ -54,27 +55,27 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView_single_hat_price"
-        android:paddingTop="5dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Single_hat_static_description_with_colon"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/textview_single_hat_static_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textview_single_hat_static_description_with_colon"
-        android:paddingTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Single_hat_static_back_with_colon"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/textview_single_hat_static_material_with_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_single_hat_static_back"
-        android:paddingTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Single_hat_static_material_with_colon"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="#000000" />
 
 
 </RelativeLayout>

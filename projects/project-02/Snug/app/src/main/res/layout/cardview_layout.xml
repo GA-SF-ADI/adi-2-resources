@@ -43,7 +43,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/hat_photo"
                     android:gravity="center"
-                    android:text="@string/Hat_name"
                     android:textColor="#4b4444"
                     android:textSize="18sp" />
 

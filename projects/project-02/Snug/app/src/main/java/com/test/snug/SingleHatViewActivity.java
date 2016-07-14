@@ -32,13 +32,12 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 //        TODO:Add hat ID and color too, for passing on to cart?
 
-       /* selectedHatImage.setBackgroundResource(R.drawable.dodgers);
-        selectedHatTitle.setText();
-        selectedHatPrice.setText();
-        selectedHatDescription.setText();
-        selectedHatBack.setText();
-        selectedHatMaterial.setText();
-*/
+        selectedHatImage.setBackgroundResource(R.drawable.dodgers);
+        selectedHatTitle.setText("");
+        selectedHatPrice.setText("");
+        selectedHatDescription.setText("");
+        selectedHatBack.setText("");
+        selectedHatMaterial.setText("");
 
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
         addToCartButton.setOnClickListener(new View.OnClickListener() {

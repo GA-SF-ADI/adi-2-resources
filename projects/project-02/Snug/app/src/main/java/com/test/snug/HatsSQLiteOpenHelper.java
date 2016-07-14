@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -134,8 +135,21 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     }
 
 
-//    TODO: Create deleteHat() method
+    //    TODO: Create deleteHat() method for the X in the cart
 
+    public Cursor deleteSpecificHat(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
+                HAT_COLUMNS, // b. column names
+                HAT_COLUMN_ID + " = ?", // c. selections
+                new String[]{String.valueOf(id)}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+
+        return cursor;
+    }
 
     public Cursor getSpecificHat(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -167,22 +181,22 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 //    TODO: Create array of team names in the method below
 
 
-    public Cursor getHatTeams(String query) {
+    public Cursor getHatTeams() {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
-                HAT_COLUMNS, // b. column names
-                HAT_TABLE_NAME + " LIKE ?", // c. selections
-                new String[]{"%" + query + "%"}, // d. selections args
+                new String[]{HAT_COLUMN_HATNAME}, // b. column names
+                null, // c. selections
+                null, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by
                 null); // h. limit
-
         return cursor;
 
 
     }
+
 
 //    TODO: Create method to return # of items in cart table
 
@@ -200,9 +214,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
                 null); // h. limit
 
         return cursor;
-
-
-
 
 
     }
