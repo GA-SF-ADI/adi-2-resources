@@ -25,6 +25,7 @@
     <string name="price_edittext">$</string>
     <string name="no_combined_search_variables">Combined search not possible at the moment!\n(e.g. Giants AND fitted)</string>
 
+    <string name="search_item_list_1">1.</string>
 
     <string name="title_activity_search">SearchActivity</string>
 
