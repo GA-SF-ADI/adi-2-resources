@@ -34,7 +34,7 @@ public class CartCustomCursorAdapter extends CursorAdapter {
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, Context context, final Cursor cursor) {
 
         ImageView imageViewimageOfCartHat = (ImageView) view.findViewById(R.id.image_of_hat_in_cart);
         TextView textViewnameOfCartHat = (TextView) view.findViewById(R.id.textview_name_of_hat_in_cart);
@@ -54,6 +54,10 @@ public class CartCustomCursorAdapter extends CursorAdapter {
         //FAB for X button which deletes single hat from cart   <<–– This isn't working!!
         ImageButton deleteButtonForCartHat = (ImageButton) view.findViewById(R.id.imagebutton_to_remove_hat_from_cart);
 
+//        TODO: Figure out how to get the position of the listview to compare with database to then delete
+
+        /*final int position = list
+
         deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,16 +68,19 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-                Cursor cursorForDeletingHat = db.getALLHatsFromCART();
+//                Cursor cursorForDeletingHat = db.getALLHatsFromCART();
 
-                cursorForDeletingHat.moveToFirst();
+                cursor.moveToPosition(position);
 
-//                TODO: Figure out how to get the position of the listview to compare with database to then delete
-                db.deleteSpecificHatFromCart();
 
+
+                db.deleteSpecificHatFromCart(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID)));
 
             }
-        });
+        });*/
+
+
+
     }
 
     @Override

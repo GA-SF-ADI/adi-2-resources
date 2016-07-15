@@ -159,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         final MenuItem item = menu.findItem(R.id.searchview_item_in_main_activity_menu);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setSearchableInfo(searchableInfo);
 
         // Return true to show menu, returning false will not show it.
 
