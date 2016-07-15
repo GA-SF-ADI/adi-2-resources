@@ -1,5 +1,6 @@
 package com.example.kitty.ecommerceapp;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,9 @@ import org.w3c.dom.Text;
 public class DetailFragment extends Fragment {
 
     public static final String TAG = "DetailFragment";
+
+    String Item_ID_TAG = "Item_ID_tag";
+
     ImageView itemImageView;
     TextView brandTextView;
     TextView nameTextView;
@@ -35,6 +39,7 @@ public class DetailFragment extends Fragment {
     TextView numPlyTextView;
     TextView numRollTextView;
     TextView rollSizeTextView;
+    Button rateItButton;
 
     RatingBar ratingBar;
 
@@ -65,9 +70,10 @@ public class DetailFragment extends Fragment {
         numPlyTextView = (TextView) v.findViewById(R.id.detail_num_ply);
         numRollTextView = (TextView) v.findViewById(R.id.detail_num_rolls);
         rollSizeTextView = (TextView) v.findViewById(R.id.detail_roll_size);
+        rateItButton = (Button) v.findViewById(R.id.insert_comment_button);
 
         //when you first go in to this page quantity should always be 0
-        quantity = 0;
+        quantity = 1;
 
         updateViews();
         return v;
@@ -133,5 +139,19 @@ public class DetailFragment extends Fragment {
             }
         });
 
+        // button to go to leaving comments activity
+        rateItButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toComment();
+            }
+        });
+
+    }
+
+    public void toComment() {
+        Intent intent = new Intent(getContext(), CommentActivity.class);
+        intent.putExtra(Item_ID_TAG, db.getTPID(mTP.getName()));
+        startActivity(intent);
     }
 }

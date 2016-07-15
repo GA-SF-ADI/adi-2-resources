@@ -207,7 +207,7 @@ public class Helper extends SQLiteOpenHelper {
         String searchQuery = "SELECT " + TP_TABLE_NAME + "." + COL_ID  + ", " + SALE_TABLE_NAME + "." + COL_SALE_ID + ", " + COL_SALE_PRICE + ", " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE + ", " + COL_ITEM_DESCRIPTION  + ", " + COL_ITEM_PLY  + ", " +COL_ITEM_NUM_ROLL  + ", " + COL_ITEM_SIZE +
                 " FROM " + TP_TABLE_NAME + " LEFT JOIN " + SALE_TABLE_NAME +
                 " ON " + TP_TABLE_NAME + "." + COL_ID + " = " + SALE_TABLE_NAME + "." + COL_SALE_ITEM_ID +
-                " WHERE " + COL_ITEM_NAME + " LIKE '%" + query + "%'";
+                " WHERE " + COL_ITEM_NAME + " LIKE '%" + query + "%' OR " + COL_ITEM_BRAND + " LIKE '%" + query + "%' OR " + COL_ITEM_SIZE + " LIKE '%" + query + "%'";
         Cursor cursor = db.rawQuery(searchQuery, null);
 
         return cursor;

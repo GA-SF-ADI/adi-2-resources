@@ -30,7 +30,7 @@ public class TPListFragment extends ListFragment {
 
     private String query = null;
 
-    private Helper db;
+    private Helper helper;
     private MyCursorAdapter cursorAdapter;
     private Cursor cursor;
 
@@ -51,7 +51,7 @@ public class TPListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
         itemClickInterface = (ItemClickInterface) getActivity();
 
-        db = Helper.getInstance(getContext());
+        helper = Helper.getInstance(getContext());
 
         //to make sure the data only gets imported once
         preferences = getActivity().getSharedPreferences(TAG, Context.MODE_PRIVATE);
@@ -65,9 +65,9 @@ public class TPListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if(query == null) {
-            cursor = db.getTPList();
+            cursor = helper.getTPList();
         } else {
-            cursor = db.searchTPList(query);
+            cursor = helper.searchTPList(query);
             query = null;
         }
 
@@ -86,9 +86,6 @@ public class TPListFragment extends ListFragment {
 
     public void searchTPList(String query) {
         this.query = query;
-//        Cursor cursor = db.searchTPList(query);
-//        cursorAdapter.changeCursor(cursor);
-//        cursorAdapter.notifyDataSetChanged();
     }
 
     //setting up database items
@@ -104,23 +101,23 @@ public class TPListFragment extends ListFragment {
         TP tp7 = new TP("Ultra Comfort Care Toilet Paper", R.drawable.tp_7, "Cottonelle", 2, "Double", 18, "You deserve a little luxury in life, and so does your bottom.", 10.99, false);
         TP tp8 = new TP("Ultra Plush Toilet Paper", R.drawable.tp_8, "Quilted Northern", 3, "Double", 48, "Silky. Smooth. Soft.", 25.99, false);
         TP tp9 = new TP("Longer Lasting Toilet Paper", R.drawable.tp_9, "Angel Soft", 2, "Mega", 12, "Stock up on necessities with Angel Soft Toilet Paper Mega Rolls. This package comes with 12 mega rolls that are equal to 48 regular rolls so you can be sure you have enough to last for a while.", 11.59, false);
-        TP tp10 = new TP("Sensitive Toilet Paper", R.drawable.tp_10, "Charmin", 2, "Double Plus", 12, "Make going to the bathroom a little more enjoyable with Charmin Sensitive toilet paper!", 10.29, true);
+        TP tp10 = new TP("Sensitive Toilet Paper", R.drawable.tp_10, "Charmin", 2, "Double Plus", 12, "Make going to the bathroom a little more enjoyable with Charmin Sensitive toilet paper!", 10.29, false);
 
-        db.addTP(tp1);
-        db.addTP(tp2);
-        db.addTP(tp3);
-        db.addTP(tp4);
-        db.addTP(tp5);
-        db.addTP(tp6);
-        db.addTP(tp7);
-        db.addTP(tp8);
-        db.addTP(tp9);
-        db.addTP(tp10);
+        helper.addTP(tp1);
+        helper.addTP(tp2);
+        helper.addTP(tp3);
+        helper.addTP(tp4);
+        helper.addTP(tp5);
+        helper.addTP(tp6);
+        helper.addTP(tp7);
+        helper.addTP(tp8);
+        helper.addTP(tp9);
+        helper.addTP(tp10);
 
         // adding sale items and prices
-        db.addSale(1, 13.99);
-        db.addSale(2, 13.99);
-        db.addSale(3, 13.99);
+        helper.addSale(1, 13.99);
+        helper.addSale(2, 13.99);
+        helper.addSale(3, 13.99);
 
         //make sure to pass sharedPreferences so the data won't get imported again
         SharedPreferences.Editor editor = preferences.edit();

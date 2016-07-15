@@ -18,7 +18,6 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements ItemClickInterface {
 
     private TPListFragment tpListFragment;
-    //private DetailFragment detailFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         tpListFragment = new TPListFragment();
 
         handleSearchIntent(getIntent());
-
 
         // get fragment manager and create transactions
         FragmentManager fragmentManager = getSupportFragmentManager();
