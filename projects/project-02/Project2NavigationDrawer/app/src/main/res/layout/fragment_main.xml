@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center" />
 
-    <ImageView
+    <ImageButton
         android:layout_width="wrap_content"
         android:id="@+id/jewelryboximage"
         android:src="@drawable/thejewelrybox"

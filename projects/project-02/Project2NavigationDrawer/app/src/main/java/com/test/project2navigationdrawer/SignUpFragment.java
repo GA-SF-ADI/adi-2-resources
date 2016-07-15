@@ -25,14 +25,7 @@ public class SignUpFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
         final Button mainButton = (Button) rootView.findViewById(R.id.sign_up_button);
-//        mainButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
-//            }
-//        });
-        // Inflate the layout for this fragment
+
         return rootView;
     }
 
