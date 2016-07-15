@@ -1,0 +1,22 @@
+
+
+**** APP INFO ****
+
+
+"Snug" is an e-commerce app that I created with Android Studio. It allows a user to:
+
+	•Scroll amongst the entire inventory of baseball hats.
+
+	•Click on an individual hat to view a larger picture of the hat and to view more info about the hat.
+
+	•Add a hat to the app's cart via a FAB in the individual hat activity.
+
+	•View the hats in the cart and then "make a payment" via a FAB in the cart activity. Hats can also be individually deleted in the cart activity as well.
+
+	•Search for and view any hats based on team name,  price,  material,  the back of the hat (fitted/snap),  description, or color.
+
+
+
+**** BUGS ****
+
+	
