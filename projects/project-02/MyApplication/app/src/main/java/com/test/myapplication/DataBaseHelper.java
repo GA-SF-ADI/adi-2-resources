@@ -137,21 +137,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public void addCart(Cart cart){
         SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
+//        int qty = cart.getQuantity();
+//        int alcId = cart.getfAlcId();
+//        String query = "UPDATE "+CART_TABLE_NAME+" SET "+CART_COL_QUANTITY+"="+CART_COL_QUANTITY+"+"+qty+"WHERE "+CART_COL_ALC_ID+"="+alcId;
+//        String query = "INSERT OR REPLACE INTO "+CART_TABLE_NAME+"("+CART_COL_ID+", "+CART_COL_QUANTITY+", "+CART_COL_ALC_ID+") VALUES ((SELECT "+CART_COL_ID+" FROM "+CART_TABLE_NAME+" WHERE "+CART_COL_ALC_ID+"="+alcId+"),+"+qty+","+alcId+")";
+//        db.rawQuery(query,null);
 
+
+
+        ContentValues values = new ContentValues();
         values.put(CART_COL_QUANTITY,cart.getQuantity());
         values.put(CART_COL_ALC_ID,cart.getfAlcId());
-
         db.insert(CART_TABLE_NAME, null, values);
         db.close();
     }
-
-    public void increaseQuantity(Cart cart){
-        SQLiteDatabase db = getWritableDatabase();
-
-
-
-    }
+    //inner joins to get alcohol properties and quantity using alcid from the cart item.
     public Cursor getCartAlcList(){
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT "
@@ -169,8 +169,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 +CART_TABLE_NAME+" ON "+ALCOHOL_TABLE_NAME+"."+COL_ALC_ID+" = "+CART_TABLE_NAME+"."+CART_COL_ALC_ID;
 
         return db.rawQuery(query,null);
-
-
     }
 
+    public void deleteCart(){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "DELETE FROM "+CART_TABLE_NAME;
+        db.execSQL(query);
+        db.close();
+    }
 }

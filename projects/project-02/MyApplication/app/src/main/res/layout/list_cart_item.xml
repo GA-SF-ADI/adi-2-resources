@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/cart_image"
         android:src="@drawable/jameson"
+        android:layout_alignParentLeft="true"
         android:layout_width="30dp"
         android:layout_height="30dp" />
 
     <TextView
         android:id="@+id/cart_alc_quantity"
-        android:layout_width="wrap_content"
-        android:text="qty"
-        android:textSize="25dp"
-        android:layout_height="30dp" />
+        android:layout_width="60dp"
+        android:layout_toRightOf="@id/cart_image"
+        android:text="qty:5"
+        android:textSize="22dp"
+        android:layout_height="27dp" />
 
     <TextView
         android:id="@+id/cart_alc_name"
+        android:layout_toRightOf="@+id/cart_alc_quantity"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:paddingLeft="15dp"
-        android:textSize="25dp"
+        android:layout_height="27dp"
+        android:paddingLeft="10dp"
+        android:textSize="22dp"
         android:text="name"/>
 
     <TextView
         android:id="@+id/cart_alc_price"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:text="price"
-        android:layout_gravity="end"
+        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
-        android:layout_height="30dp" />
-</LinearLayout>
+        android:layout_height="27dp" />
+</RelativeLayout>

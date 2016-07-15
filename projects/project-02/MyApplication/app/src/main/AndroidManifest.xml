@@ -10,7 +10,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:label="AmaJon">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +27,11 @@
         </activity>
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/AlertDialogTheme" />
+            android:theme="@style/AlertDialogTheme"
+            android:label="AmaJon"/>
         <activity android:name=".CartActivity"
-            android:theme="@style/AlertDialogTheme"/>
+            android:theme="@style/AlertDialogTheme"
+            android:label="AmaJon"/>
 
     </application>
 

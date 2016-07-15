@@ -13,13 +13,67 @@
         android:id="@+id/dialog_alc_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
         android:text="Alcohol Name"/>
 
     <TextView
-        android:id="@+id/dialog_alc_des"
+        android:id="@+id/dialog_alc_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="40%"
         android:layout_below="@+id/dialog_alc_name"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp"/>
+
+    <ImageView
+        android:src="@drawable/jameson"
+        android:id="@+id/dialog_alc_image"
+        android:layout_below="@+id/dialog_alc_price"
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:paddingTop="10dp"
+        android:id="@+id/dialog_alc_des"
+        android:layout_below="@+id/dialog_alc_image"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alcohol Description"/>
+
+    <TextView
+        android:id="@+id/dialog_alc_abv"
+        android:layout_below="@+id/dialog_alc_des"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        android:text="40%abv"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/dialog_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:paddingTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:hint="Enter Quantity"
+        android:layout_above="@+id/dialog_buy_button"/>
+    <Button
+        android:id="@+id/dialog_buy_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:text="buy"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

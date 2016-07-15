@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
+    android:layout_width="375dp"
     android:layout_height="500dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
         android:textSize="35dp"
         android:text="My Cart"/>
 
@@ -21,16 +22,28 @@
         android:id="@+id/cart_list_view"
         android:layout_below="@+id/cart_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="300dp"
+        android:paddingBottom="15dp">
     </ListView>
 
     <Button
         android:id="@+id/buy_button"
-        android:layout_below="@id/cart_list_view"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BUY"/>
+
+    <TextView
+        android:id="@+id/cart_total"
+        android:layout_below="@id/cart_list_view"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        android:text="$300"
+        android:textSize="30dp"/>
+
 
 
 </RelativeLayout>
