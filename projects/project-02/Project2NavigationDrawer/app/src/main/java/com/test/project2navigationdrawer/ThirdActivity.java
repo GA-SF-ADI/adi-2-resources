@@ -26,7 +26,10 @@ public class ThirdActivity extends AppCompatActivity {
             textView2.setText(myItem.getGold());
             TextView textView3 = (TextView) findViewById(R.id.third_activity_text_stone);
             textView3.setText(myItem.getStone());
-            //IMAGE DOES NOT WORK
+
+            TextView textView4 = (TextView) findViewById(R.id.third_activity_text_measurement);
+            textView4.setText(myItem.getMeasurement());
+
             ImageView imageView = (ImageView) findViewById(R.id.third_activity_image);
             imageView.setImageResource(myItem.getImage());
 

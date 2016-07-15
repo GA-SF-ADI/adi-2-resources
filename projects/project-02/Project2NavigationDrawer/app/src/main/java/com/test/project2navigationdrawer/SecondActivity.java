@@ -52,15 +52,15 @@ public class SecondActivity extends AppCompatActivity {
         //all of the items and properties that I want to insert into the db
         myDb = DatabaseHelper.getInstance(this);
 
-        myDb.insert("1", "bracelet", 1490.00, "yellow gold", "ruby", null, "Striking Collection", R.drawable.id1);
-        myDb.insert("2", "bracelet", 5790.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id2);
-        myDb.insert("3", "bracelet", 1890.00, "platinum", "sapphire", null, "Classic Collection", R.drawable.id3);
-        myDb.insert("4", "earrings", 4049.00, "platinum", "diamond", null, "Striking Collection", R.drawable.id4);
-        myDb.insert("5", "earrings", 879.00, "white gold", "sapphire", null, "Elegant Collection", R.drawable.id5);
-        myDb.insert("6", "earrings", 989.00, "yellow gold", "ruby", null, "Classic Collection", R.drawable.id6);
-        myDb.insert("7", "necklace", 8049.00, "yellow gold", "emerald", null, "Striking Collection", R.drawable.id7);
-        myDb.insert("8", "necklace", 6079.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id8);
-        myDb.insert("9", "necklace", 1089.00, "yellow gold", "sapphire", null, "Classic Collection", R.drawable.id9);
+        myDb.insert("1", "lori hart bracelet", 1490.00, "yellow gold", "ruby", "cuff width is 1/2", "Striking Collection", R.drawable.id1);
+        myDb.insert("2", "chloe bracelet", 5790.00, "white gold", "diamond", "cuff width is 1/2", "Elegant Collection", R.drawable.id2);
+        myDb.insert("3", "olivia bracelet", 1890.00, "platinum", "sapphire", "cuff width is 1/2", "Classic Collection", R.drawable.id3);
+        myDb.insert("4", "lisa harper earrings", 4049.00, "platinum", "diamond", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id4);
+        myDb.insert("5", "naomi earrings", 879.00, "white gold", "sapphire", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id5);
+        myDb.insert("6", "jenny earrings", 989.00, "yellow gold", "ruby", "measure 2 cm in length", "Classic Collection", R.drawable.id6);
+        myDb.insert("7", "elise m necklace", 8049.00, "yellow gold", "emerald", "necklace length measures 19 1/4", "Striking Collection", R.drawable.id7);
+        myDb.insert("8", "kendra scott necklace", 6079.00, "white gold", "diamond", "necklace length measures 19 1/4", "Elegant Collection", R.drawable.id8);
+        myDb.insert("9", "perry necklace", 1089.00, "yellow gold", "sapphire", "necklace length measures 19 1/4", "Classic Collection", R.drawable.id9);
         populateListViewFromDB();
 
         textViewSearch = (TextView) findViewById(R.id.text_view_search);
@@ -113,15 +113,15 @@ public class SecondActivity extends AppCompatActivity {
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
 
-        final Item item1 = new Item("1", "bracelet", 1490.00, "yellow gold", "ruby", null, "striking collection", R.drawable.id1);
-        Item item2 = new Item("2", "bracelet", 5790.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id2);
-        Item item3 = new Item("3", "bracelet", 1890.00, "platinum", "sapphire", null, "Classic Collection", R.drawable.id3);
-        Item item4 = new Item("4", "earrings", 4049.00, "platinum", "diamond", null, "Striking Collection", R.drawable.id4);
-        Item item5 = new Item("5", "earrings", 879.00, "white gold", "sapphire", null, "Elegant Collection", R.drawable.id5);
-        Item item6 = new Item("6", "earrings", 989.00, "yellow gold", "ruby", null, "Classic Collection", R.drawable.id6);
-        Item item7 = new Item("7", "necklace", 8049.00, "yellow gold", "emerald", null, "Striking Collection", R.drawable.id7);
-        Item item8 = new Item("8", "necklace", 6079.00, "white gold", "diamond", null, "Elegant Collection", R.drawable.id8);
-        Item item9 = new Item("9", "necklace", 1089.00, "yellow gold", "sapphire", null, "Classic Collection", R.drawable.id9);
+        final Item item1 = new Item("1", "lori heart bracelet", 1490.00, "yellow gold", "ruby", "cuff width is 1/2", "striking collection", R.drawable.id1);
+        Item item2 = new Item("2", "chloe bracelet", 5790.00, "white gold", "diamond", "cuff width is 1/2", "Elegant Collection", R.drawable.id2);
+        Item item3 = new Item("3", "olivia bracelet", 1890.00, "platinum", "sapphire", "cuff width is 1/2", "Classic Collection", R.drawable.id3);
+        Item item4 = new Item("4", "lisa harper earrings", 4049.00, "platinum", "diamond", "measure 2 cm in length", "Striking Collection", R.drawable.id4);
+        Item item5 = new Item("5", "naomi earrings", 879.00, "white gold", "sapphire", "measure 2 cm in length", "Elegant Collection", R.drawable.id5);
+        Item item6 = new Item("6", "jenny earrings", 989.00, "yellow gold", "ruby", "measure 2 cm in length", "Classic Collection", R.drawable.id6);
+        Item item7 = new Item("7", "elise j necklace", 8049.00, "yellow gold", "emerald", "necklace length measures 19 1/4", "Striking Collection", R.drawable.id7);
+        Item item8 = new Item("8", "kendra sky necklace", 6079.00, "white gold", "diamond","necklace length measures 19 1/4", "Elegant Collection", R.drawable.id8);
+        Item item9 = new Item("9", "perry necklace", 1089.00, "yellow gold", "sapphire", "necklace length measures 19 1/4", "Classic Collection", R.drawable.id9);
 
         myItems.add(item1);
         myItems.add(item2);
