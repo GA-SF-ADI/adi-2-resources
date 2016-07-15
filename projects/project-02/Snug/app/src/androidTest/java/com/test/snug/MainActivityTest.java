@@ -24,7 +24,7 @@ public class MainActivityTest {
     public void testWhetherUIElementsAreVisible() throws Exception {
         // test that answer text view is visible
 
-        onView
+        onView.
 
     }
 

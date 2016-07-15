@@ -23,6 +23,8 @@ public class SingleHatViewActivityTest {
     public void testWhetherUIElementsAreVisible() throws Exception {
         // test that answer text view is visible
 
+        //onView doesn't work! Not sure why! I've added all the necessary things to my gradle file, etc.
+
         onView(withId(R.id.textView_hat_name))
                 .check(matches(isDisplayed()));
     }
