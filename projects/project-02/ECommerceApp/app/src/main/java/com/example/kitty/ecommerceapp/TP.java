@@ -16,6 +16,7 @@ public class TP {
     private boolean isOnSale;
 
 
+
     public TP(String name, int pic, String brand, int ply, String size, int numRolls, String description, double price, boolean sale) {
         this.name = name;
         this.pic = pic;

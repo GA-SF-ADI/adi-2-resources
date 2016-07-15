@@ -1,6 +1,8 @@
 package com.example.kitty.ecommerceapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +28,8 @@ public class DetailFragment extends Fragment {
 
     public static final String TAG = "DetailFragment";
 
-    String Item_ID_TAG = "Item_ID_tag";
+    public static final String Item_ID_TAG = "Item_ID_tag";
+    public static final int COMMENT_ACTIVITY_REQUEST_CODE = 12345;
 
     ImageView itemImageView;
     TextView brandTextView;
@@ -40,10 +44,11 @@ public class DetailFragment extends Fragment {
     TextView numRollTextView;
     TextView rollSizeTextView;
     Button rateItButton;
+    ListView commentList;
 
     RatingBar ratingBar;
 
-    private Helper db;
+    private Helper dbHelper;
 
     TP mTP;
     int quantity;
@@ -51,7 +56,7 @@ public class DetailFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = Helper.getInstance(getContext());
+        dbHelper = Helper.getInstance(getContext());
     }
 
     @Nullable
@@ -71,6 +76,7 @@ public class DetailFragment extends Fragment {
         numRollTextView = (TextView) v.findViewById(R.id.detail_num_rolls);
         rollSizeTextView = (TextView) v.findViewById(R.id.detail_roll_size);
         rateItButton = (Button) v.findViewById(R.id.insert_comment_button);
+        commentList = (ListView) v.findViewById(R.id.comment_list);
 
         //when you first go in to this page quantity should always be 0
         quantity = 1;
@@ -103,7 +109,7 @@ public class DetailFragment extends Fragment {
         numRollTextView.setText("Number of rolls: "+mTP.getNumRolls());
         rollSizeTextView.setText("Roll size: "+mTP.getSize());
 
-        //onClickListeneer for removing quanity button
+        //onClickListener for removing quantity button
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,11 +135,11 @@ public class DetailFragment extends Fragment {
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            db.getWritableDatabase();
+            dbHelper.getWritableDatabase();
             if (quantity <1) {
                 Toast.makeText(getContext(), "Please select a quantity", Toast.LENGTH_SHORT).show();
             } else {
-                db.addItemToCart(db.getTPID(mTP.getName()), quantity);
+                dbHelper.addItemToCart(dbHelper.getTPID(mTP.getName()), quantity);
                 Toast.makeText(getContext(), "Item added to your cart!", Toast.LENGTH_SHORT).show();
             }
             }
@@ -147,11 +153,29 @@ public class DetailFragment extends Fragment {
             }
         });
 
+        updateCommentView();
+
+    }
+
+    //set up comment listview
+    private void updateCommentView() {
+        Cursor cursor = dbHelper.getTPComment(dbHelper.getTPID(mTP.getName()));
+        CommentAdapter commentAdapter = new CommentAdapter(getContext(), cursor);
+        commentList.setAdapter(commentAdapter);
     }
 
     public void toComment() {
         Intent intent = new Intent(getContext(), CommentActivity.class);
-        intent.putExtra(Item_ID_TAG, db.getTPID(mTP.getName()));
-        startActivity(intent);
+        intent.putExtra(Item_ID_TAG, dbHelper.getTPID(mTP.getName()));
+        startActivityForResult(intent, COMMENT_ACTIVITY_REQUEST_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == COMMENT_ACTIVITY_REQUEST_CODE) {
+            if(resultCode == Activity.RESULT_OK) {
+                updateCommentView();
+            }
+        }
     }
 }

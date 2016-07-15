@@ -119,6 +119,8 @@ public class Helper extends SQLiteOpenHelper {
 
     // adding new products to list
     public long addTP(TP tp){
+        SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
         values.put(COL_ITEM_PIC, tp.getPic());
         values.put(COL_ITEM_NAME, tp.getName());
@@ -130,9 +132,8 @@ public class Helper extends SQLiteOpenHelper {
         values.put(COL_ITEM_NUM_ROLL, tp.getNumRolls());
 
         //need to add coding to pull user rating from other table and take average.
-        values.put(COL_ITEM_AVG_RATING, "0");
+        values.put(COL_ITEM_AVG_RATING, "3");
 
-        SQLiteDatabase db = this.getWritableDatabase();
         long returnId = db.insert(TP_TABLE_NAME, null, values);
         db.close();
         return returnId;

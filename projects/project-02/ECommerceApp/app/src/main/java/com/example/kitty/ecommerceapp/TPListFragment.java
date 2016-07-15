@@ -119,6 +119,9 @@ public class TPListFragment extends ListFragment {
         helper.addSale(2, 13.99);
         helper.addSale(3, 13.99);
 
+        // adding comments
+        helper.addComment(1, "like clouds", 5);
+
         //make sure to pass sharedPreferences so the data won't get imported again
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(INSERTED_INTO_DATABASE_KEY, true);

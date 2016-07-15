@@ -1,5 +1,7 @@
 package com.example.kitty.ecommerceapp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +32,15 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addCommentToDB(ratingBar.getNumStars(), comments.getText().toString());
+                setResult(Activity.RESULT_OK);
+                finish();
             }
         });
     }
 
     public void addCommentToDB(int rating, String comment) {
-        int i = 1; //need to add code to get extra from intent
+        Intent intent = getIntent();
+        int i = intent.getIntExtra(DetailFragment.Item_ID_TAG, 0);
         helper.addComment(i, comment, rating);
     }
 }

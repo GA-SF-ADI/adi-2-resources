@@ -123,6 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/details"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,6 +152,10 @@
 
     </LinearLayout>
 
-    LIs
+    <ListView
+        android:id="@+id/comment_list"
+        android:layout_width="match_parent"
+        android:layout_below="@id/details"
+        android:layout_height="wrap_content"></ListView>
 
 </RelativeLayout>
