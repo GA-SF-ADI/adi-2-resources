@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
             Log.e(LOG_TAG, "allHatsCursor created");
 
+
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
             Log.e(LOG_TAG, "recyclerview bound");

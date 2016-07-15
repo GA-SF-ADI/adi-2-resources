@@ -40,7 +40,6 @@
             android:id="@+id/imagebutton_to_remove_hat_from_cart"
             android:layout_width="wrap_content"
             android:background="@null"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:paddingRight="80dp"
