@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -192,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         int id = item.getItemId();
         switch (id) {
-            case R.id.button_in_toolbar_to_view_cart: {
+            case R.id.button_item_in_toolbar_to_view_cart: {
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
@@ -223,7 +225,10 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Toast.makeText(MainActivity.this, "Searching for " + query, Toast.LENGTH_SHORT).show();
+            Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
+
+
+
         }
 
     }

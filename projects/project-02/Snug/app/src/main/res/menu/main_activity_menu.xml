@@ -5,7 +5,7 @@
 
     <item
 
-        android:id="@+id/button_in_toolbar_to_view_cart"
+        android:id="@+id/button_item_in_toolbar_to_view_cart"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="left"
@@ -13,11 +13,12 @@
         android:icon="@drawable/ic_action_cart"
         android:scaleX="1.2"
         android:scaleY="1.2"
+        android:orderInCategory="1"
         android:visibility="visible"
         app:showAsAction="always" />
 
 
-    <item
+    <!--<item
         android:id="@+id/cart_counter_red_circle_area"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -38,12 +39,13 @@
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:showAsAction="always" />
-
+-->
     <item
         android:id="@+id/app_logo_in_toolbar"
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:orderInCategory="2"
         android:icon="@drawable/light_green_hat_only_for_menu"
         android:scaleX=".4"
         android:scaleY=".4"
@@ -53,6 +55,7 @@
         android:id="@+id/searchview_item_in_main_activity_menu"
         android:icon="@android:drawable/ic_menu_search"
         android:title="Search"
+        android:orderInCategory="3"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />
 

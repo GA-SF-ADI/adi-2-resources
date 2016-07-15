@@ -45,8 +45,6 @@ public class SearchActivity extends AppCompatActivity {
         final RadioButton snapbackRadioButton = (RadioButton) findViewById(R.id.snapback_cap_radio_button);
         final Button clearSearchButton = (Button) findViewById(R.id.button_clear_search_paramaters);
 
-        ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
-
         final EditText priceMax = (EditText) findViewById(R.id.editText_price);
         final EditText requestedTeam = (EditText) findViewById(R.id.auto_search_description_etc);
 
@@ -212,16 +210,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        //Menu image button click listeners
-        cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(SearchActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
-
-            }
-        });
 
 
         //Grabbing unique ArrayList of team names and eventually passing it to MultiAutoCompleteTextView and its cursor

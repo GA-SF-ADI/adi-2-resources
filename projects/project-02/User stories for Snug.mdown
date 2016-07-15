@@ -1,0 +1,9 @@
+**** USER STORIES ****
+
+1. As a user, I want to browse all of the hats and then view a particular one.
+
+2. As a user, I want to browse all of the hats and then add a particular one to the cart.
+
+3. As a user, I want to delete a specific hat from my cart
+
+4. As a user, I want to search for all of the San Francisco Giants hats in inventory.
