@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.DatabaseUtils;
+import android.graphics.Color;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -231,10 +232,12 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
         SQLiteDatabase db = this.getReadableDatabase();
 
+//        TODO: Work on this for SearchView
+
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
-                null, // c. selections
-                new String[]{queryString}, // d. selections args
+                HAT_COLUMN_COLOR + " LIKE ? OR " + HAT_COLUMN_HATNAME + " LIKE ?", // c. selections
+                new String[]{"%"+queryString +"%", "%" +queryString +"%"}, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by

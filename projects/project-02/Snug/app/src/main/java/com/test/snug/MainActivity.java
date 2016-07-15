@@ -63,50 +63,50 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             insertHatData();
 
             allHatsCursor = db.getALLHatsFromHatDatabase();
-            Log.e(LOG_TAG, "allHatsCursor created");
+            Log.d(LOG_TAG, "allHatsCursor created");
 
 
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
-            Log.e(LOG_TAG, "recyclerview bound");
+            Log.d(LOG_TAG, "recyclerview bound");
 
             mRecyclerView.setHasFixedSize(true);
-            Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
+            Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
             mLayoutManager = new GridLayoutManager(context, 2);
-            Log.e(LOG_TAG, "GridLayoutManager context set");
+            Log.d(LOG_TAG, "GridLayoutManager context set");
 
             mRecyclerView.setLayoutManager(mLayoutManager);
-            Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
+            Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
             mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
-            Log.e(LOG_TAG, "mAdapter created");
+            Log.d(LOG_TAG, "mAdapter created");
 
             mRecyclerView.setAdapter(mAdapter);
-            Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
+            Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
 
 
         } else {
 
             allHatsCursor = db.getALLHatsFromHatDatabase();
-            Log.e(LOG_TAG, "allHatsCursor created");
+            Log.d(LOG_TAG, "allHatsCursor created");
 
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
-            Log.e(LOG_TAG, "recyclerview bound");
+            Log.d(LOG_TAG, "recyclerview bound");
 
             mRecyclerView.setHasFixedSize(true);
-            Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
+            Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
             mLayoutManager = new GridLayoutManager(context, 2);
-            Log.e(LOG_TAG, "GridLayoutManager context set");
+            Log.d(LOG_TAG, "GridLayoutManager context set");
 
             mRecyclerView.setLayoutManager(mLayoutManager);
-            Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
+            Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
             mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
-            Log.e(LOG_TAG, "mAdapter created");
+            Log.d(LOG_TAG, "mAdapter created");
 
             mRecyclerView.setAdapter(mAdapter);
-            Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
+            Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
         }
 
 
@@ -168,9 +168,11 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
-            mAdapter.updateCursor(cursor);
-            
+            allHatsCursor.close();
+
+            allHatsCursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
+            mAdapter.updateCursor(allHatsCursor);
+
         }
 
     }
@@ -185,13 +187,13 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Log.e(LOG_TAG, "position of hat is: " + position);
+        Log.d(LOG_TAG, "position of hat is: " + position);
 
         allHatsCursor.moveToPosition(position);
 
         int hatId = allHatsCursor.getInt(allHatsCursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
 
-        Log.e(LOG_TAG, "Hat id is: " + hatId);
+        Log.d(LOG_TAG, "Hat id is: " + hatId);
 
 
         Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
@@ -199,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         intent.putExtra("hatPosition", hatId);
 
 
-        Log.e(LOG_TAG, "position of hat is: " + position + " and " +
+        Log.d(LOG_TAG, "position of hat is: " + position + " and " +
                 hatDatabase.getSpecificHat(position) + " has been put into the intent");
 
 
@@ -214,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Log.e(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
+        Log.d(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
 
         hatDatabase.addHatToHatTable(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHatToHatTable(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
@@ -317,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         hatDatabase.addHatToHatTable(98, R.drawable.yanks, "New York Yankees", 14.95, "100% cotton", "Fitted", "Turn a double play in this stylish hat", "blue");
         hatDatabase.addHatToHatTable(99, R.drawable.yellow_top_pirates, "Pittsburgh Pirates", 50, "50% polyester 50% wool ", "Fitted", "Block the sun and look good in this beautiful hat", "yellow");
 
-        Log.e(LOG_TAG, "All hats inserted into database");
+        Log.d(LOG_TAG, "All hats inserted into database");
 
         //Saving the hat insertions into sharedpreferences
 
@@ -332,13 +334,13 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     @Override
     public void onStart() {
         super.onStart();
-        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+        if (VERBOSE) Log.d(TAG, "++ ON START ++");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+        if (VERBOSE) Log.d(TAG, "+ ON RESUME +");
 
 
     }
@@ -346,19 +348,19 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     @Override
     public void onPause() {
         super.onPause();
-        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+        if (VERBOSE) Log.d(TAG, "- ON PAUSE -");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+        if (VERBOSE) Log.d(TAG, "-- ON STOP --");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+        if (VERBOSE) Log.d(TAG, "- ON DESTROY -");
     }
 }
 

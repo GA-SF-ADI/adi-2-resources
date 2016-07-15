@@ -39,10 +39,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 
         Context context = getApplicationContext();
-        Log.e(LOG_TAG, "context gotten");
+        Log.d(LOG_TAG, "context gotten");
 
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-        Log.e(LOG_TAG, "db gotten for activity");
+        Log.d(LOG_TAG, "db gotten for activity");
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
         CartCustomCursorAdapter cartCustomCursorAdapter = new CartCustomCursorAdapter(ShoppingCartActivity.this, hatsInCartCursor, -1);
@@ -101,31 +101,31 @@ public class ShoppingCartActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+        if (VERBOSE) Log.d(TAG, "++ ON START ++");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+        if (VERBOSE) Log.d(TAG, "+ ON RESUME +");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+        if (VERBOSE) Log.d(TAG, "- ON PAUSE -");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+        if (VERBOSE) Log.d(TAG, "-- ON STOP --");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+        if (VERBOSE) Log.d(TAG, "- ON DESTROY -");
     }
 
 }
