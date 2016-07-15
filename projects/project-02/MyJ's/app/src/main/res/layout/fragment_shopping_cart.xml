@@ -5,7 +5,7 @@
 
     <ListView
         android:id="@+id/shopping_ListView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"></ListView>
     <TextView
@@ -15,7 +15,8 @@
     <TextView
         android:id="@+id/cart_price"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="end"/>
 
    <LinearLayout
        android:orientation="horizontal"
@@ -31,7 +32,7 @@
         android:text="@string/cart_empty_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end" />
+        android:gravity="end" />
    </LinearLayout>
 
 </LinearLayout>

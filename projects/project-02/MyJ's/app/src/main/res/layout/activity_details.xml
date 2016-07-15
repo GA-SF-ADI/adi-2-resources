@@ -5,6 +5,7 @@
 
     <ImageView
         android:id="@+id/detail_image"
+        android:src="@drawable/j_1"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_above="@+id/name"
@@ -13,6 +14,8 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Jordan 23"
+        android:textSize="15sp"
         android:layout_alignTop="@+id/price"
         android:layout_toRightOf="@+id/back_button"
         android:layout_toEndOf="@+id/back_button" />
@@ -20,12 +23,13 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/description"
+        android:text="109.99"
+        android:layout_above="@+id/year"
         android:layout_alignRight="@+id/buy_button"
         android:layout_alignEnd="@+id/buy_button"
         android:layout_marginBottom="104dp" />
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/back_button"

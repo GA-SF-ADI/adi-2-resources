@@ -24,7 +24,6 @@ import java.util.Random;
  * Created by nolbertoarroyo on 7/9/16.
  */
 public class SearchFragment extends Fragment {
-    ArrayList<Shoe> resultsShoeList;
     String resultQuery;
     ListView resultsListView;
     ShoeOpenHelper helper;
@@ -38,7 +37,7 @@ public class SearchFragment extends Fragment {
             mShoeSelect = (HomeFragment.OnShoeSelectClickListener)getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
-                    + " must implement OnRandImageClickListener");
+                    + " must implement OnShoeSelectClickListener");
 
         }}
 
@@ -47,6 +46,8 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search, container, false);
         resultsListView = (ListView) v.findViewById(R.id.search_results_lv);
+        //checking if result query is null, if true, list view is hidden and image is shown
+        //if !null setResultsView is called
         if (resultQuery ==null) {
             Log.d("search query", "query:"+resultQuery);
             resultsListView.setVisibility(View.INVISIBLE);
@@ -68,6 +69,7 @@ public class SearchFragment extends Fragment {
         setResultsView();}
 
     }
+    // method sets views, on click implements OnShoeSelectedListener to send shoe id to Main
     public void setResultsView(){
         noSearchImage.setVisibility(View.GONE);
         resultsListView.setVisibility(View.VISIBLE);

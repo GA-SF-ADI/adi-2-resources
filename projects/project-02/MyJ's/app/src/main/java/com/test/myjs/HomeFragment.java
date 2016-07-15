@@ -38,6 +38,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        //casting activity with interface
         try{
             mShoeSelect = (OnShoeSelectClickListener)getActivity();
         } catch (ClassCastException e) {
@@ -46,15 +47,12 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
     }}
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //inflate fragment view
         View v =inflater.inflate(R.layout.fragment_home,container,false);
         homeListView = (ListView)v.findViewById(R.id.home_lv);
 
@@ -73,26 +71,31 @@ public class HomeFragment extends android.support.v4.app.Fragment {
             public void bindView(View view, Context context, Cursor cursor) {
                 ImageView itemImageView = (ImageView) view.findViewById(R.id.shoe_img_home);
                 TextView itemNameText = (TextView)view.findViewById(R.id.shoe_name_home);
+                TextView itemPrice=(TextView)view.findViewById(R.id.price_list_home);
                 itemImageView.setImageResource(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)));
                 itemNameText.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)));
+                itemPrice.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)));
             }
         };
-
+        //random int to display random image in home fragment ImageButton
         Random r = new Random();
         final int rand = r.nextInt(22)+1;
-
+        //setting cursor to random position, setting shoe selected properies to views
         cursor.moveToFirst();
         cursor.move(rand);
         homeListView.setAdapter(cursorAdapter);
         homeImageButton.setImageResource(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)));
         homeShoeName.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)));
+        //homeImageButton click implements interface and sends shoe id to main activity
         homeImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             cursor.moveToPosition(rand);
                 mShoeSelect.onShoeSelected(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_ID)));
             }
-        });homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        });
+            //on item click the OnShoeSelectedListener is implemented to send shoe Id to MainActivity
+            homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mShoeSelect.onShoeSelected(id);
@@ -101,12 +104,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         return v;
 
     }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
+    //created interface to send data to main activity
     public interface OnShoeSelectClickListener{
         public void onShoeSelected(long id);
     }

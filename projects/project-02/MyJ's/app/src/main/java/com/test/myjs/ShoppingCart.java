@@ -12,7 +12,6 @@ public class ShoppingCart {
     int itemId;
 
 
-
     public ShoppingCart(int id, int numItems, double totalPrice,int itemId) {
         this.id = id;
         this.numItems = numItems;

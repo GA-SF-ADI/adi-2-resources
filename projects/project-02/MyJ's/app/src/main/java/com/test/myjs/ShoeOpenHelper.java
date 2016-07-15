@@ -185,6 +185,11 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
         db.close();
         return deleteNum;
     }
+    public void deleteAllFromCart(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM "+ DataEntryShoppingCart.TABLE_NAME); //delete all rows in a table
+        db.close();
+    }
 
     // create method getShoeById, to use for getting item
     public Cursor getShoeById(long id) {

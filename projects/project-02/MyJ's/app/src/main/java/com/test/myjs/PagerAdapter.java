@@ -28,9 +28,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 HomeFragment tab1 = new HomeFragment();
                 return tab1;
             case 1:
+                //calling setResultQuery to pass query to fragment
                 tab2 = new SearchFragment();
                 tab2.setResultQuery(query);
-                Log.d("viewPager query","viewpager:"+query);
+                Log.d("viewPager query", "viewpager:" + query);
                 return tab2;
             case 2:
                 ShoppingCartFragment tab3 = new ShoppingCartFragment();

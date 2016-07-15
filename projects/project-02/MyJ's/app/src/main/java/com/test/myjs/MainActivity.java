@@ -23,38 +23,24 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnShoeSelectClickListener{
     ShoeOpenHelper mHelper;
     PagerAdapter adapter;
+    ViewPager viewPager;
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         handleIntent(getIntent());
-
+        //inflate menu
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
 
-        // Find searchManager and searchableInfo
+        // set searchManager and searchableInfo
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
 
-        // Associate searchable info with the SearchView
+        // link searchable info with the SearchView
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchableInfo);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                adapter.setQuery(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                return false;
-            }
-        });
-
-        // Return true to show menu, returning false will not show it.
         return true;
 
     }
@@ -63,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set toolbar view, set app logo
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.jordan_logo);
@@ -78,12 +66,15 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
         handleIntent(intent);
     }
 
+    //running handleIntent which calls checks if there was a search, displays toast with search query
+    //calling setQuery(), to send query to viewpager, tab is switched to search fragment tab when a search is made
     private void handleIntent(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Toast.makeText(MainActivity.this, "Searching for " + query, Toast.LENGTH_SHORT).show();
             adapter.setQuery(query);
+            viewPager.setCurrentItem(1);
             Log.d("mainActivity query","result:"+query);
 
 
@@ -91,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
 
     }
 
+    // creating shoe objects and populating database with shoes
     public void insertDatabaseValues() {
         if (mHelper.getShoesList().getCount()==0) {
 
@@ -148,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
         }
 
     }
-
+        //setting viewpager and adapter
     public void setPageView() {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("HOME"));
@@ -156,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
         tabLayout.addTab(tabLayout.newTab().setText("SHOPPING CART"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
                 adapter = new PagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
@@ -183,8 +175,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
 
     @Override
     public void onShoeSelected(long id) {
-        // need to make a static final for tag
-
+        //interface receives shoe Id from homeFragment
+        //sends intent with shoe id to detailsActivity
         Intent intent = new Intent(MainActivity.this,DetailsActivity.class);
         intent.putExtra("Shoe Id",id);
         startActivity(intent);
