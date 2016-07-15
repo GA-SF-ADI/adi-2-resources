@@ -70,9 +70,9 @@ public class CartActivity extends AppCompatActivity {
                 for (int i = 0; i < cartItems.size(); i++) {
                     helper.insertPurchaseHistoryRow(cartItems.get(i), history_id, date.toString());
                 }
-                if (cartItems.isEmpty()){
+                if (cartItems.isEmpty()) {
                     Toast.makeText(CartActivity.this, "Your Cart is Empty!", Toast.LENGTH_SHORT).show();
-                } else{
+                } else {
                     Toast.makeText(CartActivity.this, "Thank You for Your Purchase!", Toast.LENGTH_SHORT).show();
                 }
                 helper.clearCart();
