@@ -28,9 +28,10 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         //Setting up views, toolbars, and binding data
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);//TODO: Ask why this doesn't work! I had to copy all of the menu items to this activity's layout file!
+        Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -40,6 +41,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         final TextView selectedHatBack = (TextView) findViewById(R.id.textview_single_hat_static_back);
         final TextView selectedHatMaterial = (TextView) findViewById(R.id.textview_single_hat_static_material_with_colon);
 
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 //        Receiving table position about the specific hat that was clicked on
 

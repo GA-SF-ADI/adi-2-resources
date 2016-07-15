@@ -75,6 +75,34 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
             insertHatData();
 
+            allHatsCursor = db.getALLHatsFromHatDatabase();
+
+            Log.e(LOG_TAG, "allHatsCursor created");
+
+            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
+
+            Log.e(LOG_TAG, "recyclerview bound");
+
+            mRecyclerView.setHasFixedSize(true);
+
+            Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
+
+            mLayoutManager = new GridLayoutManager(context, 2);
+
+            Log.e(LOG_TAG, "GridLayoutManager context set");
+
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
+
+            mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
+
+            Log.e(LOG_TAG, "mAdapter created");
+
+            mRecyclerView.setAdapter(mAdapter);
+
+            Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
+
 
         } else {
 

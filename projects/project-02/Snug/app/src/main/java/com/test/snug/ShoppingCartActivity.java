@@ -29,16 +29,11 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         //Setting up views, toolbars, and binding data
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.shopping_activity_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
-
-
-        // SimpleCursorAdapter for cart hats to display in listview
-
-
-
 
 
 //        TODO: Look into insertOrUpdate
@@ -52,19 +47,9 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
 
-        Log.e(LOG_TAG, "getALLHatsFromCART() ran successfully");
+        CartCustomCursorAdapter cartCustomCursorAdapter = new CartCustomCursorAdapter(ShoppingCartActivity.this,hatsInCartCursor,-1);
 
-        String[] columns = new String[]{HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID, HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME};
-
-        Log.e(LOG_TAG, "String[] columns successfully set up for custom cursor adapter");
-
-        int[] viewNames = new int[]{R.id.image_of_hat_in_cart, R.id.textview_name_of_hat_in_cart};
-
-        Log.e(LOG_TAG, "int[] viewNames successfully set up for custom cursor adapter");
-
-        CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(ShoppingCartActivity.this, R.layout.single_hat_line_in_cart, hatsInCartCursor, columns, viewNames, 0);
-
-        Log.e(LOG_TAG, "simpleCursorAdapter successfully set for cart");
+        listViewOfCartItems.setAdapter(cartCustomCursorAdapter);
 
 
         // Payment FAB
@@ -79,6 +64,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 //                TODO: Reset cart counter in toolbar to 0
 
+//                TODO: Clear database table
 
                 startActivity(intent);
                 finish();

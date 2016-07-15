@@ -142,6 +142,8 @@ public class SearchActivity extends AppCompatActivity {
 
                 }
 
+//                TODO: textViews and buttons can be "enabled"
+
 //                TODO: Grab any inputted teams
 
                 /*if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
