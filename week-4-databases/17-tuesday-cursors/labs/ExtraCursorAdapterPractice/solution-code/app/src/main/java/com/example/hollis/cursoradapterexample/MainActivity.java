@@ -35,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = nameEditText.getText().toString();
+    private void setAdapter(){
+        db = AnimalSqlOpenHelper.getInstance(this);
+        cursorAdapter = new CursorAdapter(MainActivity.this, db.getAnimals(), 0){
+            @Override
+            public View newView(Context context, Cursor cursor, ViewGroup parent) {
+                return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
+            }
+
+            @Override
                 String sound = soundEditText.getText().toString();
                 String description = descriptionEditText.getText().toString();
                 Animal newAnimal = new Animal(name, sound, description);
