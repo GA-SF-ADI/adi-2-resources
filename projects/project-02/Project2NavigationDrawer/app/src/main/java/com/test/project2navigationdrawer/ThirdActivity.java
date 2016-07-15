@@ -19,7 +19,7 @@ public class ThirdActivity extends AppCompatActivity {
         if (id >= 0) {
            Item myItem = DatabaseHelper.getInstance(ThirdActivity.this).getItemById(id);
             TextView textView = (TextView) findViewById(R.id.third_activity_text_price);
-            textView.setText("Price = $" + myItem.getPrice() + ".00");
+            textView.setText("Price = $" + myItem.getPrice() + "0");
             TextView textView1 = (TextView) findViewById(R.id.third_activity_text_name);
             textView1.setText(myItem.getType());
             TextView textView2 = (TextView) findViewById(R.id.third_activity_text_gold);
