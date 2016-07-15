@@ -22,12 +22,12 @@ import android.widget.Toast;
  */
 public class ShoppingCartFragment extends Fragment {
     ShoeOpenHelper shoeHelper;
-    ListView cartView;
-    TextView cartTotal;
-    TextView cartPrice;
-    Button checkoutButton;
-    Button emptyCart;
-    ImageView imgAfterClick;
+    private ListView cartView;
+    private TextView cartTotal;
+    private TextView cartPrice;
+    private Button checkoutButton;
+    private Button emptyCart;
+    private ImageView imgAfterClick;
 
     @Nullable
     @Override//finding views for fragment layout

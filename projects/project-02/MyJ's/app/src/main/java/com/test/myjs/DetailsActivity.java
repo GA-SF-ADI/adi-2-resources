@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailsActivity extends AppCompatActivity {
-    Button buyButton;
-    ImageView shoeImage;
+    private Button buyButton;
+    private ImageView shoeImage;
     ShoeOpenHelper helper;
 
 

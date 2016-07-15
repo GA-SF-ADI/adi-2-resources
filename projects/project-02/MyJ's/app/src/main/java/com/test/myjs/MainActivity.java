@@ -87,55 +87,55 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnSh
         if (mHelper.getShoesList().getCount()==0) {
 
 
-            Shoe shoe1 = new Shoe(1, "Jordan I", " red and white high top ", 149.99, "High top", 1984, R.drawable.j_1,"white");
-            Shoe shoe2 = new Shoe(2, "Jordan II", " white and red high top ", 109.99, "High top", 1987, R.drawable.j_2,"white");
-            Shoe shoe3 = new Shoe(3, "Jordan III", " white and red high top ", 129.99, "High top", 1988, R.drawable.j_3,"white");
-            Shoe shoe4 = new Shoe(4, "Jordan IV", " black high top ", 139.99, "High top", 1989, R.drawable.j_4,"black");
-            Shoe shoe5 = new Shoe(5, "Jordan V", " black grey high top", 159.99, "High top", 1990, R.drawable.j_5,"black");
-            Shoe shoe6 = new Shoe(6, "Jordan VI", " black red high top", 149.99, "High top", 1991, R.drawable.j_6,"black");
-            Shoe shoe7 = new Shoe(7, "Jordan VII", "white and red high top ", 149.99, "High top", 1992, R.drawable.j_7,"black");
-            Shoe shoe8 = new Shoe(8, "Jordan VIII", " white and black high top ", 139.99, "High top", 1993, R.drawable.j_8,"white");
-            Shoe shoe9 = new Shoe(9, "Jordan IX", " white and black high top ", 129.99, "High top", 1994, R.drawable.j_9,"white");
-            Shoe shoe10 = new Shoe(10, "Jordan X", " white and black high top ", 119.99, "High top", 1995, R.drawable.j_10,"white");
-            Shoe shoe11 = new Shoe(11, "Jordan XI", " white and black high top ", 149.99, "High top", 1996, R.drawable.j_11,"white");
-            Shoe shoe12 = new Shoe(12, "Jordan XII", " white and black high top", 159.99, "High top", 1997, R.drawable.j_12,"white");
-            Shoe shoe13 = new Shoe(13, "Jordan XIII", " black and red high top ", 169.99, "High top", 1998, R.drawable.j_13,"black");
-            Shoe shoe14 = new Shoe(14, "Jordan XIV", "black and red high top ", 149.99, "High top", 1999, R.drawable.j_14,"black");
-            Shoe shoe15 = new Shoe(15, "Jordan XV", " all black high top ", 149.99, "High top", 2000, R.drawable.j_15,"black");
-            Shoe shoe16 = new Shoe(16, "Jordan XVI", " all black high top ", 159.99, "High top", 2001, R.drawable.j_16,"black");
-            Shoe shoe17 = new Shoe(17, "Jordan XVII", " white and blue high top", 169.99, "High top", 2002, R.drawable.j_17,"white");
-            Shoe shoe18 = new Shoe(18, "Jordan XVIII", " black and blue high top ", 159.99, "High top", 2003, R.drawable.j_18,"black");
-            Shoe shoe19 = new Shoe(19, "Jordan XIV", " black and red high top", 149.99, "High top", 2004, R.drawable.j_19,"black");
-            Shoe shoe20 = new Shoe(20, "Jordan XX", " white and black high top ", 159.99, "High top", 2005, R.drawable.j_20,"white");
-            Shoe shoe21 = new Shoe(21, "Jordan XXI", " all red high top", 119.99, "High top", 2006, R.drawable.j_21,"red");
-            Shoe shoe22 = new Shoe(22, "Jordan XXII", " white high top", 129.99, "High top", 2007, R.drawable.j_22,"white");
-            Shoe shoe23 = new Shoe(23, "Jordan XXIII", " black high top", 149.99, "High top", 2008, R.drawable.j_23,"black");
+            Shoe shoe1 = new Shoe(1, "Jordan I".toUpperCase(), " red and white high top ".toUpperCase(), 149.99, "High top".toLowerCase(), 1984, R.drawable.j_1,"white".toUpperCase());
+            Shoe shoe2 = new Shoe(2, "Jordan II".toUpperCase(), " white and red high top ".toUpperCase(), 109.99, "High top".toUpperCase(), 1987, R.drawable.j_2,"white".toUpperCase());
+            Shoe shoe3 = new Shoe(3, "Jordan III".toUpperCase(), " white and red high top ".toUpperCase(), 129.99, "High top".toUpperCase(), 1988, R.drawable.j_3,"white".toUpperCase());
+            Shoe shoe4 = new Shoe(4, "Jordan IV".toUpperCase(), " black high top ".toUpperCase(), 139.99, "High top".toUpperCase(), 1989, R.drawable.j_4,"black".toUpperCase());
+            Shoe shoe5 = new Shoe(5, "Jordan V".toUpperCase(), " black grey high top".toUpperCase(), 159.99, "High top".toUpperCase(), 1990, R.drawable.j_5,"black".toUpperCase());
+            Shoe shoe6 = new Shoe(6, "Jordan VI".toUpperCase(), " black red high top".toUpperCase(), 149.99, "High top".toUpperCase(), 1991, R.drawable.j_6,"black".toUpperCase());
+            Shoe shoe7 = new Shoe(7, "Jordan VII".toUpperCase(), "white and red high top ".toUpperCase(), 149.99, "High top".toUpperCase(), 1992, R.drawable.j_7,"black".toUpperCase());
+            Shoe shoe8 = new Shoe(8, "Jordan VIII".toUpperCase(), " white and black high top ".toUpperCase(), 139.99, "High top".toUpperCase(), 1993, R.drawable.j_8,"white".toUpperCase());
+            Shoe shoe9 = new Shoe(9, "Jordan IX".toUpperCase(), " white and black high top ".toUpperCase(), 129.99, "High top".toUpperCase(), 1994, R.drawable.j_9,"white".toUpperCase());
+            Shoe shoe10 = new Shoe(10, "Jordan X".toUpperCase(), " white and black high top ".toUpperCase(), 119.99, "High top".toUpperCase(), 1995, R.drawable.j_10,"white".toUpperCase());
+            Shoe shoe11 = new Shoe(11, "Jordan XI".toUpperCase(), " white and black high top ".toUpperCase(), 149.99, "High top".toUpperCase(), 1996, R.drawable.j_11,"white".toUpperCase());
+            Shoe shoe12 = new Shoe(12, "Jordan XII".toUpperCase(), " white and black high top".toUpperCase(), 159.99, "High top".toUpperCase(), 1997, R.drawable.j_12,"white".toUpperCase());
+            Shoe shoe13 = new Shoe(13, "Jordan XIII".toUpperCase(), " black and red high top ".toUpperCase(), 169.99, "High top".toUpperCase(), 1998, R.drawable.j_13,"black".toUpperCase());
+            Shoe shoe14 = new Shoe(14, "Jordan XIV".toUpperCase(), "black and red high top ".toUpperCase(), 149.99, "High top".toUpperCase(), 1999, R.drawable.j_14,"black".toUpperCase());
+            Shoe shoe15 = new Shoe(15, "Jordan XV".toUpperCase(), " all black high top ".toUpperCase(), 149.99, "High top".toUpperCase(), 2000, R.drawable.j_15,"black".toUpperCase());
+            Shoe shoe16 = new Shoe(16, "Jordan XVI".toUpperCase(), " all black high top ".toUpperCase(), 159.99, "High top".toUpperCase(), 2001, R.drawable.j_16,"black".toUpperCase());
+            Shoe shoe17 = new Shoe(17, "Jordan XVII".toUpperCase(), " white and blue high top".toUpperCase(), 169.99, "High top".toUpperCase(), 2002, R.drawable.j_17,"white".toUpperCase());
+            Shoe shoe18 = new Shoe(18, "Jordan XVIII".toUpperCase(), " black and blue high top ".toUpperCase(), 159.99, "High top".toUpperCase(), 2003, R.drawable.j_18,"black".toUpperCase());
+            Shoe shoe19 = new Shoe(19, "Jordan XIV".toUpperCase(), " black and red high top".toUpperCase(), 149.99, "High top".toUpperCase(), 2004, R.drawable.j_19,"black".toUpperCase());
+            Shoe shoe20 = new Shoe(20, "Jordan XX".toUpperCase(), " white and black high top ".toUpperCase(), 159.99, "High top".toUpperCase(), 2005, R.drawable.j_20,"white".toUpperCase());
+            Shoe shoe21 = new Shoe(21, "Jordan XXI".toUpperCase(), " all red high top".toUpperCase(), 119.99, "High top".toUpperCase(), 2006, R.drawable.j_21,"red".toUpperCase());
+            Shoe shoe22 = new Shoe(22, "Jordan XXII".toUpperCase(), " white high top".toUpperCase(), 129.99, "High top".toUpperCase(), 2007, R.drawable.j_22,"white".toUpperCase());
+            Shoe shoe23 = new Shoe(23, "Jordan XXIII".toUpperCase(), " black high top".toUpperCase(), 149.99, "High top".toUpperCase(), 2008, R.drawable.j_23,"black".toUpperCase());
 
 
-            ShoeOpenHelper helper = ShoeOpenHelper.getInstance(MainActivity.this);
-            helper.insertRowShoes(shoe1);
-            helper.insertRowShoes(shoe2);
-            helper.insertRowShoes(shoe3);
-            helper.insertRowShoes(shoe4);
-            helper.insertRowShoes(shoe5);
-            helper.insertRowShoes(shoe6);
-            helper.insertRowShoes(shoe7);
-            helper.insertRowShoes(shoe8);
-            helper.insertRowShoes(shoe9);
-            helper.insertRowShoes(shoe10);
-            helper.insertRowShoes(shoe11);
-            helper.insertRowShoes(shoe12);
-            helper.insertRowShoes(shoe13);
-            helper.insertRowShoes(shoe14);
-            helper.insertRowShoes(shoe15);
-            helper.insertRowShoes(shoe16);
-            helper.insertRowShoes(shoe17);
-            helper.insertRowShoes(shoe18);
-            helper.insertRowShoes(shoe19);
-            helper.insertRowShoes(shoe20);
-            helper.insertRowShoes(shoe21);
-            helper.insertRowShoes(shoe22);
-            helper.insertRowShoes(shoe23);
+
+            mHelper.insertRowShoes(shoe1);
+            mHelper.insertRowShoes(shoe2);
+            mHelper.insertRowShoes(shoe3);
+            mHelper.insertRowShoes(shoe4);
+            mHelper.insertRowShoes(shoe5);
+            mHelper.insertRowShoes(shoe6);
+            mHelper.insertRowShoes(shoe7);
+            mHelper.insertRowShoes(shoe8);
+            mHelper.insertRowShoes(shoe9);
+            mHelper.insertRowShoes(shoe10);
+            mHelper.insertRowShoes(shoe11);
+            mHelper.insertRowShoes(shoe12);
+            mHelper.insertRowShoes(shoe13);
+            mHelper.insertRowShoes(shoe14);
+            mHelper.insertRowShoes(shoe15);
+            mHelper.insertRowShoes(shoe16);
+            mHelper.insertRowShoes(shoe17);
+            mHelper.insertRowShoes(shoe18);
+            mHelper.insertRowShoes(shoe19);
+            mHelper.insertRowShoes(shoe20);
+            mHelper.insertRowShoes(shoe21);
+            mHelper.insertRowShoes(shoe22);
+            mHelper.insertRowShoes(shoe23);
 
         }
 
