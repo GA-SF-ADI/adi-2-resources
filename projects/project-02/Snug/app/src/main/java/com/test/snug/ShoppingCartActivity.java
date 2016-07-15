@@ -36,6 +36,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
+        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
 
 //        TODO: Look into insertOrUpdate
@@ -53,7 +54,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         listViewOfCartItems.setAdapter(cartCustomCursorAdapter);
 
-        hatsInCartCursor.close();
 
         // Payment FAB
 
@@ -61,38 +61,35 @@ public class ShoppingCartActivity extends AppCompatActivity {
         makeFinalPaymentFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!", Toast.LENGTH_SHORT).show();
 
-                //TODO: Get count of cart items to make sure it's not empty before "payment"
+                Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
+
+//                TODO: Reset cart counter in toolbar to 0
+
+//                TODO: Clear database table
+
                 Context context = getApplicationContext();
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-                int numOfHatsInCart = db.checkNumOfHatsInCart();
-
-                Log.e(LOG_TAG, "The numOfHatsInCart = " + numOfHatsInCart);
-
-                if (numOfHatsInCart == 0) {
-
-                    Toast.makeText(ShoppingCartActivity.this, "No need to pay. Your cart is empty!"
-                            , Toast.LENGTH_SHORT).show();
-
-                } else {
+                startActivity(intent);
+                finish();
 
 
-                    Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!\n " +
-                            "     Your cart is now empty.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
 
-                    //Clicking on payment FAB clears all hats from cart table in database
+//                TODO: StartActivityForResult == query I need to make
 
-                    db.deleteAllHatsFromCart();
+                Intent intent = new Intent(ShoppingCartActivity.this, SearchActivity.class);
+                startActivity(intent);
 
-
-                    Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-
-                }
             }
         });
 
@@ -108,6 +105,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
 
 
     @Override

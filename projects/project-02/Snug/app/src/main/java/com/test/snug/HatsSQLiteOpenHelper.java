@@ -3,7 +3,6 @@ package com.test.snug;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -115,28 +114,18 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         db.close();
     }
 
-    public void deleteSpecificHatFromCart(int position) {
+    public void deleteSpecificHatFromCart(int id) {
 
         SQLiteDatabase db = getWritableDatabase();
 
         String selection = "id = ?";
 
-        String[] selectionArgs = new String[]{String.valueOf(position)};
+        String[] selectionArgs = new String[]{String.valueOf(id)};
 
         db.delete("cart", selection, selectionArgs);
 
-    }
-
-    public void deleteAllHatsFromCart() {
-
-        SQLiteDatabase db = getWritableDatabase();
-
-
-        db.delete(CART_TABLE_NAME, null, null);
-
 
     }
-
 
     public Cursor getSpecificHat(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -182,16 +171,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public int checkNumOfHatsInCart() {
-
-        String countQuery = "SELECT  * FROM " + CART_TABLE_NAME;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int cnt = cursor.getCount();
-        cursor.close();
-        return cnt;
-    }
-
 
     public Cursor getHatTeams() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -229,14 +208,14 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public Cursor searchAmongAllHats(String queryString) {
+    public Cursor searchAmongAllHats(String query) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
                 null, // c. selections
-                new String[]{"%" + queryString + "%"}, // d. selections args
+                new String[]{"%" + query + "%"}, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by

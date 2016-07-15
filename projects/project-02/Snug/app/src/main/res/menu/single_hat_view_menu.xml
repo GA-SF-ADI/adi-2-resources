@@ -51,5 +51,12 @@
         android:scaleY=".4"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/searchview_item_in_single_hat_view_activity_menu"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        android:orderInCategory="3"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
 
 </menu>

@@ -53,13 +53,25 @@
             android:src="@drawable/light_green_hat_only_for_menu" />
 
 
+        <ImageButton
+            android:id="@+id/button_in_toolbar_to_search_for_hats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:paddingRight="20dp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@drawable/ic_action_search"
+            android:visibility="visible" />
+
+
     </android.support.v7.widget.Toolbar>
 
 
     <ListView
         android:id="@+id/listview_of_cart_items"
         android:layout_width="match_parent"
-        android:background="#c1c1c1"
         android:layout_height="match_parent"
         android:layout_below="@+id/shopping_activity_toolbar"
         android:layout_alignParentLeft="true"
