@@ -50,18 +50,8 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //all of the items and properties that I want to insert into the db
-        myDb = DatabaseHelper.getInstance(this);
 
-        myDb.insert("1", "lori hart bracelet", 1490.00, "yellow gold", "ruby", "cuff width is 1/2 in", "Striking Collection", R.drawable.id1);
-        myDb.insert("2", "chloe bracelet", 5790.00, "white gold", "diamond", "cuff width is 1/2 in", "Elegant Collection", R.drawable.id2);
-        myDb.insert("3", "olivia bracelet", 1890.00, "platinum", "sapphire", "cuff width is 1/2 in", "Classic Collection", R.drawable.id3);
-        myDb.insert("4", "lisa harper earrings", 4049.00, "platinum", "diamond", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id4);
-        myDb.insert("5", "naomi earrings", 879.00, "white gold", "sapphire", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id5);
-        myDb.insert("6", "jenny earrings", 989.00, "yellow gold", "ruby", "measure 2 cm in length", "Classic Collection", R.drawable.id6);
-        myDb.insert("7", "elise m necklace", 8049.00, "yellow gold", "emerald", "necklace length measures 19 1/4 in", "Striking Collection", R.drawable.id7);
-        myDb.insert("8", "kendra scott necklace", 6079.00, "white gold", "diamond", "necklace length measures 19 1/4 in", "Elegant Collection", R.drawable.id8);
-        myDb.insert("9", "perry necklace", 1089.00, "yellow gold", "sapphire", "necklace length measures 19 1/4 in", "Classic Collection", R.drawable.id9);
-        populateListViewFromDB();
+        initializeDBitems();
 
         textViewSearch = (TextView) findViewById(R.id.text_view_search);
 
@@ -120,7 +110,7 @@ public class SecondActivity extends AppCompatActivity {
         Item item5 = new Item("5", "naomi earrings", 879.00, "white gold", "sapphire", "measure 2 cm in length", "Elegant Collection", R.drawable.id5);
         Item item6 = new Item("6", "jenny earrings", 989.00, "yellow gold", "ruby", "measure 2 cm in length", "Classic Collection", R.drawable.id6);
         Item item7 = new Item("7", "elise j necklace", 8049.00, "yellow gold", "emerald", "necklace length measures 19 1/4 in", "Striking Collection", R.drawable.id7);
-        Item item8 = new Item("8", "kendra sky necklace", 6079.00, "white gold", "diamond","necklace length measures 19 1/4 in", "Elegant Collection", R.drawable.id8);
+        Item item8 = new Item("8", "kendra sky necklace", 6079.00, "white gold", "diamond", "necklace length measures 19 1/4 in", "Elegant Collection", R.drawable.id8);
         Item item9 = new Item("9", "perry necklace", 1089.00, "yellow gold", "sapphire", "necklace length measures 19 1/4 in", "Classic Collection", R.drawable.id9);
 
         myItems.add(item1);
@@ -148,6 +138,10 @@ public class SecondActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchableInfo);
         searchView.setBackgroundColor(Color.CYAN);
+        searchView.setMinimumWidth(10000000);
+        //searchView.setMaxWidth(10000);
+        //searchView.onActionViewExpanded();
+
 
         return true;
     }
@@ -205,6 +199,23 @@ public class SecondActivity extends AppCompatActivity {
             customAdapter.changeCursor(cursor);
 
         }
+
+
     }
 
+
+    protected void initializeDBitems() {
+        myDb = DatabaseHelper.getInstance(this);
+
+        myDb.insert("1", "lori hart bracelet", 1490.00, "yellow gold", "ruby", "cuff width is 1/2 in", "Striking Collection", R.drawable.id1);
+        myDb.insert("2", "chloe bracelet", 5790.00, "white gold", "diamond", "cuff width is 1/2 in", "Elegant Collection", R.drawable.id2);
+        myDb.insert("3", "olivia bracelet", 1890.00, "platinum", "sapphire", "cuff width is 1/2 in", "Classic Collection", R.drawable.id3);
+        myDb.insert("4", "lisa harper earrings", 4049.00, "platinum", "diamond", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id4);
+        myDb.insert("5", "naomi earrings", 879.00, "white gold", "sapphire", "measure 2 cm in length", "measure 2 cm in length", R.drawable.id5);
+        myDb.insert("6", "jenny earrings", 989.00, "yellow gold", "ruby", "measure 2 cm in length", "Classic Collection", R.drawable.id6);
+        myDb.insert("7", "elise m necklace", 8049.00, "yellow gold", "emerald", "necklace length measures 19 1/4 in", "Striking Collection", R.drawable.id7);
+        myDb.insert("8", "kendra scott necklace", 6079.00, "white gold", "diamond", "necklace length measures 19 1/4 in", "Elegant Collection", R.drawable.id8);
+        myDb.insert("9", "perry necklace", 1089.00, "yellow gold", "sapphire", "necklace length measures 19 1/4 in", "Classic Collection", R.drawable.id9);
+        populateListViewFromDB();
+    }
 }
