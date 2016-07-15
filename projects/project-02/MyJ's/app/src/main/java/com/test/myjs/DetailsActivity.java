@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailsActivity extends AppCompatActivity {
     Button buyButton;
@@ -26,6 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView price = (TextView) findViewById(R.id.price);
         TextView name = (TextView) findViewById(R.id.name);
         TextView year = (TextView) findViewById(R.id.year);
+        TextView shoeDescription = (TextView) findViewById(R.id.details_item_description);
         helper = ShoeOpenHelper.getInstance(getApplicationContext());
 
         //rec intent from MainActivity containing shoeSelected position
@@ -41,14 +43,16 @@ public class DetailsActivity extends AppCompatActivity {
         name.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)));
         price.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)));
         year.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_YEAR)));
+        shoeDescription.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_DESCRIPTION)));
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 helper = ShoeOpenHelper.getInstance(DetailsActivity.this);
-                helper.insertRowShoppingCart(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)), cursor.getDouble(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_YEAR)));
-
+                helper.insertRowShoppingCart(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)), cursor.getDouble(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_YEAR)),cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_DESCRIPTION)));
+                // toast letting user know that cart is added
+                Toast.makeText(DetailsActivity.this,"Added item to cart",Toast.LENGTH_SHORT).show();
 
             }
         });

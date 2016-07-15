@@ -23,8 +23,8 @@
         android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
-        android:text="1999"
-        android:id="@+id/cart"
+        android:text="white and red hightop"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/itm_hor"

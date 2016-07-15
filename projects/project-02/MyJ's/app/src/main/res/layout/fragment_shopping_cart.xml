@@ -3,6 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/img_button_clicked"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/shopping_ListView"
         android:layout_width="match_parent"
@@ -24,7 +30,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
     <Button
-        android:id="@+id/shopping_cart_buy_button"
+        android:id="@+id/shopping_cart_checkout_button"
         android:text="@string/cart__buy_button"
         android:layout_width="0dp"
         android:layout_weight="1"

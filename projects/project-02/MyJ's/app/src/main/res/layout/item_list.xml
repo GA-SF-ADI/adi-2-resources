@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
+        android:src="@drawable/j_1"
         android:id="@+id/shoe_img_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:src="@drawable/j_1"/>
+        android:layout_margin="4dp"/>
+    <LinearLayout
+        android:layout_toRightOf="@+id/shoe_img_home"
+        android:id="@+id/itm_hor"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/shoe_name_home"
+            android:text="jordan 1"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <TextView
-        android:id="@+id/shoe_name_home"
-        android:text="jordan"
+        android:text="white and red hightop"
+        android:id="@+id/description_home"
+        android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_below="@+id/itm_hor"
+        android:layout_toRightOf="@id/shoe_img_home"/>
     <TextView
-        android:text="10999"
-        android:id="@+id/price_list_home"
-        android:layout_width="0dp"
+        android:text="1999"
+        android:id="@+id/year_home"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        android:layout_weight="1" />
+        android:layout_below="@+id/description_home"
+        android:layout_toRightOf="@id/shoe_img_home"/>
 
-</LinearLayout>
+    <TextView
+        android:text="109.99"
+        android:textSize="13sp"
+        android:id="@+id/price_list_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="57dp"
+        android:layout_alignTop="@+id/shoe_img_home"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

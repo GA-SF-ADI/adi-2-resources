@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jordan 23"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:layout_margin="8dp"
+        android:layout_alignTop="@+id/price"
+        android:layout_toRightOf="@+id/back_button"
+        android:layout_toEndOf="@+id/back_button" />
     <ImageView
         android:id="@+id/detail_image"
         android:src="@drawable/j_1"
@@ -10,46 +21,43 @@
         android:layout_height="150dp"
         android:layout_above="@+id/name"
         android:scaleType="fitXY"/>
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jordan 23"
-        android:textSize="15sp"
-        android:layout_alignTop="@+id/price"
-        android:layout_toRightOf="@+id/back_button"
-        android:layout_toEndOf="@+id/back_button" />
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"
         android:text="109.99"
+        android:textSize="15dp"
         android:layout_above="@+id/year"
         android:layout_alignRight="@+id/buy_button"
         android:layout_alignEnd="@+id/buy_button"
         android:layout_marginBottom="104dp" />
     <TextView
+        android:id="@+id/details_item_description"
+        android:text="jfdkslajfdlskjflsdlfksdjf"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
         android:id="@+id/year"
+        android:text="1999"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/back_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="30dp" />
-    <Button
-        android:id="@+id/back_button"
-        android:text="@string/details_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+
+
     <Button
         android:id="@+id/buy_button"
         android:text="@string/details__add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

@@ -72,15 +72,19 @@ public class HomeFragment extends android.support.v4.app.Fragment {
                 ImageView itemImageView = (ImageView) view.findViewById(R.id.shoe_img_home);
                 TextView itemNameText = (TextView)view.findViewById(R.id.shoe_name_home);
                 TextView itemPrice=(TextView)view.findViewById(R.id.price_list_home);
+                TextView itemYear = (TextView)view.findViewById(R.id.year_home);
+                TextView itemDescription = (TextView)view.findViewById(R.id.description_home);
                 itemImageView.setImageResource(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)));
                 itemNameText.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)));
                 itemPrice.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)));
+                itemYear.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_YEAR)));
+                itemDescription.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_DESCRIPTION)));
             }
         };
         //random int to display random image in home fragment ImageButton
         Random r = new Random();
         final int rand = r.nextInt(22)+1;
-        //setting cursor to random position, setting shoe selected properies to views
+        //setting cursor to random position, setting shoe selected properties to views
         cursor.moveToFirst();
         cursor.move(rand);
         homeListView.setAdapter(cursorAdapter);
@@ -91,7 +95,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
             cursor.moveToPosition(rand);
-                mShoeSelect.onShoeSelected(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_ID)));
+                mShoeSelect.onShoeSelected(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_SHOE_ID)));
             }
         });
             //on item click the OnShoeSelectedListener is implemented to send shoe Id to MainActivity

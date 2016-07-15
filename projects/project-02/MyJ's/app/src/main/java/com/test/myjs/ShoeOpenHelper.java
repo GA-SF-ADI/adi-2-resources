@@ -56,7 +56,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
         public static final String COL_STYLE = "STYLE";
         public static final String COL_YEAR = "YEAR";
         public static final String COL_IMG_ID = "IMG_ID";
-        public static final String COL_ID = "_id";
+        public static final String COL_SHOE_ID = "_id";
         public static final String COL_COLOR = "COLOR";
 
 
@@ -69,12 +69,13 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
         public static final String COL_ITEM_IMAGE_ID = "IMG_ID";
         public static final String COL_ITEM_YEAR = "YEAR";
         public static final String COL_ID = "_id";
+        public static final String COL_ITEM_DESCRIPTION = "DESCRIPTION";
 
     }
 
     private static final String SQL_CREATE_ENTRIES_SHOES = "CREATE TABLE " +
             DataEntryShoes.SHOE_TABLE_NAME + " (" +
-            DataEntryShoes._ID + " INTEGER PRIMARY KEY," +
+            DataEntryShoes.COL_SHOE_ID + " INTEGER PRIMARY KEY," +
             DataEntryShoes.COL_NAME + " TEXT," +
             DataEntryShoes.COL_DESCRIPTION + " TEXT," +
             DataEntryShoes.COL_PRICE + " DOUBLE," +
@@ -85,7 +86,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES_SHOES = "DROP TABLE IF EXISTS " +
             DataEntryShoes.SHOE_TABLE_NAME;
-    public static final String[] SHOES_COLUMNS = {DataEntryShoes.COL_ID, DataEntryShoes.COL_NAME, DataEntryShoes.COL_DESCRIPTION, DataEntryShoes.COL_PRICE, DataEntryShoes.COL_YEAR, DataEntryShoes.COL_STYLE, DataEntryShoes.COL_IMG_ID};
+    public static final String[] SHOES_COLUMNS = {DataEntryShoes.COL_SHOE_ID, DataEntryShoes.COL_NAME, DataEntryShoes.COL_DESCRIPTION, DataEntryShoes.COL_PRICE, DataEntryShoes.COL_YEAR, DataEntryShoes.COL_STYLE, DataEntryShoes.COL_IMG_ID};
 
    /* private static final String SQL_CREATE_ENTRIES_SHOPPING_CART = "CREATE TABLE " +
             DataEntryShoppingCart.TABLE_NAME + " (" +
@@ -98,17 +99,18 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
            DataEntryShoppingCart.TABLE_NAME + " (" +
            DataEntryShoppingCart.COL_ID + " INTEGER PRIMARY KEY," +
            DataEntryShoppingCart.COL_CART_PRICE + " DOUBLE," +
-           DataEntryShoppingCart.COL_ITEM_NAME + " TEXT," +
+           DataEntryShoppingCart.COL_ITEM_NAME + " TEXT,"+
+           DataEntryShoppingCart.COL_ITEM_DESCRIPTION + " TEXT," +
            DataEntryShoppingCart.COL_ITEM_IMAGE_ID + " INTEGER," +
-           DataEntryShoppingCart.COL_ITEM_YEAR + ")";
+           DataEntryShoppingCart.COL_ITEM_YEAR + " INTEGER"+ ")";
     private static final String SQL_DELETE_ENTRIES_SHOPPING_CART = "DROP TABLE IF EXISTS " +
             DataEntryShoppingCart.TABLE_NAME;
-    public static final String[] SHOPPING_CART_COLUMNS = {DataEntryShoppingCart.COL_ID, DataEntryShoppingCart.COL_ITEM_NAME, DataEntryShoppingCart.COL_ITEM_IMAGE_ID, DataEntryShoppingCart.COL_ITEM_YEAR, DataEntryShoppingCart.COL_CART_PRICE};
+    public static final String[] SHOPPING_CART_COLUMNS = {DataEntryShoppingCart.COL_ID, DataEntryShoppingCart.COL_ITEM_NAME, DataEntryShoppingCart.COL_ITEM_IMAGE_ID, DataEntryShoppingCart.COL_ITEM_YEAR, DataEntryShoppingCart.COL_CART_PRICE,DataEntryShoppingCart.COL_ITEM_DESCRIPTION};
 
     public void insertRowShoes(Shoe shoe) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DataEntryShoes.COL_ID, shoe.getId());
+        values.put(DataEntryShoes.COL_SHOE_ID, shoe.getId());
         values.put(DataEntryShoes.COL_NAME, shoe.getName());
         values.put(DataEntryShoes.COL_DESCRIPTION, shoe.getDescription());
         values.put(DataEntryShoes.COL_PRICE, shoe.getPrice());
@@ -128,13 +130,14 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
         values.put(DataEntryShoppingCart.COL_ITEM_ID, cart.getNumItems());
         db.insertOrThrow(DataEntryShoppingCart.TABLE_NAME, null, values);
     }
-*/public void insertRowShoppingCart(String name, double price, int imageId, int year) {
+*/public void insertRowShoppingCart(String name, double price, int imageId, int year, String description) {
        SQLiteDatabase db = getWritableDatabase();
        ContentValues values = new ContentValues();
        values.put(DataEntryShoppingCart.COL_ITEM_NAME, name);
        values.put(DataEntryShoppingCart.COL_CART_PRICE, price);
        values.put(DataEntryShoppingCart.COL_ITEM_IMAGE_ID, imageId);
        values.put(DataEntryShoppingCart.COL_ITEM_YEAR, year);
+       values.put(DataEntryShoppingCart.COL_ITEM_DESCRIPTION,description);
        db.insertOrThrow(DataEntryShoppingCart.TABLE_NAME, null, values);
    }
     public Cursor getShoesList() {
@@ -156,7 +159,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
     public int deleteItem(long id) {
         SQLiteDatabase db = getWritableDatabase();
         int deleteNum = db.delete(DataEntryShoes.SHOE_TABLE_NAME,
-                DataEntryShoes.COL_ID + " = ?",
+                DataEntryShoes.COL_SHOE_ID + " = ?",
                 new String[]{String.valueOf(id)});
         db.close();
         return deleteNum;
@@ -196,7 +199,7 @@ public class ShoeOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DataEntryShoes.SHOE_TABLE_NAME, // a. table
                 SHOES_COLUMNS, // b. column names
-                DataEntryShoes.COL_ID + " = ?", // c. selections
+                DataEntryShoes.COL_SHOE_ID + " = ?", // c. selections
                 new String[]{String.valueOf(id)}, // d. selections args
                 null, // e. group by
                 null, // f. having
