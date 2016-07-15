@@ -48,7 +48,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
-
     public static final String SQL_DROP_CART_TABLE = "DROP TABLE IF EXISTS " + CART_TABLE_NAME;
 
     private static HatsSQLiteOpenHelper mInstance;
@@ -119,7 +118,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
         SQLiteDatabase db = getWritableDatabase();
 
-        String selection = CART_COLUMN_ID+ " = ?";
+        String selection = CART_COLUMN_ID + " = ?";
 
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
@@ -145,8 +144,6 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         cursor.close();
         return cnt;
     }
-
-
 
 
     public Cursor getSpecificHat(int id) {
@@ -237,7 +234,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
                 null, // c. selections
-                new String[]{"%" + queryString + "%"}, // d. selections args
+                new String[]{queryString}, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by

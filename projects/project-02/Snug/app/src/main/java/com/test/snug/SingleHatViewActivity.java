@@ -30,12 +30,9 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 
         //Setting up views, toolbars, and binding data
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
 
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
@@ -48,13 +45,11 @@ public class SingleHatViewActivity extends AppCompatActivity {
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 //        Receiving table position about the specific hat that was clicked on
-
         Intent intent = getIntent();
 
         final int selectedHatID = intent.getIntExtra("hatPosition", -1);
 
         //Setting the passed through data for the single hat being viewed
-
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
         final Cursor cursor = hatDatabase.getSpecificHat(selectedHatID);
@@ -70,7 +65,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 
         //FAB for adding hat to cart
-
         FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,23 +73,18 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_SHORT).show();
 
                 Context context = getApplicationContext();
-
                 Log.e(LOG_TAG, "context successfully gotten for sending single hat to cart");
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
                 Log.e(LOG_TAG, "db successfully gotten for sending single hat to cart");
 
                 final int hatIDForCart = cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
-
                 Log.e(LOG_TAG, "hatIDForCart successfully gotten from db to send single hat to cart");
 
                 final double hatPriceForCart = cursor.getDouble(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE));
-
                 Log.e(LOG_TAG, "hatPriceForCart successfully gotten from db to send single hat to cart");
 
                 db.addHatToCart(hatIDForCart, hatPriceForCart);
-
                 Log.e(LOG_TAG, "single hat successfully added to cart table");
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
@@ -107,29 +96,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
             }
         });
 
-        /*//This was code I had when buttons where in my toolbar, rather than menu items. This code
-        //displayed the # of hats in the cart
-
-        Context context = getApplicationContext();
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
-
-        if (numOfCartItemsCursor.getCount() > 0) {
-
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
-
-            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
-
-        } else {
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-        }
-*/
 
     }
 
@@ -180,25 +146,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         Cursor numOfCartItemsCursor = db.getNumOfCartItems();
-
-        //This was code I had when buttons where in my toolbar, rather than menu items. This code
-        //displayed the # of hats in the cart
-
-        /*if (numOfCartItemsCursor.getCount() > 0) {
-
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
-
-            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
-
-        } else {
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-        }*/
-
 
     }
 

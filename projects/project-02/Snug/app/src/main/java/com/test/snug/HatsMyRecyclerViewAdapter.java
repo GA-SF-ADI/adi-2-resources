@@ -40,6 +40,12 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
     }
 
+    public void updateCursor(Cursor cursor) {
+        this.cursor = cursor;
+
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
@@ -83,7 +89,6 @@ public class HatsMyRecyclerViewAdapter extends RecyclerView.Adapter<HatsMyRecycl
 
 
     public interface MyItemClickListener {
-
         void onItemClick(int position);
 
     }

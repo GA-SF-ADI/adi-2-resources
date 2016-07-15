@@ -45,25 +45,24 @@ public class CartCustomCursorAdapter extends CursorAdapter {
         int imageOfCartHat = (cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
         String nameOfCartHat = (cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
 
+
         // Populate fields with extracted properties
-
         imageViewimageOfCartHat.setImageResource(imageOfCartHat);
-
         textViewnameOfCartHat.setText(nameOfCartHat);
+
 
         //FAB for X button which deletes single hat from cart   <<–– This isn't working!!
         ImageButton deleteButtonForCartHat = (ImageButton) view.findViewById(R.id.imagebutton_to_remove_hat_from_cart);
 
+
 //        TODO: Figure out how to get the position of the listview to compare with database to then delete
 
         final int idPosition = cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
-
         Log.e("e", "idPosition = " +idPosition);
 
         deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Log.e("e", "deleteButtonForCartHat clicked");
 
                 Context context = view.getContext();
@@ -71,11 +70,9 @@ public class CartCustomCursorAdapter extends CursorAdapter {
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
                 db.deleteSpecificHatFromCart(idPosition);
-
                 Log.e("e", "hat at position: " + idPosition + " has been deleted");
 
                 changeCursor(db.getALLHatsFromCART());
-
 
             }
         });

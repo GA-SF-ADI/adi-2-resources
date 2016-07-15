@@ -39,17 +39,13 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 
         Context context = getApplicationContext();
-
         Log.e(LOG_TAG, "context gotten");
 
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
         Log.e(LOG_TAG, "db gotten for activity");
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
-
         CartCustomCursorAdapter cartCustomCursorAdapter = new CartCustomCursorAdapter(ShoppingCartActivity.this, hatsInCartCursor, -1);
-
         listViewOfCartItems.setAdapter(cartCustomCursorAdapter);
 
 
@@ -66,7 +62,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
                 int numOfHatsInCart = db.checkNumOfHatsInCart();
-
                 if (numOfHatsInCart == 0) {
 
                     Toast.makeText(ShoppingCartActivity.this, "No need to pay. Your cart is empty!",
@@ -79,8 +74,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
                     //Clicking on payment FAB clears all hats from cart table in database
                     db.deleteAllHatsFromCart();
-
-
                     Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

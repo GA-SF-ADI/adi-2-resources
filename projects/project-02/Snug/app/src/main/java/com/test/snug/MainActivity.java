@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     private List<Hat> hatList = new ArrayList<>();
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private HatsMyRecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "Main Activity";
     private Cursor allHatsCursor;
@@ -52,24 +52,9 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
-        /*if (numOfCartItemsCursor.getCount() > 0) {
-
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
-
-            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount() - 1));
-
-        } else {
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-        }*/
 
         //Checking to see whether the hats table has already been created.
 
@@ -78,64 +63,49 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             insertHatData();
 
             allHatsCursor = db.getALLHatsFromHatDatabase();
-
             Log.e(LOG_TAG, "allHatsCursor created");
 
 
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
-
             Log.e(LOG_TAG, "recyclerview bound");
 
             mRecyclerView.setHasFixedSize(true);
-
             Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
             mLayoutManager = new GridLayoutManager(context, 2);
-
             Log.e(LOG_TAG, "GridLayoutManager context set");
 
             mRecyclerView.setLayoutManager(mLayoutManager);
-
             Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
             mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
-
             Log.e(LOG_TAG, "mAdapter created");
 
             mRecyclerView.setAdapter(mAdapter);
-
             Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
 
 
         } else {
 
-
             allHatsCursor = db.getALLHatsFromHatDatabase();
-
             Log.e(LOG_TAG, "allHatsCursor created");
 
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
-
             Log.e(LOG_TAG, "recyclerview bound");
 
             mRecyclerView.setHasFixedSize(true);
-
             Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
             mLayoutManager = new GridLayoutManager(context, 2);
-
             Log.e(LOG_TAG, "GridLayoutManager context set");
 
             mRecyclerView.setLayoutManager(mLayoutManager);
-
             Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
             mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
-
             Log.e(LOG_TAG, "mAdapter created");
 
             mRecyclerView.setAdapter(mAdapter);
-
             Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
         }
 
@@ -155,40 +125,11 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
 
         // Associate searchable info with the SearchView
-
-
         final MenuItem item = menu.findItem(R.id.searchview_item_in_main_activity_menu);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setSearchableInfo(searchableInfo);
 
-        //USING THE RECYCLERVIEW HAS SCREWED ME WITH SEARCH. I'VE SET UP SEARCH AND SEARCHVIEW
-        //BEST I CAN. LAST STEP WOULD BE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
-
         return true;
-
-        /*//Checking for # of cart items
-
-        Context context = getApplicationContext();
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
-
-        if (numOfCartItemsCursor.getCount() > 0) {
-
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
-
-            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
-
-        } else {
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-        }
-*/
-
 
     }
 
@@ -228,14 +169,8 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
-
-            //USING THE RECYCLERVIEW HAS SCREWED ME WITH SEARCH. I'VE SET UP SEARCH AND SEARCHVIEW
-            //BEST I CAN. LAST STEP WOULD BE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
-
-
-//            HatsMyRecyclerViewAdapter.(cursor); <– TODO: Figure out how to pass this cursor into recyclerview?
-
-
+            mAdapter.updateCursor(cursor);
+            
         }
 
     }
