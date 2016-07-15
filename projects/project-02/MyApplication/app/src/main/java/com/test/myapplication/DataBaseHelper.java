@@ -68,17 +68,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Cursor searchAlcohol(String query){
         SQLiteDatabase db = this.getReadableDatabase();
+        try{
+            Integer.valueOf(query);
+            Cursor cursor1 = db.query(ALCOHOL_TABLE_NAME,
+                    ALC_COLUMN,
+                    COL_ALC_PRICE + " < ?",
+                    new String[]{query},
+                    null,
+                    null,
+                    COL_ALC_PRICE+" DESC",
+                    null);
+            return cursor1;
 
+        }catch (NumberFormatException e){
         Cursor cursor = db.query(ALCOHOL_TABLE_NAME,
                 ALC_COLUMN,
-                COL_ALC_DESCRIPTION + " LIKE ? OR " + COL_ALC_NAME + " LIKE ? OR " + COL_ALC_PRICE + " < ?",
-                new String[]{"%" + query + "%", "%" + query + "%", query },
+                COL_ALC_DESCRIPTION + " LIKE ? OR " + COL_ALC_NAME + " LIKE ?",
+                new String[]{"%" + query + "%", "%" + query + "%"},
                 null,
                 null,
                 COL_ALC_PRICE+" DESC",
                 null);
-
         return cursor;
+        }
+
     }
 
     public Alcohol getAlcohol(long id){
