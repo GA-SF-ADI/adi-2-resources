@@ -16,14 +16,14 @@ import android.widget.Toast;
 
 public class SingleHatViewActivity extends AppCompatActivity {
 
-    private static final String TAG = "SingleHatViewActivity";
+    private static final String LOG_TAG = "SingleHatViewActivity";
     private static final boolean VERBOSE = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_hat_view);
-        if (VERBOSE) Log.e(TAG, "+++ ON CREATE +++");
+        if (VERBOSE) Log.e(LOG_TAG, "+++ ON CREATE +++");
 
 
         //Setting up views, toolbars, and binding data
@@ -51,7 +51,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(SingleHatViewActivity.this);
 
-        Cursor cursor = hatDatabase.getSpecificHat(selectedHatID);
+        final Cursor cursor = hatDatabase.getSpecificHat(selectedHatID);
 
         cursor.moveToFirst();
 
@@ -61,8 +61,6 @@ public class SingleHatViewActivity extends AppCompatActivity {
         selectedHatDescription.setText("Description: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_DESCRIPTION)));
         selectedHatBack.setText("Hat back is: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_FittedOrSnap)));
         selectedHatMaterial.setText("Material: " + cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_MATERIAL)));
-
-        cursor.close();
 
 
         //FAB for adding hat to cart
@@ -75,13 +73,29 @@ public class SingleHatViewActivity extends AppCompatActivity {
                 Toast.makeText(SingleHatViewActivity.this, "Hat added to cart", Toast.LENGTH_SHORT).show();
 
                 Context context = getApplicationContext();
+
+                Log.e(LOG_TAG, "context successfully gotten for sending single hat to cart");
+
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//                db.addHatToCartFromSingleHatActivity(selectedHatID)//<–– TODO: Need to pass in right hat info
+                Log.e(LOG_TAG, "db successfully gotten for sending single hat to cart");
+
+                final int hatIDForCart = cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
+
+                Log.e(LOG_TAG, "hatIDForCart successfully gotten from db to send single hat to cart");
+
+                final double hatPriceForCart = cursor.getDouble(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PRICE));
+
+                Log.e(LOG_TAG, "hatPriceForCart successfully gotten from db to send single hat to cart");
+
+                db.addHatToCart(hatIDForCart, hatPriceForCart);
+
+                Log.e(LOG_TAG, "single hat successfully added to cart table");
 
                 Intent intent = new Intent(SingleHatViewActivity.this, MainActivity.class);
-
                 startActivity(intent);
+
+                cursor.close();
 
 
             }
@@ -114,31 +128,31 @@ public class SingleHatViewActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+        if (VERBOSE) Log.e(LOG_TAG, "++ ON START ++");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+        if (VERBOSE) Log.e(LOG_TAG, "+ ON RESUME +");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+        if (VERBOSE) Log.e(LOG_TAG, "- ON PAUSE -");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+        if (VERBOSE) Log.e(LOG_TAG, "-- ON STOP --");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+        if (VERBOSE) Log.e(LOG_TAG, "- ON DESTROY -");
     }
 }
 

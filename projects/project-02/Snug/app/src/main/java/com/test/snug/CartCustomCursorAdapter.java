@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,11 +34,28 @@ public class CartCustomCursorAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
 
+        ImageView imageViewimageOfCartHat = (ImageView) view.findViewById(R.id.image_of_hat_in_cart);
+        TextView textViewnameOfCartHat = (TextView) view.findViewById(R.id.textview_name_of_hat_in_cart);
+        ImageButton deletButtonForCartHat = (ImageButton) view.findViewById(R.id.imagebutton_to_remove_hat_from_cart);
+
+
+        // Extract properties from cursor
+
+        int imageOfCartHat = (cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+        String nameOfCartHat = cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME));
+
+        // Populate fields with extracted properties
+
+        imageViewimageOfCartHat.setImageResource(imageOfCartHat);
+
+        textViewnameOfCartHat.setText(nameOfCartHat);
+
+
     }
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return null;
+        return LayoutInflater.from(context).inflate(R.layout.single_hat_line_in_cart, parent, false);
     }
 
 }

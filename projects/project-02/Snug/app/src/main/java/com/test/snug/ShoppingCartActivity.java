@@ -3,6 +3,7 @@ package com.test.snug;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
     private static final String TAG = "ShoppingCartActivity";
     private static final boolean VERBOSE = true;
+    private String LOG_TAG = "ShoppingCartActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +37,34 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         // SimpleCursorAdapter for cart hats to display in listview
 
+
+
+
+
 //        TODO: Look into insertOrUpdate
         Context context = getApplicationContext();
+
+        Log.e(LOG_TAG, "context gotten");
+
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+        Log.e(LOG_TAG, "db gotten for activity");
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
 
+        Log.e(LOG_TAG, "getALLHatsFromCART() ran successfully");
+
         String[] columns = new String[]{HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID, HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME};
+
+        Log.e(LOG_TAG, "String[] columns successfully set up for custom cursor adapter");
 
         int[] viewNames = new int[]{R.id.image_of_hat_in_cart, R.id.textview_name_of_hat_in_cart};
 
-        CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(ShoppingCartActivity.this, android.R.layout.simple_list_item_1, hatsInCartCursor, columns, viewNames, 0);
+        Log.e(LOG_TAG, "int[] viewNames successfully set up for custom cursor adapter");
+
+        CursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(ShoppingCartActivity.this, R.layout.single_hat_line_in_cart, hatsInCartCursor, columns, viewNames, 0);
+
+        Log.e(LOG_TAG, "simpleCursorAdapter successfully set for cart");
 
 
         // Payment FAB

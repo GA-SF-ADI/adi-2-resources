@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,14 +23,9 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     public static final String HAT_COLUMN_COLOR = "color";
 
     public static final String CART_TABLE_NAME = "cart";
-    public static final String CART_COLUMN_ID = "_id";
-    public static final String CART_COLUMN_HATNAME = "name";
-    public static final String CART_COLUMN_PICTUREID = "pictureID";
-    public static final String CART_COLUMN_PRICE = "price";
-    public static final String CART_COLUMN_MATERIAL = "material";
-    public static final String CART_COLUMN_FittedOrSnap = "fittedOrSnap";
-    public static final String CART_COLUMN_DESCRIPTION = "description";
-    public static final String CART_COLUMN_COLOR = "color";
+    public static final String CART_COLUMN_ID = "_id_cart";
+    public static final String CART_COLUMN_PRICE = "cartPrice";
+
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "snugApp.db";
@@ -37,8 +33,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     public static final String[] HAT_COLUMNS = {HAT_COLUMN_ID, HAT_COLUMN_PICTUREID, HAT_COLUMN_HATNAME, HAT_COLUMN_PRICE,
             HAT_COLUMN_MATERIAL, HAT_COLUMN_FittedOrSnap, HAT_COLUMN_DESCRIPTION, HAT_COLUMN_COLOR};
 
-    public static final String[] CART_COLUMNS = {CART_COLUMN_ID, CART_COLUMN_PICTUREID, CART_COLUMN_HATNAME, CART_COLUMN_PRICE,
-            CART_COLUMN_MATERIAL, CART_COLUMN_FittedOrSnap, CART_COLUMN_DESCRIPTION, CART_COLUMN_COLOR};
+    public static final String[] CART_COLUMNS = {CART_COLUMN_ID, CART_COLUMN_PRICE};
 
 
     public static final String SQL_CREATE_HATS_TABLE =
@@ -48,11 +43,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
                     HAT_COLUMN_FittedOrSnap + " TEXT, " + HAT_COLUMN_DESCRIPTION + " TEXT, " +
                     HAT_COLUMN_COLOR + " TEXT);";
 
-    public static final String SQL_CREATE_CART_TABLE = "CREATE TABLE " + CART_TABLE_NAME + " (" + CART_COLUMN_ID + " INTEGER PRIMARY KEY, "
-            + CART_COLUMN_PICTUREID + " INTEGER, " + CART_COLUMN_HATNAME + " TEXT, " +
-            CART_COLUMN_PRICE + " INTEGER, " + CART_COLUMN_MATERIAL + " TEXT, " +
-            CART_COLUMN_FittedOrSnap + " TEXT, " + CART_COLUMN_DESCRIPTION + " TEXT, " +
-            CART_COLUMN_COLOR + " TEXT);";
+    public static final String SQL_CREATE_CART_TABLE = "CREATE TABLE " + CART_TABLE_NAME + "(" + CART_COLUMN_ID + " INTEGER PRIMARY KEY, " + CART_COLUMN_PRICE + ")";
 
 
     public static final String SQL_DROP_HATS_TABLE = "DROP TABLE IF EXISTS " + HAT_TABLE_NAME;
@@ -90,7 +81,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     }
 
     public void addHatToHatTable(int id, int picture, String name, double price, String material,
-                String fittedOrSnap, String description, String color) {
+                                 String fittedOrSnap, String description, String color) {
 
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
@@ -110,22 +101,13 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-//    TODO: Finish this method below
-
-    public void addHatToCart(int id, int picture, String name, double price,
-                             String material, String fittedOrSnap, String description, String color) {
+    public void addHatToCart(int id, double price) {
 
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
 
-        values.put("_id", id);
-        values.put("pictureID", picture);
-        values.put("name", name);
-        values.put("price", price);
-        values.put("material", material);
-        values.put("fittedOrSnap", fittedOrSnap);
-        values.put("description", description);
-        values.put("color", color);
+        values.put("_id_cart", id);
+        values.put("cartPrice", price);
 
         db.insert(CART_TABLE_NAME, null, values);
 
@@ -176,17 +158,21 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
     }
 
-    public Cursor getALLHatsFromCART() {   //TODO: Do join on two tables. Join is going ot return the results ALL the rows from the cart table, but that also have the hat table info.
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(CART_TABLE_NAME, // a. table
-                CART_COLUMNS, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null,// f. having,
-                null,// g. order by
-                null); // h. limit
+    public Cursor getALLHatsFromCART() {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        String query = "SELECT _id, cartPrice, name, pictureID, price, material, " +
+                "fittedOrSnap, description, color FROM " + HAT_TABLE_NAME + " INNER JOIN " +
+                CART_TABLE_NAME + " ON " + HAT_TABLE_NAME + "." + HAT_COLUMN_ID + " = " +
+                CART_TABLE_NAME + "." + CART_COLUMN_ID;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+
         return cursor;
+
+
     }
 
 
@@ -209,7 +195,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
     }
 
 
-    public Cursor getNumOfCartItems() {
+    /*public Cursor getNumOfCartItems() {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(CART_TABLE_NAME, // a. table
@@ -224,7 +210,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         return cursor;
 
 
-    }
+    }*/
 
 
 }

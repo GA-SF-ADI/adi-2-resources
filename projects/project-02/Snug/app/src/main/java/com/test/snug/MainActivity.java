@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +50,11 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-        Cursor cursor = db.getNumOfCartItems();
+//        Cursor cursor = db.getNumOfCartItems();
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
-        /*if (cursor.getCount() > 0) {
+       /* if (cursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         } else {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
 
         }*/
 
@@ -80,33 +81,32 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
             allHatsCursor = db.getALLHatsFromHatDatabase();
 
-            Log.d(LOG_TAG, "allHatsCursor created");
+            Log.e(LOG_TAG, "allHatsCursor created");
 
             RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.mainactivity_hat_recyclerview);
 
-            Log.d(LOG_TAG, "recyclerview bound");
+            Log.e(LOG_TAG, "recyclerview bound");
 
             mRecyclerView.setHasFixedSize(true);
 
-            Log.d(LOG_TAG, "recyclerview setHasFixedSize set to true");
+            Log.e(LOG_TAG, "recyclerview setHasFixedSize set to true");
 
             mLayoutManager = new GridLayoutManager(context, 2);
 
-            Log.d(LOG_TAG, "GridLayoutManager context set");
+            Log.e(LOG_TAG, "GridLayoutManager context set");
 
             mRecyclerView.setLayoutManager(mLayoutManager);
 
-            Log.d(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
+            Log.e(LOG_TAG, "mLayoutManager passed through to setLayoutManager");
 
             mAdapter = new HatsMyRecyclerViewAdapter(allHatsCursor, context, this);
 
-            Log.d(LOG_TAG, "mAdapter created");
+            Log.e(LOG_TAG, "mAdapter created");
 
             mRecyclerView.setAdapter(mAdapter);
 
-            Log.d(LOG_TAG, "mRecyclerView set on mAdapter");
+            Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
         }
-
 
         //Menu image button click listeners
         cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
@@ -143,13 +143,13 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Log.d(LOG_TAG, "position of hat is: " + position);
+        Log.e(LOG_TAG, "position of hat is: " + position);
 
         allHatsCursor.moveToPosition(position);
 
         int hatId = allHatsCursor.getInt(allHatsCursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
 
-        Log.d(LOG_TAG, "Hat id is: " + hatId);
+        Log.e(LOG_TAG, "Hat id is: " + hatId);
 
 
         Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
 
 
-        Log.d(LOG_TAG, "position of hat is: " + position + " and " +
+        Log.e(LOG_TAG, "position of hat is: " + position + " and " +
                 hatDatabase.getSpecificHat(position) + " has been put into the intent");
 
 
@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         HatsSQLiteOpenHelper hatDatabase = HatsSQLiteOpenHelper.getInstance(MainActivity.this);
 
-        Log.d(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
+        Log.e(LOG_TAG, "instance of hatDatabase made in preparation for hats to be added to database");
 
         hatDatabase.addHatToHatTable(0, R.drawable.a_s_america, "Oakland A’s", 50, "100% polyester", "Snap", "Plush and soft, this hat will keep you comfortable", "black");
         hatDatabase.addHatToHatTable(1, R.drawable.a_s_america2, "Oakland A’s", 19.99, "100% wool", "Snap", "Great for a day at the beach!", "green");
@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         hatDatabase.addHatToHatTable(98, R.drawable.yanks, "New York Yankees", 14.95, "100% cotton", "Fitted", "Turn a double play in this stylish hat", "blue");
         hatDatabase.addHatToHatTable(99, R.drawable.yellow_top_pirates, "Pittsburgh Pirates", 50, "50% polyester 50% wool ", "Fitted", "Block the sun and look good in this beautiful hat", "yellow");
 
-        Log.d(LOG_TAG, "All hats inserted into database");
+        Log.e(LOG_TAG, "All hats inserted into database");
 
         //Saving the hat insertions into sharedpreferences
 
