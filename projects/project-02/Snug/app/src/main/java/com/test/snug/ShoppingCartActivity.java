@@ -34,13 +34,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.shopping_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-/*
         ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
-*/
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
 
 
-//        TODO: Look into insertOrUpdate
         Context context = getApplicationContext();
 
         Log.e(LOG_TAG, "context gotten");
@@ -63,8 +60,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //TODO: Get count of cart items to make sure it's not empty before "payment"
-
+                //Checks count of cart items. If empty, toast is thrown.
 
                 Context context = getApplicationContext();
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
@@ -98,45 +94,45 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
     }
 
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            return super.onCreateOptionsMenu(menu);
-        }
-
-        @Override
-        public boolean onOptionsItemSelected (MenuItem item){
-            return super.onOptionsItemSelected(item);
-        }
-
-
-        @Override
-        public void onStart () {
-            super.onStart();
-            if (VERBOSE) Log.e(TAG, "++ ON START ++");
-        }
-
-        @Override
-        public void onResume () {
-            super.onResume();
-            if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
-        }
-
-        @Override
-        public void onPause () {
-            super.onPause();
-            if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
-        }
-
-        @Override
-        public void onStop () {
-            super.onStop();
-            if (VERBOSE) Log.e(TAG, "-- ON STOP --");
-        }
-
-        @Override
-        public void onDestroy () {
-            super.onDestroy();
-            if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
-        }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (VERBOSE) Log.e(TAG, "++ ON START ++");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+    }
+
+}
