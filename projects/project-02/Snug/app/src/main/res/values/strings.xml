@@ -30,5 +30,7 @@
 
     <string name="title_activity_search">SearchActivity</string>
 
+    <string name="search_hint">Team, color, fit/snap, etc.</string>
+
 
 </resources>

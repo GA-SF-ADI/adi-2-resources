@@ -7,84 +7,15 @@
     android:orientation="vertical"
     tools:context="com.test.snug.MainActivity">
 
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_activity_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/main_activity_main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <ImageButton
-
-                    android:id="@+id/button_in_toolbar_to_view_cart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left"
-                    android:background="@null"
-                    android:scaleX="1.2"
-                    android:scaleY="1.2"
-                    android:src="@drawable/ic_action_cart"
-                    android:visibility="visible" />
-
-
-                <ImageView
-                    android:id="@+id/cart_counter_red_circle_area"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="-7dp"
-                    android:scaleX=".6"
-                    android:scaleY=".6" />
-
-                <TextView
-                    android:id="@+id/textview_num_of_hats_in_cart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="33dp"
-                    android:layout_marginStart="33dp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp" />
-            </FrameLayout>
-
-            <ImageView
-                android:id="@+id/app_logo_in_toolbar"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scaleX=".4"
-                android:scaleY=".4"
-                android:src="@drawable/light_green_hat_only_for_menu" />
-
-
-            <ImageButton
-                android:id="@+id/button_in_toolbar_to_search_for_hats"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:background="@null"
-                android:paddingRight="20dp"
-                android:scaleX="1.2"
-                android:scaleY="1.2"
-                android:src="@drawable/ic_action_search"
-                android:visibility="visible" />
-
-
-        </android.support.v7.widget.Toolbar>
-
-    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mainactivity_hat_recyclerview"

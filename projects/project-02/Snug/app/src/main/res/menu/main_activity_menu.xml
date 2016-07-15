@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+
+        android:id="@+id/button_in_toolbar_to_view_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@null"
+        android:icon="@drawable/ic_action_cart"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:visibility="visible"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/cart_counter_red_circle_area"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="-7dp"
+        android:scaleX=".6"
+        android:scaleY=".6"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/textview_num_of_hats_in_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="4dp"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/app_logo_in_toolbar"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:icon="@drawable/light_green_hat_only_for_menu"
+        android:scaleX=".4"
+        android:scaleY=".4"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/searchview_item_in_main_activity_menu"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+
+</menu>

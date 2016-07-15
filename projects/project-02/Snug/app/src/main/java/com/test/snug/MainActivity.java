@@ -1,5 +1,7 @@
 package com.test.snug;
 
+import android.app.SearchManager;
+import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,12 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +41,8 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         //Setting up views, toolbars, and binding data
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_main_toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.main_activity_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
-        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
         //Setting up database stuff
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
-        if (numOfCartItemsCursor.getCount() > 0) {
+        /*if (numOfCartItemsCursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
-        }
+        }*/
 
         //Checking to see whether the hats table has already been created.
 
@@ -136,34 +136,99 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             Log.e(LOG_TAG, "mRecyclerView set on mAdapter");
         }
 
-        //Menu image button click listeners
-        cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
+        handleIntentRelatedToSearch(getIntent());
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_menu, menu);
+
+        // Find searchManager and searchableInfo
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
+
+        // Associate searchable info with the SearchView
+        SearchView searchView = (SearchView) menu.findItem(R.id.searchview_item_in_main_activity_menu).getActionView();
+        searchView.setSearchableInfo(searchableInfo);
+
+        // Return true to show menu, returning false will not show it.
+
+        return true;
+
+        /*//Checking for # of cart items
+
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
+
+        if (numOfCartItemsCursor.getCount() > 0) {
+
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
+
+        } else {
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+        }
+*/
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.button_in_toolbar_to_view_cart: {
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
             }
-        });
 
-        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-//                TODO: StartActivityForResult == query I need to make
+            case R.id.searchview_item_in_main_activity_menu: {
 
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
 
             }
-        });
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
 
 
     }
 
-    //Getting hat table position of individual recyclerview hat that was clicked on
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntentRelatedToSearch(intent);
+    }
+
+    private void handleIntentRelatedToSearch(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(MainActivity.this, "Searching for " + query, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    //Getting hat table position of individual hat that was clicked on in recyclerview
+    //and passing it through intent to single hat view activity
 
     @Override
     public void onItemClick(int position) {
@@ -183,10 +248,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         Intent intent = new Intent(MainActivity.this, SingleHatViewActivity.class);
 
         intent.putExtra("hatPosition", hatId);
-
-        // position is position in recycler view list. NOT the same as item id
-
-        // Using position, move cursor to that position. Then pull out the
 
 
         Log.e(LOG_TAG, "position of hat is: " + position + " and " +
@@ -330,28 +391,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         super.onResume();
         if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
 
-
-//        TODO: Show search results IF user came from search activity
-
-        Context context = getApplicationContext();
-        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
-
-        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
-
-        if (numOfCartItemsCursor.getCount() > 0) {
-
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
-
-            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
-
-        } else {
-            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
-            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
-
-        }
 
 
     }
