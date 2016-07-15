@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@color/white">
+   <android.support.v7.widget.Toolbar
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/toolbar"
+       >
+
+   </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="24dip"
+        android:layout_margin="5dip"
+        android:text="Select Category"
+        />
+
+    <ListView android:id="@+id/list_options"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:layout_height="wrap_content"
+        android:entries="@array/options"
+        android:clickable="true"
+        android:cacheColorHint="#ffffff"
+        android:background="@color/white"
+        android:backgroundTint="@color/white" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_height="55dip"
+        android:src="@drawable/wishist3"
+
+        />
+
+    <ListView
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="1.5"
+        android:id="@+id/list_favorites"
+        android:clickable="true"
+        android:textAlignment="center"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        >
+    </ListView>
+
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_margin="5dip"
+        android:layout_gravity="right" android:id="@+id/ButtonViewCart"
+        android:text="View Shopping Cart"></Button>
+</LinearLayout>

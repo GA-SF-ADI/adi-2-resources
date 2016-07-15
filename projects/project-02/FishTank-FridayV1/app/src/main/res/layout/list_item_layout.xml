@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:id="@+id/textblock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/textblock1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-20dp">
+
+
+        <ImageView
+            android:id="@+id/thumbnail_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textview_name"
+            android:text="name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textView_region"
+            android:text="region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_weight="1.2"/>
+
+        <TextView
+            android:id="@+id/textview_type"
+            android:text="type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_weight="1.2"/>
+
+        <TextView
+            android:id="@+id/textView_price"
+            android:text="price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            />
+
+    </LinearLayout>
+
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/ratingBar"
+        android:transformPivotX="0dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:isIndicator="true"
+        android:layout_below="@+id/textblock"
+        android:paddingLeft="30dp"/>
+
+</RelativeLayout>
