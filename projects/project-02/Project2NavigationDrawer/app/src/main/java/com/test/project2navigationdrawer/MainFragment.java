@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+//main fragment that user can return to... serves as the home screen
 public class MainFragment extends Fragment {
 
     public MainFragment() {
@@ -33,7 +33,7 @@ public class MainFragment extends Fragment {
                 mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
             }
         });
-        // Inflate the layout for this fragment
+
         return rootView;
     }
 }

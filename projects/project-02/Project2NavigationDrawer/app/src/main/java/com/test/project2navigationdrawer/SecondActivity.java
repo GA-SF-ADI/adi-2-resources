@@ -33,11 +33,7 @@ public class SecondActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     ListView listView;
     DBAdapter customAdapter;
-    Button shoppingCartButton;
-    Button featuredJewelryButton;
-    Button returnHomeButton;
     TextView textViewSearch;
-    Toolbar toolbar;
 
 
     @Override
@@ -51,6 +47,7 @@ public class SecondActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        //all of the items and properties that I want to insert into the db
         myDb = DatabaseHelper.getInstance(this);
 
         myDb.insert("1", "bracelet", 1490.00, "yellow gold", "ruby", null, "Striking Collection", R.drawable.id1);
@@ -70,9 +67,9 @@ public class SecondActivity extends AppCompatActivity {
         DatabaseHelper helper = new DatabaseHelper(SecondActivity.this);
         Cursor cursor = helper.getJewelry();
 
-
     }
 
+    //populate ListView and called method getJewelry to get columns
 
     private void populateListViewFromDB() {
         final Cursor cursor = myDb.getJewelry();
@@ -86,14 +83,15 @@ public class SecondActivity extends AppCompatActivity {
                 {myDb.COL_2_TYPE, myDb.COL_3_PRICE};
         int[] toViewIds = new int[]
                 {R.id.text_view_type_of_jewelry};
-        //create adapter to map columns of DB
 
+        //created adapter to map columns of DB
         customAdapter = new DBAdapter(this, cursor, 0);
 
-
+        //listview of my items
         listView = (ListView) findViewById(R.id.second_activity_list_view);
         listView.setAdapter(customAdapter);
 
+        //when the user clicks on item, it will take them to a new,third activity with item features/description
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -104,67 +102,11 @@ public class SecondActivity extends AppCompatActivity {
                 Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
                 jewelCursor.moveToPosition(position);
                 intent.putExtra("id", jewelCursor.getInt(jewelCursor.getColumnIndex(DatabaseHelper.COL_1_ID)));
-//
-//                iconCursor.moveToPosition(position);
-//                intent.putExtra("id", iconCursor.getInt(iconCursor.getColumnIndex(IconSQLiteOpenHelper.COL_ID)));
                 startActivity(intent);
-
-                //does not go to third activity and does not display list
-                //cannot focus on the cell/list item
-                //tell what id is clicked
-                //use extras..put
             }
         });
 
-//detail view lesson:
-        //pass intent
-
-//        returnHomeButton = (Button) findViewById(R.id.return_home_button);
-//        returnHomeButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-
-//        featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button_second_act);
-//        featuredJewelryButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
-//        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                ShoppingCartFragment fragment = new ShoppingCartFragment();
-//                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                listView.setVisibility(View.GONE);
-//
-//                switch (view.getId()) {
-//                    case R.id.shopping_cart_button: {
-//                        Log.d("case shopping cart", "in switch case");
-//                        fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
-//                        fragmentTransaction.commit();
-//                        break;
-//                    }
-//
-//                }
-//            }
-//
-//        });
-
-        //when you click "Item"
-
-        //final ShoppingCartSingleton shoppingCart = ShoppingCartSingleton.getInstance();
-
+        //Items
         final DatabaseHelper databaseHelper = DatabaseHelper.getInstance(this);
 
         final ArrayList<Item> myItems = new ArrayList<Item>();
@@ -190,6 +132,7 @@ public class SecondActivity extends AppCompatActivity {
         myItems.add(item9);
     }
 
+    //created for search and for menu to function
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -206,6 +149,8 @@ public class SecondActivity extends AppCompatActivity {
         return true;
     }
 
+    //depending on what icon is selected from the menu, the user can go to a different activity or fragment
+    //return home, view cart, return to second activity (featured jewelry page), or search
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -237,10 +182,10 @@ public class SecondActivity extends AppCompatActivity {
             handleIntent(getIntent());
             return true;
         }
-
-        // Return true to show menu, returning false will not show it.
         return super.onOptionsItemSelected(item);
     }
+
+    //will allow user to search and create a toast that says "looking for" + whatever the user types in
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -258,6 +203,5 @@ public class SecondActivity extends AppCompatActivity {
 
         }
     }
-
 
 }

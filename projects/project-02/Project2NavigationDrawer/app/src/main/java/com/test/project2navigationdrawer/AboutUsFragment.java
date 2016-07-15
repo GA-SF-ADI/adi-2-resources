@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class AboutUsFragment extends Fragment {
 
+    // About Us Fragment was created so that when user clicks on that icon, they can learn
+    //more about the company
 
     public AboutUsFragment() {
         // Required empty public constructor
@@ -25,15 +27,6 @@ public class AboutUsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_about_us, container, false);
         final TextView textView = (TextView) rootView.findViewById(R.id.about_us_text);
         textView.setText("Welcome! This is a fake company. You cannot buy jewelry, but you CAN explore the app!");
-//        final Button mainButton = (Button) rootView.findViewById(R.id.about_us_button);
-//        mainButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
-//            }
-//        });
-//        // Inflate the layout for this fragment
         return rootView;
     }
 

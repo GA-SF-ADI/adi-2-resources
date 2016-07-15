@@ -17,6 +17,8 @@ import org.w3c.dom.Text;
  */
 public class SetPriceAdapter extends CursorAdapter {
 
+    //price adapter for shopping cart
+
     LayoutInflater layoutInflater;
 
     public SetPriceAdapter(Context context, Cursor c, int flags) {

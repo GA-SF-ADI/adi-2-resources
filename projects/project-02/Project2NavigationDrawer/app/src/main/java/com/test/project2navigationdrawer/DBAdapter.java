@@ -24,15 +24,11 @@ public class DBAdapter extends CursorAdapter {
     LayoutInflater layoutInflater;
     Button incrementButton;
     Button decrementButton;
-    String display;
 
     public DBAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
         this.layoutInflater = layoutInflater;
-
     }
-
-    //create custom adapter
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -91,6 +87,7 @@ public class DBAdapter extends CursorAdapter {
 
             }
         });
+        //when the user clicks this button, text will be updated and int will be increaesed
         decrementButton.setOnClickListener(new AdapterView.OnClickListener() {
             public void onClick(View view) {
 
@@ -103,6 +100,7 @@ public class DBAdapter extends CursorAdapter {
 
         });
 
+        //when the user clicks this button, text will be updated and int will be increaesed
         incrementButton.setOnClickListener(new AdapterView.OnClickListener() {
             public void onClick(View view) {
 

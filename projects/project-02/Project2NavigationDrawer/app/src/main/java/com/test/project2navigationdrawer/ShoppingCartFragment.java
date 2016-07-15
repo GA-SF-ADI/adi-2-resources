@@ -24,7 +24,6 @@ public class ShoppingCartFragment extends Fragment {
     TextView textView;
     SetPriceAdapter setPriceAdapter;
     Button removeButton;
-
     double totalCost;
     double price;
 
@@ -86,7 +85,6 @@ public class ShoppingCartFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setRetainInstance(true);
-
     }
 
 }

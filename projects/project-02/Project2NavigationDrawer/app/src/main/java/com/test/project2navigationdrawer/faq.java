@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 public class faq extends Fragment {
 
+    //this fragment displays 4 different user stories
 
     public faq() {
         // Required empty public constructor
@@ -26,16 +27,7 @@ public class faq extends Fragment {
         final TextView textView2 = (TextView) rootView.findViewById(R.id.user_story2);
         final TextView textView3 = (TextView) rootView.findViewById(R.id.user_story3);
         final TextView textView4 = (TextView) rootView.findViewById(R.id.user_story4);
-        //textView.setText("Welcome! This is a fake company. You cannot buy jewelry, but you CAN explore the app!");
-//        final Button mainButton = (Button) rootView.findViewById(R.id.about_us_button);
-//        mainButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                mainButton.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
-//            }
-//        });
-//        // Inflate the layout for this fragment
+
         return rootView;
     }
 

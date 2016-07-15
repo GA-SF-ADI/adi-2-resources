@@ -20,7 +20,7 @@
         />
 
     <item android:id="@+id/featured_jewels"
-        android:title="Home"
+        android:title="Featured Jewelry"
         android:icon="@android:drawable/ic_menu_compass"
         app:showAsAction="ifRoom"
         />

@@ -50,12 +50,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_8_NAME_SHOPPING_CART = "NAME";
     public static final String COL_9_IMAGE_SHOPPING_CART = "IMAGE";
 
-    //columns
+    //columns of shopping cart (that user will add to shopping cart)
+
     public static final String[] SHOPPING_CART_COLUMNS = {COL_1_ID_SHOPPING_CART, COL_2_TYPE_SHOPPING_CART,
             COL_3_PRICE_SHOPPING_CART, COL_4_GOLD_SHOPPING_CART, COL_5_STONE_SHOPPING_CART, COL_6_MEASUREMENT_SHOPPING_CART,
             COL_7_QUANTITY_SHOPPING_CART, COL_8_NAME_SHOPPING_CART, COL_9_IMAGE_SHOPPING_CART};
 
-
+    //columns of jewelry columns that are disyplayed
     public static final String[] JEWELRY_COLUMNS = {COL_1_ID, COL_2_TYPE, COL_3_PRICE, COL_4_GOLD,
             COL_5_STONE, COL_6_MEASUREMENT, COL_7_QUANTITY, COL_8_NAME, COL_9_IMAGE};
 
@@ -107,6 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //method to insert items
     public void insert(String id, String type, double price, String gold, String stone, String measurement, String name,int image) {
 
         SQLiteDatabase db = getWritableDatabase();
@@ -125,6 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //method to insert ShoppingCart
     public void insertShoppingCart(String type, double price,
                                    String gold, String stone, String measurement,  String name, int image) {
 
@@ -143,8 +146,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    //method to get all jewelry columns
     public Cursor getJewelry() {
-
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_NAME, // a. table
@@ -158,9 +161,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //method to get items by id
     public Item getItemById(int id) {
-
-        //int x = Integer.parseInt(id);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, JEWELRY_COLUMNS,
@@ -223,13 +225,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //used to remove all items and CLEAR price
     public void deleteAll () {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME_SHOPPING_CART, null, null);
 
     }
 
-    //remove all from table...
-    //db.delete method
 }
 
