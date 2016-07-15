@@ -60,8 +60,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
         makeFinalPaymentFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!", Toast.LENGTH_SHORT).show();
-
 
                 //TODO: Get count of cart items to make sure it's not empty before "payment"
 
@@ -78,7 +76,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
                 } else {
                     Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!\n " +
-                            "     Your cart is now empty.", Toast.LENGTH_LONG).show();
+                            "     Your cart is now empty.", Toast.LENGTH_SHORT).show();
 
 
                     //Clicking on payment FAB clears all hats from cart table in database

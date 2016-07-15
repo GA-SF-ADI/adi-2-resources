@@ -37,7 +37,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
-        
+
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
         final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
         final TextView selectedHatPrice = (TextView) findViewById(R.id.textView_single_hat_price);
