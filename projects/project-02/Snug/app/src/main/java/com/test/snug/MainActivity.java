@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         searchView.setSearchableInfo(searchableInfo);
 
         //USING THE RECYCLERVIEW HAS SCREWED ME WITH SEARCH. I'VE SET UP SEARCH AND SEARCHVIEW
-        //BEST I CAN. NOT ABLE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
+        //BEST I CAN. LAST STEP WOULD BE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
 
         return true;
 
@@ -228,6 +228,10 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
+
+            //USING THE RECYCLERVIEW HAS SCREWED ME WITH SEARCH. I'VE SET UP SEARCH AND SEARCHVIEW
+            //BEST I CAN. LAST STEP WOULD BE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
+
 
 //            HatsMyRecyclerViewAdapter.(cursor); <– TODO: Figure out how to pass this cursor into recyclerview?
 
