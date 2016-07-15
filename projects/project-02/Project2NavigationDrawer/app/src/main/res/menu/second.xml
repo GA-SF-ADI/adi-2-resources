@@ -4,19 +4,19 @@
     <item android:id="@+id/search"
         android:title="Search"
         android:icon="@android:drawable/ic_menu_search"
-        app:showAsAction="collapseActionView|ifRoom"
+        app:showAsAction="collapseActionView|always"
         app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item android:id="@+id/home_icon"
         android:title="Home"
-        android:icon="@android:drawable/ic_menu_compass"
-        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_home_white_24dp"
+        app:showAsAction="always"
          />
 
     <item android:id="@+id/cart"
-        android:title="cart"
-        android:icon="@android:drawable/ic_menu_compass"
-        app:showAsAction="ifRoom"
+        android:title="My Cart"
+        android:icon="@drawable/ic_shopping_basket_white_24dp"
+        app:showAsAction="always"
         />
 
     <item android:id="@+id/featured_jewels"
