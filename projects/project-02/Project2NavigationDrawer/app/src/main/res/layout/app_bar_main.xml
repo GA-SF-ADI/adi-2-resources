@@ -28,6 +28,7 @@
                 android:fontFamily="casual"
                 android:text="Featured Jewelry"/>
 
+
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

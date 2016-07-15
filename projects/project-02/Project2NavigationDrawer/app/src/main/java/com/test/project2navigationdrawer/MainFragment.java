@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -22,9 +23,9 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        final TextView textView = (TextView) rootView.findViewById(R.id.main_text);
-        textView.setText("hi");
         final Button mainButton = (Button) rootView.findViewById(R.id.main_button_add_something);
+        final ImageView second = (ImageView) rootView.findViewById(R.id.image_view);
+
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
