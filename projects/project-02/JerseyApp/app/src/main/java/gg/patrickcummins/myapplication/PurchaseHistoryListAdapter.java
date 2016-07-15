@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import static android.os.Build.VERSION_CODES.M;
+import static gg.patrickcummins.myapplication.R.id.dateTextView;
+import static gg.patrickcummins.myapplication.R.id.priceTextView;
 
 /**
  * Created by patrickcummins on 7/12/16.
@@ -43,15 +45,19 @@ public class PurchaseHistoryListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.purchase_history_list_item, parent, false);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         final PurchaseHistoryItem currentItem = purchaseHistoryArrayList.get(position);
-        TextView priceTextView = (TextView) convertView.findViewById(R.id.priceTextView);
-        TextView dateTextView = (TextView) convertView.findViewById(R.id.dateTextView);
 
-        priceTextView.setText("Price:\n$" + Math.round(currentItem.getPrice() * 100.0) / 100.0);
-        dateTextView.setText("Date Ordered:\n" + currentItem.getDate());
+
+        viewHolder.priceTextView.setText("Price:\n$" + Math.round(currentItem.getPrice() * 100.0) / 100.0);
+        viewHolder.dateTextView.setText("Date Ordered:\n" + currentItem.getDate());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,5 +71,14 @@ public class PurchaseHistoryListAdapter extends BaseAdapter {
 
 
         return convertView;
+    }
+
+    private class ViewHolder {
+        TextView priceTextView, dateTextView;
+
+        public ViewHolder(View itemLayout) {
+            this.priceTextView = (TextView) itemLayout.findViewById(R.id.priceTextView);
+            this.dateTextView = (TextView) itemLayout.findViewById(R.id.dateTextView);
+        }
     }
 }

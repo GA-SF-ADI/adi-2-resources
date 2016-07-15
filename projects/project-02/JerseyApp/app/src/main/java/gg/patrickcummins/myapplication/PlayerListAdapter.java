@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import static android.R.attr.onClick;
 import static android.R.attr.start;
+import static gg.patrickcummins.myapplication.R.id.playerImageView;
 
 /**
  * Created by patrickcummins on 7/9/16.
@@ -45,20 +46,21 @@ public class PlayerListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.player_list_item, parent, false);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         final Player currentPlayer = playerArrayList.get(position);
-        ImageView playerImageView = (ImageView) convertView.findViewById(R.id.playerImageView);
-        TextView nameTextView = (TextView) convertView.findViewById(R.id.playerNameTextView);
-        TextView positionTextView = (TextView) convertView.findViewById(R.id.playerPositionTextView);
-        TextView numberTextView = (TextView) convertView.findViewById(R.id.playerNumberTextView);
 
 
-        nameTextView.setText(currentPlayer.getName());
-        positionTextView.setText("Position: " + currentPlayer.getPosition());
-        numberTextView.setText("Number: " + currentPlayer.getNumber());
-        playerImageView.setImageResource(currentPlayer.getPlayerPicture());
+        viewHolder.nameTextView.setText(currentPlayer.getName());
+        viewHolder.positionTextView.setText("Position: " + currentPlayer.getPosition());
+        viewHolder.numberTextView.setText("Number: " + currentPlayer.getNumber());
+        viewHolder.playerImageView.setImageResource(currentPlayer.getPlayerPicture());
 
 
         convertView.setOnClickListener(new View.OnClickListener() {
@@ -72,5 +74,17 @@ public class PlayerListAdapter extends BaseAdapter {
             }
         });
         return convertView;
+    }
+
+    private class ViewHolder {
+        TextView nameTextView, positionTextView, numberTextView;
+        ImageView playerImageView;
+
+        public ViewHolder(View itemLayout) {
+            this.nameTextView = (TextView) itemLayout.findViewById(R.id.playerNameTextView);
+            this.positionTextView = (TextView) itemLayout.findViewById(R.id.playerPositionTextView);
+            this.numberTextView = (TextView) itemLayout.findViewById(R.id.playerNumberTextView);
+            this.playerImageView = (ImageView) itemLayout.findViewById(R.id.playerImageView);
+        }
     }
 }
