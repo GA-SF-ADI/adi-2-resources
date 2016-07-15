@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +25,17 @@ import java.util.Random;
  */
 public class SearchFragment extends Fragment {
     ArrayList<Shoe> resultsShoeList;
+    String resultQuery;
     ListView resultsListView;
     ShoeOpenHelper helper;
-    HomeFragment.OnRandImageClickListener mRandImage;
+    HomeFragment.OnShoeSelectClickListener mShoeSelect;
+    ImageView noSearchImage;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
-            mRandImage = (HomeFragment.OnRandImageClickListener)getActivity();
+            mShoeSelect = (HomeFragment.OnShoeSelectClickListener)getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
                     + " must implement OnRandImageClickListener");
@@ -42,35 +45,60 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =inflater.inflate(R.layout.fragment_search,container,false);
-        resultsListView = (ListView)v.findViewById(R.id.search_results_lv);
-        final Cursor cursor = helper.getInstance(getContext()).getShoesList();
+        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        resultsListView = (ListView) v.findViewById(R.id.search_results_lv);
+        if (resultQuery ==null) {
+            Log.d("search query", "query:"+resultQuery);
+            resultsListView.setVisibility(View.INVISIBLE);
+            noSearchImage = (ImageView) v.findViewById(R.id.no_search_image);
+            noSearchImage.setImageResource(R.drawable.air_j);
+            noSearchImage.setVisibility(View.VISIBLE);
+        } else {
 
-        CursorAdapter cursorAdapter = new CursorAdapter(getContext(),cursor,0) {
+                setResultsView();
+        }
+        return v;
+    }
+
+
+
+    public void setResultQuery(String resultQuery) {
+        if ( getContext()!=null)
+        {this.resultQuery = resultQuery;
+        setResultsView();}
+
+    }
+    public void setResultsView(){
+        noSearchImage.setVisibility(View.GONE);
+        resultsListView.setVisibility(View.VISIBLE);
+        final Cursor cursor = helper.getInstance(getContext()).search(resultQuery);
+
+        CursorAdapter cursorAdapter = new CursorAdapter(getContext(), cursor, 0) {
 
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
-                return LayoutInflater.from(context).inflate(R.layout.item_list,parent,false);
+                return LayoutInflater.from(context).inflate(R.layout.item_list, parent, false);
             }
 
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
                 ImageView itemImageView = (ImageView) view.findViewById(R.id.shoe_img_home);
-                TextView itemNameText = (TextView)view.findViewById(R.id.shoe_name_home);
+                TextView itemNameText = (TextView) view.findViewById(R.id.shoe_name_home);
                 itemImageView.setImageResource(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)));
                 itemNameText.setText(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)));
             }
-        };resultsListView.setAdapter(cursorAdapter);
+        };
+        resultsListView.setAdapter(cursorAdapter);
 
 
         resultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int itemSelected = cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID);
-                mRandImage.onRandImageSelected(itemSelected);
+                mShoeSelect.onShoeSelected(id);
             }
         });
-        return v;
-
+      }
     }
-}
+
+
+

@@ -11,9 +11,18 @@ public class Shoe {
     private String style;
     private int year;
     private int imageId;
+    private String color;
 
 
-    public Shoe(int id, String name, String description, Double price, String style, int year, int imageId) {
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Shoe(int id, String name, String description, Double price, String style, int year, int imageId, String color) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -21,6 +30,8 @@ public class Shoe {
         this.style = style;
         this.year = year;
         this.imageId = imageId;
+        this.color = color;
+
     }
 
     public int getId() {

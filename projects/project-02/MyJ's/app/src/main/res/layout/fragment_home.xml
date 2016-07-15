@@ -7,7 +7,6 @@
         android:id="@+id/homeImageButton"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/j_1"
         android:scaleType="fitXY"/>
 
     <TextView

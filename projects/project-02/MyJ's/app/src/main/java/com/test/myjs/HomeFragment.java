@@ -32,13 +32,14 @@ public class HomeFragment extends android.support.v4.app.Fragment {
     ShoeOpenHelper shoeHelper;
     ImageButton homeImageButton;
     TextView homeShoeName;
-    OnRandImageClickListener mRandImage;
+    OnShoeSelectClickListener mShoeSelect;
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try{
-            mRandImage = (OnRandImageClickListener)getActivity();
+            mShoeSelect = (OnShoeSelectClickListener)getActivity();
         } catch (ClassCastException e) {
             throw new ClassCastException(getActivity().toString()
                     + " must implement OnRandImageClickListener");
@@ -78,7 +79,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         };
 
         Random r = new Random();
-        int rand = r.nextInt(23)-1;
+        final int rand = r.nextInt(22)+1;
 
         cursor.moveToFirst();
         cursor.move(rand);
@@ -88,29 +89,26 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         homeImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int randImgSelected = cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID);
-                mRandImage.onRandImageSelected(randImgSelected);
+            cursor.moveToPosition(rand);
+                mShoeSelect.onShoeSelected(cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_ID)));
             }
         });homeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int itemSelected = cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID);
-                mRandImage.onRandImageSelected(itemSelected);
+                mShoeSelect.onShoeSelected(id);
             }
         });
         return v;
 
     }
 
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    public interface OnRandImageClickListener{
-        public void onRandImageSelected(int position);
+    public interface OnShoeSelectClickListener{
+        public void onShoeSelected(long id);
     }
 
 }

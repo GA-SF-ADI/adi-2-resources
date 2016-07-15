@@ -3,6 +3,7 @@ package com.test.myjs;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 
 /**
@@ -10,6 +11,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 public class PagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
+    String query;
+    SearchFragment tab2;
+
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -24,7 +28,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 HomeFragment tab1 = new HomeFragment();
                 return tab1;
             case 1:
-                SearchFragment tab2 = new SearchFragment();
+                tab2 = new SearchFragment();
+                tab2.setResultQuery(query);
+                Log.d("viewPager query","viewpager:"+query);
                 return tab2;
             case 2:
                 ShoppingCartFragment tab3 = new ShoppingCartFragment();
@@ -37,5 +43,14 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mNumOfTabs;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+        tab2.setResultQuery(query);
     }
 }

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">My J\'s</string>
     <string name="search_hint">Search here</string>
+    <string name="details_back_button">BACK</string>
+    <string name="details__add_button">ADD TO CART</string>
+    <string name="cart_empty_button">EMPTY CART</string>
+    <string name="cart__buy_button">BUY</string>
 </resources>
