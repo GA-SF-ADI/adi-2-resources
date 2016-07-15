@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.DatabaseUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -126,6 +127,26 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
 
     }
+
+    public void deleteAllHatsFromCart() {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.delete(CART_TABLE_NAME, null, null);
+    }
+
+    public int checkNumOfHatsInCart() {
+
+        String countQuery = "SELECT * FROM " + CART_TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        return cnt;
+    }
+
+
+
 
     public Cursor getSpecificHat(int id) {
         SQLiteDatabase db = this.getReadableDatabase();

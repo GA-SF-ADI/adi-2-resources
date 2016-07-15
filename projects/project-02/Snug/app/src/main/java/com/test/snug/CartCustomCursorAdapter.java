@@ -52,6 +52,8 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
         textViewnameOfCartHat.setText(nameOfCartHat);
 
+        //FAB for X button which deletes single hat from cart
+
         deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
