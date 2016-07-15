@@ -8,6 +8,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,9 +31,11 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         //Setting up views, toolbars, and binding data
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.single_hat_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
         ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
@@ -104,32 +109,12 @@ public class SingleHatViewActivity extends AppCompatActivity {
         });
 
 
-        //Menu image button click listeners
-        cartButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(SingleHatViewActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(SingleHatViewActivity.this, SearchActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
-        if (numOfCartItemsCursor.getCount() > 0) {
+        /*if (numOfCartItemsCursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -142,11 +127,42 @@ public class SingleHatViewActivity extends AppCompatActivity {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
-        }
-
+        }*/
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.single_hat_view_menu, menu);
+
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.button_item_in_single_hat_view_activity_toolbar_to_view_cart: {
+                Intent intent = new Intent(SingleHatViewActivity.this, ShoppingCartActivity.class);
+                startActivity(intent);
+
+            }
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+
+
+    }
+
+
 
     @Override
     public void onStart() {
@@ -164,7 +180,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
         Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
-        if (numOfCartItemsCursor.getCount() > 0) {
+        /*if (numOfCartItemsCursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -177,7 +193,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
-        }
+        }*/
 
 
     }

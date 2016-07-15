@@ -211,7 +211,6 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-
         //Grabbing unique ArrayList of team names and eventually passing it to MultiAutoCompleteTextView and its cursor
 
         Cursor cursor = db.getHatTeams();
@@ -233,7 +232,6 @@ public class SearchActivity extends AppCompatActivity {
         cursor.close();
 
         Log.d(LOG_TAG, "Cursor closed");
-
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, teamNamesFromDatabaseArrayList);
 

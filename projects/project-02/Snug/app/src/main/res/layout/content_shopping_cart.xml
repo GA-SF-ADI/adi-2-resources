@@ -44,7 +44,7 @@
         </FrameLayout>
 
         <ImageView
-            android:id="@+id/app_logo_in_toolbar"
+            android:id="@+id/app_logo_in_main_activity_toolbar"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"

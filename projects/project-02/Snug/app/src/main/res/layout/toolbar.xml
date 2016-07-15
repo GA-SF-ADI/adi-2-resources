@@ -23,7 +23,7 @@
         android:visibility="visible" />
 
     <ImageView
-        android:id="@+id/app_logo_in_toolbar"
+        android:id="@+id/app_logo_in_main_activity_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/light_green_hat_only_for_menu"

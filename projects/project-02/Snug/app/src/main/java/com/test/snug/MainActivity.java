@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,8 +17,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         //Setting up views, toolbars, and binding data
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.main_activity_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_activity_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -156,8 +154,10 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
 
         // Associate searchable info with the SearchView
-        SearchView searchView = (SearchView) menu.findItem(R.id.searchview_item_in_main_activity_menu).getActionView();
-        searchView.setSearchableInfo(searchableInfo);
+
+
+        final MenuItem item = menu.findItem(R.id.searchview_item_in_main_activity_menu);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
 
         // Return true to show menu, returning false will not show it.
 
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
         int id = item.getItemId();
         switch (id) {
-            case R.id.button_item_in_toolbar_to_view_cart: {
+            case R.id.button_item_in_main_activity_toolbar_to_view_cart: {
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
@@ -227,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             String query = intent.getStringExtra(SearchManager.QUERY);
             Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
 
+//            HatsMyRecyclerViewAdapter.(cursor); <– TODO: Figure out how to pass this cursor into recyclerview?
 
 
         }
@@ -397,7 +398,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     public void onResume() {
         super.onResume();
         if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
-
 
 
     }

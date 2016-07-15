@@ -208,14 +208,14 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
     }
 
-    public Cursor searchAmongAllHats(String query){
+    public Cursor searchAmongAllHats(String query) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
-                HAT_COLUMN_ID+" = ?", // c. selections
-                new String[]{query}, // d. selections args
+                null, // c. selections
+                new String[]{"%" + query + "%"}, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by
