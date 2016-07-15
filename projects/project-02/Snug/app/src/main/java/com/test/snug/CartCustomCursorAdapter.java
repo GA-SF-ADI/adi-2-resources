@@ -64,15 +64,12 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//                cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
-
                 Cursor cursorForDeletingHat = db.getALLHatsFromCART();
 
                 cursorForDeletingHat.moveToFirst();
 
 //                TODO: Figure out how to get the position of the listview to compare with database to then delete
-                db.deleteSpecificHatFromCart(cursorForDeletingHat.getInt(cursorForDeletingHat.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID)));
-
+                db.deleteSpecificHatFromCart();
 
 
             }

@@ -123,7 +123,7 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
-        db.delete("cart", selection, selectionArgs);
+        db.delete(CART_TABLE_NAME, selection, selectionArgs);
 
 
     }
