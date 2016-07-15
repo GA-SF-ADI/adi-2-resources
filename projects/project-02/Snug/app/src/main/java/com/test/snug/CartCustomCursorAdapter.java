@@ -74,7 +74,7 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
                 Log.e("e", "hat at position: " + idPosition + " has been deleted");
 
-                changeCursor(cursor);
+                changeCursor(db.getALLHatsFromCART());
 
 
             }
