@@ -64,6 +64,7 @@
         android:inputType="number"
         android:paddingTop="10dp"
         android:layout_centerHorizontal="true"
+        android:paddingBottom="10dp"
         android:textSize="15dp"
         android:hint="Enter Quantity"
         android:layout_above="@+id/dialog_buy_button"/>
@@ -72,7 +73,11 @@
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
+        android:textSize="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
         android:text="buy"
         android:layout_centerHorizontal="true"/>
 

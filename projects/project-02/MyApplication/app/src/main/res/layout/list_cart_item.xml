@@ -23,6 +23,7 @@
         android:layout_toRightOf="@+id/cart_alc_quantity"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
+        android:textColor="@color/black"
         android:paddingLeft="10dp"
         android:textSize="22dp"
         android:text="name"/>

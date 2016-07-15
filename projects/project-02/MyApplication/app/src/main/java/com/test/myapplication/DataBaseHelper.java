@@ -71,11 +71,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(ALCOHOL_TABLE_NAME,
                 ALC_COLUMN,
-                COL_ALC_ABV + " LIKE ? OR " + COL_ALC_NAME + " LIKE ? OR " + COL_ALC_PRICE + " LIKE ?",
-                new String[]{"%" + query + "%", "%" + query + "%", "%" + query + "%"},
+                COL_ALC_DESCRIPTION + " LIKE ? OR " + COL_ALC_NAME + " LIKE ? OR " + COL_ALC_PRICE + " < ?",
+                new String[]{"%" + query + "%", "%" + query + "%", query },
                 null,
                 null,
-                COL_ALC_PRICE+" DESC, "+ COL_ALC_ABV + " DESC, "+ COL_ALC_NAME + " DESC",
+                COL_ALC_PRICE+" DESC",
                 null);
 
         return cursor;
@@ -130,6 +130,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
+                COL_ALC_NAME+" ASC",
                 null);
 
         return cursor;

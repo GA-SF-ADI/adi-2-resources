@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
 
         searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setQueryHint("Search by name, price, or abv!");
+        searchView.setQueryHint("Search by name, price, or description");
         searchView.setSearchableInfo(searchableInfo);
 
         return true;
@@ -117,17 +117,25 @@ public class MainActivity extends AppCompatActivity {
             int resID7 = getResources().getIdentifier("hennessy" , "drawable", getPackageName());
             int resID8 = getResources().getIdentifier("remy" , "drawable", getPackageName());
             int resID9 = getResources().getIdentifier("bombay" , "drawable", getPackageName());
+            int resID10 = getResources().getIdentifier("kahlua" , "drawable", getPackageName());
+            int resID11 = getResources().getIdentifier("fireball" , "drawable", getPackageName());
+            int resID12 = getResources().getIdentifier("hibiki" , "drawable", getPackageName());
+
 
             Alcohol jameson = new Alcohol("Jameson", 23, 40, "Blended Irish whiskey. Pretty good. My go to for the value.", resID, 1);
-            Alcohol greygoose = new Alcohol("Grey Goose", 30, 40, "Vodka produced in France, its alright. Good mixed.", resID1, 2);
+            Alcohol greygoose = new Alcohol("Grey Goose", 30, 40, "Vodka produced in France, its alright. Good mix.", resID1, 2);
             Alcohol patron = new Alcohol("Patron", 37, 40, "Tequila produced in Mexico, its alright. ", resID2, 3);
-            Alcohol jwBlue = new Alcohol("J.Walker Blue", 200, 40, "Johnnie Walker's premium blend. pretty damn good. ", resID3, 4);
+            Alcohol jwBlue = new Alcohol("J.Walker Blue", 200, 40, "Johnnie Walker's premium whiskey blend. pretty damn good. ", resID3, 4);
             Alcohol bacardi = new Alcohol("Bacardi 151", 20, 75, "DEATH", resID4, 5);
             Alcohol macallan = new Alcohol("Macallan", 60, 40, "12 year aged scotch produced in Scotland. Pretty good.", resID5, 6);
             Alcohol makersMark = new Alcohol("Maker's Mark", 25, 40, "Blended bourbon from Kentucky, USA. not that good.", resID6, 7);
             Alcohol hennessy = new Alcohol("Hennessy", 65, 40, "Cognac produced in France, blame it on the henny.", resID7, 8);
             Alcohol remy = new Alcohol("Remy Martin", 35, 40, "Cognac produced in France, blame it on the remy as well", resID8, 9);
             Alcohol bombay = new Alcohol("Bombay", 27, 40, "Bombay Sapphire Gin, only good with tonic.", resID9, 10);
+            Alcohol kahlua = new Alcohol("Kahlua", 15, 20, "Coffee tasting mix. Best for irish car bombs!",resID10,11);
+            Alcohol fireball = new Alcohol("Fireball", 15, 45, "Tastes like big red. Pitbull's go to",resID11, 12);
+            Alcohol hibiki = new Alcohol("Hibiki", 80, 43, "Premium Japanese whiskey. Goes down smooth",resID12,13);
+
 
             mHelper.addAlcohol(jameson);
             mHelper.addAlcohol(greygoose);
@@ -139,7 +147,9 @@ public class MainActivity extends AppCompatActivity {
             mHelper.addAlcohol(hennessy);
             mHelper.addAlcohol(remy);
             mHelper.addAlcohol(bombay);
-
+            mHelper.addAlcohol(kahlua);
+            mHelper.addAlcohol(fireball);
+            mHelper.addAlcohol(hibiki);
 
         }
     }

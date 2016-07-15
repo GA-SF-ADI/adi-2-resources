@@ -7,28 +7,30 @@
     <ImageView
         android:id="@+id/list_alc_image"
         android:src="@mipmap/ic_launcher"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
 
     <TextView
         android:id="@+id/list_alc_name"
+        android:textAlignment="center"
         android:layout_toRightOf="@id/list_alc_image"
         android:text="Johnnie Walker Blue"
-        android:textSize="30dp"
+        android:textSize="33dp"
         android:paddingLeft="5dp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="60dp" />
+        android:layout_height="50dp" />
 
     <TextView
         android:id="@+id/list_alc_price"
+        android:textAlignment="center"
         android:layout_alignParentRight="true"
         android:text="$40"
-        android:textSize="30dp"
+        android:textSize="33dp"
         android:gravity="right"
         android:paddingRight="5dp"
         android:layout_width="wrap_content"
-        android:layout_height="60dp" />
+        android:layout_height="50dp" />
 
 
 </RelativeLayout>
