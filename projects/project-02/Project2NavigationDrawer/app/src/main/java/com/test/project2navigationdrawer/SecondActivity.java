@@ -5,6 +5,7 @@ import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ public class SecondActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar_second_activity);
         setSupportActionBar(toolbar);
 
+
         super.onCreate(savedInstanceState);
 
         myDb = DatabaseHelper.getInstance(this);
@@ -63,6 +65,7 @@ public class SecondActivity extends AppCompatActivity {
         populateListViewFromDB();
 
         textViewSearch = (TextView) findViewById(R.id.text_view_search);
+
 
         DatabaseHelper helper = new DatabaseHelper(SecondActivity.this);
         Cursor cursor = helper.getJewelry();

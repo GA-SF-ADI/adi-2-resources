@@ -17,7 +17,11 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:id="@+id/user_story1"
-        android:text="User Story 1" />
+        android:text=
+            "User Story 1: As a shopper I want to search
+            for a jewelry item based on description so that I can
+            check if it is available." />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +32,10 @@
         android:layout_gravity="center"
         android:layout_below="@id/user_story1"
         android:id="@+id/user_story2"
-        android:text="User Story 2" />
+        android:text="User Story 2: As an online shopper I
+        want to browse through items so that I can select the
+        (jewelry) piece that catches my eye."
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +46,9 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:id="@+id/user_story3"
-        android:text="User Story 3" />
+        android:text="User Story 3: As a consumer I want
+        to add particular items to my shopping cart so that
+        I can determine if the cost is right for me." />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +59,9 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_below="@id/user_story3"
-        android:text="User Story 4" />
+        android:text="User Story 4: As a consumer I want to view
+        a piece and its special details so that I can determine if
+        I want to purchase it." />
 
 
 </RelativeLayout>
