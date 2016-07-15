@@ -119,12 +119,13 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
         SQLiteDatabase db = getWritableDatabase();
 
-        String selection = "id = ?";
+        String selection = CART_COLUMN_ID+ " = ?";
 
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
         db.delete(CART_TABLE_NAME, selection, selectionArgs);
 
+        db.close();
 
     }
 

@@ -56,7 +56,9 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
 //        TODO: Figure out how to get the position of the listview to compare with database to then delete
 
-        /*final int position = list
+        final int idPosition = cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID));
+
+        Log.e("e", "idPosition = " +idPosition);
 
         deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,16 +70,15 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//                Cursor cursorForDeletingHat = db.getALLHatsFromCART();
+                db.deleteSpecificHatFromCart(idPosition);
 
-                cursor.moveToPosition(position);
+                Log.e("e", "hat at position: " + idPosition + " has been deleted");
 
+                changeCursor(cursor);
 
-
-                db.deleteSpecificHatFromCart(cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID)));
 
             }
-        });*/
+        });
 
 
 

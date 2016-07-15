@@ -161,7 +161,8 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         searchView.setSearchableInfo(searchableInfo);
 
-        // Return true to show menu, returning false will not show it.
+        //USING THE RECYCLERVIEW HAS SCREWED ME WITH SEARCH. I'VE SET UP SEARCH AND SEARCHVIEW
+        //BEST I CAN. NOT ABLE TO RE-POPULATE MY RECYCLERVIEW WITH THE QUERY RESULTS
 
         return true;
 
