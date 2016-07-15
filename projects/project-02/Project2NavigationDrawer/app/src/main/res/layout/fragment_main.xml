@@ -15,7 +15,7 @@
         android:textAllCaps="false"
         android:background="#000000"
         android:textSize="18sp"
-        android:id="@+id/main_button"
+        android:id="@+id/main_button_add_something"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center" />

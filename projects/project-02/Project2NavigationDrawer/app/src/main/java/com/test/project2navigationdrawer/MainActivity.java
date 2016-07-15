@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView = null;
     Toolbar toolbar = null;
     Button featuredJewelryButton;
+    Button addSomethingToYourCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_1);
         featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button);
+        //addSomethingToYourCollection = (Button) findViewById(R.id.main_button_add_something);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         //setSupportActionBar(toolbar);

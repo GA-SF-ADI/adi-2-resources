@@ -6,4 +6,23 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/home_icon"
+        android:title="Home"
+        android:icon="@android:drawable/ic_menu_compass"
+        app:showAsAction="ifRoom"
+         />
+
+    <item android:id="@+id/cart"
+        android:title="cart"
+        android:icon="@android:drawable/ic_menu_compass"
+        app:showAsAction="ifRoom"
+        />
+
+    <item android:id="@+id/featured_jewels"
+        android:title="Home"
+        android:icon="@android:drawable/ic_menu_compass"
+        app:showAsAction="ifRoom"
+        />
+
 </menu>

@@ -24,7 +24,7 @@ public class MainFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         final TextView textView = (TextView) rootView.findViewById(R.id.main_text);
         textView.setText("hi");
-        final Button mainButton = (Button) rootView.findViewById(R.id.main_button);
+        final Button mainButton = (Button) rootView.findViewById(R.id.main_button_add_something);
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

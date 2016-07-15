@@ -12,6 +12,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.project2navigationdrawer.SecondActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar_second_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <Button
         android:id="@+id/shopping_cart_button"
         android:layout_width="wrap_content"

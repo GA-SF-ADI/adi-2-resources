@@ -44,7 +44,8 @@ public class SecondActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_second);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar_second_activity);
+        setSupportActionBar(toolbar);
 
         super.onCreate(savedInstanceState);
 
@@ -62,7 +63,6 @@ public class SecondActivity extends AppCompatActivity {
         populateListViewFromDB();
 
         textViewSearch = (TextView) findViewById(R.id.text_view_search);
-        handleIntent(getIntent());
 
         DatabaseHelper helper = new DatabaseHelper(SecondActivity.this);
         Cursor cursor = helper.getJewelry();
@@ -116,47 +116,47 @@ public class SecondActivity extends AppCompatActivity {
 //detail view lesson:
         //pass intent
 
-        returnHomeButton = (Button) findViewById(R.id.return_home_button);
-        returnHomeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        returnHomeButton = (Button) findViewById(R.id.return_home_button);
+//        returnHomeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
-                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
-
-        featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button_second_act);
-        featuredJewelryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
-        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShoppingCartFragment fragment = new ShoppingCartFragment();
-                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                listView.setVisibility(View.GONE);
-
-                switch (view.getId()) {
-                    case R.id.shopping_cart_button: {
-                        Log.d("case shopping cart", "in switch case");
-                        fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
-                        fragmentTransaction.commit();
-                        break;
-                    }
-
-                }
-            }
-
-        });
+//        featuredJewelryButton = (Button) findViewById(R.id.featured_jewelry_button_second_act);
+//        featuredJewelryButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+//        shoppingCartButton = (Button) findViewById(R.id.shopping_cart_button);
+//        shoppingCartButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ShoppingCartFragment fragment = new ShoppingCartFragment();
+//                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                listView.setVisibility(View.GONE);
+//
+//                switch (view.getId()) {
+//                    case R.id.shopping_cart_button: {
+//                        Log.d("case shopping cart", "in switch case");
+//                        fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
+//                        fragmentTransaction.commit();
+//                        break;
+//                    }
+//
+//                }
+//            }
+//
+//        });
 
         //when you click "Item"
 
@@ -200,8 +200,43 @@ public class SecondActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(searchableInfo);
 
-        // Return true to show menu, returning false will not show it.
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        int id = item.getItemId();
+
+        if (id == R.id.home_icon) {
+            Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+
+        } else if (id == R.id.cart) {
+
+            ShoppingCartFragment fragment = new ShoppingCartFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            listView.setVisibility(View.GONE);
+
+            fragmentTransaction.add(R.id.fragment_container_second_activity, fragment);
+            fragmentTransaction.commit();
+            return true;
+
+
+        } else if (id == R.id.featured_jewels) {
+            Intent intent = new Intent(SecondActivity.this, SecondActivity.class);
+            startActivity(intent);
+            return true;
+
+        } else if (id == R.id.search) {
+            handleIntent(getIntent());
+            return true;
+        }
+
+        // Return true to show menu, returning false will not show it.
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -219,6 +254,7 @@ public class SecondActivity extends AppCompatActivity {
             customAdapter.changeCursor(cursor);
 
         }
-
     }
+
+
 }
