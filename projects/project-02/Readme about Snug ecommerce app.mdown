@@ -21,4 +21,8 @@
 
 	•Maintenence of activity lifecycle with isn't perfect. 
 
+	•Search query is done but app is unable to update the search query results into the recyclerview
+
+	•Layouts might be broken for larger scree
+
 	
