@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buy something!"
+        android:text="buy Something!"
         android:id="@+id/buyButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
