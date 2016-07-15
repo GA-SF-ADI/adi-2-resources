@@ -15,6 +15,8 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar_second_activity"
         android:layout_width="match_parent"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:layout_height="?attr/actionBarSize"
         android:background="#000000"
         android:elevation="4dp"
@@ -58,7 +60,10 @@
         android:background="#ffffff"
         android:textAllCaps="true"
         android:fontFamily="casual"
-        android:layout_below="@+id/shopping_cart_button"></ListView>
+       android:paddingTop="20dp"
+        android:layout_below="@+id/shopping_cart_button">
+
+    </ListView>
 
     <TextView
         android:layout_width="wrap_content"
