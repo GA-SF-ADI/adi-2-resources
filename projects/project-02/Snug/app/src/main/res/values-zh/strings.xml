@@ -9,10 +9,10 @@
     <string name="Go_to_hat_button">Go to single hat</string>
     <string name="Single_hat_title">San Francisco Giants July 4th</string>
     <string name="Single_hat_price">$29.99</string>
-    <string name="Single_hat_static_description_with_colon">Description: </string>
-    <string name="Single_hat_static_back_with_colon">Back: </string>
-    <string name="Single_hat_static_material_with_colon">Material :</string>
-    <string name="title_of_search_icon_in_toolbar">search</string>
+    <string name="Single_hat_static_description_with_colon">帽子信息: </string>
+    <string name="Single_hat_static_back_with_colon">后面: </string>
+    <string name="Single_hat_static_material_with_colon">材料 :</string>
+    <string name="title_of_search_icon_in_toolbar">搜索</string>
     <string name="title_of_cart_icon_in_toolbar">view cart</string>
     <string name="title_of_app_logo_icon_in_toolbar">logo</string>
     <string name="counter_amount">4</string>

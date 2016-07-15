@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -189,12 +190,15 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
         switch (id) {
             case R.id.button_item_in_main_activity_toolbar_to_view_cart: {
+
+                Log.e(LOG_TAG, "button_item_in_main_activity_toolbar_to_view_cart tapped");
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
@@ -202,8 +206,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
 
             case R.id.searchview_item_in_main_activity_menu: {
 
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
 
             }
 
@@ -227,9 +229,12 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
             String query = intent.getStringExtra(SearchManager.QUERY);
             Cursor cursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
 
+            Log.e(LOG_TAG, "The query is: " + cursor);
+
 //            HatsMyRecyclerViewAdapter.(cursor); <– TODO: Figure out how to pass this cursor into recyclerview?
 
 
+            cursor.close();
         }
 
     }
@@ -398,7 +403,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     public void onResume() {
         super.onResume();
         if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
-
 
     }
 

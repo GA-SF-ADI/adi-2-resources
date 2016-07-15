@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,9 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
         textViewnameOfCartHat.setText(nameOfCartHat);
 
+
+        //FAB for X button which deletes single hat from cart
+
         deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,13 +66,20 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//                cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
-
                 Cursor cursorForDeletingHat = db.getALLHatsFromCART();
 
-                db.deleteSpecificHatFromCart(cursorForDeletingHat.getInt(cursorForDeletingHat.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID)));
+                View parentRow = (View) view.getParent();
+
+                ListView listView = (ListView) parentRow.getParent();
+
+                final int finalCartListViewPosition = listView.getPositionForView(parentRow);
 
 
+                db.deleteSpecificHatFromCart(cursorForDeletingHat.getInt(finalCartListViewPosition));
+
+
+
+                cursorForDeletingHat.close();
 
             }
         });
