@@ -50,24 +50,24 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-//        Cursor cursor = db.getNumOfCartItems();
+        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
         //Checking whether there are any hats in the cart. If so, display the item count in the menu
 
-       /* if (cursor.getCount() > 0) {
+        if (numOfCartItemsCursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
             redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
 
-            cartItemCounter.setText(String.valueOf(cursor.getCount() - 1));
+            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount() - 1));
 
         } else {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
-        }*/
+        }
 
         //Checking to see whether the hats table has already been created.
 
@@ -187,7 +187,6 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         // position is position in recycler view list. NOT the same as item id
 
         // Using position, move cursor to that position. Then pull out the
-
 
 
         Log.e(LOG_TAG, "position of hat is: " + position + " and " +
@@ -331,12 +330,28 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         super.onResume();
         if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
 
+
 //        TODO: Show search results IF user came from search activity
 
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
+        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
+        if (numOfCartItemsCursor.getCount() > 0) {
 
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
+
+        } else {
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+        }
 
 
     }

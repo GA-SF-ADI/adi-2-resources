@@ -124,6 +124,27 @@ public class SingleHatViewActivity extends AppCompatActivity {
             }
         });
 
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
+
+        if (numOfCartItemsCursor.getCount() > 0) {
+
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
+
+        } else {
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+        }
+
+
 
     }
 
@@ -137,6 +158,28 @@ public class SingleHatViewActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         if (VERBOSE) Log.e(LOG_TAG, "+ ON RESUME +");
+
+        Context context = getApplicationContext();
+        HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+        Cursor numOfCartItemsCursor = db.getNumOfCartItems();
+
+        if (numOfCartItemsCursor.getCount() > 0) {
+
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+            redCartCountBackgroundCircle.setImageResource(R.drawable.red_circle);
+
+            cartItemCounter.setText(String.valueOf(numOfCartItemsCursor.getCount()));
+
+        } else {
+            TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
+            ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
+
+        }
+
+
     }
 
     @Override

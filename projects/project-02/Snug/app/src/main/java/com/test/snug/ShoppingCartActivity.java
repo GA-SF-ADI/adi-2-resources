@@ -34,6 +34,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
+        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
 
 //        TODO: Look into insertOrUpdate
@@ -47,7 +48,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         Cursor hatsInCartCursor = db.getALLHatsFromCART();
 
-        CartCustomCursorAdapter cartCustomCursorAdapter = new CartCustomCursorAdapter(ShoppingCartActivity.this,hatsInCartCursor,-1);
+        CartCustomCursorAdapter cartCustomCursorAdapter = new CartCustomCursorAdapter(ShoppingCartActivity.this, hatsInCartCursor, -1);
 
         listViewOfCartItems.setAdapter(cartCustomCursorAdapter);
 
@@ -66,6 +67,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
 //                TODO: Clear database table
 
+                Context context = getApplicationContext();
+
+                HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
                 startActivity(intent);
                 finish();
 
@@ -73,21 +78,20 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
 
-        //onClickListener for imagebutton that deletes hat from cart
-
-       /* deleteFromCartButton.setOnClickListener(new View.OnClickListener() {
+        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                TODO: Need to finish deleting selected hat from cart
-                Cursor cursor = db.deleteSpecificHatFromCart(listViewOfCartItems.);
 
-                teamNamesFromDatabaseArrayList.add(cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
+//                TODO: StartActivityForResult == query I need to make
 
+                Intent intent = new Intent(ShoppingCartActivity.this, SearchActivity.class);
+                startActivity(intent);
 
             }
         });
-*/
+
+
     }
 
     @Override

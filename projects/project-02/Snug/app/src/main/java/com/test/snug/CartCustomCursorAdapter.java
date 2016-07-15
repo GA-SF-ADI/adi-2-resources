@@ -13,6 +13,7 @@ import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.Random;
 public class CartCustomCursorAdapter extends CursorAdapter {
     private LayoutInflater mInflater;
 
+    private String LOG_TAG = "Bob";
 
     public CartCustomCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
@@ -36,13 +38,13 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
         ImageView imageViewimageOfCartHat = (ImageView) view.findViewById(R.id.image_of_hat_in_cart);
         TextView textViewnameOfCartHat = (TextView) view.findViewById(R.id.textview_name_of_hat_in_cart);
-        ImageButton deletButtonForCartHat = (ImageButton) view.findViewById(R.id.imagebutton_to_remove_hat_from_cart);
+        ImageButton deleteButtonForCartHat = (ImageButton) view.findViewById(R.id.imagebutton_to_remove_hat_from_cart);
 
 
         // Extract properties from cursor
 
         int imageOfCartHat = (cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
-        String nameOfCartHat = cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME));
+        String nameOfCartHat = (cursor.getString(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_HATNAME)));
 
         // Populate fields with extracted properties
 
@@ -50,6 +52,26 @@ public class CartCustomCursorAdapter extends CursorAdapter {
 
         textViewnameOfCartHat.setText(nameOfCartHat);
 
+        deleteButtonForCartHat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.e("e", "deleteButtonForCartHat clicked");
+
+                Context context = view.getContext();
+
+                HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
+
+//                cursor.getInt(cursor.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_PICTUREID)));
+
+                Cursor cursorForDeletingHat = db.getALLHatsFromCART();
+
+                db.deleteSpecificHatFromCart(cursorForDeletingHat.getInt(cursorForDeletingHat.getColumnIndex(HatsSQLiteOpenHelper.HAT_COLUMN_ID)));
+
+
+
+            }
+        });
 
     }
 

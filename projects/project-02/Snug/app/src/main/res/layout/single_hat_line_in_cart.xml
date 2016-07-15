@@ -10,8 +10,10 @@
     card_view:cardBackgroundColor="#ffffff"
     card_view:cardCornerRadius="20dp"
     android:paddingLeft="10dp"
+    android:paddingTop="10dp"
     card_view:cardElevation="5dp">
 
+    <!--TODO: Increase space between individal cardviews-->
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -32,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_centerInParent="true"
-            android:layout_toRightOf="@id/image_of_hat_in_cart"
             android:text="@string/Hat_name" />
 
         <ImageButton
@@ -42,7 +43,7 @@
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:paddingRight="30dp"
+            android:paddingRight="80dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
 

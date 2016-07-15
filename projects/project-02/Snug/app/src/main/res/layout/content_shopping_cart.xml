@@ -21,18 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-            <ImageButton
-
-                android:id="@+id/button_in_toolbar_to_view_cart"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:background="@null"
-                android:scaleX="1.2"
-                android:scaleY="1.2"
-                android:src="@drawable/ic_action_cart"
-                android:visibility="visible" />
-
 
             <ImageView
                 android:id="@+id/cart_counter_red_circle_area"
@@ -84,7 +72,7 @@
     <ListView
         android:id="@+id/listview_of_cart_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/shopping_activity_toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
