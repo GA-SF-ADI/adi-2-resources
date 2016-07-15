@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_activity_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         //Setting up database stuff
 
