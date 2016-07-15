@@ -63,27 +63,10 @@
       android:focusable="false"
       android:text="ADD TO SHOPPING CART"/>
 
-
-  <Button
-      android:id="@+id/increment_button_view"
-      android:layout_width="40dp"
-      android:layout_height="40dp"
-      android:fontFamily="casual"
-      android:layout_alignParentRight="true"
-      android:focusable="false"
-      android:textAllCaps="true"
-      android:onClick="increment"
-      android:textAlignment="center"
-      android:text="+" />
-
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:fontFamily="casual"
-      android:textColor="#000000"
-      android:id="@+id/quantity_text"
-      android:textAllCaps="true"
-      android:text="QUANTITY ="/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
   <Button
       android:id="@+id/decrement_button_view"
@@ -97,5 +80,28 @@
       android:textAlignment="center"
       android:text="-" />
 
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:textColor="#000000"
+      android:id="@+id/quantity_text"
+      android:textAllCaps="true"
+      android:text="QUANTITY ="/>
+  <Button
+      android:id="@+id/increment_button_view"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:fontFamily="casual"
+      android:layout_alignParentRight="true"
+      android:focusable="false"
+      android:textAllCaps="true"
+      android:onClick="increment"
+      android:textAlignment="center"
+      android:text="+" />
+
+
+</LinearLayout>
 
   </LinearLayout>
