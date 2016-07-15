@@ -70,12 +70,17 @@ public class CartActivity extends AppCompatActivity {
                 for (int i = 0; i < cartItems.size(); i++) {
                     helper.insertPurchaseHistoryRow(cartItems.get(i), history_id, date.toString());
                 }
+                if (cartItems.isEmpty()){
+                    Toast.makeText(CartActivity.this, "Your Cart is Empty!", Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(CartActivity.this, "Thank You for Your Purchase!", Toast.LENGTH_SHORT).show();
+                }
                 helper.clearCart();
                 cartItems.clear();
                 cartListAdapter.notifyDataSetChanged();
                 String totalText = "Total:\n$00.00";
                 priceTextView.setText(totalText);
-                Toast.makeText(CartActivity.this, "Thank You for Your Purchase!", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
