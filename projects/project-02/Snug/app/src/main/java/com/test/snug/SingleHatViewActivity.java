@@ -37,8 +37,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
-        ImageButton cartButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_view_cart);
-        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
+        
         final ImageView selectedHatImage = (ImageView) findViewById(R.id.imageview_single_hat);
         final TextView selectedHatTitle = (TextView) findViewById(R.id.textView_single_hat_title);
         final TextView selectedHatPrice = (TextView) findViewById(R.id.textView_single_hat_price);
@@ -108,13 +107,15 @@ public class SingleHatViewActivity extends AppCompatActivity {
             }
         });
 
+        /*//This was code I had when buttons where in my toolbar, rather than menu items. This code
+        //displayed the # of hats in the cart
 
         Context context = getApplicationContext();
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         Cursor numOfCartItemsCursor = db.getNumOfCartItems();
 
-        /*if (numOfCartItemsCursor.getCount() > 0) {
+        if (numOfCartItemsCursor.getCount() > 0) {
 
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
@@ -127,8 +128,8 @@ public class SingleHatViewActivity extends AppCompatActivity {
             TextView cartItemCounter = (TextView) findViewById(R.id.textview_num_of_hats_in_cart);
             ImageView redCartCountBackgroundCircle = (ImageView) findViewById(R.id.cart_counter_red_circle_area);
 
-        }*/
-
+        }
+*/
 
     }
 
@@ -179,6 +180,9 @@ public class SingleHatViewActivity extends AppCompatActivity {
         HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
         Cursor numOfCartItemsCursor = db.getNumOfCartItems();
+
+        //This was code I had when buttons where in my toolbar, rather than menu items. This code
+        //displayed the # of hats in the cart
 
         /*if (numOfCartItemsCursor.getCount() > 0) {
 

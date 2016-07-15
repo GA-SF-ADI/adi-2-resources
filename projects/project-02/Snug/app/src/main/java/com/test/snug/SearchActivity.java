@@ -1,3 +1,4 @@
+/*
 package com.test.snug;
 
 import android.content.Context;
@@ -108,6 +109,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
+*/
 /*
 //                TODO: Make toast telling people to only do one search parameter!
 
@@ -132,7 +134,8 @@ public class SearchActivity extends AppCompatActivity {
                 } else {
 
                 }
-*/
+*//*
+
                 if (userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
 
                     Toast.makeText(SearchActivity.this, "Please input something\n      before searching!", Toast.LENGTH_SHORT).show();
@@ -144,7 +147,8 @@ public class SearchActivity extends AppCompatActivity {
 
 //                TODO: Grab any inputted teams
 
-                /*if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
+                */
+/*if (!userSearchTeamRequest.isEmpty() && !fittedRadioButton.isChecked() && !snapbackRadioButton.isChecked() && priceMaxRequest.isEmpty()) {
 
                     intent = new Intent(SearchActivity.this, MainActivity.class);
 
@@ -192,7 +196,8 @@ public class SearchActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-*/
+*//*
+
 
             }
         });
@@ -287,3 +292,4 @@ public class SearchActivity extends AppCompatActivity {
 }
 
 
+*/

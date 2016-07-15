@@ -195,15 +195,14 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
         int id = item.getItemId();
         switch (id) {
             case R.id.button_item_in_main_activity_toolbar_to_view_cart: {
+
+
                 Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
                 startActivity(intent);
 
             }
 
             case R.id.searchview_item_in_main_activity_menu: {
-
-                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(intent);
 
             }
 

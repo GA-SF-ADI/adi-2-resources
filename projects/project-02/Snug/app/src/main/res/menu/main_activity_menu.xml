@@ -54,7 +54,6 @@
     <item
         android:id="@+id/searchview_item_in_main_activity_menu"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Search"
         android:orderInCategory="3"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />

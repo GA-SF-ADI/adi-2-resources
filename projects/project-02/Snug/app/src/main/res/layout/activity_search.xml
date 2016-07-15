@@ -22,7 +22,7 @@
 
             <ImageButton
 
-                android:id="@+id/button_in_toolbar_to_view_cart"
+                android:id="@+id/button_in_search_activity_toolbar_to_view_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
@@ -44,7 +44,7 @@
                 android:scaleY=".6" />
 
             <TextView
-                android:id="@+id/textview_num_of_hats_in_cart"
+                android:id="@+id/textview_num_of_hats_in_cart_in_search_activity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="33dp"
@@ -55,7 +55,7 @@
         </FrameLayout>
 
         <ImageView
-            android:id="@+id/app_logo_in_main_activity_toolbar"
+            android:id="@+id/app_logo_in_search_activity_toolbar"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"

@@ -36,7 +36,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageButton deleteFromCartButton = (ImageButton) findViewById(R.id.imagebutton_to_remove_hat_from_cart);
         final ListView listViewOfCartItems = (ListView) findViewById(R.id.listview_of_cart_items);
-        ImageButton searchButtonInToolbar = (ImageButton) findViewById(R.id.button_in_toolbar_to_search_for_hats);
 
 
 //        TODO: Look into insertOrUpdate
@@ -63,79 +62,81 @@ public class ShoppingCartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
 
-//                TODO: Reset cart counter in toolbar to 0
+                //TODO: Get count of cart items to make sure it's not empty before "payment"
 
-//                TODO: Clear database table
 
                 Context context = getApplicationContext();
-
                 HatsSQLiteOpenHelper db = new HatsSQLiteOpenHelper(context);
 
-                startActivity(intent);
-                finish();
+                int numOfHatsInCart = db.checkNumOfHatsInCart();
+
+                if (numOfHatsInCart == 0) {
+
+                    Toast.makeText(ShoppingCartActivity.this, "No need to pay. Your cart is empty!",
+                            Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!\n " +
+                            "     Your cart is now empty.", Toast.LENGTH_LONG).show();
 
 
+                    //Clicking on payment FAB clears all hats from cart table in database
+                    db.deleteAllHatsFromCart();
+
+
+                    Intent intent = new Intent(ShoppingCartActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+
+                }
             }
+
+
         });
 
-        searchButtonInToolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-//                TODO: StartActivityForResult == query I need to make
-
-                Intent intent = new Intent(ShoppingCartActivity.this, SearchActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        @Override
+        public boolean onCreateOptionsMenu (Menu menu){
+            return super.onCreateOptionsMenu(menu);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected (MenuItem item){
+            return super.onOptionsItemSelected(item);
+        }
+
+
+        @Override
+        public void onStart () {
+            super.onStart();
+            if (VERBOSE) Log.e(TAG, "++ ON START ++");
+        }
+
+        @Override
+        public void onResume () {
+            super.onResume();
+            if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
+        }
+
+        @Override
+        public void onPause () {
+            super.onPause();
+            if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
+        }
+
+        @Override
+        public void onStop () {
+            super.onStop();
+            if (VERBOSE) Log.e(TAG, "-- ON STOP --");
+        }
+
+        @Override
+        public void onDestroy () {
+            super.onDestroy();
+            if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
+        }
+
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (VERBOSE) Log.e(TAG, "++ ON START ++");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (VERBOSE) Log.e(TAG, "+ ON RESUME +");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (VERBOSE) Log.e(TAG, "- ON PAUSE -");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (VERBOSE) Log.e(TAG, "-- ON STOP --");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (VERBOSE) Log.e(TAG, "- ON DESTROY -");
-    }
-
-}
