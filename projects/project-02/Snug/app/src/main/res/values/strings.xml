@@ -27,7 +27,8 @@
     <string name="clear_search_button_text">Clear search</string>
     <string name="your_cart_textview">Your Cart</string>
     <string name="title_activity_search">SearchActivity</string>
-    <string name="search_hint">Team, color, etc.</string>
+    <string name="search_hint">Team, color, back, etc.</string>
+
 
 
 </resources>

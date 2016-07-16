@@ -87,14 +87,14 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
 
-        values.put("_id", id);
-        values.put("pictureID", picture);
-        values.put("name", name);
-        values.put("price", price);
-        values.put("material", material);
-        values.put("fittedOrSnap", fittedOrSnap);
-        values.put("description", description);
-        values.put("color", color);
+        values.put(HAT_COLUMN_ID, id);
+        values.put(HAT_COLUMN_PICTUREID, picture);
+        values.put(HAT_COLUMN_HATNAME, name);
+        values.put(HAT_COLUMN_PRICE, price);
+        values.put(HAT_COLUMN_MATERIAL, material);
+        values.put(HAT_COLUMN_FittedOrSnap, fittedOrSnap);
+        values.put(HAT_COLUMN_DESCRIPTION, description);
+        values.put(HAT_COLUMN_COLOR, color);
 
         db.insert(HAT_TABLE_NAME, null, values);
 
@@ -107,8 +107,8 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
         ContentValues values = new ContentValues();
         SQLiteDatabase db = getWritableDatabase();
 
-        values.put("_id_cart", id);
-        values.put("cartPrice", price);
+        values.put(CART_COLUMN_ID, id);
+        values.put(CART_COLUMN_PRICE, price);
 
         db.insert(CART_TABLE_NAME, null, values);
 
@@ -236,8 +236,11 @@ public class HatsSQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelp
 
         Cursor cursor = db.query(HAT_TABLE_NAME, // a. table
                 HAT_COLUMNS, // b. column names
-                HAT_COLUMN_COLOR + " LIKE ? OR " + HAT_COLUMN_HATNAME + " LIKE ?", // c. selections
-                new String[]{"%"+queryString +"%", "%" +queryString +"%"}, // d. selections args
+                HAT_COLUMN_HATNAME + " LIKE ? OR " + HAT_COLUMN_PRICE + " LIKE ? OR " +
+                        HAT_COLUMN_MATERIAL + " LIKE ? OR " + HAT_COLUMN_FittedOrSnap + " LIKE ? OR " +
+                        HAT_COLUMN_DESCRIPTION + " LIKE ? OR " + HAT_COLUMN_COLOR + " LIKE ?", // c. selections
+                new String[]{"%" + queryString + "%", "%" + queryString + "%", "%" + queryString +
+                        "%", "%" + queryString + "%", "%" + queryString + "%", "%" + queryString + "%"}, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by

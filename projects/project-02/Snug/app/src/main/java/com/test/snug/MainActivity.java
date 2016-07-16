@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements HatsMyRecyclerVie
     private void handleIntentRelatedToSearch(Intent intent) {
 
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
+            String query = intent.getStringExtra(SearchManager.QUERY).trim();
             allHatsCursor.close();
 
             allHatsCursor = HatsSQLiteOpenHelper.getInstance(MainActivity.this).searchAmongAllHats(query);
