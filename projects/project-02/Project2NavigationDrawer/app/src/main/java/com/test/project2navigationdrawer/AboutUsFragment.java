@@ -26,7 +26,8 @@ public class AboutUsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_about_us, container, false);
         final TextView textView = (TextView) rootView.findViewById(R.id.about_us_text);
-        textView.setText("Welcome! This is a fake company. You cannot buy jewelry, but you CAN explore the app!");
+        String my_string = getResources().getString(R.string.about_us);
+        textView.setText(my_string);
         return rootView;
     }
 

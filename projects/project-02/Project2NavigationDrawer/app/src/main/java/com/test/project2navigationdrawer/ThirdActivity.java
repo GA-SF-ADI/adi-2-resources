@@ -8,16 +8,14 @@ import android.widget.TextView;
 
 public class ThirdActivity extends AppCompatActivity {
 
-    DatabaseHelper myDB;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
 
-    int id = getIntent().getIntExtra("id", -1);
+        int id = getIntent().getIntExtra("id", -1);
         if (id >= 0) {
-           Item myItem = DatabaseHelper.getInstance(ThirdActivity.this).getItemById(id);
+            Item myItem = DatabaseHelper.getInstance(ThirdActivity.this).getItemById(id);
             TextView textView = (TextView) findViewById(R.id.third_activity_text_price);
             textView.setText("Price = $" + myItem.getPrice() + "0");
             TextView textView1 = (TextView) findViewById(R.id.third_activity_text_name);
@@ -33,26 +31,10 @@ public class ThirdActivity extends AppCompatActivity {
             ImageView imageView = (ImageView) findViewById(R.id.third_activity_image);
             imageView.setImageResource(myItem.getImage());
 
-
-
-
         }
 
 
-        //myDB.getItemById();
-
-        //get intent extra
-        //if (id)
-
     }
 
-//    int id = getIntent().getIntExtra("id",-1);
-//
-//    if(id >= 0){
-//        String iconName = IconSQLiteOpenHelper.getInstance(DetailActivity.this).getIconNameById(id);
-//        TextView textView = (TextView)findViewById(R.id.icon_description);
-//        textView.setText(iconName);
-
-//
-    }
+}
 

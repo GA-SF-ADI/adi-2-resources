@@ -5,18 +5,7 @@
     android:background="#ffffff"
     tools:context="com.test.project2navigationdrawer.AboutUsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <!--
-        <Button
-            android:layout_width="wrap_content"
-            android:textSize="30dp"
-            android:text="About Us"
-            android:fontFamily="casual"
-            android:layout_gravity="center"
-            android:textAllCaps="true"
-            android:id="@+id/about_us_button"
-            android:layout_height="wrap_content" />
-            -->
+
 
 
         <TextView

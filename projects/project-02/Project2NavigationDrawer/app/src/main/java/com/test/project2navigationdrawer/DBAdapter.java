@@ -67,14 +67,9 @@ public class DBAdapter extends CursorAdapter {
         //variables
         typeOfJewelryTextView.setText(type);
         //priceOfJewelryTextView.setText(Double.toString(price));
-        //goldOfJewelryTextView.setText(gold);
-        //stoneOfJewelryTextView.setText(stone);
-        //measurementOfJewelryTextView.setText(measurement);
         nameOfJewelryTextView.setText(name);
         imageOfJewelry.setImageResource(jewelry);
         quantityText.setText("0");
-
-        //DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
 
         final DatabaseHelper helper = DatabaseHelper.getInstance(context);
