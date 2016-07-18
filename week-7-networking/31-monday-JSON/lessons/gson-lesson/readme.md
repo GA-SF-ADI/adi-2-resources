@@ -11,10 +11,12 @@ creator:
 *After this lesson, you will be able to:*
 - Describe what GSON is used for
 - Incorporate GSON into your app
+- Serialize JSON objects using GSON
+- Deserialize JSON objects using GSON
 
 ### STUDENT PRE-WORK
 *Before this lesson, you should already be able to:*
-- Make network requests on Android
+- Understand JSON
 
 ### INSTRUCTOR PREP
 *Before this lesson, instructors will need to:*
@@ -24,22 +26,67 @@ creator:
 <a name="opening"></a>
 ## Opening (5 mins)
 
-Our previous experience with networking has simply involved getting a JSON object and manually manipulating it. While this can work fine, alternatives exist to take out some of that manual effort. One such tool is a library called GSON.
+> Check: What is JSON?
+
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language
+
+JSON is Its a string representation of complex data models. This isn't necessarily the best way of working with data inside of an Android Application. 
+
+> Check: Group up and discuss ways we can incorporate JSON into our Apps. ( Hint: think about classes )
+
+Today, we are going to learn about a library called `GSON`, which will go hand-in-hand with JSON.
 
 ***
 
 <a name="introduction"></a>
 ## Introduction: What is GSON? (5 mins)
 
-When we look at a JSON object, it is relatively simple to see how we could translate it into a Java object. The key-value pairs in JSON can directly correspond to member variables in a Java object. With the simple addition of assigning strict types in Java, there really isn't much of a difference. Since Java is all about working with objects, the GSON library handily does two things:
+When we look at a JSON object, it is relatively simple to see how we could translate it into a Java object. The key-value pairs in JSON can directly correspond to member variables in a Java object. With the simple addition of assigning strict types in Java ( String, int, boolean, etc ), there really isn't much of a difference. 
 
-- Converts JSON objects to Java objects with the method **fromJson()**
-- Converts Java objects to JSON with the method **toJson()**
+Since Java is all about working with objects, the GSON library handily does two things:
+- Converts **JSON objects to Java objects** with the method `fromJson()`
+- Converts **Java objects to JSON** with the method `toJson()`
 
 As you will see in the upcoming demo, this is a rather simple process, but makes working with more complicated data much easier.
 
-
 ***
+
+<a name="demo"></a>
+## Demo: Mapping JSON to Java Objects (15 mins)
+
+> Check: Pair up and discuss what this JSON object reminds you of.
+
+> Solution: Its a model for a sample product item from project 2. Each of the variables would represent a column in your PRODUCT_TABLE.
+
+```json
+{
+	"product": "Sample Product",
+	"model": "XYZ",
+	"price": "19.99",
+	"available": "true",
+	"image-url": "http://example.com/image",
+	"color": "green",
+	"inventory" : "10"
+}
+```
+
+> Check: Split into groups and discuss what is the type for each of the fields! For example, "available" is a boolean!
+
+
+Each of the Product variables has a type. String, double, int, boolean, etc. We got these types from the JSON object itself because we, as humans, can see that 
+* `"product": "Sample Product"` has a String value 
+* `"model": "XYZ"` has a String value 
+* `"image-url": "http://example.com/image"` has a String value 
+* `"color": "green"` has a String value 
+* `"price": "19.99"` has a double value 
+* `"inventory" : "10"` has an int value 
+* `"available": "true"` has a boolean value 
+
+
+
+Notice that the variable name inside `Product.java` matches the key from JSON key-value pair. 
+
+For example, key-value pair: `"product": "Sample Product"` would map to our `private String product`. The variable `product` would hold the String value of "Sample Product" inside `Product.java` class.
 
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
