@@ -13,7 +13,13 @@
        >
 
    </android.support.v7.widget.Toolbar>
+    <ImageView
+        android:layout_width="320dip"
+        android:layout_height="100dip"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/sterlingmarineicon"
 
+        />
     <TextView
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
@@ -34,10 +40,11 @@
         android:background="@color/white"
         android:backgroundTint="@color/white" />
 
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_gravity="center_horizontal|top"
-        android:layout_height="55dip"
+        android:layout_height="80dip"
         android:src="@drawable/wishist3"
 
         />
