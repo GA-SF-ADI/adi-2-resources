@@ -6,18 +6,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CursorAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by kitty on 7/12/16.
@@ -26,7 +18,7 @@ public class TPListFragment extends ListFragment {
 
     public static final String TAG = "DataTag";
     public static final String INSERTED_INTO_DATABASE_KEY = "have inserted into database";
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
     private String query = null;
 
@@ -34,7 +26,7 @@ public class TPListFragment extends ListFragment {
     private MyCursorAdapter cursorAdapter;
     private Cursor cursor;
 
-    ItemClickInterface itemClickInterface;
+    private ItemClickInterface itemClickInterface;
 
     @Override
     public void onAttach(Context context) {
@@ -64,6 +56,7 @@ public class TPListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //to check if there's search query to return appropriate items
         if(query == null) {
             cursor = helper.getTPList();
         } else {
@@ -83,7 +76,7 @@ public class TPListFragment extends ListFragment {
         itemClickInterface.onItemClicked(clickedTP);
     }
 
-
+    // updating query
     public void searchTPList(String query) {
         this.query = query;
     }
@@ -121,6 +114,7 @@ public class TPListFragment extends ListFragment {
 
         // adding comments
         helper.addComment(1, "like clouds", 5);
+        helper.addComment(1, "it's ok", 3);
 
         //make sure to pass sharedPreferences so the data won't get imported again
         SharedPreferences.Editor editor = preferences.edit();
@@ -138,7 +132,7 @@ public class TPListFragment extends ListFragment {
         int numRoll = cursor.getInt(cursor.getColumnIndex(Helper.COL_ITEM_NUM_ROLL));
         String description = cursor.getString(cursor.getColumnIndex(Helper.COL_ITEM_DESCRIPTION));
         double price;
-        boolean onSale = true;
+        boolean onSale = false;
         if(cursor.getDouble(cursor.getColumnIndex(Helper.COL_SALE_PRICE))!=0) {
             onSale = true;
             price = cursor.getDouble(cursor.getColumnIndex(Helper.COL_SALE_PRICE));

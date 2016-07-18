@@ -35,6 +35,7 @@ public class MyCursorAdapter extends CursorAdapter {
         itemBrand.setText(cursor.getString(cursor.getColumnIndex(Helper.COL_ITEM_BRAND)));
         itemName.setText(cursor.getString(cursor.getColumnIndex(Helper.COL_ITEM_NAME)));
 
+        // to check if it's on sale or not, if not found in sales table, default value is 0
         if(cursor.getDouble(cursor.getColumnIndex(Helper.COL_SALE_PRICE))==0) {
             itemPrice.setText("$"+cursor.getDouble(cursor.getColumnIndex(Helper.COL_ITEM_PRICE)));
         } else {

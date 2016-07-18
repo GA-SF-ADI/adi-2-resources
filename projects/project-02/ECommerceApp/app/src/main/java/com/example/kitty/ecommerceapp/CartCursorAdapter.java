@@ -42,8 +42,12 @@ public class CartCursorAdapter extends CursorAdapter {
         itemQuantity.setText("x" + cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY)));
 
         //calculating price for the number of quantity saved in cart.
-        double price = cursor.getDouble(cursor.getColumnIndex(Helper.COL_ITEM_PRICE)) * cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY));
-
+        double price;
+//        if(cursor.getDouble(cursor.getColumnIndex(Helper.COL_SALE_PRICE))!=0) {
+//            price = cursor.getDouble(cursor.getColumnIndex(Helper.COL_SALE_PRICE)) * cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY));
+//        } else {
+            price = cursor.getDouble(cursor.getColumnIndex(Helper.COL_ITEM_PRICE)) * cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_QUANTITY));
+//        }
         itemPrice.setText("$"+price);
 
         //test
@@ -52,7 +56,7 @@ public class CartCursorAdapter extends CursorAdapter {
             public void onClick(View v) {
                 Helper helper = Helper.getInstance(context);
                 helper.deleteItemFromCart(cursor.getInt(cursor.getColumnIndex(Helper.COL_CART_ID)));
-                swapCursor(helper.getItemJoinCart());
+                swapCursor(helper.getItemJoinCartJoinSale());
                 Toast.makeText(context, "Item removed!", Toast.LENGTH_SHORT).show();
                 if (itemsUpdatedListener != null) {
                     itemsUpdatedListener.run();

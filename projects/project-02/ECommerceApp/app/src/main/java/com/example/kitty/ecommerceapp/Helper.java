@@ -131,7 +131,7 @@ public class Helper extends SQLiteOpenHelper {
         values.put(COL_ITEM_SIZE, tp.getSize());
         values.put(COL_ITEM_NUM_ROLL, tp.getNumRolls());
 
-        //need to add coding to pull user rating from other table and take average.
+        //assuming user rating is 3 by default
         values.put(COL_ITEM_AVG_RATING, "3");
 
         long returnId = db.insert(TP_TABLE_NAME, null, values);
@@ -163,7 +163,7 @@ public class Helper extends SQLiteOpenHelper {
         return returnID;
     }
 
-    // returning the TP id so can be used
+    // returning the TP id based on item name
     public int getTPID(String tpName) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -202,6 +202,7 @@ public class Helper extends SQLiteOpenHelper {
         return deleteNum;
     }
 
+    // search join TP and sales table
     public Cursor searchTPList(String query){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -214,7 +215,7 @@ public class Helper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //add comment
+    //add comment for item
     public long addComment(int itemID, String comment, int rating) {
         ContentValues values = new ContentValues();
         values.put(COL_REVIEW_ITEM_ID, itemID);
@@ -226,7 +227,6 @@ public class Helper extends SQLiteOpenHelper {
         db.close();
         return returnID;
     }
-
 
     //get all comments for a product
     public Cursor getTPComment(int TPid) {
@@ -257,12 +257,13 @@ public class Helper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    // get joint table
-    public Cursor getItemJoinCart() {
+    // get item joint cart table
+    public Cursor getItemJoinCartJoinSale() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + TP_TABLE_NAME + "." + COL_ID  + ", " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ID + ", " + COL_ITEM_PIC + ", " + COL_ITEM_NAME + ", " + COL_ITEM_BRAND  + ", " + COL_ITEM_PRICE  + ", " + COL_CART_QUANTITY +
-                " FROM [" + TP_TABLE_NAME + "] JOIN " + SHOPPING_CART_TABLE_NAME +
-                " ON [" + TP_TABLE_NAME + "]." + COL_ID + " = " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID;
+                " FROM " + TP_TABLE_NAME + " JOIN " + SHOPPING_CART_TABLE_NAME +
+                " ON " + TP_TABLE_NAME + "." + COL_ID + " = " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID;
+      //          " JOIN " + SALE_TABLE_NAME + " ON " + SHOPPING_CART_TABLE_NAME + "." + COL_CART_ITEM_ID + " = " + SALE_TABLE_NAME + "." + COL_SALE_ITEM_ID;
         Cursor cursor = db.rawQuery(query, null);
         return cursor;
     }

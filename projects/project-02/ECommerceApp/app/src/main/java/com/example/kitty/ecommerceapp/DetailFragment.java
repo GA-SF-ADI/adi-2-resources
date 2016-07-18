@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by kitty on 7/12/16.
@@ -77,8 +74,9 @@ public class DetailFragment extends Fragment {
         rollSizeTextView = (TextView) v.findViewById(R.id.detail_roll_size);
         rateItButton = (Button) v.findViewById(R.id.insert_comment_button);
         commentList = (ListView) v.findViewById(R.id.comment_list);
+        ratingBar = (RatingBar) v.findViewById(R.id.detail_rating);
 
-        //when you first go in to this page quantity should always be 0
+        //when you first go in to this page quantity should always be 1
         quantity = 1;
 
         updateViews();
@@ -94,20 +92,20 @@ public class DetailFragment extends Fragment {
         itemImageView.setImageResource(mTP.getPic());
         brandTextView.setText(mTP.getBrand());
         nameTextView.setText(mTP.getName());
-
-        // if on sale, price text in red (also need to grab new price from other table)
-        if(mTP.isOnSale()) {
-            priceTextView.setText("SALE: $\n"+mTP.getPrice());
-            priceTextView.setTextColor(Color.RED);
-        } else {
-            priceTextView.setText("$"+mTP.getPrice());
-        }
-
+        ratingBar.setRating((float) 4); //assume 4 for now
         quantityTextView.setText(quantity+"");
         descriptionTextView.setText("Description: "+mTP.getDescription());
         numPlyTextView.setText("Number of ply: "+mTP.getPly());
         numRollTextView.setText("Number of rolls: "+mTP.getNumRolls());
         rollSizeTextView.setText("Roll size: "+mTP.getSize());
+
+        // if on sale, price text in red and grab from sales price column
+        if (mTP.isOnSale()) {
+            priceTextView.setText("SALE: $\n" + mTP.getPrice());
+            priceTextView.setTextColor(Color.RED);
+        } else {
+            priceTextView.setText("$" + mTP.getPrice());
+        }
 
         //onClickListener for removing quantity button
         removeButton.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +127,7 @@ public class DetailFragment extends Fragment {
             }
         });
 
-        //add to cart button onClickListener ****to be updated
+        //add to cart button onClickListener
         // 1. add item and quantity to shopping cart table
         // 2. toast appear to indicate item added
         addToCartButton.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +143,7 @@ public class DetailFragment extends Fragment {
             }
         });
 
-        // button to go to leaving comments activity
+        // button to go to adding comments activity
         rateItButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +152,6 @@ public class DetailFragment extends Fragment {
         });
 
         updateCommentView();
-
     }
 
     //set up comment listview

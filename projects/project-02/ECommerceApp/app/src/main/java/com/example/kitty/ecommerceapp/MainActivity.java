@@ -4,11 +4,10 @@ import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,11 +23,10 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // setup toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         // setup list fragment
         tpListFragment = new TPListFragment();
@@ -75,10 +73,6 @@ public class MainActivity extends AppCompatActivity implements ItemClickInterfac
         switch (item.getItemId()) {
             case R.id.action_cart:
                 toCart();
-                return true;
-
-            case R.id.action_menu:
-
                 return true;
 
             default:
