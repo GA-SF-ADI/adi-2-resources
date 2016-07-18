@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // TODO this just demos how to create classes for JSON objects
-        
+
     }
 }
