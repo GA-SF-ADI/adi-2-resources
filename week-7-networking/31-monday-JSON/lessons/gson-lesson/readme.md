@@ -103,6 +103,46 @@ Notice that the variable name inside `Product.java` matches the key from JSON ke
 
 For example, key-value pair: `"name": "Sample Product"` would map to our `private String name`. The variable `name` will hold the String value of "Sample Product" inside `Product.java` class.
 
+
+Sometimes, the JSON objects have bad key names from the key-value pair. For example
+```json
+{
+	"bad_name": "Sample Product",
+	"model_that_is_very_long": "XYZ",
+	"price": "19.99",
+	"available": "true",
+	"image-url": "http://example.com/image",
+	"color": "green"
+}
+```
+
+`"bad_name"` cannot translate to variable names in Java because Java does not allow "_" in variable names.
+`"model_that_is_very_long"` is extremely long and maybe we want a shorter name inside our Java class.
+
+The solution is to use the `@@SerializedName()` annotation.
+
+```java 
+public class Product {
+	@SerializedName("bad_name")
+	private String name;
+	
+	@SerializedName("model_that_is_very_long")
+	private String model;
+	
+	private String image-url;
+	private String color;
+	
+	private double price;
+	private int inventory;
+	private boolean available;
+	
+	... // Constructor and Getters/Setters are omitted
+	
+}
+```
+
+Basically, this will convert the JSON value at the key `"bad_name"` and use our `name` variable in Product class. For `"model_that_is_very_long"`, we would use the `model` variable and it will hold the data.
+
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
 
