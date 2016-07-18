@@ -1,0 +1,23 @@
+This is an example of how data should be stored in an array:
+```
+[
+    {
+    	"name" : "Yuliya",
+        "age" : "27",
+    	"quality" : "talkative",
+    	"appearance" : {
+    		"eyes" : "hazel",
+    		"hair" : "long"
+    	}
+    },
+    {
+    	"name" : "Olga",
+        "age" : "27",
+    	"quality" : "smart",
+    	"appearance" : {
+    		"eyes" : "blue",
+    		"hair" : "short"
+    	}
+    }
+]
+```

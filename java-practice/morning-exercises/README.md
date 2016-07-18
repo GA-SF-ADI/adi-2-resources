@@ -120,7 +120,7 @@ Go through your CustomLinkedList and check if there is a loop inside of it. Make
 ### 17 Implement a Queue using only 2 stacks 
 	
 	
-	[Solution](solutions/stacks-queues/CustomQueueImplementedWithStacks.java)
+[Solution](solutions/stacks-queues/CustomQueueImplementedWithStacks.java)
 
 ### 18. Check Parenthesis. 
 
