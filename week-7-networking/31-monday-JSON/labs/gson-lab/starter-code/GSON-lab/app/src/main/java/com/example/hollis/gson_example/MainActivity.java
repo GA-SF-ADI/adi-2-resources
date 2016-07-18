@@ -115,10 +115,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        createMarvelResult();
         Gson gson = new Gson();
         MarvelTeam team1 = gson.fromJson(SPOTIFY_JSON,MarvelTeam.class);
-        createMarvelResult();
 
 
 
