@@ -21,8 +21,8 @@ If you have questions about whether or not your work adheres to these guidelines
 ---
 
 
-Group 1: Kitty, Sterling, Berto **Vice**
+Group 1 **Vice**: Kitty, Sterling, Berto 
 
-Group 2: Patrick, Mj, Audrey **Yelp**
+Group 2 **Yelp**: Patrick, Mj, Audrey 
 
-Group 3: Jon, Neha, Langston, Kevin **CNN**
+Group 3 **CNN**: Jon, Neha, Langston, Kevin 
