@@ -1,6 +1,6 @@
 ---
 title: GSON
-duration: "1:30"
+duration: "1:35"
 creator:
     name: Aleksandr Tomak
     city: SF
@@ -353,7 +353,7 @@ public class AudioFeatures {
 </details>
 
 
-## Nested JSON objects to Nested Java objects ( 10 mins)
+## Nested JSON objects to Nested Java objects ( 15 mins)
 
 Given the following JSON 
 ```json
@@ -662,13 +662,6 @@ Simple, we use `gson.toJson()`:
 String jsonLibrary = gson.toJson(library);
 ```
 
-***
-
-<a name="ind-practice"></a>
-## Independent Practice: Topic (20 mins)
-
-
-***
 
 <a name="conclusion"></a>
 ## Conclusion (5 mins)
