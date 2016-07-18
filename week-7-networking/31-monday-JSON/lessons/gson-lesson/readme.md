@@ -146,7 +146,211 @@ Basically, this will convert the JSON value at the key `"bad_name"` and use our 
 <a name="ind-practice"></a>
 ## Independent Practice: JSON to Java object (10 mins)
 
-Given the following JSON object:
+[This](https://developer.spotify.com/web-api/get-audio-features/) Spotify API returns to us the following JSON object modeling audio features for a class
+```json
+{
+	"danceability": 0.735,
+	"energy": 0.578,
+	"key": 5,
+	"loudness": -11.84,
+	"mode": 0,
+	"speechiness": 0.0461,
+	"acousticness": 0.514,
+	"instrumentalness": 0.0902,
+	"liveness": 0.159,
+	"valence": 0.624,
+	"tempo": 98.002,
+	"type": "audio_features",
+	"id": "06AKEBrKUckW0KREUWRnvT",
+	"uri": "spotify:track:06AKEBrKUckW0KREUWRnvT",
+	"track_href": "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
+	"analysis_url": "http://echonest-analysis.s3.amazonaws.com/TR/xZIVRgimIx9_iJFqTriVhCm_4unjh7tZAglpO5D-xS4xNkvxq70uCFAtuoVYTaIeHbWoLKvCB6W-kvd9E=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1455893394&Signature=rmceqCXLMbPrXt9RTIJwk%2BQzxoY%3D",
+	"duration_ms": 255349,
+	"time_signature": 4
+}
+```
+
+You need to create a Java object to match this JSON object just like we did above.
+- Start by deciding what type is each field
+- Then create the class, you can call it `AudioFeatures.java`
+
+<details>
+  <summary>Click here to see solutions</summary>
+```java
+public class AudioFeatures {
+    private double danceability;
+    private double energy;
+    private double loudness;
+    private double speechiness;
+    private double acousticness;
+    private double instrumentalness;
+    private double liveness;
+    private double valence;
+    private double tempo;
+
+    private String type;
+    private String id;
+    private String uri;
+    
+    @SerializedName("track_href")
+    private String trackUrl;
+    @SerializedName("analysis_url")
+    private String analysisUrl;
+    
+    private int key;
+    private int mode;
+    private int time_signature;
+    private long duration_ms;
+    
+    // Getters and Setters
+
+
+    public double getDanceability() {
+        return danceability;
+    }
+
+    public void setDanceability(double danceability) {
+        this.danceability = danceability;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(double energy) {
+        this.energy = energy;
+    }
+
+    public double getLoudness() {
+        return loudness;
+    }
+
+    public void setLoudness(double loudness) {
+        this.loudness = loudness;
+    }
+
+    public double getSpeechiness() {
+        return speechiness;
+    }
+
+    public void setSpeechiness(double speechiness) {
+        this.speechiness = speechiness;
+    }
+
+    public double getAcousticness() {
+        return acousticness;
+    }
+
+    public void setAcousticness(double acousticness) {
+        this.acousticness = acousticness;
+    }
+
+    public double getInstrumentalness() {
+        return instrumentalness;
+    }
+
+    public void setInstrumentalness(double instrumentalness) {
+        this.instrumentalness = instrumentalness;
+    }
+
+    public double getLiveness() {
+        return liveness;
+    }
+
+    public void setLiveness(double liveness) {
+        this.liveness = liveness;
+    }
+
+    public double getValence() {
+        return valence;
+    }
+
+    public void setValence(double valence) {
+        this.valence = valence;
+    }
+
+    public double getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(double tempo) {
+        this.tempo = tempo;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getTrackUrl() {
+        return trackUrl;
+    }
+
+    public void setTrackUrl(String trackUrl) {
+        this.trackUrl = trackUrl;
+    }
+
+    public String getAnalysisUrl() {
+        return analysisUrl;
+    }
+
+    public void setAnalysisUrl(String analysisUrl) {
+        this.analysisUrl = analysisUrl;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
+    public int getTime_signature() {
+        return time_signature;
+    }
+
+    public void setTime_signature(int time_signature) {
+        this.time_signature = time_signature;
+    }
+
+    public long getDuration_ms() {
+        return duration_ms;
+    }
+
+    public void setDuration_ms(long duration_ms) {
+        this.duration_ms = duration_ms;
+    }
+}
+```
+</details>
 
 
 ## Nested JSON objects to Nested Java objects ( 10 mins)
