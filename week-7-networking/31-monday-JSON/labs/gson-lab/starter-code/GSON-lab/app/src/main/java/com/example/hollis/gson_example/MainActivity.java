@@ -3,6 +3,8 @@ package com.example.hollis.gson_example;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.gson.Gson;
+
 public class MainActivity extends AppCompatActivity {
     public static final String SPOTIFY_JSON = "{\n" +
             "  \"artists\" : [ {\n" +
@@ -113,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Gson gson = new Gson();
+        MarvelTeam team1 = gson.fromJson(SPOTIFY_JSON,MarvelTeam.class);
         createMarvelResult();
 
 
