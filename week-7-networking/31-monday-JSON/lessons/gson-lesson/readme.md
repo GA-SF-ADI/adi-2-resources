@@ -488,6 +488,74 @@ Create proper Java classes to model this JSON object:
 }
 ```
 
+Remember you should
+- Start working our way from **inside-out** by creating models for simples case and then work your way up
+
+
+If you get stuck, here are some hints:
+- Create a model for Book.java
+- Create a model for Bookshelf.java that holds an array of Books
+- Create a model for Libarary that holds an array of Bookselves 
+
+<details>
+  <summary>Click here to see solution for Book.java</summary>
+```java
+public class Book {
+    private String title;
+    private String author;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Click here to see solution for BookShelf.java</summary>
+```java
+public class Bookshelf {
+    Book[] books;
+
+    public Book[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Click here to see solution for Library.java</summary>
+```java
+public class Library {
+    Bookshelf[] bookshelfs;
+
+    public Bookshelf[] getBookshelfs() {
+        return bookshelfs;
+    }
+
+    public void setBookshelfs(Bookshelf[] bookshelfs) {
+        this.bookshelfs = bookshelfs;
+    }
+}
+```
+</details>
 
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
