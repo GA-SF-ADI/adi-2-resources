@@ -9,27 +9,12 @@ creator: James Davis (NYC)
 
 > ***Note:*** _This should be done in pairs._
 
-You were provided with a handful of APIs to start with, which were briefly explored in the GSON lesson. For this lab, explore the [Programmable Web API Directory](http://www.programmableweb.com/apis/directory), find an API (either pure REST or an API-backed SDK) and get data from it. Finally, parse that data using GSON, create the necessary classes, and display the data in a way that's meaningful or fun for you - the choice is yours!  Go crazy!
+We have provided you in the starter code two JSON strings one from[here](https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys) the other from [here](https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6)!
 
-## Exercise
+We want you to create models for the two JSON strings we gave you AND model out the JSON object for the model we gave you. Ideally, you will finish this by creating two buttons to display the data either in JSON or GSON format. 
 
-#### Requirements
-
-- One restriction: You ***cannot*** use the Walmart API or the Gmail SDK.
 
 #### Deliverable
 
 An Android Studio project, with no particular format.
 
-#### Resources
-
-Here are the docs from the APIs we discussed in the lesson:
-
-* [Marvel](http://developer.marvel.com/)
-* [Yahoo Weather](https://developer.yahoo.com/weather/)
-* [Facebook](https://developers.facebook.com/)
-* [Spotify](https://developer.spotify.com/)
-
-Here's a fun API:
-
-- [Docs on Marvel's Superheroic REST Api](http://www.codingricky.com/marvels-superheroic-rest-api/)
