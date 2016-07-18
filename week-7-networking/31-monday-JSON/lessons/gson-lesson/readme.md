@@ -58,7 +58,7 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 
 ```json
 {
-	"product": "Sample Product",
+	"name": "Sample Product",
 	"model": "XYZ",
 	"price": "19.99",
 	"available": "true",
@@ -73,7 +73,7 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 
 
 Look at the JSON object itself because we, as humans, can see that 
-* `"product": "Sample Product"` has a String value 
+* `"name": "Sample Product"` has a String value 
 * `"model": "XYZ"` has a String value 
 * `"image-url": "http://example.com/image"` has a String value 
 * `"color": "green"` has a String value 
@@ -81,11 +81,27 @@ Look at the JSON object itself because we, as humans, can see that
 * `"inventory" : "10"` has an int value 
 * `"available": "true"` has a boolean value 
 
+Knowing this lets try and create a Java object from the JSON object. Lets call our class `Product.java` because the JSON object is modeling a product.
 
+```java
+public class Product {
+	private String name;
+	private String model;
+	private String image-url;
+	private String color;
+	
+	private double price;
+	private int inventory;
+	private boolean available;
+	
+	... // Constructor and Getters/Setters are omitted
+	
+}
+```
 
 Notice that the variable name inside `Product.java` matches the key from JSON key-value pair. 
 
-For example, key-value pair: `"product": "Sample Product"` would map to our `private String product`. The variable `product` would hold the String value of "Sample Product" inside `Product.java` class.
+For example, key-value pair: `"name": "Sample Product"` would map to our `private String name`. The variable `name` will hold the String value of "Sample Product" inside `Product.java` class.
 
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
