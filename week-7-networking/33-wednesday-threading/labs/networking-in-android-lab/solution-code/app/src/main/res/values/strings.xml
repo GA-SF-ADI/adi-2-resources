@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Solution-code</string>
+  <string name="items">Items</string>
+  <string name="network_connection_check">Check network connection</string>
+  <string name="cereal">cereal</string>
+  <string name="chocolate">Chocolate</string>
+  <string name="tea">Tea</string>
+</resources>
