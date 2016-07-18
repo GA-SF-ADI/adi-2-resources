@@ -1,4 +1,4 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.models;
 
 import android.graphics.drawable.Drawable;
 

@@ -5,7 +5,7 @@
     android:id="@+id/activity_purchase_history"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gg.patrickcummins.myapplication.PurchaseHistoryActivity">
+    tools:context="gg.patrickcummins.myapplication.Activitys.PurchaseHistoryActivity">
 
     <TextView
         android:id="@+id/historyTextView"

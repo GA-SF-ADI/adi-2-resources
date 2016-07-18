@@ -5,7 +5,7 @@
     android:id="@+id/activity_jersey"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gg.patrickcummins.myapplication.JerseyActivity">
+    tools:context="gg.patrickcummins.myapplication.Activitys.JerseyActivity">
 
     <ImageView
         android:id="@+id/jerseyImageView"

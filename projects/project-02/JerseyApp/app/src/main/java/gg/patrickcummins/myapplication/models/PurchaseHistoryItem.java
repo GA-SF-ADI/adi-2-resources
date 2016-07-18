@@ -1,4 +1,4 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.models;
 
 /**
  * Created by patrickcummins on 7/12/16.

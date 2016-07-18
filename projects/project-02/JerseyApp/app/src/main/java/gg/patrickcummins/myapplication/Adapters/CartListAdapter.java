@@ -1,4 +1,4 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,14 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static gg.patrickcummins.myapplication.R.id.jerseyImageView;
-import static gg.patrickcummins.myapplication.R.id.priceTextView;
-import static gg.patrickcummins.myapplication.R.id.quantityTextView;
-import static gg.patrickcummins.myapplication.R.id.sizeTextView;
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.CartItem;
 
 /**
  * Created by patrickcummins on 7/12/16.

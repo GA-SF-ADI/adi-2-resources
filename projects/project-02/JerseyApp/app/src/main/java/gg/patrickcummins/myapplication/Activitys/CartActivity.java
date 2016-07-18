@@ -1,10 +1,9 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -12,6 +11,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import gg.patrickcummins.myapplication.Adapters.CartListAdapter;
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.CartItem;
 
 public class CartActivity extends AppCompatActivity {
     ListView cartListView;

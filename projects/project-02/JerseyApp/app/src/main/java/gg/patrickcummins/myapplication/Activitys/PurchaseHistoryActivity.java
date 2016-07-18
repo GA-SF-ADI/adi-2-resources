@@ -1,11 +1,15 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Activitys;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.Adapters.PurchaseHistoryListAdapter;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.PurchaseHistoryItem;
 
 public class PurchaseHistoryActivity extends AppCompatActivity {
     DatabaseHelper helper;

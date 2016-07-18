@@ -1,7 +1,6 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Activitys;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +14,10 @@ import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
-import static android.R.attr.x;
-import static gg.patrickcummins.myapplication.R.drawable.warriors;
-import static gg.patrickcummins.myapplication.R.id.priceTextView;
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.Adapters.PlayerListAdapter;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.Player;
 
 public class RostersActivity extends AppCompatActivity {
     Intent currentIntent;

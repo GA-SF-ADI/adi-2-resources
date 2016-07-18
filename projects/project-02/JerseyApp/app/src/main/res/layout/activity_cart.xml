@@ -6,7 +6,7 @@
     android:id="@+id/activity_cart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="gg.patrickcummins.myapplication.CartActivity">
+    tools:context="gg.patrickcummins.myapplication.Activitys.CartActivity">
 
     <LinearLayout
         android:id="@+id/checkoutLayout"

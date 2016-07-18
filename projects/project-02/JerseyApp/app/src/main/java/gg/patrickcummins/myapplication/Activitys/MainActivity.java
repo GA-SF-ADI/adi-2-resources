@@ -1,19 +1,18 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Activitys;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.SupportActionModeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import static android.R.attr.drawable;
-import static android.R.attr.process;
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.Player;
 
 public class MainActivity extends AppCompatActivity {
     ImageView warriors, raiders, sharks;

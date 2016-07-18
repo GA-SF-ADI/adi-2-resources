@@ -1,4 +1,4 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Activitys;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -14,15 +14,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-import static gg.patrickcummins.myapplication.R.drawable.raiders;
-import static gg.patrickcummins.myapplication.R.drawable.warriors;
+import gg.patrickcummins.myapplication.DatabaseHelper;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.CartItem;
+
 import static gg.patrickcummins.myapplication.R.id.addToCartButton;
-import static gg.patrickcummins.myapplication.R.id.extraSmallTextView;
-import static gg.patrickcummins.myapplication.R.id.smallTextView;
 
 public class JerseyActivity extends AppCompatActivity {
     private TextView jerseyColor1, jerseyColor2, jerseyColor3, nameTextView, numberTextView, priceTextView, sizeExtraSmallTextView, sizeSmallTextView, sizeMediumTextView, sizeLargeTextView, sizeExtraLargeTextView;

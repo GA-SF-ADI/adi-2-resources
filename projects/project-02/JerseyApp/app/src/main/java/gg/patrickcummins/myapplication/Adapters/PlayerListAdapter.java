@@ -1,4 +1,4 @@
-package gg.patrickcummins.myapplication;
+package gg.patrickcummins.myapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static android.R.attr.onClick;
-import static android.R.attr.start;
-import static gg.patrickcummins.myapplication.R.id.playerImageView;
+import gg.patrickcummins.myapplication.Activitys.JerseyActivity;
+import gg.patrickcummins.myapplication.R;
+import gg.patrickcummins.myapplication.models.Player;
 
 /**
  * Created by patrickcummins on 7/9/16.

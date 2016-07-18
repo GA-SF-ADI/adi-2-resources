@@ -9,7 +9,8 @@ import android.provider.BaseColumns;
 
 import java.util.ArrayList;
 
-import static android.R.attr.max;
+import gg.patrickcummins.myapplication.models.CartItem;
+import gg.patrickcummins.myapplication.models.Player;
 
 /**
  * Created by patrickcummins on 7/9/16.
