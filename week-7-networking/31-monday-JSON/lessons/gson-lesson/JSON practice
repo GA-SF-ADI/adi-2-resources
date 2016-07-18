@@ -1,0 +1,152 @@
+Exercise
+
+Requirements
+
+create a file "family_array" that will have an array as a root element:
+
+it should have as many objects as there are members in your family
+each member should have four attributes: name, age, quality the member can be best described with and appearance that will be an object itself
+appearance should have two attributes: eyes (color) and hair (short/long)
+
+{ "family_array": [
+
+{
+	"firstPerson" : {
+	"name": "David",
+	"age": "24",
+	"quality": "thoughtful",
+	"appearance" : {
+	"eyeColor" :"brown",
+	"hairShort": true
+	},
+
+	}
+}
+
+{
+	"secondPerson" : {
+	"name": "Pat",
+	"age": "21",
+	"quality": "easygoing",
+	"appearance" : {
+	"eyeColor" :"brown",
+	"hairShort": true
+	},
+	
+	}
+}
+
+{
+	"thirdPerson" : {
+	"name": "Matt",
+	"age": "17",
+	"quality": "hardworking",
+	"appearance" : {
+	"eyeColor" :"brown",
+	"hairShort": true
+	},
+	
+	}
+}
+
+{
+	"thirdPerson" : {
+	"name": "Liz",
+	"age": "26",
+	"quality": "enthusiastic",
+	"appearance" : {
+	"eyeColor" :"brown",
+	"hairShort": false
+	}
+	
+	}
+	]
+}
+
+
+
+create a file "family_nested_objects" that will have an object as a root element:
+
+it will have as many objects as there are members in your family
+each nested object should have a name that will be the real person's name
+each member should have 3 attributes: age, quality the member can be best described with and appearance that will be an object itself
+appearance should have two attributes: eyes (color) and hair (short/long)
+
+
+{ 
+
+	"Liz" : {
+	"age" :"26",
+	"quality": "enthusiastic",
+	"appearance": {
+	"eyes": "brown",
+	"hair" : "long"
+
+	}
+
+	},
+
+	"David" : {
+	"age" :"24",
+	"quality": "thoughtful",
+	"appearance": {
+	"eyes" :"brown",
+	"hair" :"short"
+			}
+		}
+	}
+
+
+Bonus:
+
+Research APIs for companies you are interested in and look through the documentation to explore the JSON structure they use
+
+
+{
+    "danceability": 0.735,
+    "energy": 0.578,
+    "key": 5,
+    "loudness": -11.84,
+    "mode": 0,
+    "speechiness": 0.0461,
+    "acousticness": 0.514,
+    "instrumentalness": 0.0902,
+    "liveness": 0.159,
+    "valence": 0.624,
+    "tempo": 98.002,
+    "type": "audio_features",
+    "id": "06AKEBrKUckW0KREUWRnvT",
+    "uri": "spotify:track:06AKEBrKUckW0KREUWRnvT",
+    "track_href": "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
+    "analysis_url": "http://echonest-analysis.s3.amazonaws.com/TR/xZIVRgimIx9_iJFqTriVhCm_4unjh7tZAglpO5D-xS4xNkvxq70uCFAtuoVYTaIeHbWoLKvCB6W-kvd9E=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1455893394&Signature=rmceqCXLMbPrXt9RTIJwk%2BQzxoY%3D",
+    "duration_ms": 255349,
+    "time_signature": 4
+}
+
+public class AudioFeatures {
+	private double danceability;
+	private double energy;
+	private int key;
+	private double loudness;
+	private int mode;
+	private double speechiness;
+	private double acousticness;
+	private double instrumentalness;
+	private double liveness;
+	private double valence;
+	private double tempo;
+	private String type;
+	private String id;
+	private String uri;
+	@SerializedName("track_href")
+	private String track;
+	@SerializedName("analysis_url")
+	private String analysis;
+	@SerializedName("duration_ms")
+	private long duration;
+	@SerializedName("time_signature")
+	private int timeSignature;
+}
+
+
+
