@@ -155,28 +155,28 @@ Given the following JSON
 ```json
 {
 	"book-one": {
-		"name": "Enders Game"
+		"title": "Enders Game"
 	},
 	"book-two": {
-		"name": "The Martian"
+		"title": "The Martian"
 	}
 }
 ```
 
-We see that we have objects `book_one` and `book_two` ( who have a variable `name`). Both of these are encapsulated by the whole json object. 
+We see that we have objects `book_one` and `book_two` ( who have a variable `title`). Both of these are encapsulated by the whole json object. 
 
 The outer object could represent a Bookshelf that has these two books. Lets model this JSON bookshelf as a Java object.
 
 First, we need to model the **inner** JSON object, meaning the book object itself.
 ```java
 public class Book {
-	private String name;
+	private String title;
 	
 	... // Rest of code omitted
 }
 ```
 
-This Book class represents **any** book object. It can work for book-one or book-two because both of those just have the `String name` field.
+This Book class represents **any** book object. It can work for book-one or book-two because both of those just have the `String title` field.
 
 Now, lets make use of the Book class in our BookShelf class ( outer JSON object that holds both books )
 ```java
