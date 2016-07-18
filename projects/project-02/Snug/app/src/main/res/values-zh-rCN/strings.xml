@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Snug</string>
+    <string name="title_activity_single_hat_view">SingleHatViewActivity</string>
+    <string name="title_activity_shopping_cart">ShoppingCartActivity</string>
+    <string name="title_activity_team_search">TeamSearchMultiAutoComplete</string>
+    <string name="Hat_name">Atlanta Braves On-Field</string>
+    <string name="Hat_price">$29.99</string>
+    <string name="Hat_fittedOrSnap">Fitted</string>
+    <string name="Go_to_hat_button">Go to single hat</string>
+    <string name="Single_hat_title">San Francisco Giants July 4th</string>
+    <string name="Single_hat_price">$29.99</string>
+    <string name="Single_hat_static_description_with_colon">帽子信息: </string>
+    <string name="Single_hat_static_back_with_colon">后面: </string>
+    <string name="Single_hat_static_material_with_colon">材料 :</string>
+    <string name="title_of_search_icon_in_toolbar">搜索</string>
+    <string name="title_of_cart_icon_in_toolbar">view cart</string>
+    <string name="title_of_app_logo_icon_in_toolbar">logo</string>
+    <string name="counter_amount">4</string>
+    <string name="hat_name_hint_text">Search for team name</string>
+    <string name="title_activity_search2">Search2Activity</string>
+    <string name="Snapback_only">Snapbacks only</string>
+    <string name="Fitteds_only">Fitteds only</string>
+    <string name="enter_lower_than_amount">Search for hats under a certain price</string>
+    <string name="price_edittext">$</string>
+    <string name="no_combined_search_variables">Combined search not possible at the moment!\n(e.g. Giants AND fitted)</string>
+    <string name="search_item_list_1">1.</string>
+    <string name="clear_search_button_text">Clear search</string>
+    <string name="your_cart_textview">你的的购物车</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="search_hint">Team, color, fit/snap, etc.</string>
+
+
+</resources>
