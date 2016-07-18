@@ -450,7 +450,7 @@ public class Company {
 Do you see how the JSON `"employees"` array is also an array of employee objects inside of Java? The variable name stays the same, ie `employees` but the `Employee[]` is created by us because each `Employee.java` object models one of the three employees.
 
 <a name="ind-practice"></a>
-## Independent Practice: Model JSON Arrays and Nested Objects to Java (15 mins)
+## Independent Practice: Model JSON Arrays and Nested Objects to Java (20 mins)
 
 Create proper Java classes to model this JSON object:
 ```json
@@ -460,15 +460,27 @@ Create proper Java classes to model this JSON object:
 			"books": [
 				{
 					"title": "Ender's Game",
-					"author": "Orson Scott Card"
+					"author": "Orson Scott Card",
+					"cover": {
+						"color": "red",
+						"material": "leather"
+					}
 				},
 				{
 					"title": "The Martian",
-					"author": "Andy Weir"
+					"author": "Andy Weir",
+					"cover": {
+						"color": "blue",
+						"material": "plastic"
+					}
 				},
 				{
 					"title": "A Song of Ice and Fire",
-					"author": "George RR Martin"
+					"author": "George RR Martin",
+					"cover": {
+						"color": "green",
+						"material": "paper"
+					}
 				}
 			]
 		},
@@ -476,11 +488,19 @@ Create proper Java classes to model this JSON object:
 			"books": [
 				{
 					"title": "Harry Potter and the Chamber of Secrets",
-					"author": "JK Rowling"
+					"author": "JK Rowling",
+					"cover": {
+						"color": "black",
+						"material": "leather"
+					}
 				},
 				{
 					"title": "I, Robot",
-					"author": "Isaac Asimov"
+					"author": "Isaac Asimov",
+					"cover": {
+						"color": "white",
+						"material": "metal"
+					}
 				}
 			]
 		}
@@ -492,10 +512,40 @@ Remember you should
 - Start working our way from **inside-out** by creating models for simples case and then work your way up
 
 
+
+
+
 If you get stuck, here are some hints:
-- Create a model for Book.java
+- Create a model for BookCover.java
+- Create a model for Book.java which has a BookCover object
 - Create a model for Bookshelf.java that holds an array of Books
 - Create a model for Libarary that holds an array of Bookselves 
+
+<details>
+  <summary>Click here to see solution for BookCover.java</summary>
+```java
+public class BookCover {
+    private String color;
+    private String material;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+}
+```
+</details>
 
 <details>
   <summary>Click here to see solution for Book.java</summary>
@@ -503,6 +553,7 @@ If you get stuck, here are some hints:
 public class Book {
     private String title;
     private String author;
+    private BookCover cover;
 
     public String getTitle() {
         return title;
@@ -518,6 +569,14 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public BookCover getCover() {
+        return cover;
+    }
+
+    public void setCover(BookCover cover) {
+        this.cover = cover;
     }
 }
 ```
