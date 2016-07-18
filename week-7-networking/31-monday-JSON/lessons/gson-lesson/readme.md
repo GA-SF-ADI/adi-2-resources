@@ -449,6 +449,45 @@ public class Company {
 
 Do you see how the JSON `"employees"` array is also an array of employee objects inside of Java? The variable name stays the same, ie `employees` but the `Employee[]` is created by us because each `Employee.java` object models one of the three employees.
 
+<a name="ind-practice"></a>
+## Independent Practice: Model JSON Arrays and Nested Objects to Java (15 mins)
+
+Create proper Java classes to model this JSON object:
+```json
+{
+	"bookshelfs": [
+		{
+			"books": [
+				{
+					"title": "Ender's Game",
+					"author": "Orson Scott Card"
+				},
+				{
+					"title": "The Martian",
+					"author": "Andy Weir"
+				},
+				{
+					"title": "A Song of Ice and Fire",
+					"author": "George RR Martin"
+				}
+			]
+		},
+		{
+			"books": [
+				{
+					"title": "Harry Potter and the Chamber of Secrets",
+					"author": "JK Rowling"
+				},
+				{
+					"title": "I, Robot",
+					"author": "Isaac Asimov"
+				}
+			]
+		}
+	]
+}
+```
+
 
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
