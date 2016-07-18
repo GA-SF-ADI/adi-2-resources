@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.project2navigationdrawer.SecondActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar_second_activity"
+        android:layout_width="match_parent"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <Button
+        android:id="@+id/shopping_cart_button"
+        android:layout_width="wrap_content"
+        android:textAllCaps="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/shoppingcart"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:text="my cart" />
+
+    <Button
+        android:id="@+id/featured_jewelry_button_second_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/shopping_cart_button"
+        android:textAllCaps="true"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:text="Featured Jewelry" />
+
+    <Button
+        android:id="@+id/return_home_button"
+        android:text="HOME"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/featured_jewelry_button_second_act"
+        />
+
+    <ListView
+        android:id="@+id/second_activity_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:textAllCaps="true"
+        android:fontFamily="casual"
+       android:paddingTop="20dp"
+        android:layout_below="@+id/shopping_cart_button">
+
+    </ListView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
+        android:id="@+id/text_view_search"/>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container_second_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"></FrameLayout>
+
+
+</RelativeLayout>

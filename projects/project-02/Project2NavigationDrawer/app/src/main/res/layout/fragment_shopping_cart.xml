@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:id="@+id/relative"
+    tools:context="com.test.project2navigationdrawer.ShoppingCartFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:fontFamily="casual"
+        android:padding="2dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+        android:background="@color/colorPrimary"
+        android:textSize="28sp"
+        android:id="@+id/shopping_fragment_total_cost_text_view"
+         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:text="REMOVE ITEM"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
+        android:id="@+id/remove_button"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shopping_fragment_total_cost_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp" />
+
+
+    <ListView
+        android:id="@+id/shopping_fragment_total_cost_list_view"
+        android:layout_below="@+id/remove_button"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:fontFamily="casual"
+        android:textAllCaps="true"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

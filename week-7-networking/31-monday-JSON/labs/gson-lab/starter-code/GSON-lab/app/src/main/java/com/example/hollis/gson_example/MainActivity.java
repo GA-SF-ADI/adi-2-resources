@@ -2,6 +2,9 @@ package com.example.hollis.gson_example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     public static final String SPOTIFY_JSON = "{\n" +
@@ -114,9 +117,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createMarvelResult();
+        Gson gson = new Gson();
+        Root root = gson.fromJson(WEATHER_JSON,Root.class);
 
-
-
+        Log.i("Tag", gson.toJson(marvelResult));
+        Log.i("Tag", gson.toJson(root));
     }
 
     public void createMarvelResult(){

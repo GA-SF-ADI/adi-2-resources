@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Project2NavigationDrawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">My Settings</string>
+    <string name="home_button">Return Home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_second">SecondActivity</string>
+
+    <string name= "about_us">Welcome! This is a fake company. You cannot buy jewelry, but you CAN explore the app!</string>
+
+</resources>
