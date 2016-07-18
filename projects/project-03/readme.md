@@ -6,8 +6,7 @@ During Project 3, ADI students will work in groups to design and build an applic
 
 * [CNN](CNN)
 * [Vice](vice)
-* [TouchLab](touchlab)
-* [Yelp](yelp)
+* [Yelp](Yelp)
 
 Multiple groups will be assigned to the same project brief--these projects have been designed to be fairly open-ended and will allow for a great deal of creativity with regard to design, implementation and interaction. Students will have two weeks to work on this project. Please see the individual project briefs for more information on project requirements.
 
