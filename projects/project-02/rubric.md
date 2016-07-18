@@ -27,21 +27,17 @@
 
 Notes:
 
-<!-- Example: Your getting the hang of this!  Be sure to practice proper indentation and spacing.  Nice work! -->
+
+
 
 ---
 
 ## Score:
-Based on the requirements, you can earn a maximum of  **28**  points on this project.
+Based on the requirements, you can earn a maximum of  **16**  points on this project.
 
-#### Your total score is: **#**
+#### Your total score is: 
 
 
 ---
 
-## PROGRESS REPORT
-**Student Check-in:**
 
-|WHAT’S GOING WELL?|STRUGGLES|
-|---|---|
-| | |
