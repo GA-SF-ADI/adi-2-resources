@@ -629,21 +629,37 @@ compile 'com.google.code.gson:gson:2.6'
 
 Next, we will create a Java objects to represent our search result, and the items in the search result.
 
-
-
-The last step is simply to call `fromJson`:
-
+Assuming we have this JSON_DATA string inside our MainActivity
 ```java
-Gson gson = new Gson();
-WalmartSearchResult result = gson.fromJson(data, WalmartSearchResult.class);
+    private static final String JSON_DATA = "{\"bookshelves\":[{\"books\":[{\"title\":\"Ender's Game\",\"author\":\"Orson Scott Card\",\"cover\":{\"color\":\"red\",\"material\":\"leather\"}},{\"title\":\"The Martian\",\"author\":\"Andy Weir\",\"cover\":{\"color\":\"blue\",\"material\":\"plastic\"}},{\"title\":\"A Song of Ice and Fire\",\"author\":\"George RR Martin\",\"cover\":{\"color\":\"green\",\"material\":\"paper\"}}]},{\"books\":[{\"title\":\"Harry Potter and the Chamber of Secrets\",\"author\":\"JK Rowling\",\"cover\":{\"color\":\"black\",\"material\":\"leather\"}},{\"title\":\"I, Robot\",\"author\":\"Isaac Asimov\",\"cover\":{\"color\":\"white\",\"material\":\"metal\"}}]}]}";
 ```
 
-From here we can easily do whatever we want with the search results, such as printing out the name of the item.
+We need to create an instance of `Gson`
+```java
+Gson gson = new Gson();
+```
+Next, we use this Gson instance to return to us an object from JSON data.
 
-We can also easily convert objects back to JSON:
+We use `gson.fromJson()` call:
+- The first parameter is the JSON data string or JSON Element
+- Second parameter is the model for the JSON object
+
+In our case, `JSON_DATA` is a JSON string holding the object from the last independent exercise.
+`Library.class` is the model for this JSON object.
+
+`gson` returns the actual `Library` object back out to us so we can store it in a variable `library` of type `Library`.
 
 ```java
-String json = gson.toJson(result);
+Library library = gson.fromJson(JSON_DATA, Library.class);
+```
+Now we can access all of the bookshelves, books, etc.
+
+
+How would change our `Library library` object into a JSON string?
+
+Simple, we use `gson.toJson()`:
+```java
+String jsonLibrary = gson.toJson(library);
 ```
 
 ***
