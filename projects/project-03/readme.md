@@ -19,3 +19,8 @@ As always, your app must adhere to General Assembly's [student code of conduct g
 If you have questions about whether or not your work adheres to these guidelines, please speak with a member of your instructional team.
 
 ---
+
+
+Group 1: Kitty, Sterling, Berto *Vice*
+Group 2: Patrick, Mj, Audrey *Yelp*
+Group 3: Jon, Neha, Langston, Kevin *CNN*
