@@ -1,6 +1,6 @@
 ---
 title: GSON
-duration: "1:30"
+duration: "1:35"
 creator:
     name: Aleksandr Tomak
     city: SF
@@ -146,10 +146,214 @@ Basically, this will convert the JSON value at the key `"bad_name"` and use our 
 <a name="ind-practice"></a>
 ## Independent Practice: JSON to Java object (10 mins)
 
-Given the following JSON object:
+[This](https://developer.spotify.com/web-api/get-audio-features/) Spotify API returns to us the following JSON object modeling audio features for a class
+```json
+{
+	"danceability": 0.735,
+	"energy": 0.578,
+	"key": 5,
+	"loudness": -11.84,
+	"mode": 0,
+	"speechiness": 0.0461,
+	"acousticness": 0.514,
+	"instrumentalness": 0.0902,
+	"liveness": 0.159,
+	"valence": 0.624,
+	"tempo": 98.002,
+	"type": "audio_features",
+	"id": "06AKEBrKUckW0KREUWRnvT",
+	"uri": "spotify:track:06AKEBrKUckW0KREUWRnvT",
+	"track_href": "https://api.spotify.com/v1/tracks/06AKEBrKUckW0KREUWRnvT",
+	"analysis_url": "http://echonest-analysis.s3.amazonaws.com/TR/xZIVRgimIx9_iJFqTriVhCm_4unjh7tZAglpO5D-xS4xNkvxq70uCFAtuoVYTaIeHbWoLKvCB6W-kvd9E=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1455893394&Signature=rmceqCXLMbPrXt9RTIJwk%2BQzxoY%3D",
+	"duration_ms": 255349,
+	"time_signature": 4
+}
+```
+
+You need to create a Java object to match this JSON object just like we did above.
+- Start by deciding what type is each field
+- Then create the class, you can call it `AudioFeatures.java`
+
+<details>
+  <summary>Click here to see solutions</summary>
+```java
+public class AudioFeatures {
+    private double danceability;
+    private double energy;
+    private double loudness;
+    private double speechiness;
+    private double acousticness;
+    private double instrumentalness;
+    private double liveness;
+    private double valence;
+    private double tempo;
+
+    private String type;
+    private String id;
+    private String uri;
+    
+    @SerializedName("track_href")
+    private String trackUrl;
+    @SerializedName("analysis_url")
+    private String analysisUrl;
+    
+    private int key;
+    private int mode;
+    private int time_signature;
+    private long duration_ms;
+    
+    // Getters and Setters
 
 
-## Nested JSON objects to Nested Java objects ( 10 mins)
+    public double getDanceability() {
+        return danceability;
+    }
+
+    public void setDanceability(double danceability) {
+        this.danceability = danceability;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public void setEnergy(double energy) {
+        this.energy = energy;
+    }
+
+    public double getLoudness() {
+        return loudness;
+    }
+
+    public void setLoudness(double loudness) {
+        this.loudness = loudness;
+    }
+
+    public double getSpeechiness() {
+        return speechiness;
+    }
+
+    public void setSpeechiness(double speechiness) {
+        this.speechiness = speechiness;
+    }
+
+    public double getAcousticness() {
+        return acousticness;
+    }
+
+    public void setAcousticness(double acousticness) {
+        this.acousticness = acousticness;
+    }
+
+    public double getInstrumentalness() {
+        return instrumentalness;
+    }
+
+    public void setInstrumentalness(double instrumentalness) {
+        this.instrumentalness = instrumentalness;
+    }
+
+    public double getLiveness() {
+        return liveness;
+    }
+
+    public void setLiveness(double liveness) {
+        this.liveness = liveness;
+    }
+
+    public double getValence() {
+        return valence;
+    }
+
+    public void setValence(double valence) {
+        this.valence = valence;
+    }
+
+    public double getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(double tempo) {
+        this.tempo = tempo;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getTrackUrl() {
+        return trackUrl;
+    }
+
+    public void setTrackUrl(String trackUrl) {
+        this.trackUrl = trackUrl;
+    }
+
+    public String getAnalysisUrl() {
+        return analysisUrl;
+    }
+
+    public void setAnalysisUrl(String analysisUrl) {
+        this.analysisUrl = analysisUrl;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
+    public int getTime_signature() {
+        return time_signature;
+    }
+
+    public void setTime_signature(int time_signature) {
+        this.time_signature = time_signature;
+    }
+
+    public long getDuration_ms() {
+        return duration_ms;
+    }
+
+    public void setDuration_ms(long duration_ms) {
+        this.duration_ms = duration_ms;
+    }
+}
+```
+</details>
+
+
+## Nested JSON objects to Nested Java objects ( 15 mins)
 
 Given the following JSON 
 ```json
@@ -193,13 +397,231 @@ public class BookShelf {
 
 You can model nested objects as deep as they go. Meaning that if BookShelf has Book objects but those Book objects could have Chapter objects which could also hold Page objects, etc. 
 
+
+## JSON Arrays to Java Arrays
+
+Lets take a look at how we can model JSON arrays inside of Java objects.
+
+Given the following JSON object:
+```json
+{
+	"employees": [
+		{
+			"firstName": "John",
+			"lastName": "Doe"
+		},
+		{
+			"firstName": "Anna",
+			"lastName": "Smith"
+		},
+		{
+			"firstName": "Peter",
+			"lastName": "Jones"
+		}
+	]
+}
+```
+
+Remember its easiest to work from **inside-out** when modeling JSON to Java.
+
+We can see we have *3* employee objects that have a `firstName` and a `lastName`.
+
+Lets create an `Employee.java` class
+```java
+public class Employee {
+	private String firstName;
+	private String lastName;
+	
+	... // Rest of code omitted
+}
+```
+
+Next, we see we have an **array of employeess** which is called `"employees"`. This array of employees lives inside the whole JSON object which probably represents a company.
+
+Lets create a `Company.java` class:
+```java
+public class Company {
+	Employee[] employees;
+	
+	... // Rest of code omitted
+}
+```
+
+Do you see how the JSON `"employees"` array is also an array of employee objects inside of Java? The variable name stays the same, ie `employees` but the `Employee[]` is created by us because each `Employee.java` object models one of the three employees.
+
+<a name="ind-practice"></a>
+## Independent Practice: Model JSON Arrays and Nested Objects to Java (20 mins)
+
+Create proper Java classes to model this JSON object:
+```json
+{
+	"bookshelfs": [
+		{
+			"books": [
+				{
+					"title": "Ender's Game",
+					"author": "Orson Scott Card",
+					"cover": {
+						"color": "red",
+						"material": "leather"
+					}
+				},
+				{
+					"title": "The Martian",
+					"author": "Andy Weir",
+					"cover": {
+						"color": "blue",
+						"material": "plastic"
+					}
+				},
+				{
+					"title": "A Song of Ice and Fire",
+					"author": "George RR Martin",
+					"cover": {
+						"color": "green",
+						"material": "paper"
+					}
+				}
+			]
+		},
+		{
+			"books": [
+				{
+					"title": "Harry Potter and the Chamber of Secrets",
+					"author": "JK Rowling",
+					"cover": {
+						"color": "black",
+						"material": "leather"
+					}
+				},
+				{
+					"title": "I, Robot",
+					"author": "Isaac Asimov",
+					"cover": {
+						"color": "white",
+						"material": "metal"
+					}
+				}
+			]
+		}
+	]
+}
+```
+
+Remember you should
+- Start working our way from **inside-out** by creating models for simples case and then work your way up
+
+
+
+
+
+If you get stuck, here are some hints:
+- Create a model for BookCover.java
+- Create a model for Book.java which has a BookCover object
+- Create a model for Bookshelf.java that holds an array of Books
+- Create a model for Libarary that holds an array of Bookselves 
+
+<details>
+  <summary>Click here to see solution for BookCover.java</summary>
+```java
+public class BookCover {
+    private String color;
+    private String material;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Click here to see solution for Book.java</summary>
+```java
+public class Book {
+    private String title;
+    private String author;
+    private BookCover cover;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public BookCover getCover() {
+        return cover;
+    }
+
+    public void setCover(BookCover cover) {
+        this.cover = cover;
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Click here to see solution for BookShelf.java</summary>
+```java
+public class Bookshelf {
+    Book[] books;
+
+    public Book[] getBooks() {
+        return books;
+    }
+
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
+}
+```
+</details>
+
+<details>
+  <summary>Click here to see solution for Library.java</summary>
+```java
+public class Library {
+    Bookshelf[] bookshelfs;
+
+    public Bookshelf[] getBookshelfs() {
+        return bookshelfs;
+    }
+
+    public void setBookshelfs(Bookshelf[] bookshelfs) {
+        this.bookshelfs = bookshelfs;
+    }
+}
+```
+</details>
+
+You can also look at the [solution code](solution-code/ArraysAndNestedJSON/). It holds the above classes inside a package called **models**. The app does nothing but display hello world.
+
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
 
-
-We're going to be using the Walmart API for our example in this exercise. Open the starter-code, and replace the API key with yours in the URL variable.
-
-The first step is to add GSON to your gradle:
+The first step is to add GSON to your app gradle file:
 
 ```
 compile 'com.google.code.gson:gson:2.6'
@@ -207,65 +629,39 @@ compile 'com.google.code.gson:gson:2.6'
 
 Next, we will create a Java objects to represent our search result, and the items in the search result.
 
+Assuming we have this JSON_DATA string inside our MainActivity
 ```java
-public class WalmartItem {
-    private String name;
-    private String shortDescription;
-
-    public String getName(){return name;}
-
-    public String getShortDescription(){return shortDescription;}
-
-    public void setName(String name){this.name = name;}
-
-    public void setShortDescription(String description){this.shortDescription = description;}
-
-    @Override
-    public String toString() {
-        return name;
-    }
-}
+    private static final String JSON_DATA = "{\"bookshelves\":[{\"books\":[{\"title\":\"Ender's Game\",\"author\":\"Orson Scott Card\",\"cover\":{\"color\":\"red\",\"material\":\"leather\"}},{\"title\":\"The Martian\",\"author\":\"Andy Weir\",\"cover\":{\"color\":\"blue\",\"material\":\"plastic\"}},{\"title\":\"A Song of Ice and Fire\",\"author\":\"George RR Martin\",\"cover\":{\"color\":\"green\",\"material\":\"paper\"}}]},{\"books\":[{\"title\":\"Harry Potter and the Chamber of Secrets\",\"author\":\"JK Rowling\",\"cover\":{\"color\":\"black\",\"material\":\"leather\"}},{\"title\":\"I, Robot\",\"author\":\"Isaac Asimov\",\"cover\":{\"color\":\"white\",\"material\":\"metal\"}}]}]}";
 ```
 
-```java
-public class WalmartSearchResult {
-    private WalmartItem[] items;
-
-    public void setItems(WalmartItem[] items){this.items = items;}
-
-    public WalmartItem[] getItems(){return items;}
-
-    @Override
-    public String toString() {
-        return items.length+" item(s) in the search result";
-    }
-}
-```
-
-The last step is simply to call `fromJson`:
-
+We need to create an instance of `Gson`
 ```java
 Gson gson = new Gson();
-WalmartSearchResult result = gson.fromJson(data, WalmartSearchResult.class);
 ```
+Next, we use this Gson instance to return to us an object from JSON data.
 
-From here we can easily do whatever we want with the search results, such as printing out the name of the item.
+We use `gson.fromJson()` call:
+- The first parameter is the JSON data string or JSON Element
+- Second parameter is the model for the JSON object
 
-We can also easily convert objects back to JSON:
+In our case, `JSON_DATA` is a JSON string holding the object from the last independent exercise.
+`Library.class` is the model for this JSON object.
+
+`gson` returns the actual `Library` object back out to us so we can store it in a variable `library` of type `Library`.
 
 ```java
-String json = gson.toJson(result);
+Library library = gson.fromJson(JSON_DATA, Library.class);
+```
+Now we can access all of the bookshelves, books, etc.
+
+
+How would change our `Library library` object into a JSON string?
+
+Simple, we use `gson.toJson()`:
+```java
+String jsonLibrary = gson.toJson(library);
 ```
 
-***
-
-<a name="ind-practice"></a>
-## Independent Practice: Topic (20 mins)
-
-Now it's time to practice. In pairs, add an EditText, a Button, and a ListView so you can search for an item using the Walmart API, and display the names of the items in your ListView.
-
-
-***
 
 <a name="conclusion"></a>
 ## Conclusion (5 mins)
@@ -276,3 +672,4 @@ GSON is an extremely helpful tool for more complicated JSON data, but it can be 
 
 ### ADDITIONAL RESOURCES
 - [GSON](https://github.com/google/gson)
+- [JSON code beautify view](http://codebeautify.org/jsonviewer)
