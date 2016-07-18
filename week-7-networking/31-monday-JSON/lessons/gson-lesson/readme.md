@@ -616,13 +616,12 @@ public class Library {
 ```
 </details>
 
+You can also look at the [solution code](solution-code/ArraysAndNestedJSON/). It holds the above classes inside a package called **models**. The app does nothing but display hello world.
+
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
 
-
-We're going to be using the Walmart API for our example in this exercise. Open the starter-code, and replace the API key with yours in the URL variable.
-
-The first step is to add GSON to your gradle:
+The first step is to add GSON to your app gradle file:
 
 ```
 compile 'com.google.code.gson:gson:2.6'
@@ -630,40 +629,7 @@ compile 'com.google.code.gson:gson:2.6'
 
 Next, we will create a Java objects to represent our search result, and the items in the search result.
 
-```java
-public class WalmartItem {
-    private String name;
-    private String shortDescription;
 
-    public String getName(){return name;}
-
-    public String getShortDescription(){return shortDescription;}
-
-    public void setName(String name){this.name = name;}
-
-    public void setShortDescription(String description){this.shortDescription = description;}
-
-    @Override
-    public String toString() {
-        return name;
-    }
-}
-```
-
-```java
-public class WalmartSearchResult {
-    private WalmartItem[] items;
-
-    public void setItems(WalmartItem[] items){this.items = items;}
-
-    public WalmartItem[] getItems(){return items;}
-
-    @Override
-    public String toString() {
-        return items.length+" item(s) in the search result";
-    }
-}
-```
 
 The last step is simply to call `fromJson`:
 
@@ -685,8 +651,6 @@ String json = gson.toJson(result);
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (20 mins)
 
-Now it's time to practice. In pairs, add an EditText, a Button, and a ListView so you can search for an item using the Walmart API, and display the names of the items in your ListView.
-
 
 ***
 
@@ -699,3 +663,4 @@ GSON is an extremely helpful tool for more complicated JSON data, but it can be 
 
 ### ADDITIONAL RESOURCES
 - [GSON](https://github.com/google/gson)
+- [JSON code beautify view](http://codebeautify.org/jsonviewer)
