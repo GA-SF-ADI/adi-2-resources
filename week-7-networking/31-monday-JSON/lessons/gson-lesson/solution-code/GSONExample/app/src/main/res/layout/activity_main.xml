@@ -9,20 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ly.generalassemb.drewmahrt.gsonexample.MainActivity">
 
-    <EditText
-        android:id="@+id/search_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/json_to_java"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_below="@id/search_text"/>
+        android:text="Convert JSON to Java"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/java_to_json"
+        android:layout_alignStart="@+id/java_to_json" />
 
-    <ListView
-        android:id="@+id/results_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_button"></ListView>
+   <Button
+       android:id="@+id/java_to_json"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Convert Java to JSON"
+       android:layout_centerVertical="true"
+       android:layout_centerHorizontal="true" />
 </RelativeLayout>
