@@ -1,9 +1,9 @@
 ---
 title: GSON
-duration: "0:50"
+duration: "1:30"
 creator:
-    name: Drew Mahrt
-    city: NYC
+    name: Aleksandr Tomak
+    city: SF
 ---
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GSON
 
@@ -56,8 +56,6 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 
 > Check: Pair up and discuss what this JSON object reminds you of.
 
-> Solution: Its a model for a sample product item from project 2. Each of the variables would represent a column in your PRODUCT_TABLE.
-
 ```json
 {
 	"product": "Sample Product",
@@ -69,11 +67,12 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 	"inventory" : "10"
 }
 ```
+> Solution: Its a model for a sample product item from project 2. Each of the variables would represent a column in your PRODUCT_TABLE.
 
 > Check: Split into groups and discuss what is the type for each of the fields! For example, "available" is a boolean!
 
 
-Each of the Product variables has a type. String, double, int, boolean, etc. We got these types from the JSON object itself because we, as humans, can see that 
+Look at the JSON object itself because we, as humans, can see that 
 * `"product": "Sample Product"` has a String value 
 * `"model": "XYZ"` has a String value 
 * `"image-url": "http://example.com/image"` has a String value 
