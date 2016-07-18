@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Espresso ATM</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>

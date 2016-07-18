@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Sterling-Marine-Supply</string>
+    <string-array name="options">
+        <item>Fish</item>
+        <item>Coral</item>
+        <item>Supplies</item>
+    </string-array>
+    <string name="search_hint">Search for Products</string>
+    <string name="title_activity_fish">FishActivity</string>
+    <string name="favorite">Add to Wish List</string>
+    <string name="product_list">Product List</string>
+    <string name="product_details">Product Details</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="search">Search</string>
+    <string name="sterling_marine_supply">Sterling-Marine-Supply</string>
+    <string name="browse_our_products">Browse Our Products</string>
+    <string name="type_details">Type: </string>
+    <string name="back_to_product_list">Back To Product List</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="purchase">Purchase</string>
+    <string name="total_price">TOTAL PRICE</string>
+    <string name="price">PRICE</string>
+    <string name="action_settings">ACTION SETTINGS</string>
+    <string name="type">TYPE</string>
+    <string name="name">NAME</string>
+    <string name="title_activity_shopping_cart"> Title Activity Shopping Cart</string>
+    <string name="title_activity_fish_categories">FishCategories</string>
+</resources>
