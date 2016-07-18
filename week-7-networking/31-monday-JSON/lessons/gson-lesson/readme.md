@@ -614,6 +614,10 @@ public class Library {
     }
 }
 ```
+
+You can also look at the [solution code](solution-code/ArraysAndNestedJSON/). It holds the above classes inside a package called **models**. The app does nothing but display hello world.
+
+
 </details>
 
 <a name="demo"></a>
