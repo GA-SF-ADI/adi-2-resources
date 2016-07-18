@@ -397,6 +397,59 @@ public class BookShelf {
 
 You can model nested objects as deep as they go. Meaning that if BookShelf has Book objects but those Book objects could have Chapter objects which could also hold Page objects, etc. 
 
+
+## JSON Arrays to Java Arrays
+
+Lets take a look at how we can model JSON arrays inside of Java objects.
+
+Given the following JSON object:
+```json
+{
+	"employees": [
+		{
+			"firstName": "John",
+			"lastName": "Doe"
+		},
+		{
+			"firstName": "Anna",
+			"lastName": "Smith"
+		},
+		{
+			"firstName": "Peter",
+			"lastName": "Jones"
+		}
+	]
+}
+```
+
+Remember its easiest to work from **inside-out** when modeling JSON to Java.
+
+We can see we have *3* employee objects that have a `firstName` and a `lastName`.
+
+Lets create an `Employee.java` class
+```java
+public class Employee {
+	private String firstName;
+	private String lastName;
+	
+	... // Rest of code omitted
+}
+```
+
+Next, we see we have an **array of employeess** which is called `"employees"`. This array of employees lives inside the whole JSON object which probably represents a company.
+
+Lets create a `Company.java` class:
+```java
+public class Company {
+	Employee[] employees;
+	
+	... // Rest of code omitted
+}
+```
+
+Do you see how the JSON `"employees"` array is also an array of employee objects inside of Java? The variable name stays the same, ie `employees` but the `Employee[]` is created by us because each `Employee.java` object models one of the three employees.
+
+
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
 
