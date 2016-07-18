@@ -51,10 +51,9 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 
 ***
 
-<a name="demo"></a>
-## Demo: Mapping JSON to Java Objects (15 mins)
+## Mapping JSON to Java Objects (20 mins)
 
-> Check: Pair up and discuss what this JSON object reminds you of.
+> Check: Pair up and discuss what this JSON object reminds you of. ( 1 min )
 
 ```json
 {
@@ -69,7 +68,7 @@ As you will see in the upcoming demo, this is a rather simple process, but makes
 ```
 > Solution: Its a model for a sample product item from project 2. Each of the variables would represent a column in your PRODUCT_TABLE.
 
-> Check: Split into groups and discuss what is the type for each of the fields! For example, "available" is a boolean!
+> Check: Split into groups and discuss what is the type for each of the fields! For example, "available" is a boolean! ( 4 min )
 
 
 Look at the JSON object itself because we, as humans, can see that 
@@ -142,6 +141,57 @@ public class Product {
 ```
 
 Basically, this will convert the JSON value at the key `"bad_name"` and use our `name` variable in Product class. For `"model_that_is_very_long"`, we would use the `model` variable and it will hold the data.
+
+
+<a name="ind-practice"></a>
+## Independent Practice: JSON to Java object (10 mins)
+
+Given the following JSON object:
+
+
+## Nested JSON objects to Nested Java objects ( 10 mins)
+
+Given the following JSON 
+```json
+{
+	"book-one": {
+		"name": "Enders Game"
+	},
+	"book-two": {
+		"name": "The Martian"
+	}
+}
+```
+
+We see that we have objects `book_one` and `book_two` ( who have a variable `name`). Both of these are encapsulated by the whole json object. 
+
+The outer object could represent a Bookshelf that has these two books. Lets model this JSON bookshelf as a Java object.
+
+First, we need to model the **inner** JSON object, meaning the book object itself.
+```java
+public class Book {
+	private String name;
+	
+	... // Rest of code omitted
+}
+```
+
+This Book class represents **any** book object. It can work for book-one or book-two because both of those just have the `String name` field.
+
+Now, lets make use of the Book class in our BookShelf class ( outer JSON object that holds both books )
+```java
+public class BookShelf {
+	@SerializedName("book-one")
+	private Book book1 // notice we use a different variable name and use @SerializedName()
+	
+	@SerializedName("book-two")
+	private Book book2 // notice we use a different variable name and use @SerializedName()
+	
+	... // Rest of code omitted
+}
+```
+
+You can model nested objects as deep as they go. Meaning that if BookShelf has Book objects but those Book objects could have Chapter objects which could also hold Page objects, etc. 
 
 <a name="demo"></a>
 ## Demo: Using GSON (15 mins)
