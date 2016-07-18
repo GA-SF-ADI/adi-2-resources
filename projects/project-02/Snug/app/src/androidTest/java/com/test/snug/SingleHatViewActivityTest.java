@@ -13,11 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -29,12 +27,40 @@ public class SingleHatViewActivityTest {
 
     @Test
     public void testWhetherUIElementsAreVisible() throws Exception {
-        // test that answer text view is visible
 
-        //onView doesn't work! Not sure why! I've added all the necessary things to my gradle file, etc.
-
-        onView(withId(R.id.textView_hat_name))
+        onView(withId(R.id.app_logo_in_single_hat_view_activity_toolbar))
                 .check(matches(isDisplayed()));
+
+        onView(withId(R.id.button_item_in_single_hat_view_activity_toolbar_to_view_cart))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.app_logo_in_single_hat_view_activity_toolbar))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.imageview_single_hat))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.textView_single_hat_price))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.textView_single_hat_title))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.textview_single_hat_static_description_with_colon))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.textview_single_hat_static_back))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.textview_single_hat_static_material_with_colon))
+                .check(matches(isDisplayed()));
+
+
+        onView(withId(R.id.fab_to_add_hat_to_cart))
+                .check(matches(isDisplayed()));
+
+
     }
+
 
 }

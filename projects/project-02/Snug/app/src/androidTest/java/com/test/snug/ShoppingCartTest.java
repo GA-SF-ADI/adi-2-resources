@@ -1,15 +1,15 @@
 package com.test.snug;
 
+/**
+ * Created by LangstonSmith on 7/17/16.
+ */
+
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-/**
- * Created by LangstonSmith on 7/15/16.
- */
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.clearText;
@@ -25,55 +25,41 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 
-public class MainActivityTest {
+
+public class ShoppingCartTest {
+
 
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
+    public ActivityTestRule<ShoppingCartActivity> shoppingCartActivityTestRule = new ActivityTestRule<ShoppingCartActivity>(ShoppingCartActivity.class);
 
 
     @Test
     public void testWhetherUIElementsAreVisible() throws Exception {
 
-
-        onView(withId(R.id.main_activity_toolbar))
+        onView(withId(R.id.shopping_activity_toolbar))
                 .check(matches(isDisplayed()));
 
-        onView(withId(R.id.button_item_in_main_activity_toolbar_to_view_cart))
+        onView(withId(R.id.textView_in_cart_saying_your_cart))
                 .check(matches(isDisplayed()));
 
-        onView(withId(R.id.app_logo_in_main_activity_toolbar))
+        onView(withId(R.id.fab_make_final_payment))
                 .check(matches(isDisplayed()));
 
-        onView(withId(R.id.searchview_item_in_main_activity_menu))
+        onView(withId(R.id.listview_of_cart_items))
                 .check(matches(isDisplayed()));
-
-        onView(withId(R.id.card_view))
-                .check(matches(isDisplayed()));
-
-
     }
 
     @Test
-    public void checkToSeeWhetherRecyclerViewerWorks() throws Exception {
+    public void checkToSeeIfListViewIsSwipable() throws Exception {
 
-        onView(withId(R.id.mainactivity_hat_recyclerview))
+        onView(withId(R.id.listview_of_cart_items))
+                .check(matches(isDisplayed()));
+
+        onView(withId(R.id.listview_of_cart_items))
                 .perform(swipeUp());
 
-
         onView(withId(R.id.mainactivity_hat_recyclerview))
                 .check(matches(isDisplayed()));
-
-    }
-
-
-    @Test
-    public void seeIfSearchViewOpens() throws Exception {
-
-        onView(withId(R.id.searchview_item_in_main_activity_menu))
-                .perform(click());
-
-        onView(withId(R.id.searchview_item_in_main_activity_menu))
-                .check(matches(hasFocus()));
 
     }
 

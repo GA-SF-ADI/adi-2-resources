@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +64,7 @@ public class SingleHatViewActivity extends AppCompatActivity {
 
 
         //FAB for adding hat to cart
-        FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton addToCartButton = (FloatingActionButton) findViewById(R.id.fab_to_add_hat_to_cart);
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
