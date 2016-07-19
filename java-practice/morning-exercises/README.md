@@ -141,7 +141,7 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 ### 21. Reverse a linked list using recursion.
 
-[Solution] (solutions/reverselinkedlistrecursion.java)
+[Solution] (solutions/recursion/reverselinkedlistrecursion.java)
 
 		
 
