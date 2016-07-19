@@ -26,28 +26,19 @@ public class MainActivity extends AppCompatActivity {
         setupApiService();
 
         mImage = (ImageView)findViewById(R.id.image);
-        mAccessToken = getIntent().getStringExtra(LoginActivity.INTENT_KEY_TOKEN);
 
-        instaGramService.getImage(mAccessToken).enqueue(new retrofit2.Callback<RecentMedia>() {
-            @Override
-            public void onResponse(retrofit2.Call<RecentMedia> call, retrofit2.Response<RecentMedia> response) {
-                RecentMedia recentMedia = response.body();
 
-                final String imageUrl = recentMedia.getData()[0].getImages().getStandard_resolution().getUrl();
+        mAccessToken = // TODO assign value;
 
-                Log.i(TAG, "onResponse imageUrl: " + imageUrl);
-                MainActivity.this.runOnUiThread(new Runnable(){
-                    @Override
-                    public void run() {
-                        Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
-                });
-            }
 
-            @Override
-            public void onFailure(retrofit2.Call<RecentMedia> call, Throwable t) {
+        // TODO: Make the getImage() api call using accessToken
 
-            }
-        });
+        // TODO: In onResponse() you can use Picasso to load image from url into mImage ImageView
+
+        // TODO: Use image url and pass to picasso like so.
+        //Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
+
+
     }
 
     private void setupApiService(){
