@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: Restore the state here
 
-
+//Sterling name goes into the bundle
         Button nameSubmitButton = (Button) findViewById(R.id.name_submit_button);
         nameSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    //puts the number of names saved inside of the bundle.
+    //shows how to "persist" data by using a bundle, very cool
     protected void onSaveInstanceState(Bundle outState) {
-        //TODO: Save the state here
-
+        outState.putInt("number of names saved",mTimesSaved);
         super.onSaveInstanceState(outState);
     }
-}
+    }
+
