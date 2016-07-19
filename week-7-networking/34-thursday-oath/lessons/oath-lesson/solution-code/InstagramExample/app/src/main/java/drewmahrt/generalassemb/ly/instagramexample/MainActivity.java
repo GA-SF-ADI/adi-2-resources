@@ -8,8 +8,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import drewmahrt.generalassemb.ly.instagramexample.models.RecentMedia;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -29,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         mImage = (ImageView)findViewById(R.id.image);
         mAccessToken = getIntent().getStringExtra(LoginActivity.INTENT_KEY_TOKEN);
-
-
+        
         instaGramService.getImage(mAccessToken).enqueue(new retrofit2.Callback<RecentMedia>() {
             @Override
             public void onResponse(retrofit2.Call<RecentMedia> call, retrofit2.Response<RecentMedia> response) {
@@ -51,44 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-        final OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url("https://api.instagram.com/v1/users/self/media/recent/?access_token="+mAccessToken)
-                .build();
-
-//        client.newCall(request).enqueue(new Callback() {
-//            @Override public void onFailure(Call call, IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            @Override public void onResponse(Call call, Response response) throws IOException {
-//                if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-//
-//                String responseBody = response.body().string();
-//                try {
-//                    JSONObject results = new JSONObject(responseBody);
-//                    JSONArray dataArray = results.getJSONArray("data");
-//                    JSONObject dataObject = dataArray.getJSONObject(0);
-//                    Log.d(LoginActivity.class.getName(),"Data Object: "+dataObject.toString());
-//                    JSONObject imagesObject = dataObject.getJSONObject("images");
-//                    JSONObject standardResObject = imagesObject.getJSONObject("standard_resolution");
-//                    final String imageUrl = standardResObject.getString("url");
-//                    Log.d(LoginActivity.class.getName(),"Image URL: "+standardResObject.getString("url"));
-//
-//                    MainActivity.this.runOnUiThread(new Runnable(){
-//                        @Override
-//                        public void run() {
-//                            Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
-//                    });
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
     }
 
     private void setupApiService(){
