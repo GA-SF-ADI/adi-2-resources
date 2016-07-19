@@ -26,7 +26,7 @@ public interface InstaGramService {
      */
     @FormUrlEncoded
     @POST("oauth/access_token")
-    Call<AuthenticationResponse> updateUser(
+    Call<AuthenticationResponse> postAccessCode(
             @Field("client_secret") String secret,
             @Field("client_id") String id,
             @Field("grant_type") String grantType,

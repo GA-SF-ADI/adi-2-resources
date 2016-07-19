@@ -15,6 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
+    private static final String INTENT_KEY_TOKEN = "accessToken";
+    private static final String INTENT_KEY_ID = "userId";
+
     private WebView mWebView;
     private InstaGramService instaGramService;
 
@@ -58,7 +61,9 @@ public class LoginActivity extends AppCompatActivity {
     private void getAccessToken(String code){
         Log.d(LoginActivity.class.getName(),"Trying to get access token");
 
-        Call<AuthenticationResponse> call = instaGramService.updateUser(InstagramAppData.CLIENT_SECRET,
+        // Pass in the form data for this post call
+        Call<AuthenticationResponse> call = instaGramService.postAccessCode(
+                InstagramAppData.CLIENT_SECRET,
                 InstagramAppData.CLIENT_ID,
                 InstagramAppData.AUTH_CODE_KEY,
                 InstagramAppData.CALLBACK_URL,
@@ -74,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i(TAG, "onResponse: successful access for " + user.getFullName());
 
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                intent.putExtra("accessToken",authenticationResponse.getToken());
-                intent.putExtra("userId", user.getId());
+                intent.putExtra(INTENT_KEY_TOKEN,authenticationResponse.getToken());
+                intent.putExtra(INTENT_KEY_ID, user.getId());
                 startActivity(intent);
             }
 
