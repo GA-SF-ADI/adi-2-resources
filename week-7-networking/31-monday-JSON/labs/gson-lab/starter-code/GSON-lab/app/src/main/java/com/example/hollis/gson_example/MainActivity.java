@@ -119,9 +119,11 @@ public class MainActivity extends AppCompatActivity {
         createMarvelResult();
         Gson gson = new Gson();
         Root root = gson.fromJson(WEATHER_JSON,Root.class);
+        RootMusic rootMusic = gson.fromJson(SPOTIFY_JSON, RootMusic.class);
 
         Log.i("Tag", gson.toJson(marvelResult));
         Log.i("Tag", gson.toJson(root));
+        Log.i("Tag", gson.toJson(rootMusic));
     }
 
     public void createMarvelResult(){
