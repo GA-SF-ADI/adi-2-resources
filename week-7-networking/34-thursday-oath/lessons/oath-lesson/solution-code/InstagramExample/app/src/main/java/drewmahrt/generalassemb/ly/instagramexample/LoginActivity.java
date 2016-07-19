@@ -15,8 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
-    private static final String INTENT_KEY_TOKEN = "accessToken";
-    private static final String INTENT_KEY_ID = "userId";
+    public static final String INTENT_KEY_TOKEN = "accessToken";
+    public static final String INTENT_KEY_ID = "userId";
 
     private WebView mWebView;
     private InstaGramService instaGramService;

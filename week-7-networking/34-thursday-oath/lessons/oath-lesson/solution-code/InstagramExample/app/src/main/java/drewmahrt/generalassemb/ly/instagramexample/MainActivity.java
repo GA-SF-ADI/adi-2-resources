@@ -1,11 +1,7 @@
 package drewmahrt.generalassemb.ly.instagramexample;
 
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.provider.SyncStateContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -19,15 +15,12 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private static String mAccessToken;
+    private String mAccessToken;
     private ImageView mImage;
 
     @Override
@@ -37,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         mImage = (ImageView)findViewById(R.id.image);
 
-        mAccessToken = getIntent().getStringExtra("accessToken");
+        mAccessToken = getIntent().getStringExtra(LoginActivity.INTENT_KEY_TOKEN);
 
         final OkHttpClient client = new OkHttpClient();
 
