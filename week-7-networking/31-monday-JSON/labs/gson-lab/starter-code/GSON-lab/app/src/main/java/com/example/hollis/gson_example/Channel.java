@@ -16,7 +16,7 @@ public class Channel {
     private Atmosphere atmosphere;
     private Astronomy astronomy;
     private Image image;
-    private Item [] item;
+    private Item item;
 
     public Units getUnits() {
         return units;
@@ -114,11 +114,11 @@ public class Channel {
         this.image = image;
     }
 
-    public Item[] getItem() {
-        return item;
-    }
-
-    public void setItem(Item[] item) {
-        this.item = item;
-    }
+//    public Item[] getItem() {
+//        return item;
+//    }
+//
+//    public void setItem(Item[] item) {
+//        this.item = item;
+//    }
 }

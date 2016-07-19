@@ -11,9 +11,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Item {
     private String title;
-    private long lat;
+    private double lat;
     @SerializedName("long")
-    private long longitude;
+    private double longitude;
     private String link;
     private String pubDate;
     private Condition condition;

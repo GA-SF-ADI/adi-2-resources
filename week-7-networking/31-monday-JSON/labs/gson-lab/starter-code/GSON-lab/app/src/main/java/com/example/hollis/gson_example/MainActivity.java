@@ -122,8 +122,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         final Weather weather = gson.fromJson(WEATHER_JSON, Weather.class);
         weather.getQuery().getResults().getChannel().getAstronomy().getSunrise();
-        Log.d("MainActivity", "onCreate: info" + weather.getQuery().getResults().getChannel().getAstronomy().getSunrise()
-        );
+        Log.d("MainActivity", "onCreate: info" + weather.getQuery().getResults().getChannel().getAstronomy().getSunrise());
     }
 
     public void createMarvelResult(){
