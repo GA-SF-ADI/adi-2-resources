@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("Tag", gson.toJson(marvelResult));
         Log.i("Tag", gson.toJson(root));
-        Log.i("Tag", gson.toJson(rootMusic));
+        //Log.i("Tag", gson.toJson(rootMusic));
         Button button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -137,9 +137,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printAll (RootMusic rootMusic) {
-        if (rootMusic == null) {
-            return;
-        }
+//        if (rootMusic == null) {
+//            return;
+//        }
+        Gson gson = new Gson();
+        Log.i("Tag", gson.toJson(rootMusic));
     }
 
 //    for (ArrayMusic arrMusic : rootMusic.getArrayMusic()) {
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 //}
-//  
+//
 
     public void createMarvelResult(){
         MarvelCharacter cyclops = new MarvelCharacter("Cyclops", 32, "laser vision");
