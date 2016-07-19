@@ -5,6 +5,10 @@ package drewmahrt.generalassemb.ly.instagramexample;
  */
 public class InstagramAppData {
     public static final String CLIENT_ID = "caabe893411f4446b611e5148beb5e9d";
-    public static final String CLIENT_SECRET = "8bc2b08a43ec4f7586149f382e7d1a13";
+    public static final String CLIENT_SECRET = "e70596def0b04700b38a19048594e585";
     public static final String CALLBACK_URL = "http://localhost:3000";
+    public static final String AUTH_CODE_KEY = "authorization_code";
+
+
+    public static final String BASE_URL = "https://api.instagram.com/";
 }
