@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        mWebView.loadUrl("https://instagram.com/oauth/authorize/?client_id="+ InstagramAppData.CLIENT_ID +"&redirect_uri="+ InstagramAppData.CALLBACK_URL  +"&response_type=code&scope=public_content");
+        mWebView.loadUrl( /* Put URL here */ );
     }
 
     private void setupInstaGramApiService(){
@@ -63,31 +63,18 @@ public class LoginActivity extends AppCompatActivity {
 
         // Pass in the form data for this post call
         Call<AuthenticationResponse> call = instaGramService.postAccessCode(
-                InstagramAppData.CLIENT_SECRET,
-                InstagramAppData.CLIENT_ID,
-                InstagramAppData.AUTH_CODE_KEY,
-                InstagramAppData.CALLBACK_URL,
-                code);
+                /* Include CLIENT_SECRET */,
+                /* Include CLIENT_ID */,
+                /* Include AUTH_CODE_KEY */,
+                /* Include CALLBACK_URL */,
+                /* Include code */);
 
-        call.enqueue(new retrofit2.Callback<AuthenticationResponse>() {
-            @Override
-            public void onResponse(retrofit2.Call<AuthenticationResponse> call, retrofit2.Response<AuthenticationResponse> response) {
-                // grab the two objects from the response
-                AuthenticationResponse authenticationResponse = response.body();
-                InstaGramUser user = authenticationResponse.getUser();
+        // TODO: run the call on a worker thread asynchronously
 
-                Log.i(TAG, "onResponse: successful access for " + user.getFullName());
+        // TODO: On sucessful response, get AuthenticationResponse object from the response object
+        // TODO: Get your user from AuthenticationResponse
 
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                intent.putExtra(INTENT_KEY_TOKEN,authenticationResponse.getToken());
-                intent.putExtra(INTENT_KEY_ID, user.getId());
-                startActivity(intent);
-            }
+        // TODO: Put extras into intents using provided keys at top of file and launch MainActivity
 
-            @Override
-            public void onFailure(retrofit2.Call<AuthenticationResponse> call, Throwable t) {
-                Log.e(TAG, "onFailure: getting access token");
-            }
-        });
     }
 }
