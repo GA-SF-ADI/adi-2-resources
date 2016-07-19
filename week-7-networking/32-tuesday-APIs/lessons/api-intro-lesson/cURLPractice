@@ -23,3 +23,32 @@ http://www.omdbapi.com/?s=iron&type=series
 http://www.omdbapi.com/?s=the&type=movie&y=2001
 
 {"Response":"False","Error":"Too many results."}
+
+
+API key
+b663911c8dc0aa8906fe75c80e89eabc
+
+1. Get NY
+2. SF
+Two Types of API calls
+First
+https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
+Second
+https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE,TIME
+
+
+Result for longitude and latitude of NYC
+40.7128° N, 74.0059° W
+
+https://api.forecast.io/forecast/b663911c8dc0aa8906fe75c80e89eabc/40.7128, -74.0059
+
+Result for longitude and latitude of SF
+37.7749° N, 122.4194° W
+
+https://api.forecast.io/forecast/b663911c8dc0aa8906fe75c80e89eabc/37.7749,-122.4194
+
+Result for temperature in NY in 1969- cool! (used the UNIX timestamp converter)
+http://www.unixtimestamp.com/index.php
+https://api.forecast.io/forecast/b663911c8dc0aa8906fe75c80e89eabc/40.7128, -74.0059, -27880498
+
+
