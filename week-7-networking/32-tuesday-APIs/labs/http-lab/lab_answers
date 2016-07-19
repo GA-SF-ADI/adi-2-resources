@@ -1,0 +1,15 @@
+Login => home
+Data - username, password
+method-Post
+
+Status update => profile status
+Data- update text
+Method - Post/Put
+
+Search=> results
+Data - query
+Method Get
+
+add picture => pictures
+data - picture
+Method - Put
