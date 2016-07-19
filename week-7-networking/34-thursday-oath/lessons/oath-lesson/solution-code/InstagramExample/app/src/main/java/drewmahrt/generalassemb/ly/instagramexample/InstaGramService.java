@@ -1,10 +1,13 @@
 package drewmahrt.generalassemb.ly.instagramexample;
 
 import drewmahrt.generalassemb.ly.instagramexample.models.AuthenticationResponse;
+import drewmahrt.generalassemb.ly.instagramexample.models.RecentMedia;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Interface for Instagram API's
@@ -32,4 +35,13 @@ public interface InstaGramService {
             @Field("grant_type") String grantType,
             @Field("redirect_uri") String redirect,
             @Field("code") String code);
+
+    /**
+     * Return the recent media
+     *
+     * @param token
+     * @return
+     */
+    @GET("v1/users/self/media/recent/")
+    Call<RecentMedia> getImage(@Query("access_token") String token);
 }
