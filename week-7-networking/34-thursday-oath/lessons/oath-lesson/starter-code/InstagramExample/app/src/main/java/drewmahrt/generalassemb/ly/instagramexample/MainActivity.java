@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Use image url and pass to picasso like so.
         //Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
 
+        // HINT: Use RecentMedia model to get image url
 
     }
 
