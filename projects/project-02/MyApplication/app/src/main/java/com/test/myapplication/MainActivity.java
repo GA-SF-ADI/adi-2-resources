@@ -107,19 +107,19 @@ public class MainActivity extends AppCompatActivity {
     public void addData(){
         if(mHelper.getAlcoholList().getCount()==0) {
 
-            int resID = getResources().getIdentifier("jameson" , "drawable", getPackageName());
-            int resID1 = getResources().getIdentifier("greygoose" , "drawable", getPackageName());
-            int resID2 = getResources().getIdentifier("patron" , "drawable", getPackageName());
-            int resID3 = getResources().getIdentifier("jwblue" , "drawable", getPackageName());
-            int resID4 = getResources().getIdentifier("bacardi" , "drawable", getPackageName());
-            int resID5 = getResources().getIdentifier("macallan" , "drawable", getPackageName());
-            int resID6 = getResources().getIdentifier("makersmark" , "drawable", getPackageName());
-            int resID7 = getResources().getIdentifier("hennessy" , "drawable", getPackageName());
-            int resID8 = getResources().getIdentifier("remy" , "drawable", getPackageName());
-            int resID9 = getResources().getIdentifier("bombay" , "drawable", getPackageName());
-            int resID10 = getResources().getIdentifier("kahlua" , "drawable", getPackageName());
-            int resID11 = getResources().getIdentifier("fireball" , "drawable", getPackageName());
-            int resID12 = getResources().getIdentifier("hibiki" , "drawable", getPackageName());
+            int resID = R.drawable.jameson;
+            int resID1 = R.drawable.greygoose;
+            int resID2 = R.drawable.patron;
+            int resID3 = R.drawable.jwblue;
+            int resID4 = R.drawable.bacardi;
+            int resID5 = R.drawable.macallan;
+            int resID6 = R.drawable.makersmark;
+            int resID7 = R.drawable.hennessy;
+            int resID8 = R.drawable.remy;
+            int resID9 = R.drawable.bombay;
+            int resID10 = R.drawable.kahlua;
+            int resID11 = R.drawable.fireball;
+            int resID12 = R.drawable.hibiki;
 
 
             Alcohol jameson = new Alcohol("Jameson", 23, 40, "Blended Irish whiskey. Pretty good. My go to for the value.", resID, 1);
