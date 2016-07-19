@@ -16,6 +16,8 @@ At the top right corner you will see a green button for `Register A New Client`.
 
 Then fill in the information like from the image below, don't use `LocalGram` as a name.. use something without `gram` or insta in the name.
 
+For the **redirect uri** you should jsut copy and paste the website url into the field and make sure it has the little box with an `x` option just like in the image. Otherwise the site has issues..
+
 ![](ig_homework.png)
 
 
