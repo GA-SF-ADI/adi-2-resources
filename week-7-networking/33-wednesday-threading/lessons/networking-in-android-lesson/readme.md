@@ -151,7 +151,7 @@ Next, in the MainActivity, we'll use this interface. First, create a variable to
 
 
 ```java
-private static String baseUrl = "https://api.github.com";
+private static String baseUrl = "https://api.github.com/";
 ```
 
 Then, we create a Retrofit service in our MainActivity, and add GsonConverter for json parsing:
