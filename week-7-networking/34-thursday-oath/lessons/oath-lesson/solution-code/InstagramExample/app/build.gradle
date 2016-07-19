@@ -26,5 +26,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.android.support:design:23.3.0'
+
+    // Gson and Gson for retrofit
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    // Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    // Picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
 }
