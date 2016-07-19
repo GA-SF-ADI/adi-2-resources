@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         mImage = (ImageView)findViewById(R.id.image);
         mAccessToken = getIntent().getStringExtra(LoginActivity.INTENT_KEY_TOKEN);
-        
+
         instaGramService.getImage(mAccessToken).enqueue(new retrofit2.Callback<RecentMedia>() {
             @Override
             public void onResponse(retrofit2.Call<RecentMedia> call, retrofit2.Response<RecentMedia> response) {
