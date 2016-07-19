@@ -3,9 +3,12 @@ package com.test.apilab;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
+    private Gson gson;
 
     public static final String CURRENTLOCATION_JSON = "{ \"photos\": { \"page\": 1, \"pages\": \"2436\", \"perpage\": 100, \"total\": \"243558\", \n" +
             "    \"photo\": [\n" +
@@ -114,5 +117,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView textView = (TextView) findViewById(R.id.textview);
+
+        gson = new Gson();
+        final Array array = gson.fromJson(CURRENTLOCATION_JSON, Array.class);
+        Log.i("MainActivity", "Array(root) " + array.getStat());
+        printJsonString(array);
+        
+
+
+    }
+
+    private void printJsonString (Array array) {
+        String jsonString = gson.toJson(array);
+        Log.i("Main", jsonString);
     }
 }
