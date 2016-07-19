@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String baseUrl = "https://api.github.com";
+    private static String baseUrl = "https://api.github.com/";
     EditText editText;
     Button button;
     TextView nameView, locationView, companyView;
