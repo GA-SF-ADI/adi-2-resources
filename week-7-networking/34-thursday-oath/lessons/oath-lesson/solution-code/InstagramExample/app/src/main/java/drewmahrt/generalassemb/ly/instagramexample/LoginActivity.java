@@ -10,6 +10,8 @@ import android.webkit.WebViewClient;
 import drewmahrt.generalassemb.ly.instagramexample.models.AuthenticationResponse;
 import drewmahrt.generalassemb.ly.instagramexample.models.InstaGramUser;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -45,7 +47,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        mWebView.loadUrl(/* Include your url here */);
+        mWebView.loadUrl("https://instagram.com/oauth/authorize/?client_id="+ InstagramAppData.CLIENT_ID +"&redirect_uri="+ InstagramAppData.CALLBACK_URL  +"&response_type=code&scope=public_content");
+
     }
 
     private void setupInstaGramApiService(){
@@ -63,15 +66,30 @@ public class LoginActivity extends AppCompatActivity {
 
         // Pass in the form data for this post call
         Call<AuthenticationResponse> call = instaGramService.postAccessCode(
-                /* TODO Include CLIENT_SECRET */,
-                /* TODO Include CLIENT_ID */,
-                /* TODO Include AUTH_CODE_KEY */,
-                /* TODO Include CALLBACK_URL */,
-                /* TODO Include code */);
+                InstagramAppData.CLIENT_SECRET,
+                InstagramAppData.CLIENT_ID,
+                InstagramAppData.AUTH_CODE_KEY,
+                InstagramAppData.CALLBACK_URL,
+                code);
 
-        // TODO: make the api call on seprate worker thread
+        call.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+                AuthenticationResponse authenticationResponse = response.body();
+                InstaGramUser user = authenticationResponse.getUser();
 
-        // TODO: From response grab token and user id and send them as intent extras when launching MainActivity
+                Log.i(TAG, "onResponse data from user: " + user.getFullName());
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra(INTENT_KEY_TOKEN, authenticationResponse.getToken());
+                intent.putExtra(INTENT_KEY_ID, user.getId());
+                startActivity(intent);
+                finish();
+            }
 
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+                Log.i(TAG, "onFailure: Failed to get auth token");
+            }
+        });
     }
 }
