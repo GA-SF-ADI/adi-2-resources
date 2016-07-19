@@ -3,6 +3,8 @@ package com.example.hollis.gson_example;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.gson.Gson;
 
@@ -119,12 +121,34 @@ public class MainActivity extends AppCompatActivity {
         createMarvelResult();
         Gson gson = new Gson();
         Root root = gson.fromJson(WEATHER_JSON,Root.class);
-        RootMusic rootMusic = gson.fromJson(SPOTIFY_JSON, RootMusic.class);
+        final RootMusic rootMusic = gson.fromJson(SPOTIFY_JSON, RootMusic.class);
 
         Log.i("Tag", gson.toJson(marvelResult));
         Log.i("Tag", gson.toJson(root));
         Log.i("Tag", gson.toJson(rootMusic));
+        Button button = (Button) findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printAll(rootMusic);
+            }
+        });
     }
+
+    private void printAll (RootMusic rootMusic) {
+        if (rootMusic == null) {
+            return;
+        }
+    }
+
+//    for (ArrayMusic arrMusic : rootMusic.getArrayMusic()) {
+//        for (Artists artists : arrMusic.getArtists()) {
+//            Log.i("Main Act", "Artists" + artists.getName());
+//        }
+//    }
+//}
+//  
 
     public void createMarvelResult(){
         MarvelCharacter cyclops = new MarvelCharacter("Cyclops", 32, "laser vision");
@@ -133,6 +157,6 @@ public class MainActivity extends AppCompatActivity {
         MarvelTeam xmen = new MarvelTeam("X-men", "Xavier's School For Gifted Children", new MarvelCharacter[]{cyclops, wolverine});
         MarvelTeam avengers = new MarvelTeam("Avengers", "Avengers Mansion", new MarvelCharacter[]{thor, wolverine});
         marvelResult = new MarvelResult(new MarvelTeam[]{xmen, avengers});
-
     }
+
 }
