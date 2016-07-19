@@ -22,5 +22,4 @@ public class DetailsActivity extends AppCompatActivity {
       Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + sign + "/"));
       startActivity(browserIntent);
     }
-  }
-}
+}}
