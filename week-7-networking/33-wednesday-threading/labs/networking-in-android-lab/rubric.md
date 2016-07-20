@@ -7,17 +7,12 @@
 
 | Requirements | Incomplete (0) | Does Not Meet Expectations (1) | Meets Expectations (2) |
 |---|---|---|---|---|
-| Your app should contain three buttons: tea, chocolate, cereal | | | |
+| Your app uses custom classes based on the JSON from the API | | | |
 | Your app should check if the connection is available | | | |
-| Your app should contain one ListView that will get populated with product names pulled from the Walmart API endpoint |
-| Use `AsyncTask` to pull the data from the API | | |  |
-| The ListView should get updated on the UI thread |
-| When one AsyncTask gets fired, make sure you will cancel other AsyncTasks that may be making HTTP requests | | |  |
+| Your app should use an Interface for the OpenWeatherAPI |
+| Your app uses Retrofit to display data based on user input | | |  |
 
 
-| Bonus | Complete|
-|---|---|
-| In addition to the name of products, show the prices of the corresponding products | |
 
 
 Notes:
