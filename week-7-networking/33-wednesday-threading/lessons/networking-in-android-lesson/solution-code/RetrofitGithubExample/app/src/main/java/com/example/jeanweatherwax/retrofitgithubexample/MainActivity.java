@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         editText = (EditText) findViewById(R.id.edit_user);
         button = (Button) findViewById(R.id.button);
-
         nameView = (TextView) findViewById(R.id.name);
         locationView = (TextView) findViewById(R.id.email);
         companyView = (TextView) findViewById(R.id.company);
