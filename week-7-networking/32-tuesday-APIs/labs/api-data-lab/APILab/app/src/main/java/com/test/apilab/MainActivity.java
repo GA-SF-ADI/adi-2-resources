@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         final Array array = gson.fromJson(CURRENTLOCATION_JSON, Array.class);
         Log.i("MainActivity", "Array(root) " + array.getStat());
         printJsonString(array);
-        
+
 
 
     }
