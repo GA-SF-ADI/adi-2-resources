@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,17 +31,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final EditText citySearchEditText = (EditText) findViewById(R.id.edittext);
+        Button fetchWeatherButton = (Button) findViewById(R.id.button);
+
+        fetchWeatherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            
+                String userCitySearch = citySearchEditText.getText().toString();
+
+                getForecastForCity(userCitySearch);
+
+            }
+        });
+
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            Button fetchWeatherButton = (Button) findViewById(R.id.button);
+
 
             fetchWeatherButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    getForecastForCity();
+
 
                 }
             });
@@ -60,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getForecastForCity(String cityName) {
 
-        String baseUrl = "https://api.openweathermap.org";
+        String baseUrl = "https://api.openweathermap.org/";
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -76,17 +92,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast> response) {
 
+
                 try {
 
                     String finalCityName = response.body().getName();
 
-                    String finalWeather = response.body().getWeather().ge
+                    String finalWeather = response.body().getWeather().get(0).getDescription();
 
                     Integer finalPressure = response.body().getMain().getPressure();
 
                     Integer finalHumidity = response.body().getMain().getHumidity();
 
-                    double finalTemp = response.body().getMain().getTemp();
+                    Double finalTemp = response.body().getMain().getTemp();
 
 
                     TextView finalCityNameView = (TextView) findViewById(R.id.city);
@@ -96,13 +113,11 @@ public class MainActivity extends AppCompatActivity {
                     TextView finalCityTempView = (TextView) findViewById(R.id.temperature);
 
 
-
                     finalCityNameView.setText(finalCityName);
                     finalCityWeatherView.setText(finalWeather);
                     finalCityPressureView.setText(finalPressure);
                     finalCityHumidityView.setText(finalHumidity);
-                    finalCityTempView.setText(finalTemp);
-
+                    finalCityTempView.setText(finalTemp.toString());
 
 
                 } catch (Exception e) {
@@ -112,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Forecast> call, Throwable t) {
 
             }
         });

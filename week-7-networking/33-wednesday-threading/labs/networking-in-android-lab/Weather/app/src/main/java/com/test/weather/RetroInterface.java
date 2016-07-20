@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 public interface RetroInterface {
 
 
-        @GET("/data/2.5/weather")
+        @GET("data/2.5/weather")
         Call<Forecast> getForecast(
                 @Query("q") String cityName,
                 @Query("appid") String appId);
