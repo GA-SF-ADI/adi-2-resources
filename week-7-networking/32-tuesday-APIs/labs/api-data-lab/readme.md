@@ -27,9 +27,7 @@ Allocate 15 minutes for each task.
 
 **Bonus**:
 
-- For each task/API endpoint, write Java code that calls the API and returns a JSON object
-- For task #1, using IntelliJ, write a script that hits the API endpoint you've identified, loops through the returned data, and prints out (to the console) just the URL of each cat image
-- For task #3, using IntelliJ, write a script that hits the API endpoint you've identified, loops through the returned comments for the first photo at your current lat/long, and prints out (to the console) the first word of each comment...backwards!
+- For each task/API endpoint, write Java code that takes in the JSON result and creates a Java Object (GSON!)
 
 
 #### Requirements

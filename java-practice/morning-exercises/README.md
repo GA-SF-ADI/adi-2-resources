@@ -139,5 +139,9 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 [Solution](solutions/recursion/Fibonacci.java)
 
+### 21. Reverse a linked list using recursion.
+
+[Solution] (solutions/recursion/reverselinkedlistrecursion.java)
+
 		
 

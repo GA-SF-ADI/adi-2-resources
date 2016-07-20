@@ -1,20 +1,21 @@
 ---
-title: Making an HTTP call from Android
+title: Making a Weather App with Retrofit
 type: lab
 duration: "1:30"
 creator:
-    name: Yuliya Kaleda
-    city: NYC
+    name: Jean Weatherwax
+    city: San Francisco
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Making an HTTP call from Android
 
 ## Introduction
 
+> ***Note:*** _This can be a pair programming activity or done independently._
 
-In this lab, you will be building an app that sends a GET request to pull information from the Walmart API. You will be working with the search endpoint of the API and using it to find and display information about tea, cereal, and chocolate products.
+In this lab, you will be building an app that sends a GET request to pull information from about the weather based on a city EditText entry from the user. You will be working with the search endpoint of the API and using it to find and display information about the weather, and you will use queries with Retrofit.
 
-You'll need to generate your own API key to build your app with three buttons (tea, chocolate, cereal) and a list view. When the button is clicked the list view gets populated with the information about the appropriate products using data from the API.  
+You'll need to generate your own API key for this lab (see below).  
 
 Your app doesn't need to look like the deliverable below, but it needs to have the same functionality.
 
@@ -22,29 +23,32 @@ Your app doesn't need to look like the deliverable below, but it needs to have t
 
 #### Requirements
 
-- register your _development_ app and get an API key from the [Walmart Labs Developer Page](https://developer.walmartlabs.com/member)
-- [read up](https://developer.walmartlabs.com/io-docs) on the `search` endpoint for how to structure your API call
-- your app should contain three buttons: tea, chocolate, cereal
-- your app should contain one ListView that will get populated with product names pulled from the Walmart API endpoint
-- make sure the app is thread safe:
+- register (free) with  app and get an API key from the [OpenWeatherMap API](https://home.openweathermap.org). 
+- Read some of the basic [API Documentation](http://openweathermap.org/current) for the current weather API. 
+- Your App will have an EditText for a city input, and 4 TextViews that will display the city name, weather description, humidity, pressure, and temperature. 
+- If you're unsure of how to use the user input for city query, read how to use @Query with Retrofit to use a text input here in the [documentation](http://square.github.io/retrofit/) for Retrofit.
+- Make models for each of the necessary classes using http://www.jsonschema2pojo.org/
+- Make an interface for the API and use it with Retrofit in your MainActivity to display the requirements
 
-  * check if the connection is available
-  * use `AsyncTask` to pull the data from the API
-  * the ListView should get updated on the UI thread
-  * when one AsyncTask gets fired, make sure you will cancel other AsyncTasks that may be making HTTP requests
+  * make sure to also check if the connection is available!
 
-**Bonus:**
 
-- in addition to the name of products, show the prices of the corresponding products
+If you get stuck, you may peek at the sample solution.
 
 #### Deliverable
 
-Here is a gif that demonstrates what the app's functionality should look like:
+Here is an image of an example working app:
 
 <p align="center">
-  <img src="./screenshots/networking-lab.gif" width="320">
+  <img src="./screenshots/startofactivity.png" width="320">
+</p>
+
+<p align="center">
+  <img src="./screenshots/seattle.png" width="320">
 </p>
 
 ## Resources
 
-[Walmart API Docs](https://developer.walmartlabs.com/io-docs)
+[OpenWeatherMap API](https://home.openweathermap.org)
+
+[Retrofit](http://square.github.io/retrofit/)
