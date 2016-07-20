@@ -20,24 +20,50 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar = (ProgressBar)findViewById(R.id.progress);
         mTextView = (TextView)findViewById(R.id.text);
 
+//        DatabaseAsyncTask databaseAsyncTask = new DatabaseAsyncTask(mProgressBar,mTextView);
         Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextView.setText("Adding items to database...");
-                mProgressBar.setVisibility(View.VISIBLE);
-                addDatabaseItems();
-                int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
-                mProgressBar.setVisibility(View.INVISIBLE);
-                mTextView.setText("All items added to database! Current item count: "+count);
+                new DatabaseAsync().execute("john","doe");
             }
         });
+
     }
 
-    public void addDatabaseItems(){
-        for (int i = 0; i < 1000; i++) {
-            ExampleDBHelper.getInstance(getApplicationContext()).addName("John","Doe");
+    private class DatabaseAsync extends AsyncTask<String,Integer,Integer>{
+        @Override
+        protected void onPreExecute() {
+            mTextView.setText("Adding names");
+            mProgressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setProgress(0);
+            mProgressBar.setMax(1000);
+
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Integer doInBackground(String... params) {
+            String firstName = params[0];
+            String lastName = params[1];
+
+            for (int i = 0; i < 1000; i++) {
+                ExampleDBHelper.getInstance(getApplicationContext()).addName(firstName,lastName);
+            }
+
+            int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
+
+            return count;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            mProgressBar.setVisibility(View.INVISIBLE);
+
+            mTextView.setText("All items added to database! Current item count: "+integer);
+            super.onPostExecute(integer);
         }
     }
+
 
 }
