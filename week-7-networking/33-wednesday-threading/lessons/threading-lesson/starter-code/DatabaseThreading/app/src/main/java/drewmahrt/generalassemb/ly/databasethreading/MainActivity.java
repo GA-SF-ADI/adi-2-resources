@@ -24,12 +24,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextView.setText("Adding items to database...");
-                mProgressBar.setVisibility(View.VISIBLE);
-                addDatabaseItems();
-                int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
-                mProgressBar.setVisibility(View.INVISIBLE);
-                mTextView.setText("All items added to database! Current item count: "+count);
+                DatabaseAsyncTask asyncTask = new DatabaseAsyncTask();
+                asyncTask.execute();
             }
         });
     }
@@ -39,5 +35,62 @@ public class MainActivity extends AppCompatActivity {
             ExampleDBHelper.getInstance(getApplicationContext()).addName("John","Doe");
         }
     }
+
+    private class DatabaseAsyncTask extends AsyncTask<String,Void,Integer> {
+
+        private int count;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //TODO: Change text to indicate items are being added
+            mTextView.setText("Adding items to database...");
+
+            //TODO: Make progress bar visible
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Integer doInBackground(String... params) {
+            //TODO: Add items to database
+            addDatabaseItems();
+            //TODO: Return number of items in the database
+            count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
+            return count;
+        }
+
+        @Override
+        protected void onPostExecute(Integer count) {
+            super.onPostExecute(count);
+            //TODO: Hide progress bar
+            mProgressBar.setVisibility(View.INVISIBLE);
+            //TODO: Update text to indicate all items are added, and display the current count
+            mTextView.setText("All items added to database! Current item count: "+count);
+        }
+    }
+
+//    private class ExampleAsync extends AsyncTask<Double, String, Float> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Float aVoid) {
+//            super.onPostExecute(aVoid);
+//        }
+//
+//        @Override
+//        protected void onProgressUpdate(String... values) {
+//            super.onProgressUpdate(values);
+//        }
+//
+//        @Override
+//        protected Float doInBackground(Double... params) {
+//
+//            publishProgress();
+//            return null;
+//        }
+//    }
 
 }
