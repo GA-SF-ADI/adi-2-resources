@@ -18,16 +18,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mProgressBar = (ProgressBar)findViewById(R.id.progress);
-        mTextView = (TextView)findViewById(R.id.text);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress);
+        mTextView = (TextView) findViewById(R.id.text);
 
-        Button button = (Button)findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 MyDatabaseAsyncTask myDatabaseAsyncTask = new MyDatabaseAsyncTask();
                 myDatabaseAsyncTask.execute();
+                //don't make it a global variable because asynctasks can only run once
 
 
             }
@@ -35,9 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         //how to create an asynctask
         DatabaseAsyncTask asyncTask = new DatabaseAsyncTask();
-        asyncTask.execute("John" , "Doe");
+        asyncTask.execute("John", "Doe");
         //can pass in multiple strings because String...params
-
     }
 
     public class MyDatabaseAsyncTask extends AsyncTask<Void, Integer, Integer> {
@@ -55,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         //this is the worker thread that sends information to UI thread
-        protected Integer doInBackground(Void...params) {
+        protected Integer doInBackground(Void... params) {
             //worker thread
             //String stringName = params[0];
             for (int i = 0; i < 1000; i++) {
                 ExampleDBHelper.getInstance(getApplicationContext()).addName("Audrey", "Rainbow");
                 //publish progress takes an int (i)
                 publishProgress(i); // every time it is called , will activate onProgressUpdate on UI thread
-               // mProgressBar.setProgress(i);... this won't work because you have to publish it
+                //mProgressBar.setProgress(i);//... this won't work because you have to publish it.. can't touch UI
             }
             int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
             return count;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         //this is the method that does the updating
         protected void onProgressUpdate(Integer... values) {
             //UI thread
-            mProgressBar.setProgress(values [0]);
+            mProgressBar.setProgress(values[0]);
             super.onProgressUpdate(values);
         }
 
@@ -80,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Integer myCount) {
             //UI thread
             mProgressBar.setVisibility(View.INVISIBLE);
-            mTextView.setText("All items added to database! Current item count: "+ myCount);
+            mTextView.setText("All items added to database! Current item count: " + myCount);
             super.onPostExecute(myCount);
         }
 
-            }
-
     }
+
+}
 
 
