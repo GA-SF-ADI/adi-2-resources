@@ -13,13 +13,15 @@
         android:id="@+id/edit_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your username" />
+        android:fontFamily="casual"
+        android:hint="Enter a city of your choice!" />
 
     <Button
         android:id="@+id/city_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_user"
+        android:fontFamily="casual"
         android:text="What's the Weather?" />
 
     <TextView
@@ -29,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/city_button"
-        android:text="cityname"/>
+        android:fontFamily="casual" />
 
 
     <TextView
@@ -38,6 +40,7 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:layout_below="@+id/city_name" />
 
     <TextView
@@ -46,6 +49,7 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:layout_below="@+id/weather_descrip" />
 
     <TextView
@@ -54,6 +58,7 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:layout_below="@+id/humidity" />
 
     <TextView
@@ -62,5 +67,6 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:layout_below="@+id/pressure" />
 </RelativeLayout>

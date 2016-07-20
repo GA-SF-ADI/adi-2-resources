@@ -76,15 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
                         String name = response.body().getName();
                         Log.d("cityname", name);
-                        cityView.setText("City Name" + name);
+                        cityView.setText("City Name " + name);
                         String weatherDescription = response.body().getWeather().get(0).getDescription().toString();
-                        weatherDescriptionView.setText("Weather" + weatherDescription);
+                        weatherDescriptionView.setText("Weather " + weatherDescription);
                         String humidity = response.body().getMain().getHumidity().toString();
-                        humidityView.setText("Humidity" + humidity);
+                        humidityView.setText("Humidity " + humidity);
                         String pressure = response.body().getMain().getPressure().toString();
-                        pressureView.setText("Pressure" + pressure);
+                        pressureView.setText("Pressure " + pressure);
                         String temperature = response.body().getMain().getTemp().toString();
-                        temperatureView.setText("Temperature" + temperature);
+                        temperatureView.setText("Temperature " + temperature);
                         String windSpeed = response.body().getWind().getSpeed().toString();
 
 
