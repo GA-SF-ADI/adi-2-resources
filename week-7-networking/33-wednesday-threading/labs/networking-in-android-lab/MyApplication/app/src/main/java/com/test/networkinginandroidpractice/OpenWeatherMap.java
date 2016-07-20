@@ -5,9 +5,11 @@ package com.test.networkinginandroidpractice;
  */
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
+
 public interface OpenWeatherMap {
 
-    @GET("/weather/{weather}")
-    Call<Weather>getWeather(@Path("weather")String weather);
+    @GET("/data/2.5/weather")
+    Call<Example>getWeather(@Query("q") String cityName,
+                            @Query("APPID") String apiKey);
 }
