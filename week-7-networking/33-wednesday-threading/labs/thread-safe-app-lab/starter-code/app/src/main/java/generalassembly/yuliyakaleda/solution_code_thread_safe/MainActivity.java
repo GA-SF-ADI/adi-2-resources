@@ -102,8 +102,14 @@ public class MainActivity extends AppCompatActivity{
       //Loop through each pixel, and invert the colors
       for (int i = 0; i < mutableBitmap.getWidth(); i++) {
         for(int j = 0; j < mutableBitmap.getHeight(); j++){
-          //TODO: Get the Red, Green, and Blue values for the current pixel, and reverse them
-          //TODO: Set the current pixel's color to the new, reversed value
+          // Get the Red, Green, and Blue values for the current pixel, and reverse them
+          // Set the current pixel's color to the new, reversed value
+          int  pixel = mutableBitmap.getPixel(i,j);
+          int redValue = Color.red(pixel);
+          int greenValue = Color.green(pixel);
+          int blueValue = Color.blue(pixel);
+          int reversedColor = Color.argb(255,255-redValue,255-greenValue,255-blueValue);
+          mutableBitmap.setPixel(i,j,reversedColor);
         }
         int progressVal = Math.round((long) (100*(i/(1.0*mutableBitmap.getWidth()))));
         //TODO: Update the progress bar. progressVal is the current progress value out of 100
