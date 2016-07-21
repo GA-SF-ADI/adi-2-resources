@@ -32,7 +32,6 @@ creator:
 So far we've been able to incorporate a lot of really cool features into our apps, including sending and receiving data from our device. This is very useful with today's constantly connected world. Unfortunately, we've had to do all of this manually, so far. 
 Luckily, Android provides a very handy feature called the `JobScheduler` that works to run various Jobs following a given schedule!
 
-> Check: Ask the students for examples of where/when we would want our apps to sync data AND why it would be difficult to do it in the activity lifecycle
 
 ***
 
@@ -47,7 +46,6 @@ Here are some key features Job Scheduler have (from the Android documentation):
 - **Automated checking** - The system only runs your data transfer when the device has network connectivity or is plugged in, etc. 
 - **Improved battery performance** - Allows you to centralize all of your app's data transfer tasks in one place, so that they all run at the same time. Your data transfer is also scheduled in conjunction with data transfers from other apps. These factors reduce the number of times the system has to switch on the network, which reduces battery usage.
 
-> Check: Predict, with a partner, the three ways you can sync your device with data.
 
 There are two steps to properly using the `JobScheduler`. The first is creating a `JobInfo` object which gives you the specification of the job. The second is creating your `JobService`, which is a `Service` where the actually execution of the job will be run.  
 
@@ -95,7 +93,6 @@ This line is the second part of the ComponentName constructor and the end of you
 ` .setPeriodic(40000) `
 The previous steps were just a pattern that you will need to repeat each time that you want to schedule a job. This step is where you start adding some customizations to our Job. 
 
->Check: What do you think this line of code is telling our job? 
 
 There are a variety of methods you can run on your `JobInfo.Builder` object to add information about your job before you schedule it. These include:
 
@@ -136,13 +133,11 @@ This is a Service, so we have access to the `onStartCommand` and `onDestroy` met
 
 ```
 
->Check: What logic do you think goes in the onStartJob()? The onStopJob()? (onStartJob() when the job is started, onStopJob() when it is interrupted)
 
 There are two interesting things to note about these two methods before we proceed. The first has to do with onStopJob is called. It is not like the lifecycle methods onStop() or onPause() that get called whenever the Activity gets Paused or Stopped. If the Job naturally finishes, onStopJob will not be called. 
 
 The second thing worth noting is the return value of the onStartJob() method. Right now, it returns false. That means there isn't any extra work that needs to be done in the Service. 
 
->Check: Can you think of any reasons why there might be more work to be done in the Service when we hit the return statement?
 
 If you are going to be using an extra thread to carry out more logic, you need to return true so it doesn't close your process
 
