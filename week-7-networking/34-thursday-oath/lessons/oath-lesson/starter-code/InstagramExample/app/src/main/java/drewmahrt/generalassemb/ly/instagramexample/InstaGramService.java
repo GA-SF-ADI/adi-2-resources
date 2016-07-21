@@ -45,6 +45,9 @@ public interface InstaGramService {
      * @param token
      * @return
      */
+
+    // this comes from https://www.instagram.com/developer/endpoints/users/
+    //v1 just stands for version 1
     @GET("v1/users/self/media/recent/")
     Call<RecentMedia> getImage(@Query("access_token") String token);
 }

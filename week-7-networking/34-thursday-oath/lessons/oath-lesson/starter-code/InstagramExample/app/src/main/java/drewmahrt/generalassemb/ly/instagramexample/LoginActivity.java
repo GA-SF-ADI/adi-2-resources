@@ -108,6 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                 //you could do shared preferences if you want to save it
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 //passed to the next activity
+                //at the very minimum you need to pass in the token to make any of these calls
                 intent.putExtra(INTENT_KEY_TOKEN, authenticationResponse.getToken());
                 intent.putExtra(INTENT_KEY_ID, user.getId());
                 startActivity(intent);

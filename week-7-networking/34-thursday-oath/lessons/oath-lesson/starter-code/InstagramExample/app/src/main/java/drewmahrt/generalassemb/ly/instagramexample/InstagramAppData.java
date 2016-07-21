@@ -8,8 +8,8 @@ public class InstagramAppData {
 
     //STEP 2: fill these out with your own client id, etc... which was made on the instagram dev site
 
-    public static final String CLIENT_ID = "8bcc00471b754d5ba0e304a7694dcc6c";
-    public static final String CLIENT_SECRET = "812f51ec984a433b84963d526dd5d394";
+    public static final String CLIENT_ID = "c3761fc7c1a24c4db73d83f7df03f6f5";
+    public static final String CLIENT_SECRET = "00eaab0c11424540b940a53b13bd4a2d";
     public static final String CALLBACK_URL = "http://localhost:3000";
 
     //auth code is hard coded in
