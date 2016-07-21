@@ -26,51 +26,52 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity";
 
+    TextView finalCityNameView;
+    TextView finalCityWeatherView;
+    TextView finalCityPressureView;
+    TextView finalCityHumidityView;
+    TextView finalCityTempView;
+
+
+    EditText citySearchEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText citySearchEditText = (EditText) findViewById(R.id.edittext);
         Button fetchWeatherButton = (Button) findViewById(R.id.button);
+        citySearchEditText = (EditText) findViewById(R.id.edittext);
+        finalCityNameView = (TextView) findViewById(R.id.city);
+        finalCityWeatherView = (TextView) findViewById(R.id.description);
+        finalCityPressureView = (TextView) findViewById(R.id.pressure);
+        finalCityHumidityView = (TextView) findViewById(R.id.humidity);
+        finalCityTempView = (TextView) findViewById(R.id.temperature);
+
 
         fetchWeatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-            
-                String userCitySearch = citySearchEditText.getText().toString();
+                ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
 
-                getForecastForCity(userCitySearch);
+                    String userCitySearch = citySearchEditText.getText().toString().trim();
+
+                    getForecastForCity(userCitySearch);
+
+
+                } else {
+
+                    Toast.makeText(MainActivity.this, "Looks like you don't have internet " +
+                            "connectivity!", Toast.LENGTH_SHORT).show();
+
+                }
+
 
             }
         });
-
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-
-
-
-            fetchWeatherButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-
-                }
-            });
-
-
-        } else {
-
-            Toast.makeText(MainActivity.this, "Looks like you don't have internet " +
-                    "connectivity!\n Please try turning on your mobile data or connecting" +
-                    " to wifi.", Toast.LENGTH_SHORT).show();
-
-
-        }
-
     }
 
 
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         RetroInterface retroInterface = retrofit.create(RetroInterface.class);
 
-        Call<Forecast> call = retroInterface.getForecast(cityName, "002b37154b02170b9f4015bde45b169b");
+        Call<Forecast> call = retroInterface.getForecast(cityName, "a52967012176cfb7021c0f1e5e3db104");
 
 
         call.enqueue(new Callback<Forecast>() {
@@ -95,29 +96,22 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
 
-                    String finalCityName = response.body().getName();
+                String finalCityName = response.body().getName();
 
-                    String finalWeather = response.body().getWeather().get(0).getDescription();
+                String finalWeather = response.body().getWeather().get(0).getDescription();
 
-                    Integer finalPressure = response.body().getMain().getPressure();
+                Integer finalPressure = response.body().getMain().getPressure();
 
-                    Integer finalHumidity = response.body().getMain().getHumidity();
+                Integer finalHumidity = response.body().getMain().getHumidity();
 
-                    Double finalTemp = response.body().getMain().getTemp();
-
-
-                    TextView finalCityNameView = (TextView) findViewById(R.id.city);
-                    TextView finalCityWeatherView = (TextView) findViewById(R.id.description);
-                    TextView finalCityPressureView = (TextView) findViewById(R.id.pressure);
-                    TextView finalCityHumidityView = (TextView) findViewById(R.id.humidity);
-                    TextView finalCityTempView = (TextView) findViewById(R.id.temperature);
+                Double finalTemp = response.body().getMain().getTemp();
 
 
-                    finalCityNameView.setText(finalCityName);
-                    finalCityWeatherView.setText(finalWeather);
-                    finalCityPressureView.setText(finalPressure);
-                    finalCityHumidityView.setText(finalHumidity);
-                    finalCityTempView.setText(finalTemp.toString());
+                finalCityNameView.setText(finalCityName);
+                finalCityWeatherView.setText(finalWeather);
+                finalCityPressureView.setText(finalPressure);
+                finalCityHumidityView.setText(finalHumidity);
+                finalCityTempView.setText(finalTemp.toString());
 
 
                 } catch (Exception e) {
@@ -128,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
+                t.printStackTrace();
 
             }
         });
