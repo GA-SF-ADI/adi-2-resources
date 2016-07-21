@@ -27,6 +27,9 @@ public interface InstaGramService {
      * @param code authorization code
      * @return
      */
+
+    //STEP 4: these will be passed in as Strings but they could be made into a variable
+    //they are only being used once
     @FormUrlEncoded
     @POST("oauth/access_token")
     Call<AuthenticationResponse> postAccessCode(
