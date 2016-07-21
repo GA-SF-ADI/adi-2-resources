@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.test.weatherapi.MainActivity">
+
+    <EditText
+        android:id="@+id/cityEdit"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter City"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cityEdit"
+        android:layout_centerHorizontal="true"
+        android:text="Search"/>
+
+    <TextView
+        android:id="@+id/cityText"
+        android:layout_below="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City: "/>
+
+    <TextView
+        android:id="@+id/weatherText"
+        android:layout_below="@+id/cityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather: "/>
+
+    <TextView
+        android:id="@+id/pressureText"
+        android:layout_below="@+id/weatherText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pressure: "/>
+
+    <TextView
+        android:id="@+id/humidityText"
+        android:layout_below="@+id/pressureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity: "/>
+
+    <TextView
+        android:id="@+id/tempText"
+        android:layout_below="@+id/humidityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperature: "/>
+
+</RelativeLayout>
