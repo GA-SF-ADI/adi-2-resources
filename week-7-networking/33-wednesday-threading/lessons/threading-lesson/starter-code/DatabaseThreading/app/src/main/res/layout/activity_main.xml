@@ -11,9 +11,11 @@
 
     <ProgressBar
         android:id="@+id/progress"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:layout_centerInParent="true"
+        style="?android:attr/progressBarStyleHorizontal"
         android:visibility="invisible"
         />
     <TextView
@@ -30,4 +32,9 @@
         android:layout_below="@id/text"
         android:text="Add Items"
         android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"/>
 </RelativeLayout>

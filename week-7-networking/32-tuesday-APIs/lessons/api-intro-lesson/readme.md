@@ -32,9 +32,9 @@ Taken from HowStuffWorks.com:
 
 "An application-programming interface (API) is a set of programming instructions and standards for accessing a Web-based software application or Web tool. A software company releases its API to the public so that other software developers can design products that are powered by its service...[it] is a software-to-software interface, not a user interface. With APIs, applications talk to each other without any user knowledge or intervention."
 
-The Guardian is a popular open-source platform used to access all the content the Guardian creates, categorized by tag and section. With over one and a half million items available, from as far back as 1999, Guardian created an API, making it possible to access all the data available on the website a simple web request.  We can access it using [http://open-platform.theguardian.com/]()
+The Guardian is a popular open-source platform used to access all the content the Guardian creates, categorized by tag and section. With over one and a half million items available, from as far back as 1999, Guardian created an API, making it possible to access all the data available on the website a simple web request.  We can access it using [http://open-platform.theguardian.com/](http://open-platform.theguardian.com/)
 
-If you remember, JSON objects are a type of data collection that we can use to store/send information as developers. Try to go on [http://content.guardianAPIs.com/search?API-key=test](), and you'll notice the data rendered as JSON.  You can probably begin to think about how this will come in handy. Find some more documentation on [http://open-platform.theguardian.com/documentation/]()
+If you remember, JSON objects are a type of data collection that we can use to store/send information as developers. Try to go on [http://content.guardianAPIs.com/search?API-key=test](http://content.guardianAPIs.com/search?API-key=test), and you'll notice the data rendered as JSON.  You can probably begin to think about how this will come in handy. Find some more documentation on [http://open-platform.theguardian.com/documentation/](http://open-platform.theguardian.com/documentation/)
 
 ## Demo: cURL (15 mins)
 
