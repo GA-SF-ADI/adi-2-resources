@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,9 @@ public class MainActivity extends AppCompatActivity{
     super.onActivityResult(requestCode, resultCode, data);
     if (requestCode == PICK_IMAGE_REQUEST && resultCode == MainActivity.RESULT_OK && null != data) {
       Uri selectedImage = data.getData();
-      //TODO: Create the async task and execute it
+      //TODO: Create the async task and execute it -DONE
+      ImageProcessingAsyncTask imageProcessingAsyncTask = new ImageProcessingAsyncTask();
+      imageProcessingAsyncTask.execute(selectedImage);
     }
   }
 
@@ -61,12 +64,12 @@ public class MainActivity extends AppCompatActivity{
     startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
   }
 
-  //TODO: Fill in the parameter types
-  private class ImageProcessingAsyncTask extends AsyncTask<> {
+  //TODO: Fill in the parameter types -DONE
+  private class ImageProcessingAsyncTask extends AsyncTask<Uri, Integer, Bitmap> {
 
-    //TODO: Fill in the parameter type
+    //TODO: Fill in the parameter type -DONE
     @Override
-    protected Bitmap doInBackground() {
+    protected Bitmap doInBackground(Uri...params) {
       try {
         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(params[0]));
         return invertImageColors(bitmap);
@@ -76,23 +79,30 @@ public class MainActivity extends AppCompatActivity{
       return null;
     }
 
-    //TODO: Fill in the parameter type
+    //TODO: Fill in the parameter type -DONE
     @Override
-    protected void onProgressUpdate() {
+    protected void onProgressUpdate(Integer...values) {
       super.onProgressUpdate(values);
-      //TODO: Update the progress bar
+      mProgressBar.setProgress(values[0]);
+      //TODO: Update the progress bar -DONE
     }
 
-    //TODO: Fill in the parameter type
+    //TODO: Fill in the parameter type -DONE
     @Override
-    protected void onPostExecute() {
-      //TODO: Complete this method
+    protected void onPostExecute(Bitmap pic) {
+      //TODO: Complete this method -DONE
+      mImageView.setImageBitmap(pic);
+      mProgressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
-      //TODO: Complete this method
+      //TODO: Complete this method -DONE
+      mProgressBar.setVisibility(View.VISIBLE);
+      mProgressBar.setProgress(0);
+
+
     }
 
     private Bitmap invertImageColors(Bitmap bitmap){
@@ -113,6 +123,7 @@ public class MainActivity extends AppCompatActivity{
         }
         int progressVal = Math.round((long) (100*(i/(1.0*mutableBitmap.getWidth()))));
         //TODO: Update the progress bar. progressVal is the current progress value out of 100
+        publishProgress(progressVal);
       }
       return mutableBitmap;
     }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     ProgressBar mProgressBar;
     TextView mTextView;
+    DatabaseAsyncTask databaseAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +25,49 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextView.setText("Adding items to database...");
-                mProgressBar.setVisibility(View.VISIBLE);
-                addDatabaseItems();
-                int count = ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
-                mProgressBar.setVisibility(View.INVISIBLE);
-                mTextView.setText("All items added to database! Current item count: "+count);
+                DatabaseAsyncTask databaseAsyncTask = new DatabaseAsyncTask();
+
             }
         });
+
+        ExampleAsyncTask asyncTask = new ExampleAsyncTask();
+        asyncTask.execute("John", "Doe");
     }
 
     public void addDatabaseItems(){
         for (int i = 0; i < 1000; i++) {
             ExampleDBHelper.getInstance(getApplicationContext()).addName("John","Doe");
+        }
+    }
+
+    private class DatabaseAsyncTask extends AsyncTask<Void,Void,Integer>{
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //TODO: Change text to indicate items are being added
+            mTextView.setText("Adding items to database...");
+            //TODO: Make progress bar visible
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            //TODO: Add items to database
+            addDatabaseItems();
+            //TODO: Return number of items in the database
+            return ExampleDBHelper.getInstance(getApplicationContext()).getItemCount();
+        }
+
+        @Override
+        protected void onPostExecute(Integer count) {
+            super.onPostExecute(count);
+            //TODO: Hide progress bar
+            mProgressBar.setVisibility(View.INVISIBLE);
+            //TODO: Update text to indicate all items are added, and display the current count
+            mTextView.setText("All items added to database! Current item count: " + count);
+
         }
     }
 
