@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(retrofit2.Call<RecentMedia> call, retrofit2.Response<RecentMedia> response) {
                 RecentMedia recentMedia = response.body();
                 // STEP 9: follow the path until you can get the URL
-                //getData()[0] returns the first thing... only 1 image
+                //getData()[0] returns the first thing... only 1 image... the last image posted
                 final String imageUrl = recentMedia.getData()[0].getImages().getStandard_resolution().getUrl();
 
                 Log.i(TAG, "onResponse imageUrl: " + imageUrl);
