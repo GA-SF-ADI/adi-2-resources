@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CRUDlabappfinal</string>
+    <string name="app_name">Your Books</string>
     <string name="action_settings">Settings</string>
     <string name="your_books">Your Books</string>
 
@@ -17,7 +17,18 @@
     <string name="book_image">Image</string>
     <string name="book_releaseDate">Release Date</string>
     <string name="book_v">V</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2">Add A Book</string>
 
+
+
+    <!--For Book Edit Activity-->
+    <string name="edit_add_a_new_book">Add a new book</string>
+    <string name="edit_book_id">Book id</string>
+    <string name="edit_book_title">Title</string>
+    <string name="edit_book_author">Author</string>
+    <string name="edit_book_image">Image</string>
+    <string name="edit_book_releaseDate">Release Date</string>
+    <string name="edit_book_v">V</string>
+    <string name="title_activity_edit_book">EditBookActivity</string>
 
 </resources>

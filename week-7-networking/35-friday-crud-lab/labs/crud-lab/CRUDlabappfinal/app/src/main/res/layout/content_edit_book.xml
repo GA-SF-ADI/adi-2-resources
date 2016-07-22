@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".CreateBookActivity"
-    tools:showIn="@layout/activity_create_book_activity">
+    tools:context="com.test.crudlabappfinal.EditBookActivity"
+    tools:showIn="@layout/activity_edit_book">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="@string/book_id"
+            android:hint="@string/edit_book_id"
             android:lines="1"
             android:maxLines="1" />
 
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_id"
             android:layout_marginBottom="10dp"
-            android:hint="@string/book_title"
+            android:hint="@string/edit_book_title"
             android:lines="1"
             android:maxLines="1" />
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_title"
             android:layout_marginBottom="10dp"
-            android:hint="@string/book_author"
+            android:hint="@string/edit_book_author"
             android:lines="1"
             android:maxLines="1" />
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_author"
             android:layout_marginBottom="10dp"
-            android:hint="@string/book_image"
+            android:hint="@string/edit_book_image"
             android:lines="1"
             android:maxLines="1" />
 
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_image"
             android:layout_marginBottom="10dp"
-            android:hint="@string/book_releaseDate"
+            android:hint="@string/edit_book_releaseDate"
             android:lines="1"
             android:maxLines="1" />
 
@@ -72,10 +72,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_release_date"
-            android:hint="@string/book_v"
+            android:hint="@string/edit_book_v"
             android:lines="1"
             android:maxLines="1" />
     </RelativeLayout>
-
-
 </RelativeLayout>

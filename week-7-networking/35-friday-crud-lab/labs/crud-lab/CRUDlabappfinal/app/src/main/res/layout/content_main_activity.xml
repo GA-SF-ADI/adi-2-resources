@@ -12,23 +12,12 @@
     tools:context="com.test.crudlabappfinal.MainActivity"
     tools:showIn="@layout/activity_main_activity">
 
-    <TextView
-        android:id="@+id/textView_your_books"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:text="@string/your_books"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listView_of_books"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/textView_your_books"></ListView>
+        android:layout_alignParentBottom="true" />
 
 
 </RelativeLayout>
