@@ -9,7 +9,7 @@ creator: Jamey Hollis (SF)
 
 ## Exercise
 
-In this lab, you will be using [WDI'S Super Crud](super-crud.herokuapp.com) to create a simple app!
+In this lab, you will be using https://super-crud.herokuapp.com/ to create a simple app!
 
 The app should have a simple list of the returned results and allow you to click on them for more detail. The app should also account for tablet devices.
 
