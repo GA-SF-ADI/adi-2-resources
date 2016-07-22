@@ -22,12 +22,13 @@
         android:layout_height="wrap_content"
         android:text="Fetch Weather"
         android:layout_below="@+id/edittext"/>
+    
 
     <TextView
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/togglebutton"
         android:padding="10dp"/>
 
     <TextView
