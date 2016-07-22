@@ -1,26 +1,95 @@
 package com.test.supercrud;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
+import com.squareup.picasso.Picasso;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.webkit.WebView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ViewBooksActivity extends AppCompatActivity {
-    private WebView mWebView;
+    private ListView listView;
+    private ArrayList<Books> booksArrayList;
+    ViewBooksAdapter mAdapter;
+
+    private SuperCrudInterface superCrudInterface;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_books);
+        setupBooks();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        listView = (ListView) findViewById(R.id.listView);
+
 
         //3. Created my model classes (books and root)
         //what users are directed to first
-        mWebView.loadUrl("https://super-crud.herokuapp.com/");
+
+        //webView.loadUrl("https://super-crud.herokuapp.com/");
+//        mWebView.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                if (url.contains("code=")) {
+//                    System.out.println(url);
+//                    int index = url.indexOf("=");
+//                    System.out.println(url.substring(index + 1));
+//                    //String code = url.substring(index + 1);
+//                   // getAccessToken(code);
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//        });
+
+        //Books books =new Books();
+        superCrudInterface.getBooks().enqueue(new retrofit2.Callback<Root>() {
+            @Override
+            public void onResponse(retrofit2.Call<Root> call, retrofit2.Response<Root> response) {
+                // grab the two objects from the response
+                //STEP 5: use AuthenticationResponse object to get response
+                //get the user if you want to
+                Root root = response.body();
+                mAdapter = new ViewBooksAdapter(ViewBooksActivity.this, Arrays.asList(root.getBooks()));
+                mAdapter.notifyDataSetChanged();
+                //change adapter to list
+                listView.setAdapter(mAdapter);
+                //set up adapter here
+
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<Root> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(ViewBooksActivity.this, "No WIFI", Toast.LENGTH_LONG).show();
+
+            }
+
+        });
+    }
+
+
+    private void setupBooks() {
+        // 5. Create retrofit instance with a base url and GsonConverter
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AppData.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        superCrudInterface = retrofit.create(SuperCrudInterface.class);
     }
 
 }
