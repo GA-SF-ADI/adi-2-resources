@@ -8,8 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class CreateBookActivity extends AppCompatActivity {
+
+    EditText id;
+    EditText title;
+    EditText author;
+    EditText image;
+    EditText releaseDate;
+    EditText bookV;
 
 
     @Override
@@ -18,6 +26,15 @@ public class CreateBookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_book_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        id = (EditText) findViewById(R.id.editText_book_id);
+        title = (EditText) findViewById(R.id.editText_book_title);
+        author = (EditText) findViewById(R.id.editText_book_author);
+        image = (EditText) findViewById(R.id.editText_book_image);
+        releaseDate = (EditText) findViewById(R.id.editText_book_release_date);
+        bookV = (EditText) findViewById(R.id.editText_book_v);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -28,15 +45,13 @@ public class CreateBookActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-//                TODO: Grab text in all of the ediTexts
 
-                EditText id = (EditText) findViewById(R.id.editText_book_id);
-                EditText title = (EditText) findViewById(R.id.editText_book_title);
-                EditText author = (EditText) findViewById(R.id.editText_book_author);
-                EditText image = (EditText) findViewById(R.id.editText_book_image);
-                EditText releaseDate = (EditText) findViewById(R.id.editText_book_release_date);
-                EditText bookV = (EditText) findViewById(R.id.editText_book_v);
-
+                String mId = id.getText().toString();
+                String mTitle = title.getText().toString();
+                String mAuthor = author.getText().toString();
+                String mImage = image.getText().toString();
+                String mReleaseDate = releaseDate.getText().toString();
+                String mBookV = bookV.getText().toString();
 
 //                TODO: Make PUT call to add book to book array
 

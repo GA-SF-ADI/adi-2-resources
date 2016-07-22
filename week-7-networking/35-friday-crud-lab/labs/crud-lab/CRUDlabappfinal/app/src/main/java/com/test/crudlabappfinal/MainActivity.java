@@ -13,11 +13,21 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static String baseUrl = "https://super-crud.herokuapp.com";
+    private String TAG = "Main Activity";
+    ListView listView;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,46 +36,58 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView listView = (ListView) findViewById(R.id.listView_of_books);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        ImageButton deleteBookButton = (ImageButton) findViewById(R.id.imageButton_delete_book_x);
 
-//        TODO: Make GET call to get full list of books
-
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent createNewBookIntent = new Intent(MainActivity.this, CreateBookActivity.class);
-                startActivity(createNewBookIntent);
-
-
-            }
-        });
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-                Intent editBookIntent = new Intent(MainActivity.this, EditBookActivity.class);
-                startActivity(editBookIntent);
-
-
-            }
-        });
-
+        getAllBooks();
 
         handleIntent(getIntent());
 
-        deleteBookButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        setFABlistener();
 
-//                TODO: Make delete book call
+        setListViewAdapter();
+
+        setListViewOnItemClickListener();
+
+
+
+    }
+
+
+//    TODO: Finish this getAllBooks method
+
+    private void getAllBooks() {
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BookInterface service = retrofit.create(BookInterface.class);
+
+        Call<Book> call = service.getSpecificBook();
+
+        call.enqueue(new Callback<Book>() {
+            @Override
+            public void onResponse(Call<Book> call, Response<Book> response) {
+
+                try {
+
+                    String title = response.body().getTitle();
+                    String id = response.body().getId();
+                    String releaseDate = response.body().getReleaseDate();
+                    String image = response.body().getImage();
+                    String author = response.body().getAuthor();
+                    Integer bookV = response.body().getV();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Book> call, Throwable t) {
 
             }
         });
@@ -109,5 +131,49 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void setFABlistener() {
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent createNewBookIntent = new Intent(MainActivity.this, CreateBookActivity.class);
+                startActivity(createNewBookIntent);
+
+            }
+        });
+
+    }
+
+    private void setListViewAdapter() {
+
+        Book[] bookList = new Book[0];
+
+
+        // create an instance of our CustomBaseAdapter class, passing in context and data list
+        ListViewAdapter customBaseAdapter = new ListViewAdapter(bookList, MainActivity.this);
+
+        // set custom adapter on our list view
+        listView.setAdapter(customBaseAdapter);
+
+    }
+
+    private void setListViewOnItemClickListener() {
+
+        listView = (ListView) findViewById(R.id.listView_of_books);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent editBookIntent = new Intent(MainActivity.this, EditBookActivity.class);
+                startActivity(editBookIntent);
+
+
+            }
+        });
+
+    }
 
 }
