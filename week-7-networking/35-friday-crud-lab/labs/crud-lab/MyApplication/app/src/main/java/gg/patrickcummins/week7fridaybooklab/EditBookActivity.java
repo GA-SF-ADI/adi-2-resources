@@ -59,7 +59,7 @@ public class EditBookActivity extends AppCompatActivity {
                     book.setReleaseDate(releaseDate);
 
 
-                    Call<Book> call = booksService.updateBook( id, title, author, releaseDate, image);
+                    Call<Book> call = booksService.updateBook( book, id);
                     call.enqueue(new Callback<Book>() {
                         @Override
                         public void onResponse(Call<Book> call, Response<Book> response) {
@@ -75,6 +75,8 @@ public class EditBookActivity extends AppCompatActivity {
 
                         }
                     });
+                    finish();
+                    
 
 
                 }
