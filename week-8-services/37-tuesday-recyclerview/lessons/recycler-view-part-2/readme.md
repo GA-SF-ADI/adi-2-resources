@@ -998,6 +998,12 @@ You can check your work against the [solution code](implement-methods-and-click-
 <a name="conclusion"></a>
 ## Conclusion (5 mins)
 
+RecyclerView is the new kid in town in terms of lists of data. But everyone is using RecyclerView in industry!
+Its layouts are flexible, it increases performance because of ViewHolder, and you get sweet animations for free!
+
+* What are the high level steps of creating the recycler view adapter?
+* Does recycler view have an OnItemClickListener? If yes, how do we use it? If no, what do we do?
+* Describe the ViewHolder pattern
 
 
 ### ADDITIONAL RESOURCES
