@@ -25,7 +25,6 @@ public class EditBookActivity extends AppCompatActivity {
     private EditText selectedAuthor;
     private EditText selectedImage;
     private EditText selectedDate;
-    private EditText selectedV;
 
 
     @Override
@@ -60,21 +59,18 @@ public class EditBookActivity extends AppCompatActivity {
                     String authorOfBookBeingEdited = response.body().getAuthor();
                     String imageOfBookBeingEdited = response.body().getImage();
                     String dateOfBookBeingEdited = response.body().getReleaseDate();
-                    Integer vOfBookBeingEdited = response.body().getV();
 
                     selectedID = (EditText) findViewById(R.id.editText_book_id);
                     selectedTitle = (EditText) findViewById(R.id.editText_book_title);
                     selectedAuthor = (EditText) findViewById(R.id.editText_book_author);
                     selectedImage = (EditText) findViewById(R.id.editText_book_image);
                     selectedDate = (EditText) findViewById(R.id.editText_book_release_date);
-                    selectedV = (EditText) findViewById(R.id.editText_book_v);
 
                     selectedID.setText(IdOfBookBeingEdited);
                     selectedTitle.setText(titleOfBookBeingEdited);
                     selectedAuthor.setText(authorOfBookBeingEdited);
                     selectedImage.setText(imageOfBookBeingEdited);
                     selectedDate.setText(dateOfBookBeingEdited);
-                    selectedV.setText(vOfBookBeingEdited);
 
 
                 } catch (Exception e) {

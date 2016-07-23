@@ -62,12 +62,5 @@
             android:hint="@string/edit_book_releaseDate"
             android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/editText_book_v"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editText_book_release_date"
-            android:hint="@string/edit_book_v"
-            android:singleLine="true" />
     </RelativeLayout>
 </RelativeLayout>

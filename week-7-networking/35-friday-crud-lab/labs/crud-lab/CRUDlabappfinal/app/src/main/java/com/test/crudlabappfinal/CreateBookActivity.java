@@ -25,7 +25,6 @@ public class CreateBookActivity extends AppCompatActivity {
     EditText author;
     EditText image;
     EditText releaseDate;
-    EditText bookV;
 
 
     private static String baseUrl = "https://super-crud.herokuapp.com";
@@ -44,7 +43,6 @@ public class CreateBookActivity extends AppCompatActivity {
         author = (EditText) findViewById(R.id.editText_book_author);
         image = (EditText) findViewById(R.id.editText_book_image);
         releaseDate = (EditText) findViewById(R.id.editText_book_release_date);
-        bookV = (EditText) findViewById(R.id.editText_book_v);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -57,7 +55,6 @@ public class CreateBookActivity extends AppCompatActivity {
                 final String newAuthor = author.getText().toString();
                 final String newImage = image.getText().toString();
                 final String newReleaseDate = releaseDate.getText().toString();
-                final Integer newBookV = Integer.parseInt(bookV.getText().toString());
 
 
                 Retrofit retrofit = new Retrofit.Builder()
@@ -74,7 +71,6 @@ public class CreateBookActivity extends AppCompatActivity {
                 completelyNewBook.setAuthor(newAuthor);
                 completelyNewBook.setImage(newImage);
                 completelyNewBook.setReleaseDate(newReleaseDate);
-                completelyNewBook.setV(newBookV);
 
 
                 Call<Book> call = service.createAndAddSpecificBook(newId, completelyNewBook);

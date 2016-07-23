@@ -66,15 +66,6 @@
             android:hint="@string/book_releaseDate"
             android:lines="1"
             android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/editText_book_v"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editText_book_release_date"
-            android:hint="@string/book_v"
-            android:lines="1"
-            android:maxLines="1" />
     </RelativeLayout>
 
 
