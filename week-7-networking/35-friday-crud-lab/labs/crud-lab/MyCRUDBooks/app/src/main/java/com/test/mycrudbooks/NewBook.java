@@ -34,6 +34,7 @@ public class NewBook extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //creating a new book and adding it
                 newBook = new Book();
                 newBook.setAuthor(editAuthor.getText().toString());
                 newBook.setTitle(editTitle.getText().toString());
@@ -89,7 +90,7 @@ public class NewBook extends AppCompatActivity {
 
         } else {
             // the connection is not available
-            Toast.makeText(NewBook.this,"book not added",Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewBook.this,"no connection is available",Toast.LENGTH_SHORT).show();
         }
 
     }

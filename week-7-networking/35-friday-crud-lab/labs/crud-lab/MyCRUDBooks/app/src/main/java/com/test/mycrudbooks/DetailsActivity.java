@@ -48,10 +48,14 @@ public class DetailsActivity extends AppCompatActivity {
         updateBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //getting editText values and setting it to book properties
                 curBook.setTitle(bookTitle.getText().toString());
                 curBook.setAuthor(bookAuthor.getText().toString());
                 curBook.setReleaseDate(bookYear.getText().toString());
+                //running updateBook to update new properties for currentbook
                 updateBook(curBook.getId(),curBook);
+                //going back to main activity after book is updated
+                backToMain();
 
 
             }
@@ -59,7 +63,11 @@ public class DetailsActivity extends AppCompatActivity {
         deleteBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //deleting book onClick
                 deleteBook(curBook.getId());
+                //going back to main after book is deleted
+                backToMain();
+
 
             }
         });
@@ -123,7 +131,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         } else {
             // the connection is not available
-            Toast.makeText(DetailsActivity.this,"book deleted",Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailsActivity.this,"no connection is available",Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -166,8 +174,12 @@ public class DetailsActivity extends AppCompatActivity {
 
         } else {
             // the connection is not available
-            Toast.makeText(DetailsActivity.this,"book deleted",Toast.LENGTH_SHORT).show();
+            Toast.makeText(DetailsActivity.this,"no connection is available",Toast.LENGTH_SHORT).show();
         }
 
+    }
+    public void backToMain(){
+        Intent backHomeIntent = new Intent(DetailsActivity.this, MainActivity.class);
+        startActivity(backHomeIntent);
     }
 }

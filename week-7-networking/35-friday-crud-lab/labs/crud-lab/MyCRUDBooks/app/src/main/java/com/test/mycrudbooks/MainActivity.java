@@ -34,22 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getBooksBttn = (Button) findViewById(R.id.get_books_bttn);
-        bookListView = (ListView) findViewById(R.id.books_lv);
-        addBook = (Button)findViewById(R.id.add_book_home);
-        getBooksBttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getBooks(bookList);
-            }
-        });
-        addBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent addIntent = new Intent(MainActivity.this, NewBook.class);
-                startActivity(addIntent);
-            }
-        });
+        findViews();
+        setButtonListeners();
+
+
 
 
         bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -65,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getBooks(bookList);
+    }
+
+    //method for getting list of books from superCrud website
     public void getBooks(final ArrayList<Book> books) {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -106,8 +101,32 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             // the connection is not available
-            Toast.makeText(MainActivity.this,"no books available",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"no connection is available",Toast.LENGTH_SHORT).show();
         }
+
+    }
+    public void findViews(){
+        getBooksBttn = (Button) findViewById(R.id.get_books_bttn);
+        bookListView = (ListView) findViewById(R.id.books_lv);
+        addBook = (Button)findViewById(R.id.add_book_home);
+    }
+    public void setButtonListeners(){
+        getBooksBttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //onClick running getBooks method to get books list
+                getBooks(bookList);
+            }
+        });
+        addBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // onClick starting a NewBook activity
+                Intent addIntent = new Intent(MainActivity.this, NewBook.class);
+                startActivity(addIntent);
+            }
+        });
 
     }
 }

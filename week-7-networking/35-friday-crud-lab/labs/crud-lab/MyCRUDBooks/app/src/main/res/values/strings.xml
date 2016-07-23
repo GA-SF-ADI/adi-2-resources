@@ -4,5 +4,7 @@
     <string name="add_book_author">Add Book Author Here</string>
     <string name="add_book_year">Add Book Year Here</string>
     <string name="add_book_button">Add Book </string>
+    <string name="delete_book_button">Delete Book</string>
+    <string name="update_book_button">Update Book</string>
 
 </resources>
