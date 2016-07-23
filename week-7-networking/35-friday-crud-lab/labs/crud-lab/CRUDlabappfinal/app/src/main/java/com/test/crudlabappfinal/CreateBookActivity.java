@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,12 +52,13 @@ public class CreateBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String newId = id.getText().toString();
-                String newTitle = title.getText().toString();
-                String newAuthor = author.getText().toString();
-                String newImage = image.getText().toString();
-                String newReleaseDate = releaseDate.getText().toString();
-                Integer newBookV = Integer.parseInt(bookV.getText().toString());
+                final String newId = id.getText().toString();
+                final String newTitle = title.getText().toString();
+                final String newAuthor = author.getText().toString();
+                final String newImage = image.getText().toString();
+                final String newReleaseDate = releaseDate.getText().toString();
+                final Integer newBookV = Integer.parseInt(bookV.getText().toString());
+
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(baseUrl)
@@ -98,9 +100,11 @@ public class CreateBookActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
+
+
         });
     }
+
 
 }

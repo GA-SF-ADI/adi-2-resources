@@ -24,8 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="@string/edit_book_id"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/editText_book_title"
@@ -34,8 +33,7 @@
             android:layout_below="@+id/editText_book_id"
             android:layout_marginBottom="10dp"
             android:hint="@string/edit_book_title"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/editText_book_author"
@@ -44,8 +42,7 @@
             android:layout_below="@+id/editText_book_title"
             android:layout_marginBottom="10dp"
             android:hint="@string/edit_book_author"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/editText_book_image"
@@ -54,8 +51,7 @@
             android:layout_below="@+id/editText_book_author"
             android:layout_marginBottom="10dp"
             android:hint="@string/edit_book_image"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/editText_book_release_date"
@@ -64,8 +60,7 @@
             android:layout_below="@+id/editText_book_image"
             android:layout_marginBottom="10dp"
             android:hint="@string/edit_book_releaseDate"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/editText_book_v"
@@ -73,7 +68,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText_book_release_date"
             android:hint="@string/edit_book_v"
-            android:lines="1"
-            android:maxLines="1" />
+            android:singleLine="true" />
     </RelativeLayout>
 </RelativeLayout>

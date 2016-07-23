@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -23,9 +23,11 @@
             android:id="@+id/textView_name_of_book_in_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView_book_cover"
+            android:layout_toRightOf="@+id/imageView_book_cover"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"
             android:text="@string/listView_book_title"
             android:textColor="#000000" />
 
@@ -33,12 +35,13 @@
             android:id="@+id/imageButton_delete_book_x"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/textView_name_of_book_in_list"
+            android:layout_toRightOf="@+id/textView_name_of_book_in_list"
             android:background="@android:color/transparent"
             android:src="@android:drawable/ic_delete" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
