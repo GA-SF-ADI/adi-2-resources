@@ -49,23 +49,19 @@ public class CreateCustomBaseAdapter extends BaseAdapter {
         }
 
         final Books currentBook = data.get(position);
-        viewHolder.bookTitle.setText(currentBook.setTitle());
-        viewHolder.bookAuthor.setText(currentBook.setAuthor());
-        viewHolder.imageURL.setText(currentBook.setImage());
+        //viewHolder.bookTitle.setText(currentBook.setTitle());
+//        viewHolder.bookAuthor.setText(currentBook.setAuthor());
+//        viewHolder.imageURL.setText(currentBook.setImage());
         return convertView;
     }
 
 }
 
 class ViewHolder {
-    EditText bookTitle;
-    EditText bookAuthor;
-    EditText imageURL;
+
 
     public ViewHolder(View itemLayout) {
-        this.bookTitle = (EditText) itemLayout.findViewById(R.id.edit_text_book_title);
-        this.bookAuthor = (EditText) itemLayout.findViewById(R.id.edit_text_book_author);
-        this.imageURL = (EditText) itemLayout.findViewById(R.id.edit_text_image_url);
+
 
 
     }

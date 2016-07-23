@@ -10,32 +10,5 @@
     android:orientation="vertical"
     tools:context="com.test.supercrud.CreateActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:hint="Book Title"
-        android:id="@+id/edit_text_book_title"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:hint="Book Author"
-        android:id="@+id/edit_text_book_author"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:hint="Image URL"
-        android:id="@+id/edit_text_image_url"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_add"
-        android:fontFamily="casual"
-        android:text="ADD MY BOOK"/>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.test.supercrud;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.squareup.picasso.Picasso;
@@ -34,34 +35,21 @@ public class ViewBooksActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listView);
 
+        Intent intent = getIntent();
+        String title = intent.getExtras().getString("Title");
+        String author = intent.getExtras().getString("Author");
+        String image = intent.getExtras().getString("Image");
 
         //3. Created my model classes (books and root)
         //what users are directed to first
-
-        //webView.loadUrl("https://super-crud.herokuapp.com/");
-//        mWebView.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                if (url.contains("code=")) {
-//                    System.out.println(url);
-//                    int index = url.indexOf("=");
-//                    System.out.println(url.substring(index + 1));
-//                    //String code = url.substring(index + 1);
-//                   // getAccessToken(code);
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-//        });
-
-        //Books books =new Books();
+        
         superCrudInterface.getBooks().enqueue(new retrofit2.Callback<Root>() {
             @Override
             public void onResponse(retrofit2.Call<Root> call, retrofit2.Response<Root> response) {
                 // grab the two objects from the response
                 //STEP 5: use AuthenticationResponse object to get response
                 //get the user if you want to
+
                 Root root = response.body();
                 mAdapter = new ViewBooksAdapter(ViewBooksActivity.this, Arrays.asList(root.getBooks()));
                 mAdapter.notifyDataSetChanged();
