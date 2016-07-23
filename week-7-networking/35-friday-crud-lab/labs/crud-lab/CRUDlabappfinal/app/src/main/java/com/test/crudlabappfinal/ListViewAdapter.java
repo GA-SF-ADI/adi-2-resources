@@ -1,13 +1,17 @@
 package com.test.crudlabappfinal;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,6 +30,14 @@ public class ListViewAdapter extends BaseAdapter {
     private Book[] allBooks;
     private Context context;
     ImageButton deleteBookButton;
+    ListView listView;
+    String selectedID;
+    String selectedTitle;
+    String selectedAuthor;
+    String selectedImage;
+    String selectedDate;
+    String selectedV;
+
 
     private static String baseUrl = "https://super-crud.herokuapp.com";
 
@@ -58,20 +70,21 @@ public class ListViewAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.single_book_listview_item, parent, false);
         }
 
-        ImageView firstTextView = (ImageView) convertView.findViewById(R.id.imageView_book_cover);
-        TextView secondTextView = (TextView) convertView.findViewById(R.id.textView_name_of_book_in_list);
+        ImageView bookImage = (ImageView) convertView.findViewById(R.id.imageView_book_cover);
+        TextView bookTitle = (TextView) convertView.findViewById(R.id.textView_name_of_book_in_list);
         deleteBookButton = (ImageButton) convertView.findViewById(R.id.imageButton_delete_book_x);
 
         final Book currentBook = allBooks[position];
 
+        final String selectedBookID = currentBook.getId();
 
+        bookTitle.setText(currentBook.getTitle());
 
-        deleteBookButton.setOnClickListener(new View.OnClickListener() {
+        listView = (ListView) convertView.findViewById(R.id.listView_of_books);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                TODO: Make delete book call
-
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(baseUrl)
                         .addConverterFactory(GsonConverterFactory.create())
@@ -79,7 +92,9 @@ public class ListViewAdapter extends BaseAdapter {
 
                 BookInterface service = retrofit.create(BookInterface.class);
 
-                Call<Book> call = service.deleteSpecificBook(id);
+                ListView listView = (ListView) view.findViewById(R.id.listView_of_books);
+
+                Call<Book> call = service.getSpecificBook(selectedBookID);
 
 
                 call.enqueue(new Callback<Book>() {
@@ -89,10 +104,12 @@ public class ListViewAdapter extends BaseAdapter {
                         try {
 
 
-                            String company = response.body().getCompany();
+                            Intent editBookIntent = new Intent(context, EditBookActivity.class);
 
+                            editBookIntent.putExtra("selectedBookID", selectedBookID);
 
-                            companyView.setText("Company: " + company);
+                            context.startActivity(editBookIntent);
+
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -103,6 +120,48 @@ public class ListViewAdapter extends BaseAdapter {
                     @Override
                     public void onFailure(Call<Book> call, Throwable t) {
 
+                    }
+                });
+
+            }
+        });
+
+
+        deleteBookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.i("Adapter", "onClick: Clicked");
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                BookInterface service = retrofit.create(BookInterface.class);
+
+                ListView listView = (ListView) view.findViewById(R.id.listView_of_books);
+
+                Call<Book> call = service.deleteSpecificBook(selectedBookID);
+
+                call.enqueue(new Callback<Book>() {
+                    @Override
+                    public void onResponse(Call<Book> call, Response<Book> response) {
+
+                        try {
+
+                            notifyDataSetChanged();
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Book> call, Throwable t) {
+
+                        t.printStackTrace();
                     }
                 });
 

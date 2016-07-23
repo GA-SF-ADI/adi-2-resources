@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -26,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static String baseUrl = "https://super-crud.herokuapp.com";
     private String TAG = "Main Activity";
-    ListView listView;
     FloatingActionButton fab;
+    ListView listView;
+    Book[] bookArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        listView = (ListView) findViewById(R.id.listView_of_books);
 
         getAllBooks();
 
@@ -43,16 +46,18 @@ public class MainActivity extends AppCompatActivity {
 
         setFABlistener();
 
-        setListViewAdapter();
-
-        setListViewOnItemClickListener();
-
-
 
     }
 
+    @Override
+    protected void onResume() {
 
-//    TODO: Finish this getAllBooks method
+        getAllBooks();
+
+        super.onResume();
+    }
+
+    //    TODO: Finish this getAllBooks method
 
     private void getAllBooks() {
 
@@ -64,20 +69,19 @@ public class MainActivity extends AppCompatActivity {
 
         BookInterface service = retrofit.create(BookInterface.class);
 
-        Call<Book> call = service.getSpecificBook();
+        Call<BookData> call = service.getAllBooks();
 
-        call.enqueue(new Callback<Book>() {
+        call.enqueue(new Callback<BookData>() {
             @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
+            public void onResponse(Call<BookData> call, Response<BookData> response) {
 
                 try {
 
-                    String title = response.body().getTitle();
-                    String id = response.body().getId();
-                    String releaseDate = response.body().getReleaseDate();
-                    String image = response.body().getImage();
-                    String author = response.body().getAuthor();
-                    Integer bookV = response.body().getV();
+
+                    Log.i(TAG, "onResponse: ");
+                    bookArray = response.body().getBooks();
+
+                    setListViewAdapter();
 
 
                 } catch (Exception e) {
@@ -87,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Book> call, Throwable t) {
+            public void onFailure(Call<BookData> call, Throwable t) {
+
+                t.printStackTrace();
 
             }
         });
@@ -148,32 +154,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListViewAdapter() {
 
-        Book[] bookList = new Book[0];
 
+        ListViewAdapter customBaseAdapter = new ListViewAdapter(bookArray, MainActivity.this);
 
-        // create an instance of our CustomBaseAdapter class, passing in context and data list
-        ListViewAdapter customBaseAdapter = new ListViewAdapter(bookList, MainActivity.this);
-
-        // set custom adapter on our list view
         listView.setAdapter(customBaseAdapter);
 
     }
 
-    private void setListViewOnItemClickListener() {
-
-        listView = (ListView) findViewById(R.id.listView_of_books);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Intent editBookIntent = new Intent(MainActivity.this, EditBookActivity.class);
-                startActivity(editBookIntent);
-
-
-            }
-        });
-
-    }
 
 }

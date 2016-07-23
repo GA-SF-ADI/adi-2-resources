@@ -8,7 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CreateBookActivity extends AppCompatActivity {
 
@@ -18,6 +25,9 @@ public class CreateBookActivity extends AppCompatActivity {
     EditText image;
     EditText releaseDate;
     EditText bookV;
+
+
+    private static String baseUrl = "https://super-crud.herokuapp.com";
 
 
     @Override
@@ -41,19 +51,53 @@ public class CreateBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(CreateBookActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                String newId = id.getText().toString();
+                String newTitle = title.getText().toString();
+                String newAuthor = author.getText().toString();
+                String newImage = image.getText().toString();
+                String newReleaseDate = releaseDate.getText().toString();
+                Integer newBookV = Integer.parseInt(bookV.getText().toString());
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                BookInterface service = retrofit.create(BookInterface.class);
+
+                Book completelyNewBook = new Book();
+
+                completelyNewBook.setId(newId);
+                completelyNewBook.setTitle(newTitle);
+                completelyNewBook.setAuthor(newAuthor);
+                completelyNewBook.setImage(newImage);
+                completelyNewBook.setReleaseDate(newReleaseDate);
+                completelyNewBook.setV(newBookV);
 
 
-                String mId = id.getText().toString();
-                String mTitle = title.getText().toString();
-                String mAuthor = author.getText().toString();
-                String mImage = image.getText().toString();
-                String mReleaseDate = releaseDate.getText().toString();
-                String mBookV = bookV.getText().toString();
+                Call<Book> call = service.createAndAddSpecificBook(newId, completelyNewBook);
 
-//                TODO: Make PUT call to add book to book array
+                call.enqueue(new Callback<Book>() {
+                    @Override
+                    public void onResponse(Call<Book> call, Response<Book> response) {
+
+                        try {
+
+                            finish();
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Book> call, Throwable t) {
+
+                    }
+                });
+
 
             }
         });

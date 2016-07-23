@@ -5,6 +5,7 @@ package com.test.crudlabappfinal;
  */
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -18,18 +19,18 @@ public interface BookInterface {
     Call<BookData> getAllBooks();
 
 
-    @POST("/books")
-    Call<Book> createAndAddSpecificBook(@Path("id") String id);
+    @POST("/books/{id}")
+    Call<Book> createAndAddSpecificBook(@Path("id") String id, @Body Book newBook);
 
 
-    @GET("/books/:{id}")
+    @GET("/books/{id}")
     Call<Book> getSpecificBook(@Path("id") String id);
 
 
-    @PUT("/books/:{id}")
-    Call<Book> updateSpecificBook(@Path("id") String id);
+    @PUT("/books/{id}")
+    Call<Book> updateSpecificBook(@Path("id") String id, @Body Book newBook);
 
-    @DELETE("/books/:{id}")
+    @DELETE("/books/{id}")
     Call<Book> deleteSpecificBook(@Path("id") String id);
 
 
