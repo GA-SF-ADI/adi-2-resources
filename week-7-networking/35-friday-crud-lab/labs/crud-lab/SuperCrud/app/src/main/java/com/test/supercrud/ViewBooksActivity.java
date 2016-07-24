@@ -8,7 +8,9 @@ import com.squareup.picasso.Picasso;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class ViewBooksActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Books> booksArrayList;
     ViewBooksAdapter mAdapter;
+    Button deleteButton;
 
     private SuperCrudInterface superCrudInterface;
 
@@ -34,15 +37,29 @@ public class ViewBooksActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.listView);
+        deleteButton = (Button) findViewById(R.id.button_delete);
 
-        Intent intent = getIntent();
-        String title = intent.getExtras().getString("Title");
-        String author = intent.getExtras().getString("Author");
-        String image = intent.getExtras().getString("Image");
+//
+//        Intent intent = getIntent();
+//        String title = intent.getExtras().getString("Title");
+//        String author = intent.getExtras().getString("Author");
+//        String image = intent.getExtras().getString("Image");
+//
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                int pos = listView.getCheckedItemPosition();
+                if(pos > -1) {
+                    //mAdapter.remove(postition);
+                }
+
+            }
+        });
+
 
         //3. Created my model classes (books and root)
         //what users are directed to first
-        
+
         superCrudInterface.getBooks().enqueue(new retrofit2.Callback<Root>() {
             @Override
             public void onResponse(retrofit2.Call<Root> call, retrofit2.Response<Root> response) {

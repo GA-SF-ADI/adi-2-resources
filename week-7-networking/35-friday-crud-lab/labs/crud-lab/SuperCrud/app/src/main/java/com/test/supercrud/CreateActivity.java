@@ -12,6 +12,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,7 +23,7 @@ public class CreateActivity extends AppCompatActivity {
     CreateCustomBaseAdapter customBaseAdapter;
     private ListView listView;
     private ArrayList<Books> booksArrayList;
-    private SuperCrudInterface superCrudInterface;
+    private SuperCrudInterface service;
     private Button addButton;
     private EditText bookTitle;
     private EditText bookAuthor;
@@ -29,13 +33,22 @@ public class CreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
-        setupBooks();
         //listView = (ListView) findViewById(R.id.listView_created_books);
         customBaseAdapter = new CreateCustomBaseAdapter(booksArrayList, this);
         bookTitle = (EditText) findViewById(R.id.edit_text_book_title);
         bookAuthor = (EditText) findViewById(R.id.edit_text_book_author);
         imageURL = (EditText) findViewById(R.id.edit_text_image_url);
         addButton = (Button) findViewById(R.id.button_add);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AppData.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        service = retrofit.create(SuperCrudInterface.class);
+
+
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,56 +60,40 @@ public class CreateActivity extends AppCompatActivity {
                 intent.putExtra("Author", bookAuthorString);
                 intent.putExtra("Image", imageURLString);
 
-                // final String myInputString = myEditText.getText().toString();
-//            if (myInputString.isEmpty()) {
-//                Toast.makeText(ItemActivity.this, "Type in something to do! :) ", Toast.LENGTH_SHORT).show();
-//            } else {
-//                myList.add(myInputString);
-//            }
-//
                 customBaseAdapter.notifyDataSetChanged();
             }
+
+//            BookRequest bookRequest = new BookRequest();
+//            bookRequest.setAuthor(view.gettext.toString);
+//            bookRequest.settitle(view.gettext[].
+//
+//            toString()
+//
+//            );
+            Call<BookRequest> bookRequestCall = service.postBooks(bookRequest);
+            bookRequestCall.enqueue(new
+            Callback<Response> response
+            )
+
+            {
+                int statusCode = response.code();
+            }
+
+            Books books = new Books();
+            books.setAuthor(listView.toString());
+            books.setTitle(listView.toString());
+
+
+            @Override
+            public void onFailure(retrofit2.Call<Root> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(CreateActivity.this, "No WIFI", Toast.LENGTH_LONG).show();
+
+            }
+
+
         });
     }
-
-    //button ... add into adapter
-
-
-//    superCrudInterface.postBooks().enqueue(new retrofit2.Callback<Root>() {
-//        @Override
-//        public void onResponse(retrofit2.Call<Root> call, retrofit2.Response<Root> response) {
-//            // grab the two objects from the response
-//            //STEP 5: use AuthenticationResponse object to get response
-//            //get the user if you want to
-//            Root root = response.body();
-//            customBaseAdapter = new CreateCustomBaseAdapter(CreateActivity.this, Arrays.asList(root.setBooks()));
-//            customBaseAdapter.notifyDataSetChanged();
-//            //change adapter to list
-//            listView.setAdapter(customBaseAdapter);
-//            //set up adapter here
-//
-//        }
-
-//        @Override
-//        public void onFailure(retrofit2.Call<Root> call, Throwable t) {
-//            t.printStackTrace();
-//            Toast.makeText(CreateActivity.this, "No WIFI", Toast.LENGTH_LONG).show();
-//
-//        }
-//
-//    });
-//}
-
-
-    private void setupBooks() {
-        // 5. Create retrofit instance with a base url and GsonConverter
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AppData.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        superCrudInterface = retrofit.create(SuperCrudInterface.class);
-    }
-
-
 }
+
+

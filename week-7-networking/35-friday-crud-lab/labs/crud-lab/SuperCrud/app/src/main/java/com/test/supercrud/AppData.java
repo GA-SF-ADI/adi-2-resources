@@ -6,4 +6,5 @@ package com.test.supercrud;
 public class AppData {
     //4. Created my AppData class to store baseURL
     public static final String BASE_URL = "https://super-crud.herokuapp.com/";
+
 }

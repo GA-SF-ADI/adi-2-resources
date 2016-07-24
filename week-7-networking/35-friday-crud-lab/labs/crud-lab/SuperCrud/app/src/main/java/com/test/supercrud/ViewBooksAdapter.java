@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -78,6 +79,7 @@ public class ViewBooksAdapter extends BaseAdapter {
         TextView authorTextView;
         TextView getYearPublishedTextView;
         ImageView imageView;
+        Button deleteButton;
 
         public ViewHolder(View bookItemLayout) {
 
@@ -85,11 +87,13 @@ public class ViewBooksAdapter extends BaseAdapter {
             this.authorTextView = (TextView) bookItemLayout.findViewById(R.id.book_item_author_textview);
             this.getYearPublishedTextView = (TextView) bookItemLayout.findViewById(R.id.book_item_ye_textview);
             imageView = (ImageView) bookItemLayout.findViewById(R.id.product_item_imageView);
+            this.deleteButton =(Button) bookItemLayout.findViewById(R.id.button_delete);
 
         }
-
         //Picasso.with(ViewBooksAdapter.this).load(imageUrl).into(view);
+
     }
+
 }
 
 
