@@ -200,16 +200,22 @@ To avoid impacting application performance, you should
 - Start a new thread inside the service.
 - Use an Intent Service ( which subclasses Service and uses a thread to run the task for you ).
 
+#### Threads and Runnables
+
+A *Thread* is the thing doing the work! Think of it as a worker.
+
+A *Runnable* is a set of instructions to complete a task. These instructions are executed by the Thread, therefore we pass a Runnable as an argument to the Thread constructor ( a worker needs a set of instructions in order to begin and complete a task ).
+
 #### Creating a new Thread
 
-Create a new instance of Thread class: ``` Thread customThread = new Thread()```. Note thread constructor requires a ```Runnable``` object.
+Create a new instance of Thread class: ```Thread customThread = new Thread()```. Note thread constructor requires a ```Runnable``` object inside the `Thread()` constructor (i.e. `Thread customThread = new Thread(Runnable r)`) .
 
-Create a new ```Runnable``` instance: 
+Create a new ```Runnable``` instance which will be the **instructions** of the task we want to perform.
 ```java
 Runnable customRunnable = new Runnable() {
     @Override
     public void run() {
-        // This is where the real work happens
+        // This is where the real work happens. Instructions for the task.
         try {
             // sleep the thread for 5 seconds instead of doing work
             Thread.sleep(5000);
@@ -221,22 +227,13 @@ Runnable customRunnable = new Runnable() {
 };
 ```
 
-Putting the two steps together we get:
+Now that we have a set of instructions to complete our task, we can pass them along to a worker who will complete the task for us!
 ```java
-// create thread and pass in a runnable task
-Thread customThread = new Thread(new Runnable() {
-    @Override
-    public void run() {
-        // this is where the real work happens
-        try {
-            // sleep the thread for 5 seoncds
-            Thread.sleep(5000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
-    }
-});
+// Create worker thread and pass a set of instructions on how to complete the task
+Thread customThread = new Thread(customRunnable);
+
+// Tell the worker to begin working! If you don't call this line the worker sits around with instructions but does nothing.
+customThread.start();
 ```
 ***
 
