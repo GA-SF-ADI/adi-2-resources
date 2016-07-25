@@ -23,6 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //        -H 'X-Mashape-Key: wqOVdPoS0MmshZ1W7TwnpDSEpy7tp1UgLvEjsnrt7r5gMDKyDc' \
 //        -H 'Accept: application/json'
 
+//https://market.mashape.com/ajith/love-calculator#getpercentage
+
 public class MainActivity extends AppCompatActivity {
 
     String baseURL = "https://love-calculator.p.mashape.com/";
