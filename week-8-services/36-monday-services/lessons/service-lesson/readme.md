@@ -51,6 +51,14 @@ A Service is **not** a thread. It is not a means itself to do work off of the ma
 
 ***
 
+#### Service lifecycle (10 mins)
+
+# ![](http://developer.android.com/images/service_lifecycle.png)
+
+> Check: Ask students to pair up and discuss what is the difference between started services and bound services
+
+***
+
 #### Service class methods (10 mins)
 
 There are a number of important methods in the service class, they are:
@@ -68,14 +76,6 @@ There are a number of important methods in the service class, they are:
 For services started by ```Context.startService()```, ```onCreate()``` is called first, and then ```onStartCommand()```.
 
 For services that are bound via ```Context.bindService()```, ```onCreate()``` is called first, and then ```onBind()```. Note that ```onStartCommand()``` **is not called**.
-
-***
-
-#### Service lifecycle (10 mins)
-
-# ![](http://developer.android.com/images/service_lifecycle.png)
-
-> Check: Ask students to pair up and discuss what is the difference between started services and bound services
 
 ***
 
