@@ -1,5 +1,3 @@
-public class Solution {
-    
 	public int sqrt(int a) {
 	    
 	    long low = 0;
@@ -19,4 +17,4 @@ public class Solution {
         return (int)high;	    
 
 	}
-}
+
