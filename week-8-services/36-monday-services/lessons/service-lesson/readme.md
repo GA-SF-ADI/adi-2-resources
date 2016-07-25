@@ -1,8 +1,8 @@
 ---
 title: Services
-duration: "1:35"
+duration: "1:30"
 creator:
-    name: Aleksandr Tomak
+    name: Aleksandr Tomak 
     city: SF
 ---
 
@@ -12,8 +12,9 @@ creator:
 ### LEARNING OBJECTIVES
 *After this lesson, you will be able to:*
 - Describe why we use Services
-- Describe Service lifecycle
+- Understand Service lifecycle
 - Write your own custom service
+
 
 ### STUDENT PRE-WORK
 *Before this lesson, you should already be able to:*
@@ -27,16 +28,20 @@ creator:
 <a name="opening"></a>
 ## Opening (5 mins)
 
-Snapchat and Instagram continue to upload your video/photo even after you terminate the app.  Spotify and Pandora can play music even if your app is backgrounded and you use another app.
+Snapchat and Instagram continue to upload your video/photo even after you terminate the app.
 
+Spotify and Pandora can play music even if your app is backgrounded and you use another app.
+
+> Check: Ask the students to pair up and predict how these apps are able to accomplish this.
 
 ***
 
 <a name="introduction"></a>
-## Introduction: Services (10 mins)
+## Introduction: Services (5 mins)
 
 A Service is an application component that can perform long-running operations in the background and does not provide a user interface.
 
+> Check: Ask the students to pair up and make a list of operations that should be run in the background.
 
 For example, a service might handle network transactions, play music, perform file I/O, or interact with a content provider, all from the background.
 
@@ -44,63 +49,65 @@ A Service is **not** a separate process. The Service object itself does not impl
 
 A Service is **not** a thread. It is not a means itself to do work off of the main thread (to avoid Application Not Responding errors).
 
+***
 
-#### Service class methods
+#### Service lifecycle (10 mins)
+
+# ![](http://developer.android.com/images/service_lifecycle.png)
+
+> Check: Ask students to pair up and discuss what is the difference between started services and bound services
+
+***
+
+#### Service class methods (10 mins)
 
 There are a number of important methods in the service class, they are:
 
-[`onCreate()`](http://developer.android.com/reference/android/app/Service.html#onCreate()): The system calls this method when the service is first created, to perform one-time setup procedures (before it calls either `onStartCommand()` or `onBind()`). If the service is already running, this method is not called.
+[```onCreate()```](http://developer.android.com/reference/android/app/Service.html#onCreate()): The system calls this method when the service is first created, to perform one-time setup procedures (before it calls either ```onStartCommand()``` or ```onBind()```). **If the service is already running, this method is not called**.
 
-[`onStartCommand()`](http://developer.android.com/reference/android/app/Service.html#onStartCommand(android.content.Intent, int, int)): The system calls this method when another component, such as an activity, requests that the service be started, by calling startService(). Once this method executes, the service is started and can run in the background indefinitely. If you implement this, it is your responsibility to stop the service when its work is done, by calling `stopSelf()` or `stopService()`. (**If you only want to provide binding, you don't need to implement this method.**)
+[```onStartCommand()```](http://developer.android.com/reference/android/app/Service.html#onStartCommand(android.content.Intent, int, int)): The system calls this method when another component, such as an activity, requests that the service be started, by calling startService(). Once this method executes, the service is started and can run in the background indefinitely. If you implement this, it is your responsibility to stop the service when its work is done, by calling ```stopSelf()``` or ```stopService()```. (**If you only want to provide binding, you don't need to implement this method.**)
 
-[`onBind()`](http://developer.android.com/reference/android/app/Service.html#onBind(android.content.Intent)): The system calls this method when another component wants to bind with the service, by calling `bindService()`. In your implementation of this method, you must provide an interface that clients use to communicate with the service, by returning an `IBinder`. **You must always implement this method, but if you don't want to allow binding, then you should return null**.
+[```onBind()```](http://developer.android.com/reference/android/app/Service.html#onBind(android.content.Intent)): The system calls this method when another component wants to bind with the service, by calling ```bindService()```. In your implementation of this method, you must provide an interface that clients use to communicate with the service, by returning an ```IBinder```. **You must always implement this method, but if you don't want to allow binding, then you should return null**.
 
-[`onDestroy()`](http://developer.android.com/reference/android/app/Service.html#onDestroy()): The system calls this method when the service is no longer used and is being destroyed. Your service should implement this to clean up any resources such as threads, registered listeners, receivers, etc. **This is the last call the service receives**.
+[```onDestroy()```](http://developer.android.com/reference/android/app/Service.html#onDestroy()): The system calls this method when the service is no longer used and is being destroyed. Your service should implement this to clean up any resources such as threads, registered listeners, receivers, etc. **This is the last call the service receives**.
 
+> Check: Ask students to guess what order would the methods be called.
 
-For services started by `Context.startService()`, `onCreate()` is called first, and then `onStartCommand()`.
+For services started by ```Context.startService()```, ```onCreate()``` is called first, and then ```onStartCommand()```.
 
-For services that are bound via `Context.bindService()`, `onCreate()` is called first, and then `onBind()`. Note that `onStartCommand()` **is not called**.
-
-***
-
-#### Guided PracticeService lifecycle (5 mins)
-
-<p align="center">
-  <img src="http://developer.android.com/images/service_lifecycle.pn">
-</p>
-
+For services that are bound via ```Context.bindService()```, ```onCreate()``` is called first, and then ```onBind()```. Note that ```onStartCommand()``` **is not called**.
 
 ***
 
-## Introduction: Types of Services - Started and Bound (15 mins)
+## Types of Services: Started and Bound 
 
-#### Started Services
+#### Started Services (10 mins)
 
-A service is "started" when an application component (such as an activity) starts it by calling `startService()`. Once started, a service can run in the background **indefinitely**, even if the component that started it is destroyed. Usually, a started service performs a single operation and does not return a result to the caller. For example, it might download or upload a file over the network. When the operation is done, the service should stop itself via `stopSelf()`.
+A service is "started" when an application component (such as an activity) starts it by calling ```startService()```. Once started, a service can run in the background **indefinitely**, even if the component that started it is destroyed. Usually, a started service performs a single operation and does not return a result to the caller. For example, it might download or upload a file over the network. When the operation is done, the service should stop itself via ```stopSelf()```.
 
-The service continues running until `Context.stopService()` or `stopSelf()` is called. Note that multiple calls to `Context.startService()` do not nest (though they do result in multiple corresponding calls to `onStartCommand()`), so no matter how many times it is started, a service will be stopped once `Context.stopService()` or `stopSelf()` is called; however, services can use the `stopSelf(int)` method to ensure the service is not stopped until started intents have been processed.
+The service continues running until ```Context.stopService()``` or ```stopSelf()``` is called. Note that multiple calls to ```Context.startService()``` do not nest (though they do result in multiple corresponding calls to ```onStartCommand()```), so no matter how many times it is started a service will be stopped once ```Context.stopService()``` or ```stopSelf()``` is called; however, services can use their ```stopSelf(int)``` method to ensure the service is not stopped until started intents have been processed.
 
+> Check: How is this type of service started? What happens next in service lifecycle? How is the service stopped?
 
+***
 
-#### Bound Services
+#### Bound Services (10 mins)
 
-A service is "bound" when an application component binds to it by calling `bindService()`. A bound service offers a client-server interface that allows components to interact with the service, send requests, get results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed.
+A service is "bound" when an application component binds to it by calling ```bindService()```. A bound service offers a client-server interface that allows components to interact with the service, send requests, get results, and even do so across processes with interprocess communication (IPC). A bound service runs only as long as another application component is bound to it. Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed.
 
+> Check: How is this type of service started? What happens next in service lifecycle? How is the service stopped?
 
 ***
 
 #### Started and Bound Services
 
-A service can be both started and have connections bound to it. In such a case, the system will keep the service running as long as either it is started or there are one or more connections to it with the `Context.BIND_AUTO_CREATE` flag. If neither of these situations hold, the service's `onDestroy()` method is called and the service is effectively terminated. All cleanup (stopping threads, unregistering receivers) should be complete upon returning from `onDestroy()`.
+A service can be both started and have connections bound to it. In such a case, the system will keep the service running as long as either it is started or there are one or more connections to it with the ```Context.BIND_AUTO_CREATE``` flag. Once neither of these situations hold, the service's ```onDestroy()``` method is called and the service is effectively terminated. All cleanup (stopping threads, unregistering receivers) should be complete upon returning from ```onDestroy()```.
 
 
 ***
 
 <a name="guided demo"></a>
-## Demo: Create a Service (15 mins)
-
-Code along, if you want!
+## Guided Practice: Create a Service (15 mins)
 
 #### Subclass Service
 
@@ -114,17 +121,17 @@ public class CustomService extends Service {
 }
 ```
 
-You are **required** to implement the `onBind()` method. Return null if you don't want to bind to the Service.
+You are **required** to implement the ```onBind()``` method. Return null if you don't want to bind to the Service.
 
-Override `onCreate()` method and setup the Service.
+Override ```onCreate()``` method and setup the Service.
 
-Override `onStartCommand()` method and give the Service work to do.
+Override ```onStartCommand()``` method and give the Service work to do.
 
 #### Add permissions to Manifest file
 
 Like activities (and other components), you must declare all services in your application's manifest file.
 
-To declare your service, add a `<service>` element as a child of the `<application>` element. For example:
+To declare your service, add a ```<service>``` element as a child of the ```<application>``` element. For example:
 
 ```xml
 <manifest ... >
@@ -136,16 +143,16 @@ To declare your service, add a `<service>` element as a child of the `<applicati
 </manifest>
 ```
 
-The `android:name` attribute is the only required attribute — it specifies the class name of the service. Once you publish your application, you should not change this name because if you do, you risk breaking code that is dependent on explicit intents to start or bind the service (read the blog post, [Things That Cannot Change](http://android-developers.blogspot.com/2011/06/things-that-cannot-change.html)).
+The ```android:name``` attribute is the only required attribute—it specifies the class name of the service. Once you publish your application, you should not change this name, because if you do, you risk breaking code due to dependence on explicit intents to start or bind the service (read the blog post, [Things That Cannot Change](http://android-developers.blogspot.com/2011/06/things-that-cannot-change.html)).
 
-Additionally, you can ensure that your service is only available to your app by including the `android:exported` attribute and setting it to "false". This effectively stops other apps from starting your service, even when using an explicit intent.
+Additionally, you can ensure that your service is available to only your app by including the ```android:exported``` attribute and setting it to "false". This effectively stops other apps from starting your service, even when using an explicit intent.
 
-If we want to make this service run in a remote process, instead of the standard one for its .apk, we can use `android:process` in its manifest tag to specify one:
+If we want to make this service run in a remote process (instead of the standard one for its .apk), we can use ```android:process``` in its manifest tag to specify one:
 
-```xml
+```xml 
 <service android:name=".CustomService"
         android:exported="false"
-        android:process=":remote" />
+        android:process=":remote" /> <!-- DO NOT include this unless you want Service in separate process -->
 ```
 
 #### Starting a Service
@@ -155,32 +162,58 @@ Intent intent = new Intent(MainActivity.this, CustomService.class);
 startService(intent);
 ```
 
-The `startService()` method returns immediately, and the Android system calls the service's `onStartCommand()` method. If the service is not already running, the system first calls `onCreate()`, then calls `onStartCommand()`.
+The ```startService()``` method returns immediately and the Android system calls the service's ```onStartCommand()``` method. If the service is not already running, the system first calls ```onCreate()```, then calls ```onStartCommand()```.
+
+#### Passing information to a Service
+
+You can also pass extras to the service using intents just like we did with Activities!
+
+This happens on the intent before you start your service.
+```java
+Intent intent = new Intent(MainActivity.this, CustomService.class);
+intent.putExtra(INTENT_KEY_SERVICE, "Starting this service from MainActivity!")
+startService(intent);
+```
+
+Inside if your `CustomService.java` class' `onStartCommand()` you can retreive the intent:
+```java
+@Override
+public int onStartCommand(final Intent intent, int flags, int startId) {
+
+    // `fromMain` will contain the string: "Starting this service from MainActivity!"
+    String fromMain = intent.getStringExtra(MainActivity.INTENT_KEY_SERVICE);
+
+    ... // rest of your code 
+}
+```
 
 
 ***
 
-## Guided Practice: Too Much Going On (5 mins)
+## Caution
 
-**Caution**: A service runs in the same process as the application in which it is declared, and in the main thread of that application, by default. So, if your service performs intensive or blocking operations while the user interacts with an activity from the same application, the service will slow down activity performance.
+A service runs in the same process as the application in which it is declared and in the main thread of that application, by default. So, if your service performs intensive or blocking operations while the user interacts with an activity from the same application, the service will slow down activity performance. 
 
+> Check: Ask students to pair up and predict a solution for the problem.
 
-## Demo: Creating a New Thread (15 mins)
+To avoid impacting application performance, you should
+- Start a new thread inside the service.
+- Use an Intent Service ( which subclasses Service and uses a thread to run the task for you ).
 
-To avoid impacting application performance, you should:
+#### Threads and Runnables
 
-- Start a new thread inside the service
-- Use an Intent Service that subclasses Service and uses a thread to run the task for you
+A *Thread* is the thing doing the work! Think of it as a worker.
 
-To create a new instance of Thread class: ` Thread customThread = new Thread()`. Note, the thread constructor requires a `Runnable` object.
+A *Runnable* is a set of instructions to complete a task. These instructions are executed by the Thread, therefore we pass a Runnable as an argument to the Thread constructor ( a worker needs a set of instructions in order to begin and complete a task ).
 
-To create a new `Runnable` instance:
+#### Creating a new Thread
 
+Create a new ```Runnable``` instance which will be the **instructions** of the task we want to perform.
 ```java
 Runnable customRunnable = new Runnable() {
     @Override
     public void run() {
-        // This is where the real work happens
+        // This is where the real work happens. Instructions for the task.
         try {
             // sleep the thread for 5 seconds instead of doing work
             Thread.sleep(5000);
@@ -192,38 +225,29 @@ Runnable customRunnable = new Runnable() {
 };
 ```
 
-Putting the two steps together we get:
+Now that we have a set of instructions to complete our task, we can pass them along to a worker who will complete the task for us!
 
+Create a new instance of Thread class: ```Thread customThread = new Thread()```. Note thread constructor requires a set of instructions on how to finish a task.  The instructions come from the ```Runnable``` object. We pass the instructions to the `Thread()` constructor (i.e. `Thread customThread = new Thread(Runnable r)`) .
 ```java
-// create thread and pass in a runnable task
-Thread customThread = new Thread(new Runnable() {
-    @Override
-    public void run() {
-        // this is where the real work happens
-        try {
-            // sleep the thread for 5 seconds
-            Thread.sleep(5000);
-        } catch (InterruptedException e){
-            e.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
-    }
-});
+// Create worker thread and pass a set of instructions on how to complete the task
+Thread customThread = new Thread(customRunnable);
+
+// Tell the worker to begin working! If you don't call this line the worker sits around with instructions but does nothing.
+customThread.start();
 ```
 ***
 
-#### Intent Service
+#### Intent Service 
 
 The IntentService does the following:
 
-- Creates a default worker thread that executes all intents delivered to `onStartCommand()` separate from your application's main thread
-- Creates a work queue that passes one intent at a time to your `onHandleIntent()` implementation, so you never have to worry about multi-threading
-- Stops the service after all start requests have been handled, so you never have to call `stopSelf()`
-- Provides default implementation of `onBind()` that returns null
-- Provides a default implementation of `onStartCommand()` that sends the intent to the work queue and then to your `onHandleIntent()` implementation
+- Creates a default worker thread that executes all intents delivered to ```onStartCommand()``` separate from your application's main thread.
+- Creates a work queue that passes one intent at a time to your ```onHandleIntent()``` implementation, so you never have to worry about multi-threading.
+- Stops the service after all start requests have been handled, so you never have to call ```stopSelf()```.
+- Provides default implementation of ```onBind()``` that returns null.
+- Provides a default implementation of ```onStartCommand()``` that sends the intent to the work queue and then to your ```onHandleIntent()``` implementation.
 
-The code below is an example of implementation that requires us to override `onHandleIntent()`:
-
+Example implementation requires us to override ```onHandleIntent()```.
 ```java
 public class HelloIntentService extends IntentService {
 
@@ -253,25 +277,26 @@ public class HelloIntentService extends IntentService {
   }
 }
 ```
+***
 
+## Independent Practice 
 
-## Independent Practice: Write Your Own Custom Service (20 mins)
+Open the [starter code](starter-code/). Check your work againt the [solution code](solution-code/).
 
-Open [provided sample code](starter-code). Refer to the [provided solutions](solution-code) to check your answers.
+You need to create:
+* `CustomService` class which extends `Service` class. 
+* `CustomIntentService` class which extends `IntentService` class.
 
-
-Your job is to create two classes inside the ```service``` package:
-- `CustomService` which extends `Service` class.
-- `CustomIntentService` which extends `IntentService` class.
-
-Fill in the ```TODO's``` in ```MainActivity.java``` to:
+Fill in the TODO's in `MainActivity.java`
 - Start custom service
 - Stop custom service
 - Start intent service
 - Stop intent service
 
-Make sure to add logs with info level in each method override **to see the service lifecycle!**
+Make sure to add logs with info level in each method override to see the service lifecycle!
 ```java
+... // inside Service class 
+
 @Override
     public void onDestroy() {
         super.onDestroy();
@@ -279,17 +304,17 @@ Make sure to add logs with info level in each method override **to see the servi
     }
 ```
 
-**Bonus:**
-
+Bonus:
 - Use Thread and Runnable to do work inside of CustomService. The "work" is to sleep the Thread's runnable.
 
+***
 
 <a name="conclusion"></a>
 ## Conclusion (5 mins)
 
-- Why do we use Services?
-- What is the difference between a started Service and a bound Service? Can you have both?
-- How can you use a Service to perform long operations such a networking or writing to a file?
+Why do we use Services?
+What is the difference between a started Service and a bound Service? Can you have both?
+How can you use a Service to perform long operations such a networking or writing to a file?
 
 ***
 
