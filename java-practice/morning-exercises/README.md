@@ -145,7 +145,11 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 ## Binary Search:
 
-### 22. Given a sorted array of integers, find the number of occurrences of a given target value. 
+### 22. Compute and return the square root of a number.
+
+[Solution] (solutions/binarysearch/squareroot.java)
+
+### 23. Given a sorted array of integers, find the number of occurrences of a given target value. 
 Example:
 Given [5, 7, 7, 8, 8, 10] and target value 8, return 2. If it is not found, return 0.
 
