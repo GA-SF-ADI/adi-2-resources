@@ -143,5 +143,15 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 [Solution] (solutions/recursion/reverselinkedlistrecursion.java)
 
+## Binary Search:
+
+### 22. Given a sorted array of integers, find the number of occurrences of a given target value. 
+Example:
+Given [5, 7, 7, 8, 8, 10] and target value 8, return 2. If it is not found, return 0.
+
+[Solution] (solutions/binarysearch/sortedarray.java)
+
+
+
 		
 
