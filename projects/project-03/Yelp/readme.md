@@ -56,7 +56,7 @@ If you have questions about whether or not your work adheres to these guidelines
 
 By the end of week 7:
 
-- A completed research plan according to the template provided in class
+- A completed [research plan](../assets/research-plan-worksheet.pdf) according to the template provided in class
 - Competitive research in a Google Sheet
 
 **Week 8:**
