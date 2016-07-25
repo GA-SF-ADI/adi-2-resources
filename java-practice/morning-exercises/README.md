@@ -145,7 +145,7 @@ You are going to be given a string of parenthesis type characters (i.e., {{(([{}
 
 ## Binary Search:
 
-### 22. Implement binary search to find the index of a number in a sorted array.
+### 22. Implement binary search to find the index of a number in a sorted array. If it does not exist return -1.
 
 [Solution] (solutions/binarysearch/findindex.java)
 
