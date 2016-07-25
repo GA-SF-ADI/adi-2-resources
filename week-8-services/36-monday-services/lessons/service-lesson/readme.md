@@ -63,7 +63,7 @@ A Service is **not** a thread. It is not a means itself to do work off of the ma
 
 There are a number of important methods in the service class, they are:
 
-[```onCreate()```](http://developer.android.com/reference/android/app/Service.html#onCreate()): The system calls this method when the service is first created, to perform one-time setup procedures (before it calls either ```onStartCommand()``` or ```onBind()```). If the service is already running, this method is not called.
+[```onCreate()```](http://developer.android.com/reference/android/app/Service.html#onCreate()): The system calls this method when the service is first created, to perform one-time setup procedures (before it calls either ```onStartCommand()``` or ```onBind()```). **If the service is already running, this method is not called**.
 
 [```onStartCommand()```](http://developer.android.com/reference/android/app/Service.html#onStartCommand(android.content.Intent, int, int)): The system calls this method when another component, such as an activity, requests that the service be started, by calling startService(). Once this method executes, the service is started and can run in the background indefinitely. If you implement this, it is your responsibility to stop the service when its work is done, by calling ```stopSelf()``` or ```stopService()```. (**If you only want to provide binding, you don't need to implement this method.**)
 
