@@ -208,8 +208,6 @@ A *Runnable* is a set of instructions to complete a task. These instructions are
 
 #### Creating a new Thread
 
-Create a new instance of Thread class: ```Thread customThread = new Thread()```. Note thread constructor requires a ```Runnable``` object inside the `Thread()` constructor (i.e. `Thread customThread = new Thread(Runnable r)`) .
-
 Create a new ```Runnable``` instance which will be the **instructions** of the task we want to perform.
 ```java
 Runnable customRunnable = new Runnable() {
@@ -228,6 +226,8 @@ Runnable customRunnable = new Runnable() {
 ```
 
 Now that we have a set of instructions to complete our task, we can pass them along to a worker who will complete the task for us!
+
+Create a new instance of Thread class: ```Thread customThread = new Thread()```. Note thread constructor requires a set of instructions on how to finish a task.  The instructions come from the ```Runnable``` object. We pass the instructions to the `Thread()` constructor (i.e. `Thread customThread = new Thread(Runnable r)`) .
 ```java
 // Create worker thread and pass a set of instructions on how to complete the task
 Thread customThread = new Thread(customRunnable);
