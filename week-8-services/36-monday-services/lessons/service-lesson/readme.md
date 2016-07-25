@@ -182,6 +182,9 @@ public int onStartCommand(final Intent intent, int flags, int startId) {
 
     // `fromMain` will contain the string: "Starting this service from MainActivity!"
     String fromMain = intent.getStringExtra(MainActivity.INTENT_KEY_SERVICE);
+
+    ... // rest of your code 
+}
 ```
 
 
