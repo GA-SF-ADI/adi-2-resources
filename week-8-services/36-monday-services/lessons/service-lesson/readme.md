@@ -164,6 +164,27 @@ startService(intent);
 
 The ```startService()``` method returns immediately and the Android system calls the service's ```onStartCommand()``` method. If the service is not already running, the system first calls ```onCreate()```, then calls ```onStartCommand()```.
 
+#### Passing information to a Service
+
+You can also pass extras to the service using intents just like we did with Activities!
+
+This happens on the intent before you start your service.
+```java
+Intent intent = new Intent(MainActivity.this, CustomService.class);
+intent.putExtra(INTENT_KEY_SERVICE, "Starting this service from MainActivity!")
+startService(intent);
+```
+
+Inside if your `CustomService.java` class' `onStartCommand()` you can retreive the intent:
+```java
+@Override
+public int onStartCommand(final Intent intent, int flags, int startId) {
+
+    // `fromMain` will contain the string: "Starting this service from MainActivity!"
+    String fromMain = intent.getStringExtra(MainActivity.INTENT_KEY_SERVICE);
+```
+
+
 ***
 
 ## Caution
