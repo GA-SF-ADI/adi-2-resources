@@ -1,5 +1,7 @@
 package ly.generalassemb.serviceexample;
 
+import android.app.*;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
          * Think what happens if we close the app or activity but never pressed the
          * stop service buttons.
          */
+
+        Intent intent = new Intent(MainActivity.this, ServiceCustom.class);
+        stopService(intent);
+
+        intent = new Intent(MainActivity.this, ServiceCustom.class);
+        stopService(intent);
     }
 
     private void setViews(){
@@ -43,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO START your CustomService here
 
+                Intent intent = new Intent(MainActivity.this, ServiceCustom.class);
+                startService(intent);
+
             }
         });
 
@@ -50,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO STOP your CustomService here
+                Intent intent = new Intent(MainActivity.this,ServiceCustom.class);
+                stopService(intent);
 
             }
         });
@@ -63,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO START your CustomIntentService here
+                Intent intent = new Intent(MainActivity.this,ServiceCustom.class);
+                startService(intent);
+
 
             }
         });
@@ -71,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO STOP your CustomIntentService here
+                Intent intent = new Intent (MainActivity.this,ServiceCustom.class);
+                stopService(intent);
 
             }
         });
