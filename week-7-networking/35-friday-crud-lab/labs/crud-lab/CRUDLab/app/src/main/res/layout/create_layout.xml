@@ -4,32 +4,37 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editText_Title"
+        android:id="@+id/editText_Title_Create"
         android:hint="Enter Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/editText_Image"
+        android:id="@+id/editText_ImageURL_Create"
         android:hint="Enter Image URL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText_Title"/>
+        android:layout_below="@id/editText_Title_Create"/>
 
     <EditText
-        android:id="@+id/editText_Author"
+        android:id="@+id/editText_Author_Create"
         android:hint="Enter Author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText_Image"/>
+        android:layout_below="@id/editText_ImageURL_Create"/>
 
     <EditText
-        android:id="@+id/editText_Description"
-        android:hint="Enter Description"
+        android:id="@+id/editText_ReleaseDate_Create"
+        android:hint="Enter Release Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText_Author"/>
+        android:layout_below="@id/editText_Author_Create"/>
 
-
+    <Button
+        android:id="@+id/button_Create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        android:layout_below="@id/editText_ReleaseDate_Create"/>
 
 </RelativeLayout>

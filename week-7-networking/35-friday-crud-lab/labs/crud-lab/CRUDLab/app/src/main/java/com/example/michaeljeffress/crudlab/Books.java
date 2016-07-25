@@ -3,10 +3,12 @@ package com.example.michaeljeffress.crudlab;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by michaeljeffress on 7/22/16.
  */
-public class Books {
+public class Books implements Serializable{
 
     private String _id;
 

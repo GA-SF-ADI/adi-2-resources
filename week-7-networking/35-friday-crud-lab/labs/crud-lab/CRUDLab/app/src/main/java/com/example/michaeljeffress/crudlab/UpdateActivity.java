@@ -1,12 +1,14 @@
 package com.example.michaeljeffress.crudlab;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,29 +27,41 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class UpdateActivity extends AppCompatActivity{
     private static String baseUrl = "https://super-crud.herokuapp.com";
-    TextView textView_Title;
+    EditText editText_Title;
+    EditText editText_URL;
     ImageView imageView;
-    TextView textView_Author;
-    TextView textView_ReleaseDate;
+    EditText editText_Author;
+    EditText editText_ReleaseDate;
+    Button button_Update;
 
+    String title_Update;
+    String url_Update;
+    String author_Update;
+    String releaseDate_Update;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.update_layout);
 
-        textView_Title = (TextView) findViewById(R.id.textView_title);
-        imageView = (ImageView) findViewById(R.id.imageView_image);
-        textView_Author = (TextView) findViewById(R.id.textView_author);
-        textView_ReleaseDate = (TextView) findViewById(R.id.textView_releasedate);
+        editText_Title = (EditText) findViewById(R.id.editText_Title);
+        imageView = (ImageView) findViewById(R.id.imageView_Image);
+        editText_URL = (EditText) findViewById(R.id.editText_URL);
+        editText_Author = (EditText) findViewById(R.id.editText_Author);
+        editText_ReleaseDate = (EditText) findViewById(R.id.editText_ReleaseDate);
+        button_Update = (Button) findViewById(R.id.button_Update);
 
 
+
+        Intent intent = getIntent();
+        Books books = (Books)intent.getSerializableExtra("books");
+ //       books.setTitle(intent.get);
 
     }
 
     protected void getBookInfo(String title, String image, String author, String releaseDate) {
-        Log.d("MainActivity: ", "getting book info");
+        Log.d("UpdateActivity: ", "getting book info");
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -60,7 +74,7 @@ public class UpdateActivity extends AppCompatActivity{
 
             CRUDInterface service = retrofit.create(CRUDInterface.class);
 
-            Call<Bookshelf> call = service.getBooks();
+            Call<Bookshelf> call = service.updateBook(Books);
 
             call.enqueue(new Callback<Bookshelf>() {
                 @Override
@@ -68,20 +82,22 @@ public class UpdateActivity extends AppCompatActivity{
 
                     try {
 
-                        String title = response.body().getTitle();
+                        Books[] books = response.body().getBooks();
 
-                        String image = response.body().getImage();
+//                        String title = response.body().getTitle();
+//
+//                        String image = response.body().getImage();
+//
+//                        String author = response.body().getAuthor();
+//
+//                        String releaseDate = response.body().getReleaseDate();
 
-                        String author = response.body().getAuthor();
-
-                        String releaseDate = response.body().getReleaseDate();
-
-
-                        textView_Title.setText(title);
-                        textView_Author.setText(author);
-                        textView_ReleaseDate.setText(releaseDate);
-
-                        Picasso.with(UpdateActivity.this).load(image).into(imageView);
+//
+//                        editText_Title.setText(title);
+//                        editText_Author.setText(author);
+//                        editText_ReleaseDate.setText(releaseDate);
+//
+//                        Picasso.with(UpdateActivity.this).load(image).into(imageView);
 
 
                     } catch (Exception e) {

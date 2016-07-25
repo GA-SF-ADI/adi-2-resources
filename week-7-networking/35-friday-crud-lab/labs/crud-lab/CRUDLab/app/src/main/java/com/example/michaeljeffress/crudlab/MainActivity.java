@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonCreate;
     Button buttonRead;
     ListView listView;
+    Books books[];
     private static String baseUrl = "https://super-crud.herokuapp.com";
 
 
@@ -45,19 +47,24 @@ public class MainActivity extends AppCompatActivity {
         buttonRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getBookInfo();
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                intent.putExtra("books", books[i]);
                 startActivity(intent);
             }
         });
 
-        listView.setOnItemClickListener();
 
-
-        listView.setOnLongClickListener();
 
     }
 
-    protected void getBookInfo(String title) {
+    protected void getBookInfo() {
         Log.d("MainActivity: ", "getting book info");
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -78,9 +85,10 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call<Bookshelf> call, Response<Bookshelf> response) {
 
                     try {
-                        create an instance of list adapter
-                                constructor give books
-                        listView.setAdapter(XX);
+                        books = response.body().getBooks();
+
+                        ListCustomAdapter adapter = new ListCustomAdapter(MainActivity.this, R.layout.custom_layout, books);
+                        listView.setAdapter(adapter);
 
 
                     } catch (Exception e) {

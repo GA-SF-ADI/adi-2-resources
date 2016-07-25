@@ -39,7 +39,7 @@ public class ListCustomAdapter extends ArrayAdapter {
             view = LayoutInflater.from(getContext()).inflate(resource,null);
         }
 
-        TextView title = (TextView) view.findViewById(R.id.textView_title);
+        TextView title = (TextView) view.findViewById(R.id.textView_Custom);
 
         Books curBook = books [position];
 
