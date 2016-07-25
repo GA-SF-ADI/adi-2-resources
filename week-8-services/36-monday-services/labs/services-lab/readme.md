@@ -18,6 +18,7 @@ Create media player
 MediaPlayer mPlayer = new MediaPlayer();
 ```
 
+Get media url and set it on the player. Then prepare it.
 ```java
 // Set the song to play. Here, I'm setting a Url to a song I want to stream.
 // You can also play a song saved on the device using a file path or Uri, but
@@ -36,6 +37,35 @@ mPlayer.setDataSource(url);
 mPlayer.prepareAsync();
 ```
 
+Listen to when player is prepared
+```java
+mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+@Override
+public void onPrepared(MediaPlayer mp) {
+    
+        // once the player is prepared, start playing the song
+        mPlayer.start();
+        
+        // save state of whether we are prepared or not. If later you notice isPrepared == true, then mPlayer.start() can be called directly without any setup needing to happen
+        isPrepared = true;
+        
+    }
+});
+```
+
+List to when song is completed
+```java
+// Optional. I want the service to stop itself
+// when the song stops playing. This listener listens for when the
+// media player's song is completed.
+
+mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        stopSelf();
+    }
+});
+```
 
 #### Requirements
 
