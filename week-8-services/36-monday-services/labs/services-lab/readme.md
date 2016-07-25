@@ -9,12 +9,40 @@ creator: James Davis (NYC)
 
 ## Exercise
 
-#### Requirements
+You are creating a Service that will play/pause/stop music player.
 
+#### How to play music
+
+Create media player
+```java
+MediaPlayer mPlayer = new MediaPlayer();
+```
+
+```java
+// Set the song to play. Here, I'm setting a Url to a song I want to stream.
+// You can also play a song saved on the device using a file path or Uri, but
+// do not have to set the audio stream type
+String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
+
+// We are streaming music and setting the URL of song on the player
+mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+mPlayer.setDataSource(url);
+
+// The next line prepares the media player to be played. This is done
+// asynchronously, with prepareAsync(). If you use the regular prepare()
+// method, the method does not return until the full song is loaded.
+// When using prepareAsync(), it returns immediately and, if streaming,
+// does not load the whole song.
+mPlayer.prepareAsync();
+```
+
+
+#### Requirements
 
 * Whether you stream the song or save it in your project, Hotify should be able to play one song using services
 * Hotify has one screen - make this screen have three buttons: Play, Pause, and Stop
   * Each button will control the playback of the song
+  
 
 **Bonus:**
 
