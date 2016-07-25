@@ -109,6 +109,29 @@ bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
 Steps 3 and 4 can be done where you interact with the service, and when you wish to unbind the service, respectively. Unbinding may occur for example when you call onDestroy(), and/or onStop().
 
+As an example:
+
+```java
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Bind to LocalService
+        Intent intent = new Intent(this, LocalService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Unbind from the service
+        if (mBound) {
+            unbindService(mConnection);
+            mBound = false;
+        }
+    }
+```
+
 
 ## Conclusion (5 mins)
 
