@@ -44,6 +44,8 @@ public class MusicService extends Service {
     }
 
     public void playMusic(String action) {
+    length++;
+        Log.d("TAG", "length is " + length);
 
         if ("PLAY".contains(action)) {
             if (!musicPlaying) {
