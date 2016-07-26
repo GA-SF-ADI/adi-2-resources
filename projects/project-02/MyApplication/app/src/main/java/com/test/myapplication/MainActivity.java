@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 mCartItem = new Cart(1,mAlcohol.getAlcId());
                 mHelper.addCart(mCartItem);
                 Toast.makeText(getBaseContext(), "Added item to cart" , Toast.LENGTH_SHORT ).show();
+
+                Intent intent = new Intent(MainActivity.this, CustomIntentService.class);
+                startService(intent);
                 return true;
             }
         });
