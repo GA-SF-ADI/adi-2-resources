@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp" android:layout_height="60dp"
+    android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/rv_image_view"
+        android:src="@drawable/jameson"
+        android:layout_gravity="left"
+        android:layout_height="60dp"
+        android:layout_width="60dp"/>
+
+    <TextView
+        android:id="@+id/rv_text_name"
+        android:text="Jameson"
+        android:textSize="25dp"
+        android:paddingRight="15dp"
+        android:layout_toRightOf="@+id/rv_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/rv_text_price"
+        android:text="$25"
+        android:textSize="20dp"
+        android:layout_toRightOf="@+id/rv_image_view"
+        android:layout_below="@+id/rv_text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

@@ -15,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.OnRecyclerViewItemClickListener{
     ListView mainListView;
     SearchView searchView;
     DataBaseHelper mHelper;
@@ -24,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     MenuItem mCartButton;
     Cursor mCursor,mCursor1;
     Cart mCartItem;
+
+    @Override
+    public void onItemClick(int position) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
