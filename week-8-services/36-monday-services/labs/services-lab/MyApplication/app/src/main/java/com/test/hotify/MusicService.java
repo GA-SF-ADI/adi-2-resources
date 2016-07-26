@@ -1,12 +1,11 @@
 package com.test.hotify;
-
 import android.app.Service;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
 import java.io.IOException;
 
 /**
@@ -15,12 +14,20 @@ import java.io.IOException;
 public class MusicService extends Service {
     MediaPlayer mPlayer;
     String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
-
+    private final IBinder myBinder = new MyLocalBinder();
+    int length;
+    boolean isPrepared = false;
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return myBinder;
+    }
+
+    public class MyLocalBinder extends Binder{
+        MusicService getService(){
+            return MusicService.this;
+        }
     }
 
     @Override
@@ -37,8 +44,16 @@ public class MusicService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-
+    public void onDestroy() {
+        mPlayer.stop();
+        super.onDestroy();
+    }
+    //This method works but it doesn't work after I press stop. App doesn't crash but it says "start called in state 0" "error(-38,0)"
+    public void playMusic(){
+        if(length>0){
+            mPlayer.seekTo(length);
+            mPlayer.start();
+        }else if(!isPrepared){
         Runnable customRunnable = new Runnable() {
             @Override
             public void run() {
@@ -50,23 +65,31 @@ public class MusicService extends Service {
 
                         mPlayer.start();
 
-
                     }
                 });
             }
         };
 
-        Thread customThread = new Thread(customRunnable);
-        customThread.start();
-
-
-
-        return super.onStartCommand(intent, flags, startId);
+            Thread customThread = new Thread(customRunnable);
+            customThread.start();
+            isPrepared=true;
+        }else{
+            mPlayer.start();
+        }
     }
 
-    @Override
-    public void onDestroy() {
+    public void stopMusic(){
         mPlayer.stop();
-        super.onDestroy();
+        length=0;
+    }
+
+    public void pauseMusic(){
+        if(mPlayer.isPlaying()){
+            mPlayer.pause();
+            length=mPlayer.getCurrentPosition();
+        }else{
+            mPlayer.seekTo(length);
+            mPlayer.start();
+        }
     }
 }

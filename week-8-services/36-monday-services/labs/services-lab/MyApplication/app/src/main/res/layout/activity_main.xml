@@ -12,7 +12,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/play_button"
+        android:textSize="50dp"
+        android:text="HOTIFY!" />
 
     <Button
         android:id="@+id/play_button"
@@ -23,7 +26,7 @@
         android:text="play"/>
 
     <Button
-        android:id="@+id/stop_button"
+        android:id="@+id/pause_button"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/play_button"
         android:layout_width="wrap_content"
@@ -31,9 +34,9 @@
         android:text="pause"/>
 
     <Button
-        android:id="@+id/pause_button"
+        android:id="@+id/stop_button"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/stop_button"
+        android:layout_below="@id/pause_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="stop"/>
