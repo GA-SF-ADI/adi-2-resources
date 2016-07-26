@@ -17,6 +17,10 @@
 
     </activity>
 
+    <provider
+        android:name=".MyContentProvider"
+        android:authorities="com.example.database.provider.MyContentProvider" />
+
   </application>
 
 </manifest>
