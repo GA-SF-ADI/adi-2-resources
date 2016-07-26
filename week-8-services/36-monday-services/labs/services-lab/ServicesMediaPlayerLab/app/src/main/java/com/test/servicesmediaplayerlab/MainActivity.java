@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // setting buttons
         play = (Button)findViewById(R.id.play_button);
         pause = (Button)findViewById(R.id.pause_button);
         stop = (Button)findViewById(R.id.stop_button);
@@ -25,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent playIntent = new Intent(MainActivity.this, CustomService.class);
-                String play = "play";
-                playIntent.putExtra("play",play);
+                playIntent.setAction("play");
                 startService(playIntent);
             }
         });
@@ -34,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pauseIntent = new Intent(MainActivity.this, CustomService.class);
-                String pause = "pause";
-                pauseIntent.putExtra("pause",pause);
+                pauseIntent.setAction("pause");
                 startService(pauseIntent);
             }
         });
@@ -43,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent stopIntent = new Intent(MainActivity.this, CustomService.class);
-                String stop = "stop";
-                stopIntent.putExtra("stop",stop);
+                stopIntent.setAction("stop");
                 stopService(stopIntent);
             }
         });

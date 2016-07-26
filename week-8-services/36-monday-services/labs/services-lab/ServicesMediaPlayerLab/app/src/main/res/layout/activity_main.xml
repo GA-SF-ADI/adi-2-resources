@@ -10,20 +10,20 @@
     tools:context="com.test.servicesmediaplayerlab.MainActivity"
     android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
     <Button
         android:id="@+id/play_button"
+        android:text="Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/pause_button"
+        android:text="Pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/stop_button"
+        android:text="Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
