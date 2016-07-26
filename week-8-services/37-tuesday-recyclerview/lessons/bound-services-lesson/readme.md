@@ -38,9 +38,9 @@ A bound service is the server in a client-server interface, and it allows compon
 
 A bound service typically lives only while it serves another application component and does not run in the background indefinitely.
 
-*This type of service can be used when we want to communicate with service from application component(like Activity) for example we can upload data in background using service and we can call its public function to check uploading status and display it on UI.*
+*This type of service can be used when we want to communicate with service from an application component(like an Activity). For example we can upload data in background using service and we can call its public function to check uploading status and display it on the UI.*
 
-This is in contrast to an *Unbound* Service, which calls at the life span of calling activity, and would continue to run in the background, even if the original component that initiated it is destroyed. For instance, when started, a service would continue to play music in the background indefinitely.
+This is in contrast to an *Unbound* Service, which calls at the life span of the calling activity, and would continue to run in the background, even if the original component that initiated it is destroyed. For instance, when started, a service would continue to play music in the background indefinitely.
 
 ## Bound Service flow (20 min)
 
@@ -108,6 +108,29 @@ bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 ```
 
 Steps 3 and 4 can be done where you interact with the service, and when you wish to unbind the service, respectively. Unbinding may occur for example when you call onDestroy(), and/or onStop().
+
+As an example:
+
+```java
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Bind to LocalService
+        Intent intent = new Intent(this, LocalService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Unbind from the service
+        if (mBound) {
+            unbindService(mConnection);
+            mBound = false;
+        }
+    }
+```
 
 
 ## Conclusion (5 mins)
