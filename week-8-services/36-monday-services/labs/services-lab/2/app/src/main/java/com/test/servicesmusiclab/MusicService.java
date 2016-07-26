@@ -54,31 +54,38 @@ public class MusicService extends Service {
                         //or you can write .equalsIgnoreCase and "if" the musicAction is PLAY... do the following:
                         if (!musicPlaying) {
                             try {
+                                //These 3 lines of the set the song to whatever the url is
                                 String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
-                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                                mediaPlayer.setDataSource(url);
+                                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC); //.STREAM_MUSIC
+                                mediaPlayer.setDataSource(url); //set the url here
 
-                                mediaPlayer.prepareAsync(); //goes here
+                                mediaPlayer.prepareAsync();
+                                //this line prepares the media player to be played
+                                //notice how it done asynchronously the regular prepare method would be slower
+                                // and wait for the whole song is loaded... asynchronously (does not load the whole song)
 
                                 mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                                     @Override
                                     public void onPrepared(MediaPlayer mediaPlayer) {
+                                        //when the mediaPlayer is ready, being playing the song
                                         musicPlaying = true;
                                         mediaPlayer.start();
                                     }
 
                                 });
-
-                                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                                    @Override
-                                    public void onCompletion(MediaPlayer mediaPlayer) {
-                                        stopSelf();
-
-                                    }
-
-                                });
+//
+//                                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//                                    @Override
+//                                    public void onCompletion(MediaPlayer mediaPlayer) {
+//                                        stopSelf();
+//
+//                                    }
+//
+//                                });
 
                             } catch (Throwable e) {
+                                //We use this so that if something fails, an exception in thrown and the app won't crash
+                                //stack trace is printed and show toast if something is going wrong
 
                                 e.printStackTrace();
                                 Toast.makeText(MusicService.this, "File cannot play.", Toast.LENGTH_SHORT).show();
@@ -100,7 +107,9 @@ public class MusicService extends Service {
         // toast after the "work" was finished
         Toast.makeText(getApplicationContext(), "Music Service work is finished", Toast.LENGTH_SHORT).show();
 
-        return START_NOT_STICKY; //comes from service class
+        return START_NOT_STICKY; //comes from service class... can be STICKY or NOT STICKY
+        //STICKY: service is restarted when app is destroyed
+        //NON STICKY: use not sticky to avoid this
     }
 
 
@@ -109,10 +118,11 @@ public class MusicService extends Service {
         super.onDestroy();
         Log.i(TAG, "Service Destroyed");
         Toast.makeText(this, "Service Destroyed", Toast.LENGTH_SHORT).show();
+        //stops the playback
         mediaPlayer.stop();
+        // When the service is destroyed (anytime the service is stopped), we release the memory used
+        // by the media player, which can be a lot of memory.
         mediaPlayer.release();
         musicPlaying = false;
-        //read about stopForeground in the notes... it removes the notification
-        stopForeground(true);
     }
 }
