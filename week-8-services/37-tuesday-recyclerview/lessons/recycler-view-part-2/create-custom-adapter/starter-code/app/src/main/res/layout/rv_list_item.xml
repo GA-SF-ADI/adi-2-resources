@@ -19,5 +19,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
-        android:text="Some text"/>
+        android:text="Audrey"/>
 </LinearLayout>
