@@ -95,7 +95,7 @@ mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_
 listView.setAdapter(mCursorAdapter);
 ```
 
-Finally, because Contacts requires us to prompt the user for permissions (because it is a "Dangerous Permissions" Content Provider), we must prompt the user for permission. To do this, we implement the following methods:
+Finally, because Contacts requires us to prompt the user for permissions (because it is a "Dangerous Permissions" Content Provider), we must prompt the user for permission. To do this, we implement the following methods. Let's work through each step here:
 
 
 ```java
@@ -126,6 +126,10 @@ Finally, because Contacts requires us to prompt the user for permissions (becaus
             // This will show the standard permission request dialog UI
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
                     READ_CONTACTS_PERMISSIONS_REQUEST);
+        } else if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                == PackageManager.PERMISSION_GRANTED) {
+            //Permission granted. List the contacts.
+            setContactListView();
         }
     }
 
@@ -156,7 +160,7 @@ Finally, because Contacts requires us to prompt the user for permissions (becaus
 
 ```
 
-We wrap this around our Cursor actions that display contacts. Now when we run the app, it should show our contacts.
+Now when we run the app, it should show our contacts.
 
 
 ***
@@ -164,7 +168,7 @@ We wrap this around our Cursor actions that display contacts. Now when we run th
 <a name="ind-practice"></a>
 ## Independent Practice: Contacts (15 mins)
 
-Modify the Contacts code you have written so far to allow you to delete contacts from your Contact list. If you have extra time, add the ability to add and edit your contacts.
+Modify the Contacts code you have written so far to allow you to delete contacts from your Contact list. 
 
 
 ***

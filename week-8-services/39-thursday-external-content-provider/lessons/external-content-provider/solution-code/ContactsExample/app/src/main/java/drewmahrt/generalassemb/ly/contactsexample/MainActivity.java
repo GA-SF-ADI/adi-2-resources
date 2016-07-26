@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
             // This will show the standard permission request dialog UI
             requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
                     READ_CONTACTS_PERMISSIONS_REQUEST);
+        } else if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                == PackageManager.PERMISSION_GRANTED) {
+            //Permission granted. List the contacts.
+            setContactListView();
         }
     }
 
@@ -82,46 +86,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length == 1 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Read Contacts permission granted", Toast.LENGTH_SHORT).show();
-                ListView listView = (ListView) findViewById(R.id.contacts_list);
-
-                final String[] projection = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME};
-                final Uri uri = ContactsContract.Contacts.CONTENT_URI;
-
-                Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-
-                while (cursor.moveToNext()) {
-                    Log.d(MainActivity.class.getName(), "ID: " + cursor.getString(0) + " Name: " + cursor.getString(1));
-                }
-
-                mCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{ContactsContract.Contacts.DISPLAY_NAME}, new int[]{android.R.id.text1}, 0);
-                listView.setAdapter(mCursorAdapter);
-
-                listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                        Log.d(MainActivity.class.getName(), "Clicked on ID: " + id);
-
-                        Cursor current = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
-                                null, ContactsContract.Contacts._ID + "=" + id, null, null);
-                        if (current.moveToFirst()) {
-                            String lookupKey = current.getString(current.getColumnIndex(
-                                    ContactsContract.Contacts.LOOKUP_KEY));
-                            Uri lookupUri = Uri.withAppendedPath(ContactsContract.
-                                    Contacts.CONTENT_LOOKUP_URI, lookupKey);
-                            System.out.println("The uri is " + lookupUri.toString());
-                            getContentResolver().delete(lookupUri, ContactsContract.Contacts._ID + "=" + id, null);
-
-                            Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
-                            mCursorAdapter.swapCursor(cursor);
-                        } else {
-
-                            Toast.makeText(MainActivity.this, "error deleting contact", Toast.LENGTH_SHORT).show();
-                        }
-                        return false;
-                    }
-                });
-
-
+                setContactListView();
             } else {
                 // showRationale = false if user clicks Never Ask Again, otherwise true
                 boolean showRationale = shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS);
@@ -135,6 +100,48 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    public void setContactListView() {
+        ListView listView = (ListView) findViewById(R.id.contacts_list);
+
+        final String[] projection = new String[]{ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME};
+        final Uri uri = ContactsContract.Contacts.CONTENT_URI;
+
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+
+        while (cursor.moveToNext()) {
+            Log.d(MainActivity.class.getName(), "ID: " + cursor.getString(0) + " Name: " + cursor.getString(1));
+        }
+
+        mCursorAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1, cursor, new String[]{ContactsContract.Contacts.DISPLAY_NAME}, new int[]{android.R.id.text1}, 0);
+        listView.setAdapter(mCursorAdapter);
+
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(MainActivity.class.getName(), "Clicked on ID: " + id);
+
+                Cursor current = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
+                        null, ContactsContract.Contacts._ID + "=" + id, null, null);
+                if (current.moveToFirst()) {
+                    String lookupKey = current.getString(current.getColumnIndex(
+                            ContactsContract.Contacts.LOOKUP_KEY));
+                    Uri lookupUri = Uri.withAppendedPath(ContactsContract.
+                            Contacts.CONTENT_LOOKUP_URI, lookupKey);
+                    System.out.println("The uri is " + lookupUri.toString());
+                    getContentResolver().delete(lookupUri, ContactsContract.Contacts._ID + "=" + id, null);
+
+                    Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+                    mCursorAdapter.swapCursor(cursor);
+                } else {
+
+                    Toast.makeText(MainActivity.this, "error deleting contact", Toast.LENGTH_SHORT).show();
+                }
+                return false;
+            }
+        });
     }
 }
 
