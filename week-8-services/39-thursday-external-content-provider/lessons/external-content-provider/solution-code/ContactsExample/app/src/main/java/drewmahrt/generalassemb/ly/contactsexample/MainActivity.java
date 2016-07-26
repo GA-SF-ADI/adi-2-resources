@@ -2,21 +2,14 @@ package drewmahrt.generalassemb.ly.contactsexample;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.provider.UserDictionary;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -26,7 +19,6 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     SimpleCursorAdapter mCursorAdapter;
@@ -36,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         getPermissionToReadUserContacts();
 
@@ -133,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                         Log.d(MainActivity.class.getName(), "Clicked on ID: " + id);
-//                getContentResolver().delete(uri,null,null);
 
                         Cursor current = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
                                 null, ContactsContract.Contacts._ID + "=" + id, null, null);
@@ -148,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
                             Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
                             mCursorAdapter.swapCursor(cursor);
                         } else {
-                            Snackbar.make(view, "Error deleting contact", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+
+                            Toast.makeText(MainActivity.this, "error deleting contact", Toast.LENGTH_SHORT).show();
                         }
                         return false;
                     }
