@@ -1,5 +1,6 @@
-package com.example.kitty.myapplication;
+package com.example.kitty.myapplication.Models;
 
+import com.example.kitty.myapplication.Models.Book;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

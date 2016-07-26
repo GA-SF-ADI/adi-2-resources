@@ -1,14 +1,15 @@
 package com.example.kitty.myapplication;
 
+import com.example.kitty.myapplication.Models.Book;
+import com.example.kitty.myapplication.Models.Library;
+
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 /**
  * Created by kitty on 7/25/16.

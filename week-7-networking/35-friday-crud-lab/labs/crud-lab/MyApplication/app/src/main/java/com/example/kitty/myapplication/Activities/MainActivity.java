@@ -1,4 +1,4 @@
-package com.example.kitty.myapplication;
+package com.example.kitty.myapplication.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.kitty.myapplication.BookInterface;
+import com.example.kitty.myapplication.CustomAdapter;
+import com.example.kitty.myapplication.Models.Book;
+import com.example.kitty.myapplication.Models.Library;
+import com.example.kitty.myapplication.R;
 
 import java.util.List;
 
