@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
   }
 
   // Called when the user is performing an action which requires the app to read the
-  // user's contacts
+  // user's calendar
   @TargetApi(23)
   public void getPermissionToReadCalendar() {
     // 1) Use the support library version ContextCompat.checkSelfPermission(...) to avoid
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
       // it. If so, we want to give more explanation about why the permission is needed.
       if (shouldShowRequestPermissionRationale(
           Manifest.permission.READ_CALENDAR)) {
-        // Show our own UI to explain to the user why we need to read the contacts
+        // Show our own UI to explain to the user why we need to read the calendar
         // before actually requesting the permission and showing the default UI
       }
 
@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
           READ_CALENDAR_PERMISSIONS_REQUEST);
     } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR)
         == PackageManager.PERMISSION_GRANTED) {
-      //Permission granted. List the contacts.
+      //Permission granted. List the calendar events
       setUpViews();
     }
   }
@@ -86,11 +86,11 @@ public class MainActivity extends Activity {
   public void onRequestPermissionsResult(int requestCode,
                                          @NonNull String permissions[],
                                          @NonNull int[] grantResults) {
-    // Make sure it's our original READ_CONTACTS request
+    // Make sure it's our original READ_CALENDAR request
     if (requestCode == READ_CALENDAR_PERMISSIONS_REQUEST) {
       if (grantResults.length == 1 &&
           grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        Toast.makeText(this, "Read Contacts permission granted", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Read Calendar permission granted", Toast.LENGTH_SHORT).show();
         setUpViews();
       } else {
         // showRationale = false if user clicks Never Ask Again, otherwise true
@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
         if (showRationale) {
           // do something here to handle degraded mode
         } else {
-          Toast.makeText(this, "Read Contacts permission denied", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this, "Read Calendar permission denied", Toast.LENGTH_SHORT).show();
         }
       }
     } else {
