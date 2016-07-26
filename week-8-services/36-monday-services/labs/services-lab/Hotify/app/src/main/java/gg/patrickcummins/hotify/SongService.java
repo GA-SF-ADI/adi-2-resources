@@ -17,7 +17,7 @@ import java.io.IOException;
 public class SongService extends Service {
 
     MediaPlayer mediaPlayer = new MediaPlayer();
-    String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
+    String url;
     boolean isPrepared = false;
     @Nullable
     @Override
@@ -35,6 +35,13 @@ public class SongService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         final String userinput = intent.getStringExtra("userinput");
+        if (intent.getStringExtra("songUrl") == null){
+            url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
+
+        }else {
+            url = intent.getStringExtra("songUrl");
+
+        }
 
 
 
@@ -73,6 +80,7 @@ public class SongService extends Service {
                             stopSelf();
                         }
                     });
+                    isPrepared=true;
                 }
             }
         }).run();
