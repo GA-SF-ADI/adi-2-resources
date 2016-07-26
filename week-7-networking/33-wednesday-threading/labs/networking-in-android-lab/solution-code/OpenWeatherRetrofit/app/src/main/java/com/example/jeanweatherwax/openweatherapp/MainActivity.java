@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.jeanweatherwax.openweatherapp.models.Model;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         temperatureView = (TextView) findViewById(R.id.temperature);
 
         button = (Button) findViewById(R.id.button);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
