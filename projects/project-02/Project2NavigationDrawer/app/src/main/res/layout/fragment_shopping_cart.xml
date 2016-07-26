@@ -33,6 +33,15 @@
         android:layout_below="@+id/shopping_fragment_total_cost_text_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:text="PURCHASE ITEMS"
+        android:fontFamily="casual"
+        android:id="@+id/purchase_button"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/remove_button"
+        android:layout_centerHorizontal="true" />
 
 
     <ListView

@@ -35,6 +35,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <service android:name=".services.CustomIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>
