@@ -34,7 +34,7 @@ public static class SampleViewHolder extends RecyclerView.ViewHolder {
 
     // TODO: Step 5a/b implement the necessary methods
 }
-
+//Need to fill these in so you can draw it
     @Override
     public SampleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
