@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     mResultTextView = (TextView) findViewById(R.id.result);
   }
 
+  //Use content provider's methods!
   public void addProduct () {
 
   }
