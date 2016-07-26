@@ -8,36 +8,41 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity // TODO: Step 8e) Implement the interface you created {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter rvAdapter;
-    private RecyclerView.LayoutManager rvLayoutManager;
+public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.OnRecyclerViewItemClickListener { // TODO: Step 8e) Implement the interface you created
+        private RecyclerView recyclerView;
+        private RecyclerView.Adapter rvAdapter;
+        private RecyclerView.LayoutManager rvLayoutManager;
 
-    private ArrayList<String> dataList = new ArrayList<>();
+        private ArrayList<String> dataList = new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
 
-        dataList.add("Arizona");
-        dataList.add("California");
-        dataList.add("New Mexico");
-        dataList.add("New York");
+            recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        rvLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(rvLayoutManager);
+            dataList.add("Arizona");
+            dataList.add("California");
+            dataList.add("New Mexico");
+            dataList.add("New York");
 
-        // TODO: Step 8e) Create adapter, pass in data and the interface you implemented
-        rvAdapter =
+            rvLayoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(rvLayoutManager);
 
-        recyclerView.setAdapter(rvAdapter);
+            // TODO: Step 8e) Create adapter, pass in data and the interface you implemented
 
-    }
 
-    // TODO: Step 8e) Implement your interface and make a toast of the position and or data
+            rvAdapter = new CustomRecyclerViewAdapter(dataList, this);
+            recyclerView.setAdapter(rvAdapter);
+        }
+
+        @Override
+        public void onItemClick(int position) {
+            Toast.makeText(MainActivity.this, "Clicked on " + dataList.get(position) + " at position " + position, Toast.LENGTH_SHORT).show();
+        }
+        // TODO: Step 8e) Implement your interface and make a toast of the position and or data
 
 
 }
