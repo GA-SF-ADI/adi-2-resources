@@ -70,7 +70,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
                 } else {
 
 //                    TODO: Start service intent here
-                    
+
+                    Intent paymentSoundIntent = new Intent(ShoppingCartActivity.this, PaymentSoundService.class);
+                    startService(paymentSoundIntent);
+
 
                     Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!\n " +
                             "     Your cart is now empty.", Toast.LENGTH_SHORT).show();
