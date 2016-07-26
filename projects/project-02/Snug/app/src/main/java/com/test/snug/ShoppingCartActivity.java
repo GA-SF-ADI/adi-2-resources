@@ -68,6 +68,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
 
                 } else {
+
+//                    TODO: Start service intent here
+                    
+
                     Toast.makeText(ShoppingCartActivity.this, "Payment confirmed. Thank you!\n " +
                             "     Your cart is now empty.", Toast.LENGTH_SHORT).show();
 
