@@ -1,0 +1,113 @@
+{
+
+	 {
+		"name" : "mom",
+		"age"	: "69",
+		"quality" : "caring"
+		"appearance" : {
+			"eyes" : "blue"
+			"hair" : "short"
+		}
+	},{
+		"name" : "dad",
+		"age"	: "70",
+		"quality" : "hard-working"
+		"appearance" : {
+			"eyes" : "green"
+			"hair" : "short"
+		}
+	},{
+		"name" : "sister",
+		"age"	: "43",
+		"quality" : "dynamic"
+		"appearance" : {
+			"eyes" : "blue"
+			"hair" : "long"
+		}
+	},{
+		"name" : "wife",
+		"age"	: "42",
+		"quality" : "loving"
+		"appearance" : {
+			"eyes" : "brown"
+			"hair" : "long"
+		}
+	},{
+		"name" : "son1",
+		"age"	: "3",
+		"quality" : "active"
+		"appearance" : {
+			"eyes" : "brown"
+			"hair" : "short"
+		}
+	},{
+		"name" : "son2",
+		"age"	: "1",
+		"quality" : "newb"
+		"appearance" : {
+			"eyes" : "blue"
+			"hair" : "short"
+	},
+	
+}
+
+----------------------------------------
+
+{
+
+	"member1" : {
+		"name" : "mom",
+		"age"	: "69",
+		"quality" : "caring"
+		"appearance" : {
+			"eyes" : "blue"
+			"hair" : "short"
+		}
+	},
+	"member2" : {
+		"name" : "dad",
+		"age"	: "70",
+		"quality" : "hard-working"
+				"appearance" : {
+			"eyes" : "green"
+			"hair" : "short"
+		}
+	},
+	"member3" : {
+		"name" : "sister",
+		"age"	: "43",
+		"quality" : "dynamic"
+				"appearance" : {
+			"eyes" : "blue"
+			"hair" : "long"
+		}
+	},
+	"member4" : {
+		"name" : "wife",
+		"age"	: "42",
+		"quality" : "loving"
+				"appearance" : {
+			"eyes" : "brown"
+			"hair" : "long"
+		}
+	},
+	"member5" : {
+		"name" : "son1",
+		"age"	: "3",
+		"quality" : "active"
+				"appearance" : {
+			"eyes" : "brown"
+			"hair" : "short"
+		}
+	},
+	"member6" : {
+		"name" : "son2",
+		"age"	: "1",
+		"quality" : "newb"
+				"appearance" : {
+			"eyes" : "blue"
+			"hair" : "short"
+		}
+	},
+	
+}
