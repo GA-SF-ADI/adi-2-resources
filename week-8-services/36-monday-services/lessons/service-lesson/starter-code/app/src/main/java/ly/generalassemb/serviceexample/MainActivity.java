@@ -1,11 +1,14 @@
 package ly.generalassemb.serviceexample;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    Intent intent;
+    Intent intent2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO START your CustomService here
+                intent = new Intent(MainActivity.this, CustomService.class);
+                startService(intent);
 
             }
         });
@@ -50,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO STOP your CustomService here
+
+                stopService(intent);
 
             }
         });
@@ -63,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO START your CustomIntentService here
+                intent2 = new Intent(MainActivity.this, CustomIntentService.class);
+            startService(intent2);
 
             }
         });
@@ -71,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO STOP your CustomIntentService here
-
+                stopService(intent2);
             }
         });
     }

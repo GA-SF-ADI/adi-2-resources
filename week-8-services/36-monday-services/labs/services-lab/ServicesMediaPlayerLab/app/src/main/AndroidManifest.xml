@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ly.generalassemb.serviceexample">
+    package="com.test.servicesmediaplayerlab">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
         android:allowBackup="true"
@@ -15,12 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- Add service to manifest, but do not allow other apps to discover the service -->
         <service android:name=".CustomService"
-            android:exported="false"></service>
-        <service android:name=".CustomIntentService"
-            android:exported="false"></service>
+            android:exported="false"
+            android:process=":remote" />
     </application>
 
 </manifest>
