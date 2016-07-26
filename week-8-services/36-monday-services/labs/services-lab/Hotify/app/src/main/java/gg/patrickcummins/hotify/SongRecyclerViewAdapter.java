@@ -22,7 +22,7 @@ public class SongRecyclerViewAdapter extends RecyclerView.Adapter<SongRecyclerVi
         if (data!=null) {
             this.data = data;
         }else{
-            data = new ArrayList<>();
+            this.data = new ArrayList<>();
         }
     }
 

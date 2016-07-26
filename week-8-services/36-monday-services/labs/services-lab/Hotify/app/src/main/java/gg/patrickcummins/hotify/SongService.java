@@ -17,8 +17,9 @@ import java.io.IOException;
 public class SongService extends Service {
 
     MediaPlayer mediaPlayer = new MediaPlayer();
-    String url;
+    String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
     boolean isPrepared = false;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -32,34 +33,52 @@ public class SongService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(final Intent intent, int flags, int startId) {
 
         final String userinput = intent.getStringExtra("userinput");
-        if (intent.getStringExtra("songUrl") == null){
-            url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
-
-        }else {
-            url = intent.getStringExtra("songUrl");
-
-        }
-
 
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if (isPrepared) {
-                    if (userinput.equals("play")){
-                        mediaPlayer.start();
-                    } else if (userinput.equals("pause")){
-                        mediaPlayer.pause();
-                    }else if (userinput.equals("stop")){
-                        mediaPlayer.stop();
+                if (!userinput.equals("swap")) {
+                    if (isPrepared) {
+                        if (userinput.equals("play")) {
+                            mediaPlayer.start();
+                        } else if (userinput.equals("pause")) {
+                            mediaPlayer.pause();
+                        } else if (userinput.equals("stop")) {
+                            mediaPlayer.stop();
+                        }
+
+
+                    } else {
+                        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                        try {
+                            mediaPlayer.setDataSource(url);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        mediaPlayer.prepareAsync();
+                        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            @Override
+                            public void onPrepared(MediaPlayer mp) {
+                                isPrepared = true;
+                                Log.i("SONG SERVICE", "IS PREPARED IS TRUE");
+                                mediaPlayer.start();
+                            }
+                        });
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mp) {
+                                stopSelf();
+                            }
+                        });
                     }
-
-
-                }else{
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                } else {
+                    mediaPlayer.stop();
+                    mediaPlayer.reset();
+                    url = intent.getStringExtra("songUrl");
                     try {
                         mediaPlayer.setDataSource(url);
                     } catch (IOException e) {
@@ -80,9 +99,10 @@ public class SongService extends Service {
                             stopSelf();
                         }
                     });
-                    isPrepared=true;
                 }
             }
+
+
         }).run();
 
         return super.onStartCommand(intent, flags, startId);

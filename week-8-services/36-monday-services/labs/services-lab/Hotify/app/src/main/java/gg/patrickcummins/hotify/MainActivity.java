@@ -83,11 +83,8 @@ public class MainActivity extends AppCompatActivity implements SongRecyclerViewA
     @Override
     public void setSong(int position) {
         this.songUrl = dataList.get(position).getSongUrl();
-        Intent stopIntent = new Intent(MainActivity.this, SongService.class);
-        stopIntent.putExtra("userinput", "stop");
-        startService(stopIntent);
         Intent intent = new Intent(MainActivity.this, SongService.class);
-        intent.putExtra("userinput", "play");
+        intent.putExtra("userinput", "swap");
         intent.putExtra("songUrl", songUrl);
         startService(intent);
     }
