@@ -4,6 +4,8 @@
     package="com.test.servicesmusiclab">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+
 
     <application
         android:allowBackup="true"
