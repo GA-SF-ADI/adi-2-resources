@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import gg.patrickcummins.myapplication.Adapters.CartListAdapter;
+import gg.patrickcummins.myapplication.CaChingService;
 import gg.patrickcummins.myapplication.DatabaseHelper;
 import gg.patrickcummins.myapplication.R;
 import gg.patrickcummins.myapplication.models.CartItem;
@@ -84,6 +85,9 @@ public class CartActivity extends AppCompatActivity {
                 cartListAdapter.notifyDataSetChanged();
                 String totalText = "Total:\n$00.00";
                 priceTextView.setText(totalText);
+
+                Intent intent = new Intent(CartActivity.this, CaChingService.class);
+                startService(intent);
                 finish();
             }
         });
