@@ -51,6 +51,11 @@ public class DetailsActivity extends AppCompatActivity {
 
                 helper = ShoeOpenHelper.getInstance(DetailsActivity.this);
                 helper.insertRowShoppingCart(cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_NAME)), cursor.getDouble(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_PRICE)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_IMG_ID)), cursor.getInt(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_YEAR)),cursor.getString(cursor.getColumnIndex(ShoeOpenHelper.DataEntryShoes.COL_DESCRIPTION)));
+                // intent sends "play" to musicIntentService
+                Intent musicIntent = new Intent(DetailsActivity.this, MusicService.class);
+                String play = "play";
+                musicIntent.setAction(play);
+                startService(musicIntent);
                 // toast letting user know that cart is added
                 Toast.makeText(DetailsActivity.this,"Added item to cart",Toast.LENGTH_SHORT).show();
 
