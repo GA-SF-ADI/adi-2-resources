@@ -56,95 +56,14 @@ The permission mentioned above is what requires you to use the `<uses-permission
 
 Using a Contract also allows you to change things like URIs and column names without breaking functionality of anyone using your Content Provider.
 
+Since Marshmallow, some Content Providers have 'Normal Permissions' whilst others have 'Dangerous Permissions'. Dangerous Permissions refer to anything which may access the users' confidential data, such as Contacts, Camera, Location, and phone, for example.
 
-***
-
-<a name="demo"></a>
-## Demo: Contracts (15 mins)
-
-Now that we understand the basics of what a Contract is, let's take a look at a basic example using the UserDictionary contract used for predictive text in Android.
-
-[UserDictionary](https://github.com/android/platform_frameworks_base/blob/master/core/java/android/provider/UserDictionary.java)
-
-The UserDictionary provides access the Authority, Content URI, all of the columns contained in the table, as well as a helper method for adding new words to the dictionary.
-
-
-```java
-public static void addWord(Context context, String word,
-                int frequency, String shortcut, Locale locale) {
-            final ContentResolver resolver = context.getContentResolver();
-
-            if (TextUtils.isEmpty(word)) {
-                return;
-            }
-
-            if (frequency < FREQUENCY_MIN) frequency = FREQUENCY_MIN;
-            if (frequency > FREQUENCY_MAX) frequency = FREQUENCY_MAX;
-
-            final int COLUMN_COUNT = 5;
-            ContentValues values = new ContentValues(COLUMN_COUNT);
-
-            values.put(WORD, word);
-            values.put(FREQUENCY, frequency);
-            values.put(LOCALE, null == locale ? null : locale.toString());
-            values.put(APP_ID, 0); // TODO: Get App UID
-            values.put(SHORTCUT, shortcut);
-
-            Uri result = resolver.insert(CONTENT_URI, values);
-            // It's ok if the insert doesn't succeed because the word
-            // already exists.
-        }
-```
-
-
-***
-
-<a name="demo"></a>
-## Codealong: UserDictionary (10 mins)
-
-Let's try reading from the User Dictionary! We want to show the words from the user dictionary in a list on the screen.
-
-Take 5 minutes with a partner and try to figure out the steps of what we need to do.
-
-First, we need to create a ListView and get a reference to it. Next, we need to define the columns we want, and then query the dictionary.
-
-```java
-ListView listView = (ListView)findViewById(R.id.dictionary_list);
-
-String [] columns = {UserDictionary.Words._ID,UserDictionary.Words.WORD};
-
-Cursor cursor = getContentResolver().query(UserDictionary.Words.CONTENT_URI,columns,null,null,null);
-```
-
-Next, we need to create an adapter, then set it to the ListView.
-
-```java
-SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,cursor,columns,new int[]{android.R.id.text1},0);
-        listView.setAdapter(simpleCursorAdapter);
-```
-
-If you notice, we have an error that we need to set the correct permission in our Manifest.
-
-```xml
-<uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
-```
-
-That's it! We just used the User Dictionary Content Provider to retrieve information.
-
-**You must manually add words to the dictionary if it is empty.** Go to Settings -> Language and Input -> Personal Dictionary.
-
-
-***
-
-## Independent Practice: Adding Words to the Dictionary (10 minutes)
-
-Next, you will have to figure out how to add words to the dictionary. Using the link provided to the User Dictionary, or through the API documentation, write the code needed to add your own words. You must add an EditText to your Layout to retrieve the user input.
-
+For Content Providers with Dangerous Permissions, you will be required to prompt the user for permission.
 
 ***
 
 <a name="guided-practice"></a>
-## Guided Practice: Retrieving Contacts (15 mins)
+## Guided Practice: Retrieving Contacts (30 mins)
 
 Another popular built-in Content Provider is for the user Contacts. Android provides a Contact Contract to access nearly every aspect of the contacts you have stored in your phone. We are going to build an app that displays the names of our Contacts.
 
@@ -176,7 +95,72 @@ mCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_
 listView.setAdapter(mCursorAdapter);
 ```
 
-That's it! Now when we run the app, it should show our contacts.
+Finally, because Contacts requires us to prompt the user for permissions (because it is a "Dangerous Permissions" Content Provider), we must prompt the user for permission. To do this, we implement the following methods. Let's work through each step here:
+
+
+```java
+// Identifier for the permission request
+    private static final int READ_CONTACTS_PERMISSIONS_REQUEST = 1;
+
+    // Called when the user is performing an action which requires the app to read the
+    // user's contacts
+    public void getPermissionToReadUserContacts() {
+        // 1) Use the support library version ContextCompat.checkSelfPermission(...) to avoid
+        // checking the build version since Context.checkSelfPermission(...) is only available
+        // in Marshmallow
+        // 2) Always check for permission (even if permission has already been granted)
+        // since the user can revoke permissions at any time through Settings
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // The permission is NOT already granted.
+            // Check if the user has been asked about this permission already and denied
+            // it. If so, we want to give more explanation about why the permission is needed.
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_CONTACTS)) {
+                // Show our own UI to explain to the user why we need to read the contacts
+                // before actually requesting the permission and showing the default UI
+            }
+
+            // Fire off an async request to actually get the permission
+            // This will show the standard permission request dialog UI
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
+                    READ_CONTACTS_PERMISSIONS_REQUEST);
+        } else if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)
+                == PackageManager.PERMISSION_GRANTED) {
+            //Permission granted. List the contacts.
+            setContactListView();
+        }
+    }
+
+    // Callback with the request from calling requestPermissions(...)
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[],
+                                           @NonNull int[] grantResults) {
+        // Make sure it's our original READ_CONTACTS request
+        if (requestCode == READ_CONTACTS_PERMISSIONS_REQUEST) {
+            if (grantResults.length == 1 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Read Contacts permission granted", Toast.LENGTH_SHORT).show();
+            } else {
+                // showRationale = false if user clicks Never Ask Again, otherwise true
+                boolean showRationale = shouldShowRequestPermissionRationale( this, Manifest.permission.READ_CONTACTS)
+
+                if (showRationale) {
+                   // do something here to handle degraded mode
+                else {
+                   Toast.makeText(this, "Read Contacts permission denied", Toast.LENGTH_SHORT).show();
+                }
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+```
+
+Now when we run the app, it should show our contacts.
 
 
 ***
@@ -184,7 +168,7 @@ That's it! Now when we run the app, it should show our contacts.
 <a name="ind-practice"></a>
 ## Independent Practice: Contacts (15 mins)
 
-Modify the Contacts code you have written so far to allow you to delete contacts from your Contact list. If you have extra time, add the ability to add and edit your contacts.
+Modify the Contacts code you have written so far to allow you to delete contacts from your Contact list. 
 
 
 ***
@@ -200,3 +184,4 @@ Accessing other apps' Content Providers through Contracts is a very easy way to 
 - [Content Providers](http://developer.android.com/guide/topics/providers/content-providers.html)
 - [Contacts Content Provider](http://developer.android.com/guide/topics/providers/contacts-provider.html)
 - [Android Contracts](https://github.com/android/platform_frameworks_base/tree/master/core/java/android/provider)
+- [Normal and Dangerous Permissions] (https://developer.android.com/guide/topics/security/permissions.html#normal-dangerous)
