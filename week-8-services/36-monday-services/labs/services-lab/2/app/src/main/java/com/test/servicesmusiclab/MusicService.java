@@ -73,15 +73,6 @@ public class MusicService extends Service {
                                     }
 
                                 });
-//
-//                                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                                    @Override
-//                                    public void onCompletion(MediaPlayer mediaPlayer) {
-//                                        stopSelf();
-//
-//                                    }
-//
-//                                });
 
                             } catch (Throwable e) {
                                 //We use this so that if something fails, an exception in thrown and the app won't crash
