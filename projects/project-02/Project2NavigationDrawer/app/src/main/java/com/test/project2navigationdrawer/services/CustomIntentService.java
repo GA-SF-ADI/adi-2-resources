@@ -34,12 +34,13 @@ public class CustomIntentService extends IntentService {
         if ("TRUE".contains("TRUE")) {
             if (!isPrepared) {
                 try {
-                    String url = "http://soundbible.com/2136-Puppy-Barking.html";
+                    String url = "";
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                     mediaPlayer.setDataSource(url);
+                    Log.d("CustomIntentService", "setting media player");
                 } catch (Throwable e) {
                     e.printStackTrace();
-                    Toast.makeText(CustomIntentService.this, "Could not play file", Toast.LENGTH_SHORT).show();
+                    Log.d("CustomIntentService", "error caught for media player");
                 }
 
                 mediaPlayer.prepareAsync();
