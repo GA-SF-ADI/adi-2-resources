@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kitty.myapplication.Models.Book;
 import com.squareup.picasso.Picasso;
@@ -83,12 +84,13 @@ public class CustomAdapter extends BaseAdapter {
                 bookInterface.removeBook(currentBook.getId()).enqueue(new Callback<Book>() {
                     @Override
                     public void onResponse(Call<Book> call, Response<Book> response) {
-
+                        Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
+                        // ToDo: add code to refresh list
                     }
 
                     @Override
                     public void onFailure(Call<Book> call, Throwable t) {
-
+                        Toast.makeText(context, "delete failed", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

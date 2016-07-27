@@ -22,13 +22,13 @@ public interface BookInterface {
     @POST("/books")  //
     Call<Book> addBook(@Body Book book);
 
-    @GET("/books")  //
+    @GET("/books/{id}")  //
     Call<Book> getBook(@Path("id") String id);
 
-    @PUT("/books")  //
+    @PUT("/books/{id}")  //
     Call<Book> updateBook(@Path("id") String id, @Body Book book);
 
-    @DELETE("/books")  //
+    @DELETE("/books/{id}")  //
     Call<Book> removeBook(@Path("id") String id);
 
 }
