@@ -52,6 +52,7 @@ public class MusicService extends Service {
                 try {
 
                     String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
+                    //mediaPlayer.reset();
                     mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC); //.STREAM_MUSIC
                     mediaPlayer.setDataSource(url); //set the url here
 
@@ -80,32 +81,10 @@ public class MusicService extends Service {
 
         if ("PAUSE".contains(action)) {
             if (musicPlaying) {
-                musicPlaying = false;
+                //musicPlaying = false;
                 mediaPlayer.pause();
                 length=mediaPlayer.getCurrentPosition();
-//                    String url = "http://download.lisztonian.com/music/download/Clair%2Bde%2BLune-113.mp3";
-//                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC); //.STREAM_MUSIC
-//                    mediaPlayer.setDataSource(url); //set the url here
-//
-//                    mediaPlayer.prepareAsync();
-//
-//                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//                        @Override
-//                        public void onPrepared(MediaPlayer mediaPlayer) {
-//                            //when the mediaPlayer is ready, being playing the song
-//                            musicPlaying = true;
-//                            mediaPlayer.start();
-//                        }
-//
-//                    });
-//
-//                } catch (Throwable e) {
-//
-//                    e.printStackTrace();
-//                    Toast.makeText(MusicService.this, "File cannot play.", Toast.LENGTH_SHORT).show();
-//                    stopSelf();
-//                }
-//                }
+
             }
         }
     }

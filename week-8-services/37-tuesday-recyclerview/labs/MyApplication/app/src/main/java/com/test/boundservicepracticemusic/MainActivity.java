@@ -15,6 +15,7 @@ import com.test.boundservicepracticemusic.MusicService;
 import com.test.boundservicepracticemusic.R;
 
 public class MainActivity extends AppCompatActivity {
+
     MusicService musicService = new MusicService();
     // Using the boolean mPlayingMusic to see if user has clicked on "PLAY" or "PAUSE"
     boolean mPlayingMusic = true;
