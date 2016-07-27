@@ -29,6 +29,20 @@ creator:
 
 ---
 
+### LESSON GUIDE
+
+| TIMING  | TYPE  | TOPIC  |
+|:-:|---|---|
+| 5 min  | [Opening](#opening-5-mins)  | Discuss lesson objectives |
+| 5 min  | [Introduction](#introduction-creating-a-notification-5-mins)  | Creating a Notification |
+| 5 min  | [Demo](#demo-create-a-notification-builder-5-mins)  | Create a Notification Builder |
+| 15 min  | [Introduction](#introduction-actions-and-priority-15-mins)  | Actions and Priority |
+| 10 min  | [Demo](#demo-actions-10-mins)  | Actions |
+| 15 min  | [Guided Practice](#guided-practice-create-a-notification-on-button-click-15-mins)  | Create a notification on Button click |
+| 10 min  | [Demo](#demo-applying-an-expanded-layout-to-a-notification-10-mins)  | Applying an expanded layout to a notification |
+| 20 min  | [Independent Practice](#independent-practice-applying-an-expanded-layout-to-a-notification-20-mins)  | Applying an expanded layout to a notification |
+| 5 min  | [Conclusion](#conclusion-5-mins)  | Review / Recap |
+
 ## Opening (5 mins)
 
 A notification is a message you can display to the user outside of your application's normal UI. When you tell the system to issue a notification, it first appears as an icon in the notification area. To see the details of the notification, the user opens the notification drawer. Both the notification area and the notification drawer are system-controlled areas that the user can view at any time.
@@ -37,6 +51,7 @@ A notification is a message you can display to the user outside of your applicat
   <img src="./screenshots/notifications.jpg">
 </p>
 
+> Check: Ask the students to come up with some examples of notifications they see in the apps used daily.
 
 ## Introduction: Creating a Notification (5 mins)
 
@@ -56,9 +71,11 @@ Notifications remain visible until one of the following happens:
 * You call `cancelAll()`, which removes all of the notifications you previously issued
 * Setting the flag `setAutoCancel(true)` on the builder object will make it so the notification is automatically canceled when the user clicks it in the panel.
 
+> Check: Describe the steps in creating and removing a notification.
 
 ## Demo: Create a Notification Builder (5 mins)
 
+> Instructor note: Be sure to point out what files this code would be written in.
 
 In the snippet below, we create a new Notification object (line 1) and then set its properties: icon (line2), title (line3), text(line4). The method `setAutoCancel(true)` dismisses the notification when it is clicked.
 
@@ -70,6 +87,7 @@ mBuilder.setContentText("Hi, This is Android Notification Detail!");
 mBuilder.setAutoCancel(true);
 ```
 
+> Check: Describe, in your own words what's happening in the code above.
 
 ## Introduction: Actions and Priority (15 mins)
 
@@ -89,6 +107,7 @@ To associate the PendingIntent with a gesture, call the appropriate method of `N
 
 Starting an Activity when the user clicks the notification is the most common action scenario. You can also start an Activity when the user dismisses a notification.
 
+> Check: How do actions relate to notifications.
 
 #### Priority
 
@@ -102,6 +121,7 @@ Priority is an indication of how much of the user's attention should be consumed
   <img src="screenshots/priority.png"/>  
 </p>
 
+> Check: How do priorities relate to notifications.
 
 ##### Issue the notification
 
@@ -109,6 +129,7 @@ You pass the Notification object to the system by calling `NotificationManager.n
 
 ## Demo: Actions (10 mins)
 
+> Instructor note: Use an application you created for this class to demonstrate and walk through the following code.
 
 ```java
 Intent intent = new Intent(this, SecondActivity.class);
@@ -138,11 +159,13 @@ After we create a new pending intent, we pass it to Notification builder through
 
 ## Guided Practice: Create a notification on Button click (15 mins)
 
+> Instructor note: Consider doing this with students, based on student understanding.
 
 Using the code above, work with a partner to create a new project with a button. When the button is clicked, the notification should appear. If the notification is clicked, open a new activity.
 
 After you have created your app, check if you have done it correctly in the full example [solution-code](solution-code).
 
+> Check: Circulate the room and check to see if students are able to complete the exercise.
 
 ## Demo: Applying an expanded layout to a notification (10 mins)
 
@@ -194,6 +217,7 @@ inboxStyle.addLine("Message 5.");
 inboxStyle.setSummaryText("+2 more");
 ```
 
+> Check: Take one minute to think about when you might use one particular style (with the big view) over another.
 
 ## Independent Practice: Applying an expanded layout to a notification (20 mins)
 
@@ -201,6 +225,7 @@ Add 3 buttons - Big Text Style, Big Picture Style, Inbox Style - to the project 
 
 If you get stuck, check out the [solution-code](solution-code).
 
+> Check: Spend 5 minutes to review the [solution-code](solution-code) with students.
 
 ## Conclusion (5 mins)
 
