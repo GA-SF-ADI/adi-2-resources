@@ -31,6 +31,8 @@ An Android app that follows the requirements above. There are no design requirem
 
 When testing the app, make sure your phone is connected to your email account and has at least a few calendar events. Otherwise, your ListView may be empty.  
 
+We've kept in some of the scaffolding for the trickier permissions code in the starter code. Be sure to follow the comment suggestions.
+
 <p align="center">
   <img src="screenshots/screen1.png" height="400px" />
 </p>
