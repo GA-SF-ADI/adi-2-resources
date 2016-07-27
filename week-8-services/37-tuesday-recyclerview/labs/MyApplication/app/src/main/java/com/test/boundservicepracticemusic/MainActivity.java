@@ -18,18 +18,19 @@ public class MainActivity extends AppCompatActivity {
     boolean mPlayingMusic = true;
 
     protected ServiceConnection myConnection = new ServiceConnection() {
+        //onServiceConnected is called when the connection with the service is established
         public void onServiceConnected(ComponentName className, IBinder service) {
+            //Got a binder and then cast it
             MusicService.MyLocalBinder binder = (MusicService.MyLocalBinder) service;
             musicService = binder.getService();
             Toast.makeText(MainActivity.this, "onServiceConnected", Toast.LENGTH_SHORT).show();
             mPlayingMusic = true;
         }
-
+        //onServiceDisconnected is called when the connection with the service disconnects unexpectedly
         public void onServiceDisconnected(ComponentName className) {
             Toast.makeText(MainActivity.this, "onServiceDisonnected", Toast.LENGTH_SHORT).show();
             mPlayingMusic = false;
         }
-
     };
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setViews();
+        //Bind to MusicService
         final Intent intent = new Intent(this, MusicService.class);
         bindService(intent, myConnection, Context.BIND_AUTO_CREATE);
     }
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Unbind from MusicService
     @Override
     public void onStop() {
         super.onStop();
