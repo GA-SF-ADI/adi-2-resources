@@ -11,13 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.test.boundservicepracticemusic.MusicService;
-import com.test.boundservicepracticemusic.R;
 
 public class MainActivity extends AppCompatActivity {
 
     MusicService musicService = new MusicService();
-    // Using the boolean mPlayingMusic to see if user has clicked on "PLAY" or "PAUSE"
     boolean mPlayingMusic = true;
 
     protected ServiceConnection myConnection = new ServiceConnection() {
@@ -40,14 +37,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setting views (3 buttons: play, pause, stop)
+
         setViews();
         final Intent intent = new Intent(this, MusicService.class);
         bindService(intent, myConnection, Context.BIND_AUTO_CREATE);
     }
 
-    //Using this method to set the views and then this
-    //method will be called in onCreate
+
     private void setViews() {
         setServiceViews();
     }
@@ -59,13 +55,10 @@ public class MainActivity extends AppCompatActivity {
         Button pauseButton = (Button) findViewById(R.id.pause_button);
 
 
-        //Starting MusicService here
+
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, MusicService.class);
-//                intent.setAction(mPlayingMusic ? "PLAY" : "PAUSE");
-//                startService(intent);
                 musicService.playMusic("PLAY");
                 mPlayingMusic = true;
                 Toast.makeText(MainActivity.this, "playing music", Toast.LENGTH_SHORT).show();
@@ -73,20 +66,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Stopping MusicService here
+
         stopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, MusicService.class);
-//                stopService(intent);
-//                mPlayingMusic = true;
+                musicService.playMusic("STOP");
+                mPlayingMusic = false;
+                Toast.makeText(MainActivity.this, "stopping music", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        //Stopping music service here... it is just stopping again and destroying the service
-        //Had difficulty getting it to pause with
-        //There is no pauseService
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
