@@ -11,6 +11,8 @@ import android.support.annotation.Nullable;
  * Created by audreyeso on 7/27/16.
  */
 public class MyContentProvider extends ContentProvider {
+    //put this in enqueue... also use retrofit...JSON/GSON
+    //String stockUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="+symbol;
     private DBHandler dbHandler;
     private static final String AUTHORITY = "com.test.contentproviderslab.MyContentProvider";
     private static final String STOCK_TABLE ="stocks";
