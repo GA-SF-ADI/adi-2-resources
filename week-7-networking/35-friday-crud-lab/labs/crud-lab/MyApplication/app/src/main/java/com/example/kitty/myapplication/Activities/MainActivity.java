@@ -28,10 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    String baseURL = "https://super-crud.herokuapp.com";
+    private String baseURL = "https://super-crud.herokuapp.com";
 
-    Button addNewButton;
-    ListView bookListView;
+    private BookInterface bookInterface;
+    private List<Book> booksList;
+    private CustomAdapter adapter;
+    private Button addNewButton;
+    private ListView bookListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,70 +52,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);
 
-                // ToDo: go to add activity to add new book.
+                startActivity(intent);
             }
         });
     }
 
     public void setUpBookList() {
 
-        bookListView = (ListView) findViewById(R.id.books_list);
-
-        CustomAdapter myAdapter = new CustomAdapter(getBookList(), this);
-        bookListView.setAdapter(myAdapter);
-
-        bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, DetailedActivity.class);
-
-                // ToDo: go to detailed activity to edit book
-
-            }
-        });
-    }
-
-    protected List<Book> getBookList() {
-
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
+
+            bookListView = (ListView) findViewById(R.id.books_list);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(baseURL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            BookInterface bookInterface = retrofit.create(BookInterface.class);
+            bookInterface = retrofit.create(BookInterface.class);
 
-            Call<Library> call = bookInterface.getBooks();
-
-            call.enqueue(new Callback<Library>() {
+            bookInterface.getBooks().enqueue(new Callback<Library>() {
                 @Override
                 public void onResponse(Call<Library> call, Response<Library> response) {
-
-                    try {
-
-                        String city = response.body().getName();
-
-                        String description = response.body().getWeather().get(0).getDescription();
-
-                        String humidity = response.body().getMain().getHumidity().toString();
-
-                        String pressure = response.body().getMain().getPressure().toString();
-
-                        String temperature = response.body().getMain().getTemp().toString();
-
-                        cityView.setText("City: " + city);
-                        descriptionView.setText("Weather: " + description);
-                        humidityView.setText("Humidity: " + humidity + "%");
-                        pressureView.setText("Pressure: " + pressure + " hPa");
-                        temperatureView.setText("Temperature: " + temperature + (char) 0x00B0);
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    booksList = response.body().getBooks();
+                    adapter = new CustomAdapter(booksList, MainActivity.this);
+                    bookListView.setAdapter(adapter);
                 }
 
                 @Override
@@ -121,9 +86,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(MainActivity.this, DetailedActivity.class);
+                    Book currentBook = booksList.get(i);
+                    intent.putExtra("id", currentBook.getId());
+                    startActivity(intent);
+                }
+            });
         } else {
             Toast.makeText(MainActivity.this, "No network connection", Toast.LENGTH_LONG).show();
         }
-
     }
+
 }
