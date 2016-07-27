@@ -42,11 +42,17 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
   //Use content provider's methods!
   public void addProduct () {
+    ContentResolver cr = getContentResolver();
+    ContentValues values = new ContentValues();
+    values.put("productname",mInputName.getText().toString());
+    values.put("quantity",mInputQuantity.getText().toString());
+    cr.insert(CONTENT_URI,values);
 
   }
 
   public void lookupProduct () {
-
+    final String name = mInputName.getText().toString();
+    int quantity =
   }
 
   public void removeProduct () {
