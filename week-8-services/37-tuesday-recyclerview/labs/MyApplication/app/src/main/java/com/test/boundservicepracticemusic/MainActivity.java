@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void onServiceDisconnected(ComponentName className) {
-            //Log.e(TAG, "onServiceDisconnected");
             Toast.makeText(MainActivity.this, "onServiceDisonnected", Toast.LENGTH_SHORT).show();
             mPlayingMusic = false;
         }
@@ -48,12 +47,11 @@ public class MainActivity extends AppCompatActivity {
         setServiceViews();
     }
 
-    //Linking buttons that were created in XML
+
     private void setServiceViews() {
         Button playButton = (Button) findViewById(R.id.play_button);
         Button stopButton = (Button) findViewById(R.id.stop_button);
         Button pauseButton = (Button) findViewById(R.id.pause_button);
-
 
 
         playButton.setOnClickListener(new View.OnClickListener() {

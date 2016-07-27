@@ -21,7 +21,6 @@ public class MusicService extends Service {
 
 
     MediaPlayer mediaPlayer = new MediaPlayer();
-    private static final String TAG = "MusicService";
     private final IBinder myBinder = new MyLocalBinder();
     boolean musicPlaying = false;
 
@@ -38,6 +37,7 @@ public class MusicService extends Service {
         }
     }
 
+    //will play music (from url) when play button is clicked
     public void playMusic(String action) {
 
         if ("PLAY".contains(action)) {
@@ -68,6 +68,7 @@ public class MusicService extends Service {
             }
         }
 
+        //will pause if the mediaPlayer is currently playing
         if ("PAUSE".contains(action)) {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.pause();
@@ -75,6 +76,7 @@ public class MusicService extends Service {
             }
         }
 
+        //will stop if the mediaPlayer is currently playing
         if("STOP".contains(action)) {
             if(mediaPlayer.isPlaying()){
                 mediaPlayer.stop();
