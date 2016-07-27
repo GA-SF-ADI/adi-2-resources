@@ -1,5 +1,6 @@
 package com.test.contentproviderslab;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -36,5 +37,12 @@ public class DBHandler extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_STOCKS);
         onCreate(sqLiteDatabase);
+    }
+
+    public long addStock(ContentValues contentValues) {
+        SQLiteDatabase db = getWritableDatabase();
+        long insertedRow = db.insert(TABLE_STOCKS,null, contentValues);
+        db.close();
+        return insertedRow;
     }
 }
