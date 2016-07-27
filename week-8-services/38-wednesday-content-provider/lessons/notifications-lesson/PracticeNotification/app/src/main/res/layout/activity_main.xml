@@ -9,8 +9,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.test.practicenotification.MainActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
 <Button
     android:layout_width="wrap_content"
     android:id="@+id/button"
+    android:text="regular notification"
     android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/button_big_picture"
+        android:text="big picture notification"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/button_big_text"
+        android:text="big text notification"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:id="@+id/button_inbox_style"
+        android:text="inbox style"
+        android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 </RelativeLayout>
