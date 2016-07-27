@@ -90,75 +90,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void retrieveStock(final String symbol, final String quantity){
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String stockUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="+symbol;
+       //Fill this in with your actions
 
-        JsonObjectRequest stockJsonRequest = new JsonObjectRequest
-                (Request.Method.GET, stockUrl, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(MainActivity.class.getName(),"Response: "+response.toString());
-                        try {
-                            if(response.has("Status") && response.getString("Status").equals("SUCCESS")) {
-                                retrieveExchange(symbol,quantity,response.getString("Name"));
-                            }else{
-                                Toast.makeText(MainActivity.this,"The stock you entered is invalid",Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
-                        Log.d(MainActivity.class.getName(),error.toString());
-                    }
-                });
-
-        queue.add(stockJsonRequest);
 
     }
 
     public void retrieveExchange(final String symbol, final String quantity, final String name){
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String exchangeUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input="+symbol;
 
-        Log.d(MainActivity.class.getName(),"Starting exchange request: "+exchangeUrl);
-        JsonArrayRequest exchangeJsonRequest = new JsonArrayRequest
-                (exchangeUrl, new Response.Listener<JSONArray>() {
-
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(MainActivity.class.getName(),"Response2: "+response.toString());
-                        try {
-                            ContentResolver contentResolver = getContentResolver();
-                            String exchange = ((JSONObject)response.get(0)).getString("Exchange");
-                            ContentValues values = new ContentValues();
-                            values.put("symbol",symbol);
-                            values.put("quantity",quantity);
-                            values.put("stockname",name);
-                            values.put("exchange", exchange);
-                            contentResolver.insert(CONTENT_URI, values);
-                            Cursor cursor = contentResolver.query(CONTENT_URI,null,null,null,null);
-                            mCursorAdapter.swapCursor(cursor);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(MainActivity.class.getName(),"Error occurred");
-
-                    }
-                });
-
-        queue.add(exchangeJsonRequest);
+//Fill this in with your actions
 
     }
 
