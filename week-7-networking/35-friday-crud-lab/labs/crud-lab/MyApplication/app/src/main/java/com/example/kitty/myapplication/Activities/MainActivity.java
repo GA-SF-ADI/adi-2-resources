@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);
 
-                startActivity(intent);
+                startActivityForResult(intent, 123);
             }
         });
     }
@@ -100,4 +100,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 123) {
+            if (resultCode == RESULT_OK) {
+                setUpBookList();
+            }
+        }
+    }
 }

@@ -84,8 +84,9 @@ public class CustomAdapter extends BaseAdapter {
                 bookInterface.removeBook(currentBook.getId()).enqueue(new Callback<Book>() {
                     @Override
                     public void onResponse(Call<Book> call, Response<Book> response) {
-                        Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-                        // ToDo: add code to refresh list
+                        Toast.makeText(context, "deleted" + currentBook.getTitle(), Toast.LENGTH_SHORT).show();
+                        books.remove(currentBook);
+                        notifyDataSetChanged();
                     }
 
                     @Override

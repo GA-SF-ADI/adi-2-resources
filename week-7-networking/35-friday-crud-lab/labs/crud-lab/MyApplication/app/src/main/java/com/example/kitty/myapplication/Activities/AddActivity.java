@@ -1,5 +1,6 @@
 package com.example.kitty.myapplication.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +42,7 @@ public class AddActivity extends AppCompatActivity {
         setViews();
 
         addNewBook();
+
     }
 
     public void setViews() {
@@ -69,6 +71,7 @@ public class AddActivity extends AppCompatActivity {
                 bookInterface.addBook(newBook).enqueue(new Callback<Book>() {
                     @Override
                     public void onResponse(Call<Book> call, Response<Book> response) {
+                        setResult(RESULT_OK, new Intent());
                         finish();
                     }
 
