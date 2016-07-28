@@ -104,91 +104,9 @@ Then in your **app** gradle file you need to add the below line at the **very bo
 apply plugin: 'com.google.gms.google-services'
 ```
 
-Now we have setup firebase inside of our app! Time to get message notifications working.
+Now we have setup firebase inside of our app and on the website! 
 
-<a name="guided-practice"></a>
-## Guided Practice: Implementing the Analytics API (30 mins)
-
-Open a new project in Android Studio.
-
-Now, in your build.gradle, add the following line of code in your dependencies section:
-
-```xml
-compile 'com.google.android.gms:play-services:8.4.0'
-```
-
-**It is recommended that you specify what APIs you want to use in your app instead of adding all of the services.**  For example:
-
-```xml
-compile 'com.google.android.gms:play-services-fitness:8.4.0'
-compile 'com.google.android.gms:play-services-wearable:8.4.0'
-```
-
-Next, your main activity must implement the `OnConnectionFailedListener` interface. This requires you to implement the `OnConnectionFailedListener` method, which is called if there is a complete failure for your app to connect to Play Services.
-
-Now, the way we can access all of the Play Services APIs is through an object called `GoogleApiClient`. Put the following code in your `onCreate` method. While we aren't going to need this for the current example, you will need the GoogleApiClient for today's lab.
-
-```java
-GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
-    .enableAutoManage(this /* AppCompatActivity */,
-                      this /* OnConnectionFailedListener */)
-    .addApi(Drive.API)
-    .addScope(Drive.SCOPE_FILE)
-    .build();
-```
-
-In this example, we are accessing the Drive API.
-
-Go to this link and sign in with your Google account: https://developers.google.com/mobile/add.
-
-Let's follow the instructions for Analytics: You might need to edit the `gradle-wrapper.properties` file to point to a newer version of gradle:
-
-```xml
-https://services.gradle.org/distributions/gradle-2.10-all.zip
-```
-Put the following after your dependencies, not before:
-
-```xml
-apply plugin: 'com.google.gms.google-services'
-```
-Create the `AnalyticsApplication` class which extends `Application`. In the class, we declare a `Tracker` object and create a method that will return this tracker to us after setting it up with GoogleAnalytics and our Tracker ID.
-
-```java
-public class AnalyticsApplication extends Application {
-    private Tracker mTracker;
-
-    /**
-     * Gets the default {@link Tracker} for this {@link Application}.
-     * @return tracker
-     */
-    synchronized public Tracker getDefaultTracker() {
-        if (mTracker == null) {
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker(/* Your Tracker ID String here */);
-        }
-        return mTracker;
-    }
-}
-```
-
-In your manifest, we need to declare this application class we created just like we do with activities!
-```xml
-<application
-    android:name=".AnalyticsApplication"
-    ... <!-- Other lines in the application tag -->
-</application>
-```
-
-In `AnalyticsApplication.java`, modify the following line to match whatever is in your Tracker page.
-
-```java
- mTracker = analytics.newTracker("UA-74227592-1"); // Sample Tracker ID is "UA-74227592-1"
-```
-
-Launch the app, and go to the Analytics page at analytics.google.com. Look under the real-time tracking and you should see your screen!
-
-> Check: Were students able to successfully solve the problem or complete the task?
+Time to get message notifications working.
 
 ***
 
