@@ -8,36 +8,18 @@ creator:
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Job Scheduler
 
-In this lab, you will be creating an app that will show the events in your phone calendar and will be interacting with the [calendar content provider](http://developer.android.com/guide/topics/providers/calendar-provider.html). The Calendar Content Provider follows much of the same design patterns as the other Content Providers we have worked with today.
-
-In addition to showing all of the events, you must also allow the user to delete an event. Everything you need to accomplish this is included in the API documentation.
+This lab will be building off of yesterday's external ContentProvider lab. You need to create a JobScheduler that sends notifications when you have an upcoming Calendar Event. 
 
 ## Exercise
 
 #### Requirements
 
-- Display **title and date** for all calendar events in a ListView
-- Display events in descending order by date (**reverse chronological order**)
-- Allow the user to delete calendar events
-
-**Bonus**
-
-- Allow the user to create new events
-- Allow the user to update an event
+- Create a JobService that can access your Calendar 
+- Send a Notification whenever there is an event within a certain amount of time
 
 #### Deliverable
 
 An Android app that follows the requirements above. There are no design requirements. If you would like to work on the UI, please feel free to modify it but prioritize the app's functionality, first.
 
-When testing the app, make sure your phone is connected to your email account and has at least a few calendar events. Otherwise, your ListView may be empty.  
+When testing the app, make sure your phone is connected to your email account and has at least a few calendar upcoming events. Otherwise, you won't be recieving notifications. 
 
-<p align="center">
-  <img src="screenshots/screen1.png" height="400px" />
-</p>
-
-<p align="center">
-  <img src="screenshots/screen2.png" height="400px" />
-</p>
-
-## Additional Resources  
-- [Android Developer Docs on Calendar Provider](http://developer.android.com/guide/topics/providers/calendar-provider.html)
