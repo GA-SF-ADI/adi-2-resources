@@ -128,16 +128,39 @@ Put the following after your dependencies, not before:
 ```xml
 apply plugin: 'com.google.gms.google-services'
 ```
-Create the `AnalyticsApplication` class with the provided code and add this to your manifest, as a property for the application tag:
+Create the `AnalyticsApplication` class which extends `Application`. In the class, we declare a `Tracker` object and create a method that will return this tracker to us after setting it up with GoogleAnalytics and our Tracker ID.
 
+```java
+public class AnalyticsApplication extends Application {
+    private Tracker mTracker;
+
+    /**
+     * Gets the default {@link Tracker} for this {@link Application}.
+     * @return tracker
+     */
+    synchronized public Tracker getDefaultTracker() {
+        if (mTracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+            mTracker = analytics.newTracker(/* Your Tracker ID String here */);
+        }
+        return mTracker;
+    }
+}
+```
+
+In your manifest, we need to declare this application class we created just like we do with activities!
 ```xml
-android:name=".AnalyticsApplication"
+<application
+    android:name=".AnalyticsApplication"
+    ... <!-- Other lines in the application tag -->
+</application>
 ```
 
 In `AnalyticsApplication.java`, modify the following line to match whatever is in your Tracker page.
 
 ```java
- mTracker = analytics.newTracker("UA-74227592-1");
+ mTracker = analytics.newTracker("UA-74227592-1"); // Sample Tracker ID is "UA-74227592-1"
 ```
 
 Launch the app, and go to the Analytics page at analytics.google.com. Look under the real-time tracking and you should see your screen!
