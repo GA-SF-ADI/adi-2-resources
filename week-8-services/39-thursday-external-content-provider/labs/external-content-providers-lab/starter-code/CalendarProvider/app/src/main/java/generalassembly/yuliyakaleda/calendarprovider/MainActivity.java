@@ -125,7 +125,7 @@ public class MainActivity extends Activity {
                 cursor.move(position);
                 //set up listview and click listener for items with mCursorAdapter
                 //create an AlertDialog when it is clicked to confirm deletion
-                mCursorAdapter = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, cursor, new String[]{CalendarContract.Events._ID}, new int[]{android.R.id.text1}, 0);
+                mCursorAdapter = new SimpleCursorAdapter(MainActivity.this, android.R.layout.simple_list_item_1, cursor, new String[]{CalendarContract.Events.TITLE}, new int[]{android.R.id.text1}, 0);
                 listView.setAdapter(mCursorAdapter);
 
                 final long eventId = cursor.getLong(cursor.getColumnIndex(CalendarContract.Events._ID));
@@ -164,7 +164,6 @@ public class MainActivity extends Activity {
                 CalendarContract.Events.TITLE,
                 CalendarContract.Events.ORGANIZER,
                 CalendarContract.Events.DESCRIPTION,
-                CalendarContract.Events._COUNT,
                 CalendarContract.Events.CALENDAR_COLOR
         };
 
@@ -188,7 +187,7 @@ public class MainActivity extends Activity {
                     //bind the views
                     @Override
                     public void bindView(View view, Context context, Cursor cursor) {
-                        TextView textView = (TextView) findViewById(R.id.event_textView);
+                        TextView textView = (TextView) view.findViewById(android.R.id.text1);
                         String event = cursor.getString(cursor.getColumnIndex(CalendarContract.Events.TITLE));
                         textView.setText(event);
                     }
@@ -210,13 +209,14 @@ public class MainActivity extends Activity {
 
     //user getContentResolver to delete an event. You will need to get a uri instance
     public void deleteEvent(long id) {
-        Uri CONTENT_URI = Uri.parse("content://calendar/events");
+        Uri uri = CalendarContract.Events.CONTENT_URI;
+        Uri CONTENT_URI = ContentUris.withAppendedId(uri,id);
         String event;
         ContentResolver contentResolver = getContentResolver();
         getContentResolver().delete(CONTENT_URI, null, null);
         //ContentValues values = new ContentValues();
 
-        int rowsDeleted = contentResolver.delete(CONTENT_URI, "event = '" + "event" + "'", null);
+        int rowsDeleted = contentResolver.delete(CONTENT_URI, null, null);
 
     }
 }
