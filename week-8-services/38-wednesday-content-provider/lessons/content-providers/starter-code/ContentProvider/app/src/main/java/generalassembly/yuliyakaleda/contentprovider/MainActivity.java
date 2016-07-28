@@ -42,19 +42,34 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
   //Use content provider's methods!
   public void addProduct () {
+<<<<<<< HEAD
   //get a contentResolver
     ContentResolver contentResolver = getContentResolver();
     //use insert method from content provider
+=======
+    //get a contentResolver
+    ContentResolver contentResolver = getContentResolver();
+    //use insert method from ContentProvider
+>>>>>>> d883568bdfcb0f7e7ec4ed26d7668d5d057aae91
     ContentValues values = new ContentValues();
     values.put("productname", mInputName.getText().toString());
     values.put("quantity", mInputQuantity.getText().toString());
     Uri uri = contentResolver.insert(CONTENT_URI, values);
+<<<<<<< HEAD
     mResultTextView.setText(mInputName.getText().toString());
   }
 
   public void lookupProduct () {
     final String name = mInputName.getText().toString();
     int quantity = getProductCount(name);
+=======
+    mResultTextView.setText(mInputName.getText().toString()+ " has been added");
+
+  }
+
+  public void lookupProduct () {
+    //probably use a query
+>>>>>>> d883568bdfcb0f7e7ec4ed26d7668d5d057aae91
 
     if (quantity == 0) {
       mResultTextView.setText("That product cannot be found");
@@ -63,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     }
   }
 
+<<<<<<< HEAD
   public int getProductCount(String name){
     ContentResolver contentResolver = getContentResolver();
     Cursor cursor = contentResolver.query(CONTENT_URI,null,"productname = '"+ name +"'",null,null);
@@ -72,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     }
     return quantity;
   }
+=======
+  public void removeProduct () {
+    //use delete method from ContentProvider
+>>>>>>> d883568bdfcb0f7e7ec4ed26d7668d5d057aae91
 
   public void removeProduct () {
     String name = mInputName.getText().toString();
@@ -84,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
   }
 
   public void updateProduct(){
+<<<<<<< HEAD
     ContentResolver contentResolver = getContentResolver();
     ContentValues values = new ContentValues();
     values.put("quantity",mInputQuantity.getText().toString());
@@ -93,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
       mResultTextView.setText(mInputName.getText().toString()+ " has been updated!");
     else
       mResultTextView.setText("That product cannot be found");
+=======
+    //use update method from ContentProvider
+
+>>>>>>> d883568bdfcb0f7e7ec4ed26d7668d5d057aae91
   }
 
   @Override
