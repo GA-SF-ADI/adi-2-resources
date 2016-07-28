@@ -9,17 +9,19 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 public class HotifyService extends Service {
-
+    public int numStarted = 0;
     MediaPlayer mPlayer = new MediaPlayer();
 
     boolean isPrepared = false;
 
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
-
+        numStarted++;
+        Log.d("TAG", "numStarted is " + numStarted);
         // Putting all of the code inside a runnable, to be run on a separate thread. If I don't, the
         // code will block the main thread and noticeably make the app slower
 
@@ -113,9 +115,6 @@ public class HotifyService extends Service {
                         if (mPlayer.isPlaying()) {
                             mPlayer.pause();
                         }
-                    } else if ("STOP".equalsIgnoreCase(action)){
-                        // if the action is STOP, stop this service.
-                        stopSelf();
                     }
                 }
             }

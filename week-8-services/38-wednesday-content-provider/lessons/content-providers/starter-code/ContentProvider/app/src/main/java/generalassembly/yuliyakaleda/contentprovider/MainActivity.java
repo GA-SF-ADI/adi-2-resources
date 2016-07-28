@@ -40,20 +40,59 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     mResultTextView = (TextView) findViewById(R.id.result);
   }
 
+  //Use content provider's methods!
   public void addProduct () {
-
+  //get a contentResolver
+    ContentResolver contentResolver = getContentResolver();
+    //use insert method from content provider
+    ContentValues values = new ContentValues();
+    values.put("productname", mInputName.getText().toString());
+    values.put("quantity", mInputQuantity.getText().toString());
+    Uri uri = contentResolver.insert(CONTENT_URI, values);
+    mResultTextView.setText(mInputName.getText().toString());
   }
 
   public void lookupProduct () {
+    final String name = mInputName.getText().toString();
+    int quantity = getProductCount(name);
 
+    if (quantity == 0) {
+      mResultTextView.setText("That product cannot be found");
+    } else {
+      mResultTextView.setText(name+ " count: "+quantity);
+    }
+  }
+
+  public int getProductCount(String name){
+    ContentResolver contentResolver = getContentResolver();
+    Cursor cursor = contentResolver.query(CONTENT_URI,null,"productname = '"+ name +"'",null,null);
+    int quantity = 0;
+    if(cursor.moveToFirst()){
+      quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
+    }
+    return quantity;
   }
 
   public void removeProduct () {
-
+    String name = mInputName.getText().toString();
+    ContentResolver contentResolver = getContentResolver();
+    int rowsDeleted = contentResolver.delete(CONTENT_URI,"productname = '"+name+"'",null);
+    if (rowsDeleted > 0) {
+      mResultTextView.setText("Product deleted");
+    } else
+      mResultTextView.setText("That product cannot be found");
   }
 
   public void updateProduct(){
+    ContentResolver contentResolver = getContentResolver();
+    ContentValues values = new ContentValues();
+    values.put("quantity",mInputQuantity.getText().toString());
+    int rowsUpdated = contentResolver.update(CONTENT_URI,values,"productname = '"+mInputName.getText().toString()+"'",null);
 
+    if(rowsUpdated > 0)
+      mResultTextView.setText(mInputName.getText().toString()+ " has been updated!");
+    else
+      mResultTextView.setText("That product cannot be found");
   }
 
   @Override
