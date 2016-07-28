@@ -21,11 +21,24 @@ creator:
 - Run the solution code to ensure it works and that you agree with how it's implemented
 
 ---
+
+### LESSON GUIDE
+
+| TIMING  | TYPE  | TOPIC  |
+|:-:|---|---|
+| 5 min  | [Opening](#opening-5-mins)  | Discuss lesson objectives |
+| 15 min  | [Introduction](#introduction-what-are-google-play-services-15-mins)  | What are Google Play Services |
+| 5 min  | [Demo](#demo-google-apis-reference-5-mins)  | Google APIs Reference |
+| 10 min  | [Guided Practice](#guided-practice-setting-up-your-app-10-mins)  | Setting up your app |
+| 30 min  | [Guided Practice](#guided-practice-implementing-the-analytics-api-30-mins)  | Implementing the Analytics API |
+| 20 min  | [Independent Practice](#independent-practice-topic-20-mins)  | Topic |
+| 5 min  | [Conclusion](#conclusion-5-mins)  | Review / Recap |
 <a name="opening"></a>
 ## Opening (5 mins)
 
 Up until this point, we haven't really differentiated between Android, the open-source operating system, and the version of Android offered by Google. When you use a device certified by Google (the vast majority of phones and tablets you come across), you gain the ability to use many special services offered by Google. Today, we will be learning about some of them, and how to actually use them.
 
+> Check: Ask students to think of some specific features they think Google might offer that don't come standard with Android.
 
 ***
 
@@ -36,6 +49,7 @@ Google Play Services was first introduced in 2012 to allow new authentication ab
 
 Some devices choose not to use Play Services, such as the Fire line by Amazon. They run a heavily customized version of Android without access to the Play Store or any Play Services.
 
+> Check: Predict, with a partner, the benefits of something like this.
 
 Any device running Android 2.3 or newer has access to Play Services, and it automatically updates from the Play Store. Previously, new features were primarily rolled out through updates to Android, but with device manufacturers and service providers causing long delays, Play Services allows Google to quickly update all compatible devices.
 
@@ -43,6 +57,7 @@ Google updates Google Play Services often with some very cool features. Let's ta
 
 Keep an eye on the Google Developers YouTube channel for new updates about new features from Google.
 
+> Check: What advantages does Google Play Services offer both users and developers? What are some disadvantages?
 
 ***
 
@@ -51,6 +66,7 @@ Keep an eye on the Google Developers YouTube channel for new updates about new f
 
 Before we get started on actually using Google Play Services, [let's take a look at the documentation](https://developers.google.com/android/reference/packages). Some of the documentation is very technical, but it contains very useful information.
 
+> Instructor note: Walk the students through a few APIs of your choice.
 
 ***
 
@@ -63,6 +79,7 @@ First, we need to check if we have the correct files downloaded in the SDK Manag
 
 Next, if you use an emulator, make sure you chose an image that includes Google Play Services.
 
+> Check: Were students able to install everything?
 
 ***
 
@@ -111,20 +128,44 @@ Put the following after your dependencies, not before:
 ```xml
 apply plugin: 'com.google.gms.google-services'
 ```
-Create the `AnalyticsApplication` class with the provided code and add this to your manifest, as a property for the application tag:
+Create the `AnalyticsApplication` class which extends `Application`. In the class, we declare a `Tracker` object and create a method that will return this tracker to us after setting it up with GoogleAnalytics and our Tracker ID.
 
+```java
+public class AnalyticsApplication extends Application {
+    private Tracker mTracker;
+
+    /**
+     * Gets the default {@link Tracker} for this {@link Application}.
+     * @return tracker
+     */
+    synchronized public Tracker getDefaultTracker() {
+        if (mTracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+            mTracker = analytics.newTracker(/* Your Tracker ID String here */);
+        }
+        return mTracker;
+    }
+}
+```
+
+In your manifest, we need to declare this application class we created just like we do with activities!
 ```xml
-android:name=".AnalyticsApplication"
+<application
+    android:name=".AnalyticsApplication"
+    ... <!-- Other lines in the application tag -->
+</application>
 ```
 
 In `AnalyticsApplication.java`, modify the following line to match whatever is in your Tracker page.
 
 ```java
- mTracker = analytics.newTracker("UA-74227592-1");
+ mTracker = analytics.newTracker("UA-74227592-1"); // Sample Tracker ID is "UA-74227592-1"
 ```
 
 Launch the app, and go to the Analytics page at analytics.google.com. Look under the real-time tracking and you should see your screen!
 
+> Check: Were students able to successfully solve the problem or complete the task?
 
 ***
 
@@ -135,6 +176,7 @@ Now that you know how to track what screen a user is seeing, you will try tracki
 
 [Event Tracking](https://developers.google.com/analytics/devguides/collection/android/v4/events)
 
+> Check: Were students able to create the desired deliverable(s)? Did it meet all necessary requirements / constraints?
 
 ***
 
