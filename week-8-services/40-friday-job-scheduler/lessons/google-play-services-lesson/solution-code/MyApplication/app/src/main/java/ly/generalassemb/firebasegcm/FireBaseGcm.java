@@ -23,13 +23,9 @@ public class FireBaseGcm extends FirebaseMessagingService {
         Log.i(TAG, "onMessageReceived: title " + remoteMessage.getNotification().getTitle());
         Log.i(TAG, "onMessageReceived: body " + remoteMessage.getNotification().getBody());
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext());
+        String title = "Message from the Cloud!";
+        String content = remoteMessage.getNotification().getBody();
 
-        builder.setContentTitle("Message from the cloud");
-        builder.setContentText(remoteMessage.getNotification().getBody());
-        builder.setSmallIcon(R.mipmap.ic_launcher);
-
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(NOTIF_ID, builder.build());
+        Util.builNotification(title, content, R.mipmap.ic_launcher, NOTIF_ID, getApplicationContext());
     }
 }
