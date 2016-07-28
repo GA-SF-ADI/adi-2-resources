@@ -83,6 +83,29 @@ Next, if you use an emulator, make sure you chose an image that includes Google 
 
 ***
 
+## Guided Practice: Firebase Notifications from the cloud! ( 20 min)
+
+Sign up for an [account](https://firebase.google.com/).
+
+Next, open up the [console](https://console.firebase.google.com/) and press on the `create project` button and give you project a name. Then click `create project` once more. It will take a while to setup, then it should auto kick you into your created project, if not just click on it to load the next page.
+
+Now, lets click on the `Add firebase to you Android App` button. You will have a popup asking for you project package name, lets come back to this.
+
+Create a new Android Studio project called FireBaseNotification. Once the project is created, open your `AndroidManifest.xml` to find your `package="somePackage"` at the top. We want the "somePackage" value for the popup.
+
+Come back to that popup we saw earlier. Paste your package path into the field and press `add app`. Your browser will then download a file `google-services.json`. We need to copy this file into our android studio project. Follow the on screen instructions in the popup they are self explanatory and provide visual. You switch from Android view to project View, and paste the file into your `app/` folder. Once finished, press `continue` button.
+
+Follow step 1 and step 2 on the popup. You are adding the line below to your **project** gradle file.
+```
+classpath 'com.google.gms:google-services:3.0.0'
+```
+Then in your **app** gradle file you need to add the below line at the **very bottom of the file**, below the dependency clause.
+```
+apply plugin: 'com.google.gms.google-services'
+```
+
+Now we have setup firebase inside of our app! Time to get message notifications working.
+
 <a name="guided-practice"></a>
 ## Guided Practice: Implementing the Analytics API (30 mins)
 
