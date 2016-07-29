@@ -36,7 +36,7 @@ public class AnalyticsApplication extends Application {
         if (mTracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker();
+            mTracker = analytics.newTracker("UA-74227592-1");
         }
         return mTracker;
     }

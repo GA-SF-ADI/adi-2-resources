@@ -9,4 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ly.generalassemb.drewmahrt.playservicesexample.MainActivity">
 
+    <Button
+        android:id="@+id/location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show location in Maps"/>
 </RelativeLayout>
