@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
         setUpViews();
       } else {
         // showRationale = false if user clicks Never Ask Again, otherwise true
-        boolean showRationale = shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS);
+        boolean showRationale = shouldShowRequestPermissionRationale(Manifest.permission.READ_CALENDAR);
 
         if (showRationale) {
           // do something here to handle degraded mode
