@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "6812094572",
+    "firebase_url": "https://fir-example-451dc.firebaseio.com",
+    "project_id": "fir-example-451dc",
+    "storage_bucket": "fir-example-451dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:6812094572:android:b78cf4154f114882",
+        "android_client_info": {
+          "package_name": "ly.generalassemb.firebasegcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "6812094572-q9j0jcvdfctveeoh6vf5apvpc7tu6mmh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1vXMn0lYhlOTQ0T7qmwFC5LJJJEUE-qA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
