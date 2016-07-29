@@ -29,15 +29,22 @@ public class MainActivity extends AppCompatActivity {
         startJobButton = (Button) findViewById(R.id.activity_main_start_job_button);
         stopJobButton = (Button) findViewById(R.id.activity_main_stop_job_button);
     }
-
+    @TargetApi(21)
     public void setOnClickListeners(){
         startJobButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                //TODO: CREATE YOUR JOB INFO OBJECT
+                JobInfo jobInfo = new JobInfo.Builder(JOB_INFO,
+                        new ComponentName(getPackageName(), NotificationJobService.class.getName()))
+                        .setPeriodic(10000)
+                        .setPersisted(true)
+                        .build();
 
+                JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+                jobScheduler.schedule(jobInfo);
 
-                //TODO: MAKE SURE THE MANIFEFST IS CORRECT
+                //TODO: MAKE SURE THE MANIFEFST IS CORREC
 
 
                 //TODO: GET AN INSTANCE OF YOUR JOB SCHEDULER
@@ -54,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: GET AN INSTANCE OF YOUR JOBSCHEDULER
+                JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
                 //TODO: CANCEL YOUR JOB
+                jobScheduler.cancel(JOB_INFO);
             }
         });
     }
