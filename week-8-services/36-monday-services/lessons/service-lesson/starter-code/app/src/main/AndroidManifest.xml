@@ -16,6 +16,9 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".CustomService"/>
+        <service android:name=".CustomIntentService"/>
+
         <!-- Add service to manifest, but do not allow other apps to discover the service -->
 
     </application>

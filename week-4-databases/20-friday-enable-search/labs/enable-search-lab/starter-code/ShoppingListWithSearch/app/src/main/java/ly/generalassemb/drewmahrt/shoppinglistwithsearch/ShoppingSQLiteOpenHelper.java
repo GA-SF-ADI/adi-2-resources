@@ -30,6 +30,9 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
     public static final String COL_ITEM_DESCRIPTION = "DESCRIPTION";
     public static final String COL_ITEM_TYPE = "TYPE";
 
+    public static final String COL_NUMBER_VALUE = "NUMBER_VALUE";
+
+    public static final String[] NUMBERS_COLUMNS = {COL_ID,COL_NUMBER_VALUE};
 
     public static final String[] SHOPPING_COLUMNS = {COL_ID,COL_ITEM_NAME,COL_ITEM_DESCRIPTION,COL_ITEM_PRICE,COL_ITEM_TYPE};
 
@@ -96,4 +99,21 @@ public class ShoppingSQLiteOpenHelper extends SQLiteOpenHelper{
         db.close();
         return deleteNum;
     }
+
+    public Cursor searchNumbers(String query){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(SHOPPING_LIST_TABLE_NAME, // a. table
+                SHOPPING_COLUMNS, // b. column names
+                COL_ITEM_NAME+" = ?", // c. selections
+                new String[]{query}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
+
 }
