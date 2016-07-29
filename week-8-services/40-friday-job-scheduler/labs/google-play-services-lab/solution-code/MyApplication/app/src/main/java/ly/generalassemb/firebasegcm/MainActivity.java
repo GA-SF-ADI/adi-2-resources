@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay! Do the
                     // location-related task you need to do.
+                    saveLocation();
                     printLocation();
                 } else {
                     // permission denied, boo! Disable the
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         double lat = lastLocation.getLatitude();
         double lon = lastLocation.getLongitude();
 
-        String locationString = "Your latitude is: " + lat + " your longitude is: " + lon;
+        String locationString = "Your latitude is: " + lat + "\nYour longitude is: " + lon;
         locationTextView.setText(locationString);
 
         // sends location to FireBase Analytics
