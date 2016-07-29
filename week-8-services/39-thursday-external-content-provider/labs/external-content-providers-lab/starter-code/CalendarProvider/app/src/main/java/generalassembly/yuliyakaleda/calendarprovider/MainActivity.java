@@ -3,6 +3,7 @@ package generalassembly.yuliyakaleda.calendarprovider;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     //Read Calendar
+      getPermissionToReadCalendar();
 
   }
 
@@ -78,6 +80,7 @@ public class MainActivity extends Activity {
         == PackageManager.PERMISSION_GRANTED) {
       //Permission granted. List calendar events.
       //set up views
+      setUpViews();
     }
   }
 
@@ -93,6 +96,7 @@ public class MainActivity extends Activity {
           grantResults[0] == PackageManager.PERMISSION_GRANTED) {
         Toast.makeText(this, "Read Calendar permission granted", Toast.LENGTH_SHORT).show();
         //set up views
+        setUpViews();
 
       } else {
         // showRationale = false if user clicks Never Ask Again, otherwise true
@@ -114,48 +118,64 @@ public class MainActivity extends Activity {
 
     //set up listview and click listener for items with mCursorAdapter
     //create an AlertDialog when it is clicked to confirm deletion
-
-
-        final long eventId = cursor.getLong(cursor.getColumnIndex(CalendarContract.Events._ID));
-        //call deleteEvent
-        deleteEvent(eventId);
-        //I've included the alertdialog code since we haven't explicitly taught it.
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Are you sure you want to delete this event?")
-            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int id) {
-                deleteEvent(eventId);
-              }
-            })
-            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int id) {
-              }
-            });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-      }
-    });
-
+        lv = (ListView)findViewById(R.id.lv);
+      lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+          @Override
+          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Cursor cursor = mCursorAdapter.getCursor();
+              cursor.move(position);
+              final long eventId = cursor.getLong(cursor.getColumnIndex(CalendarContract.Events._ID));
+              //call deleteEvent
+              deleteEvent(eventId);
+              //I've included the alertdialog code since we haven't explicitly taught it.
+              AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+              builder.setMessage("Are you sure you want to delete this event?")
+                      .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int id) {
+                              deleteEvent(eventId);
+                          }
+                      })
+                      .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                          public void onClick(DialogInterface dialog, int id) {
+                          }
+                      });
+              AlertDialog dialog = builder.create();
+              dialog.show();
+          }
+      });
     //call fetchEvents
     fetchEvents();
   }
 
   public void fetchEvents() {
     //define uri and get columns.
-
+    Uri uri = CalendarContract.Events.CONTENT_URI;
+      String[]projection = new String[]{CalendarContract.Events.TITLE,
+      CalendarContract.Events._ID,CalendarContract.Events.DTSTART};
     try {
       //get Cursor called cursor and query
+        Cursor cursor = getContentResolver().query(uri,projection,null,null,null);
 
       if (mCursorAdapter == null) {
         mCursorAdapter = new CursorAdapter(this, cursor, 0) {
           @Override
           public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_2, parent, false);
+            return LayoutInflater.from(context).inflate(R.layout.item_list, parent, false);
+
+
           }
 
           //bind the views
           @Override
           public void bindView(View view, Context context, Cursor cursor) {
+            TextView title_text = (TextView)view.findViewById(R.id.title);
+              TextView date_text = (TextView)view.findViewById(R.id.date);
+
+              String title = cursor.getString(cursor.getColumnIndex(CalendarContract.Events.TITLE));
+              long date = cursor.getLong(cursor.getColumnIndex(CalendarContract.Events.DTSTART));
+
+              title_text.setText(title);
+              date_text.setText(DateFormat.getDateInstance(DateFormat.SHORT).format(date));
 
           }
         };
@@ -176,6 +196,12 @@ public class MainActivity extends Activity {
 
   //user getContentResolver to delete an event. You will need to get a uri instance
   public void deleteEvent(long id) {
+
+    ContentResolver cr = getContentResolver();
+    ContentValues values = new ContentValues();
+    Uri deleteUri = null;
+    deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, id);
+    int rows = getContentResolver().delete(deleteUri, null, null);
 
   }
 }
