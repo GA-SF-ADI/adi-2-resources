@@ -166,4 +166,5 @@ The Google Play Services API have grown to encompass a very large set of feature
 ### ADDITIONAL RESOURCES
 - [Google Play Services](https://developers.google.com/android/guides/overview)
 - [Adding Google Services to your app](https://developers.google.com/mobile/add)
-- [Event Tracking](https://developers.google.com/analytics/devguides/collection/android/v4/events)
+- [Push Notifications](https://firebase.google.com/docs/cloud-messaging/android/client)
+- [Event Tracking](https://firebase.google.com/docs/analytics/android/start/)
