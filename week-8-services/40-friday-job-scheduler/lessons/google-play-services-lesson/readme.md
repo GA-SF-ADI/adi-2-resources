@@ -106,18 +106,53 @@ apply plugin: 'com.google.gms.google-services'
 
 Now we have setup firebase inside of our app and on the website! 
 
-Time to get message notifications working.
 
+We can follow this [guide](https://firebase.google.com/docs/cloud-messaging/android/client).
+We need to add `compile 'com.google.firebase:firebase-messaging:9.2.1'` to our **app gradle** file.
+
+Next we need to create a class that will extend `FirebaseMessagingService`. Inside this class we override the `onMessageReceived()` method and do whatever we wish with the incoming message.
+
+```java
+public class FireBaseGcm extends FirebaseMessagingService {
+  
+    private static final String TAG = "FireBaseGcm";
+    @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
+
+        Log.i(TAG, "onMessageReceived: " + remoteMessage.getFrom());;
+        Log.i(TAG, "onMessageReceived: body " + remoteMessage.getNotification().getBody());
+    }
+}
+```
+
+Finally, lets add this new `FireBaseGcm` into our `AndroidManifest.xml` file just like in the guide.
+```xml
+<application
+    ... // activities declared here
+    
+    <service
+        android:name=".FireBaseGcm">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </intent-filter>
+    </service>
+    
+</application>
+```
+
+
+Time to get message notifications working. On the left side of the firebase console webpage, scroll down until you find the `Notifications` section and click on it. Press on the `Send your first message button`. This will take us to the screen that will send messages to **all** devices running our app. You enter `text` that will be the message and at the bottom you select your app from the dropdown and press send! The message will arrive on the phone.
+
+Because we added the following line inside our custom class, we get the message from the `remoteMessage.getNotification().getBody()` as a String and log it out.
+```java
+Log.i(TAG, "onMessageReceived: body " + remoteMessage.getNotification().getBody());
+```
 ***
 
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (20 mins)
 
-Now that you know how to track what screen a user is seeing, you will try tracking user actions in your app. Review the link below on Event Tracking. Add at least 3 different UI Widgets and track some action for each of them. Confirm that they are showing up in your analytics tracker!
-
-[Event Tracking](https://developers.google.com/analytics/devguides/collection/android/v4/events)
-
-> Check: Were students able to create the desired deliverable(s)? Did it meet all necessary requirements / constraints?
 
 ***
 
