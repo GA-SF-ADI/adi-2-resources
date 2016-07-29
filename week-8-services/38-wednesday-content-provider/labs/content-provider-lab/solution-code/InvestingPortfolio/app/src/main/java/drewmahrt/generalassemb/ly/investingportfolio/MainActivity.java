@@ -94,29 +94,29 @@ public class MainActivity extends AppCompatActivity {
         String stockUrl = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol="+symbol;
 
         JsonObjectRequest stockJsonRequest = new JsonObjectRequest
-                (Request.Method.GET, stockUrl, null, new Response.Listener<JSONObject>() {
+            (Request.Method.GET, stockUrl, null, new Response.Listener<JSONObject>() {
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d(MainActivity.class.getName(),"Response: "+response.toString());
-                        try {
-                            if(response.has("Status") && response.getString("Status").equals("SUCCESS")) {
-                                retrieveExchange(symbol,quantity,response.getString("Name"));
-                            }else{
-                                Toast.makeText(MainActivity.this,"The stock you entered is invalid",Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d(MainActivity.class.getName(),"Response: "+response.toString());
+                    try {
+                        if(response.has("Status") && response.getString("Status").equals("SUCCESS")) {
+                            retrieveExchange(symbol,quantity,response.getString("Name"));
+                        }else{
+                            Toast.makeText(MainActivity.this,"The stock you entered is invalid",Toast.LENGTH_LONG).show();
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                }, new Response.ErrorListener() {
+                }
+            }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
-                        Log.d(MainActivity.class.getName(),error.toString());
-                    }
-                });
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // TODO Auto-generated method stub
+                    Log.d(MainActivity.class.getName(),error.toString());
+                }
+            });
 
         queue.add(stockJsonRequest);
 
@@ -129,34 +129,34 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(MainActivity.class.getName(),"Starting exchange request: "+exchangeUrl);
         JsonArrayRequest exchangeJsonRequest = new JsonArrayRequest
-                (exchangeUrl, new Response.Listener<JSONArray>() {
+            (exchangeUrl, new Response.Listener<JSONArray>() {
 
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(MainActivity.class.getName(),"Response2: "+response.toString());
-                        try {
-                            ContentResolver contentResolver = getContentResolver();
-                            String exchange = ((JSONObject)response.get(0)).getString("Exchange");
-                            ContentValues values = new ContentValues();
-                            values.put("symbol",symbol);
-                            values.put("quantity",quantity);
-                            values.put("stockname",name);
-                            values.put("exchange", exchange);
-                            contentResolver.insert(CONTENT_URI, values);
-                            Cursor cursor = contentResolver.query(CONTENT_URI,null,null,null,null);
-                            mCursorAdapter.swapCursor(cursor);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                @Override
+                public void onResponse(JSONArray response) {
+                    Log.d(MainActivity.class.getName(),"Response2: "+response.toString());
+                    try {
+                        ContentResolver contentResolver = getContentResolver();
+                        String exchange = ((JSONObject)response.get(0)).getString("Exchange");
+                        ContentValues values = new ContentValues();
+                        values.put("symbol",symbol);
+                        values.put("quantity",quantity);
+                        values.put("stockname",name);
+                        values.put("exchange", exchange);
+                        contentResolver.insert(CONTENT_URI, values);
+                        Cursor cursor = contentResolver.query(CONTENT_URI,null,null,null,null);
+                        mCursorAdapter.swapCursor(cursor);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                }, new Response.ErrorListener() {
+                }
+            }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d(MainActivity.class.getName(),"Error occurred");
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d(MainActivity.class.getName(),"Error occurred");
 
-                    }
-                });
+                }
+            });
 
         queue.add(exchangeJsonRequest);
 
@@ -170,30 +170,30 @@ public class MainActivity extends AppCompatActivity {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(inflater.inflate(R.layout.add_stock_dialog, null))
-                // Add action buttons
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        Boolean isValid = true;
-                        EditText symbolText = (EditText)((AlertDialog)dialog).findViewById(R.id.stock_symbol_edittext);
-                        EditText quantityText = (EditText)((AlertDialog)dialog).findViewById(R.id.quantity_edittext);
-                        if(symbolText.getText().toString().length() == 0 || quantityText.getText().toString().length() == 0){
-                            Toast.makeText(MainActivity.this,"You must complete all fields",Toast.LENGTH_LONG).show();
-                            isValid = false;
-                        }else{
-                            symbolText.setError("");
-                        }
-
-                        if(isValid){
-                            retrieveStock(symbolText.getText().toString(),quantityText.getText().toString());
-                        }
+            // Add action buttons
+            .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    Boolean isValid = true;
+                    EditText symbolText = (EditText)((AlertDialog)dialog).findViewById(R.id.stock_symbol_edittext);
+                    EditText quantityText = (EditText)((AlertDialog)dialog).findViewById(R.id.quantity_edittext);
+                    if(symbolText.getText().toString().length() == 0 || quantityText.getText().toString().length() == 0){
+                        Toast.makeText(MainActivity.this,"You must complete all fields",Toast.LENGTH_LONG).show();
+                        isValid = false;
+                    }else{
+                        symbolText.setError("");
                     }
-                })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
 
+                    if(isValid){
+                        retrieveStock(symbolText.getText().toString(),quantityText.getText().toString());
                     }
-                });
+                }
+            })
+            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                }
+            });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
