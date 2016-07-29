@@ -30,13 +30,13 @@ public static int findSquareRoot(int left, int right, int inputNumber){
 //alternative iterative solution 1	
 public int sqrt(int a) {
 	    
-	    long low = 0;
-	    long high = a;
+	    int low = 0;
+	    int high = a;
 	    while(low <= high) {
-	        long mid = (high + low)/2;
-	        long square = mid*mid;
+	        int mid = (high + low)/2;
+	        int square = mid*mid;
 	        if(square == a) {
-	            return (int)mid;
+	            return mid;
 	        } else if (square < a) {
 	            low = mid + 1 ;
 	        } else {
@@ -44,7 +44,7 @@ public int sqrt(int a) {
 	        }
 	    }
         
-        return (int)high;	    
+        return high;	    
 
 	}
 	
