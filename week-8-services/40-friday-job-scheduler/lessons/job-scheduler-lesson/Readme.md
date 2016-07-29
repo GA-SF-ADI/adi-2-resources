@@ -156,7 +156,18 @@ IMPORTANT NOTE: If you are returning true, you should make sure that your logic 
 
 ```
 
-Thats all the code we need inside our ` JobService ` but remember, it is a Service, so you need to declare it in your Manifest! After doing that, there is now just one last step to take: scheduling our job! 
+Thats all the code we need inside our ` JobService ` but remember, it is a Service, so you need to declare it in your Manifest! 
+
+```
+
+<service android:name=".ExampleJobService"
+        android:permission="android.permission.BIND_JOB_SERVICE"
+        ></service>
+
+```
+
+Notice how we need the BIND_JOB_SERVICE permsission. We need that if we want to be able to use our service as a JobService!
+After doing that, there is now just one last step to take: scheduling our job! 
 
 <a name="JobScheduler"></a>
 ## Getting the JobScheduler 
