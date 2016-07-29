@@ -5,27 +5,20 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
 import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
-
-    Tracker mTracker;
-    GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +28,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* AppCompatActivity */,
                         this /* OnConnectionFailedListener */)
-                .addApi(LocationServices.API)
+                .addApi(LocationServices.API) // Access LocationServices API!
                 .build();
-
-        AnalyticsApplication application = (AnalyticsApplication) getApplication();
-        mTracker = application.getDefaultTracker();
 
         Button myButton = (Button)findViewById(R.id.location_button);
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTracker.send(new HitBuilders.EventBuilder()
-                        .setCategory("category")
-                        .setAction("clicked button")
-                        .setLabel("clicker")
-                        .build());
                 goToLocation();
             }
         });
-
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mTracker.setScreenName("MainActivity~");
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-    }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -72,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     @Override
     public void onConnected(Bundle bundle) {
+        // The Google API client is connected!
         Toast.makeText(this,"Connected...",Toast.LENGTH_LONG).show();
     }
 
@@ -82,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // permission was granted, yay! Do the
-                // contacts-related task you need to do.
+                // location-related task you need to do.
                 goToLocation();
             } else {
 

@@ -5,8 +5,8 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "ly.generalassemb.drewmahrt.playservicesexample"
-        minSdkVersion 16
+        applicationId "ly.generalassemb.firebasegcm"
+        minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -24,6 +24,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
 
+    // NOTE: SDK Manager needs latest play services and Google repositories
+    compile 'com.google.firebase:firebase-core:9.2.1'
+    compile 'com.google.firebase:firebase-messaging:9.2.1'
+
+    // Location services
     compile 'com.google.android.gms:play-services-location:9.2.1'
 }
 
