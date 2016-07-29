@@ -15,13 +15,14 @@ import java.lang.annotation.Target;
 public class MainActivity extends AppCompatActivity {
     Button startJobButton, stopJobButton;
     public static final int JOB_INFO = 12;
+    public JobScheduler jobScheduler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setViews();
         setOnClickListeners();
-
+        jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
 
 
     }
@@ -35,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                //TODO: CREATE YOUR JOB INFO OBJECT
-
+                JobInfo jobInfo = new JobInfo.Builder( JOB_INFO,
+                        new ComponentName( getPackageName(),
+                                NotificationJobService.class.getName()))  //the name of the JobService you will eventually create
+                        .setPeriodic(10000) //The period that you want your jobbuilder to run on
+                        .build();
 
                 //TODO: MAKE SURE THE MANIFEFST IS CORRECT
 
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //TODO: SCHEDULE YOUR JOB
 
+                jobScheduler.schedule(jobInfo);
 
             }
         });
@@ -54,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: GET AN INSTANCE OF YOUR JOBSCHEDULER
+
                 //TODO: CANCEL YOUR JOB
+                jobScheduler.cancel(JOB_INFO);
             }
         });
     }

@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.content.Context;
 import android.support.v4.app.NotificationCompat;
 
 
@@ -16,7 +17,13 @@ import android.support.v4.app.NotificationCompat;
 public class NotificationJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
-        //TODO: CREATE YOUR NOTIFICATION!
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
+        mBuilder.setContentTitle("Notification Alert, Click Me!");
+        mBuilder.setContentText("Hi, This is Android Notification Detail!");
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(1, mBuilder.build());
         return false;
     }
 

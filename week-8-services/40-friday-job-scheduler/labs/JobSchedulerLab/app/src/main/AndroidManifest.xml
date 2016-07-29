@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hollis.notificationjobscheduler">
+    package="com.example.michaeljeffress.jobschedulerlab">
 
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +20,6 @@
         </activity>
         <service android:name=".NotificationJobService"
             android:permission="android.permission.BIND_JOB_SERVICE"></service>
-
     </application>
 
 </manifest>
