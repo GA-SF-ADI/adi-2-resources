@@ -96,7 +96,7 @@ If an app requests a dangerous permission listed in its manifest, and the app al
 If your app needs a dangerous permission, you must check whether you have that permission every time you perform an operation that requires that permission. 
 The user is always free to revoke the permission, so even if the app used the camera yesterday, it can't assume it still has that permission today.
 
-```
+```java
 int permissionCheck = checkSelfPermission(Manifest.permission.WRITE_CALENDAR);
 ```
 
@@ -111,7 +111,7 @@ If the app does not have the permission, the method returns ```PERMISSION_DENIED
 
 If your application does not have the granted permission you are looking for, you can request it like so:
 
-```
+```java
 String[] permissions = new String[]{Manifest.permission.READ_CONTACTS};
 requestPermissions(permissions, PERMISSION_REQUEST_CODE);
 ```
@@ -121,7 +121,10 @@ The callback method gets the result of the request.
 
 > Check: Ask students to pair up and explain why there is a ```new String[] {}``` instead of just a String?
 
-We can pass in **multiple** permission requests at the same time via the ```new String[] {permission1, permission2, etc}```.
+We can pass in **multiple** permission requests at the same time via the 
+```java
+new String[] {permission1, permission2, etc}
+```.
 They will all be cycled through in the same popup dialog with page indicators. 
 ![](http://www.androidpolice.com/wp-content/uploads/2015/05/nexus2cee_appops-03.png)
 
@@ -132,7 +135,7 @@ They will all be cycled through in the same popup dialog with page indicators.
 Before we ask for a permission, we should check that we don't have it first. If we don't have the permission then we need to ask for it.
 If we do have the permission, then we can just continue with our code.
 
-```
+```java
 // Here, thisActivity is the current activity
 if (checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
     
@@ -199,7 +202,7 @@ If you pressed deny then pressing the button again will show the permission popu
 When your app requests permissions, the system presents a dialog box to the user. When the user responds, the system invokes your app's ```onRequestPermissionsResult()``` method, passing it the user response.
 Your app has to override that method to find out whether the permission was granted. The callback is passed the **same request code** you passed to ```requestPermissions()```.
 
-```
+```java
 @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode){
