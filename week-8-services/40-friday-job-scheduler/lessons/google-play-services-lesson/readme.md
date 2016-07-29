@@ -153,6 +153,16 @@ Log.i(TAG, "onMessageReceived: body " + remoteMessage.getNotification().getBody(
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (20 mins)
 
+You have two tasks: 1 Practice what we learned above. 2 Learn something new and on your own! There is no starter code but there is [solution-code](solution-code/MyApplication/)
+
+
+* 1: Follow the above instructions to get Firebase Notifications working on your own app that you create from scratch. Lastly, in the  `onMessageReceived()` you should make a local device notification of the message we received from the cloud! Use title "FireBase Push notification!" and the content text should be the message body as seen in examples above.
+* 2: Follow this [guide](https://firebase.google.com/docs/analytics/android/start/) to setup Firebase Analytics! This will allow you to track any actions you wish that the user makes inside your app. You can continue working off of the previous project from step 1. Your results will be visible within 24 hours on the console site or you can use the below commands to confirm the events as they happen.
+```
+adb shell setprop log.tag.FA VERBOSE
+adb shell setprop log.tag.FA-SVC VERBOSE
+adb logcat -v time -s FA FA-SVC
+```
 
 ***
 
