@@ -142,7 +142,7 @@ The second thing worth noting is the return value of the `onStartJob()` method. 
 
 If you are going to be using an extra thread to carry out more logic, you need to return true so it doesn't close your process
 
-IMPORTANT NOTE: If you are returning true, you should make sure that your logic at some point calls the  ` jobFinished(JobParams params) ` method to make sure that the process gets stopped. 
+IMPORTANT NOTE: If you are returning true, you should make sure that your logic at some point calls the  ` jobFinished(JobParams params) ` method to make sure that the job gets stopped. 
 
 
  Now that we've talked about these methods a lot, lets actually go through and do something with them. Just for an example, lets just have it log out the current time
@@ -170,7 +170,7 @@ Notice how we need the BIND_JOB_SERVICE permsission. We need that if we want to 
 After doing that, there is now just one last step to take: scheduling our job! 
 
 <a name="JobScheduler"></a>
-## Getting the JobScheduler 
+## Getting the JobScheduler  10 Minutes
 
 This following code happens back in our `MainActivity`, right after where we made our job. 
 
@@ -194,7 +194,7 @@ It is good practice to get back the result of the jobScheduler.schedule method a
 Other than that, viola, job is fully scheduled!
 
 <a name = "Guided Practice"></a>
-## Guided Practice
+## Guided Practice 15 Minutes
 
 Lets go through all of those steps together! 
 
