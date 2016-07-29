@@ -40,19 +40,31 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     mResultTextView = (TextView) findViewById(R.id.result);
   }
 
+  //Use content provider's methods!
   public void addProduct () {
+    //get a contentResolver
+    ContentResolver contentResolver = getContentResolver();
+    //use insert method from ContentProvider
+    ContentValues values = new ContentValues();
+    values.put("productname", mInputName.getText().toString());
+    values.put("quantity", mInputQuantity.getText().toString());
+    Uri uri = contentResolver.insert(CONTENT_URI, values);
+    mResultTextView.setText(mInputName.getText().toString()+ " has been added");
 
   }
 
   public void lookupProduct () {
+    //probably use a query
 
   }
 
   public void removeProduct () {
+    //use delete method from ContentProvider
 
   }
 
   public void updateProduct(){
+    //use update method from ContentProvider
 
   }
 

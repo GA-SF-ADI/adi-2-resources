@@ -62,7 +62,7 @@ JobInfo job = new JobInfo.Builder( 1,
             .build();
 ```
 
-ASIDEwm: This code is could  give you an error telling you that the call requires API 21. This is because JobScheduler was introduced in Lolipop and older APIs cannot use the methods. You can get rid of this error in one of two ways: adding the ` @TargetApi(21) `annotation above the method you are creating your job info in or creating an if statement to check if the current version is 21. 
+ASIDE: This code is could  give you an error telling you that the call requires API 21. This is because JobScheduler was introduced in Lollipop and older APIs cannot use the methods. You can get rid of this error in one of two ways: adding the ` @TargetApi(21) `annotation above the method you are creating your job info in or creating an if statement to check if the current version is 21. 
 
 
 Lets break down the lines 
@@ -76,7 +76,7 @@ This line is doing two things. The first is it is declaring our JobInfo variable
 
 #### Step 2
 
-        ` new ComponentName( getPackageName(),  ` 
+        new ComponentName( getPackageName(),   
 
 The JobInfo.Builder constructor requires two parameters. The first is the id that we passed in in the step before. The second is a ComponentName object, which is a class that android gives us that giveds specific information about components (Activities, Services, BroadcastRecievers, etc), of an application. We need to specify this in our `JobInfo` object so when the scheduled job gets executed the OS knows where to find our code. 
 
@@ -86,11 +86,12 @@ The important thing to know is that your ComponentName constructor takes in two 
 
 ` ExampleJobService.class.getName())) `
 
-This line is the second part of the ComponentName constructor and the end of your JobInfo.Builder constructor (count the end parens and the end to make sure). The second part is the name of your class that contains your JobService, a class that you should at least create right now. In order to get that class name, we need to access the static .class variable of your service then run the getName() method on that class to actually get the name. Just follow the above steps, it is a simple pattern. 
+This line is the second part of the ComponentName constructor and the end of your `JobInfo.Builder` constructor (count the end parens and the end to make sure). The second part is the name of your class that contains your `JobService`, a class that you should at least create right now. In order to get that class name, we need to access the static .class variable of your service then run the `getName()` method on that class to actually get the name. Just follow the above steps, it is a simple pattern. 
 
 ### Step 4
 
 ` .setPeriodic(40000) `
+
 The previous steps were just a pattern that you will need to repeat each time that you want to schedule a job. This step is where you start adding some customizations to our Job. 
 
 
@@ -113,7 +114,7 @@ This is the last step, it finally builds your `JobInfo` object.
 <a name="JobService"></a>
 ## DEMO: Setting up the JobService (20 mins)
 
-Now that we have our ` JobInfo ` , we need to create our ` JobService ` . To do this we need to use the class we created in Step 3 of creating our job info, in our case, our ExampleJobService.java file. This class is going to be a JobService, and in order to do that, we need to make sure that it extends ` JobService ` 
+Now that we have our ` JobInfo ` , we need to create our ` JobService ` . To do this we need to use the class we created in Step 3 of creating our job info, in our case, our `ExampleJobService.java` file. This class is going to be a `JobService`, and in order to do that, we need to make sure that it extends ` JobService ` 
 
 ``` public class ExampleJobService extends JobService ```
 
@@ -134,14 +135,14 @@ This is a Service, so we have access to the `onStartCommand` and `onDestroy` met
 ```
 
 
-There are two interesting things to note about these two methods before we proceed. The first has to do with onStopJob is called. It is not like the lifecycle methods onStop() or onPause() that get called whenever the Activity gets Paused or Stopped. If the Job naturally finishes, onStopJob will not be called. 
+There are two interesting things to note about these two methods before we proceed. The first has to do with `onStopJob` is called. It is not like the lifecycle methods `onStop()` or `onPause()` that get called whenever the Activity gets Paused or Stopped. If the Job naturally finishes, `onStopJob()` will not be called. 
 
-The second thing worth noting is the return value of the onStartJob() method. Right now, it returns false. That means there isn't any extra work that needs to be done in the Service. 
+The second thing worth noting is the return value of the `onStartJob()` method. Right now, it returns false. That means there isn't any extra work that needs to be done in the Service. 
 
 
 If you are going to be using an extra thread to carry out more logic, you need to return true so it doesn't close your process
 
-IMPORTANT NOTE: If you are returning true, you should make sure that your logic at some point calls the  ` jobFinished(JobParams params) ` method to make sure that the process gets stopped. 
+IMPORTANT NOTE: If you are returning true, you should make sure that your logic at some point calls the  ` jobFinished(JobParams params) ` method to make sure that the job gets stopped. 
 
 
  Now that we've talked about these methods a lot, lets actually go through and do something with them. Just for an example, lets just have it log out the current time
@@ -155,12 +156,23 @@ IMPORTANT NOTE: If you are returning true, you should make sure that your logic 
 
 ```
 
-Thats all the code we need inside our ` JobService ` but remember, it is a Service, so you need to declare it in your Manifest! After doing that, there is now just one last step to take: scheduling our job! 
+Thats all the code we need inside our ` JobService ` but remember, it is a Service, so you need to declare it in your Manifest! 
+
+```
+
+<service android:name=".ExampleJobService"
+        android:permission="android.permission.BIND_JOB_SERVICE"
+        ></service>
+
+```
+
+Notice how we need the BIND_JOB_SERVICE permsission. We need that if we want to be able to use our service as a JobService!
+After doing that, there is now just one last step to take: scheduling our job! 
 
 <a name="JobScheduler"></a>
-## Getting the ` JobScheduler `
+## Getting the JobScheduler  10 Minutes
 
-This following code happens back in our MainActivity, right after where we made our job. 
+This following code happens back in our `MainActivity`, right after where we made our job. 
 
 ```
         JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
@@ -182,7 +194,7 @@ It is good practice to get back the result of the jobScheduler.schedule method a
 Other than that, viola, job is fully scheduled!
 
 <a name = "Guided Practice"></a>
-## Guided Practice
+## Guided Practice 15 Minutes
 
 Lets go through all of those steps together! 
 

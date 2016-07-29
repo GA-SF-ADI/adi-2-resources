@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="title"
+    android:id="@+id/activity_new_book_edit_text_title"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="author"
+        android:id="@+id/activity_new_book_edit_text_author"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="image"
+        android:id="@+id/activity_new_book_edit_text_image"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="release date"
+        android:id="@+id/activity_new_book_edit_text_release_date"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        android:id="@+id/activity_new_book_submit_button"/>
+</LinearLayout>
