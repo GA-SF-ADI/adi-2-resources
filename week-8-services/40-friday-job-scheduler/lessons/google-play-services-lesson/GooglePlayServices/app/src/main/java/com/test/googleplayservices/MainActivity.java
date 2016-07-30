@@ -1,9 +1,7 @@
 package com.test.googleplayservices;
 
-import android.*;
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
@@ -12,13 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
@@ -44,16 +42,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         textViewLongitude = (TextView) findViewById(R.id.longitude);
         textViewLatitute = (TextView) findViewById(R.id.latitude);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        logEvent();
 
-//        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-//                .addLocationRequest(mLocationRequest);
-//        PendingResult<LocationSettingsResult> result =
-//                LocationServices.SettingsApi.checkLocationSettings(mGoogleClient,
-//                        builder.build());
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getmLastLocation();
+            }
+        });
+
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    //.enableAutoManage(this)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     }
 
 
-    protected void logEvent() {
+    protected void logEvent(String location) {
 
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
@@ -73,23 +74,22 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
-    public Location getmLastLocation(GoogleApiClient client) {
+    public void getmLastLocation() {
 
-        return null;
-    }
+        if (mLastLocation == null) {
+            Toast.makeText(this, "Can't find location", Toast.LENGTH_LONG).show();
 
-//    public Cursor getLocation() {
-//        Cursor cursor = null;
-//        if (permissionExists()) {
-//            ContentResolver contentResolver = getContentResolver();
-//            Uri contentUri = Location.distanceBetween();
-//
-//            cursor = contentResolver.query(contentUri, null, null, null, null);
-//        } else {
-//            requestUserForPermission();
-//        }
-//        return cursor;
-//    }
+            return;
+
+        }
+
+            textViewLatitute.setText(String.valueOf(mLastLocation.getLatitude()));
+            textViewLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
+
+            logEvent(" Your location" + textViewLatitute + textViewLongitude);
+        }
+
+
 
     @TargetApi(23)
     private boolean permissionExists() {
@@ -127,10 +127,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 }
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // contacts permission was granted! Let's populate the listview.
-                    getLocation();
                 } else {
                     // contactss permission was denied, lets warn the user that we need this permission!
-                    Toast.makeText(getApplicationContext(), "You need to grant contacts permission", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "You need to grant location permission", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -151,6 +150,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onConnected(@Nullable Bundle connectionHint) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                    PERMISSION_REQUEST_CODE);
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -160,13 +163,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             return;
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
-            textViewLatitute.setText(String.valueOf(mLastLocation.getLatitude()));
-            textViewLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
-        }
+
     }
-
-
 
 
     @Override
