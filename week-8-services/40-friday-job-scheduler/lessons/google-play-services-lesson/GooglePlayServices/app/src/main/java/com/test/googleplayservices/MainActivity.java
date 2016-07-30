@@ -2,8 +2,10 @@ package com.test.googleplayservices;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,9 +22,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private Button locationButton;
+    private Button mapButton;
+    private Button streetViewButton;
     private Location mLastLocation;
     private TextView textViewLongitude;
     private TextView textViewLatitute;
@@ -39,9 +44,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         locationButton = (Button) findViewById(R.id.button);
+        mapButton = (Button) findViewById(R.id.map_button);
+        streetViewButton = (Button) findViewById(R.id.street_view_button);
         textViewLongitude = (TextView) findViewById(R.id.longitude);
         textViewLatitute = (TextView) findViewById(R.id.latitude);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        requestUserForPermission();
+        permissionExists();
 
         locationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +60,23 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             }
         });
 
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewMap();
+
+
+            }
+        });
+        streetViewButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewStreetView();
+            }
+        });
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    //.enableAutoManage(this)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
@@ -63,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     }
 
-
     protected void logEvent(String location) {
 
         Bundle bundle = new Bundle();
@@ -71,6 +92,25 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
+    protected void viewMap() {
+        Uri gmmIntentUri = Uri.parse("geo:textViewLatitute, textViewLongitude");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
+
+    }
+
+    protected void viewStreetView() {
+        Uri gmmIntentUri = Uri.parse("google.streetview:cbll=" + textViewLatitute + "," + textViewLongitude + "\"");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
 
     }
 
@@ -78,17 +118,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (mLastLocation == null) {
             Toast.makeText(this, "Can't find location", Toast.LENGTH_LONG).show();
-
             return;
-
         }
 
-            textViewLatitute.setText(String.valueOf(mLastLocation.getLatitude()));
-            textViewLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
+        textViewLatitute.setText(String.valueOf(mLastLocation.getLatitude()));
+        textViewLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
 
-            logEvent(" Your location" + textViewLatitute + textViewLongitude);
-        }
-
+        logEvent(" Your location" + textViewLatitute + textViewLongitude);
+    }
 
 
     @TargetApi(23)
@@ -96,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         int currentApiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentApiVersion < Build.VERSION_CODES.M) {
 
-            // Permissions are already granted during INSTALL TIME for older OS version
             return true;
         }
 
@@ -154,12 +190,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
                     PERMISSION_REQUEST_CODE);
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);

@@ -18,12 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
+        android:padding="@dimen/activity_horizontal_margin"
         android:background="@color/colorPrimary"
         android:text="Get Last Location"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:text="."
         android:layout_height="wrap_content"
         android:id="@+id/longitude"
         android:background="@color/colorPrimary"
@@ -34,7 +34,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/latitude"
         android:background="@color/colorPrimary"
-        android:text="."/>
+        />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Map"
+            android:id="@+id/map_button"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Street View"
+            android:id="@+id/street_view_button"/>
 
     </LinearLayout>
 
