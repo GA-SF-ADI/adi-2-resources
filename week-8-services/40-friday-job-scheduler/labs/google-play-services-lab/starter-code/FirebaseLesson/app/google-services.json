@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "576905579933",
+    "firebase_url": "https://fir-test-c3c9d.firebaseio.com",
+    "project_id": "fir-test-c3c9d",
+    "storage_bucket": "fir-test-c3c9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576905579933:android:8c62cf07b271f385",
+        "android_client_info": {
+          "package_name": "com.example.michaeljeffress.firebaselesson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576905579933-grp0tj7bhk5v79gag6c8aq5rccleadlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASVKhfdV4CqbxXFtyX_XDiP3iGDf4Xkxo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
