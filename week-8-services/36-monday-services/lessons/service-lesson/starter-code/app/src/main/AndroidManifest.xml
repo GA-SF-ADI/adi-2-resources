@@ -16,8 +16,15 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".CustomService"
+            android:exported="false" />
         <!-- Add service to manifest, but do not allow other apps to discover the service -->
 
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
