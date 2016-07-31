@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,24 +15,38 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     BaseAdapter mTitleAdapter;
-    //TODO: Define your other Adapters
+    BaseAdapter mAuthorAdapter;
+    BaseAdapter mYearAdapter;
+    //TODO: Define your other Adapters - DONE
 
+    ListView mBookListView;
     //TODO: Define your ListView
 
+    List<Book> mBookList;
     //TODO: Define your Book List
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mBookList = generateBooks();
         //TODO: Instantiate List
 
+        Collections.sort(mBookList, new ComparatorTitle());
+        Collections.sort(mBookList, new ComparatorAuthor());
+        Collections.sort(mBookList, new ComparatorYear());
+
         //TODO: Instantiate BaseAdapters for year, author, title
+
+
         //Below is a partially complete example for one Adapter
         mTitleAdapter = new BaseAdapter() {
             @Override
@@ -60,15 +75,99 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 TextView textView1 = (TextView)v.findViewById(R.id.text1);
-                //TODO: Get other TextViews
+                TextView textView2 = (TextView)v.findViewById(R.id.text2);
+                TextView textView3 = (TextView)v.findViewById(R.id.text3);
+                //TODO: Get other TextViews - DONE
 
                 textView1.setText("Title: "+mBookList.get(position).getTitle());
-                //TODO: Set text for other TextViews
+                textView2.setText("Author: "+mBookList.get(position).getAuthor());
+                textView3.setText("Year: "+mBookList.get(position).getYear());
+                //TODO: Set text for other TextViews - DONE
 
                 return v;
             }
         };
 
+        mAuthorAdapter = new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return 0;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
+
+
+
+        mYearAdapter = new BaseAdapter() {
+            @Override
+            public int getCount() {
+                return 0;
+            }
+
+            @Override
+            public Object getItem(int position) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int position) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                return null;
+            }
+        };
+
+        mBookListView = (ListView)findViewById(R.id.list_view);
+        mBookListView.setAdapter(mTitleAdapter);
+
+
+        Button titleButton = (Button)findViewById(R.id.titleButton);
+        Button authorButton = (Button)findViewById(R.id.authorButton);
+        Button yearButton = (Button)findViewById(R.id.yearButton);
+
+        titleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorTitle());
+                mBookListView.setAdapter(mTitleAdapter);
+                mTitleAdapter.notifyDataSetChanged();
+            }
+        });
+
+        authorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorAuthor());
+                mBookListView.setAdapter(mAuthorAdapter);
+                mAuthorAdapter.notifyDataSetChanged();
+            }
+        });
+
+        yearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Collections.sort(mBookList,new ComparatorYear());
+                mBookListView.setAdapter(mYearAdapter);
+                mYearAdapter.notifyDataSetChanged();
+            }
+        });
 
         //TODO: Set listeners for buttons
 

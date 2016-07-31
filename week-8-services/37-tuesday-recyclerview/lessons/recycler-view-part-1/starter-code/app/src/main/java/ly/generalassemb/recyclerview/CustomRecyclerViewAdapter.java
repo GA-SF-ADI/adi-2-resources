@@ -29,6 +29,8 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
         public ImageView imageView;
         public TextView textView;
 
+
+
         public SampleViewHolder(final View itemView) {
             super(itemView);
 
