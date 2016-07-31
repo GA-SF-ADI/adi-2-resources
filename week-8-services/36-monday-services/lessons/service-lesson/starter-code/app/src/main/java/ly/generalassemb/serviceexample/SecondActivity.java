@@ -17,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setIntentServiceViews();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +37,8 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO START your CustomIntentService here
-                Intent intent = new Intent(SecondActivity.this, CustomServiceIntent.class);
-                startService(intent);
+                Intent serviceIntent = new Intent(SecondActivity.this, CustomServiceIntent.class);
+                startService(serviceIntent);
 
             }
         });
@@ -46,8 +47,8 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO STOP your CustomIntentService here
-                Intent intent = new Intent(SecondActivity.this, CustomServiceIntent.class);
-                stopService(intent);
+                Intent serviceIntent = new Intent(SecondActivity.this, CustomServiceIntent.class);
+                stopService(serviceIntent);
 
             }
         });
