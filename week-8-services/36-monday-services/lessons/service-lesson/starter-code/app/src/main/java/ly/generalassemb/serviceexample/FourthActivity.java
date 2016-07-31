@@ -1,5 +1,8 @@
 package ly.generalassemb.serviceexample;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -7,13 +10,17 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
-public class FourthActivity extends AppCompatActivity {
+public class FourthActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final int NOTIFICATION_ID = 1;
 
     private String downloadUrl = null;
     boolean mShowingPlayButton = true;
@@ -40,7 +47,8 @@ public class FourthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fourth);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Button notificationButton = (Button) findViewById(R.id.notification_button);
+        notificationButton.setOnClickListener(this);
         final ImageButton playPauseButton = (ImageButton) findViewById(R.id.playPauseButton);
         ImageButton stopButton = (ImageButton) findViewById(R.id.stopButton);
         final Intent intent = new Intent(FourthActivity.this, BoundExampleService.class);
@@ -56,7 +64,7 @@ public class FourthActivity extends AppCompatActivity {
 
 
                 // When clicked, start the service with a play or pause intent
-                if (mShowingPlayButton){
+                if (mShowingPlayButton) {
 
                     boundExampleService.startMusic();
 
@@ -92,6 +100,28 @@ public class FourthActivity extends AppCompatActivity {
 
     }
 
-}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.notification_button:
+                showNormalNotification();
+                break;
+        }
+    }
 
+    private void showNormalNotification() {
+        Intent intent = new Intent(this,FourthActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intent,0);
+        NotificationCompat.Builder mbuilder = new NotificationCompat.Builder(this);
+        mbuilder.setSmallIcon(R.mipmap.ic_launcher);
+        mbuilder.setContentTitle("Audrey");
+        mbuilder.setContentText("Audrey");
+        mbuilder.setContentIntent(pendingIntent);
+        mbuilder.setAutoCancel(true);
+        mbuilder.setPriority(Notification.PRIORITY_LOW);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    notificationManager.notify(NOTIFICATION_ID, mbuilder.build());
+    }
+}
 
