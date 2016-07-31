@@ -2,4 +2,5 @@
     <string name="app_name">ServiceExample</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="title_activity_third">ThirdActivity</string>
+    <string name="title_activity_fourth">FourthActivity</string>
 </resources>

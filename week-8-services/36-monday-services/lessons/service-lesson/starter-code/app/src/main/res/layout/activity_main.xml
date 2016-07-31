@@ -35,6 +35,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_activity_two"
         android:text="Activity Three"/>
+    <Button
+        android:id="@+id/button_activity_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_activity_three"
+        android:text="Activity Four"/>
 
 
 </RelativeLayout>
