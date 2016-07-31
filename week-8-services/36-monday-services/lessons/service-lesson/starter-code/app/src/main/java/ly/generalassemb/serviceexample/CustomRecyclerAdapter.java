@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * Created by audreyeso on 7/30/16.
  */
 public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAdapter.SampleViewHolder> {
     private static final String TAG = "Adapter";
-    private LinkedList<String> data;
+    private ArrayList<String> data;
 
     public static class SampleViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
@@ -37,7 +37,7 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
         }
     }
 
-    public CustomRecyclerAdapter(LinkedList<String> inComingData) {
+    public CustomRecyclerAdapter(ArrayList<String> inComingData) {
         this.data = inComingData;
     }
 
