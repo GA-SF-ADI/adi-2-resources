@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Button startButton = (Button) findViewById(R.id.button_start);
         Button stopButton = (Button) findViewById(R.id.button_stop);
         Button activityButton =(Button) findViewById(R.id.button_activity_two);
+        Button activityButtonThree =(Button) findViewById(R.id.button_activity_three);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+        activityButtonThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
                 startActivity(intent);
             }
         });
