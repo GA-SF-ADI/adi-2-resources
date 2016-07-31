@@ -17,6 +17,9 @@ import java.util.ArrayList;
 public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAdapter.SampleViewHolder> {
     private static final String TAG = "Adapter";
     private ArrayList<String> data;
+    private static OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
+
+
 
     public static class SampleViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
@@ -31,14 +34,27 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d(TAG, "Clicked on item: " + getLayoutPosition());
+                    onRecyclerViewItemClickListener = new OnRecyclerViewItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            onRecyclerViewItemClickListener.onItemClick(getLayoutPosition());
+                            Log.d(TAG, "Clicked on item: " + getLayoutPosition());
+
+                        }
+                    };
                 }
             });
         }
     }
 
-    public CustomRecyclerAdapter(ArrayList<String> inComingData) {
+    public CustomRecyclerAdapter(ArrayList<String> inComingData, OnRecyclerViewItemClickListener listener) {
         this.data = inComingData;
+
+        if(inComingData != null) {
+            this.data = inComingData;
+        }else {
+            this.data = new ArrayList<String>();
+        }
     }
 
     @Override
@@ -76,6 +92,10 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public interface OnRecyclerViewItemClickListener {
+        void onItemClick(int position);
     }
 
 
