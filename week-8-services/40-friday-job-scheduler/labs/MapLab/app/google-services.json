@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "644453211002",
+    "firebase_url": "https://maplab-4d4c0.firebaseio.com",
+    "project_id": "maplab-4d4c0",
+    "storage_bucket": "maplab-4d4c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644453211002:android:45756cdf3c0a2fa8",
+        "android_client_info": {
+          "package_name": "com.sterling.maplab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644453211002-8uspevs7kbedruojbhk6r4fjpqolqruj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy1d7htgeJr5bVkAMEHq3kelB0HnFBXI4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
