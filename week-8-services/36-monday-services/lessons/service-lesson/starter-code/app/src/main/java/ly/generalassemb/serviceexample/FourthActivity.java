@@ -123,5 +123,28 @@ public class FourthActivity extends AppCompatActivity implements View.OnClickLis
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     notificationManager.notify(NOTIFICATION_ID, mbuilder.build());
     }
+
+    private void shownInboxStyleNotification() {
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        inboxStyle.setBigContentTitle("Inbox Notification");
+        inboxStyle.addLine("line 1");
+        inboxStyle.addLine("line 2");
+        inboxStyle.setSummaryText("more than 2");
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,(int)System.currentTimeMillis(), intent, 0);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
+        mBuilder.setContentTitle("Audrey again");
+        mBuilder.setContentText("Audrey again again");
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setAutoCancel(true);
+        mBuilder.setPriority(Notification.PRIORITY_LOW);
+        mBuilder.setStyle(inboxStyle);
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+    }
 }
 
