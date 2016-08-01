@@ -49,6 +49,9 @@ public class FourthActivity extends AppCompatActivity implements View.OnClickLis
         setSupportActionBar(toolbar);
         Button notificationButton = (Button) findViewById(R.id.notification_button);
         notificationButton.setOnClickListener(this);
+        Button styleInboxButton = (Button) findViewById(R.id.inbox_style__button);
+        notificationButton.setOnClickListener(this);
+        styleInboxButton.setOnClickListener(this);
         final ImageButton playPauseButton = (ImageButton) findViewById(R.id.playPauseButton);
         ImageButton stopButton = (ImageButton) findViewById(R.id.stopButton);
         final Intent intent = new Intent(FourthActivity.this, BoundExampleService.class);
@@ -105,6 +108,9 @@ public class FourthActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.notification_button:
                 showNormalNotification();
+                break;
+            case R.id.inbox_style__button:
+                shownInboxStyleNotification();
                 break;
         }
     }

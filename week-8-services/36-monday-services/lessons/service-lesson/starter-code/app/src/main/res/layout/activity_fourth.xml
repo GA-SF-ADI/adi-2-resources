@@ -54,6 +54,12 @@
             android:layout_width="wrap_content"
             android:id="@+id/notification_button"
             android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/inbox_style__button"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </LinearLayout>
