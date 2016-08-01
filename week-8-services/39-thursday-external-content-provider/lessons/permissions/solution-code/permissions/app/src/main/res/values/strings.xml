@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Permissions</string>
+    <string name="button_text">Press me to see contacts list!</string>
+</resources>
