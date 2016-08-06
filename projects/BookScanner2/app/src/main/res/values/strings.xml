@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BookScanner2</string>
+    <string name="scan_text">SCAN</string>
+    <string name="book_code_String">Book Code</string>
+</resources>
