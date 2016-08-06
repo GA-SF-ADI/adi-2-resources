@@ -13,6 +13,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
+    static final String ACTION_ZXING = "com.google.zxing.client.android";
+    static final String SCAN_MODE = "SCAN_MODE";
+    static final String PRODUCT_MODE = "PRODUCT_MODE";
+    static final String QR_MODE = "QR_CODE_MODE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void scanBar(View view) {
         try {
             Intent intent = new Intent(ACTION_SCAN);
-            intent.putExtra("SCAN_MODE", "PRODUCT_MODE");
+            intent.putExtra(SCAN_MODE, PRODUCT_MODE);
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException e) {
             showDialog(MainActivity.this, "No Scanner Found",
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public void scanQR(View view) {
         try {
             Intent intent = new Intent(ACTION_SCAN);
-            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            intent.putExtra(SCAN_MODE, QR_MODE);
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException e) {
             showDialog(MainActivity.this, "No Scanner Found",
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
 
-                Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
+                Uri uri = Uri.parse("market://search?q=pname:" + ACTION_ZXING);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 try {
                     act.startActivity(intent);
@@ -69,15 +74,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if(requestCode == 0) {
-            if(resultCode == RESULT_OK) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 Toast.makeText(this, "Content:" + contents + "Format:" +
-                format,Toast.LENGTH_LONG).show();
+                        format, Toast.LENGTH_LONG).show();
 
             }
         }
-        
     }
 }

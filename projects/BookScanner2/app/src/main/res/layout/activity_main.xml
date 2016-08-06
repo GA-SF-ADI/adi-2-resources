@@ -41,4 +41,16 @@
         android:text="Book Code"
         android:textSize="18dp"
         />
+
+    <Button
+        android:id="@+id/book_list_button"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:onClick="scanBar"
+        android:text="My Book List"
+        android:textSize="18dp"
+        />
 </LinearLayout>
