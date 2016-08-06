@@ -3,4 +3,5 @@
     <string name="scan_text">SCAN</string>
     <string name="book_code_String">Book Code</string>
     <string name="title_activity_book_list_actvity">BookListActvity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 </resources>
