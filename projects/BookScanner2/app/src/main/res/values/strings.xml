@@ -4,4 +4,6 @@
     <string name="book_code_String">Book Code</string>
     <string name="title_activity_book_list_actvity">BookListActvity</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_create_student">CreateStudentActivity</string>
+    <string name="title_activity_create_classroom">CreateClassroomActivity</string>
 </resources>

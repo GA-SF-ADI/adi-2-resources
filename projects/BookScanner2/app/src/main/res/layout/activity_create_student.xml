@@ -9,15 +9,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/checkbox"
+    <EditText
+        android:id="@+id/student_name_edit_text"
+        android:hint="Enter Student Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <!--<CheckBox-->
+        <!--android:id="@+id/checkbox"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
     <Button
-        android:id="@+id/create_animal_button"
+        android:id="@+id/create_student_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Animal"/>
+        android:text="Add Student"/>
 
 </LinearLayout>
