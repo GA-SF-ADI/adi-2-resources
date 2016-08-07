@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
 
@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".activities.MainActivity"/>
         <activity
-            android:name=".BookListActvity"
+            android:name=".activities.BookListActvity"
             android:label="@string/title_activity_book_list_actvity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 

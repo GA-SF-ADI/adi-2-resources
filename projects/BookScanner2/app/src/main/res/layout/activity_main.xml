@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/container"
-    tools:context="com.test.bookscanner2.MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/textview_scanner"

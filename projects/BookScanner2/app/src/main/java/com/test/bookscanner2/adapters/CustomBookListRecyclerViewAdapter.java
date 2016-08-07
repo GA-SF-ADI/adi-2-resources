@@ -1,4 +1,4 @@
-package com.test.bookscanner2;
+package com.test.bookscanner2.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.test.bookscanner2.R;
 
 import java.util.ArrayList;
 

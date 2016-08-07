@@ -1,4 +1,4 @@
-package com.test.bookscanner2;
+package com.test.bookscanner2.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.test.bookscanner2.interfaces.OpenLibraryAPI;
+import com.test.bookscanner2.R;
 import com.test.bookscanner2.models.Example;
 
 import retrofit2.Call;

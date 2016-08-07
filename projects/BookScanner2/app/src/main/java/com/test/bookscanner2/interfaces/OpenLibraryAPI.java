@@ -1,4 +1,4 @@
-package com.test.bookscanner2;
+package com.test.bookscanner2.interfaces;
 
 /**
  * Created by audreyeso on 8/6/16.
