@@ -26,7 +26,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class AddNewBookActivity extends AppCompatActivity {
 
     static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
     static final String ACTION_ZXING = "com.google.zxing.client.android";
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         bookListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, BookListActvity.class);
+                Intent intent = new Intent(AddNewBookActivity.this, BookListActvity.class);
                 startActivity(intent);
             }
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, 0);
             //getBookDescription(); // getting book description here
         } catch (ActivityNotFoundException e) {
-            showDialog(MainActivity.this, "No Scanner Found",
+            showDialog(AddNewBookActivity.this, "No Scanner Found",
                     "Download a scanner code activity?", "Yes", "No").show();
         }
     }
@@ -79,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(SCAN_MODE, QR_MODE);
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException e) {
-            showDialog(MainActivity.this, "No Scanner Found",
+            showDialog(AddNewBookActivity.this, "No Scanner Found",
                     "Download a scanner code activity?", "Yes", "No").show();
         }
     }
 
-    private static AlertDialog showDialog(final MainActivity act, CharSequence title,
+    private static AlertDialog showDialog(final AddNewBookActivity act, CharSequence title,
                                           CharSequence message, CharSequence buttonYes,
                                           CharSequence buttonNo) {
         AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(MainActivity.this, "No WIFI", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddNewBookActivity.this, "No WIFI", Toast.LENGTH_LONG).show();
 
         }
 

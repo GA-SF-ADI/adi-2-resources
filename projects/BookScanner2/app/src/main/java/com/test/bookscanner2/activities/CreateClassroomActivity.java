@@ -32,6 +32,7 @@ public class CreateClassroomActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         addStudentButton = (Button) findViewById(R.id.add_student_button);
+        studentListView = (ListView) findViewById(R.id.student_list_view);
         mAdapter = new ArrayAdapter<Student>(CreateClassroomActivity.this, android.R.layout.simple_list_item_1, Classroom.getInstance().getStudents());
         studentListView.setAdapter(mAdapter);
 

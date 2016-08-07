@@ -17,6 +17,8 @@ public class CreateStudentActivity extends AppCompatActivity {
     private Button addNewStudentButton;
     private EditText studentNameEditText;
     private int mRequestCode;
+    protected Student student;
+    String studentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,9 @@ public class CreateStudentActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 if(mRequestCode == CreateClassroomActivity.ADD_STUDENT){
 
-                    Student student = new Student(studentNameEditText.getText().toString());
+                    student = new Student(studentNameEditText.getText().toString());
+                    studentName = student.toString();
+                    //String studentName = student.setName(studentNameEditText.getText().toString());
                     intent.putExtra(STUDENT_SERIALIZABLE_KEY, student);
 
                 } else {
@@ -46,7 +50,8 @@ public class CreateStudentActivity extends AppCompatActivity {
         });
 
         if(mRequestCode == CreateClassroomActivity.ADD_STUDENT) {
-            studentNameEditText.setText(studentNameEditText.getText().toString());
+            //studentNameEditText.setText(studentNameEditText.getText().toString());
+            studentNameEditText.setText(studentName);
         }
 
     }

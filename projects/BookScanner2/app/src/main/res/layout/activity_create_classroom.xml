@@ -10,6 +10,15 @@
     android:orientation="vertical"
     tools:context="com.test.bookscanner2.activities.CreateClassroomActivity">
 
+    <TextView
+        android:id= "@+id/myclassroom_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:text="MY CLASS"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +35,7 @@
 
 
     <ListView
-        android:id="@+id/animal_list_view"
+        android:id="@+id/student_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
