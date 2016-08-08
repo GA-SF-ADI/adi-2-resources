@@ -18,11 +18,10 @@ Suppose this is true of the 8 nodes:
 
 > Check: Take 5 minutes and draw this tree structure out using whiteboards, paper, visual diagrams or text editors.
 
-<detail>
-   <summary> Click here to see image </summary>
-![](/assets/tree_solution.jpeg)   
-  
-</detail>
+<details>
+   <summary>Take a peek at the solution here</summary>
+   ![](tree_solution.jpg)   
+</details>
 
 
 Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue.
