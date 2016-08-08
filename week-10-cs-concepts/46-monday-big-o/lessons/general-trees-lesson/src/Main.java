@@ -16,9 +16,12 @@ public class Main {
 
         System.out.println(binaryTree.findNode(3));
 
-        //binaryTree.inOrder(binaryTree.getRoot());
-        //binaryTree.preOrder(binaryTree.getRoot());
-        //binaryTree.postOrder(binaryTree.getRoot());
+        System.out.println("In Order:");
+        binaryTree.inOrder(binaryTree.getRoot());
+        System.out.println("Pre Order:");
+        binaryTree.preOrder(binaryTree.getRoot());
+        System.out.println("Post Order:");
+        binaryTree.postOrder(binaryTree.getRoot());
 
     }
 
