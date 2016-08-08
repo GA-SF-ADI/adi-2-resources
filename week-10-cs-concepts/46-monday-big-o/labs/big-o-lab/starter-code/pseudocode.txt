@@ -67,7 +67,7 @@ for (j = 0; j < n-1; j++) {
     if(iMin != j) {
         swap(a[j], a[iMin]);
     }
-    O(2n) because there are two for loops that are not nested
+    
 }
 
 O(n^2) there are two for loops and you are comparing two variables to find the min
