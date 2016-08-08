@@ -1,7 +1,7 @@
 ---
 title: Binary Search Tree
 type: lesson
-duration: "1:30"
+duration: "1:00"
 creator:
     name: Jean Weatherwax
     city: San Francisco
@@ -42,7 +42,7 @@ Here's a visual example:
 
 > Check: Can you draw another example of a BST? 
 
-## Guided Practice: Implementing a BST in Java (20 mins)
+## Guided Practice: Implementing a BST in Java (40 mins)
 
 So how would we make this data structure?
 
