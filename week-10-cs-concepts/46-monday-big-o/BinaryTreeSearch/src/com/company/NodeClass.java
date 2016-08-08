@@ -1,40 +1,41 @@
-package com.company;
-
-import javax.xml.soap.Node;
-
-/**
- * Created by audreyeso on 8/8/16.
- */
-public class NodeClass {
-    private int value;
-    private Node left;
-    private Node right;
-
-    public NodeClass(Node node) {
-
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public Node getLeft() {
-        return left;
-    }
-
-    public void setLeft(Node left) {
-        this.left = left;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-    public void setRight(Node right) {
-        this.right = right;
-    }
-}
+//package com.company;
+//
+//import javax.xml.soap.Node;
+//
+///**
+// * Created by audreyeso on 8/8/16.
+// */
+//public class NodeClass {
+//    private int value;
+//    private NodeClass left;
+//    private NodeClass right;
+//
+//    public NodeClass() {
+//
+//    }
+//
+//
+//    public int getValue() {
+//        return value;
+//    }
+//
+//    public void setValue(int value) {
+//        this.value = value;
+//    }
+//
+//    public NodeClass getLeft() {
+//        return left;
+//    }
+//
+//    public void setLeft(NodeClass left) {
+//        this.left = left;
+//    }
+//
+//    public NodeClass getRight() {
+//        return right;
+//    }
+//
+//    public void setRight(NodeClass right) {
+//        this.right = right;
+//    }
+//}
