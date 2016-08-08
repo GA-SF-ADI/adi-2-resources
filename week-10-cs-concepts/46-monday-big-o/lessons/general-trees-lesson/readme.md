@@ -121,7 +121,7 @@ Lets take a look at that example tree again.
 ***
 
 <a name="ind-practice"></a>
-## Independent Practice: Trees/Lab (1000 minutess)
+## Independent Practice: Trees/Lab (1000 minutes)
 
 For the rest of the afternoon, I want you to work on implementing a  tree in java. You should create a CustomBinaryTree class that you can add nodes to, do in order, pre-order, and post-order traversals on. 
 
