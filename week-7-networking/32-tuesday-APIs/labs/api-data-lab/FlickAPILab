@@ -1,0 +1,17 @@
+API Lab.  
+
+
+1)
+
+https://api.flickr.com/services/rest/?method=flickr.photos.search&tags=cats&api_key=mypersonalkey
+
+2)
+ https://api.flickr.com/services/rest/?method=flickr.photos.search&lat=35.2079748034787&lon=-80.8308235874887&api_key=API_KEY
+
+3)
+
+https://api.flickr.com/services/rest/?method=flickr.photos.comments.getList&photo_id=PHOTO_ID&api_key=mypersonalkey
+
+4)
+
+API Call: https://api.flickr.com/services/rest/?method=flickr.photos.search&lat=‎‎37.773972&lon=-122.431297&api_key=mypersonalkey
