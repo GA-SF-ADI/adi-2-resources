@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="30dp"
-        android:text="MY CLASS"
+        android:text="My Student List"
         />
 
     <LinearLayout

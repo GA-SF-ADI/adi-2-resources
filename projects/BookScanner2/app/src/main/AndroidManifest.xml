@@ -32,6 +32,10 @@
         <activity
             android:name=".activities.CreateClassroomActivity"
             android:label="@string/title_activity_create_classroom"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SelectClassroomActivity"
+            android:label="@string/title_activity_select_classroom"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -55,13 +55,17 @@ public class ClassroomSecond {
     public void setQuestionThree(String questionThree){
         this.questionThree = questionThree;
     }
-    
+
     public void addStudent(Student student) {
         students.add(student);
     }
 
     public ArrayList<Student>getStudents() {
         return students;
+    }
+
+    public void setStudents (ArrayList<Student> students){
+        this.students = students;
     }
 }
 

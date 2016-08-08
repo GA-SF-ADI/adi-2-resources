@@ -6,4 +6,5 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_create_student">CreateStudentActivity</string>
     <string name="title_activity_create_classroom">CreateClassroomActivity</string>
+    <string name="title_activity_select_classroom">SelectClassroomActivity</string>
 </resources>
