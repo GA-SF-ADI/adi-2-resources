@@ -22,6 +22,20 @@ creator:
 
 ---
 
+<<<<<<< HEAD
+### LESSON GUIDE
+
+| TIMING  | TYPE  | TOPIC  |
+|:-:|---|---|
+| 5 min  | [Opening](#opening-5-mins)  | Discuss lesson objectives |
+| 15 min  | [Introduction](#introduction-what-are-google-play-services-15-mins)  | What are Google Play Services |
+| 5 min  | [Demo](#demo-google-apis-reference-5-mins)  | Google APIs Reference |
+| 10 min  | [Guided Practice](#guided-practice-setting-up-your-app-10-mins)  | Setting up your app |
+| 30 min  | [Guided Practice](#guided-practice-implementing-the-analytics-api-30-mins)  | Implementing the Analytics API |
+| 20 min  | [Independent Practice](#independent-practice-topic-20-mins)  | Topic |
+| 5 min  | [Conclusion](#conclusion-5-mins)  | Review / Recap |
+=======
+>>>>>>> ca7a89fc4e32d08499ab84720e7ac75f9129ca68
 <a name="opening"></a>
 ## Opening (5 mins)
 
@@ -146,9 +160,14 @@ You have two tasks: 1 Practice what we learned above. 2 Learn something new and 
 
 
 * 1: Follow the above instructions to get Firebase Notifications working on your own app that you create from scratch. Lastly, in the  `onMessageReceived()` you should make a local device notification of the message we received from the cloud! Use title "FireBase Push notification!" and the content text should be the message body as seen in examples above.
+<<<<<<< HEAD
+* 2: Follow this [guide](https://firebase.google.com/docs/analytics/android/start/) to setup Firebase Analytics! This will allow you to track any actions you wish that the user makes inside your app. You can continue working off of the previous project from step 1. Your results will be visible within 24 hours on the console site or you can use the below commands to confirm the events as they happen.
+```
+=======
 * 2: Follow this [guide](https://firebase.google.com/docs/analytics/android/start/) to setup Firebase Analytics! This will allow you to track any actions you wish that the user makes inside your app. You can continue working off of the previous project from step 1. Your results will be visible within 24 hours on the console site or you can use the below commands to confirm the events as they happen. Run each of the below commands inside your terminal.
 ```
 export PATH=$PATH:~/Library/Android/sdk/platform-tools/
+>>>>>>> ca7a89fc4e32d08499ab84720e7ac75f9129ca68
 adb shell setprop log.tag.FA VERBOSE
 adb shell setprop log.tag.FA-SVC VERBOSE
 adb logcat -v time -s FA FA-SVC

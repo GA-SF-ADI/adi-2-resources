@@ -1,0 +1,44 @@
+  
+Regular:
+
+  {  [
+      {
+    	"name" : "Miles",
+        "age" : "30",
+    	"totem animal" : "zebra",
+    	"appearance" : {
+    		"eyes" : "green",
+    		"hair" : "blone"
+    	}
+    },
+    {
+    	"name" : "Dad",
+        "age" : "60",
+    	"totem animal" : "Crocodile",
+    	"appearance" : {
+    		"eyes" : "green",
+    		"hair" : "short"
+    	}
+    }
+]
+}
+
+Nested:
+{
+    "Sterling" : {
+        "age" : "31",
+        "quality" : "talkative",
+        "appearance" : {
+            "eyes" : "green",
+            "totem animal" : "Dove"
+        }
+    },
+    "Mom" : {
+        "age" : "58",
+        "quality" : "loving",
+        "appearance" : {
+            "eyes" : "blue",
+            "hair" : "red curly"
+        }
+    }
+}
