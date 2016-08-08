@@ -81,12 +81,18 @@ This is pretty standard. Now, for our methods:
 If we want to search for a node that matches a given key:
 
   1. We start at the root node as current node.
+
   2. If the search key’s value matches the current node’s key, then we have matched.
+
  3. If search key’s value is greater than current node’s:
+
     i. If the current node has a right child, search right
+
     ii. else, no matching node in the tree
+
 4. If search key is less than the current node’s
     i. If the current node has a left child, search left
+
     ii. Else, no matching node in the tree
 
 ```java
@@ -104,12 +110,19 @@ If we want to search for a node that matches a given key:
 **Insertion:**
 
 We want to always insert a new load as a leaf node. Here's the basic process:
+
 1. Start at the root node.
+
 2. If the new node's key is less than the current key:
+
 	i. if the current node has a left child, search left.
+
 	ii. else add the node as the current node's left child.
+
 3. If the new node's key is greater than the current key:
+
 	i. if the current node has a right child, search right.
+    
 	ii. else add the new node as the current node's right child.
 
 ```java
