@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private Button locationButton, mapsButton;
     private TextView locationTextView;
 
-    private FirebaseAnalytics firebaseAnalytics;
-
     // Need Google Client to get location. Location variable to actually hold the location
     private GoogleApiClient mGoogleApiClient;
     private Location lastLocation;
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setupViews();
         setupGoogleClient();
     }
