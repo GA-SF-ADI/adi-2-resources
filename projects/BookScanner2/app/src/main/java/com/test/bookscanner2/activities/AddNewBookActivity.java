@@ -39,15 +39,16 @@ public class AddNewBookActivity extends AppCompatActivity {
     private String baseUrl = "https://openlibrary.org/api/";
 //    private String baseUrl = "https://openlibrary.org/";
     private String contents;
-    private String full;
+    //private String full;
     Example example;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_book);
 
-        //getBookDescription();
+        getBookDescription();
 
 
 
@@ -121,7 +122,7 @@ public class AddNewBookActivity extends AppCompatActivity {
                 Toast.makeText(this, "Content:" + contents + "Format:" +
                         format, Toast.LENGTH_LONG).show();
 
-example.setiSBN(contents);
+//example.setiSBN(contents.toString());
                 // append "ISBN:" to contents
 
             }
@@ -144,7 +145,7 @@ example.setiSBN(contents);
             //https://openlibrary.org/api/books?bibkeys=ISBN:0439639034&jscmd=data&format=json
             //9780060731335
             //slow reading 9780980200447
-            //contents = "9780980200447";
+            contents = "9780980200447";
             String full = "ISBN:" + contents;
 
 

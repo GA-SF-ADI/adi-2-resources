@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // TODO Auto-generated method stub
                 finish();
-                Intent intent = new Intent(getBaseContext(), SelectClassroomActivity.class);
+                Intent intent = new Intent(getBaseContext(), AddNewBookActivity.class);
                 startActivity(intent);
             }
         }, 3000);
