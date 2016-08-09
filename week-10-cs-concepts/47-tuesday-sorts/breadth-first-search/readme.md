@@ -39,7 +39,7 @@ Below, you see an illustration of *Breadth First Search* algorithm on a tree tha
 
 <details>
    <summary>Queue representation in steps for the above diagram</summary>
-```
+```java
 // Assume that a new queue is created and that `Node a` is provided as the root ( following the above example )
 Step 0. Queue q = new Queue(); // New queue is created before we traverse the tree.
 Step 0. int seekValue = 8;     // value to find
