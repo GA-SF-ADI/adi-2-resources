@@ -37,6 +37,51 @@ Below, you see an illustration of *Breadth First Search* algorithm on a tree tha
 
 ![](https://camo.githubusercontent.com/2f57e6239884a1a03402912f13c49555dec76d06/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f342f34362f416e696d617465645f4246532e676966)
 
+<details>
+   <summary>Queue representation in steps for the above diagram</summary>
+```
+// Assume that a new queue is created and that `Node a` is provided as the root ( following the above example )
+Step 0. Queue q = new Queue(); // New queue is created before we traverse the tree.
+Step 0. int seekValue = 8;     // value to find
+Step 0. Node a;                // root 
+
+Step 1. q.enqueue(a); // Root `Node a` is added to queue. Status of queue: [ A ]
+Step 2. q.dequeue(); // Remove first element of queue, aka the root node `a`. Status of queue: [ ]
+Step 3. Check value of `Node a`, it doesn't match seekValue of 8. Status of queue: [ ]
+
+Step 4. q.enqueue(a.leftChild()) // Add left child of node `a` to queue. Status of queue: [ B ]
+Step 5. q.enqueue(a.rightChild()) // Add right child of node `a` to queue. Status of queue: [ B, C ]
+Step 6. q.dequeue(); // Remove node b from queue so we can check its value. Status of queue: [ C ]
+Step 7. Check value of `Node b`, it doesn't match seekValue of 8. Status of queue: [ C ]
+
+Step 8. q.enqueue(b.leftChild()) // Add left child of node `b` to queue. Status of queue: [ C, D ]
+Step 9. q.enqueue(b.rightChild()) // Add right child of node `b` to queue. Status of queue: [ C, D, E ]
+Step 10. q.dequeue(); // Remove node `c` from queue so we can check its value. Status of queue: [ D, E ]
+Step 11. Check value of `Node c`, it doesn't match seekValue of 8. Status of queue: [ D, E ]
+
+Step 12. q.enqueue(c.leftChild()) // Add left child of node `c` to queue. Status of queue: [ D, E, F ]
+Step 13. q.enqueue(c.rightChild()) // Add right child of node `c` to queue. Status of queue: [ D, E, F, G ]
+Step 14. q.dequeue(); // Remove node `d` from queue so we can check its value. Status of queue: [ E, F, G ]
+Step 15. Check value of `Node d`, it doesn't match seekValue of 8. Status of queue: [ E, F, G ]
+
+Step 17. q.dequeue(); // Node `d` has no children to add. Remove next node `e` from queue. Status of queue: [ F, G ]
+Step 18. Check value of `Node e`, it doesn't match seekValue of 8. Status of queue: [ F, G ]
+
+Step 19. q.enqueue(e.leftChild()) // Add left child of node `e` to queue. Status of queue: [ F, G, H ]
+Step 20. Node e has no right child skip adding the right child to queue.
+Step 21. q.dequeue(); // Remove node `f` from queue so we can check its value. Status of queue: [ G, H ]
+Step 22. Check value of `Node f`, it doesn't match seekValue of 8. Status of queue: [ G, H ]
+
+Step 23. q.dequeue(); // Node 'f' has no children to add. Remove next node 'g' from the queue. Status of queue: [ H ]
+Step 24. Check value of `Node g`, it doesn't match seekValue of 8. Status of queue: [ H ]
+
+Step 23. q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' from the queue. Status of queue: [ ]
+Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ ]. Return node `h` as the answer.
+
+```
+
+</details>
+
 ## Exercises: Breadth First Tree Search ( 30 min )
 
 1. In English, describe how you would use breadth first search to find any node with a given value. Your algorithm should assume you have a tree data structure and that you can access each node's value and its array of children (do not assume it's a binary tree which has only 2 children). You can assume you're given a target value to find.
