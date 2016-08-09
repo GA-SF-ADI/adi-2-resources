@@ -50,7 +50,7 @@ As mentioned earlier, trees are made up of nodes and paths. As you can see above
 
 - Root:  This is the first node of a tree. Similar to the HEAD of a LinkedList. The only property a tree needs to function
 - Parent/Children/Child: Intuitively, the node directly above another node is its parent. A parent can have many children, a child has only one parent. The same as real life
-- Branches: The edge of trees. When drawn out, they are the lines. In code, they are the the references from a parent to a child. Branches will almost always be one-directional, meaning if there is a line from a parent to a child it means that the parent is referencing the child, not the child referencing the parent. 
+- Branches: The edge of trees. When drawn out, they are the lines. In code, they are the references from a parent to a child. Branches will almost always be one-directional, meaning if there is a line from a parent to a child it means that the parent is referencing the child, not the child referencing the parent. 
 - Leaves: Nodes with no branches leading off of them, no children. 
 - Height: The height of the tree is the longest distance from the root to a leaf. 
 - Descendant/Ancestors: Exactly the same as a  family tree, Node A is an ancestor of Node B if there is a branch from Node A to Node B, and Node B is a descendant of Node A for the same reason. 
@@ -113,7 +113,7 @@ Lets take a look at that example tree again.
 </details>
 
 <details>
-  <summary>In-Order</summary>
+  <summary>Post Order</summary>
     10 7 8 1 4 3 5 
 </details>
 
