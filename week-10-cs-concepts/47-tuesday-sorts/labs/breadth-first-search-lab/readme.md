@@ -29,4 +29,8 @@ Your Tree must look like this image. Create a helper method to create the nodes 
 
 #### Deliverable
 
-`Tree.java` file that has a working `findValueByBfs(Character seekValue)` method that looks for any character inside the tree and accurrately finds if it exists.
+A working IntelliJ project that includes a `Main.java, Node.java, and Tree.java` files.
+
+`Tree.java` file must have a working `findValueByBfs(Character seekValue)` method ( called from Main.java ) that looks for any character inside the tree and accurrately finds if it exists.
+
+Compare your results to [solution code](solution-code/)
