@@ -23,13 +23,13 @@ Suppose this is true of the 8 nodes:
    ![](tree_solution.jpg)   
 </details>
 
-That was easy right? That's because you had lots of helpful information such as labels for each child node and their values. You were then able to correlate these child node labels with the labels of the already defined nodes and their labels. 
+What if we want to find the Node that holds the value of 8? It's easy for us, we just look at the image we sketched and know that is Node H. But, before we drew the sketch out do you think you would have known it was Node H? Sure, because you had the information about all 8 nodes and their values. 
 
-A computer *cannot do this**. All the computer knows is that it has a root Node A, which has two children. If the computer wants to know more about this tree or what it looks like, it will have to traverse the tree using **pre order traversal** ( parent first, then children ).
+What if the only information you had to go off of was that Node A has a value of 1 and it has two children. Now the problem is much harder. In order to look for the Node with value of 8, we have to first look at the value of Node A. If we don't find a match, we look at Node A's children and their values, and when we don't find a match, we look at the grand-children of Node A and their values and so on. This is *Breadth First Search*. 
 
+#### Definition
 
-
-Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue.
+"Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, the node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue." [1](http://intelligence.worldofcomputing.net/ai-search/breadth-first-search.html#.V6kLjpMrJXg)
 
 Below, you see an illustration of *Breadth First Search* algorithm on a tree that is *4 levels* deep.
 * A node turns gray when we first discover that the node exists and **add it to the queue**.
