@@ -48,13 +48,13 @@ Below, you see an illustration of *Breadth First Search* algorithm on a tree tha
 
 3. In English, describe how you would modify your breadth first search function to work on a binary search tree. Remember, a *Binary Search Tree* is a tree where all the children to the left of the parent hold a lower value than the parent while all the children to the right hold a greater value.
 
-<details>
-<summary>Binary Search Tree Illustration with a root node that has value of 4</summary>
-```
-      4
-     / \
-   2     6
-  / \   / \
- 1   3 5   7
-```
-</details>
+      <details>
+      <summary>Binary Search Tree Illustration with a root node that has value of 4</summary>
+      ```
+            4
+           / \
+         2     6
+        / \   / \
+       1   3 5   7
+      ```
+      </details>
