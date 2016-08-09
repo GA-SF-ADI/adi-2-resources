@@ -1,4 +1,3 @@
-
 ---
 title: Breadth First Search ( Trees )
 duration: "1:10"
