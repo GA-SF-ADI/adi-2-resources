@@ -195,3 +195,5 @@ You can reference the [solution code](solution-code/) to check your answer.
 
 * What are the pros of BFS?
 * What are the cons of BFS?
+
+Tomorrow, we will learn about *Depth First Search*, another way of searching a tree structure. It too has its pros and cons but it shines where the BFS does not.
