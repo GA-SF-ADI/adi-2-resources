@@ -16,8 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.test.bookscanner2.interfaces.OpenLibraryAPI;
 import com.test.bookscanner2.R;
+import com.test.bookscanner2.interfaces.OpenLibraryAPI;
 import com.test.bookscanner2.models.Example;
 
 import retrofit2.Call;
@@ -39,7 +39,8 @@ public class AddNewBookActivity extends AppCompatActivity {
     private String baseUrl = "https://openlibrary.org/api/";
 //    private String baseUrl = "https://openlibrary.org/";
     private String contents;
-
+    private String full;
+    Example example;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +121,7 @@ public class AddNewBookActivity extends AppCompatActivity {
                 Toast.makeText(this, "Content:" + contents + "Format:" +
                         format, Toast.LENGTH_LONG).show();
 
+example.setiSBN(contents);
                 // append "ISBN:" to contents
 
             }

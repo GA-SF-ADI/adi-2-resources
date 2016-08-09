@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Example {
 
-    @SerializedName("ISBN:9780980200447")
+    @SerializedName("ISBN")
     @Expose
     private ISBN iSBN;
     private String myTitle;
@@ -28,7 +28,7 @@ public class Example {
      * @param iSBN
      * The ISBN:9780980200447
      */
-    public void setISBN9780980200447(ISBN iSBN) {
+    public void setiSBN(ISBN iSBN) {
         this.iSBN = iSBN;
     }
 
