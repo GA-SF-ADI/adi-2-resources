@@ -136,6 +136,21 @@ Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ 
 ```
 </details>
 
+
+#### Pros and Cons (5 min)
+
+> Check: As a group, discuss any advatages or disadvantages you can think of to this searching approach.
+
+**Pros**: Advantages of Breadth First Search
+- BFS will never get trapped exploring the useless path forever.
+- If there is a solution, BFS will definitely find it out.
+- If there are more one solutions then BFS will find the solution that requires least number of steps.
+
+**Cons**: Disadvantages of Breadth First Search
+- Each level of the tree must be saved in a queue in order to generate the next level. As a result, BFS is severely space-bound in practice and will eventually exhaust the memory available on computers if the solution is at the bottom of a very large tree.
+- The further a solution is from the root, the longer the algorith takes to find it. 
+
+
 ---
 <a name="grp-practice"></a>
 ## Exercises: Breadth First Tree Search (25 min)
