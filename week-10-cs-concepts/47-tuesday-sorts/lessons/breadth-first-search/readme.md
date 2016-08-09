@@ -100,38 +100,38 @@ Step 0.  Queue q = new Queue(); // New queue is created before we traverse the t
 Step 0.  int seekValue = 8;     // Value to find
 Step 0.  Node a;                // Provided root 
 
-Step 1.  Status of queue: [ A ] - q.enqueue(a); // Root `Node a` is added to queue. 
-Step 2.  Status of queue: [   ] - q.dequeue(); // Remove first element of queue, aka the root node `a`. 
-Step 3.  Status of queue: [   ] - Check value of `Node a`, it does not match seekValue of 8. 
+Step 1.  Status of queue: [ A ]          - q.enqueue(a); // Root `Node a` is added to queue. 
+Step 2.  Status of queue: [   ]          - q.dequeue(); // Remove first element of queue, aka the root node `a`. 
+Step 3.  Status of queue: [   ]          - Check value of `Node a`, it does not match seekValue of 8. 
 
-Step 4.  Status of queue: [ B ] - q.enqueue(a.leftChild()) // Add left child of node `a` to queue. 
-Step 5.  Status of queue: [ B, C ] - q.enqueue(a.rightChild()) // Add right child of node `a` to queue. 
-Step 6.  Status of queue: [ C ] - q.dequeue(); // Remove node b from queue so we can check its value. 
-Step 7.  Status of queue: [ C ] - Check value of `Node b`, it does not match seekValue of 8. 
+Step 4.  Status of queue: [ B ]          - q.enqueue(a.leftChild()) // Add left child of node `a` to queue. 
+Step 5.  Status of queue: [ B, C ]       - q.enqueue(a.rightChild()) // Add right child of node `a` to queue. 
+Step 6.  Status of queue: [ C ]          - q.dequeue(); // Remove node b from queue so we can check its value. 
+Step 7.  Status of queue: [ C ]          - Check value of `Node b`, it does not match seekValue of 8. 
 
-Step 8.  Status of queue: [ C, D ] - q.enqueue(b.leftChild()) // Add left child of node `b` to queue. 
-Step 9.  Status of queue: [ C, D, E ] - q.enqueue(b.rightChild()) // Add right child of node `b` to queue. 
-Step 10. Status of queue: [ D, E ] - q.dequeue(); // Remove node `c` from queue so we can check its value. 
-Step 11. Status of queue: [ D, E ] - Check value of `Node c`, it does not match seekValue of 8. 
+Step 8.  Status of queue: [ C, D ]       - q.enqueue(b.leftChild()) // Add left child of node `b` to queue. 
+Step 9.  Status of queue: [ C, D, E ]    - q.enqueue(b.rightChild()) // Add right child of node `b` to queue. 
+Step 10. Status of queue: [ D, E ]       - q.dequeue(); // Remove node `c` from queue so we can check its value. 
+Step 11. Status of queue: [ D, E ]       - Check value of `Node c`, it does not match seekValue of 8. 
 
-Step 12. Status of queue: [ D, E, F ] - q.enqueue(c.leftChild()) // Add left child of node `c` to queue. 
+Step 12. Status of queue: [ D, E, F ]    - q.enqueue(c.leftChild()) // Add left child of node `c` to queue. 
 Step 13. Status of queue: [ D, E, F, G ] - q.enqueue(c.rightChild()) // Add right child of node `c` to queue. 
-Step 14. Status of queue: [ E, F, G ] - q.dequeue(); // Remove node `d` from queue so we can check its value. 
-Step 15. Status of queue: [ E, F, G ] - Check value of `Node d`, it does not match seekValue of 8. 
+Step 14. Status of queue: [ E, F, G ]    - q.dequeue(); // Remove node `d` from queue so we can check its value. 
+Step 15. Status of queue: [ E, F, G ]    - Check value of `Node d`, it does not match seekValue of 8. 
 
-Step 17. Status of queue: [ F, G ] - q.dequeue(); // Node `d` has no children to add. Remove next node `e` from queue. 
-Step 18. Status of queue: [ F, G ] - Check value of `Node e`, it does not match seekValue of 8. 
+Step 17. Status of queue: [ F, G ]       - q.dequeue(); // Node `d` has no children to add. Remove next node `e` from queue. 
+Step 18. Status of queue: [ F, G ]       - Check value of `Node e`, it does not match seekValue of 8. 
 
-Step 19. Status of queue: [ F, G, H ] - q.enqueue(e.leftChild()) // Add left child of node `e` to queue. 
-Step 20. Status of queue: [ F, G, H ] - `Node e` has no right child skip adding the right child to queue.
-Step 21. Status of queue: [ G, H ] - q.dequeue(); // Remove node `f` from queue so we can check its value. 
-Step 22. Status of queue: [ G, H ] - Check value of `Node f`, it does not match seekValue of 8. 
+Step 19. Status of queue: [ F, G, H ]    - q.enqueue(e.leftChild()) // Add left child of node `e` to queue. 
+Step 20. Status of queue: [ F, G, H ]    - `Node e` has no right child skip adding the right child to queue.
+Step 21. Status of queue: [ G, H ]       - q.dequeue(); // Remove node `f` from queue so we can check its value. 
+Step 22. Status of queue: [ G, H ]       - Check value of `Node f`, it does not match seekValue of 8. 
 
-Step 23. Status of queue: [ H ] - q.dequeue(); // Node 'f' has no children to add. Remove next node 'g' from the queue. 
-Step 24. Status of queue: [ H ] - Check value of `Node g`, it does not match seekValue of 8. 
+Step 23. Status of queue: [ H ]          - q.dequeue(); // Node 'f' has no children to add. Remove next node 'g' from the queue. 
+Step 24. Status of queue: [ H ]          - Check value of `Node g`, it does not match seekValue of 8. 
 
-Step 23. Status of queue: [   ] - q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' from the queue. 
-Step 24. Status of queue: [   ] - Check value of `Node h`, it matches seekValue of 8! . Return node `h` as the answer.
+Step 23. Status of queue: [   ]          - q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' from the queue. 
+Step 24. Status of queue: [   ]          - Check value of `Node h`, it matches seekValue of 8! . Return node `h` as the answer.
 
 ```
 </details>
