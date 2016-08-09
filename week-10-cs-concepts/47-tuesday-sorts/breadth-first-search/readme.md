@@ -1,10 +1,10 @@
 ## Breadth First Search ( Trees )
 
-#### What is Breadth First Search?
+#### What is Breadth First Search? ( 10 min )
 
 Breadth First Search (BFS) is a way to search for a value in a Tree or Graph.
 
-Imagine you have 8 nodes. Each of these 8 nodes has a value and each may or may not have some children ( remember that a tree node have have many children. If each root only has 2 children, then it is a *binary tree*). 
+Imagine you have 8 nodes. Each of these 8 nodes has a value and each may or may not have some children ( remember that a tree node may have many children. If each root node only has 2 children, then the tree is a *binary tree*). 
 
 Suppose this is true of the 8 nodes:
 - Node H exists with value 8. It has no children.
@@ -27,7 +27,7 @@ What if we want to find the Node that holds the value of 8? It's easy for us, we
 
 What if the only information you had to go off of was that Node A has a value of 1 and it has two children. Now the problem is much harder. In order to look for the Node with value of 8, we have to first look at the value of Node A. If we don't find a match, we look at Node A's children and their values, and when we don't find a match, we look at the grand-children of Node A and their values and so on. This is *Breadth First Search*. 
 
-#### Definition
+#### Definition ( 15 min )
 
 "Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, the node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue." [1](http://intelligence.worldofcomputing.net/ai-search/breadth-first-search.html#.V6kLjpMrJXg)
 
