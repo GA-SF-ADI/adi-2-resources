@@ -27,6 +27,8 @@ public class Tree {
             curNode = queue.poll();
             if (curNode.value == seekValue) {
                 return curNode;
+            } else if (curNode == null) {
+                return null;
             } else {
                 addChildrenToQueue(queue, curNode);
             }
