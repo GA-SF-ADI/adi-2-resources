@@ -46,7 +46,7 @@ public class CustomBaseAdapterSelectClassroom extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_select_classroom,null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_select_classroom,parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -55,9 +55,12 @@ public class CustomBaseAdapterSelectClassroom extends BaseAdapter {
 
         final ClassroomKinderToSecond currentClass = data.get(position);
 
+
+
         // ClassroomKinderToSecond.getClassroomName()' on a null object reference
         viewHolder.classroomNameTextView.setText(currentClass.getClassroomName());
         viewHolder.classroomGradeTextView.setText(currentClass.getGradeLevel());
+
 
 
         return convertView;
