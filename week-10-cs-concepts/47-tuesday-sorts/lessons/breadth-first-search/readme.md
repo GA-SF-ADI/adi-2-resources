@@ -1,6 +1,6 @@
 ---
 title: Breadth First Search ( Trees )
-duration: "1:10"
+duration: "1:15"
 creator:
     name: Aleksandr Tomak
     city: SF
@@ -55,7 +55,7 @@ Now what if we wanted to find certain information on a family member, like wheth
 
 ---
 <a name="intro"></a>
-## Introduction (25 min)
+## Introduction (30 min)
 
 #### What is Breadth First Search? (10 min)
 
@@ -96,42 +96,42 @@ Below, you see an illustration of *Breadth First Search* algorithm on a tree tha
    <summary>Queue representation in steps for the above diagram</summary>
 ```java
 // Assume that a new queue is created and that `Node a` is provided as the root ( following the above example )
-Step 0. Queue q = new Queue(); // New queue is created before we traverse the tree.
-Step 0. int seekValue = 8;     // value to find
-Step 0. Node a;                // root 
+Step 0.  Queue q = new Queue(); // New queue is created before we traverse the tree.
+Step 0.  int seekValue = 8;     // Value to find
+Step 0.  Node a;                // Provided root 
 
-Step 1. q.enqueue(a); // Root `Node a` is added to queue. Status of queue: [ A ]
-Step 2. q.dequeue(); // Remove first element of queue, aka the root node `a`. Status of queue: [ ]
-Step 3. Check value of `Node a`, it doesn't match seekValue of 8. Status of queue: [ ]
+Step 1.  Status of queue: [ A ] - q.enqueue(a); // Root `Node a` is added to queue. 
+Step 2.  Status of queue: [   ] - q.dequeue(); // Remove first element of queue, aka the root node `a`. 
+Step 3.  Status of queue: [   ] - Check value of `Node a`, it does not match seekValue of 8. 
 
-Step 4. q.enqueue(a.leftChild()) // Add left child of node `a` to queue. Status of queue: [ B ]
-Step 5. q.enqueue(a.rightChild()) // Add right child of node `a` to queue. Status of queue: [ B, C ]
-Step 6. q.dequeue(); // Remove node b from queue so we can check its value. Status of queue: [ C ]
-Step 7. Check value of `Node b`, it doesn't match seekValue of 8. Status of queue: [ C ]
+Step 4.  Status of queue: [ B ] - q.enqueue(a.leftChild()) // Add left child of node `a` to queue. 
+Step 5.  Status of queue: [ B, C ] - q.enqueue(a.rightChild()) // Add right child of node `a` to queue. 
+Step 6.  Status of queue: [ C ] - q.dequeue(); // Remove node b from queue so we can check its value. 
+Step 7.  Status of queue: [ C ] - Check value of `Node b`, it does not match seekValue of 8. 
 
-Step 8. q.enqueue(b.leftChild()) // Add left child of node `b` to queue. Status of queue: [ C, D ]
-Step 9. q.enqueue(b.rightChild()) // Add right child of node `b` to queue. Status of queue: [ C, D, E ]
-Step 10. q.dequeue(); // Remove node `c` from queue so we can check its value. Status of queue: [ D, E ]
-Step 11. Check value of `Node c`, it doesn't match seekValue of 8. Status of queue: [ D, E ]
+Step 8.  Status of queue: [ C, D ] - q.enqueue(b.leftChild()) // Add left child of node `b` to queue. 
+Step 9.  Status of queue: [ C, D, E ] - q.enqueue(b.rightChild()) // Add right child of node `b` to queue. 
+Step 10. Status of queue: [ D, E ] - q.dequeue(); // Remove node `c` from queue so we can check its value. 
+Step 11. Status of queue: [ D, E ] - Check value of `Node c`, it does not match seekValue of 8. 
 
-Step 12. q.enqueue(c.leftChild()) // Add left child of node `c` to queue. Status of queue: [ D, E, F ]
-Step 13. q.enqueue(c.rightChild()) // Add right child of node `c` to queue. Status of queue: [ D, E, F, G ]
-Step 14. q.dequeue(); // Remove node `d` from queue so we can check its value. Status of queue: [ E, F, G ]
-Step 15. Check value of `Node d`, it doesn't match seekValue of 8. Status of queue: [ E, F, G ]
+Step 12. Status of queue: [ D, E, F ] - q.enqueue(c.leftChild()) // Add left child of node `c` to queue. 
+Step 13. Status of queue: [ D, E, F, G ] - q.enqueue(c.rightChild()) // Add right child of node `c` to queue. 
+Step 14. Status of queue: [ E, F, G ] - q.dequeue(); // Remove node `d` from queue so we can check its value. 
+Step 15. Status of queue: [ E, F, G ] - Check value of `Node d`, it does not match seekValue of 8. 
 
-Step 17. q.dequeue(); // Node `d` has no children to add. Remove next node `e` from queue. Status of queue: [ F, G ]
-Step 18. Check value of `Node e`, it doesn't match seekValue of 8. Status of queue: [ F, G ]
+Step 17. Status of queue: [ F, G ] - q.dequeue(); // Node `d` has no children to add. Remove next node `e` from queue. 
+Step 18. Status of queue: [ F, G ] - Check value of `Node e`, it does not match seekValue of 8. 
 
-Step 19. q.enqueue(e.leftChild()) // Add left child of node `e` to queue. Status of queue: [ F, G, H ]
-Step 20. Node e has no right child skip adding the right child to queue.
-Step 21. q.dequeue(); // Remove node `f` from queue so we can check its value. Status of queue: [ G, H ]
-Step 22. Check value of `Node f`, it doesn't match seekValue of 8. Status of queue: [ G, H ]
+Step 19. Status of queue: [ F, G, H ] - q.enqueue(e.leftChild()) // Add left child of node `e` to queue. 
+Step 20. Status of queue: [ F, G, H ] - `Node e` has no right child skip adding the right child to queue.
+Step 21. Status of queue: [ G, H ] - q.dequeue(); // Remove node `f` from queue so we can check its value. 
+Step 22. Status of queue: [ G, H ] - Check value of `Node f`, it does not match seekValue of 8. 
 
-Step 23. q.dequeue(); // Node 'f' has no children to add. Remove next node 'g' from the queue. Status of queue: [ H ]
-Step 24. Check value of `Node g`, it doesn't match seekValue of 8. Status of queue: [ H ]
+Step 23. Status of queue: [ H ] - q.dequeue(); // Node 'f' has no children to add. Remove next node 'g' from the queue. 
+Step 24. Status of queue: [ H ] - Check value of `Node g`, it does not match seekValue of 8. 
 
-Step 23. q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' from the queue. Status of queue: [ ]
-Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ ]. Return node `h` as the answer.
+Step 23. Status of queue: [   ] - q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' from the queue. 
+Step 24. Status of queue: [   ] - Check value of `Node h`, it matches seekValue of 8! . Return node `h` as the answer.
 
 ```
 </details>
