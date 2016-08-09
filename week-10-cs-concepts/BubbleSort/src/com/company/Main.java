@@ -19,7 +19,7 @@ public class Main {
         int temp;
 
         for (int i = 0; i < unsorted.length; i++) {
-            for (int j = 0; j < (unsorted.length - 1); i++){
+            for (int j = 0; j < (unsorted.length - 1); j++){
                 if (unsorted[j] > unsorted[j + 1]) {
                     temp = unsorted[j + 1];
                     unsorted[j + 1] = unsorted[j];
