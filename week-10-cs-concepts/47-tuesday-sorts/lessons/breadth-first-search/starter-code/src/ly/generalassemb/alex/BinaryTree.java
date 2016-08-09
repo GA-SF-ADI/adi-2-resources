@@ -31,11 +31,21 @@ public class BinaryTree {
      */
     public Node findValueUsingBfs(int seekValue){
         // TODO: Create queue
+        LinkedList<Node> queue = new Queue;
         // TODO: Add root to queue
+        queue.add(root);
 
         // TODO: Remove first node from queue and check value
-        // TODO:    if no match add children to queue using helper method below
-
+        Node curNode = null;
+        while (queue.size()>0) {
+            curNode = queue.poll();
+            if (curNode.value() == seekValue) {
+                return curNode;
+            } else {
+                // TODO:    if no match add children to queue using helper method below
+                addChildrenToQueue(queue, curNode);
+            }
+        }
     }
 
     /**
