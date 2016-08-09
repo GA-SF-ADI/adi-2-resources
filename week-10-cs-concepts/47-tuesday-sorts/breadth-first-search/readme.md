@@ -42,9 +42,9 @@ Below, you see an illustration of *Breadth First Search* algorithm on a tree tha
 1. In English, describe how you would use breadth first search to find any node with a given value. Your algorithm should assume you have a tree data structure and that you can access each node's value and its array of children (do not assume it's a binary tree which has only 2 children). You can assume you're given a target value to find.
 
 2. On the whiteboard, pseudocode a breadth first search method. Assume you have a tree data structure that allows the following operations on all nodes:
-- `node.getValue()` returns the value of the node
-- `node.getChildren()` returns an `ArrayList<Node>` of size zero or more ( if size is always 2, then its a binary tree ).
-- You are given the tree root node as `Node root` parameter into your search method.
+      * `node.getValue()` returns the value of the node
+      * `node.getChildren()` returns an `ArrayList<Node>` of size zero or more ( if size is always 2, then its a binary tree ).
+      * You are given the tree root node as `Node root` parameter into your search method.
 
 3. In English, describe how you would modify your breadth first search function to work on a binary search tree. Remember, a *Binary Search Tree* is a tree where all the children to the left of the parent hold a lower value than the parent while all the children to the right hold a greater value. See the illustration below, where the root node has a value of 4.
 ```
