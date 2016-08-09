@@ -1,8 +1,64 @@
-## Breadth First Search ( Trees )
 
-#### What is Breadth First Search? ( 10 min )
+---
+title: Breadth First Search ( Trees )
+duration: "1:10"
+creator:
+    name: Aleksandr Tomak
+    city: SF
+---
 
-Breadth First Search (BFS) is a way to search for a value in a Tree or Graph.
+
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Breadth First Search ( Trees )
+
+
+### LEARNING OBJECTIVES
+*After this lesson, you will be able to:*
+- Understand how the Breadth First Search Algorithm works
+- Write psuedo code for Breadth First Search Algorithm
+- Implement Breadth First Search Algorithm in Java
+
+### STUDENT PRE-WORK
+
+*Before this lesson, you should already be able to:*
+- Understand basics of Trees and their Node classes.
+
+
+### INSTRUCTOR PREP
+
+*Before this lesson, instructors will need to:*
+- Open and run the starter and solution code
+- Modify sections and checks as needed
+
+---
+<a name="opening"></a>
+## Opening (5 min)
+
+Image you are building the next Ancestry.com service. 
+
+> Check: How would you store all of the family histories that you have in your database? 
+
+Sure you know about Arrays and Lists, but would either of these structures preserve the hierarchy of the **family tree**? 
+
+No, they wouldn't. However, if we store the family history inside of a **Tree** structure we can preserve that hierarchy. Hence, your grandmother will be ranked above your mother and thus above yourself because she was born first.
+```
+      Grandmother
+      /          \ 
+   Mother        Uncle
+   /  \          /     \
+ You  Brother  Cousin1  Cousin2
+ ```
+
+Now what if we wanted to find certain information on a family member, like whether you have a Jenny Johnson family member somewhere inside the family tree structure?
+
+> Check: Predict of ways you might search through this tree for information
+
+*Breadth First Search* (BFS) is a way to search for a value in a Tree or Graph.
+
+---
+<a name="intro"></a>
+## Introduction (25 min)
+
+#### What is Breadth First Search? (10 min)
 
 Imagine you have 8 nodes. Each of these 8 nodes has a value and each may or may not have some children ( remember that a tree node may have many children. If each root node only has 2 children, then the tree is a *binary tree*). 
 
@@ -27,7 +83,7 @@ What if we want to find the Node that holds the value of 8? It's easy for us, we
 
 What if the only information you had to go off of was that Node A has a value of 1 and it has two children. Now the problem is much harder. In order to look for the Node with value of 8, we have to first look at the value of Node A. If we don't find a match, we look at Node A's children and their values, and when we don't find a match, we look at the grand-children of Node A and their values and so on. This is *Breadth First Search*. 
 
-#### Definition ( 15 min )
+#### Definition (15 min)
 
 "Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, the node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue." [1](http://intelligence.worldofcomputing.net/ai-search/breadth-first-search.html#.V6kLjpMrJXg)
 
@@ -79,10 +135,11 @@ Step 23. q.dequeue(); // Node 'g' has no children to add. Remove next node 'h' f
 Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ ]. Return node `h` as the answer.
 
 ```
-
 </details>
 
-## Exercises: Breadth First Tree Search ( 30 min )
+---
+<a name="grp-practice"></a>
+## Exercises: Breadth First Tree Search (25 min)
 
 1. In English, describe how you would use breadth first search to find any node with a given value. Your algorithm should assume you have a tree data structure and that you can access each node's value and its array of children (do not assume it's a binary tree which has only 2 children). You can assume you're given a target value to find.
 
@@ -104,7 +161,9 @@ Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ 
       ```
       </details>
 
-## Independent Practice ( 20 min )
+---
+<a name="ind-practice"></a>
+## Independent Practice (20 min)
 
 You will be writing the algorithm for *Breadth First Search*.
 
@@ -114,7 +173,9 @@ wrote alctually works.
 
 You can reference the [solution code](solution-code/) to check your answer.
 
-## Conclusion ( 5 min )
+---
+<a name="ind-practice"></a>
+## Conclusion (5 min)
 
 *Breadth First Search* is an easy way ( in terms of implementation ) to search over trees for a certain value. You can also run this algorithm over a *Graph*.
 
