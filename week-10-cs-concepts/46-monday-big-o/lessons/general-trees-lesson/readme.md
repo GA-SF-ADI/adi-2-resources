@@ -8,8 +8,8 @@ creator:
 
 
 ---
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Lesson Title
-Week # | Lesson #
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Trees
+Week 10 | Lesson 2
 
 ### LEARNING OBJECTIVES
 *After this lesson, you will be able to:*
@@ -50,7 +50,7 @@ As mentioned earlier, trees are made up of nodes and paths. As you can see above
 
 - Root:  This is the first node of a tree. Similar to the HEAD of a LinkedList. The only property a tree needs to function
 - Parent/Children/Child: Intuitively, the node directly above another node is its parent. A parent can have many children, a child has only one parent. The same as real life
-- Branches: The edge of trees. When drawn out, they are the lines. In code, they are the the references from a parent to a child. Branches will almost always be one-directional, meaning if there is a line from a parent to a child it means that the parent is referencing the child, not the child referencing the parent. 
+- Branches: The edge of trees. When drawn out, they are the lines. In code, they are the references from a parent to a child. Branches will almost always be one-directional, meaning if there is a line from a parent to a child it means that the parent is referencing the child, not the child referencing the parent. 
 - Leaves: Nodes with no branches leading off of them, no children. 
 - Height: The height of the tree is the longest distance from the root to a leaf. 
 - Descendant/Ancestors: Exactly the same as a  family tree, Node A is an ancestor of Node B if there is a branch from Node A to Node B, and Node B is a descendant of Node A for the same reason. 
@@ -113,7 +113,7 @@ Lets take a look at that example tree again.
 </details>
 
 <details>
-  <summary>In-Order</summary>
+  <summary>Post Order</summary>
     10 7 8 1 4 3 5 
 </details>
 
@@ -121,9 +121,9 @@ Lets take a look at that example tree again.
 ***
 
 <a name="ind-practice"></a>
-## Independent Practice: Trees/Lab (1000 minutess)
+## Independent Practice: Trees/Lab (1000 minutes)
 
-For the rest of the afternoon, I want you to work on implementing a binary search tree in java. You don't need to worry about it being balanced, it could end up looking like a linked list if you add values incorrectly, but I want you to implement a CustomBinarySearchTree class that you can add nodes to, do in order, pre-order, and post-order traversals on, and can check if a value is in the tree. 
+For the rest of the afternoon, I want you to work on implementing a  tree in java. You should create a CustomBinaryTree class that you can add nodes to, do in order, pre-order, and post-order traversals on. 
 
 
 ***
