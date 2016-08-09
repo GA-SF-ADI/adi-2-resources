@@ -10,11 +10,11 @@ Suppose this is true of the 8 nodes:
 - Node H exists with value 8. It has no children.
 - Node G exists with value 7. It has no children.
 - Node F exists with value 6. It has no children.
-- Node E exists with value 5. It has one child, the child is Node H.
+- Node E exists with value 5. It has one child, left Node H.
 - Node D exists with value 4. It has no children.
-- Node C exists with value 3. It has two children, Node F and Node G.
-- Node B exists with value 2. It has two children, Node D and Node E.
-- Node A exists with value 1. It has two children, Node B and Node C. This node is the **root** of the tree.
+- Node C exists with value 3. It has two children, left Node F and right Node G.
+- Node B exists with value 2. It has two children, left Node D and right Node E.
+- Node A exists with value 1. It has two children, left Node B and right Node C. This node is the **root** of the tree.
 
 > Check: Take 5 minutes and draw this tree structure out using whiteboards, paper, visual diagrams or text editors.
 
@@ -22,6 +22,11 @@ Suppose this is true of the 8 nodes:
    <summary>Take a peek at the solution here</summary>
    ![](tree_solution.jpg)   
 </details>
+
+That was easy right? That's because you had lots of helpful information such as labels for each child node and their values. You were then able to correlate these child node labels with the labels of the already defined nodes and their labels. 
+
+A computer *cannot do this**. All the computer knows is that it has a root Node A, which has two children. If the computer wants to know more about this tree or what it looks like, it will have to traverse the tree using **pre order traversal** ( parent first, then children ).
+
 
 
 Breadth First Search (BFS) searches breadth-wise in the problem space. Breadth-First search is like traversing a tree where each node is a state which may a be a potential candidate for solution. It expands nodes from the root of the tree and then generates one level of the tree at a time until a solution is found. It is very easily implemented by maintaining a queue of nodes. Initially the queue contains just the root. In each iteration, node at the head of the queue is removed and then expanded. The generated child nodes are then added to the tail of the queue.
