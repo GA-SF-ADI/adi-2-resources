@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ISBN9780980200447 {
+public class ISBN {
 
     @SerializedName("publishers")
     @Expose

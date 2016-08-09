@@ -11,24 +11,33 @@ public class Example {
 
     @SerializedName("ISBN:9780980200447")
     @Expose
-    private ISBN9780980200447 iSBN9780980200447;
+    private ISBN iSBN;
+    private String myTitle;
 
     /**
      *
      * @return
      * The iSBN9780980200447
      */
-    public ISBN9780980200447 getISBN9780980200447() {
-        return iSBN9780980200447;
+    public ISBN getiSBN() {
+        return iSBN;
     }
 
     /**
      *
-     * @param iSBN9780980200447
+     * @param iSBN
      * The ISBN:9780980200447
      */
-    public void setISBN9780980200447(ISBN9780980200447 iSBN9780980200447) {
-        this.iSBN9780980200447 = iSBN9780980200447;
+    public void setISBN9780980200447(ISBN iSBN) {
+        this.iSBN = iSBN;
     }
 
+
+    public String getMyTitle(String isbn) {
+        return myTitle;
+    }
+
+    public void setMyTitle(String myTitle) {
+        this.myTitle = myTitle;
+    }
 }

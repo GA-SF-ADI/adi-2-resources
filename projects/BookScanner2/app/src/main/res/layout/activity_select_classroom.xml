@@ -13,21 +13,27 @@
     tools:context="com.test.bookscanner2.activities.SelectClassroomActivity"
     tools:showIn="@layout/activity_select_classroom">
 
-    <Button
-        android:id ="@+id/kinder"
-        android:text= "kinder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <!--<Button-->
+        <!--android:id ="@+id/kinder"-->
+        <!--android:text= "kinder"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<Button-->
+        <!--android:id ="@+id/first"-->
+        <!--android:text= "first"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    <!--<Button-->
+        <!--android:id ="@+id/second"-->
+        <!--android:text= "second"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
 
     <Button
-        android:id ="@+id/first"
-        android:text= "first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id ="@+id/second"
-        android:text= "second"
+        android:id ="@+id/add_class_button"
+        android:text= "Add Class"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -37,12 +43,34 @@
         android:layout_height="wrap_content"
         android:hint="Name Your Classroom"
         />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <CheckBox
+    android:id="@+id/check_box_kinder"
+    android:text="K"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/check_box_first"
+        android:text="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/check_box_second"
+        android:text="2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/classroom_names_listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/edit_text"
         android:fontFamily="casual" />
 
 </LinearLayout>

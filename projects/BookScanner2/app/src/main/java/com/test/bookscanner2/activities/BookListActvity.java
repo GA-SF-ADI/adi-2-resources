@@ -30,10 +30,10 @@ public class BookListActvity extends AppCompatActivity {
 
         recyclerView =(RecyclerView) findViewById(R.id.book_list_recycler_view);
 
-        dataList.add("Arizona");
-        dataList.add("California");
-        dataList.add("New Mexico");
-        dataList.add("New York");
+        dataList.add("Audrey");
+        dataList.add("David");
+        dataList.add("Patrick");
+        dataList.add("Liz");
 
         // linear layout manager for lists
         rvLayoutManager = new LinearLayoutManager(this);

@@ -1,11 +1,14 @@
 package com.test.bookscanner2.modelsClassroom;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by audreyeso on 8/8/16.
  */
-public class ClassroomKinderToSecond {
+public class ClassroomKinderToSecond  implements Serializable{
+    private static final long serialVersionUID = 7526472295622776147L;
+
     private String classroomName;
     private String questionOneKinder;
     private String questionTwoKinder;

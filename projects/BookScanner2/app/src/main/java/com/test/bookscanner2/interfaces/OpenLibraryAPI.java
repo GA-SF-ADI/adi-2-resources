@@ -15,6 +15,7 @@ public interface OpenLibraryAPI {
     //https://openlibrary.org/api/books?bibkeys=ISBN:9780980200447&jscmd=data&format=json
 
     @GET("books")
+//    @GET("api/")
     Call<Example> getBookDescription(@Query("bibkeys")String ISBN,
                                      @Query("jscmd") String data,
                                      @Query("format") String json);

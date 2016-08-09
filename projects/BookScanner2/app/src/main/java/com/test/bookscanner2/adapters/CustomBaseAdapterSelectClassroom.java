@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 public class CustomBaseAdapterSelectClassroom extends BaseAdapter {
 
-    private ArrayList<ClassroomKinderToSecond>data;
+    private ArrayList<ClassroomKinderToSecond> data;
     private Context context;
     private ViewHolder viewHolder;
 
-    public CustomBaseAdapterSelectClassroom(ArrayList<ClassroomKinderToSecond> data, Context context) {
+    public CustomBaseAdapterSelectClassroom(Context context, ArrayList<ClassroomKinderToSecond> classList) {
 
-        this.data = data;
+        this.data = classList;
         this.context = context;
     }
 
@@ -45,8 +45,8 @@ public class CustomBaseAdapterSelectClassroom extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_select_classroom,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.adapter_select_classroom,null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -55,24 +55,25 @@ public class CustomBaseAdapterSelectClassroom extends BaseAdapter {
 
         final ClassroomKinderToSecond currentClass = data.get(position);
 
+        // ClassroomKinderToSecond.getClassroomName()' on a null object reference
         viewHolder.classroomNameTextView.setText(currentClass.getClassroomName());
+        viewHolder.classroomGradeTextView.setText(currentClass.getGradeLevel());
 
 
         return convertView;
-        }
-
     }
 
+}
 
 
-  class ViewHolder {
-        TextView classroomNameTextView;
+class ViewHolder {
+    TextView classroomNameTextView;
+    TextView classroomGradeTextView;
 
 
-        public ViewHolder(View itemLayout) {
-            this.classroomNameTextView = (TextView) itemLayout.findViewById(R.id.custom_adapter_text_view);
+    public ViewHolder(View itemLayout) {
+        this.classroomNameTextView = (TextView) itemLayout.findViewById(R.id.custom_adapter_class_name_textView);
+        this.classroomGradeTextView = (TextView) itemLayout.findViewById(R.id.custom_adapter_class_grade_textView);
 
-
-
-        }
     }
+}

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.test.bookscanner2.R;
 import com.test.bookscanner2.modelsClassroom.Classroom;
+import com.test.bookscanner2.modelsClassroom.ClassroomKinderToSecond;
 import com.test.bookscanner2.modelsClassroom.Student;
 
 public class CreateClassroomActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class CreateClassroomActivity extends AppCompatActivity {
     ArrayAdapter<Student> mAdapter;
     Button addStudentButton;
     ListView studentListView;
+    ClassroomKinderToSecond classroomKindertoSec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class CreateClassroomActivity extends AppCompatActivity {
 
         addStudentButton = (Button) findViewById(R.id.add_student_button);
         studentListView = (ListView) findViewById(R.id.student_list_view);
-        mAdapter = new ArrayAdapter<Student>(CreateClassroomActivity.this, android.R.layout.simple_list_item_1, Classroom.getInstance().getStudents());
+        mAdapter = new ArrayAdapter<Student>(CreateClassroomActivity.this, android.R.layout.simple_list_item_1, classroomKindertoSec.getStudents());
         studentListView.setAdapter(mAdapter);
 
         addStudentButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +73,7 @@ public class CreateClassroomActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             Student createdNewStudent = (Student) data.getSerializableExtra(CreateStudentActivity.STUDENT_SERIALIZABLE_KEY);
-            Classroom.getInstance().addStudent(createdNewStudent);
+           classroomKindertoSec.addStudent(createdNewStudent);
             mAdapter.notifyDataSetChanged();
         }
     }

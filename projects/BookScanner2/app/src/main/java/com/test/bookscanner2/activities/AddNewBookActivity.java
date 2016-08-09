@@ -37,6 +37,7 @@ public class AddNewBookActivity extends AppCompatActivity {
     private Button bookListButton;
     private TextView textView;
     private String baseUrl = "https://openlibrary.org/api/";
+//    private String baseUrl = "https://openlibrary.org/";
     private String contents;
 
 
@@ -45,7 +46,7 @@ public class AddNewBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_book);
 
-        getBookDescription();
+        //getBookDescription();
 
 
 
@@ -67,6 +68,7 @@ public class AddNewBookActivity extends AppCompatActivity {
             intent.putExtra(SCAN_MODE, PRODUCT_MODE);
             startActivityForResult(intent, 0);
             //getBookDescription(); // getting book description here
+            getBookDescription();
         } catch (ActivityNotFoundException e) {
             showDialog(AddNewBookActivity.this, "No Scanner Found",
                     "Download a scanner code activity?", "Yes", "No").show();
@@ -118,6 +120,8 @@ public class AddNewBookActivity extends AppCompatActivity {
                 Toast.makeText(this, "Content:" + contents + "Format:" +
                         format, Toast.LENGTH_LONG).show();
 
+                // append "ISBN:" to contents
+
             }
         }
     }
@@ -136,20 +140,35 @@ public class AddNewBookActivity extends AppCompatActivity {
             OpenLibraryAPI openLibraryAPI = retrofit.create(OpenLibraryAPI.class);
             //replace ISBN with contents //"ISBN:0439639034"- flyguy
             //https://openlibrary.org/api/books?bibkeys=ISBN:0439639034&jscmd=data&format=json
-            Call<Example> call = openLibraryAPI.getBookDescription(contents,"data","json");
+            //9780060731335
+            //slow reading 9780980200447
+            //contents = "9780980200447";
+            String full = "ISBN:" + contents;
+
+
+            Call<Example> call = openLibraryAPI.getBookDescription(full,"data","json");
 
             call.enqueue(new Callback<Example>() {
                 @Override
                 public void onResponse(Call<Example> call, Response<Example> response) {
                     try {
 
-                        Log.d("on response", "onResponse: " + response.body().getISBN9780980200447().getTitle().toString());
+                        Log.d("on response", "onResponse: " + response.body().getiSBN().getTitle().toString());
+
+                        //String title = response.body().getMyTitle().toString();
+//                        String ISBN = response.body().getMyTitle(contents);
+//                        String newISBN= response.body().setISBN9780980200447(ISBN);
+
+                        //String book = response.body().setISBN9780980200447(full);
+                        String bookTitle = response.body().getiSBN().getTitle().toString();
+                        String bookAuthor = response.body().getiSBN().getAuthors().toString();
 
 
-                        String bookTitle = response.body().getISBN9780980200447().getTitle().toString();
-                        String bookAuthor = response.body().getISBN9780980200447().getAuthors().toString();
+                        textView.setText(bookTitle);
 
-                        textView.setText(bookTitle + bookAuthor);
+                        String x = bookTitle;
+
+                        Toast.makeText(AddNewBookActivity.this, x, Toast.LENGTH_LONG).show();
 
 
                     } catch (Exception e) {
