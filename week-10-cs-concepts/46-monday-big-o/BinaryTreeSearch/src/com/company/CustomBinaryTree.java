@@ -35,22 +35,22 @@ public class CustomBinaryTree {
     public void preOrderTraversal(Node node) {
         System.out.println(node.value);
         if( node.left != null) {
-            inOrderTraversal(node.left);
+            preOrderTraversal(node.left);
         }
 
         if(node.right != null) {
-            inOrderTraversal(node.right);
+           preOrderTraversal(node.right);
         }
     }
 
     public void postOrderTraversal(Node node) {
 
         if( node.left != null) {
-            inOrderTraversal(node.left);
+            postOrderTraversal(node.left);
         }
 
         if(node.right != null) {
-            inOrderTraversal(node.right);
+            postOrderTraversal(node.right);
         }
         System.out.println(node.value);
     }
