@@ -103,3 +103,20 @@ Step 24. Check value of `Node h`, it matches seekValue of 8! Status of queue: [ 
        1   3 5   7
       ```
       </details>
+
+## Independent Practice ( 20 min )
+
+You will be writing the algorithm for *Breadth First Search*.
+
+Open the [starter code](starter-code/) inside **IntelliJ**. Inside the `BinaryTree.java` you will find the `findValueUsingBfs()` method. Your job is to complete this method so that when the program runs, it will find
+the node with `seekValue = 8` ( defined in `Main.java`. Try changing the `seekValue` to verify the algorithm you 
+wrote alctually works.
+
+You can reference the [solution code](solution-code/) to check your answer.
+
+## Conclusion ( 5 min )
+
+*Breadth First Search* is an easy way ( in terms of implementation ) to search over trees for a certain value. You can also run this algorithm over a *Graph*.
+
+* What are the pros of BFS?
+* What are the cons of BFS?
