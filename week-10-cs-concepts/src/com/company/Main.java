@@ -3,9 +3,9 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
 
-       DepthFirstSearchTree binaryTree = new DepthFirstSearchTree(5);
+        DepthFirstSearchTree binaryTree = new DepthFirstSearchTree(5);
 
         binaryTree.insert(1);
         binaryTree.insert(3);
@@ -17,5 +17,16 @@ public class Main {
         binaryTree.depthFirstIterative(39);
         binaryTree.depthFirstIterative(2);
         binaryTree.depthFirstIterative(41);
+
+        Tree tree = new Tree();
+        Character seekValue = 'Z';
+
+        Node searchedNode = tree.findValueByBfs(seekValue);
+        if (searchedNode == null) {
+            System.out.println("Could not find value " + seekValue);
+        } else {
+            System.out.println("Found value " + seekValue);
+        }
     }
 }
+
