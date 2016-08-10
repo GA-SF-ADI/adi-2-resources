@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -9,26 +10,45 @@ import java.util.Stack;
  */
 public class Tree {
     private Node root;
+    private  Stack<Node> stack;
 
     public Tree() {
         this.root = createTree();
     }
 
+    public boolean dFSRecursive(int x, Node root) {
+
+        stack = new Stack<>();
+
+        if (root.value == x) {
+            return true;
+        }
+            else if (root.value == null || root.value != x) {
+                return false;
+            } else if (!stack.isEmpty()) {
+            Node node = stack.pop();
+            dFSRecursive(x, node);
+
+        }
+        return false;
+    }
+
+
     public boolean findValueByDfs(Character val) {
-        Stack<Node> stack = new LinkedList<>();
+        Stack<Node> stack = new Stack<>();
         if (val == null || root == null) {
             stack.push(root);
         }
 
         stack.add(root);
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             Node node = stack.pop();
 
-            if(node.value == val) {
+            if (node.value == val) {
                 return true;
             } else {
-                if(node.getChildren() != null) {
+                if (node.getChildren() != null) {
                     stack.push(node);
                 }
             }
@@ -57,8 +77,8 @@ public class Tree {
         return null;
     }
 
-    private void addChildrenToQueue(Queue<Node> queue, Node parent){
-        if (queue == null || parent == null || parent.children == null){
+    private void addChildrenToQueue(Queue<Node> queue, Node parent) {
+        if (queue == null || parent == null || parent.children == null) {
             return; // Null pointer, exit.
         }
         queue.addAll(parent.children);
@@ -73,12 +93,12 @@ public class Tree {
 
     /**
      * Creates a tree of nodes with values of the alphabetical letters.
-     *
+     * <p>
      * We do not insert Z, but A-X is inserted into the tree.
      *
      * @return
      */
-    private Node createTree(){
+    private Node createTree() {
         Node a = new Node('A');
         Node b = new Node('B');
         Node c = new Node('C');
