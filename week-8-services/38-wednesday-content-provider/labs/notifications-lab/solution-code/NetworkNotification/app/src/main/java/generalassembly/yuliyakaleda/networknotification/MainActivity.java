@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    setNotificationStyle();
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
@@ -28,7 +29,30 @@ public class MainActivity extends AppCompatActivity {
     } else {
       showNetworkNotAvailableNotification();
     }
+
   }
+
+  public void setNotificationStyle() {
+    NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
+    mBuilder.setSmallIcon(R.mipmap.ic_notification);
+    mBuilder.setContentTitle("Notification Alert, Click Me!");
+    mBuilder.setContentText("Hi, This is Android Notification Detail!");
+    mBuilder.setAutoCancel(true);
+    
+    NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+    inboxStyle.setBigContentTitle("Inbox Notification");
+    inboxStyle.addLine("Message 1.");
+    inboxStyle.addLine("Message 2.");
+    inboxStyle.addLine("Message 3.");
+    inboxStyle.addLine("Message 4.");
+    inboxStyle.addLine("Message 5.");
+    inboxStyle.setSummaryText("+2 more");
+    NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+    bigText.bigText("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+    bigText.setBigContentTitle("Big Text Notification");
+    bigText.setSummaryText("By: Author of Lorem ipsum");
+  }
+
 
   private void showNetworkNotAvailableNotification() {
     NotificationCompat.BigPictureStyle bigPictureStyle = new NotificationCompat.BigPictureStyle();

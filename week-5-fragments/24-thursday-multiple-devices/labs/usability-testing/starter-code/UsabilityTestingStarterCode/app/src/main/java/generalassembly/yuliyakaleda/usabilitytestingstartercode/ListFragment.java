@@ -41,10 +41,22 @@ public class ListFragment extends Fragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String itemValue = (String) listView.getItemAtPosition(position);
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(SIGN, itemValue);
-        startActivity(intent);
-      }
+
+        DetailsFragment detailsFragment = (DetailsFragment) getFragmentManager()
+                .findFragmentById(R.id.details_fragment);
+
+        //null check to see if the details fragment is there.  If the detail fragement is NOT there its a phone.
+        //if its a phone we start the "detail" activity
+        //if null check reveals that the details fragment IS there, that means its a tablet.
+
+        if(detailsFragment==null) {  //So, if its a phone (no detail activity there),start the activity:
+          Intent intent = new Intent(getActivity(), DetailsActivity.class);
+          intent.putExtra(SIGN, itemValue);
+          startActivity(intent);
+        }else{ //its a tablet and the detail fragment is there
+          //tell fragment to update with the bigger layout for for a tablet
+          detailsFragment.updateContent(itemValue);
+      } }
     });
   }
 }

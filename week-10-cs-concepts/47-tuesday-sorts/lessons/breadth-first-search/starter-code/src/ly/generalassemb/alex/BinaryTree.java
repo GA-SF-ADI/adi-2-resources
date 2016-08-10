@@ -31,10 +31,24 @@ public class BinaryTree {
      */
     public Node findValueUsingBfs(int seekValue){
         // TODO: Create queue
+        Queue<Node> queue = new LinkedList<>();
+
         // TODO: Add root to queue
+        queue.add(root);
 
         // TODO: Remove first node from queue and check value
+        while(queue.peek() != null){
+
+            Node node = queue.poll();  //poll is better than remove because it does not have error if queue is empty
+
+            if (node == null || node.value == seekValue){
+                return node; // stop looking if either its empty or we found it
+            }
+
+
+
         // TODO:    if no match add children to queue using helper method below
+        addChildrenToQueue(queue, node);
 
     }
 
