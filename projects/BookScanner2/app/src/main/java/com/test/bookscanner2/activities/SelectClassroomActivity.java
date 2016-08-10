@@ -49,19 +49,15 @@ public class SelectClassroomActivity extends AppCompatActivity {
         }
 
         customBaseAdapterSelectClassroom = new CustomBaseAdapterSelectClassroom(this, classroomKinderToSecondArrayList);
-       classroomNameListView.setAdapter(customBaseAdapterSelectClassroom);
-        classroomNameEditText = (EditText) findViewById(R.id.name_classroom_edit_text);
+        classroomNameListView.setAdapter(customBaseAdapterSelectClassroom);
 
 
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                checkBoxK.getText();
-//                checkBox1st.getText();
-//                checkBox2nd.getText();
                 userInputString = classroomNameEditText.getText().toString();
-                ClassroomKinderToSecond classroom = new ClassroomKinderToSecond(userInputString,"K");
+                ClassroomKinderToSecond classroom = new ClassroomKinderToSecond(userInputString, "K");
                 classroomKinderToSecondArrayList.add(classroom);
                 customBaseAdapterSelectClassroom.notifyDataSetChanged();
 
@@ -112,29 +108,29 @@ public class SelectClassroomActivity extends AppCompatActivity {
     }
 
     @Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-    if (requestCode == REQUEST_CODE) {
-        if (resultCode == RESULT_OK) {
-
-
-            ClassroomKinderToSecond createList = (ClassroomKinderToSecond) data.getSerializableExtra("classroom");
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
 
 
-            int pos = data.getIntExtra("position", 0);
-
-            Toast.makeText(SelectClassroomActivity.this, "Welcome Back :) ", Toast.LENGTH_SHORT).show();
+                ClassroomKinderToSecond createList = (ClassroomKinderToSecond) data.getSerializableExtra("classroom");
 
 
-            classroomKinderToSecondArrayList.set(pos, createList);
-            customBaseAdapterSelectClassroom.notifyDataSetChanged();
+                int pos = data.getIntExtra("position", 0);
+
+                Toast.makeText(SelectClassroomActivity.this, "Welcome Back :) ", Toast.LENGTH_SHORT).show();
+
+
+                classroomKinderToSecondArrayList.set(pos, createList);
+                customBaseAdapterSelectClassroom.notifyDataSetChanged();
+            }
+
         }
 
+
     }
-
-
-}
 }
 
 
