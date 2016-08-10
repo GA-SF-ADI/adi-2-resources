@@ -73,14 +73,14 @@ Those were all properties that are shared among ALL trees. However, there are mo
 
  public class Node<T>{
   Node left, right;
-  T value;
+  T valDuck;
  }
 ```
 If you want to access the children inside of a binary tree, you do so through node.left and node.right. 
 
 ### Search
 
-The Search aspect of a BST has implications that we will be getting into later, but for now it only means that any left child will have a smaller value than the parent and any right child will have a greater value than the parent. It does not need to be balanced, but that simple rule MUST be observed for a tree to be a binary search tree. 
+The Search aspect of a BST has implications that we will be getting into later, but for now it only means that any left child will have a smaller valDuck than the parent and any right child will have a greater valDuck than the parent. It does not need to be balanced, but that simple rule MUST be observed for a tree to be a binary search tree.
 ***
 
 <a name="guided-practice: Traversals"></a>
@@ -98,7 +98,7 @@ Lets take a look at that example tree again.
 
 ![Tree](http://holowczak.com/wp-content/uploads/tree_example.gif)
 
- What would the in-order, pre-order, and post-order traversals of that node look like if we just wanted to print out the values of each node?
+ What would the in-order, pre-order, and post-order traversals of that node look like if we just wanted to print out the valDucks of each node?
 
 <details>
   <summary>In-Order</summary>

@@ -30,11 +30,17 @@ public class BinaryTree {
      * @return
      */
     public Node findValueUsingBfs(int seekValue){
-        // TODO: Create queue
-        // TODO: Add root to queue
+     Queue<Node> queue = new LinkedList<>();    // TODO: Create queue
+     queue.add(root);   // TODO: Add root to queue
 
-        // TODO: Remove first node from queue and check value
-        // TODO:    if no match add children to queue using helper method below
+     while (node != null){
+            queue.remove(node);
+            if (node.value() == seekValue){     // TODO: Remove first node from queue and check value
+                return node;
+            }
+            else {
+                addChildereToQueue(); // TODO:    if no match add children to queue using helper method below
+            }
 
     }
 
