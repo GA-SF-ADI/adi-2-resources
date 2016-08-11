@@ -128,7 +128,7 @@ Binary Search needs the following things:
 	Arrays.sort(data); // Make sure to sort the array first!
 	
 	int lowIndex = 0; // Start at beginning of array
-	int highIndex = data.length; // End at the end of the array
+	int highIndex = data.length - 1; // End at the end of the array
 	int midIndex;
 
 	// Keep looping while the lowIndex is less than or equal to highIndex
