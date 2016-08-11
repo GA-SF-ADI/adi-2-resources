@@ -17,6 +17,11 @@ public class NotificationJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         //TODO: CREATE YOUR NOTIFICATION!
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle("My NOTIFICATION");
+        builder.setContentText("NOTIFICATION");
+        builder.setAutoCancel(true);
         return false;
     }
 
