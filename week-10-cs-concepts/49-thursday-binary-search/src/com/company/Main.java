@@ -66,6 +66,6 @@ public class Main {
         linearSearch(array, 5);
 
         System.out.println(binarySearch(6, array));
-        
+
     }
 }
