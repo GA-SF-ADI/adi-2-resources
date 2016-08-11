@@ -101,6 +101,55 @@ The goal: Let's try finding the number *9*, again.
 
 For the next 20 minutes, write pseudocode for the binary search on that array. Then, try writing it out in Java.
 
+<details>
+   <summary>Click here for hint</summary>
+	
+Binary Search needs the following things:
+- Sorted Array to search
+- Index for the beginning in the range we are searching in the array ( low )
+- Index for the end in the range we are searching in the array ( high )
+- Index for the middle point in the range we are searching ( mid )
+
+<details>
+	<summary>Click here to see full code solution</summary>
+```java
+/**
+ * Search for value inside data array using Binary Search.
+ *
+ * @param data
+ * @param value
+ * @return Returns index of value inside data array, or 
+ * SEARCH_ERROR_INDEX value if an error occurred
+ */
+ private static int binarySearch(int[] data, int value){
+	if (data == null || data.length == 0){
+    		return SEARCH_ERROR_INDEX; // Data array null or empty, return error index!
+	}
+	Arrays.sort(data); // Make sure to sort the array first!
+	
+	int lowIndex = 0; // Start at beginning of array
+	int highIndex = data.length; // End at the end of the array
+	int midIndex;
+
+	// Keep looping while the lowIndex is less than or equal to highIndex
+	while (lowIndex <= highIndex){
+	    midIndex = (lowIndex + highIndex) / 2; // Mid is just the average of lowIndex and highIndex
+	    
+	    if (value == data[midIndex]){
+	        return midIndex; // We found the value we are looking for at midIndex!
+	    } else if (value < data[midIndex] ){
+	        highIndex = midIndex - 1; // The value we are looking for is smaller and to the left of midIndex!
+	    } else if (value > data[midIndex]){
+	        lowIndex = midIndex + 1; // The value we are looking for is bigger and to the right of midIndex!
+	    }
+	}
+	return SEARCH_ERROR_INDEX; // The value we are looking for was not found, return default error index!
+}
+```
+</details>
+
+</details>
+
 
 <a name="conclusion"></a>
 ## Conclusion (5 mins)
