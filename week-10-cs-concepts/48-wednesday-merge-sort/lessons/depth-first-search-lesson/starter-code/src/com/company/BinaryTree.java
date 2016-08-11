@@ -1,19 +1,23 @@
+package com.company;
+
+import java.util.Stack;
+
 /**
  * Created by hollis on 8/8/16.
  */
 public class BinaryTree {
     private Node root;
 
-    public BinaryTree(int value){
+    public BinaryTree(int value) {
         root = new Node(value);
     }
 
 
-    public class Node{
+    public class Node {
         int value;
         Node left, right;
 
-        public Node(int value){
+        public Node(int value) {
             this.value = value;
         }
     }
@@ -22,14 +26,14 @@ public class BinaryTree {
     //NO NEED TO CHANGE THIS
     //IT RANDOMLY DECIDES TO INSERT ON THE LEFT OR RIGHT
     //
-    public void insert(int value){
+    public void insert(int value) {
         Node curNode = root;
         boolean done = false;
 
         //compare the value we're inserting to the current node
-        while(!done){
-            int leftOrRight =(int) Math.random() * 10;
-             if (leftOrRight%2==0) {
+        while (!done) {
+            int leftOrRight = (int) Math.random() * 10;
+            if (leftOrRight % 2 == 0) {
                 //check if there already is a right child
                 if (curNode.right == null) {
                     //set the right node to the new value
@@ -38,7 +42,7 @@ public class BinaryTree {
                 } else {
                     curNode = curNode.right;
                 }
-            }else{
+            } else {
                 //check if there already is a left child
                 if (curNode.left == null) {
                     //set the left node to the new value
@@ -52,9 +56,32 @@ public class BinaryTree {
     }
 
 
-    public boolean depthFirstIterative(int key){
+    public boolean depthFirstIterative(int key) {
         //TODO: Implement dfs iteratively and return true or false if you found the key
-      return false;
-    };
+        Stack <Node> treeStack = new Stack();
+        if (root.value != key) {
+            treeStack.push(root);
 
+        }
+
+
+        while (!treeStack.isEmpty()) {
+            Node curNode = treeStack.pop();
+            if (curNode.value == key) {
+                return true;
+            } else {
+
+                if (curNode.right != null) {
+                    treeStack.add(curNode.right);
+                }
+                if (curNode.left != null) {
+                    treeStack.add(curNode.left);
+                }
+
+            }
+
+
+        }
+        return false;
+    }
 }
