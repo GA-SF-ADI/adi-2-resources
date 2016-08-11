@@ -125,9 +125,14 @@ public class Tree {
 
     }
     public Boolean findValueByDfsRecursively(Character seekValue){
-        
+       Stack<Node> stack = new Stack<>();
+        if (root.character!=seekValue || stack.isEmpty()) {
+            return false;
+        }
+        stack.push(root);
+        return findValueByDfsRecursively(seekValue);
 
-    return false;
+
     }
 
 
