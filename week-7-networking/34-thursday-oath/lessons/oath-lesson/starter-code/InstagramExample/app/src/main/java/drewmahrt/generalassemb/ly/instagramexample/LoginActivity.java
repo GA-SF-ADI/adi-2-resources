@@ -10,6 +10,8 @@ import android.webkit.WebViewClient;
 import drewmahrt.generalassemb.ly.instagramexample.models.AuthenticationResponse;
 import drewmahrt.generalassemb.ly.instagramexample.models.InstaGramUser;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -45,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        mWebView.loadUrl( /* Put URL here */ );
+        mWebView.loadUrl( "https://www.instagram.com/developer/authentication/putmyindividualvalueshere" + "&redirect_uri=" + InstagramAppData.CALLBACK_URL + "&response_type=code");
     }
 
     private void setupInstaGramApiService(){
@@ -63,18 +65,36 @@ public class LoginActivity extends AppCompatActivity {
 
         // Pass in the form data for this post call
         Call<AuthenticationResponse> call = instaGramService.postAccessCode(
-                /* Include CLIENT_SECRET */,
-                /* Include CLIENT_ID */,
+                InstagramAppData.CLIENT_SECRET,
+                InstagramAppData.CLIENT_ID,
                 /* Include AUTH_CODE_KEY */,
                 /* Include CALLBACK_URL */,
                 /* Include code */);
 
         // TODO: run the call on a worker thread asynchronously
+        call.enqueue(new Callback<AuthenticationResponse>() {
+            @Override
+            public void onResponse(Call<AuthenticationResponse> call, Response<AuthenticationResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<AuthenticationResponse> call, Throwable t) {
+
+            }
+        });
 
         // TODO: On sucessful response, get AuthenticationResponse object from the response object
         // TODO: Get your user from AuthenticationResponse
+        AuthenticationResponse authenticationResponse = response.body();
+        InstaGramUser user = authentificationResponse.getUser();
 
         // TODO: Put extras into intents using provided keys at top of file and launch MainActivity
 
+    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra(INTENT_KEY_TOKEN, authenticationResponse.getToken());
+        intent.putExtra(INTENT_KEY_ID, user.getID());
+        startActivity(intent);
+        finish();
     }
 }
