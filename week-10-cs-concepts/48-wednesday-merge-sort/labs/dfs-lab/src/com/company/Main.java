@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
-        Character seekValue = 'F';
+        Character seekValue = 'Z';
 
         Tree tree = new Tree();
 
@@ -18,7 +18,7 @@ public class Main {
 
         Tree interateTree = new Tree();
         boolean hasValue = interateTree.findValueByDfsIteratively(seekValue);
-        if (!hasValue) {
+        if (hasValue) {
             System.out.println("Found node with value iteratively ");
         } else {
             System.out.println("didn't find node with value iteratively");

@@ -115,10 +115,10 @@ public class Tree {
             if (curNode.character==seekValue){
                 return true;
             }else{
-                if (curNode.getChildren()!=null);{
+
                     addChildrenToStack(treeStack,curNode);
                 }
-            }
+
         }
 
       return false;
