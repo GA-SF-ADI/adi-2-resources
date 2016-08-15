@@ -82,31 +82,40 @@ Once you got firebase setup, make sure to go back to the web console and select 
 
 Documentation on how to use the real time database on [Android is here](https://firebase.google.com/docs/database/android/start/)
 
-## Setting up Android  
-
-The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use the Activity context. 
-
-A better solution is to enable Firebase to work with our app regardless of what activity the app is started with. To do this, we need to create a new Java file that extends the *Application* class. Next, override the `onCreate()` method of the class and add `Firebase.setAndroidContext(this);` after the `super()` call. Lastly, we need to reference this new class that extends Application in the Manifest in the Application tag.
-
-```java
-public class CustomApplication extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Firebase.setAndroidContext(this);
-    }
-    
+On the RealTime Database view, you will see three tabs at the top. Data, Rules, and Usage. Press on the Rules section, and override the JSON there with this:
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
 }
 ```
 
-```xml
-<application
-    ...
-    android:name=".MyApplication">
-    
-</application>
+We just made our database **public**. This means **anyone** can read and write from it. It makes the demo easier to teach, however during production you should setup authentication for your users to get read/write access to the database. [Learn more about the process](https://firebase.google.com/docs/database/security/quickstart).
+
+## Setting up Android  
+
+The second step is to setup our Android project to use Firebase RealTime DataBase. Add the line below into your **app** level gradle file.
 ```
+compile 'com.google.firebase:firebase-database:9.2.1'
+```
+Make sure to sync your gradle.
+
+Don't forget to add the INTERNET permission into your manifest file!
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
+Now we can write our very first item to firebase using the code below
+```java
+// Write a message to the database
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference myRef = database.getReference("message");
+
+myRef.setValue("Hello, World!");
+```
+In the first line, we get a reference to the Firebase singleton instance. Using the database instance on line 2, we can grab a reference to database category "message" which will hold messages for us in this case. The we can use that reference to write values to it and to the cloud using the `setValue()` method on line 3.
 
 > Check: Was everyone able to set it up correctly?
 
