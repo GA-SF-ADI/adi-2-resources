@@ -270,7 +270,7 @@ ChildEvents work fine when adding data to a list, but certain UI operations such
 ***
 
 <a name="demo"></a>
-## Demo: FirebaseUI (5 mins)
+## Demo: FirebaseUI (10 mins)
 
 First, we need to add FirebaseUI to our gradle file.
 
@@ -303,6 +303,11 @@ FirebaseListAdapter messageAdapter = new FirebaseListAdapter<String>(this, Strin
 
 // set adapter on list view! Note: FireBaseUI has separate RecyclerView Adapter as well. Refer to the project read me file.
 listView.setAdapter(adapter);
+```
+
+Note, you need to override `onDestroy()` and include the following line after super. It will cleanup the adapter and open references to the DB for you when activity is destroyed.
+```java
+messageAdapter.cleanup()
 ```
 
 > Check: Ask the students what situations we would want to use FirebaseUI in.
