@@ -240,127 +240,19 @@ There are 5 methods that you must implement, each has its own task and use:
 - onChildMoved(): Called when a child is moved to another position
 - onCancelled(): Called when there was an error connecting to server
 
+Careful to note that `ChildEventListener()` is activated for the Child, if you have a class called `Classroom` that has an `ArrayList<Students> students`, any change to any student will give you the whole arrayList of students back.
 
-***
-
-<a name="guided-practice"></a>
-## Guided Practice: Binding data to a ListView (10 mins)
-
-Let's take our knowledge of ChildEvents and apply it to a ListView. In the last independent practice, you created an EditText, TextView and Button and hooked them all up.
-
-We will build off of that idea, but we'll need one more edit text.
-
-We will have a `Student` class that has `String name` and `String lastName` fields. We will also createa a `Classroom` class that will have `ArrayList<Student> students` field.
-
-The idea is to create a new Student every time the button is pressed by using info from both editTexts and add it to the DB. Then, using the `ChildEventListener` we can show the newly added student inside of a list view!
-
-> Prompt the students to help complete these steps.
-
-0. Create one more edit text for last name, and create reference to it in our MainActivity
-1. add a ListView to the app, and create a reference to it in our MainActivity.
-2. Create some students and a Classroom that these students will be added to.
-3. Create an ArrayAdapter
-4. Add messages when onChildAdded is called, and call notifyDataSetChanged
-
-`activity_main.xml` not showing the TextView, EditText, and Button
-```xml
-<ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/submit_button"/>
-```
-
+To get updates on each individual student object, you have to set the `ChildEventListener` on the *child* of Classroom, aka
 ```java
-public class MainActivity extends AppCompatActivity {
-    private TextView mCurrentText;
-    private EditText mNewText;
-    private Button mSubmitButton;
-    private ListView mListView;
-
-    private Firebase mFirebaseRootRef;
-
-    private ArrayList<String> mMessages;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mCurrentText = (TextView) findViewById(R.id.current_text);
-        mNewText = (EditText)findViewById(R.id.edit_text);
-        mSubmitButton = (Button)findViewById(R.id.submit_button);
-        mListView = (ListView)findViewById(R.id.list);
-
-        mFirebaseRootRef = new Firebase("https://exampleappdrew.firebaseio.com");
-
-        final Firebase firebaseCurrentTextRef = mFirebaseRootRef.child("currentText");
-
-        Firebase firebaseMessageRef = mFirebaseRootRef.child("messages");
-
-        mMessages = new ArrayList<>();
-
-        firebaseCurrentTextRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String text = dataSnapshot.getValue(String.class);
-                mCurrentText.setText("Latest Text: " + text);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-
-
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseCurrentTextRef.setValue(mNewText.getText().toString());
-            }
-        });
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mMessages);
-        mListView.setAdapter(adapter);
-
-        firebaseMessageRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String message = dataSnapshot.getValue(String.class);
-                mMessages.add(message);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-    }
+classRef.child("students").addChildEventListener(new ChildEventListener() {
+   ... 
 }
 ```
-
+Assuming classRef is the reference pointing to the class category.
 
 One last note: To add values to a list with auto-generated keys, you use the following code:
 ```java
-ref.push().setValue("test insert2");
+ref.push().setValue("You value or object here");
 ```
 We use the `push()` before the `setValue()` to give an auto generated key for the key value pair. The auto generated key will act as a JSON object name and the value will be the object you inserted.
 
@@ -378,26 +270,44 @@ ChildEvents work fine when adding data to a list, but certain UI operations such
 ***
 
 <a name="demo"></a>
-## Demo: FirebaseUI (5 mins)
+## Demo: FirebaseUI (10 mins)
 
 First, we need to add FirebaseUI to our gradle file.
 
 ```
-compile 'com.firebaseui:firebase-ui:0.3.1'
+compile 'com.firebaseui:firebase-ui-database:0.4.3'
 ```
 
 Since we want to change our ListView to work with FirebaseUI, we are going to use the  FirebaseListAdapter.
 
 ```java
-FirebaseListAdapter<String> adapter = new FirebaseListAdapter<String>(this, String.class, android.R.layout.simple_list_item_1, firebaseMessageRef) {
+// Grab DB reference to chat-room category
+FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+DatabaseReference chatRef = firebaseDatabase.getReference("chat-room");
+
+/**
+ * Create adapter. It takes the following parameters in constructor
+ * - Context
+ * - Class of the object inside the adapter, in our case its an adapter that holds Strings
+ * - ID of the layout, we use pre-built layout by android but you can use your own custom layout
+ * - DatabaseReference that will update the listView. Inside the adapter, they implement the ChildEventListener for the
+ *   passed in DatabaseReference
+ */
+FirebaseListAdapter messageAdapter = new FirebaseListAdapter<String>(this, String.class, android.R.layout.simple_expandable_list_item_1, chatRef) {
             @Override
-            protected void populateView(View view, String s, int i) {
-                TextView textView  = (TextView)view.findViewById(android.R.id.text1);
-                textView.setText(s);
+            protected void populateView(View v, String model, int position) {
+                // Cast the incoming view as a TextView so that we can set text on it.
+                ((TextView) v).setText(model);
             }
         };
 
-        mListView.setAdapter(adapter);
+// set adapter on list view! Note: FireBaseUI has separate RecyclerView Adapter as well. Refer to the project read me file.
+listView.setAdapter(adapter);
+```
+
+Note, you need to override `onDestroy()` and include the following line after super. It will cleanup the adapter and open references to the DB for you when activity is destroyed.
+```java
+messageAdapter.cleanup()
 ```
 
 > Check: Ask the students what situations we would want to use FirebaseUI in.
@@ -407,9 +317,19 @@ FirebaseListAdapter<String> adapter = new FirebaseListAdapter<String>(this, Stri
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (10 mins)
 
-Work with a partner to make a working version of Tic-Tac-Toe. You will create a layout with 9 EditTexts. The text you type into one of the EditTexts should sync immediately on the second person's device.
+Work with a partner to make a working version of Tic-Tac-Toe. 
 
-Hint: Try using addTextChangedListener
+You are given [starter code](starter-code/FireBaseTicTacToe) it already has
+- A layout with 9 EditTexts. 
+- Links up the 9 EditTexts to in Java from xml
+
+Your job is to make the  EditTexts sync immediately to DB and hence the second person's device. This means using FireBase.
+
+**Note**: If you want to have your own game, make sure that you copy over your own **google-play-services.json** file into the starter code, otherwise you will point to same firebase project as everyone else and the game will be a mess.
+
+Hint: Try using addTextChangedListener on your EditTexts!
+
+If you get stuck, see the [solution](solution-code/FireBaseTicTacToe)
 
 > Check: Were the students able to complete the activity?
 
@@ -427,3 +347,4 @@ Firebase is a very powerful tool for moving our databases to the cloud. The setu
 - [FireBase RealTime DataBase Android Setup](https://firebase.google.com/docs/database/android/start/)
 - [FireBase Child Events, Read Data, Sort it, Filter it, etc](https://firebase.google.com/docs/database/android/retrieve-data)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
+- [Firebase UI with list views](https://github.com/firebase/FirebaseUI-Android/blob/master/database/README.md)
