@@ -2,8 +2,8 @@
 title: Firebase
 duration: "1:25"
 creator:
-    name: Drew Mahrt
-    city: NYC
+    name: Drew Mahrt && Aleksandr Tomak
+    city: NYC && SF
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Firebase
@@ -51,36 +51,57 @@ In Firebase, you don't set up Columns, Data types, keys, etc. ahead of time. You
 <a name="demo"></a>
 ## Demo: Setting Up Firebase (10 mins)
 
-Actually setting up Firebase is extremely simple. After creating a new Android Studio project, go to File -> Project Structure.
+The signup process is exactly the same as our **Google Player Services Lesson** that covered Firebase Analytics and Push notifications. 
 
-Then choose the Cloud tab, and check the box next to Firebase.
+<details>
 
-<img src="./screenshots/screenshot1.png"/>
+<summary> Click here for a refresher of the steps </summary>
+**If you don't have an account**, sign up [here](https://firebase.google.com/).
 
-This automatically imports the necessary libraries with Gradle, and adds the Internet permission to the Manifest.
+Next, open up the [console](https://console.firebase.google.com/) and press on the `create project` button and give you project a name. Then click `create project` once more. It will take a while to setup, then it should auto kick you into your created project, if not just click on it to load the next page.
 
-There are only two other steps you need to manually complete. First is to add the following code to your Gradle file under the android section. It stops any build errors from occurring if there are conflicting licensing files with other libraries.
+Now, lets click on the `Add firebase to you Android App` button. You will have a popup asking for you project package name, lets come back to this.
 
-```xml
-packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE-FIREBASE.txt'
-        exclude 'META-INF/NOTICE'
-    }
+Create a new project inside Android Studio called FireBaseStorage. Once the project is created, open your `AndroidManifest.xml` to find your `package="somePackage"` at the top. We want the "somePackage" value for the popup.
+
+Come back to that popup we saw earlier. Paste your package path into the field and press `add app`. Your browser will then download a file `google-services.json`. We need to move this file into our android studio project. Follow the on screen instructions in the popup, they are self explanatory and provide a visual guide. Basically, you will switch from Android view to Project View, and paste the file into your `app/` folder. Once finished, press `continue` button on the web page.
+
+Follow step 1 and step 2 on the popup. You are adding the line below to your **project** gradle file.
+```
+classpath 'com.google.gms:google-services:3.0.0'
+```
+Then in your **app** gradle file you need to add the below line at the **very bottom of the file**, below the dependency clause.
+```
+apply plugin: 'com.google.gms.google-services'
 ```
 
-The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use that. A better solution is to enable Firebase to work with our app regardless of what activity the app is started with. To do this, we need to create a new Java file, extend Application, and add the following code to it. We also need to reference this file in the Manifest in the Application tag.
+Now we have setup firebase inside of our app and on the website! 
+
+<details>
+
+
+The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use the Activity context. 
+
+A better solution is to enable Firebase to work with our app regardless of what activity the app is started with. To do this, we need to create a new Java file that extends the *Application* class. Next, override the `onCreate()` method of the class and add `Firebase.setAndroidContext(this);` after the `super()` call. Lastly, we need to reference this new class that extends Application in the Manifest in the Application tag.
 
 ```java
-@Override
-public void onCreate() {
-    super.onCreate();
-    Firebase.setAndroidContext(this);
+public class CustomApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Firebase.setAndroidContext(this);
+    }
+    
 }
 ```
 
 ```xml
-android:name=".MyApplication"
+<application
+    ...
+    android:name=".MyApplication">
+    
+</application>
 ```
 
 > Check: Was everyone able to set it up correctly?
