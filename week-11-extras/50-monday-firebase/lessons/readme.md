@@ -54,8 +54,7 @@ In Firebase, you don't set up Columns, Data types, keys, etc. ahead of time. You
 The signup process is exactly the same as our **Google Player Services Lesson** that covered Firebase Analytics and Push notifications. 
 
 <details>
-
-<summary> Click here for a refresher of the steps </summary>
+    <summary> Click here for a refresher of the steps </summary>
 **If you don't have an account**, sign up [here](https://firebase.google.com/).
 
 Next, open up the [console](https://console.firebase.google.com/) and press on the `create project` button and give you project a name. Then click `create project` once more. It will take a while to setup, then it should auto kick you into your created project, if not just click on it to load the next page.
@@ -77,7 +76,7 @@ apply plugin: 'com.google.gms.google-services'
 
 Now we have setup firebase inside of our app and on the website! 
 
-<details>
+</details>
 
 
 The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use the Activity context. 
