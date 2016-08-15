@@ -324,6 +324,7 @@ You are given [starter code](starter-code/FireBaseTicTacToe) it already has
 - Links up the 9 EditTexts to in Java from xml
 
 Your job is to make the  EditTexts sync immediately to DB and hence the second person's device. This means using FireBase.
+
 **Note**: If you want to have your own game, make sure that you copy over your own **google-play-services.json** file into the starter code, otherwise you will point to same firebase project as everyone else and the game will be a mess.
 
 Hint: Try using addTextChangedListener on your EditTexts!
