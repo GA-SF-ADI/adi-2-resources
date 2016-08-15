@@ -41,5 +41,5 @@ An app that allows people to join the chatroom, and send chat messages to each o
 
 ## Additional Resources
 
-- [Firebase Quickstart](https://www.firebase.com/docs/android/quickstart.html)
+- [Firebase Quickstart Guide through Chat](https://codelabs.developers.google.com/codelabs/firebase-android/#0)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
