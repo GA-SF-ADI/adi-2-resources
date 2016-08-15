@@ -317,9 +317,19 @@ messageAdapter.cleanup()
 <a name="ind-practice"></a>
 ## Independent Practice: Topic (10 mins)
 
-Work with a partner to make a working version of Tic-Tac-Toe. You will create a layout with 9 EditTexts. The text you type into one of the EditTexts should sync immediately on the second person's device.
+Work with a partner to make a working version of Tic-Tac-Toe. 
 
-Hint: Try using addTextChangedListener
+You are given [starter code](starter-code/FireBaseTicTacToe) it already has
+- A layout with 9 EditTexts. 
+- Links up the 9 EditTexts to in Java from xml
+
+Your job is to make the  EditTexts sync immediately to DB and hence the second person's device. This means using FireBase.
+
+**Note**: If you want to have your own game, make sure that you copy over your own **google-play-services.json** file into the starter code, otherwise you will point to same firebase project as everyone else and the game will be a mess.
+
+Hint: Try using addTextChangedListener on your EditTexts!
+
+If you get stuck, see the [solution](solution-code/FireBaseTicTacToe)
 
 > Check: Were the students able to complete the activity?
 
