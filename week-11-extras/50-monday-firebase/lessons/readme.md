@@ -195,33 +195,74 @@ Feel free to use the "message" category or to create your very own category for 
 ***
 
 <a name="introduction"></a>
-## Introduction: Child Events (5 mins)
+## Introduction: Child Events (10 mins)
 
-The ValueEvents that we just worked with are great for primitives and Objects, but if we want to work with things like lists of data, we want to use ChildEvents. ValueEvents passes back the entire object when a change is made, whereas ChildEvents can give us the individual items.
+The `ValueEventListener` that we just worked with is great for primitives and Objects, but if we want to work with things like lists of data, we want to use `ChildEventListener`. `ValueEventListener` passes back the **entire object** when a change is made, whereas `ChildEventListener` can give us the **individual items**.
 
-***
+Lets try adding a `ChildEventListener` to our code. It starts off just like our `ValueEventListener`, but the autocomplete looks very different.
 
-<a name="demo"></a>
-## Demo: Child Events (5 mins)
+<details>
+    <summary> Click here to see the code! </summary>
+```java
+ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildAdded: ");
+            }
 
-Lets try adding a ChildEventListener to our code. It starts off just like our ValueEventListener, but the autocomplete looks very different.
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildChanged: ");
+            }
 
-> Walk through the methods with the students. Remember that onChildAdded is called when pulling down existing data.
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.i(TAG, "onChildRemoved: ");
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildMoved: ");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(TAG, "onCancelled: " + databaseError.toException());
+            }
+        });
+```
+</details>
+
+There are 5 methods that you must implement, each has its own task and use: 
+- onChildAdded(): Called when a child is added
+- onChildChanged(): Called when a child is updated/changed
+- onChildRemoved(): Called when a child is removed
+- onChildMoved(): Called when a child is moved to another position
+- onCancelled(): Called when there was an error connecting to server
+
 
 ***
 
 <a name="guided-practice"></a>
 ## Guided Practice: Binding data to a ListView (10 mins)
 
-Let's take our knowledge of ChildEvents and apply it to a ListView.
+Let's take our knowledge of ChildEvents and apply it to a ListView. In the last independent practice, you created an EditText, TextView and Button and hooked them all up.
+
+We will build off of that idea, but we'll need one more edit text.
+
+We will have a `Student` class that has `String name` and `String lastName` fields. We will also createa a `Classroom` class that will have `ArrayList<Student> students` field.
+
+The idea is to create a new Student every time the button is pressed by using info from both editTexts and add it to the DB. Then, using the `ChildEventListener` we can show the newly added student inside of a list view!
 
 > Prompt the students to help complete these steps.
 
+0. Create one more edit text for last name, and create reference to it in our MainActivity
 1. add a ListView to the app, and create a reference to it in our MainActivity.
-2. Create an ArrayList to hold our data
+2. Create some students and a Classroom that these students will be added to.
 3. Create an ArrayAdapter
 4. Add messages when onChildAdded is called, and call notifyDataSetChanged
 
+`activity_main.xml` not showing the TextView, EditText, and Button
 ```xml
 <ListView
         android:id="@+id/list"
@@ -232,14 +273,14 @@ Let's take our knowledge of ChildEvents and apply it to a ListView.
 
 ```java
 public class MainActivity extends AppCompatActivity {
-    TextView mCurrentText;
-    EditText mNewText;
-    Button mSubmitButton;
-    ListView mListView;
+    private TextView mCurrentText;
+    private EditText mNewText;
+    private Button mSubmitButton;
+    private ListView mListView;
 
-    Firebase mFirebaseRootRef;
+    private Firebase mFirebaseRootRef;
 
-    ArrayList<String> mMessages;
+    private ArrayList<String> mMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,13 +357,12 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+
 One last note: To add values to a list with auto-generated keys, you use the following code:
-
 ```java
-firebaseMessageRef.push().setValue("test insert2");
+ref.push().setValue("test insert2");
 ```
-
-> Check: Were students able to successfully solve the problem or complete the task?
+We use the `push()` before the `setValue()` to give an auto generated key for the key value pair. The auto generated key will act as a JSON object name and the value will be the object you inserted.
 
 ***
 
@@ -385,4 +425,5 @@ Firebase is a very powerful tool for moving our databases to the cloud. The setu
 ### ADDITIONAL RESOURCES
 - [FireBase RealTime Database](https://firebase.google.com/docs/database/)
 - [FireBase RealTime DataBase Android Setup](https://firebase.google.com/docs/database/android/start/)
+- [FireBase Child Events, Read Data, Sort it, Filter it, etc](https://firebase.google.com/docs/database/android/retrieve-data)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
