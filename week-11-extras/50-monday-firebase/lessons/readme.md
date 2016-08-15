@@ -421,5 +421,5 @@ Firebase is a very powerful tool for moving our databases to the cloud. The setu
 ***
 
 ### ADDITIONAL RESOURCES
-- [Firebase Quickstart](https://www.firebase.com/docs/android/quickstart.html)
+- [FireBase Real Time Database](https://firebase.google.com/docs/database/)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
