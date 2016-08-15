@@ -42,7 +42,7 @@ Firebase is a quick way to store your app's data on the cloud in a structured, b
 
 In Firebase, you don't set up Columns, Data types, keys, etc. ahead of time. You simply add and modify the data on-the-fly. Some of the biggest features of Firebase are how fast it is, and how quickly it can automatically sync the data on your apps. As soon as changes are made online, all apps connected to your Firebase database are notified of the changes, and can update their view accordingly. This is not just limited to Android, but reflects across all platforms (iOS, web, etc.).
 
-[Let's watch a quick video.](https://www.youtube.com/watch?v=SLgHfH7KzXU)
+[Let's watch a quick video.](https://youtu.be/U5aeM5dvUpA?list=PLl-K7zZEsYLmOF_07IayrTntevxtbUxDL)
 
 > Check: Ask the students to discuss with each other (2 mins) ideas where Firebase could be used.
 
@@ -77,6 +77,10 @@ apply plugin: 'com.google.gms.google-services'
 Now we have setup firebase inside of our app and on the website! 
 
 </details>
+
+Once you got firebase setup, make sure to go back to the web console and select the **DataBase / RealTime DataBase** tab on the left side. You will see a link at the bottom for [learn more](https://firebase.google.com/docs/database/) which points to the real time database documentation! 
+
+Documentation on how to use the real time database on [Android is here](https://firebase.google.com/docs/database/android/start/)
 
 ## Setting up Android  
 
@@ -421,5 +425,6 @@ Firebase is a very powerful tool for moving our databases to the cloud. The setu
 ***
 
 ### ADDITIONAL RESOURCES
-- [FireBase Real Time Database](https://firebase.google.com/docs/database/)
+- [FireBase RealTime Database](https://firebase.google.com/docs/database/)
+- [FireBase RealTime DataBase Android Setup](https://firebase.google.com/docs/database/android/start/)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
