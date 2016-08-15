@@ -26,12 +26,14 @@ When you send the message, it should immediately be synced to all users through 
 - Assign a random username when launching the app
 - Allow the user to send chat messages
 - Immediately sync chat messages to all users in the chatroom through Firebase
+- The user should have their username in a different color from all the other users!
 
 **Bonus:**
 - Allow the user to change their username
 - Allow the user to set a custom color for their username
 - Create multiple chat rooms
 
+There is [solution code](solution-code/FireBaseMessageRoom) but no starter code.
 
 #### Deliverable
 
