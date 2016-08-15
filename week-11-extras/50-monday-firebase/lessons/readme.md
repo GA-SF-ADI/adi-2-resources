@@ -107,141 +107,90 @@ Don't forget to add the INTERNET permission into your manifest file!
 <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
+## Writing data to the cloud
+
 Now we can write our very first item to firebase using the code below
 ```java
-// Write a message to the database
+// Grab a reference to our singleton database
 FirebaseDatabase database = FirebaseDatabase.getInstance();
-DatabaseReference myRef = database.getReference("message");
 
-myRef.setValue("Hello, World!");
+// Grab a reference that represents category "message". Really its more of a JSON object.
+DatabaseReference msgRef = database.getReference("message");
+
+// Write the string "Hello, World!" to the cloud's category "message" 
+msgRef.setValue("Hello, World!");
 ```
 In the first line, we get a reference to the Firebase singleton instance. Using the database instance on line 2, we can grab a reference to database category "message" which will hold messages for us in this case. The we can use that reference to write values to it and to the cloud using the `setValue()` method on line 3.
 
-> Check: Was everyone able to set it up correctly?
-
-***
-
-<a name="introduction"></a>
-## Introduction: Storing Data in Firebase (10 mins)
-
-As we mentioned before, data isn't stored in the same column structure we were used to in SQLite. Let's take a look at some sample data.
-
-<img src="./screenshots/screenshot2.png"/>
-
-> Ask the students what this reminds them of.
-
-This is just like JSON data, with nested data structures of key-value pairs. In fact, we can even export it as a json file.
-
-> Have the students discuss advantages and disadvantages to storing all of the data like this, in JSON form. (3 mins)
-
-This gives us great flexibility in terms of how we store the data, as well as quickly changing the details of the data, but we lose a lot of the structure and safety checks associated with a normal relational database.
-
-***
-
-<a name="demo"></a>
-## Demo: Retrieving Data (5 mins)
-
-We are going to allow the user to type in text into an EditText, and store it in Firebase.
-
-First, let's set up our TextView, and EditText, and a Button to submit the text.
-
-```xml
-<TextView
-        android:id="@+id/current_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_centerInParent="true"/>
-
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/current_text"/>
-
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_text"
-        android:text="Submit"/>
+If we look on the web console and refresh the data, we will see something that looks like
 ```
+message: "Hello, World!"
+```
+This means our app wrote the string "Hellow, World!" to the cloud!
 
-Now we need to set up our references to the views in our MainActivity.
+> Instructor note: Change the string value and re-run the app. Show the students that the value was updated.
+
+## Reading and Receiving Updates from Cloud
+
+Its great that we can write values to the cloud, what about receiving updates? If we changed the
+```
+message: "Hello, World!"
+```
+to 
+```
+message: "Hi, World!"
+```
+we want to receive these updates. Right now, if we changed the value we would not receive the update because *we aren't listening for it*.
+
+To listen for changes in the value for a certain "category" we need to add a `addValueEventListener()` to our category reference like so:
 
 ```java
-mCurrentText = (TextView) findViewById(R.id.current_text);
-mNewText = (EditText)findViewById(R.id.edit_text);
-mSubmitButton = (Button)findViewById(R.id.submit_button);
-```
+// Remember msgRef was defined above as:     DatabaseReference myRef = database.getReference("message");
 
-The next thing we need to do is create a Firebase object. This object is where most of our interaction with Firebase will be funneled through.
-
-```java
-Firebase mFirebaseRef;
-```
-
-```java
-mFirebaseRootRef = new Firebase("https://exampleappdrew.firebaseio.com");
-
-        Firebase firebaseCurrentTextRef = mFirebaseRootRef.child("currentText");
-```
-
-The `currentText` in the second line lets us select which node we want to access. If we wanted to, we could add "/currentText" onto the end of the URL, but then our access would be limited to that node.
-
-Just like with ClickListeners, Firebase has ValueEventListeners that listen for changes in data on the database.
-
-```java
-firebaseCurrentTextRef.addValueEventListener(new ValueEventListener() {
+// Add the value event listener to category for myRef
+msgRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-              String text = dataSnapshot.getValue(String.class);
-                mCurrentText.setText(text);
+                // DataSnapshot.getValue() is cast to String class and returned to us with updated value
+                String updatedMessage = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Updated message is: " + updatedMessage);
             }
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
-        });
+});
 ```
-
 `onDataChange` is triggered whenever data is changed on Firebase, and `onCancelled` is triggered when there is an error with the connection.
 
-Notice how we passed String.class to the getValue method. This is basically like casting the data being retrieved, but it works for **any Java object, even custom ones.**
+Now if you run the app again, our code will overwrite whatever value in the cloud with "Hellow, World!" because of the code we have above.
 
-Let's try it out!
+Go into the web console and update the
+```
+message: "Hello, World!"
+```
+to 
+```
+message: "Hi, World!"
+```
+Inside your app you should see a log statement with the updated string "Updated message is: Hi, World!".
 
-> Go to your browser and change the data manually
-
-That's all there is to reading data!
-
-> Check: Was everyone able to complete the demo?
 
 ***
 
 <a name="demo"></a>
-## Demo: Writing Data (5 mins)
+## Independent Practice: Read and Write Data (20 mins)
 
-Now let's complete the app by adding the ability to write data.
+Working off of the project you already created from the steps above ( if not, please do so first ) you want to add:
+- An editText
+- A TextView
+- A Button
 
-> Ask the students what we want to write, and how it will show up on our screen.
+Your task is to create a clickListener for the Button that will take in whatever text is inside the EditText and push it up to the cloud. You should also update your TextView whenever the value is updated in the cloud. Basically, whenever user changes EditText text and presses the button, the TextView will update from the cloud. But the TextView will also update whenever you ( the admin ) will update the value from the console as well.
 
-```java
-mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseCurrentTextRef.setValue(mNewText.getText().toString());
-            }
-        });java
-
-```
-
-Now everyone change their Firebase reference to point to my database. Now all of you can read and write to my database as well!
-
-> Check: What security problems could our current setup present?
+Feel free to use the "message" category or to create your very own category for this exercise.
 
 ***
 
