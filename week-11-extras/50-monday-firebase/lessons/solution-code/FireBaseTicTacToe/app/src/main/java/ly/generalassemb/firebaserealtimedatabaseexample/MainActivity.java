@@ -15,6 +15,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
+    private static final String BOX_1 = "box1";
+    private static final String BOX_2 = "box2";
+    private static final String BOX_3 = "box3";
+    private static final String BOX_4 = "box4";
+    private static final String BOX_5 = "box5";
+    private static final String BOX_6 = "box6";
+    private static final String BOX_7 = "box7";
+    private static final String BOX_8 = "box8";
+    private static final String BOX_9 = "box9";
+
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference gameRef;
 
@@ -66,31 +76,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateBoard(String key, String updatedValue){
         switch (key){
-            case "box1":
+            case BOX_1:
                 mBox1.setText(updatedValue);
                 break;
-            case "box2":
+            case BOX_2:
                 mBox2.setText(updatedValue);
                 break;
-            case "box3":
+            case BOX_3:
                 mBox3.setText(updatedValue);
                 break;
-            case "box4":
+            case BOX_4:
                 mBox4.setText(updatedValue);
                 break;
-            case "box5":
+            case BOX_5:
                 mBox5.setText(updatedValue);
                 break;
-            case "box6":
+            case BOX_6:
                 mBox6.setText(updatedValue);
                 break;
-            case "box7":
+            case BOX_7:
                 mBox7.setText(updatedValue);
                 break;
-            case "box8":
+            case BOX_8:
                 mBox8.setText(updatedValue);
                 break;
-            case "box9":
+            case BOX_9:
                 mBox9.setText(updatedValue);
                 break;
             default:
@@ -114,15 +124,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupEditTexts() {
-        mBox1.addTextChangedListener(new Watcher("/box1"));
-        mBox2.addTextChangedListener(new Watcher("/box2"));
-        mBox3.addTextChangedListener(new Watcher("/box3"));
-        mBox4.addTextChangedListener(new Watcher("/box4"));
-        mBox5.addTextChangedListener(new Watcher("/box5"));
-        mBox6.addTextChangedListener(new Watcher("/box6"));
-        mBox7.addTextChangedListener(new Watcher("/box7"));
-        mBox8.addTextChangedListener(new Watcher("/box8"));
-        mBox9.addTextChangedListener(new Watcher("/box9"));
+        mBox1.addTextChangedListener(new Watcher(BOX_1));
+        mBox2.addTextChangedListener(new Watcher(BOX_2));
+        mBox3.addTextChangedListener(new Watcher(BOX_3));
+        mBox4.addTextChangedListener(new Watcher(BOX_4));
+        mBox5.addTextChangedListener(new Watcher(BOX_5));
+        mBox6.addTextChangedListener(new Watcher(BOX_6));
+        mBox7.addTextChangedListener(new Watcher(BOX_7));
+        mBox8.addTextChangedListener(new Watcher(BOX_8));
+        mBox9.addTextChangedListener(new Watcher(BOX_9));
     }
 
     /**
@@ -133,7 +143,8 @@ public class MainActivity extends AppCompatActivity {
         private String refPath;
 
         public Watcher(String refPath) {
-            this.refPath = refPath;
+            // We have a slash denoting child here, ie /box1 or /box2, etc.
+            this.refPath = "/" + refPath;
         }
 
         @Override
