@@ -2,8 +2,8 @@
 title: Firebase
 duration: "1:25"
 creator:
-    name: Drew Mahrt
-    city: NYC
+    name: Drew Mahrt && Aleksandr Tomak
+    city: NYC && SF
 ---
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Firebase
@@ -42,7 +42,7 @@ Firebase is a quick way to store your app's data on the cloud in a structured, b
 
 In Firebase, you don't set up Columns, Data types, keys, etc. ahead of time. You simply add and modify the data on-the-fly. Some of the biggest features of Firebase are how fast it is, and how quickly it can automatically sync the data on your apps. As soon as changes are made online, all apps connected to your Firebase database are notified of the changes, and can update their view accordingly. This is not just limited to Android, but reflects across all platforms (iOS, web, etc.).
 
-[Let's watch a quick video.](https://www.youtube.com/watch?v=SLgHfH7KzXU)
+[Let's watch a quick video.](https://youtu.be/U5aeM5dvUpA?list=PLl-K7zZEsYLmOF_07IayrTntevxtbUxDL)
 
 > Check: Ask the students to discuss with each other (2 mins) ideas where Firebase could be used.
 
@@ -51,194 +51,218 @@ In Firebase, you don't set up Columns, Data types, keys, etc. ahead of time. You
 <a name="demo"></a>
 ## Demo: Setting Up Firebase (10 mins)
 
-Actually setting up Firebase is extremely simple. After creating a new Android Studio project, go to File -> Project Structure.
+The signup process is exactly the same as our **Google Player Services Lesson** that covered Firebase Analytics and Push notifications. 
 
-Then choose the Cloud tab, and check the box next to Firebase.
+<details>
+    <summary> Click here for a refresher of the steps </summary>
+**If you don't have an account**, sign up [here](https://firebase.google.com/).
 
-<img src="./screenshots/screenshot1.png"/>
+Next, open up the [console](https://console.firebase.google.com/) and press on the `create project` button and give you project a name. Then click `create project` once more. It will take a while to setup, then it should auto kick you into your created project, if not just click on it to load the next page.
 
-This automatically imports the necessary libraries with Gradle, and adds the Internet permission to the Manifest.
+Now, lets click on the `Add firebase to you Android App` button. You will have a popup asking for you project package name, lets come back to this.
 
-There are only two other steps you need to manually complete. First is to add the following code to your Gradle file under the android section. It stops any build errors from occurring if there are conflicting licensing files with other libraries.
+Create a new project inside Android Studio called FireBaseStorage. Once the project is created, open your `AndroidManifest.xml` to find your `package="somePackage"` at the top. We want the "somePackage" value for the popup.
 
-```xml
-packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE-FIREBASE.txt'
-        exclude 'META-INF/NOTICE'
-    }
+Come back to that popup we saw earlier. Paste your package path into the field and press `add app`. Your browser will then download a file `google-services.json`. We need to move this file into our android studio project. Follow the on screen instructions in the popup, they are self explanatory and provide a visual guide. Basically, you will switch from Android view to Project View, and paste the file into your `app/` folder. Once finished, press `continue` button on the web page.
+
+Follow step 1 and step 2 on the popup. You are adding the line below to your **project** gradle file.
+```
+classpath 'com.google.gms:google-services:3.0.0'
+```
+Then in your **app** gradle file you need to add the below line at the **very bottom of the file**, below the dependency clause.
+```
+apply plugin: 'com.google.gms.google-services'
 ```
 
-The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use that. A better solution is to enable Firebase to work with our app regardless of what activity the app is started with. To do this, we need to create a new Java file, extend Application, and add the following code to it. We also need to reference this file in the Manifest in the Application tag.
+Now we have setup firebase inside of our app and on the website! 
 
-```java
-@Override
-public void onCreate() {
-    super.onCreate();
-    Firebase.setAndroidContext(this);
+</details>
+
+Once you got firebase setup, make sure to go back to the web console and select the **DataBase / RealTime DataBase** tab on the left side. You will see a link at the bottom for [learn more](https://firebase.google.com/docs/database/) which points to the real time database documentation! 
+
+Documentation on how to use the real time database on [Android is here](https://firebase.google.com/docs/database/android/start/)
+
+On the RealTime Database view, you will see three tabs at the top. Data, Rules, and Usage. Press on the Rules section, and override the JSON there with this:
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
 }
 ```
 
+We just made our database **public**. This means **anyone** can read and write from it. It makes the demo easier to teach, however during production you should setup authentication for your users to get read/write access to the database. [Learn more about the process](https://firebase.google.com/docs/database/security/quickstart).
+
+## Setting up Android  
+
+The second step is to setup our Android project to use Firebase RealTime DataBase. Add the line below into your **app** level gradle file.
+```
+compile 'com.google.firebase:firebase-database:9.2.1'
+```
+Make sure to sync your gradle.
+
+Don't forget to add the INTERNET permission into your manifest file!
 ```xml
-android:name=".MyApplication"
+<uses-permission android:name="android.permission.INTERNET"/>
 ```
 
-> Check: Was everyone able to set it up correctly?
+## Writing data to the cloud
 
-***
+Now we can write our very first item to firebase using the code below
+```java
+// Grab a reference to our singleton database
+FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-<a name="introduction"></a>
-## Introduction: Storing Data in Firebase (10 mins)
+// Grab a reference that represents category "message". Really its more of a JSON object.
+DatabaseReference msgRef = database.getReference("message");
 
-As we mentioned before, data isn't stored in the same column structure we were used to in SQLite. Let's take a look at some sample data.
+// Write the string "Hello, World!" to the cloud's category "message" 
+msgRef.setValue("Hello, World!");
+```
+In the first line, we get a reference to the Firebase singleton instance. Using the database instance on line 2, we can grab a reference to database category "message" which will hold messages for us in this case. The we can use that reference to write values to it and to the cloud using the `setValue()` method on line 3.
 
-<img src="./screenshots/screenshot2.png"/>
+If we look on the web console and refresh the data, we will see something that looks like
+```
+message: "Hello, World!"
+```
+This means our app wrote the string "Hellow, World!" to the cloud!
 
-> Ask the students what this reminds them of.
+> Instructor note: Change the string value and re-run the app. Show the students that the value was updated.
 
-This is just like JSON data, with nested data structures of key-value pairs. In fact, we can even export it as a json file.
+## Reading and Receiving Updates from Cloud
 
-> Have the students discuss advantages and disadvantages to storing all of the data like this, in JSON form. (3 mins)
+Its great that we can write values to the cloud, what about receiving updates? If we changed the
+```
+message: "Hello, World!"
+```
+to 
+```
+message: "Hi, World!"
+```
+we want to receive these updates. Right now, if we changed the value we would not receive the update because *we aren't listening for it*.
 
-This gives us great flexibility in terms of how we store the data, as well as quickly changing the details of the data, but we lose a lot of the structure and safety checks associated with a normal relational database.
+To listen for changes in the value for a certain "category" we need to add a `addValueEventListener()` to our category reference like so:
+
+```java
+// Remember msgRef was defined above as:     DatabaseReference myRef = database.getReference("message");
+
+// Add the value event listener to category for myRef
+msgRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // DataSnapshot.getValue() is cast to String class and returned to us with updated value
+                String updatedMessage = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Updated message is: " + updatedMessage);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+});
+```
+`onDataChange` is triggered whenever data is changed on Firebase, and `onCancelled` is triggered when there is an error with the connection.
+
+Now if you run the app again, our code will overwrite whatever value in the cloud with "Hellow, World!" because of the code we have above.
+
+Go into the web console and update the
+```
+message: "Hello, World!"
+```
+to 
+```
+message: "Hi, World!"
+```
+Inside your app you should see a log statement with the updated string "Updated message is: Hi, World!".
+
 
 ***
 
 <a name="demo"></a>
-## Demo: Retrieving Data (5 mins)
+## Independent Practice: Read and Write Data (20 mins)
 
-We are going to allow the user to type in text into an EditText, and store it in Firebase.
+Working off of the project you already created from the steps above ( if not, please do so first ) you want to add:
+- An editText
+- A TextView
+- A Button
 
-First, let's set up our TextView, and EditText, and a Button to submit the text.
+Your task is to create a clickListener for the Button that will take in whatever text is inside the EditText and push it up to the cloud. You should also update your TextView whenever the value is updated in the cloud. Basically, whenever user changes EditText text and presses the button, the TextView will update from the cloud. But the TextView will also update whenever you ( the admin ) will update the value from the console as well.
 
-```xml
-<TextView
-        android:id="@+id/current_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_centerInParent="true"/>
+Feel free to use the "message" category or to create your very own category for this exercise.
 
-    <EditText
-        android:id="@+id/edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/current_text"/>
+***
 
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/edit_text"
-        android:text="Submit"/>
-```
+<a name="introduction"></a>
+## Introduction: Child Events (10 mins)
 
-Now we need to set up our references to the views in our MainActivity.
+The `ValueEventListener` that we just worked with is great for primitives and Objects, but if we want to work with things like lists of data, we want to use `ChildEventListener`. `ValueEventListener` passes back the **entire object** when a change is made, whereas `ChildEventListener` can give us the **individual items**.
 
+Lets try adding a `ChildEventListener` to our code. It starts off just like our `ValueEventListener`, but the autocomplete looks very different.
+
+<details>
+    <summary> Click here to see the code! </summary>
 ```java
-mCurrentText = (TextView) findViewById(R.id.current_text);
-mNewText = (EditText)findViewById(R.id.edit_text);
-mSubmitButton = (Button)findViewById(R.id.submit_button);
-```
-
-The next thing we need to do is create a Firebase object. This object is where most of our interaction with Firebase will be funneled through.
-
-```java
-Firebase mFirebaseRef;
-```
-
-```java
-mFirebaseRootRef = new Firebase("https://exampleappdrew.firebaseio.com");
-
-        Firebase firebaseCurrentTextRef = mFirebaseRootRef.child("currentText");
-```
-
-The `currentText` in the second line lets us select which node we want to access. If we wanted to, we could add "/currentText" onto the end of the URL, but then our access would be limited to that node.
-
-Just like with ClickListeners, Firebase has ValueEventListeners that listen for changes in data on the database.
-
-```java
-firebaseCurrentTextRef.addValueEventListener(new ValueEventListener() {
+ref.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-              String text = dataSnapshot.getValue(String.class);
-                mCurrentText.setText(text);
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildAdded: ");
             }
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildChanged: ");
+            }
 
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.i(TAG, "onChildRemoved: ");
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "onChildMoved: ");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(TAG, "onCancelled: " + databaseError.toException());
             }
         });
 ```
+</details>
 
-`onDataChange` is triggered whenever data is changed on Firebase, and `onCancelled` is triggered when there is an error with the connection.
+There are 5 methods that you must implement, each has its own task and use: 
+- onChildAdded(): Called when a child is added
+- onChildChanged(): Called when a child is updated/changed
+- onChildRemoved(): Called when a child is removed
+- onChildMoved(): Called when a child is moved to another position
+- onCancelled(): Called when there was an error connecting to server
 
-Notice how we passed String.class to the getValue method. This is basically like casting the data being retrieved, but it works for **any Java object, even custom ones.**
-
-Let's try it out!
-
-> Go to your browser and change the data manually
-
-That's all there is to reading data!
-
-> Check: Was everyone able to complete the demo?
-
-***
-
-<a name="demo"></a>
-## Demo: Writing Data (5 mins)
-
-Now let's complete the app by adding the ability to write data.
-
-> Ask the students what we want to write, and how it will show up on our screen.
-
-```java
-mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseCurrentTextRef.setValue(mNewText.getText().toString());
-            }
-        });java
-
-```
-
-Now everyone change their Firebase reference to point to my database. Now all of you can read and write to my database as well!
-
-> Check: What security problems could our current setup present?
-
-***
-
-<a name="introduction"></a>
-## Introduction: Child Events (5 mins)
-
-The ValueEvents that we just worked with are great for primitives and Objects, but if we want to work with things like lists of data, we want to use ChildEvents. ValueEvents passes back the entire object when a change is made, whereas ChildEvents can give us the individual items.
-
-***
-
-<a name="demo"></a>
-## Demo: Child Events (5 mins)
-
-Lets try adding a ChildEventListener to our code. It starts off just like our ValueEventListener, but the autocomplete looks very different.
-
-> Walk through the methods with the students. Remember that onChildAdded is called when pulling down existing data.
 
 ***
 
 <a name="guided-practice"></a>
 ## Guided Practice: Binding data to a ListView (10 mins)
 
-Let's take our knowledge of ChildEvents and apply it to a ListView.
+Let's take our knowledge of ChildEvents and apply it to a ListView. In the last independent practice, you created an EditText, TextView and Button and hooked them all up.
+
+We will build off of that idea, but we'll need one more edit text.
+
+We will have a `Student` class that has `String name` and `String lastName` fields. We will also createa a `Classroom` class that will have `ArrayList<Student> students` field.
+
+The idea is to create a new Student every time the button is pressed by using info from both editTexts and add it to the DB. Then, using the `ChildEventListener` we can show the newly added student inside of a list view!
 
 > Prompt the students to help complete these steps.
 
+0. Create one more edit text for last name, and create reference to it in our MainActivity
 1. add a ListView to the app, and create a reference to it in our MainActivity.
-2. Create an ArrayList to hold our data
+2. Create some students and a Classroom that these students will be added to.
 3. Create an ArrayAdapter
 4. Add messages when onChildAdded is called, and call notifyDataSetChanged
 
+`activity_main.xml` not showing the TextView, EditText, and Button
 ```xml
 <ListView
         android:id="@+id/list"
@@ -249,14 +273,14 @@ Let's take our knowledge of ChildEvents and apply it to a ListView.
 
 ```java
 public class MainActivity extends AppCompatActivity {
-    TextView mCurrentText;
-    EditText mNewText;
-    Button mSubmitButton;
-    ListView mListView;
+    private TextView mCurrentText;
+    private EditText mNewText;
+    private Button mSubmitButton;
+    private ListView mListView;
 
-    Firebase mFirebaseRootRef;
+    private Firebase mFirebaseRootRef;
 
-    ArrayList<String> mMessages;
+    private ArrayList<String> mMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -333,13 +357,12 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
+
 One last note: To add values to a list with auto-generated keys, you use the following code:
-
 ```java
-firebaseMessageRef.push().setValue("test insert2");
+ref.push().setValue("test insert2");
 ```
-
-> Check: Were students able to successfully solve the problem or complete the task?
+We use the `push()` before the `setValue()` to give an auto generated key for the key value pair. The auto generated key will act as a JSON object name and the value will be the object you inserted.
 
 ***
 
@@ -400,5 +423,7 @@ Firebase is a very powerful tool for moving our databases to the cloud. The setu
 ***
 
 ### ADDITIONAL RESOURCES
-- [Firebase Quickstart](https://www.firebase.com/docs/android/quickstart.html)
+- [FireBase RealTime Database](https://firebase.google.com/docs/database/)
+- [FireBase RealTime DataBase Android Setup](https://firebase.google.com/docs/database/android/start/)
+- [FireBase Child Events, Read Data, Sort it, Filter it, etc](https://firebase.google.com/docs/database/android/retrieve-data)
 - [Firebase UI](https://github.com/firebase/FirebaseUI-Android)
