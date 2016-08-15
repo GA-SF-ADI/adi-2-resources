@@ -78,6 +78,7 @@ Now we have setup firebase inside of our app and on the website!
 
 </details>
 
+## Setting up Android  
 
 The second step is to set the context Firebase is going to work in. Often, we work directly with the Activity's context, so we could set up Firebase to use the Activity context. 
 
