@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="gg.patrickcummins.myapplication.Activitys.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/raidersImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/choose_a_team"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/raidersImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/warriorsImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:src="@drawable/raiders" />
+
+    <ImageView
+        android:id="@+id/warriorsImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:src="@drawable/warriors" />
+
+    <ImageView
+        android:id="@+id/sharksImageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/warriorsImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:src="@drawable/sharks" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cartFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:src="@drawable/ic_shopping_cart_black_24dp" />
+
+    <Button
+        android:id="@+id/purchaseHistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:backgroundTint="@color/warriorAccent"
+        android:text="Purchase History"
+        android:textColor="@color/raiderPrimaryDark" />
+
+
+</RelativeLayout>

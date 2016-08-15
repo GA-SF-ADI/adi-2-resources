@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_jersey"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="gg.patrickcummins.myapplication.Activitys.JerseyActivity">
+
+    <ImageView
+        android:id="@+id/jerseyImageView"
+        android:layout_width="@dimen/jersey_picture"
+        android:layout_height="@dimen/jersey_picture"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:src="@drawable/klay_thompson_white" />
+
+    <TextView
+        android:id="@+id/playerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jerseyImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:text="Player Name"
+
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/player_name_text_size" />
+
+    <TextView
+        android:id="@+id/playerNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerNameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:text="#00"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/player_name_text_size" />
+
+    <TextView
+        android:id="@+id/chooseAColorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/playerNumberTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:text="Choose A Color"
+        android:textColor="@color/colorPrimary" />
+
+    <LinearLayout
+        android:id="@+id/colorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseAColorTextView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/jersey1"
+            android:layout_width="@dimen/jersey_select"
+            android:layout_height="@dimen/jersey_select"
+            android:layout_below="@id/chooseAColorTextView"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimary"
+            android:textSize="30sp"
+
+            />
+
+        <TextView
+            android:id="@+id/jersey2"
+            android:layout_width="@dimen/jersey_select"
+            android:layout_height="@dimen/jersey_select"
+            android:layout_below="@id/chooseAColorTextView"
+            android:layout_margin="@dimen/margin_5dp"
+            android:layout_toRightOf="@id/jersey1"
+            android:background="@drawable/black_border"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimaryDark"
+            android:textSize="30sp"
+
+            />
+
+        <TextView
+            android:id="@+id/jersey3"
+            android:layout_width="@dimen/jersey_select"
+            android:layout_height="@dimen/jersey_select"
+            android:layout_below="@id/chooseAColorTextView"
+            android:layout_margin="@dimen/margin_5dp"
+            android:layout_toRightOf="@id/jersey2"
+            android:background="@android:color/black"
+            android:gravity="center"
+            android:textColor="@color/raiderPrimary"
+            android:textSize="30sp"
+
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/chooseASizeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/colorLayout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/choose_a_size"
+        android:textColor="@color/colorPrimary" />
+
+    <LinearLayout
+        android:id="@+id/sizeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseASizeTextView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/extraSmallTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:gravity="center"
+            android:text="XS"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/smallTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/mediumTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:gravity="center"
+            android:text="M"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/largeTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:gravity="center"
+            android:text="L"
+            android:textColor="@color/raiderPrimaryDark" />
+
+        <TextView
+            android:id="@+id/extraLargeTextView"
+            android:layout_width="@dimen/size_text_view"
+            android:layout_height="@dimen/size_text_view"
+            android:layout_margin="@dimen/margin_5dp"
+            android:background="@color/raiderAccent"
+            android:gravity="center"
+            android:text="XL"
+            android:textColor="@color/raiderPrimaryDark" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sizeLayout"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/enter_a_quantity"
+        android:inputType="number"
+        android:maxLength="3" />
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantityEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:text="Price: $00"
+        android:textColor="@color/colorAccent" />
+
+
+    <Button
+        android:id="@+id/addToCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priceTextView"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/sharkAccent"
+        android:text="@string/add_to_cart" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cartFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_5dp"
+        android:src="@drawable/ic_shopping_cart_black_24dp" />
+
+</RelativeLayout>

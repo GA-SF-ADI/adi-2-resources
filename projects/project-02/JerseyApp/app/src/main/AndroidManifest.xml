@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="gg.patrickcummins.myapplication">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <service android:name=".CaChingService"/>
+        <activity android:name=".Activitys.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activitys.RostersActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activitys.JerseyActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Activitys.CartActivity" />
+        <activity android:name=".Activitys.PurchaseHistoryActivity"></activity>
+
+    </application>
+
+</manifest>

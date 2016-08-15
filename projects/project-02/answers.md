@@ -1,0 +1,2 @@
+1)An intenet service is handled and then closed, a bound service must be unbound from all activities it was bound to before being closed, and a normal service is run until it is told to stop.
+2)Sending data, downloading data, playing music.
