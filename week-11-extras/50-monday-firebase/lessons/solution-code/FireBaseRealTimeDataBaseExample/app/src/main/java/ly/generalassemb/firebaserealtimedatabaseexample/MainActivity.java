@@ -114,7 +114,12 @@ public class MainActivity extends AppCompatActivity {
         // Write classroom to DB. We start with an empty classroom
         classRef.setValue(classroom);
 
-        // Create a Child event listener listener for when a Student was updated individually inside the classroom
+        /**
+         * Child event listener for "classroom" category will Listen for when the
+         * ArrayList<Student> students changes!
+         *
+         * That means the whole list is returned, not an individual item.
+         */
         classRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -147,6 +152,51 @@ public class MainActivity extends AppCompatActivity {
 
                 Iterator<DataSnapshot> it = dataSnapshot.getChildren().iterator();
                 printStudents(it, "Moved Students");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.i(TAG, "onCancelled: " + databaseError.toException());
+            }
+        });
+
+        /**
+         * classRef.child("students") gives us category "students" inside the "classroom" category,
+         * which means that when a change is made we get each updated student individually.
+         *
+         * "students" is the ArrayList<Student> students which is why we do child("students").
+         */
+        classRef.child("students").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "Single Student - onChildAdded");
+
+                Student newStudent = dataSnapshot.getValue(Student.class);
+                printStudent("\tAdded student", newStudent);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "Single Student - onChildChanged");
+
+                Student changedStudent = dataSnapshot.getValue(Student.class);
+                printStudent("\tUpdated student", changedStudent);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.i(TAG, "Single Student - onChildRemoved");
+
+                Student removedStudent = dataSnapshot.getValue(Student.class);
+                printStudent("\tRemoved student", removedStudent);
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                Log.i(TAG, "Single Student - onChildMoved");
+
+                Student movedStudent = dataSnapshot.getValue(Student.class);
+                printStudent("\tMoved student", movedStudent);
             }
 
             @Override
