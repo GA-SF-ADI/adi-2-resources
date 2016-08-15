@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Shop TP</string>
+    <string name="action_menu">Menu</string>
+    <string name="action_cart">Shopping Cart</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search for toilet paper</string>
+    <array name="searchTitles">
+        <item>Charmin</item>
+        <item>Scott</item>
+        <item>Angel Soft</item>
+        <item>Cottonelle</item>
+        <item>Quilted Northern</item>
+        <item>Sale Items</item>
+    </array>
+</resources>
