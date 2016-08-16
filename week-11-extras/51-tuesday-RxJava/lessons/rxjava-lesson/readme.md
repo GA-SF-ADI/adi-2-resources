@@ -346,7 +346,7 @@ service.getUser(login)
 ```
 > Answer: it uses the getUser method of the GitHub interface to return an Observable.
 
-Now, we cnain the method calls to get the REST response:
+Now, we use the method calls to get the REST response:
 
 ```java
 .subscribeOn(Schedulers.newThread())
