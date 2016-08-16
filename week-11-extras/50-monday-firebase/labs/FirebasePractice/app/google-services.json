@@ -36,37 +36,6 @@
           "status": 2
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:167739702387:android:9e2ed4c4b7ddd973",
-        "android_client_info": {
-          "package_name": "ly.generalassemb.firebaserealtimedatabaseexample"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "167739702387-tv7l16hp691mitq5qpksdsc5i8956gj0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCY0v6C9ODyBRzzpUSz6Ec0IcRkHIbzdvg"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
     }
   ],
   "configuration_version": "1"

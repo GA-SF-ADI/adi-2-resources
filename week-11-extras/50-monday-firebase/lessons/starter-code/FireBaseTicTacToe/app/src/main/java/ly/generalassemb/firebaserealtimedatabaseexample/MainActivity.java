@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // TODO Setup your firebase and game category reference
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        gameRef = firebaseDatabase.getReference("tictac");
 
         setupViews();
         setupGameUpdates();
@@ -37,6 +43,32 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupGameUpdates() {
 
+        gameRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         // TODO ChildEventListener
 
         // Hint dataSnapshot.getKey() returns the key for this snapshot
@@ -94,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupEditTexts() {
         // TODO: Listen for changes in EditText and pass them up to DB
+
     }
 
 }
