@@ -153,7 +153,7 @@ Observable.just(11, 24 , 18).subscribe(new Subscriber() {
 });
 ```
 
-> Check: what is the output? ` onNext: 1 onNext: 2 onNext: 3 Complete!`
+> Check: what is the output? ` onNext: 11 onNext: 24 onNext: 18 Complete!`
 
 ## Using Operators (20 mins)
 
