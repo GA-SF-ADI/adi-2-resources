@@ -81,7 +81,7 @@ The output would be
 
 [Solution](solutions/strings/ZeroMatrix.java)
 
-### 10: Given an array of ints move all non zero numbers to the left and zeros to the right. How can you now improve your answer to O(n)? 
+### 10. Given an array of ints move all non zero numbers to the left and zeros to the right. How can you now improve your answer to O(n)? 
 
 For example, if the input was 
 ```
@@ -92,11 +92,11 @@ The output would be
 [6, 4, 5, 1, 0, 0, 0, 0, 0]
 ```
 
-[Solution](/solutions/arrays/MoveValuesToRight.java)
+[Solution](solutions/arrays/MoveValuesToRight.java)
 
 ## Linked Lists: 
 
-### 11: What is the difference between an ArrayList and LinkedList? Implement your own CustomLinkedListImplementation class. 
+### 11. What is the difference between an ArrayList and LinkedList? Implement your own CustomLinkedListImplementation class. 
 [Solution](solutions/linked-lists/CustomLinkedListImplementation.java)
 
 
@@ -106,7 +106,7 @@ As a method of your CustomLinkedList, create a getKthFromLast(int k) method that
 
 [Solution](solutions/linked-lists/KthToLast.java)
 
-### 13: Check if there is a loop
+### 13. Check if there is a loop
 
 Go through your CustomLinkedList and check if there is a loop inside of it. Make sure that your list has a start and an end instead of going in circles for infinity. 
 
