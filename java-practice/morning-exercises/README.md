@@ -81,14 +81,26 @@ The output would be
 
 [Solution](solutions/strings/ZeroMatrix.java)
 
+### 10: Given an array of ints move all non zero numbers to the left and zeros to the right. How can you now improve your answer to O(n)? 
+
+For example, if the input was 
+```
+[6, 4, 0, 5, 0, 0, 0, 1, 0]
+```
+The output would be
+```
+[6, 4, 5, 1, 0, 0, 0, 0, 0]
+```
+
+[Solution](/solutions/arrays/MoveValuesToRight.java)
 
 ## Linked Lists: 
 
-### 10: What is the difference between an ArrayList and LinkedList? Implement your own CustomLinkedListImplementation class. 
+### 11: What is the difference between an ArrayList and LinkedList? Implement your own CustomLinkedListImplementation class. 
 [Solution](solutions/linked-lists/CustomLinkedListImplementation.java)
 
 
-### 11: Return the Kth to last element of a LinkedList
+### 12: Return the Kth to last element of a LinkedList
 
 As a method of your CustomLinkedList, create a getKthFromLast(int k) method that returns the kth from last element in your list. As a bonus, try to do this in only one go through of your list (as in, don't just go through it to find how many there are in the list and then go through it again and get the kth from last one). 
 
