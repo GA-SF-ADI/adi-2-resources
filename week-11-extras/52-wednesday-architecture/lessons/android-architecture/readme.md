@@ -40,7 +40,7 @@ The Android architecture is roughly divided into about 5 sections. Let's take a 
 
 ## Linux Kernel (5 mins)
 
-At the base of the Android architecture is a Linux platform. This is an interface to hardware and it contains all the essential hardware drivers. These include the keypad, dipslay, camera, sensors on more advanced smartphones (pressure, motion etc). The kernel also takes care of networking and device drivers.
+At the base of the Android architecture is a Linux platform. This is an interface to hardware and it contains all the essential hardware drivers. These include the keypad, display, camera, sensors on more advanced smartphones (pressure, motion etc). The kernel also takes care of networking and device drivers.
 
 ## Android Libraries (10 mins)
 
@@ -59,7 +59,7 @@ In addition, there are Android specific libraries. These include things like _an
 
 ## Android Runtime (10 mins)
 
-Android Runtime contains a very important component known as the Dalvik Virtual Machine (named by Dan Bornstein after a village in Iceland. It's a Java VM, and it is specifically made for Android.
+Android Runtime contains a very important component known as the Dalvik Virtual Machine (named by Dan Bornstein after a village in Iceland). It's a Java VM, and it is specifically made for Android.
 
 The Dalvik VM uses Linux core memory management. It also uses Linux-based multi-threading. These are very important to Java and the DVM allows each Android application to run its own process, with it's own VM instance.
 
