@@ -2,6 +2,9 @@ package com.example.hollis.gson_example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
     public static final String SPOTIFY_JSON = "{\n" +
@@ -104,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
             "  } ]\n" +
             "}";
     public static final String WEATHER_JSON = "{\"query\":{\"count\":1,\"created\":\"2016-07-18T19:09:28Z\",\"lang\":\"en-US\",\"results\":{\"channel\":{\"units\":{\"distance\":\"mi\",\"pressure\":\"in\",\"speed\":\"mph\",\"temperature\":\"F\"},\"title\":\"Yahoo! Weather - Nome, AK, US\",\"link\":\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/\",\"description\":\"Yahoo! Weather for Nome, AK, US\",\"language\":\"en-us\",\"lastBuildDate\":\"Mon, 18 Jul 2016 11:09 AM AKDT\",\"ttl\":\"60\",\"location\":{\"city\":\"Nome\",\"country\":\"United States\",\"region\":\" AK\"},\"wind\":{\"chill\":\"46\",\"direction\":\"270\",\"speed\":\"11\"},\"atmosphere\":{\"humidity\":\"100\",\"pressure\":\"1017.0\",\"rising\":\"0\",\"visibility\":\"4.3\"},\"astronomy\":{\"sunrise\":\"0:52 am\",\"sunset\":\"5:22 am\"},\"image\":{\"title\":\"Yahoo! Weather\",\"width\":\"142\",\"height\":\"18\",\"link\":\"http://weather.yahoo.com\",\"url\":\"http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif\"},\"item\":{\"title\":\"Conditions for Nome, AK, US at 10:00 AM AKDT\",\"lat\":\"64.499474\",\"long\":\"-165.405792\",\"link\":\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/\",\"pubDate\":\"Mon, 18 Jul 2016 10:00 AM AKDT\",\"condition\":{\"code\":\"12\",\"date\":\"Mon, 18 Jul 2016 10:00 AM AKDT\",\"temp\":\"50\",\"text\":\"Rain\"},\"forecast\":[{\"code\":\"11\",\"date\":\"18 Jul 2016\",\"day\":\"Mon\",\"high\":\"55\",\"low\":\"49\",\"text\":\"Showers\"},{\"code\":\"12\",\"date\":\"19 Jul 2016\",\"day\":\"Tue\",\"high\":\"53\",\"low\":\"50\",\"text\":\"Rain\"},{\"code\":\"11\",\"date\":\"20 Jul 2016\",\"day\":\"Wed\",\"high\":\"54\",\"low\":\"50\",\"text\":\"Showers\"},{\"code\":\"11\",\"date\":\"21 Jul 2016\",\"day\":\"Thu\",\"high\":\"54\",\"low\":\"49\",\"text\":\"Showers\"},{\"code\":\"34\",\"date\":\"22 Jul 2016\",\"day\":\"Fri\",\"high\":\"62\",\"low\":\"51\",\"text\":\"Mostly Sunny\"},{\"code\":\"28\",\"date\":\"23 Jul 2016\",\"day\":\"Sat\",\"high\":\"55\",\"low\":\"48\",\"text\":\"Mostly Cloudy\"},{\"code\":\"39\",\"date\":\"24 Jul 2016\",\"day\":\"Sun\",\"high\":\"54\",\"low\":\"52\",\"text\":\"Scattered Showers\"},{\"code\":\"26\",\"date\":\"25 Jul 2016\",\"day\":\"Mon\",\"high\":\"54\",\"low\":\"52\",\"text\":\"Cloudy\"},{\"code\":\"26\",\"date\":\"26 Jul 2016\",\"day\":\"Tue\",\"high\":\"54\",\"low\":\"48\",\"text\":\"Cloudy\"},{\"code\":\"12\",\"date\":\"27 Jul 2016\",\"day\":\"Wed\",\"high\":\"53\",\"low\":\"45\",\"text\":\"Rain\"}],\"description\":\"<![CDATA[<img src=\\\"http://l.yimg.com/a/i/us/we/52/12.gif\\\"/>\\n<BR />\\n<b>Current Conditions:</b>\\n<BR />Rain\\n<BR />\\n<BR />\\n<b>Forecast:</b>\\n<BR /> Mon - Showers. High: 55Low: 49\\n<BR /> Tue - Rain. High: 53Low: 50\\n<BR /> Wed - Showers. High: 54Low: 50\\n<BR /> Thu - Showers. High: 54Low: 49\\n<BR /> Fri - Mostly Sunny. High: 62Low: 51\\n<BR />\\n<BR />\\n<a href=\\\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2460286/\\\">Full Forecast at Yahoo! Weather</a>\\n<BR />\\n<BR />\\n(provided by <a href=\\\"http://www.weather.com\\\" >The Weather Channel</a>)\\n<BR />\\n]]>\",\"guid\":{\"isPermaLink\":\"false\"}}}}}}";
-//TODO: Create a SpotifyObject that mirrors the string
+
+
     //TODO: Create a WeatherObject that mirrors the weather JSON String
     public  MarvelResult marvelResult;
     //TODO: Create a String that mirrors the marvelResult object
@@ -115,8 +119,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createMarvelResult();
 
-
-
+        Gson gson = new Gson();
+        final Weather weather = gson.fromJson(WEATHER_JSON, Weather.class);
+        weather.getQuery().getResults().getChannel().getAstronomy().getSunrise();
+        Log.d("MainActivity", "onCreate: info" + weather.getQuery().getResults().getChannel().getAstronomy().getSunrise());
     }
 
     public void createMarvelResult(){

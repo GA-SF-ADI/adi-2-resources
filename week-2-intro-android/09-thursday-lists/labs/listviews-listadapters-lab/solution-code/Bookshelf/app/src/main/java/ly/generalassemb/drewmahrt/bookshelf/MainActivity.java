@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         mBookListView = (ListView)findViewById(R.id.book_list_view);
-        mBookListView.setAdapter(mTitleAdapter);
+        mBookListView.setAdapter(mAuthorAdapter);
 
         Button titleSortButton = (Button)findViewById(R.id.sort_title_button);
         Button authorSortButton = (Button)findViewById(R.id.sort_author_button);
@@ -166,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Collections.sort(mBookList,new ComparatorAuthor());
-                mBookListView.setAdapter(mAuthorAdapter);
-                mAuthorAdapter.notifyDataSetChanged();
+                mBookListView.setAdapter(mTitleAdapter);
+                mTitleAdapter.notifyDataSetChanged();
             }
         });
 
@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Collections.sort(mBookList,new ComparatorYear());
-                mBookListView.setAdapter(mYearAdapter);
-                mYearAdapter.notifyDataSetChanged();
+                mBookListView.setAdapter(mTitleAdapter);
+                mTitleAdapter.notifyDataSetChanged();
             }
         });
     }
