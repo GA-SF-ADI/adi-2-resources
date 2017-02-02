@@ -27,6 +27,9 @@ public interface InstaGramService {
      * @param code authorization code
      * @return
      */
+
+    //STEP 4: these will be passed in as Strings but they could be made into a variable
+    //they are only being used once
     @FormUrlEncoded
     @POST("oauth/access_token")
     Call<AuthenticationResponse> postAccessCode(
@@ -42,6 +45,9 @@ public interface InstaGramService {
      * @param token
      * @return
      */
+
+    // this comes from https://www.instagram.com/developer/endpoints/users/
+    //v1 just stands for version 1
     @GET("v1/users/self/media/recent/")
     Call<RecentMedia> getImage(@Query("access_token") String token);
 }

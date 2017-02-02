@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
         mImage = (ImageView)findViewById(R.id.image);
 
-
-        mAccessToken = // TODO assign value;
+//STEP 7:this token is necessary for any API call! user is optional
+        mAccessToken = getIntent().getStringExtra(LoginActivity.INTENT_KEY_TOKEN);// TODO assign value;
 
 
         // TODO: Make the getImage() api call using accessToken
@@ -36,11 +36,32 @@ public class MainActivity extends AppCompatActivity {
         // TODO: In onResponse() you can use Picasso to load image from url into mImage ImageView
 
         // TODO: Use image url and pass to picasso like so.
-        //Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
+                //STEP 8:
+        instaGramService.getImage(mAccessToken).enqueue(new retrofit2.Callback<RecentMedia>() {
+            @Override
+            public void onResponse(retrofit2.Call<RecentMedia> call, retrofit2.Response<RecentMedia> response) {
+                RecentMedia recentMedia = response.body();
+                // STEP 9: follow the path until you can get the URL
+                //getData()[0] returns the first thing... only 1 image... the last image posted
+                final String imageUrl = recentMedia.getData()[0].getImages().getStandard_resolution().getUrl();
+
+                Log.i(TAG, "onResponse imageUrl: " + imageUrl);
+                MainActivity.this.runOnUiThread(new Runnable(){
+                    @Override
+                    public void run() {
+                        Picasso.with(MainActivity.this).load(imageUrl).into(mImage);                        }
+                });
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<RecentMedia> call, Throwable t) {
+
+            }
+        });
+    }
 
         // HINT: Use RecentMedia model to get image url
 
-    }
 
     private void setupApiService(){
         // Create retrofit instance with a base url and GsonConverter
