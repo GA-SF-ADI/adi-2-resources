@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NetworkingLab</string>
+    <string name="fetch_weather">Fetch Weather</string>
+    <string name="enter_city">Enter City</string>
+</resources>
