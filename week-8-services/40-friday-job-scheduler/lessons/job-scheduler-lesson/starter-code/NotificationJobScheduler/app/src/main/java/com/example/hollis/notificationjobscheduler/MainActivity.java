@@ -1,16 +1,9 @@
 package com.example.hollis.notificationjobscheduler;
 
-import android.annotation.TargetApi;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
-import java.lang.annotation.Target;
 
 public class MainActivity extends AppCompatActivity {
     Button startJobButton, stopJobButton;
