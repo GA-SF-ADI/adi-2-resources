@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ly.generalassemb.serviceexample">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +18,27 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".CustomService"
+            android:exported="false" />
         <!-- Add service to manifest, but do not allow other apps to discover the service -->
 
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ThirdActivity"
+            android:label="@string/title_activity_third"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FourthActivity"
+            android:label="@string/title_activity_fourth"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReadContactsActivity"
+            android:label="@string/title_activity_read_contacts"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
