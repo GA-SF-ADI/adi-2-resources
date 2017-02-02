@@ -1,13 +1,13 @@
-Problem 1:
+Problem 1: - O(n)
 
 func insertionSort( var a as array )
-    for i from 1 to N
+    for i from 1 to N 
         for j from i to 1
             if a[j] < a[j-1]
                 swap a[j] and a[j-1]
 end func
 
-Problem 2:
+Problem 2: - O(n)
 
 func mergeSort( var a as array )
      if ( n == 1 ) return a
@@ -40,7 +40,7 @@ func merge( var a as array, var b as array )
      return c
 end func
 
-Problem 3:
+Problem 3: - O(n2)
 
 int i,j;
 

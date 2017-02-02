@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CustomViewSample</string>
+    <string name="reset_button">Reset</string>
+</resources>

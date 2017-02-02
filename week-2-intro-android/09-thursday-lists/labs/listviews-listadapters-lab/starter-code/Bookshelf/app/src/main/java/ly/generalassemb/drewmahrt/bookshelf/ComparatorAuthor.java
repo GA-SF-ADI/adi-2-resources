@@ -9,6 +9,7 @@ public class ComparatorAuthor implements Comparator<Book> {
 
     @Override
     public int compare(Book lhs, Book rhs) {
+            return lhs.getAuthor().compareTo(rhs.getAuthor());
         //TODO: Write the comparison for the authors
     }
 }
