@@ -22,20 +22,25 @@
         android:layout_below="@id/button_start"
         android:text="Stop Service"/>
 
-    <Button
-        android:id="@+id/button_start_intent_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/button_stop"
-        android:text="Start IntentService"/>
 
     <Button
-        android:id="@+id/button_stop_intent_service"
+        android:id="@+id/button_activity_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_start_intent_service"
-        android:text="Stop IntentService"/>
+        android:layout_below="@id/button_stop"
+        android:text="Activity Two"/>
+    <Button
+        android:id="@+id/button_activity_three"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_activity_two"
+        android:text="Activity Three"/>
+    <Button
+        android:id="@+id/button_activity_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_activity_three"
+        android:text="Activity Four"/>
 
 
 </RelativeLayout>

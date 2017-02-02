@@ -1,0 +1,134 @@
+package ly.generalassemb.serviceexample;
+
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.ContentResolver;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class ReadContactsActivity extends AppCompatActivity {
+    private ListView contactslistView;
+    private Button showContactsButton;
+    private ArrayAdapter arrayAdapter;
+    private ArrayList<String> contacts;
+    private static final String column = ContactsContract.Contacts.DISPLAY_NAME;
+    private static final String CONTACTS_PERMISSION = Manifest.permission.READ_CONTACTS;
+    private static final int PERMISSION_REQUEST_CODE = 1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_read_contacts);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setUpViews();
+        setUpListView();
+
+    }
+
+    private void setUpViews() {
+        showContactsButton = (Button) findViewById(R.id.contacts_button);
+        showContactsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    private void setUpListView() {
+        contacts = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, contacts);
+
+        contactslistView = (ListView) findViewById(R.id.contact_list_view);
+        contactslistView.setAdapter(arrayAdapter);
+    }
+
+    ;
+
+    public Cursor getContactsCursor() {
+        Cursor cursor = null;
+        if (permissionExists()) {
+
+            ContentResolver contentResolver = getContentResolver();
+            Uri contentUri = ContactsContract.Contacts.CONTENT_URI;
+            cursor = contentResolver.query(contentUri, null, null, null, null);
+        } else {
+            requestUserForPermission();
+        }
+        return cursor;
+    }
+
+    private void showContacts() {
+        Cursor cursor = getContactsCursor();
+        if (cursor == null) {
+            Toast.makeText(this, "No contacts found", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // Erase old contacts from list
+        contacts.clear();
+
+        // Loop through every contact in the phone
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex(column));
+            contacts.add(name);
+        }
+        arrayAdapter.notifyDataSetChanged();
+    }
+
+    @TargetApi(23)
+    private void requestUserForPermission() {
+        int currentApiVersion = android.os.Build.VERSION.SDK_INT;
+        if (currentApiVersion < Build.VERSION_CODES.M) {
+            // This OS version is lower then Android M, therefore we have old permission model and should not ask for permission
+            return;
+        }
+        String[] permissions = new String[]{CONTACTS_PERMISSION};
+        requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+    }
+
+    @TargetApi(23)
+    private boolean permissionExists() {
+        int currentApiVersion = Build.VERSION.SDK_INT;
+        if (currentApiVersion < Build.VERSION_CODES.M) {
+            return true;
+        }
+        int granted = checkSelfPermission(CONTACTS_PERMISSION);
+        if (granted == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode){
+            case PERMISSION_REQUEST_CODE:
+                if (permissions.length < 0){
+                    return;
+                }
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // contacts permission was granted! Let's populate the listview.
+                    showContacts();
+                } else {
+                    // contactss permission was denied, lets warn the user that we need this permission!
+                    Toast.makeText(getApplicationContext(), "You need to grant contacts permission", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+}
