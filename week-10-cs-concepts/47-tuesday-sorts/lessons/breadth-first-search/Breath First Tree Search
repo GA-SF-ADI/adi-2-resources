@@ -1,0 +1,5 @@
+Breath First Tree Search
+
+1. In English, describe how you would use breadth first search to find any node with a given value. Your algorithm should assume you have a tree data structure and that you can access each node's value and its array of children (do not assume it's a binary tree which has only 2 children). You can assume you're given a target value to find.
+
+I would use breadth first search to find a node by searching level by level, left to right. For example, if I were looking through a tree for the value of 7, I could use a queue to store nodes as I traveled through the tree. If the root node was A, that node would enter the queue first. It would then check if the value of A is equal to seven. If it is, then the search can stop. If not, A is popped out of the queue and its children are added next. They are "popped" and their values are then checked to see if they match the value that is being searching for. If not, their children are added to to queue. This process will continue until the value is found or the whole tree will be searched and determine that it does not contain this value.
