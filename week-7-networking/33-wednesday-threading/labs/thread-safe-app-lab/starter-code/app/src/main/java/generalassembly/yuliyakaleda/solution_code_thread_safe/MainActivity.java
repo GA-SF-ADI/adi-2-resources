@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity{
     if (requestCode == PICK_IMAGE_REQUEST && resultCode == MainActivity.RESULT_OK && null != data) {
       Uri selectedImage = data.getData();
       //TODO: Create the async task and execute it
+        new ImageProcessingAsyncTask().execute(selectedImage);
+
     }
   }
 
@@ -62,11 +64,11 @@ public class MainActivity extends AppCompatActivity{
   }
 
   //TODO: Fill in the parameter types
-  private class ImageProcessingAsyncTask extends AsyncTask<> {
+  private class ImageProcessingAsyncTask extends AsyncTask<Uri,Integer,Bitmap> {
 
     //TODO: Fill in the parameter type
     @Override
-    protected Bitmap doInBackground() {
+    protected Bitmap doInBackground(Uri... params) {
       try {
         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(params[0]));
         return invertImageColors(bitmap);
@@ -78,20 +80,28 @@ public class MainActivity extends AppCompatActivity{
 
     //TODO: Fill in the parameter type
     @Override
-    protected void onProgressUpdate() {
+    protected void onProgressUpdate(Integer... values) {
       super.onProgressUpdate(values);
       //TODO: Update the progress bar
+        int progress = values[0];
+        mProgressBar.setProgress(progress);
     }
 
     //TODO: Fill in the parameter type
     @Override
-    protected void onPostExecute() {
+    protected void onPostExecute(Bitmap bitmap) {
       //TODO: Complete this method
+        mImageView.setImageBitmap(bitmap);
+        mProgressBar.setVisibility(View.INVISIBLE);
+
     }
 
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
+        mProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setProgress(0);
+        mProgressBar.setMax(100);
       //TODO: Complete this method
     }
 
@@ -113,6 +123,7 @@ public class MainActivity extends AppCompatActivity{
         }
         int progressVal = Math.round((long) (100*(i/(1.0*mutableBitmap.getWidth()))));
         //TODO: Update the progress bar. progressVal is the current progress value out of 100
+          publishProgress(progressVal);
       }
       return mutableBitmap;
     }

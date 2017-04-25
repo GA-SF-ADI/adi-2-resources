@@ -10,6 +10,48 @@
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <EditText
+                android:id="@+id/adjective1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Adjective"/>
+
+            <EditText
+                android:id="@+id/adjective2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Adjective"/>
+
+            <EditText
+                android:id="@+id/noun1_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Noun"/>
+
+            <EditText
+                android:id="@+id/noun2_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Noun"/>
+
+            <EditText
+                android:id="@+id/animals_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Animal(plural)"/>
+
+            <EditText
+                android:id="@+id/game_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Game"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="submit"/>
+
 
         </LinearLayout>
     </ScrollView>
