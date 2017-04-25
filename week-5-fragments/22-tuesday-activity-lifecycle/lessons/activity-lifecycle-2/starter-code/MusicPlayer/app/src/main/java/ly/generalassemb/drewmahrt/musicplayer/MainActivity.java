@@ -43,4 +43,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    protected void onPause() {
+        mMediaPlayer.pause();
+
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mMediaPlayer.start();
+
+        super.onResume();
+    }
 }

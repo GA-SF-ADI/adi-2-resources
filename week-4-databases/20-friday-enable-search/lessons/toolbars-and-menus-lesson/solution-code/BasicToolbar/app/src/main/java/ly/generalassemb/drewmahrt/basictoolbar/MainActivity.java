@@ -49,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Security", Toast.LENGTH_LONG).show();
                 return true;
 
+            case R.id.action_press:
+
+                Toast.makeText(MainActivity.this, "Play", Toast.LENGTH_LONG).show();
+
+                return true;
+
+            case R.id.action_fast:
+
+                Toast.makeText(MainActivity.this, "Say Cheese", Toast.LENGTH_LONG).show();
+
+                return true;
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         Department department2 = new Department("Sales", 8);
 
         Helper helper = Helper.getInstance(MainActivity.this);
-        helper.insertRow(employee);
-        helper.insertRow(employee1);
-        helper.insertRow(employee2);
+        helper.insertRowEmployee(employee);
+        helper.insertRowEmployee(employee1);
+        helper.insertRowEmployee(employee2);
 
         helper.insertRowDepartment(department);
         helper.insertRowDepartment(department1);
         helper.insertRowDepartment(department2);
 
-        String name = helper.getNameJoins();
+        String name = helper.getFullInformation();
 
         //TODO: uncomment this line to test your solution for independent practice, change the
         // value of the return line to "return fullInfo"

@@ -49,4 +49,19 @@ public class NumbersSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + NUMBERS_TABLE_NAME);
         this.onCreate(db);
     }
+    public Cursor searchNumbers(String query){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(NUMBERS_TABLE_NAME, // a. table
+                NUMBERS_COLUMNS, // b. column names
+                COL_NUMBER_VALUE+" = ?", // c. selections
+                new String[]{query}, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
 }

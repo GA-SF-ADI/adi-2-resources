@@ -42,7 +42,7 @@ public class MathUtils {
     }
 
     public static double square(double number){
-        return number + number;
+        return number * number;
     }
 
     public static int add(int... numbers){
