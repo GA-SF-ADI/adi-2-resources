@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".DetailActivity">
+    
+    <ImageView
+        android:id="@+id/detail_image"
+        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"/>
+    
+    <EditText
+        android:id="@+id/detail_title"
+        android:layout_below="@+id/detail_image"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Movie Title"/>
+
+    <EditText
+        android:id="@+id/detail_author"
+        android:layout_below="@+id/detail_title"
+        android:hint="Author"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/detail_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/detail_author"
+        android:hint="Release Date"/>
+
+    <EditText
+        android:id="@+id/detail_image_edit"
+        android:layout_below="@id/detail_release_date"
+        android:layout_centerHorizontal="true"
+        android:hint="Image URL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/detail_edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/detail_image_edit"/>
+
+</RelativeLayout>
