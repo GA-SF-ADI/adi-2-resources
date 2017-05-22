@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CreateBookActivity"
+    tools:showIn="@layout/activity_create_book_activity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/editText_book_id"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/book_id"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/editText_book_title"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_book_id"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/book_title"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/editText_book_author"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_book_title"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/book_author"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/editText_book_image"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_book_author"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/book_image"
+            android:lines="1"
+            android:maxLines="1" />
+
+        <EditText
+            android:id="@+id/editText_book_release_date"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_book_image"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/book_releaseDate"
+            android:lines="1"
+            android:maxLines="1" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
